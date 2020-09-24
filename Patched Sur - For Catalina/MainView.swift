@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ShellOut
 
 struct MainView : View {
     @State var buttonBG = Color.accentColor
