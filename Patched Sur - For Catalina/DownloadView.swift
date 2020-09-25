@@ -13,25 +13,34 @@ struct DownloadView: View {
     var body: some View {
         VStack {
             Text("Downloading Set Vars Tool and Kext Patches").bold()
-            Text("The set vars tool allows you to properly setup the nvram and sip status, so that Big Sur let's you boot into it. This is the last tool you use before installing Big Sur. The kext patches allow you to use stuff like WiFi and USB ports, so that your Mac stays at full functionality.\n\n\(downloadStatus)")
+            Text("The set vars tool allows you to properly setup the nvram and sip status, so that Big Sur let's you boot into it. This is the last tool you use before installing Big Sur. The kext patches allow you to use stuff like WiFi and USB ports, so that your Mac stays at full functionality.")
                 .padding()
                 .multilineTextAlignment(.center)
             ZStack {
                 Color.secondary
                     .cornerRadius(10)
-                    .frame(width: 200)
+                    .frame(minWidth: 200)
                 Text(downloadStatus)
                     .foregroundColor(.white)
                     .lineLimit(10)
                     .onAppear {
                         if downloadStatus == "Starting Download..." {
-                            do {
-                                let info = try Data(contentsOf: URL(string: "https://github.com/barrykn/big-sur-micropatcher/archive/main.zip")!)
-                            } catch {
-                                downloadStatus = error.localizedDescription
-                                return
+                            let task = URLSession.shared.downloadTask(with: URL(string: "https://google.com")!) { localURL, urlResponse, error in
+                                if let localURL = localURL {
+                                    if let data = try? Data(contentsOf: localURL) {
+                                        setVarsTool = data
+                                        downloadStatus = "Saving Files..."
+                                    } else {
+                                        downloadStatus = "Load Error"
+                                    }
+                                } else if let error = error {
+                                    downloadStatus = error.localizedDescription
+                                } else {
+                                    downloadStatus = "Unknown Error"
+                                }
                             }
-                            downloadStatus = "Saving Files..."
+
+                            task.resume()
                         } else if downloadStatus == "Saving Files..." {
                             downloadStatus = "Hello World"
                         }
@@ -39,7 +48,7 @@ struct DownloadView: View {
                     .padding(6)
                     .padding(.horizontal, 4)
             }
-//            .fixedSize()
+            .fixedSize()
         }
     }
 }
