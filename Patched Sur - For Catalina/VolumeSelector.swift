@@ -9,7 +9,7 @@ import SwiftUI
 import Files
 
 struct VolumeSelector: View {
-    @State var volumes: [String] = []
+    @State var volumes: [String] = (try? Folder(path: "/Volumes").subfolders.map(\.name)) ?? []
     @Binding var pro: Int
     @State var selected = ""
     @State var hovered = ""
@@ -107,13 +107,6 @@ struct VolumeSelector: View {
     
     init(p: Binding<Int>) {
         self._pro = p
-        do {
-            let volumesFolder = try Folder(path: "/Volumes")
-            volumes = volumesFolder.subfolders.map(\.name)
-        }
-        catch {
-            volumes = []
-        }
     }
 }
 

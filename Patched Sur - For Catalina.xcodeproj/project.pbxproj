@@ -20,6 +20,7 @@
 		7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */; };
 		7692E090251C077400C5FB9A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E08F251C077400C5FB9A /* MainView.swift */; };
 		7692E0A2251C163200C5FB9A /* VolumeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E0A1251C163200C5FB9A /* VolumeSelector.swift */; };
+		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Patched_Sur.entitlements; sourceTree = "<group>"; };
 		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7692E0A1251C163200C5FB9A /* VolumeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelector.swift; sourceTree = "<group>"; };
+		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
 				7692E067251BFF9300C5FB9A /* ContentView.swift */,
+				76DB62FE251C637000AB8865 /* DownloadView.swift */,
 				7692E0A1251C163200C5FB9A /* VolumeSelector.swift */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,
 				7637830A251C2D51000AFC1C /* ShellOut.swift */,
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */,
 				7637830B251C2D51000AFC1C /* ShellOut.swift in Sources */,
 				7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */,
 				7692E090251C077400C5FB9A /* MainView.swift in Sources */,
