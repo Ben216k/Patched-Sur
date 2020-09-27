@@ -17,7 +17,7 @@ struct ContentView: View {
             } else if progress == 1 {
                 VolumeSelector(p: $progress)
             } else if progress == 2 {
-                DownloadView()
+                DownloadView(p: $progress)
             } else {
                 VStack {
                     Text("Uh-oh! Something went wrong while running Patched Sur.").bold()

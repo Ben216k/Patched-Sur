@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import Files
 
 struct DownloadView: View {
     @State var downloadStatus = "Starting Download..."
     @State var setVarsTool: Data?
+    @State var setVarsZip: File?
+    @State var setVarsSave: Folder?
+    @Binding var p: Int
+    
     var body: some View {
         VStack {
             Text("Downloading Set Vars Tool and Kext Patches").bold()
@@ -19,34 +24,37 @@ struct DownloadView: View {
             ZStack {
                 Color.secondary
                     .cornerRadius(10)
-                    .frame(minWidth: 200)
-                Text(downloadStatus)
-                    .foregroundColor(.white)
-                    .lineLimit(10)
-                    .onAppear {
-                        if downloadStatus == "Starting Download..." {
-                            let task = URLSession.shared.downloadTask(with: URL(string: "https://google.com")!) { localURL, urlResponse, error in
-                                if let localURL = localURL {
-                                    if let data = try? Data(contentsOf: localURL) {
-                                        setVarsTool = data
-                                        downloadStatus = "Saving Files..."
-                                    } else {
-                                        downloadStatus = "Load Error"
-                                    }
-                                } else if let error = error {
-                                    downloadStatus = error.localizedDescription
+                    .frame(minWidth: 200, maxWidth: 450)
+                if downloadStatus == "Starting Download..." {
+                    Text("Starting Download...")
+                        .foregroundColor(.white)
+                        .lineLimit(4)
+                        .onAppear {
+                            do {
+                                let appDir = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
+                                if (try? appDir.subfolder(named: "big-sur-micropatcher")) != nil {
+                                    try shellOut(to: "git pull", at: "~/.patched-sur/big-sur-micropatcher")
                                 } else {
-                                    downloadStatus = "Unknown Error"
+                                    try shellOut(to: "git clone https://github.com/barrykn/big-sur-micropatcher.git", at: "~/.patched-sur")
+                                    _ = try appDir.subfolder(named: "big-sur-micropatcher")
                                 }
+                                p = 3
+                            } catch {
+                                downloadStatus = error.localizedDescription
                             }
-
-                            task.resume()
-                        } else if downloadStatus == "Saving Files..." {
-                            downloadStatus = "Hello World"
                         }
-                    }
-                    .padding(6)
-                    .padding(.horizontal, 4)
+                        .padding(6)
+                        .padding(.horizontal, 4)
+                } else {
+                    Text(downloadStatus)
+                        .foregroundColor(.white)
+                        .lineLimit(4)
+                        .padding(6)
+                        .padding(.horizontal, 4)
+                        .onTapGesture {
+                            NSPasteboard.general.setString(downloadStatus, forType: .string)
+                        }
+                }
             }
             .fixedSize()
         }
@@ -55,7 +63,7 @@ struct DownloadView: View {
 
 struct DownloadView_Previews: PreviewProvider {
     static var previews: some View {
-        DownloadView()
+        DownloadView(p: .constant(2))
             .frame(minWidth: 500, maxWidth: 500, minHeight: 300, maxHeight: 300)
             .background(Color.white)
     }
