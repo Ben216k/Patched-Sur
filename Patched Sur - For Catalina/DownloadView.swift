@@ -30,17 +30,19 @@ struct DownloadView: View {
                         .foregroundColor(.white)
                         .lineLimit(4)
                         .onAppear {
-                            do {
-                                let appDir = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
-                                if (try? appDir.subfolder(named: "big-sur-micropatcher")) != nil {
-                                    try shellOut(to: "git pull", at: "~/.patched-sur/big-sur-micropatcher")
-                                } else {
-                                    try shellOut(to: "git clone https://github.com/barrykn/big-sur-micropatcher.git", at: "~/.patched-sur")
-                                    _ = try appDir.subfolder(named: "big-sur-micropatcher")
+                            DispatchQueue.global(qos: .background).async {
+                                do {
+                                    let appDir = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
+                                    if (try? appDir.subfolder(named: "big-sur-micropatcher")) != nil {
+                                        try shellOut(to: "git pull", at: "~/.patched-sur/big-sur-micropatcher")
+                                    } else {
+                                        try shellOut(to: "git clone https://github.com/barrykn/big-sur-micropatcher.git", at: "~/.patched-sur")
+                                        _ = try appDir.subfolder(named: "big-sur-micropatcher")
+                                    }
+                                    p = 3
+                                } catch {
+                                    downloadStatus = error.localizedDescription
                                 }
-                                p = 3
-                            } catch {
-                                downloadStatus = error.localizedDescription
                             }
                         }
                         .padding(6)
@@ -61,7 +63,7 @@ struct DownloadView: View {
     }
 }
 
-struct DownloadView_Previews: PreviewProvider {
+struct InstallAssistantView_Previews: PreviewProvider {
     static var previews: some View {
         DownloadView(p: .constant(2))
             .frame(minWidth: 500, maxWidth: 500, minHeight: 300, maxHeight: 300)
