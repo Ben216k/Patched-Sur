@@ -11,7 +11,7 @@ import Files
 struct VolumeSelector: View {
     @State var volumes: [String] = (try? Folder(path: "/Volumes").subfolders.map(\.name)) ?? []
     @Binding var pro: Int
-    @State var selected = ""
+    @Binding var selected: String
     @State var hovered = ""
     @State var buttonBG = Color.accentColor
     @State var buttonBG2 = Color.secondary
@@ -27,7 +27,7 @@ struct VolumeSelector: View {
                     Button {
                         selected = volume
                     } label: {
-                        if !(volume.hasPrefix("com.apple")) {
+                        if !volume.hasPrefix("com.apple") {
                             if selected == volume {
                                 Text(volume)
                                     .padding(8)
@@ -49,23 +49,21 @@ struct VolumeSelector: View {
                                         }
                                     })
                             }
-                        } else {
-                            EmptyView()
                         }
                     }.buttonStyle(BorderlessButtonStyle())
                 }
             }
             HStack {
                 Button {
-                    if selected != "" {
-                        pro = 2
+                    if volumes.contains(selected) {
+                        pro = 6
                     }
                 } label: {
                     ZStack {
                         buttonBG
                             .cornerRadius(10)
                             .onHover(perform: { hovering in
-                                if !(selected == "") {
+                                if !(volumes.contains(selected)) {
                                     buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
                                 }
                             })
@@ -81,7 +79,14 @@ struct VolumeSelector: View {
                 Button {
                     do {
                         let volumesFolder = try Folder(path: "/Volumes")
-                        volumes = volumesFolder.subfolders.map(\.name)
+                        volumes = volumesFolder.subfolders.map(\.name).filter {
+                            if let list = try? shellOut(to: "diskutil list \($0)") {
+                                if list.contains("(external, physical)") {
+                                    return true
+                                }
+                            }
+                            return false
+                        }
                     }
                     catch {
                         volumes = []
@@ -105,14 +110,15 @@ struct VolumeSelector: View {
         }
     }
     
-    init(p: Binding<Int>) {
+    init(p: Binding<Int>, volume: Binding<String>) {
         self._pro = p
+        self._selected = volume
     }
 }
 
 struct VolumeSelector_Previews: PreviewProvider {
     static var previews: some View {
-        VolumeSelector(p: .constant(1))
+        VolumeSelector(p: .constant(1), volume: .constant(""))
             .frame(minWidth: 500, maxWidth: 500, minHeight: 300, maxHeight: 300)
             .background(Color.white)
     }

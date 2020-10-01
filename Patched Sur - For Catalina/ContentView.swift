@@ -10,16 +10,26 @@ import SwiftUI
 struct ContentView: View {
     @State var progress = 0
     @Environment(\.colorScheme) var colorScheme
+    @State var password = ""
+    @State var volume = ""
     var body: some View {
-        Group {
+        ZStack {
             if progress == 0 {
                 MainView(p: $progress)
             } else if progress == 1 {
-                VolumeSelector(p: $progress)
+                MacCompatibility(p: $progress)
             } else if progress == 2 {
-                DownloadView(p: $progress)
+                HowItWorks(p: $progress)
             } else if progress == 3 {
-                InstallPackageView(p: $progress)
+                DownloadView(p: $progress)
+            } else if progress == 4 {
+                InstallPackageView(password: $password, p: $progress)
+            } else if progress == 5 {
+                VolumeSelector(p: $progress, volume: $volume)
+            } else if progress == 6 {
+                ConfirmVolumeView(volume: $volume, p: $progress)
+            } else if progress == 7 {
+                CreateInstallMedia(volume: $volume, password: $password)
             } else {
                 VStack {
                     Text("Uh-oh! Something went wrong while running Patched Sur.").bold()

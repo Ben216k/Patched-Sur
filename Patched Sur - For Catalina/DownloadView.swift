@@ -19,7 +19,7 @@ struct DownloadView: View {
         VStack {
             Text("Downloading Set Vars Tool and Kext Patches").bold()
             Text("The set vars tool allows you to properly setup the nvram and sip status, so that Big Sur let's you boot into it. This is the last tool you use before installing Big Sur. The kext patches allow you to use stuff like WiFi and USB ports, so that your Mac stays at full functionality.")
-                .padding()
+                .padding(10)
                 .multilineTextAlignment(.center)
             ZStack {
                 Color.secondary
@@ -39,7 +39,7 @@ struct DownloadView: View {
                                         try shellOut(to: "git clone https://github.com/barrykn/big-sur-micropatcher.git", at: "~/.patched-sur")
                                         _ = try appDir.subfolder(named: "big-sur-micropatcher")
                                     }
-                                    p = 3
+                                    p = 4
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }
