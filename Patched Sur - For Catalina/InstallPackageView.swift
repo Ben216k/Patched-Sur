@@ -16,6 +16,7 @@ struct InstallPackageView: View {
     @State var invalidPassword = false
     @Binding var password: String
     @Binding var p: Int
+    @Binding var overrideInstaller: Bool
     
     var body: some View {
         VStack {
@@ -65,6 +66,7 @@ struct InstallPackageView: View {
                         .padding(.horizontal, 4)
                         .onAppear {
                             if (try? (try? File(path: "~/.patched-sur/InstallerVersion.txt"))?.readAsString()) == installInfo?.version {
+                                overrideInstaller = true
                                 downloadStatus = ""
                                 return
                             }

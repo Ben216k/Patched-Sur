@@ -12,21 +12,13 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: Text("Hello World"), isActive: $mainShown) {
-                    HStack {
-                        Image("UpdateTab")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("Updates")
-                    }
+                NavigationLink(destination: Text("Updates"), isActive: $mainShown) {
+                    Label("Updates", systemImage: "arrow.clockwise")
+                        .padding(3)
                 }
-                NavigationLink(destination: Text("Hello World")) {
-                    HStack {
-                        Image("KextTab")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                        Text("Patch Kexts")
-                    }
+                NavigationLink(destination: KextPatchView()) {
+                    Label("Patch Kexts", systemImage: "doc")
+                        .padding(3)
                 }
             }.listStyle(SidebarListStyle())
         }

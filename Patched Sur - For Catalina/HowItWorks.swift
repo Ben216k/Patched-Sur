@@ -12,8 +12,8 @@ struct HowItWorks: View {
     @State var buttonBG = Color.accentColor
     var body: some View {
         VStack {
+            Text("How it Works").bold()
             ScrollView {
-                Text("How it Works").bold()
                 Text(howItWorks)
                     .padding()
                     .multilineTextAlignment(.center)

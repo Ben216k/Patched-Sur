@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		761721182537DE0D0039E831 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 761721172537DE0D0039E831 /* Files */; };
+		7617211C2537E03E0039E831 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617211B2537E03E0039E831 /* KextPatchView.swift */; };
 		7637830B251C2D51000AFC1C /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637830A251C2D51000AFC1C /* ShellOut.swift */; };
 		76378319251C30F1000AFC1C /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 76378318251C30F1000AFC1C /* Files */; };
 		76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76671F332522B3090004E0C2 /* InstallPackageView.swift */; };
 		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
+		768D66DA2538EE4400616DE5 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637830A251C2D51000AFC1C /* ShellOut.swift */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
 		7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* ContentView.swift */; };
 		7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E069251BFF9400C5FB9A /* Assets.xcassets */; };
@@ -30,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7617211B2537E03E0039E831 /* KextPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KextPatchView.swift; sourceTree = "<group>"; };
 		7637830A251C2D51000AFC1C /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShellOut.swift; path = ../../../Downloads/ShellOut.swift; sourceTree = "<group>"; };
 		76378315251C30A6000AFC1C /* Files-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Files-master"; path = "../../Downloads/Files-master"; sourceTree = "<group>"; };
 		76671F332522B3090004E0C2 /* InstallPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallPackageView.swift; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				761721182537DE0D0039E831 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +139,7 @@
 			children = (
 				7692E07F251BFFB300C5FB9A /* Patched_SurApp.swift */,
 				7692E081251BFFB300C5FB9A /* ContentView.swift */,
+				7617211B2537E03E0039E831 /* KextPatchView.swift */,
 				7692E083251BFFB400C5FB9A /* Assets.xcassets */,
 				7692E088251BFFB400C5FB9A /* Info.plist */,
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
@@ -194,6 +200,7 @@
 			);
 			name = "Patched Sur";
 			packageProductDependencies = (
+				761721172537DE0D0039E831 /* Files */,
 			);
 			productName = "Patched Sur";
 			productReference = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */;
@@ -282,7 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */,
+				768D66DA2538EE4400616DE5 /* ShellOut.swift in Sources */,
 				7692E080251BFFB300C5FB9A /* Patched_SurApp.swift in Sources */,
+				7617211C2537E03E0039E831 /* KextPatchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,7 +485,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -501,7 +510,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -548,6 +557,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		761721172537DE0D0039E831 /* Files */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Files;
+		};
 		76378318251C30F1000AFC1C /* Files */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Files;

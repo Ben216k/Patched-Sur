@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var password = ""
     @State var volume = ""
+    @State var overrideinstaller = false
     var body: some View {
         ZStack {
             if progress == 0 {
@@ -23,13 +24,13 @@ struct ContentView: View {
             } else if progress == 3 {
                 DownloadView(p: $progress)
             } else if progress == 4 {
-                InstallPackageView(password: $password, p: $progress)
+                InstallPackageView(password: $password, p: $progress, overrideInstaller: $overrideinstaller)
             } else if progress == 5 {
                 VolumeSelector(p: $progress, volume: $volume)
             } else if progress == 6 {
                 ConfirmVolumeView(volume: $volume, p: $progress)
             } else if progress == 7 {
-                CreateInstallMedia(volume: $volume, password: $password)
+                CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller)
             } else {
                 VStack {
                     Text("Uh-oh! Something went wrong while running Patched Sur.").bold()

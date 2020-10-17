@@ -78,15 +78,15 @@ struct VolumeSelector: View {
                 .opacity(selected == "" ? 0.4 : 1)
                 Button {
                     do {
-                        let volumesFolder = try Folder(path: "/Volumes")
-                        volumes = volumesFolder.subfolders.map(\.name).filter {
-                            if let list = try? shellOut(to: "diskutil list \($0)") {
-                                if list.contains("(external, physical)") {
-                                    return true
-                                }
-                            }
-                            return false
-                        }
+                        volumes = try Folder(path: "/Volumes").subfolders.map(\.name)
+//                        volumes = volumesFolder.subfolders.map(\.name).filter {
+//                            if let list = try? shellOut(to: "diskutil list \($0)") {
+//                                if list.contains("(external, physical)") {
+//                                    return true
+//                                }
+//                            }
+//                            return false
+//                        }
                     }
                     catch {
                         volumes = []
