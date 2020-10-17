@@ -17,6 +17,7 @@ struct InstallPackageView: View {
     @Binding var password: String
     @Binding var p: Int
     @Binding var overrideInstaller: Bool
+    @Binding var track: ReleaseTrack
     
     var body: some View {
         VStack {
@@ -35,14 +36,14 @@ struct InstallPackageView: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    let allInstallInfo = try InstallAssistants(data: try Data(contentsOf: "https://bensova.github.io/patched-sur/installers/Developer.json"))
+                                    let allInstallInfo = try InstallAssistants(data: try Data(contentsOf: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Public").json")!))
                                     installInfo = allInstallInfo.sorted(by: { (one, two) -> Bool in
                                         if one.orderNumber > two.orderNumber {
                                             return true
                                         }
                                         return false
                                     })[0]
-                                    downloadStatus = "Downloading macOS \(installInfo!.version)..."
+                                    downloadStatus = "Download macOS \(installInfo!.version)"
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }
@@ -50,14 +51,30 @@ struct InstallPackageView: View {
                         }
                         .padding(6)
                         .padding(.horizontal, 4)
+                } else if downloadStatus.hasPrefix("Download macOS") {
+                    Button {
+                        downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
+                    } label: {
+                        ZStack {
+                            buttonBG
+                                .cornerRadius(10)
+                            Text(downloadStatus)
+                                .foregroundColor(.primary)
+                                .padding(6)
+                                .padding(.horizontal, 4)
+                        }
+                        .onHover { (hovering) in
+                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
+                        }
+                    }.buttonStyle(BorderlessButtonStyle())
                 } else if downloadStatus.hasPrefix("Downloading macOS ") {
                     ZStack(alignment: .leading) {
                         Color.secondary
                             .cornerRadius(10)
                             .frame(minWidth: 200, maxWidth: 450)
-                        Color.blue
-                            .cornerRadius(10)
-                            .frame(width: 300 * downloadProgress)
+//                        Color.blue
+//                            .cornerRadius(10)
+//                            .frame(width: 300 * downloadProgress)
                     }
                     Text(downloadStatus)
                         .foregroundColor(.primary)

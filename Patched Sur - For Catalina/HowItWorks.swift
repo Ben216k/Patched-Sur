@@ -19,7 +19,7 @@ struct HowItWorks: View {
                     .multilineTextAlignment(.center)
             }
             Button {
-                p = 3
+                p = 9
             } label: {
                 ZStack {
                     buttonBG
