@@ -106,7 +106,7 @@ struct ReleaseTrackView: View {
             }
             Button {
                 if track != .release {
-                    p = 3
+                    p = 10
                 }
             } label: {
                 ZStack {

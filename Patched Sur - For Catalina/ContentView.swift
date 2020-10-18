@@ -30,6 +30,7 @@ struct AllViews : View {
     @State var volume = ""
     @State var overrideinstaller = false
     @State var releaseTrack = ReleaseTrack.publicbeta
+    @State var installMethod = InstallMethod.update
     var body: some View {
         if progress == 0 {
             MainView(p: $progress)
@@ -39,6 +40,8 @@ struct AllViews : View {
             HowItWorks(p: $progress)
         } else if progress == 9 {
             ReleaseTrackView(track: $releaseTrack, p: $progress)
+        } else if progress == 10 {
+            InstallMethodView(method: $installMethod, p: $progress)
         } else if progress == 3 {
             DownloadView(p: $progress)
         } else if progress == 4 {

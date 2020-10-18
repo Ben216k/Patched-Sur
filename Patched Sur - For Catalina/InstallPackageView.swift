@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Files
+import Combine
 
 struct InstallPackageView: View {
     @State var downloadStatus = "Fetching URLs..."
@@ -18,6 +19,9 @@ struct InstallPackageView: View {
     @Binding var p: Int
     @Binding var overrideInstaller: Bool
     @Binding var track: ReleaseTrack
+    @State var currentSize = 10
+    @State var downloadSize = 10
+    let timer = Timer.publish(every: 2, on: .current, in: .common).autoconnect()
     
     var body: some View {
         VStack {
@@ -53,13 +57,16 @@ struct InstallPackageView: View {
                         .padding(.horizontal, 4)
                 } else if downloadStatus.hasPrefix("Download macOS") {
                     Button {
+                        if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                            downloadSize = sizeInt
+                        }
                         downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
                     } label: {
                         ZStack {
                             buttonBG
                                 .cornerRadius(10)
                             Text(downloadStatus)
-                                .foregroundColor(.primary)
+                                .foregroundColor(.white)
                                 .padding(6)
                                 .padding(.horizontal, 4)
                         }
@@ -68,36 +75,40 @@ struct InstallPackageView: View {
                         }
                     }.buttonStyle(BorderlessButtonStyle())
                 } else if downloadStatus.hasPrefix("Downloading macOS ") {
-                    ZStack(alignment: .leading) {
-                        Color.secondary
-                            .cornerRadius(10)
-                            .frame(minWidth: 200, maxWidth: 450)
-//                        Color.blue
-//                            .cornerRadius(10)
-//                            .frame(width: 300 * downloadProgress)
-                    }
-                    Text(downloadStatus)
-                        .foregroundColor(.primary)
-                        .lineLimit(5)
-                        .padding(6)
-                        .padding(.horizontal, 4)
-                        .onAppear {
-                            if (try? (try? File(path: "~/.patched-sur/InstallerVersion.txt"))?.readAsString()) == installInfo?.version {
-                                overrideInstaller = true
-                                downloadStatus = ""
-                                return
-                            }
-                            DispatchQueue.global(qos: .background).async {
-                                do {
-                                    try shellOut(to: "curl -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
-                                    let versionFile = try Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallerVersion.txt")
-                                    try versionFile.write(installInfo!.version, encoding: .utf8)
-                                    downloadStatus = ""
-                                } catch {
-                                    downloadStatus = error.localizedDescription
+                    VStack {
+                        ZStack {
+                            ProgressBar(value: $downloadProgress)
+                                .onReceive(timer, perform: { _ in
+                                    if let sizeCode = try? shellOut(to: "stat -f %z ~/.patched-sur/InstallAssistant.pkg") {
+                                        currentSize = Int(Float(sizeCode) ?? 10000)
+                                        downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
+                                    }
+                                })
+                            Text(downloadStatus)
+                                .foregroundColor(.white)
+                                .lineLimit(5)
+                                .padding(6)
+                                .padding(.horizontal, 4)
+                                .onAppear {
+                                    _ = try? shellOut(to: "rm ~/.patched-sur/InstallAssistant.pkg")
+                                    if (try? (try? File(path: "~/.patched-sur/InstallerVersion.txt"))?.readAsString()) == installInfo?.version {
+                                        overrideInstaller = true
+                                        downloadStatus = ""
+                                        return
+                                    }
+                                    DispatchQueue.global(qos: .background).async {
+                                        do {
+                                            try shellOut(to: "curl -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
+                                            let versionFile = try Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallerVersion.txt")
+                                            try versionFile.write(installInfo!.version, encoding: .utf8)
+                                            downloadStatus = ""
+                                        } catch {
+                                            downloadStatus = error.localizedDescription
+                                        }
+                                    }
                                 }
-                            }
                         }
+                    }
                 } else if downloadStatus == "" {
                     HStack {
                         ZStack {
@@ -166,20 +177,30 @@ struct InstallPackageView: View {
                             }
                         }
                 } else {
-                    Color.red
-                        .cornerRadius(10)
-                        .frame(minWidth: 200, maxWidth: 450)
-                        .onTapGesture {
-                            NSPasteboard.general.setString(downloadStatus, forType: .string)
+                    Button {
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.declareTypes([.string], owner: nil)
+                        pasteboard.setString(downloadStatus, forType: .string)
+                    } label: {
+                        ZStack {
+                            buttonBG
+                                .cornerRadius(10)
+                                .frame(minWidth: 200, maxWidth: 450)
+                                .onHover(perform: { hovering in
+                                    buttonBG = hovering ? Color.red.opacity(0.7) : .red
+                                })
+                                .onAppear(perform: {
+                                    if buttonBG != .red && buttonBG != Color.red.opacity(0.7) {
+                                        buttonBG = .red
+                                    }
+                                })
+                            Text(downloadStatus)
+                                .foregroundColor(.white)
+                                .lineLimit(4)
+                                .padding(6)
+                                .padding(.horizontal, 4)
                         }
-                    Text(downloadStatus)
-                        .foregroundColor(.white)
-                        .lineLimit(4)
-                        .padding(6)
-                        .padding(.horizontal, 4)
-                        .onTapGesture {
-                            NSPasteboard.general.setString(downloadStatus, forType: .string)
-                        }
+                    }.buttonStyle(BorderlessButtonStyle())
                 }
             }
             .fixedSize()
@@ -192,5 +213,21 @@ struct DownloadView_Previews: PreviewProvider {
         DownloadView(p: .constant(2))
             .frame(minWidth: 500, maxWidth: 500, minHeight: 300, maxHeight: 300)
             .background(Color.white)
+    }
+}
+
+struct ProgressBar: View {
+    @Binding var value: CGFloat
+    
+    var body: some View {
+        ZStack(alignment: .leading) {
+            Rectangle().frame(minWidth: 285)
+                .opacity(0.3)
+                .foregroundColor(Color(.systemTeal))
+            
+            Rectangle().frame(width: min(value*285, 285))
+                .foregroundColor(Color(.systemBlue))
+                .animation(.linear)
+        }.cornerRadius(10)
     }
 }
