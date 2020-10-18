@@ -27,7 +27,7 @@ struct HowItWorks: View {
                         .onHover(perform: { hovering in
                             buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
                         })
-                    Text("Start")
+                    Text("Continue")
                         .foregroundColor(.white)
                         .padding(5)
                         .padding(.horizontal, 50)
@@ -45,5 +45,11 @@ struct HowItWorks_Previews: PreviewProvider {
 }
 
 let howItWorks = """
-This is how it works. A full, longer description will be provided
+How about I do this later? I need to focus on the app right now. That's fair, right? Well, yeah. I do appreciate my beta testers, but I'm not going to write paragraph after paragraph about how this app works, if they are just going to click Continue. I'll do it later.
+
+Beta 2... or..
+
+Maybe a different beta... or..
+
+How about before the release? Yeah, that's good.
 """

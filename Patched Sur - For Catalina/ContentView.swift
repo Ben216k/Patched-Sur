@@ -25,7 +25,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct AllViews : View {
-    @State var progress = 0
+    @State var progress = 8
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false
@@ -51,7 +51,9 @@ struct AllViews : View {
         } else if progress == 6 {
             ConfirmVolumeView(volume: $volume, p: $progress)
         } else if progress == 7 {
-            CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller)
+            CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress)
+        } else if progress == 8 {
+            FinishedView()
         }
     }
 }

@@ -47,7 +47,13 @@ struct InstallPackageView: View {
                                         }
                                         return false
                                     })[0]
-                                    downloadStatus = "Download macOS \(installInfo!.version)"
+                                    if (try? (try? File(path: "~/.patched-sur/InstallerVersion.txt"))?.readAsString()) == installInfo?.version {
+                                        overrideInstaller = true
+                                        downloadStatus = ""
+                                        return
+                                    }
+//                                    downloadStatus = "Download macOS \(installInfo!.version)"
+                                    downloadStatus = ""
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }
@@ -91,11 +97,6 @@ struct InstallPackageView: View {
                                 .padding(.horizontal, 4)
                                 .onAppear {
                                     _ = try? shellOut(to: "rm ~/.patched-sur/InstallAssistant.pkg")
-                                    if (try? (try? File(path: "~/.patched-sur/InstallerVersion.txt"))?.readAsString()) == installInfo?.version {
-                                        overrideInstaller = true
-                                        downloadStatus = ""
-                                        return
-                                    }
                                     DispatchQueue.global(qos: .background).async {
                                         do {
                                             try shellOut(to: "curl -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
@@ -161,7 +162,7 @@ struct InstallPackageView: View {
                 } else if downloadStatus == "Installing Package..." {
                     Color.secondary
                         .cornerRadius(10)
-                    Text(downloadStatus)
+                    Text("Installing Package...")
                         .foregroundColor(.white)
                         .lineLimit(4)
                         .padding(6)

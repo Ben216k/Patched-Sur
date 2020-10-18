@@ -44,6 +44,8 @@ struct MainView : View {
                 }
             }
             .buttonStyle(BorderlessButtonStyle())
+            Text("\(AppInfo.version) (\(AppInfo.build))")
+                .font(.caption)
         }
     }
 }

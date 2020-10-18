@@ -37,3 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 }
 
+class AppInfo {
+    static let version = "v0.1.0b1"
+    static let build = 1
+}

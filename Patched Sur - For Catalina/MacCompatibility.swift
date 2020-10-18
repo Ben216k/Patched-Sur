@@ -25,7 +25,7 @@ struct MacCompatibility: View {
                         .onHover(perform: { hovering in
                             buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
                         })
-                    Text("Start")
+                    Text("Continue")
                         .foregroundColor(.white)
                         .padding(5)
                         .padding(.horizontal, 50)

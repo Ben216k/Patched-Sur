@@ -13,6 +13,8 @@ struct CreateInstallMedia: View {
     @Binding var password: String
     @Binding var overrideInstaller: Bool
     @State var diskID = ""
+    @State var buttonBG = Color.red
+    @Binding var p: Int
     var body: some View {
         VStack {
             Text("Creating Install Media").bold()
@@ -31,20 +33,22 @@ struct CreateInstallMedia: View {
                         .padding(.horizontal, 4)
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
-//                                if (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta/Install macOS Big Sur Beta.app' ]]")) != nil {
-//                                    downloadStatus = "Adding Kexts..."
-//                                    return
+////                                if (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta/Install macOS Big Sur Beta.app' ]]")) != nil {
+////                                    downloadStatus = "Adding Kexts..."
+////                                    return
+////                                }
+                                downloadStatus = "Installing SetVars Tool..."
+//                                do {
+//                                    let diskUtilList = try shellOut(to: "diskutil list /Volumes/\(volume.replacingOccurrences(of: " ", with: "\\ "))")
+//                                    var diskStart = diskUtilList.split(separator: "\n")[2]
+//                                    diskStart.removeFirst("   0:      GUID_partition_scheme                        *32.0 GB    ".count)
+//                                    diskID = String(diskStart.prefix(5))
+//                                    try shellOut(to: "diskutil eraseDisk JHFS+ Install\\ macOS\\ Big\\ Sur\\ Beta GPT \(diskID)")
+////                                    downloadStatus = "Copying Installer..."
+//                                    downloadStatus = "Installing SetVars Tool..."
+//                                } catch {
+//                                    downloadStatus = error.localizedDescription
 //                                }
-                                do {
-                                    let diskUtilList = try shellOut(to: "diskutil list /Volumes/\(volume.replacingOccurrences(of: " ", with: "\\ "))")
-                                    var diskStart = diskUtilList.split(separator: "\n")[2]
-                                    diskStart.removeFirst("   0:      GUID_partition_scheme                        *32.0 GB    ".count)
-                                    diskID = String(diskStart.prefix(5))
-                                    try shellOut(to: "diskutil eraseDisk JHFS+ Install\\ macOS\\ Big\\ Sur\\ Beta GPT \(diskID)")
-                                    downloadStatus = "Copying Installer..."
-                                } catch {
-                                    downloadStatus = error.localizedDescription
-                                }
                             }
                         }
                 } else if downloadStatus == "Copying Installer..." {
@@ -98,28 +102,63 @@ struct CreateInstallMedia: View {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     try shellOut(to: "echo \"\(password)\" | sudo -S ~/.patched-sur/big-sur-micropatcher/install-setvars.sh")
-                                    downloadStatus = "Done!"
+                                    downloadStatus = "Injecting Full App..."
                                 } catch {
                                     if error.localizedDescription.hasPrefix("""
                                     ShellOut encountered an error
                                     Status code: 1
                                     Message: "Password:Volume on \(diskID)s1 failed to mount"
                                     """) {
-                                        downloadStatus = "Done!"
+                                        downloadStatus = "Injecting Full App..."
                                     }
                                     downloadStatus = error.localizedDescription
                                 }
                             }
                         }
-                } else {
-                    Color.red
+                } else if downloadStatus == "Injecting Full App..." {
+                    Color.secondary
                         .cornerRadius(10)
                         .frame(minWidth: 200, maxWidth: 450)
-                    Text(downloadStatus)
-                        .lineLimit(4)
+                    Text("Injecting Full App...")
                         .foregroundColor(.white)
+                        .lineLimit(4)
                         .padding(6)
                         .padding(.horizontal, 4)
+                        .onAppear {
+                            DispatchQueue.global(qos: .utility).async {
+                                do {
+                                    try shellOut(to: "cp -rf \"/Volumes/Patched-Sur-\(AppInfo.version)/.fullApp.app\" \"/Applications/Patched Sur.app\"")
+                                    p = 8
+                                } catch {
+                                    downloadStatus = error.localizedDescription
+                                }
+                            }
+                        }
+                } else {
+                    Button {
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.declareTypes([.string], owner: nil)
+                        pasteboard.setString(downloadStatus, forType: .string)
+                    } label: {
+                        ZStack {
+                            buttonBG
+                                .cornerRadius(10)
+                                .frame(minWidth: 200, maxWidth: 450)
+                                .onHover(perform: { hovering in
+                                    buttonBG = hovering ? Color.red.opacity(0.7) : .red
+                                })
+                                .onAppear(perform: {
+                                    if buttonBG != .red && buttonBG != Color.red.opacity(0.7) {
+                                        buttonBG = .red
+                                    }
+                                })
+                            Text(downloadStatus)
+                                .foregroundColor(.white)
+                                .lineLimit(6)
+                                .padding(6)
+                                .padding(.horizontal, 4)
+                        }
+                    }.buttonStyle(BorderlessButtonStyle())
                 }
             }.fixedSize()
         }
