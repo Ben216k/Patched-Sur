@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 class AppInfo {
-    static let version = "v0.1.0b1"
-    static let build = 1
+    static let version = "v0.1.0b2"
+    static let build = 3
+    static let micropatcher = "v0.4.2"
 }

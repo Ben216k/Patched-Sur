@@ -41,7 +41,12 @@ struct InstallPackageView: View {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     let allInstallInfo = try InstallAssistants(data: try Data(contentsOf: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Public").json")!))
-                                    installInfo = allInstallInfo.sorted(by: { (one, two) -> Bool in
+                                    installInfo = allInstallInfo.filter({ (installer) -> Bool in
+                                        if installer.minVersion > AppInfo.build {
+                                            return false
+                                        }
+                                        return true
+                                    }).sorted(by: { (one, two) -> Bool in
                                         if one.orderNumber > two.orderNumber {
                                             return true
                                         }
@@ -52,8 +57,7 @@ struct InstallPackageView: View {
                                         downloadStatus = ""
                                         return
                                     }
-//                                    downloadStatus = "Download macOS \(installInfo!.version)"
-                                    downloadStatus = ""
+                                    downloadStatus = "Download macOS \(installInfo!.version)"
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }

@@ -33,22 +33,20 @@ struct CreateInstallMedia: View {
                         .padding(.horizontal, 4)
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
-////                                if (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta/Install macOS Big Sur Beta.app' ]]")) != nil {
-////                                    downloadStatus = "Adding Kexts..."
-////                                    return
-////                                }
-                                downloadStatus = "Installing SetVars Tool..."
-//                                do {
-//                                    let diskUtilList = try shellOut(to: "diskutil list /Volumes/\(volume.replacingOccurrences(of: " ", with: "\\ "))")
-//                                    var diskStart = diskUtilList.split(separator: "\n")[2]
-//                                    diskStart.removeFirst("   0:      GUID_partition_scheme                        *32.0 GB    ".count)
-//                                    diskID = String(diskStart.prefix(5))
-//                                    try shellOut(to: "diskutil eraseDisk JHFS+ Install\\ macOS\\ Big\\ Sur\\ Beta GPT \(diskID)")
-////                                    downloadStatus = "Copying Installer..."
-//                                    downloadStatus = "Installing SetVars Tool..."
-//                                } catch {
-//                                    downloadStatus = error.localizedDescription
+//                                if (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta/Install macOS Big Sur Beta.app' ]]")) != nil {
+//                                    downloadStatus = "Adding Kexts..."
+//                                    return
 //                                }
+                                do {
+                                    let diskUtilList = try shellOut(to: "diskutil list /Volumes/\(volume.replacingOccurrences(of: " ", with: "\\ "))")
+                                    var diskStart = diskUtilList.split(separator: "\n")[2]
+                                    diskStart.removeFirst("   0:      GUID_partition_scheme                        *32.0 GB    ".count)
+                                    diskID = String(diskStart.prefix(5))
+                                    try shellOut(to: "diskutil eraseDisk JHFS+ Install\\ macOS\\ Big\\ Sur\\ Beta GPT \(diskID)")
+                                    downloadStatus = "Copying Installer..."
+                                } catch {
+                                    downloadStatus = error.localizedDescription
+                                }
                             }
                         }
                 } else if downloadStatus == "Copying Installer..." {
