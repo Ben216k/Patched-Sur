@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		761721182537DE0D0039E831 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 761721172537DE0D0039E831 /* Files */; };
 		7617211C2537E03E0039E831 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617211B2537E03E0039E831 /* KextPatchView.swift */; };
+		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
+		7625796B25423FDC00508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796A25423FDC00508A71 /* Files */; };
 		7637830B251C2D51000AFC1C /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637830A251C2D51000AFC1C /* ShellOut.swift */; };
-		76378319251C30F1000AFC1C /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 76378318251C30F1000AFC1C /* Files */; };
 		76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76671F332522B3090004E0C2 /* InstallPackageView.swift */; };
 		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
+		76772CEA25410B40003FE2A2 /* InstallerChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76772CE925410B40003FE2A2 /* InstallerChooser.swift */; };
 		768D66DA2538EE4400616DE5 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637830A251C2D51000AFC1C /* ShellOut.swift */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
 		7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* ContentView.swift */; };
@@ -38,9 +39,9 @@
 /* Begin PBXFileReference section */
 		7617211B2537E03E0039E831 /* KextPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KextPatchView.swift; sourceTree = "<group>"; };
 		7637830A251C2D51000AFC1C /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShellOut.swift; path = ../../../Downloads/ShellOut.swift; sourceTree = "<group>"; };
-		76378315251C30A6000AFC1C /* Files-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Files-master"; path = "../../Downloads/Files-master"; sourceTree = "<group>"; };
 		76671F332522B3090004E0C2 /* InstallPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallPackageView.swift; sourceTree = "<group>"; };
 		76747BD82523A66F004596CC /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
+		76772CE925410B40003FE2A2 /* InstallerChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerChooser.swift; sourceTree = "<group>"; };
 		7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - For Catalina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7692E065251BFF9300C5FB9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7692E067251BFF9300C5FB9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76378319251C30F1000AFC1C /* Files in Frameworks */,
+				7625796725423FD600508A71 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761721182537DE0D0039E831 /* Files in Frameworks */,
+				7625796B25423FDC00508A71 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +92,6 @@
 		7692E059251BFF9300C5FB9A = {
 			isa = PBXGroup;
 			children = (
-				76378315251C30A6000AFC1C /* Files-master */,
 				7692E064251BFF9300C5FB9A /* Patched Sur - For Catalina */,
 				7692E07E251BFFB300C5FB9A /* Patched Sur */,
 				7692E063251BFF9300C5FB9A /* Products */,
@@ -113,6 +113,8 @@
 			children = (
 				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
 				7692E067251BFF9300C5FB9A /* ContentView.swift */,
+				76772CE925410B40003FE2A2 /* InstallerChooser.swift */,
+				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,
 				76A626D32524ED78002C57EA /* MacCompatibility.swift */,
 				76A626D72525055B002C57EA /* HowItWorks.swift */,
@@ -127,7 +129,6 @@
 				7692E069251BFF9400C5FB9A /* Assets.xcassets */,
 				7637830A251C2D51000AFC1C /* ShellOut.swift */,
 				76747BD82523A66F004596CC /* InstallAssistants.swift */,
-				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E071251BFF9400C5FB9A /* Info.plist */,
 				7692E072251BFF9400C5FB9A /* Patched_Sur___For_Catalina.entitlements */,
 				7692E06B251BFF9400C5FB9A /* Preview Content */,
@@ -189,7 +190,7 @@
 			);
 			name = "Patched Sur - For Catalina";
 			packageProductDependencies = (
-				76378318251C30F1000AFC1C /* Files */,
+				7625796625423FD600508A71 /* Files */,
 			);
 			productName = "Patched Sur - For Catalina";
 			productReference = 7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */;
@@ -209,7 +210,7 @@
 			);
 			name = "Patched Sur";
 			packageProductDependencies = (
-				761721172537DE0D0039E831 /* Files */,
+				7625796A25423FDC00508A71 /* Files */,
 			);
 			productName = "Patched Sur";
 			productReference = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */;
@@ -241,6 +242,9 @@
 				Base,
 			);
 			mainGroup = 7692E059251BFF9300C5FB9A;
+			packageReferences = (
+				7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */,
+			);
 			productRefGroup = 7692E063251BFF9300C5FB9A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -280,6 +284,7 @@
 			files = (
 				76A626E025252C7C002C57EA /* ConfirmVolume.swift in Sources */,
 				76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */,
+				76772CEA25410B40003FE2A2 /* InstallerChooser.swift in Sources */,
 				76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */,
 				76A626DC25252C5A002C57EA /* CreateInstallMedia.swift in Sources */,
 				7637830B251C2D51000AFC1C /* ShellOut.swift in Sources */,
@@ -445,7 +450,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -456,7 +461,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.0b2;
+				MARKETING_VERSION = 0.1.0b3;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur---For-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -472,7 +477,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -483,7 +488,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.0b2;
+				MARKETING_VERSION = 0.1.0b3;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur---For-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -576,13 +581,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Files.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		761721172537DE0D0039E831 /* Files */ = {
+		7625796625423FD600508A71 /* Files */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
 		};
-		76378318251C30F1000AFC1C /* Files */ = {
+		7625796A25423FDC00508A71 /* Files */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -31,6 +31,8 @@ struct AllViews : View {
     @State var overrideinstaller = false
     @State var releaseTrack = ReleaseTrack.publicbeta
     @State var installMethod = InstallMethod.update
+    @State var installInfo = nil as InstallAssistant?
+    @State var useCurrent = false
     var body: some View {
         if progress == 0 {
             MainView(p: $progress)
@@ -45,7 +47,7 @@ struct AllViews : View {
         } else if progress == 3 {
             DownloadView(p: $progress)
         } else if progress == 4 {
-            InstallPackageView(password: $password, p: $progress, overrideInstaller: $overrideinstaller, track: $releaseTrack)
+            InstallPackageView(installInfo: $installInfo, password: $password, p: $progress, overrideInstaller: $overrideinstaller, track: $releaseTrack, useCurrent: $useCurrent)
         } else if progress == 5 {
             VolumeSelector(p: $progress, volume: $volume)
         } else if progress == 6 {
@@ -54,6 +56,8 @@ struct AllViews : View {
             CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress)
         } else if progress == 8 {
             FinishedView()
+        } else if progress == 11 {
+            InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent)
         }
     }
 }

@@ -11,7 +11,7 @@ import Combine
 
 struct InstallPackageView: View {
     @State var downloadStatus = "Fetching URLs..."
-    @State var installInfo: InstallAssistant?
+    @Binding var installInfo: InstallAssistant?
     @State var downloadProgress: CGFloat = 0
     @State var buttonBG = Color.accentColor
     @State var invalidPassword = false
@@ -20,7 +20,8 @@ struct InstallPackageView: View {
     @Binding var overrideInstaller: Bool
     @Binding var track: ReleaseTrack
     @State var currentSize = 10
-    @State var downloadSize = 10
+    @State var downloadSize = 1000
+    @Binding var useCurrent: Bool
     let timer = Timer.publish(every: 2, on: .current, in: .common).autoconnect()
     
     var body: some View {
@@ -38,6 +39,10 @@ struct InstallPackageView: View {
                         .foregroundColor(.white)
                         .lineLimit(4)
                         .onAppear {
+                            if installInfo != nil {
+                                downloadStatus = "Download macOS \(installInfo!.version)"
+                                return
+                            }
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     let allInstallInfo = try InstallAssistants(data: try Data(contentsOf: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Public").json")!))
@@ -66,24 +71,42 @@ struct InstallPackageView: View {
                         .padding(6)
                         .padding(.horizontal, 4)
                 } else if downloadStatus.hasPrefix("Download macOS") {
-                    Button {
-                        if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                            downloadSize = sizeInt
-                        }
-                        downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
-                    } label: {
-                        ZStack {
-                            buttonBG
-                                .cornerRadius(10)
-                            Text(downloadStatus)
-                                .foregroundColor(.white)
-                                .padding(6)
-                                .padding(.horizontal, 4)
-                        }
-                        .onHover { (hovering) in
-                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
-                        }
-                    }.buttonStyle(BorderlessButtonStyle())
+                    VStack {
+                        Button {
+                            if !useCurrent {
+                                if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                    downloadSize = sizeInt
+                                }
+                                downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
+                            } else {
+                                downloadStatus = ""
+                            }
+                        } label: {
+                            ZStack {
+                                buttonBG
+                                    .cornerRadius(10)
+                                Text("\(useCurrent ? "Use" : "Download") macOS \(installInfo!.version)")
+                                    .foregroundColor(.white)
+                                    .padding(6)
+                                    .padding(.horizontal, 4)
+                            }
+                            .onHover { (hovering) in
+                                if useCurrent {
+                                    buttonBG = hovering ? Color.green.opacity(0.7) : Color.green
+                                } else {
+                                    buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
+                                }
+                            }
+                            .onAppear {
+                                buttonBG = useCurrent ? Color.green : Color.accentColor
+                            }
+                        }.buttonStyle(BorderlessButtonStyle())
+                        Button {
+                            p = 11
+                        } label: {
+                            Text("View Other Versions")
+                        }.buttonStyle(BorderlessButtonStyle())
+                    }
                 } else if downloadStatus.hasPrefix("Downloading macOS ") {
                     VStack {
                         ZStack {
@@ -223,14 +246,15 @@ struct DownloadView_Previews: PreviewProvider {
 
 struct ProgressBar: View {
     @Binding var value: CGFloat
+    var length: CGFloat = 285
     
     var body: some View {
         ZStack(alignment: .leading) {
-            Rectangle().frame(minWidth: 285)
+            Rectangle().frame(minWidth: length)
                 .opacity(0.3)
                 .foregroundColor(Color(.systemTeal))
             
-            Rectangle().frame(width: min(value*285, 285))
+            Rectangle().frame(width: min(value*length, length))
                 .foregroundColor(Color(.systemBlue))
                 .animation(.linear)
         }.cornerRadius(10)

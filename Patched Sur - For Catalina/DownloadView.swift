@@ -9,12 +9,16 @@ import SwiftUI
 import Files
 
 struct DownloadView: View {
-    @State var downloadStatus = "Starting Download..."
+    @State var downloadStatus = "Downloading Files..."
     @State var setVarsTool: Data?
     @State var setVarsZip: File?
     @State var setVarsSave: Folder?
     @Binding var p: Int
     @State var buttonBG = Color.red
+    @State var downloadSize = 55357820
+    @State var downloadProgress = CGFloat(0)
+    @State var currentSize = 10
+    let timer = Timer.publish(every: 0.25, on: .current, in: .common).autoconnect()
     
     var body: some View {
         VStack {
@@ -23,29 +27,29 @@ struct DownloadView: View {
                 .padding(10)
                 .multilineTextAlignment(.center)
             ZStack {
-                Color.secondary
-                    .cornerRadius(10)
-                    .frame(minWidth: 200, maxWidth: 450)
-                if downloadStatus == "Starting Download..." {
-                    Text("Starting Download...")
+                if downloadStatus == "Downloading Files..." {
+                    ProgressBar(value: $downloadProgress, length: 175)
+                        .onReceive(timer, perform: { _ in
+                            if let sizeCode = try? shellOut(to: "stat -f %z ~/.patched-sur/big-sur-micropatcher.zip") {
+                                currentSize = Int(Float(sizeCode) ?? 10000)
+                                downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
+                            }
+                        })
+                    Text("Downloading Files...")
                         .foregroundColor(.white)
                         .lineLimit(4)
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     _ = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
-//                                    if (try? appDir.subfolder(named: "big-sur-micropatcher")) != nil {
-//                                        try shellOut(to: "git pull", at: "~/.patched-sur/big-sur-micropatcher")
-//                                    } else {
-//                                        try shellOut(to: "git clone https://github.com/barrykn/big-sur-micropatcher.git", at: "~/.patched-sur")
-//                                        _ = try appDir.subfolder(named: "big-sur-micropatcher")
-//                                    }
                                     _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
+                                    _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
+                                    if let sizeString = try? shellOut(to: "curl -sI https://codeload.github.com/barrykn/big-sur-micropatcher/zip/\(AppInfo.micropatcher) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                        downloadSize = sizeInt
+                                    }
+                                    try shellOut(to: "curl -o big-sur-micropatcher.zip https://codeload.github.com/barrykn/big-sur-micropatcher/zip/\(AppInfo.micropatcher)", at: "~/.patched-sur")
+                                    try shellOut(to: "unzip big-sur-micropatcher.zip -d big-sur-micropatcher", at: "~/.patched-sur")
                                     _ = try? File(path: "~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher).zip").delete()
-                                    try shellOut(to: "curl -Lo big-sur-micropatcher-\(AppInfo.micropatcher).zip https://github.com/barrykn/big-sur-micropatcher/archive/\(AppInfo.micropatcher).zip", at: "~/.patched-sur")
-                                    try shellOut(to: "unzip ~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher).zip", at: "~/.patched-sur")
-                                    _ = try? File(path: "~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher).zip").delete()
-                                    try shellOut(to: "mv big-sur-micropatcher-0.4.2 big-sur-micropatcher", at: "~/.patched-sur")
                                     p = 4
                                 } catch {
                                     downloadStatus = error.localizedDescription
