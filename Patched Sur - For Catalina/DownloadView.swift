@@ -23,7 +23,7 @@ struct DownloadView: View {
     var body: some View {
         VStack {
             Text("Downloading Set Vars Tool and Kext Patches").bold()
-            Text("The set vars tool allows you to properly setup the nvram and sip status, so that Big Sur let's you boot into it. This is the last tool you use before installing Big Sur. The kext patches allow you to use stuff like WiFi and USB ports, so that your Mac stays at full functionality.")
+            Text("The set vars tool allows you to properly setup the nvram and sip status, so that Big Sur lets you boot into it. This is the last tool you use before installing Big Sur. The kext patches allow you to use stuff like WiFi and USB ports, so that your Mac stays at full functionality.")
                 .padding(10)
                 .multilineTextAlignment(.center)
             ZStack {
@@ -43,12 +43,13 @@ struct DownloadView: View {
                                 do {
                                     _ = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
                                     _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
+                                    _ = try? shellOut(to: "rm -rf ~/.patched-sur/big-sur-micropatcher*")
                                     _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
                                     if let sizeString = try? shellOut(to: "curl -sI https://codeload.github.com/barrykn/big-sur-micropatcher/zip/\(AppInfo.micropatcher) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                         downloadSize = sizeInt
                                     }
                                     try shellOut(to: "curl -o big-sur-micropatcher.zip https://codeload.github.com/barrykn/big-sur-micropatcher/zip/\(AppInfo.micropatcher)", at: "~/.patched-sur")
-                                    try shellOut(to: "unzip big-sur-micropatcher.zip -d big-sur-micropatcher", at: "~/.patched-sur")
+                                    try shellOut(to: "unzip big-sur-micropatcher.zip", at: "~/.patched-sur")
                                     _ = try? File(path: "~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher).zip").delete()
                                     p = 4
                                 } catch {

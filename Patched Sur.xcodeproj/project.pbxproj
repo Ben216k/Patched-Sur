@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7617211C2537E03E0039E831 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617211B2537E03E0039E831 /* KextPatchView.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		7625796B25423FDC00508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796A25423FDC00508A71 /* Files */; };
+		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
 		7637830B251C2D51000AFC1C /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637830A251C2D51000AFC1C /* ShellOut.swift */; };
 		76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76671F332522B3090004E0C2 /* InstallPackageView.swift */; };
 		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
@@ -20,7 +20,7 @@
 		7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E069251BFF9400C5FB9A /* Assets.xcassets */; };
 		7692E06D251BFF9400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E06C251BFF9400C5FB9A /* Preview Assets.xcassets */; };
 		7692E070251BFF9400C5FB9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7692E06E251BFF9400C5FB9A /* Main.storyboard */; };
-		7692E080251BFFB300C5FB9A /* Patched_SurApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E07F251BFFB300C5FB9A /* Patched_SurApp.swift */; };
+		7692E080251BFFB300C5FB9A /* PatchedSurApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */; };
 		7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E081251BFFB300C5FB9A /* ContentView.swift */; };
 		7692E084251BFFB400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E083251BFFB400C5FB9A /* Assets.xcassets */; };
 		7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */; };
@@ -32,12 +32,13 @@
 		76A626E025252C7C002C57EA /* ConfirmVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626DF25252C7C002C57EA /* ConfirmVolume.swift */; };
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
+		76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */; };
 		76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */; };
 		76FBF0E4253CEB2F0049A94E /* FinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0E3253CEB2F0049A94E /* FinishedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7617211B2537E03E0039E831 /* KextPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KextPatchView.swift; sourceTree = "<group>"; };
+		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		7637830A251C2D51000AFC1C /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShellOut.swift; path = ../../../Downloads/ShellOut.swift; sourceTree = "<group>"; };
 		76671F332522B3090004E0C2 /* InstallPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallPackageView.swift; sourceTree = "<group>"; };
 		76747BD82523A66F004596CC /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
@@ -51,7 +52,7 @@
 		7692E071251BFF9400C5FB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7692E072251BFF9400C5FB9A /* Patched_Sur___For_Catalina.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Patched_Sur___For_Catalina.entitlements"; sourceTree = "<group>"; };
 		7692E07D251BFFB200C5FB9A /* Patched Sur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7692E07F251BFFB300C5FB9A /* Patched_SurApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patched_SurApp.swift; sourceTree = "<group>"; };
+		7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchedSurApp.swift; sourceTree = "<group>"; };
 		7692E081251BFFB300C5FB9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7692E083251BFFB400C5FB9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 		76A626DF25252C7C002C57EA /* ConfirmVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmVolume.swift; sourceTree = "<group>"; };
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
 		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KextPatchView.swift; sourceTree = "<group>"; };
 		76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallMethodView.swift; sourceTree = "<group>"; };
 		76FBF0E3253CEB2F0049A94E /* FinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,9 +149,10 @@
 		7692E07E251BFFB300C5FB9A /* Patched Sur */ = {
 			isa = PBXGroup;
 			children = (
-				7692E07F251BFFB300C5FB9A /* Patched_SurApp.swift */,
+				7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */,
 				7692E081251BFFB300C5FB9A /* ContentView.swift */,
-				7617211B2537E03E0039E831 /* KextPatchView.swift */,
+				76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */,
+				7631556F254C984900646CE9 /* ExtraViews.swift */,
 				7692E083251BFFB400C5FB9A /* Assets.xcassets */,
 				7692E088251BFFB400C5FB9A /* Info.plist */,
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
@@ -306,9 +309,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */,
+				76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */,
 				768D66DA2538EE4400616DE5 /* ShellOut.swift in Sources */,
-				7692E080251BFFB300C5FB9A /* Patched_SurApp.swift in Sources */,
-				7617211C2537E03E0039E831 /* KextPatchView.swift in Sources */,
+				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
+				7692E080251BFFB300C5FB9A /* PatchedSurApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +454,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -461,8 +465,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.0b3;
-				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur---For-Catalina";
+				MARKETING_VERSION = 0.1.0b4;
+				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -477,7 +481,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -488,8 +492,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.0b3;
-				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur---For-Catalina";
+				MARKETING_VERSION = 0.1.0b4;
+				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

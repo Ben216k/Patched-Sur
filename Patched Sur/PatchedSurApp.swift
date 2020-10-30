@@ -8,12 +8,11 @@
 import SwiftUI
 
 @main
-struct Patched_SurApp: App {
+struct PatchedSurApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(minWidth: 650, maxWidth: 650, minHeight: 350, maxHeight: 350)
-                .background(Color.white)
+                .frame(minWidth: 565, maxWidth: 565, minHeight: 325, maxHeight: 325)
         }
     }
 }
