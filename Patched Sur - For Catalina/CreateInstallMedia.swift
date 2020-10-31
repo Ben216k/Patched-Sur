@@ -54,10 +54,9 @@ struct CreateInstallMedia: View {
                             }
                         }
                 } else if downloadStatus == "Copying Installer..." {
-//                    Color.secondary
-//                        .cornerRadius(10)
-//                        .frame(minWidth: 200, maxWidth: 450)
-                    ProgressBar(value: $copyProgress, length: 200)
+                    Color.secondary
+                        .cornerRadius(10)
+                        .frame(minWidth: 200, maxWidth: 450)
                     Text("Copying Installer...")
                         .foregroundColor(.white)
                         .lineLimit(4)

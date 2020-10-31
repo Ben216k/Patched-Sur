@@ -63,14 +63,12 @@ func patchUSB(_ password: String) throws {
         try shellOut(to: "/bin/mv -f \"\(installerUSB)/trampoline.app\" \"\(installerApp)/Contents/MacOS/InstallAssistant.app\"")
         try shellOut(to: "/bin/cp \"\(installerApp)/Contents/MacOS/InstallAssistant\" \"\(installerApp)/Contents/MacOS/InstallAssistant_plain\"")
         try shellOut(to: "/bin/cp \"\(installerApp)/Contents/MacOS/InstallAssistant\" \"\(installerApp)/Contents/MacOS/InstallAssistant_springboard\"")
-        try shellOut(to: "pushd \"\(installerApp)/Contents\"")
         try installerAppDir.subfolder(at: "Contents/MacOS/InstallAssistant.app/Contents").files.forEach({ (file) in
             try shellOut(to: "/bin/ln -s \"\(file.path)\" \"\(installerApp)/Contents/\(file.name)\" ")
         })
         try installerAppDir.subfolder(at: "Contents/MacOS/InstallAssistant.app/Contents").subfolders.forEach({ (folder) in
             try shellOut(to: "/bin/ln -s \"\(folder.path)\" \"\(installerApp)/Contents/\(folder.name)\" ")
         })
-        try shellOut(to: "popd")
         try shellOut(to: "touch \"\(installerApp)\"")
     } catch let error as ShellOutError {
         throw BasicError("Could not setup trampoline app. \(error)")
