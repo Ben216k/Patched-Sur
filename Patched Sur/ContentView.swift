@@ -10,6 +10,12 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var atLocation = 0
+    let systemVersion: String
+    let releaseTrack: String
+    var gpu: String
+    var model: String
+    var cpu: String
+    var memory: String
     var body: some View {
         ZStack {
             colorScheme == .dark ? Color.black : Color.white
@@ -17,15 +23,17 @@ struct ContentView: View {
                 MainView(at: $atLocation)
             } else if atLocation == 1 {
                 VStack {
-                    Text("Invalid Progress Number\natLocal: \(atLocation)")
+                    Text("Updating is currently supported in post-install Patched Sur")
                     Button {
                         atLocation = 0
                     } label: {
                         Text("Back")
                     }
-                }
+                }.navigationTitle("Patched Sur")
             } else if atLocation == 2 {
                 KextPatchView(at: $atLocation)
+            } else if atLocation == 3 {
+                AboutMyMac(systemVersion: systemVersion, releaseTrack: releaseTrack, gpu: gpu, model: model, cpu: cpu, memory: memory, at: $atLocation)
             } else {
                 VStack {
                     Text("Invalid Progress Number\natLocal: \(atLocation)")
@@ -38,6 +46,16 @@ struct ContentView: View {
             }
         }
     }
+    
+    init() {
+        systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
+        releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
+        gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+        gpu.removeLast(3)
+        model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
+        cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+        memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -49,46 +67,69 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct MainView: View {
-    @State var hovered: Bool?
+    @State var hovered = -1
     @Binding var at: Int
     var body: some View {
-        HStack {
-            Button {
-                at = 1
-            } label: {
-                VStack {
-                    Image(systemName: "arrow.clockwise.circle")
-                        .font(Font.system(size: 100).weight(.ultraLight))
-                    Text("Updates macOS")
-                        .font(.title3)
+        VStack {
+            Text("Patched Sur")
+                .font(.title2)
+                .fontWeight(.heavy)
+            HStack {
+                Button {
+                    at = 1
+                } label: {
+                    VStack {
+                        Image(systemName: "arrow.clockwise.circle")
+                            .font(Font.system(size: 100).weight(.ultraLight))
+                        Text("Updates macOS")
+                            .font(.title3)
+                    }
+                    .foregroundColor(.primary)
+                    .padding()
+                    .background((hovered == 0) ? Color.secondary.opacity(0.25).cornerRadius(20) : Color.clear.opacity(0.0001).cornerRadius(20))
+                    .onHover { (hovering) in
+                        hovered = hovering ? 0 : -1
+                    }
                 }
-                .foregroundColor(.primary)
+                .buttonStyle(BorderlessButtonStyle())
+                .padding(.leading)
+                Button {
+                    at = 2
+                } label: {
+                    VStack {
+                        Image(systemName: "doc.circle")
+                            .font(Font.system(size: 100).weight(.ultraLight))
+                        Text("Patch Kexts")
+                            .font(.title3)
+                    }
+                    .foregroundColor(.primary)
+                    .padding()
+                    .background((hovered != 1) ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
+                    .onHover(perform: { hovering in
+                        hovered = hovering ? 1 : -1
+                    })
+                }
+                .buttonStyle(BorderlessButtonStyle())
                 .padding()
-                .background((hovered ?? false) ? Color.secondary.opacity(0.25).cornerRadius(20) : Color.clear.opacity(0.0001).cornerRadius(20))
-                .onHover { (hovering) in
-                    hovered = hovering ? true : nil
+                Button {
+                    at = 3
+                } label: {
+                    VStack {
+                        Image(systemName: "info.circle")
+                            .font(Font.system(size: 100).weight(.ultraLight))
+                        Text("About This Mac")
+                            .font(.title3)
+                    }
+                    .foregroundColor(.primary)
+                    .padding()
+                    .background(hovered != 2 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
+                    .onHover(perform: { hovering in
+                        hovered = hovering ? 2 : -1
+                    })
                 }
+                .buttonStyle(BorderlessButtonStyle())
+                .padding(.trailing)
             }
-            .buttonStyle(BorderlessButtonStyle())
-            .padding()
-            Button {
-                at = 2
-            } label: {
-                VStack {
-                    Image(systemName: "doc.circle")
-                        .font(Font.system(size: 100).weight(.ultraLight))
-                    Text("Patch Kexts")
-                        .font(.title3)
-                }
-                .foregroundColor(.primary)
-                .padding()
-                .background((hovered ?? true) ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
-                .onHover(perform: { hovering in
-                    hovered = hovering ? false : nil
-                })
-            }
-            .buttonStyle(BorderlessButtonStyle())
-            .padding()
-        }
+        }.navigationTitle("")
     }
 }

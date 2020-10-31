@@ -62,8 +62,8 @@ struct AllViews : View {
     }
 }
 
-enum ReleaseTrack {
-    case release
-    case publicbeta
-    case developer
+enum ReleaseTrack: String, CustomStringConvertible {
+    case release = "Release"
+    case publicbeta = "Public Beta"
+    case developer = "Developer"
 }

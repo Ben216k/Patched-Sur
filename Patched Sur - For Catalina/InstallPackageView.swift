@@ -200,6 +200,7 @@ struct InstallPackageView: View {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
+                                    _ = try shellOut(to: "echo \"\(track)\" > ~/.patched-sur/track.txt")
                                     p = 5
                                 } catch {
                                     downloadStatus = error.localizedDescription

@@ -13,7 +13,7 @@ struct KextPatchView: View {
         AnyView(VStack {
             TopKextsView()
             ButtonsView(at: $at)
-        })
+        }.navigationTitle("Patched Sur"))
     }
 }
 
@@ -115,7 +115,7 @@ struct ButtonsView: View {
 struct TopKextsView: View {
     var body: some View {
         Text("Patch Kexts").bold()
-        Text("Patching your kexts gets you WiFi and USB stuff beta testers. I can't write this right now. But, you do know it makes Wifi and USB stuff work so you are halfway there. Happy, good.")
+        Text("Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. Makes since right?")
             .padding()
             .multilineTextAlignment(.center)
     }
