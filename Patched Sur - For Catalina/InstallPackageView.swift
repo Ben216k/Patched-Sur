@@ -57,9 +57,9 @@ struct InstallPackageView: View {
                                         }
                                         return false
                                     })[0]
-                                    if (try? (try? File(path: "~/.patched-sur/InstallerVersion.txt"))?.readAsString()) == installInfo?.version {
-                                        overrideInstaller = true
-                                        downloadStatus = ""
+                                    if (try? (try? File(path: "~/.patched-sur/InstallerVersion.txt"))?.readAsString()) == (try? installInfo?.jsonString()) {
+                                        useCurrent = true
+                                        downloadStatus = "Download macOS \(installInfo!.version)"
                                         return
                                     }
                                     downloadStatus = "Download macOS \(installInfo!.version)"
@@ -78,6 +78,7 @@ struct InstallPackageView: View {
                                     downloadSize = sizeInt
                                 }
                                 downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
+                                buttonBG = Color.accentColor
                             } else {
                                 downloadStatus = ""
                             }
@@ -127,8 +128,9 @@ struct InstallPackageView: View {
                                     DispatchQueue.global(qos: .background).async {
                                         do {
                                             try shellOut(to: "curl -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
-                                            let versionFile = try Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallerVersion.txt")
-                                            try versionFile.write(installInfo!.version, encoding: .utf8)
+                                            let versionFile = try Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallInfo.txt")
+                                            try versionFile.write(installInfo!.jsonString()!, encoding: .utf8)
+                                            buttonBG = .accentColor
                                             downloadStatus = ""
                                         } catch {
                                             downloadStatus = error.localizedDescription

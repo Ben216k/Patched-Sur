@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import Files
+import IOKit
+import IOKit.pwr_mgt
 
 struct CreateInstallMedia: View {
     @State var downloadStatus = "Erasing Disk..."
@@ -14,11 +17,12 @@ struct CreateInstallMedia: View {
     @Binding var overrideInstaller: Bool
     @State var diskID = ""
     @State var buttonBG = Color.red
+    @State var copyProgress: CGFloat = 0.5
     @Binding var p: Int
     var body: some View {
         VStack {
             Text("Creating Install Media").bold()
-            Text("Due to the fact that the installer app cannot be natively run on an unsupported Mac, you have to create an installer USB where the environment can be modified so macOS doesn't check whether or not you're supported.")
+            Text("Due to the fact that the installer app cannot be natively run on an unsupported Mac, you have to create an installer USB where the environment can be modified so macOS doesn't check whether or not you're supported. This will take a while, up to a couple of hours, so let it run.")
                 .padding()
                 .multilineTextAlignment(.center)
             ZStack {
@@ -50,9 +54,10 @@ struct CreateInstallMedia: View {
                             }
                         }
                 } else if downloadStatus == "Copying Installer..." {
-                    Color.secondary
-                        .cornerRadius(10)
-                        .frame(minWidth: 200, maxWidth: 450)
+//                    Color.secondary
+//                        .cornerRadius(10)
+//                        .frame(minWidth: 200, maxWidth: 450)
+                    ProgressBar(value: $copyProgress, length: 200)
                     Text("Copying Installer...")
                         .foregroundColor(.white)
                         .lineLimit(4)
@@ -61,8 +66,20 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    try shellOut(to: "echo \"\(password)\" | sudo -S /Applications/Install\\ macOS\\ Big\\ Sur\\ Beta.app/Contents/Resources/createinstallmedia --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
-                                    downloadStatus = "Adding Kexts..."
+                                    let reasonForActivity = "Reason for activity" as CFString
+                                    var assertionID: IOPMAssertionID = 0
+                                    var success = IOPMAssertionCreateWithName( kIOPMAssertionTypeNoDisplaySleep as CFString,
+                                                                                IOPMAssertionLevel(kIOPMAssertionLevelOn),
+                                                                                reasonForActivity,
+                                                                                &assertionID )
+                                    if success == kIOReturnSuccess {
+                                        try shellOut(to: "echo \"\(password)\" | sudo -S /Applications/Install\\ macOS\\ Big\\ Sur\\ Beta.app/Contents/Resources/createinstallmedia --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
+                                        
+                                        success = IOPMAssertionRelease(assertionID)
+                                        downloadStatus = "Adding Kexts..."
+                                    } else {
+                                        downloadStatus = "Unable to pull system attention."
+                                    }
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }
@@ -72,7 +89,7 @@ struct CreateInstallMedia: View {
                     Color.secondary
                         .cornerRadius(10)
                         .frame(minWidth: 200, maxWidth: 450)
-                    Text("Micropatching USB...")
+                    Text("Patching USB...")
                         .foregroundColor(.white)
                         .lineLimit(4)
                         .padding(6)
@@ -80,7 +97,8 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    try shellOut(to: "~/.patched-sur/big-sur-micropatcher/micropatcher.sh")
+//                                    try shellOut(to: "~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher)/micropatcher.sh")
+                                    try patchUSB(password)
                                     downloadStatus = "Installing SetVars Tool..."
                                 } catch {
                                     downloadStatus = error.localizedDescription
@@ -99,7 +117,9 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    try shellOut(to: "echo \"\(password)\" | sudo -S ~/.patched-sur/big-sur-micropatcher/install-setvars.sh")
+                                    var micropatcher = AppInfo.micropatcher
+                                    micropatcher.removeFirst()
+                                    try shellOut(to: "echo \"\(password)\" | sudo -S ~/.patched-sur/big-sur-micropatcher-\(micropatcher)/install-setvars.sh")
                                     downloadStatus = "Injecting Full App..."
                                 } catch {
                                     if error.localizedDescription.hasPrefix("""
@@ -125,7 +145,8 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .utility).async {
                                 do {
-                                    try shellOut(to: "cp -rf \"/Volumes/Patched-Sur-\(AppInfo.version)/.fullApp.app\" \"/Applications/Patched Sur.app\"")
+                                    _ = try shellOut(to: "rm -rf \"/Applications/Patched Sur.app\"")
+                                    try shellOut(to: "cp -rf \"/Volumes/Patched-Sur/.fullApp.app\" \"/Applications/Patched Sur.app\"")
                                     p = 8
                                 } catch {
                                     downloadStatus = error.localizedDescription
@@ -155,10 +176,40 @@ struct CreateInstallMedia: View {
                                 .lineLimit(6)
                                 .padding(6)
                                 .padding(.horizontal, 4)
+                                .fixedSize(horizontal: true, vertical: false)
                         }
                     }.buttonStyle(BorderlessButtonStyle())
                 }
             }.fixedSize()
+        }
+    }
+}
+
+extension URL {
+    var fileSize: Int? { // in bytes
+        do {
+            let val = try self.resourceValues(forKeys: [.totalFileAllocatedSizeKey, .fileAllocatedSizeKey])
+            return val.totalFileAllocatedSize ?? val.fileAllocatedSize
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+}
+
+extension FileManager {
+    func directorySize(_ dir: URL) -> Int? { // in bytes
+        if let enumerator = self.enumerator(at: dir, includingPropertiesForKeys: [.totalFileAllocatedSizeKey, .fileAllocatedSizeKey], options: [], errorHandler: { (_, error) -> Bool in
+            print(error)
+            return false
+        }) {
+            var bytes = 0
+            for case let url as URL in enumerator {
+                bytes += url.fileSize ?? 0
+            }
+            return bytes
+        } else {
+            return nil
         }
     }
 }
