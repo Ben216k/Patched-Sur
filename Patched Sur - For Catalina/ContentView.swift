@@ -66,4 +66,8 @@ enum ReleaseTrack: String, CustomStringConvertible {
     case release = "Release"
     case publicbeta = "Public Beta"
     case developer = "Developer"
+    
+    var description: String {
+        rawValue
+    }
 }

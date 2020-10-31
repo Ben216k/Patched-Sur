@@ -473,7 +473,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.0b5;
+				MARKETING_VERSION = 0.1.0rc1;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -500,7 +500,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.1.0b5;
+				MARKETING_VERSION = 0.1.0rc1;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -527,7 +527,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.1.0b5;
+				MARKETING_VERSION = 0.1.0rc1;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -554,7 +554,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.1.0b5;
+				MARKETING_VERSION = 0.1.0rc1;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
