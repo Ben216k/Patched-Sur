@@ -51,7 +51,7 @@ struct ContentView: View {
         systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
         releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
         gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
-        gpu.removeLast(3)
+        gpu.removeLast(2)
         model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
         cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
         memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"

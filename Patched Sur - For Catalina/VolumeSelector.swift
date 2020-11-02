@@ -15,7 +15,6 @@ struct VolumeSelector: View {
     @State var hovered = ""
     @State var buttonBG = Color.accentColor
     @State var buttonBG2 = Color.secondary
-    @State var showDeleteAlert = false
     var body: some View {
         VStack {
             Text("Select a USB Volume").bold()
