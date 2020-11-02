@@ -52,7 +52,7 @@ struct ButtonsView: View {
         } else if p == 3 {
             RunActionsDisplayView(action: {
                 do {
-                    try shellOut(to: "echo \"\(password)\" | sudo -S /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta/unpatch-kexts.sh")
+                    try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh'")
                     p = 4
                 } catch {
                     errorMessage = error.localizedDescription

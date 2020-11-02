@@ -27,7 +27,7 @@ struct InstallerChooser: View {
                         do {
                             fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Public").json")!)
                             fetchedInstallers!.sort { $0.orderNumber > $1.orderNumber }
-                            current = try .init(try File(path: "~/.patched-sur/InstallInfo.txt").readAsString())
+                            current = try? .init(try File(path: "~/.patched-sur/InstallInfo.txt").readAsString())
                         } catch {
                             errorL = error.localizedDescription
                         }

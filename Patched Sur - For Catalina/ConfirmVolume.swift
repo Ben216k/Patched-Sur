@@ -15,7 +15,7 @@ struct ConfirmVolumeView: View {
     var body: some View {
         VStack {
             Text("\(volume) Will Be Erased").bold()
-            (Text("Are you sure you would like to continue and erase \(volume)? This process will remove ") + Text("all").italic() + Text(" data files and folders on this drive, in favor of the macOS installer. Are you sure you would like to continue?"))
+            (Text("Are you sure you would like to continue and erase \(volume)? This process will remove ") + Text("all").italic() + Text(" data files and folders on this drive (including other partitions), in favor of the macOS installer. Are you sure you would like to continue?"))
                 .padding()
                 .multilineTextAlignment(.center)
             HStack {

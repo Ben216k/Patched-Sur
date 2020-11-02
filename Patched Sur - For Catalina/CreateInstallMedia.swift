@@ -96,8 +96,9 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-//                                    try shellOut(to: "~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher)/micropatcher.sh")
-                                    try patchUSB(password)
+//                                    try shellOut(to: "~/.patched-sur/big-sur-micropatcher/micropatcher.sh")
+//                                    try patchUSB(password)
+                                    try shellOut(to: "echo \"\(password)\" | sudo -S /Volumes/Patched-Sur/.patch-usb.sh")
                                     downloadStatus = "Installing SetVars Tool..."
                                 } catch {
                                     downloadStatus = error.localizedDescription
@@ -116,9 +117,7 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    var micropatcher = AppInfo.micropatcher
-                                    micropatcher.removeFirst()
-                                    try shellOut(to: "echo \"\(password)\" | sudo -S ~/.patched-sur/big-sur-micropatcher-\(micropatcher)/install-setvars.sh")
+                                    try shellOut(to: "echo \"\(password)\" | sudo -S ~/.patched-sur/big-sur-micropatcher/install-setvars.sh")
                                     downloadStatus = "Injecting Full App..."
                                 } catch {
                                     if error.localizedDescription.hasPrefix("""

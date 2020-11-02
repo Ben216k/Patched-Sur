@@ -40,5 +40,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 class AppInfo {
     static let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     static let build = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
-    static let micropatcher = "v0.4.4"
+    static let micropatcher = "0.4.4"
 }

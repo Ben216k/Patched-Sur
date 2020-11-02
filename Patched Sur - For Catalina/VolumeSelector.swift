@@ -27,7 +27,7 @@ struct VolumeSelector: View {
                     Button {
                         selected = volume
                     } label: {
-                        if !volume.hasPrefix("com.apple") && volume != "Macintosh HD" && !volume.hasPrefix("Patched-Sur") {
+                        if !volume.hasPrefix("com.apple") && volume != "Macintosh HD" && volume != "Macintosh SSD" && !volume.hasPrefix("Patched-Sur") {
                             if selected == volume {
                                 Text(volume)
                                     .padding(8)

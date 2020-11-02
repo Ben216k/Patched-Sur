@@ -47,7 +47,7 @@ struct HowItWorks_Previews: PreviewProvider {
 let howItWorks = """
 How about I do this later? I need to focus on the app right now. That's fair, right? Well, yeah. I do appreciate my beta testers, but I'm not going to write paragraph after paragraph about how this app works, if they are just going to click Continue. I'll do it later.
 
-Beta 2... or..
+Version 0.0.2... or..
 
 Maybe a different beta... or..
 

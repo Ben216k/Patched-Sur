@@ -45,12 +45,13 @@ struct DownloadView: View {
                                     _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
                                     _ = try? shellOut(to: "rm -rf ~/.patched-sur/big-sur-micropatcher*")
                                     _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
-                                    if let sizeString = try? shellOut(to: "curl -sI https://codeload.github.com/barrykn/big-sur-micropatcher/zip/\(AppInfo.micropatcher) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                    if let sizeString = try? shellOut(to: "curl -sI https://codeload.github.com/barrykn/big-sur-micropatcher/zip/v\(AppInfo.micropatcher) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                         downloadSize = sizeInt
                                     }
-                                    try shellOut(to: "curl -o big-sur-micropatcher.zip https://codeload.github.com/barrykn/big-sur-micropatcher/zip/\(AppInfo.micropatcher)", at: "~/.patched-sur")
+                                    try shellOut(to: "curl -o big-sur-micropatcher.zip https://codeload.github.com/barrykn/big-sur-micropatcher/zip/v\(AppInfo.micropatcher)", at: "~/.patched-sur")
                                     try shellOut(to: "unzip big-sur-micropatcher.zip", at: "~/.patched-sur")
-                                    _ = try? File(path: "~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher).zip").delete()
+                                    _ = try? File(path: "~/.patched-sur/big-sur-micropatcher*").delete()
+                                    try shellOut(to: "mv ~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher) ~/.patched-sur/big-sur-micropatcher")
                                     p = 4
                                 } catch {
                                     downloadStatus = error.localizedDescription

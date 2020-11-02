@@ -17,19 +17,9 @@ struct AboutMyMac: View {
     @Binding var at: Int
     var body: some View {
         ZStack {
-            if releaseTrack == "Public Beta" {
-                LinearGradient(gradient: .init(colors: [.green, .yellow]), startPoint: .topLeading, endPoint: .bottomTrailing)
-            } else if releaseTrack == "Developer" {
-                LinearGradient(gradient: .init(colors: [.red, .orange]), startPoint: .bottomLeading, endPoint: .topTrailing)
-            } else if releaseTrack == "Release" {
-                LinearGradient(gradient: .init(colors: [.blue, .purple]), startPoint: .leading, endPoint: .trailing)
-            }
+            BackGradientView(releaseTrack: releaseTrack)
             HStack {
-                Image(["BigSurReal", "BigSurLake", "BigSurSafari", "BigSurSideShot"].randomElement()!)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 145, height: 145)
-                    .padding()
+                SideImageView(releaseTrack: releaseTrack)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
                     Text("Version \(systemVersion) Beta").font(.subheadline)
@@ -44,11 +34,11 @@ struct AboutMyMac: View {
                         } label: {
                             ZStack {
                                 if releaseTrack == "Public Beta" {
-                                    Rectangle().foregroundColor(.green)
+                                    Rectangle().foregroundColor(.blue)
                                 } else if releaseTrack == "Developer" {
                                     Rectangle().foregroundColor(.red)
                                 } else if releaseTrack == "Release" {
-                                    Rectangle().foregroundColor(.blue)
+                                    Rectangle().foregroundColor(.green)
                                 }
                                 Text("Back to Home")
                                     .font(.caption)
@@ -64,11 +54,11 @@ struct AboutMyMac: View {
                         } label: {
                             ZStack {
                                 if releaseTrack == "Public Beta" {
-                                    Rectangle().foregroundColor(.green)
+                                    Rectangle().foregroundColor(.blue)
                                 } else if releaseTrack == "Developer" {
                                     Rectangle().foregroundColor(.red)
                                 } else if releaseTrack == "Release" {
-                                    Rectangle().foregroundColor(.blue)
+                                    Rectangle().foregroundColor(.green)
                                 }
                                 Text("Software Update")
                                     .font(.caption)
@@ -83,6 +73,60 @@ struct AboutMyMac: View {
                 }.font(.subheadline)
                 .foregroundColor(.white)
             }
+        }
+    }
+}
+
+extension Color {
+    init(
+        r red: Int,
+        g green: Int,
+        b blue: Int,
+        o opacity: Double = 1
+    ) {
+        self.init(
+            red: Double(red) / 255,
+            green: Double(green) / 255,
+            blue: Double(blue) / 255,
+            opacity: opacity
+        )
+    }
+}
+
+struct SideImageView: View {
+    let releaseTrack: String
+    var body: some View {
+        if releaseTrack == "Public Beta" {
+            Image("BigSurLake")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 145, height: 145)
+                .padding()
+        } else if releaseTrack == "Developer" {
+            Image("BigSurSideShot")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 145, height: 145)
+                .padding()
+        } else if releaseTrack == "Release" {
+            Image("BigSurSafari")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 145, height: 145)
+                .padding()
+        }
+    }
+}
+
+struct BackGradientView: View {
+    let releaseTrack: String
+    var body: some View {
+        if releaseTrack == "Public Beta" {
+            LinearGradient(gradient: .init(colors: [.init(r: 196, g: 0, b: 255), .init(r: 117, g: 0, b: 255)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        } else if releaseTrack == "Developer" {
+            LinearGradient(gradient: .init(colors: [.init(r: 255, g: 226, b: 0), .init(r: 254, g: 110, b: 16)]), startPoint: .bottomLeading, endPoint: .topTrailing)
+        } else if releaseTrack == "Release" {
+            LinearGradient(gradient: .init(colors: [.init(r: 80, g: 241, b: 255), .init(r: 105, g: 244, b: 180)]), startPoint: .leading, endPoint: .trailing)
         }
     }
 }
