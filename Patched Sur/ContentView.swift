@@ -142,7 +142,7 @@ struct MainView: View {
                     }
                     .foregroundColor(.primary)
                     .padding()
-                    .background(hovered != 2 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
+                    .background(hovered != 3 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
                     .onHover(perform: { hovering in
                         hovered = hovering ? 3 : -1
                     })
