@@ -52,8 +52,27 @@ struct ButtonsView: View {
         } else if p == 3 {
             RunActionsDisplayView(action: {
                 do {
-                    try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh'")
-                    p = 4
+                    let model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
+                    if model == "MacBookPro8,1"{
+                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh --2011'")
+                        p = 4
+                    }
+                    else if model == "MacBookAir4,2"{
+                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh --2011'")
+                        p = 4
+                    }
+                    else if model == "iMac12,2"{
+                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh --2011'")
+                        p = 4
+                    }
+                    else if model == "iMac12,1"{
+                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh --2011'")
+                        p = 4
+                    }
+                    else {
+                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh'")
+                        p = 4
+                    }
                 } catch {
                     errorMessage = error.localizedDescription
                     p = -2
@@ -115,7 +134,7 @@ struct ButtonsView: View {
 struct TopKextsView: View {
     var body: some View {
         Text("Patch Kexts").bold()
-        Text("Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. Makes since right?")
+        Text("Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. Makes sense right?")
             .padding()
             .multilineTextAlignment(.center)
     }

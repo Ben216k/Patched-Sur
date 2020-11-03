@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F42EB04255176F700365279 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42EB03255176F700365279 /* Settings.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		7625796B25423FDC00508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796A25423FDC00508A71 /* Files */; };
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F42EB03255176F700365279 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		76315577254CC96C00646CE9 /* PatchUSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchUSB.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				7692E088251BFFB400C5FB9A /* Info.plist */,
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
 				7692E085251BFFB400C5FB9A /* Preview Content */,
+				3F42EB03255176F700365279 /* Settings.swift */,
 			);
 			path = "Patched Sur";
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				767167522550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */,
 				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
+				3F42EB04255176F700365279 /* Settings.swift in Sources */,
 				7692E080251BFFB300C5FB9A /* PatchedSurApp.swift in Sources */,
 				7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */,
 			);
@@ -474,7 +478,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -502,7 +506,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -530,7 +534,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur/Info.plist";
@@ -557,7 +561,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur/Info.plist";
