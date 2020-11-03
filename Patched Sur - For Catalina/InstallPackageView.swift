@@ -22,6 +22,8 @@ struct InstallPackageView: View {
     @State var currentSize = 10
     @State var downloadSize = 1000
     @Binding var useCurrent: Bool
+    @Binding var package: String
+    @Binding var installer: String
     let timer = Timer.publish(every: 2, on: .current, in: .common).autoconnect()
     
     var body: some View {
@@ -42,6 +44,14 @@ struct InstallPackageView: View {
                             if installInfo != nil {
                                 downloadStatus = "Download macOS \(installInfo!.version)"
                                 return
+                            } else if package != "~/.patched-sur/InstallAssistant.pkg" {
+                                useCurrent = true
+                                downloadStatus = "Use Pre-Downloaded Package"
+                                return
+                            } else if installer != "/Applications/Install macOS Big Sur Beta.app" {
+                                useCurrent = true
+                                downloadStatus = "Use Pre-Downloaded Installer App"
+                                return
                             }
                             DispatchQueue.global(qos: .background).async {
                                 do {
@@ -57,7 +67,7 @@ struct InstallPackageView: View {
                                         }
                                         return false
                                     })[0]
-                                    if (try? (try? File(path: "~/.patched-sur/InstallerVersion.txt"))?.readAsString()) == (try? installInfo?.jsonString()) {
+                                    if (try? InstallAssistant(try File(path: "~/.patched-sur/InstallInfo.txt").readAsString()))?.version == installInfo?.version {
                                         useCurrent = true
                                         downloadStatus = "Download macOS \(installInfo!.version)"
                                         return
@@ -78,21 +88,33 @@ struct InstallPackageView: View {
                                     downloadSize = sizeInt
                                 }
                                 downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
-                                buttonBG = Color.accentColor
                             } else {
+                                buttonBG = Color.accentColor
                                 downloadStatus = ""
                             }
                         } label: {
                             ZStack {
                                 buttonBG
                                     .cornerRadius(10)
-                                Text("\(useCurrent ? "Use" : "Download") macOS \(installInfo!.version)")
-                                    .foregroundColor(.white)
-                                    .padding(6)
-                                    .padding(.horizontal, 4)
+                                if package == "~/.patched-sur/InstallAssistant.pkg" && installer == "/Applications/Install macOS Big Sur.app" {
+                                    Text("\(useCurrent ? "Use" : "Download") macOS \(installInfo!.version)")
+                                        .foregroundColor(.white)
+                                        .padding(6)
+                                        .padding(.horizontal, 4)
+                                } else if package != "~/.patched-sur/InstallAssistant.pkg" {
+                                    Text("Use Pre-Downloaded InstallAssistant")
+                                        .foregroundColor(.white)
+                                        .padding(6)
+                                        .padding(.horizontal, 4)
+                                } else {
+                                    Text("Use Pre-Downloaded Installer App")
+                                        .foregroundColor(.white)
+                                        .padding(6)
+                                        .padding(.horizontal, 4)
+                                }
                             }
                             .onHover { (hovering) in
-                                if useCurrent {
+                                if useCurrent || package != "~/.patched-sur/InstallAssistant.pkg" {
                                     buttonBG = hovering ? Color.green.opacity(0.7) : Color.green
                                 } else {
                                     buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
@@ -148,7 +170,7 @@ struct InstallPackageView: View {
                                 .cornerRadius(10)
                                 .frame(width: 300)
                                 .opacity(0.7)
-                            SecureField("Enter password to install...", text: $password)
+                            SecureField("Enter password to continue...", text: $password)
                                 .foregroundColor(.white)
                                 .lineLimit(1)
                                 .padding(6)
@@ -161,7 +183,11 @@ struct InstallPackageView: View {
                             if password != "" {
                                 do {
                                     try shellOut(to: "echo \"\(password)\" | sudo -S echo Hi")
-                                    downloadStatus = "Installing Package..."
+                                    if installer != "/Applications/Install macOS Big Sur Beta.app" {
+                                        p = 5
+                                    } else {
+                                        downloadStatus = "Installing Package..."
+                                    }
                                 } catch {
                                     invalidPassword = true
                                     password = ""
@@ -201,7 +227,7 @@ struct InstallPackageView: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
+                                    try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg \"\(package)\" -target /")
                                     _ = try shellOut(to: "echo \"\(track)\" > ~/.patched-sur/track.txt")
                                     p = 5
                                 } catch {

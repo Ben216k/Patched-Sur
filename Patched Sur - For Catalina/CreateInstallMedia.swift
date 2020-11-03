@@ -19,6 +19,7 @@ struct CreateInstallMedia: View {
     @State var buttonBG = Color.red
     @State var copyProgress: CGFloat = 0.5
     @Binding var p: Int
+    @Binding var installer: String
     var body: some View {
         VStack {
             Text("Creating Install Media").bold()
@@ -72,7 +73,7 @@ struct CreateInstallMedia: View {
                                                                                 reasonForActivity,
                                                                                 &assertionID )
                                     if success == kIOReturnSuccess {
-                                        try shellOut(to: "echo \"\(password)\" | sudo -S /Applications/Install\\ macOS\\ Big\\ Sur\\ Beta.app/Contents/Resources/createinstallmedia --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
+                                        try shellOut(to: "echo \"\(password)\" | sudo -S \"\(installer)/Contents/Resources/createinstallmedia\" --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
                                         
                                         success = IOPMAssertionRelease(assertionID)
                                         downloadStatus = "Adding Kexts..."

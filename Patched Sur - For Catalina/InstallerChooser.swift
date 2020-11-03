@@ -8,6 +8,8 @@
 import SwiftUI
 import Files
 
+// MARK: Installer Chooser
+
 struct InstallerChooser: View {
     @Binding var p: Int
     @State var fetchedInstallers: InstallAssistants?
@@ -18,6 +20,8 @@ struct InstallerChooser: View {
     @State var buttonBG = Color.red
     @State var hovered: String?
     @Binding var useCurrent: Bool
+    @Binding var package: String
+    @Binding var installer: String
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack {
@@ -116,9 +120,52 @@ struct InstallerChooser: View {
             }.buttonStyle(BorderlessButtonStyle())
             .fixedSize()
             .padding()
+            HStack {
+                Button {
+                    let dialog = NSOpenPanel();
+
+                    dialog.title = "Choose an macOS Big Sur Installer"
+                    dialog.showsResizeIndicator = false
+                    dialog.allowsMultipleSelection = false
+                    dialog.allowedFileTypes = ["app", "pkg"]
+
+                    if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+                        let result = dialog.url
+
+                        if let result = result {
+                            let path: String = result.path
+                            
+                            if path.hasSuffix("pkg") {
+                                package = path
+                                p = 4
+                            } else if path.hasSuffix("app") && (try? File(path: "\(path)/Contents/Resources/createinstallmedia")) != nil {
+                                installer = path
+                                p = 4
+                            }
+                        }
+                    }
+                } label: {
+                    ZStack {
+                        hovered == "CHOOSE-OTHER" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
+                        Text("Find an Installer")
+                            .font(.subheadline)
+                            .fontWeight(.regular)
+                            .foregroundColor(.white)
+                            .padding(6)
+                            .padding(.horizontal, 3)
+                    }.onHover { hovering in
+                        hovered = hovering ? "CHOOSE-OTHER" : nil
+                    }
+                }.buttonStyle(BorderlessButtonStyle())
+                .fixedSize()
+                .padding()
+                Spacer()
+            }
         }
     }
 }
+
+// MARK: Installer Cell
 
 struct InstallerCell: View {
     var installer: InstallAssistant

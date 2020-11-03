@@ -19,7 +19,7 @@ error() {
     exit 1
 }
 
-echo 'Welcome to Patched Sur! (v0.0.1 build 9)'
+echo 'Welcome to Patched Sur! (v0.0.2a build 10)'
 echo 'This script *should only* be used through'
 echo 'the Patched Sur app unless being tested'
 echo 'for patcher development'
@@ -104,8 +104,8 @@ echo
 echo 'Adding Backup Scripts...'
 echo 'Adding (un)patch-kexts.sh...'
 cp -f "$MICROPATCHER/patch-kexts.sh" "$MICROPATCHER/unpatch-kexts.sh" "$INSTALLER" || error 'Error 2x2 Unable to add (un)patch.sh'
-echo 'Adding kmutil and bless commands...'
-cp -f ~/.patched-sur/big-sur-micropatcher/payloads/kmutil* ~/.patched-sur/big-sur-micropatcher/payloads/bless* "$INSTALLER" || error 'Error 2x2 Unable to add kmutil and bless commands.'
+echo 'Adding extra commands...'
+cp -f ~/.patched-sur/big-sur-micropatcher/payloads/bin "$INSTALLER" || error 'Error 2x2 Unable to add extra commands.'
 echo 'Added Backup Scripts...'
 echo
 
@@ -133,8 +133,7 @@ echo
 
 echo 'Confirming script permissions...'
 
-chmod u+x "$INSTALLER"/*.sh "$INSTALLER"/Hax*.dylib
-chmod u+x "$INSTALLER"/kmutil* "$INSTALLER"/bless*
+chmod -R u+x "$INSTALLER"/*.sh "$INSTALLER"/Hax*.dylib "$INSTALLER"/bin
 
 echo 'Confirmed permissions...'
 
