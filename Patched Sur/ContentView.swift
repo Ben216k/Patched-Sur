@@ -34,6 +34,8 @@ struct ContentView: View {
                 KextPatchView(at: $atLocation)
             } else if atLocation == 3 {
                 AboutMyMac(systemVersion: systemVersion, releaseTrack: releaseTrack, gpu: gpu, model: model, cpu: cpu, memory: memory, at: $atLocation)
+            } else if atLocation == 4 {
+                Settings(releaseTrack: releaseTrack, at: $atLocation)
             } else {
                 VStack {
                     Text("Invalid Progress Number\natLocal: \(atLocation)")
@@ -81,7 +83,7 @@ struct MainView: View {
                     VStack {
                         Image(systemName: "arrow.clockwise.circle")
                             .font(Font.system(size: 100).weight(.ultraLight))
-                        Text("Updates macOS")
+                        Text("Update macOS")
                             .font(.title3)
                     }
                     .foregroundColor(.primary)
@@ -125,6 +127,24 @@ struct MainView: View {
                     .background(hovered != 2 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
                     .onHover(perform: { hovering in
                         hovered = hovering ? 2 : -1
+                    })
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .padding(.trailing)
+                Button {
+                    at = 4
+                } label: {
+                    VStack {
+                        Image(systemName: "gearshape")
+                            .font(Font.system(size: 100).weight(.ultraLight))
+                        Text("Settings")
+                            .font(.title3)
+                    }
+                    .foregroundColor(.primary)
+                    .padding()
+                    .background(hovered != 2 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
+                    .onHover(perform: { hovering in
+                        hovered = hovering ? 3 : -1
                     })
                 }
                 .buttonStyle(BorderlessButtonStyle())
