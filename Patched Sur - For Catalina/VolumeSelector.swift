@@ -22,34 +22,36 @@ struct VolumeSelector: View {
                 .padding()
                 .multilineTextAlignment(.center)
             HStack {
-                ForEach(volumes, id: \.self) { volume in
-                    Button {
-                        selected = volume
-                    } label: {
-                        if !volume.hasPrefix("com.apple") && volume != "Macintosh HD" && volume != "Macintosh SSD" && !volume.hasPrefix("Patched-Sur") {
-                            if selected == volume {
-                                Text(volume)
-                                    .padding(8)
-                                    .background(Color.secondary.opacity(0.1))
-                                    .cornerRadius(10)
-                                    .foregroundColor(.primary)
-                            } else {
-                                Text(volume)
-                                    .padding(8)
-                                    .background(hovered == volume ? Color.secondary.opacity(0.07) : Color.secondary.opacity(0.05))
-                                    .cornerRadius(10)
-                                    .onHover(perform: { hovering in
-                                        if hovering {
-                                            hovered = volume
-                                        } else {
-                                            if hovered == volume {
-                                                hovered = ""
+                ScrollView(.horizontal) {
+                    ForEach(volumes, id: \.self) { volume in
+                        Button {
+                            selected = volume
+                        } label: {
+                            if !volume.hasPrefix("com.apple") && volume != "Macintosh HD" && volume != "Macintosh SSD" && !volume.hasPrefix("Patched-Sur") && volume != "Shared Support" {
+                                if selected == volume {
+                                    Text(volume)
+                                        .padding(8)
+                                        .background(Color.secondary.opacity(0.1))
+                                        .cornerRadius(10)
+                                        .foregroundColor(.primary)
+                                } else {
+                                    Text(volume)
+                                        .padding(8)
+                                        .background(hovered == volume ? Color.secondary.opacity(0.07) : Color.secondary.opacity(0.05))
+                                        .cornerRadius(10)
+                                        .onHover(perform: { hovering in
+                                            if hovering {
+                                                hovered = volume
+                                            } else {
+                                                if hovered == volume {
+                                                    hovered = ""
+                                                }
                                             }
-                                        }
-                                    })
+                                        })
+                                }
                             }
-                        }
-                    }.buttonStyle(BorderlessButtonStyle())
+                        }.buttonStyle(BorderlessButtonStyle())
+                    }
                 }
             }
             HStack {

@@ -122,7 +122,7 @@ struct InstallerChooser: View {
             .padding()
             HStack {
                 Button {
-                    let dialog = NSOpenPanel();
+                    let dialog = NSOpenPanel()
 
                     dialog.title = "Choose an macOS Big Sur Installer"
                     dialog.showsResizeIndicator = false

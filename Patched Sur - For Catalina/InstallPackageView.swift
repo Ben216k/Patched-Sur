@@ -48,7 +48,7 @@ struct InstallPackageView: View {
                                 useCurrent = true
                                 downloadStatus = "Use Pre-Downloaded Package"
                                 return
-                            } else if installer != "/Applications/Install macOS Big Sur Beta.app" {
+                            } else if installer != "/Applications/Install macOS Big Sur Beta.app/" {
                                 useCurrent = true
                                 downloadStatus = "Use Pre-Downloaded Installer App"
                                 return
@@ -96,7 +96,7 @@ struct InstallPackageView: View {
                             ZStack {
                                 buttonBG
                                     .cornerRadius(10)
-                                if package == "~/.patched-sur/InstallAssistant.pkg" && installer == "/Applications/Install macOS Big Sur.app" {
+                                if package == "~/.patched-sur/InstallAssistant.pkg" && installer == "/Applications/Install macOS Big Sur Beta.app/" {
                                     Text("\(useCurrent ? "Use" : "Download") macOS \(installInfo!.version)")
                                         .foregroundColor(.white)
                                         .padding(6)

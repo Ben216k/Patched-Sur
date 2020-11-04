@@ -73,6 +73,7 @@
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
 		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KextPatchView.swift; sourceTree = "<group>"; };
+		76F6EED72552684A001508E8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallMethodView.swift; sourceTree = "<group>"; };
 		76FBF0E3253CEB2F0049A94E /* FinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedView.swift; sourceTree = "<group>"; };
 		76FEEFAD254F4DBD0079CEFC /* patch-usb.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "patch-usb.sh"; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		7692E059251BFF9300C5FB9A = {
 			isa = PBXGroup;
 			children = (
+				76F6EED72552684A001508E8 /* README.md */,
 				76FEEFAC254F4DA80079CEFC /* Extra Files */,
 				7692E064251BFF9300C5FB9A /* Patched Sur - For Catalina */,
 				7692E07E251BFFB300C5FB9A /* Patched Sur */,
@@ -478,7 +480,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = MK8ZJDCUSR;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -506,7 +508,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = MK8ZJDCUSR;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -534,7 +536,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = MK8ZJDCUSR;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur/Info.plist";
@@ -561,7 +563,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = MK8ZJDCUSR;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur/Info.plist";

@@ -43,19 +43,6 @@ struct Settings: View {
                             _ = try? shellOut(to: "defaults write com.apple.Mail DisableReplyAnimations -bool true")
                             _ = try? shellOut(to: "defaults write NSGlobalDomain NSWindowResizeTime .001")
                             self.showingAlert = true
-                            /*
-                            func dialogOKCancel(question: String, text: String) -> Bool {
-                                let alert = NSAlert()
-                                alert.messageText = question
-                                alert.informativeText = text
-                                alert.alertStyle = .warning
-                                alert.addButton(withTitle: "OK")
-                                alert.addButton(withTitle: "Cancel")
-                                return alert.runModal() == .alertFirstButtonReturn
-                            }
-
-                            let answer = dialogOKCancel(question: "Changes made Sucessfully", text: "Reboot to apply changes")
-                            */
                         } label: {
                             ZStack {
                                 if releaseTrack == "Public Beta" {
@@ -73,9 +60,6 @@ struct Settings: View {
                             }.fixedSize()
                             .cornerRadius(7.5)
                         }
-                        .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("Changes made sucessfully"), message: Text("Reboot to apply changes"), dismissButton: .default(Text("Got it!")))
-                                }
                         .buttonStyle(BorderlessButtonStyle())
                         Button {
                             _ = try? shellOut(to: "defaults delete -g NSAutomaticWindowAnimationsEnabled")
@@ -97,9 +81,6 @@ struct Settings: View {
                             _ = try? shellOut(to: "defaults delete com.apple.Mail DisableReplyAnimations")
                             _ = try? shellOut(to: "defaults delete NSGlobalDomain NSWindowResizeTime")
                             self.showingAlert = true
-                            /*
-                            Alert(title: Text("Changes made sucessfully"), message: Text("Reboot to apply changes"), dismissButton: .default(Text("Got it")))
-                            */
                         } label: {
                             ZStack {
                                 if releaseTrack == "Public Beta" {
@@ -118,8 +99,8 @@ struct Settings: View {
                             .cornerRadius(7.5)
                         }
                         .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("Changes made sucessfully"), message: Text("Reboot to apply changes"), dismissButton: .default(Text("Got it!")))
-                                }
+                            Alert(title: Text("Changes Made Successfully"), message: Text("A reboot is required to apply these changes."), dismissButton: .default(Text("Okay")))
+                        }
                         .buttonStyle(BorderlessButtonStyle())
                     }.padding(.top, 10)
                     .padding(.bottom, 2)
@@ -154,28 +135,3 @@ struct Settings: View {
         }
     }
 }
-
-
-
-
-
-/*
-shellOut(to: "defaults write -g NSAutomaticWindowAnimationsEnabled -bool false")
-shellOut(to: "defaults write -g NSScrollAnimationEnabled -bool false")
-shellOut(to: "defaults write -g NSWindowResizeTime -float 0.001")
-shellOut(to: "defaults write -g QLPanelAnimationDuration -float 0")
-shellOut(to: "defaults write -g NSScrollViewRubberbanding -bool false")
-shellOut(to: "defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false")
-shellOut(to: "defaults write -g NSToolbarFullScreenAnimationDuration -float 0")
-shellOut(to: "defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0")
-shellOut(to: "defaults write com.apple.dock autohide-time-modifier -float 0")
-shellOut(to: "defaults write com.apple.dock autohide-delay -float 0")
-shellOut(to: "defaults write com.apple.dock expose-animation-duration -float 0")
-shellOut(to: "defaults write com.apple.dock springboard-show-duration -float 0")
-shellOut(to: "defaults write com.apple.dock springboard-hide-duration -float 0")
-shellOut(to: "defaults write com.apple.dock springboard-page-duration -float 0")
-shellOut(to: "defaults write com.apple.finder DisableAllAnimations -bool true")
-shellOut(to: "defaults write com.apple.Mail DisableSendAnimations -bool true")
-shellOut(to: "defaults write com.apple.Mail DisableReplyAnimations -bool true")
-shellOut(to: "defaults write NSGlobalDomain NSWindowResizeTime .001")
-*/
