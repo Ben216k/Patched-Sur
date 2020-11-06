@@ -102,10 +102,10 @@ echo
 # MARK: Add Backup Scripts
 
 echo 'Adding Backup Scripts...'
-echo 'Adding (un)patch-kexts.sh...'
-cp -f "$MICROPATCHER/patch-kexts.sh" "$MICROPATCHER/unpatch-kexts.sh" "$INSTALLER" || error 'Error 2x2 Unable to add (un)patch.sh'
+echo 'Adding patch-kexts.sh...'
+cp -f "$MICROPATCHER/patch-kexts.sh" "$INSTALLER" || error 'Error 2x2 Unable to add (un)patch.sh'
 echo 'Adding extra commands...'
-cp -f ~/.patched-sur/big-sur-micropatcher/payloads/bin "$INSTALLER" || error 'Error 2x2 Unable to add extra commands.'
+cp -rf ~/.patched-sur/big-sur-micropatcher/payloads/bin "$INSTALLER" || error 'Error 2x2 Unable to add extra commands.'
 echo 'Added Backup Scripts...'
 echo
 

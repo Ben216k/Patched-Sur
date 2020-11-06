@@ -21,8 +21,8 @@ struct VolumeSelector: View {
             Text("To install MacOS Big Sur, you need to make a USB installer. The USB drive must be 16GB or greater to store the main OS and recovery mode. If your USB drive doesn't show up, click refresh to reindex the list.")
                 .padding()
                 .multilineTextAlignment(.center)
-            HStack {
-                ScrollView(.horizontal) {
+            ScrollView(.horizontal) {
+                HStack {
                     ForEach(volumes, id: \.self) { volume in
                         Button {
                             selected = volume
@@ -52,7 +52,7 @@ struct VolumeSelector: View {
                             }
                         }.buttonStyle(BorderlessButtonStyle())
                     }
-                }
+                }.padding(20)
             }
             HStack {
                 Button {

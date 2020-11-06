@@ -58,7 +58,7 @@ struct AllViews : View {
         case 7:
             CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation)
         case 8:
-            FinishedView()
+            FinishedView(app: appLocation)
         case 11:
             InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation)
         default:
