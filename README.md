@@ -1,4 +1,4 @@
-![Patched Sur](https://repository-images.githubusercontent.com/304778425/d90c5c00-13e0-11eb-8f99-88363c29fc7c)
+![Patched Sur](https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/banner.png)
 
 ## What is Patched Sur?
 
@@ -17,7 +17,7 @@ To see if your Mac is supported [click here](https://bensova.gitbook.io/big-sur/
    - A quick intro into Patched Sur
    - How much functionality you will get out of macOS once the patching process is complete
    - How the patcher works, and what it does to your Mac
-   
+
 **4.** Next, you can choose what update track you would like to update with. `Release` is the default (however, it is currently unavailable, since macOS Big Sur is not released yet), but you can also choose `Public Beta` and `Developer Beta`.
 
 **5.** Then, you can select whether you want to update macOS from Catalina to Big Sur (or Big Sur to Big Sur if you are switching from a different patcher) or do a clean install of Big Sur (currently unavailable).
@@ -48,14 +48,14 @@ To choose a different installer that you already have downloaded, click `View Ot
 
 To update macOS, follow the steps below.
 
-**1.** Launch the post-install app and click `Update macOS`. 
+**1.** Launch the post-install app and click `Update macOS`.
 
-**2.** Select the version you want to update to, (the latest version should be pre-selected). 
+**2.** Select the version you want to update to, (the latest version should be pre-selected).
 
-**3.** Once it finishes downloading the package, it will prompt you to insert a USB drive, (unless `Install macOS Big Sur Beta` is plugged in, in which will skip the prompt and select the drive). 
+**3.** Once it finishes downloading the package, it will prompt you to insert a USB drive, (unless `Install macOS Big Sur Beta` is plugged in, in which will skip the prompt and select the drive).
 
-**4.** Copy the installer onto the USB. 
+**4.** Copy the installer onto the USB.
 
-**5.** Boot into the installer and reinstall macOS onto your Big Sur drive. 
+**5.** Boot into the installer and reinstall macOS onto your Big Sur drive.
 
 **6.** Once that is complete, you can boot into macOS, rerun the post-install patch kexts tool, and enjoy the latest version of macOS Big Sur.
