@@ -137,11 +137,11 @@ struct InstallerChooser: View {
                             
                             if path.hasSuffix("pkg") {
                                 package = path
-                                p = 4
                             } else if path.hasSuffix("app") && (try? File(path: "\(path)/Contents/Resources/createinstallmedia")) != nil {
                                 installer = path
-                                p = 4
                             }
+                            useCurrent = true
+                            p = 4
                         }
                     }
                 } label: {

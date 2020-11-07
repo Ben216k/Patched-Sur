@@ -52,8 +52,9 @@ struct VolumeSelector: View {
                             }
                         }.buttonStyle(BorderlessButtonStyle())
                     }
-                }.padding(20)
-            }
+                }
+            }.fixedSize()
+            .padding(20)
             HStack {
                 Button {
                     if volumes.contains(selected) {
