@@ -88,8 +88,6 @@ struct InstallPackageView: View {
                                     downloadSize = sizeInt
                                 }
                                 downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
-                            } else if installer != "/Applications/Install macOS Big Sur Beta.app/" {
-                                p = 5
                             } else {
                                 buttonBG = Color.accentColor
                                 downloadStatus = ""
@@ -180,12 +178,15 @@ struct InstallPackageView: View {
                                 .disabled(false)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .colorScheme(.dark)
+                                .onAppear {
+                                    buttonBG = Color.accentColor
+                                }
                         }
                         Button {
                             if password != "" {
                                 do {
                                     try shellOut(to: "echo \"\(password)\" | sudo -S echo Hi")
-                                    if installer != "/Applications/Install macOS Big Sur Beta.app" {
+                                    if installer != "/Applications/Install macOS Big Sur Beta.app/" {
                                         p = 5
                                     } else {
                                         downloadStatus = "Installing Package..."
