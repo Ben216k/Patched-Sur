@@ -88,6 +88,8 @@ struct InstallPackageView: View {
                                     downloadSize = sizeInt
                                 }
                                 downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
+                            } else if installer != "/Applications/Install macOS Big Sur Beta.app/" {
+                                p = 5
                             } else {
                                 buttonBG = Color.accentColor
                                 downloadStatus = ""
@@ -264,14 +266,6 @@ struct InstallPackageView: View {
             }
             .fixedSize()
         }
-    }
-}
-
-struct DownloadView_Previews: PreviewProvider {
-    static var previews: some View {
-        DownloadView(p: .constant(2))
-            .frame(minWidth: 500, maxWidth: 500, minHeight: 300, maxHeight: 300)
-            .background(Color.white)
     }
 }
 
