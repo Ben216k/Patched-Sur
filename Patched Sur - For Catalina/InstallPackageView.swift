@@ -230,7 +230,11 @@ struct InstallPackageView: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg \"\(package)\" -target /")
+                                    if package == "~/.patched-sur/InstallAssistant.pkg" {
+                                        try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
+                                    } else {
+                                        try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg \"\(package)\" -target /")
+                                    }
                                     _ = try shellOut(to: "echo \"\(track)\" > ~/.patched-sur/track.txt")
                                     p = 5
                                 } catch {
