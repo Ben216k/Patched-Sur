@@ -21,7 +21,7 @@ struct InstallerChooser: View {
     @State var hovered: String?
     @Binding var useCurrent: Bool
     @Binding var package: String
-    @Binding var installer: String
+    @Binding var installer: String?
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack {

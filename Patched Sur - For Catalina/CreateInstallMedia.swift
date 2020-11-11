@@ -11,7 +11,7 @@ import IOKit
 import IOKit.pwr_mgt
 
 struct CreateInstallMedia: View {
-    @State var downloadStatus = "Erasing Disk..."
+    @State var downloadStatus = "Adding Kexts..."
     @Binding var volume: String
     @Binding var password: String
     @Binding var overrideInstaller: Bool
@@ -19,7 +19,7 @@ struct CreateInstallMedia: View {
     @State var buttonBG = Color.red
     @State var copyProgress: CGFloat = 0.5
     @Binding var p: Int
-    @Binding var installer: String
+    @Binding var installer: String?
     var body: some View {
         VStack {
             Text("Creating Install Media").bold()
@@ -73,7 +73,7 @@ struct CreateInstallMedia: View {
                                                                                 reasonForActivity,
                                                                                 &assertionID )
                                     if success == kIOReturnSuccess {
-                                        try shellOut(to: "echo \"\(password)\" | sudo -S \"\(installer)/Contents/Resources/createinstallmedia\" --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
+                                        try shellOut(to: "echo \"\(password)\" | sudo -S \"\(installer ?? "\((try? Folder(path: "/Applications/Install macOS Big Sur.app").path) ?? "/Applications/Install macOS Big Sur Beta.app")")/Contents/Resources/createinstallmedia\" --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
                                         
                                         success = IOPMAssertionRelease(assertionID)
                                         downloadStatus = "Adding Kexts..."
@@ -121,13 +121,6 @@ struct CreateInstallMedia: View {
                                     try shellOut(to: "echo \"\(password)\" | sudo -S ~/.patched-sur/big-sur-micropatcher/install-setvars.sh")
                                     downloadStatus = "Injecting Full App..."
                                 } catch {
-                                    if error.localizedDescription.hasPrefix("""
-                                    ShellOut encountered an error
-                                    Status code: 1
-                                    Message: "Password:Volume on \(diskID)s1 failed to mount"
-                                    """) {
-                                        downloadStatus = "Injecting Full App..."
-                                    }
                                     downloadStatus = error.localizedDescription
                                 }
                             }

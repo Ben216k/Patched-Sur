@@ -34,7 +34,7 @@ struct AllViews : View {
     @State var installInfo = nil as InstallAssistant?
     @State var useCurrent = false
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
-    @State var appLocation = "/Applications/Install macOS Big Sur Beta.app/"
+    @State var appLocation = nil as String?
     var body: some View {
         switch progress {
         case 0:
@@ -58,9 +58,17 @@ struct AllViews : View {
         case 7:
             CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation)
         case 8:
-            FinishedView(app: appLocation)
+            FinishedView(app: appLocation ?? "/Applications/Install macOS Big Sur Beta.app/")
         case 11:
             InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation)
+        case 99:
+            ZStack {
+                Color.black
+                Text("Coming Soon!")
+                    .font(.title)
+                    .bold()
+                    .foregroundColor(.white)
+            }
         default:
             Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress)")
         }

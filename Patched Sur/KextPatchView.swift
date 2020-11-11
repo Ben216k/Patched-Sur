@@ -23,6 +23,7 @@ struct ButtonsView: View {
     @State var password = ""
     @State var buttonBG = Color.blue
     @State var errorMessage = ""
+    @State var installerName = ""
     var body: some View {
         if p == 0 {
             DoubleButtonView(first: {
@@ -33,7 +34,8 @@ struct ButtonsView: View {
         } else if p == 1 {
             RunActionsDisplayView(action: {
                 do {
-                    try shellOut(to: "[[ -d /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta/Install\\ macOS\\ Big\\ Sur\\ Beta.app ]]")
+                    installerName = (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
+                    try shellOut(to: "[[ -d '/Volumes/\(installerName)/\(installerName).app' ]]")
                     p = 2
                 } catch {
                     p = -1
@@ -52,27 +54,8 @@ struct ButtonsView: View {
         } else if p == 3 {
             RunActionsDisplayView(action: {
                 do {
-                    let model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
-                    if model == "MacBookPro8,1"{
-                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh --2011'")
-                        p = 4
-                    }
-                    else if model == "MacBookAir4,2"{
-                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh --2011'")
-                        p = 4
-                    }
-                    else if model == "iMac12,2"{
-                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh --2011'")
-                        p = 4
-                    }
-                    else if model == "iMac12,1"{
-                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh --2011'")
-                        p = 4
-                    }
-                    else {
-                        try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/Install macOS Big Sur Beta/patch-kexts.sh'")
-                        p = 4
-                    }
+                    try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/\(installerName)/patch-kexts.sh'")
+                    p = 4
                 } catch {
                     errorMessage = error.localizedDescription
                     p = -2

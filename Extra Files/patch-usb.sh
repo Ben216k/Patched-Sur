@@ -27,17 +27,22 @@ echo
 
 # MARK: Detect USB and Payloads
 
-echo 'Detecting Installer USB at /Volumes/Install macOS Big Sur Beta...'
+echo 'Detecting Installer USB at /Volumes/Install macOS Big Sur [Beta]...'
 
-if [ ! -d '/Volumes/Install macOS Big Sur Beta/Install macOS Big Sur Beta.app' ]
+if [ -d '/Volumes/Install macOS Big Sur Beta/Install macOS Big Sur Beta.app' ]
 then
+    INSTALLER='/Volumes/Install macOS Big Sur Beta'
+    APPPATH="$INSTALLER/Install macOS Big Sur Beta.app"
+elif [ -d '/Volumes/Install macOS Big Sur/Install macOS Big Sur.app' ]
+then
+    INSTALLER='/Volumes/Install macOS Big Sur'
+    APPPATH="$INSTALLER/Install macOS Big Sur.app"
+else
     echo 'Installer USB was not detected.'
     echo 'Please be sure to not rename the USB before'
     echo 'running patch-usb.sh.'
     error 'Error 2x1: Installer Not Found'
 fi
-
-INSTALLER='/Volumes/Install macOS Big Sur Beta'
 
 echo 'Installer USB Detected!'
 
@@ -112,7 +117,6 @@ echo
 # MARK: Setup Trampoline App
 
 echo 'Setting up trampoline app...'
-APPPATH="$INSTALLER/Install macOS Big Sur Beta.app"
 TEMPAPP="$INSTALLER/tmp.app"
 mv -f "$APPPATH" "$TEMPAPP"
 cp -r "$MICROPATCHER/trampoline.app" "$APPPATH"

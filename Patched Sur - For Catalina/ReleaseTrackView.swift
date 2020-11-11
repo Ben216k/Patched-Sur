@@ -105,17 +105,13 @@ struct ReleaseTrackView: View {
                 }.buttonStyle(BorderlessButtonStyle())
             }
             Button {
-                if track != .release {
-                    p = 10
-                }
+                p = 10
             } label: {
                 ZStack {
                     buttonBG
                         .cornerRadius(10)
                         .onHover(perform: { hovering in
-                            if track != .release {
-                                buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
-                            }
+                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
                         })
                     Text("Continue")
                         .foregroundColor(.white)
@@ -125,7 +121,6 @@ struct ReleaseTrackView: View {
             }
             .buttonStyle(BorderlessButtonStyle())
             .padding(.top, 10)
-            .opacity(track == .release ? 0.4 : 1)
         }
     }
 }

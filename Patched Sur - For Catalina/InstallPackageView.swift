@@ -23,7 +23,7 @@ struct InstallPackageView: View {
     @State var downloadSize = 1000
     @Binding var useCurrent: Bool
     @Binding var package: String
-    @Binding var installer: String
+    @Binding var installer: String?
     let timer = Timer.publish(every: 2, on: .current, in: .common).autoconnect()
     
     var body: some View {
@@ -48,14 +48,14 @@ struct InstallPackageView: View {
                                 useCurrent = true
                                 downloadStatus = "Use Pre-Downloaded Package"
                                 return
-                            } else if installer != "/Applications/Install macOS Big Sur Beta.app/" {
+                            } else if installer != nil {
                                 useCurrent = true
                                 downloadStatus = "Use Pre-Downloaded Installer App"
                                 return
                             }
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    let allInstallInfo = try InstallAssistants(data: try Data(contentsOf: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Public").json")!))
+                                    let allInstallInfo = try InstallAssistants(data: try Data(contentsOf: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!))
                                     installInfo = allInstallInfo.filter({ (installer) -> Bool in
                                         if installer.minVersion > AppInfo.build {
                                             return false
@@ -74,6 +74,10 @@ struct InstallPackageView: View {
                                     }
                                     downloadStatus = "Download macOS \(installInfo!.version)"
                                 } catch {
+                                    if track == .release {
+                                        p = 99
+                                        return
+                                    }
                                     downloadStatus = error.localizedDescription
                                 }
                             }
@@ -96,7 +100,7 @@ struct InstallPackageView: View {
                             ZStack {
                                 buttonBG
                                     .cornerRadius(10)
-                                if package == "~/.patched-sur/InstallAssistant.pkg" && installer == "/Applications/Install macOS Big Sur Beta.app/" {
+                                if package == "~/.patched-sur/InstallAssistant.pkg" && installer == nil {
                                     Text("\(useCurrent ? "Use" : "Download") macOS \(installInfo!.version)")
                                         .foregroundColor(.white)
                                         .padding(6)
