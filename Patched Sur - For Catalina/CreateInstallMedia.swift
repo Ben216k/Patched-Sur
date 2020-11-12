@@ -11,7 +11,7 @@ import IOKit
 import IOKit.pwr_mgt
 
 struct CreateInstallMedia: View {
-    @State var downloadStatus = "Adding Kexts..."
+    @State var downloadStatus = "Erasing Disk..."
     @Binding var volume: String
     @Binding var password: String
     @Binding var overrideInstaller: Bool
