@@ -61,30 +61,34 @@ struct DownloadView: View {
                         .padding(6)
                         .padding(.horizontal, 4)
                 } else {
-                    Button {
-                        let pasteboard = NSPasteboard.general
-                        pasteboard.declareTypes([.string], owner: nil)
-                        pasteboard.setString(downloadStatus, forType: .string)
-                    } label: {
-                        ZStack {
-                            buttonBG
-                                .cornerRadius(10)
-                                .frame(minWidth: 200, maxWidth: 450)
-                                .onHover(perform: { hovering in
-                                    buttonBG = hovering ? Color.red.opacity(0.7) : .red
-                                })
-                                .onAppear(perform: {
-                                    if buttonBG != .red && buttonBG != Color.red.opacity(0.7) {
-                                        buttonBG = .red
-                                    }
-                                })
-                            Text(downloadStatus)
-                                .foregroundColor(.white)
-                                .lineLimit(6)
-                                .padding(6)
-                                .padding(.horizontal, 4)
-                        }
-                    }.buttonStyle(BorderlessButtonStyle())
+                    VStack {
+                        Button {
+                            let pasteboard = NSPasteboard.general
+                            pasteboard.declareTypes([.string], owner: nil)
+                            pasteboard.setString(downloadStatus, forType: .string)
+                        } label: {
+                            ZStack {
+                                buttonBG
+                                    .cornerRadius(10)
+                                    .frame(minWidth: 200, maxWidth: 450)
+                                    .onHover(perform: { hovering in
+                                        buttonBG = hovering ? Color.red.opacity(0.7) : .red
+                                    })
+                                    .onAppear(perform: {
+                                        if buttonBG != .red && buttonBG != Color.red.opacity(0.7) {
+                                            buttonBG = .red
+                                        }
+                                    })
+                                Text(downloadStatus)
+                                    .foregroundColor(.white)
+                                    .lineLimit(4)
+                                    .padding(6)
+                                    .padding(.horizontal, 4)
+                            }
+                        }.buttonStyle(BorderlessButtonStyle())
+                        Text("Click to Copy")
+                            .font(.caption)
+                    }
                 }
             }
             .fixedSize()

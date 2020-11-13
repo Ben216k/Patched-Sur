@@ -61,14 +61,6 @@ struct AllViews : View {
             FinishedView(app: appLocation ?? "/Applications/Install macOS Big Sur Beta.app/")
         case 11:
             InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation)
-        case 99:
-            ZStack {
-                Color.black
-                Text("Coming Soon!")
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.white)
-            }
         default:
             Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress)")
         }

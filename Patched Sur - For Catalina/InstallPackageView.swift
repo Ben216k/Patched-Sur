@@ -74,10 +74,6 @@ struct InstallPackageView: View {
                                     }
                                     downloadStatus = "Download macOS \(installInfo!.version)"
                                 } catch {
-                                    if track == .release {
-                                        p = 99
-                                        return
-                                    }
                                     downloadStatus = error.localizedDescription
                                 }
                             }
@@ -190,7 +186,7 @@ struct InstallPackageView: View {
                             if password != "" {
                                 do {
                                     try shellOut(to: "echo \"\(password)\" | sudo -S echo Hi")
-                                    if installer != "/Applications/Install macOS Big Sur Beta.app/" {
+                                    if installer != nil {
                                         p = 5
                                     } else {
                                         downloadStatus = "Installing Package..."
@@ -239,7 +235,7 @@ struct InstallPackageView: View {
                                     } else {
                                         try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg \"\(package)\" -target /")
                                     }
-                                    _ = try shellOut(to: "echo \"\(track)\" > ~/.patched-sur/track.txt")
+                                    _ = try? shellOut(to: "echo \"\(track)\" > ~/.patched-sur/track.txt")
                                     p = 5
                                 } catch {
                                     downloadStatus = error.localizedDescription
@@ -247,30 +243,34 @@ struct InstallPackageView: View {
                             }
                         }
                 } else {
-                    Button {
-                        let pasteboard = NSPasteboard.general
-                        pasteboard.declareTypes([.string], owner: nil)
-                        pasteboard.setString(downloadStatus, forType: .string)
-                    } label: {
-                        ZStack {
-                            buttonBG
-                                .cornerRadius(10)
-                                .frame(minWidth: 200, maxWidth: 450)
-                                .onHover(perform: { hovering in
-                                    buttonBG = hovering ? Color.red.opacity(0.7) : .red
-                                })
-                                .onAppear(perform: {
-                                    if buttonBG != .red && buttonBG != Color.red.opacity(0.7) {
-                                        buttonBG = .red
-                                    }
-                                })
-                            Text(downloadStatus)
-                                .foregroundColor(.white)
-                                .lineLimit(4)
-                                .padding(6)
-                                .padding(.horizontal, 4)
-                        }
-                    }.buttonStyle(BorderlessButtonStyle())
+                    VStack {
+                        Button {
+                            let pasteboard = NSPasteboard.general
+                            pasteboard.declareTypes([.string], owner: nil)
+                            pasteboard.setString(downloadStatus, forType: .string)
+                        } label: {
+                            ZStack {
+                                buttonBG
+                                    .cornerRadius(10)
+                                    .frame(minWidth: 200, maxWidth: 450)
+                                    .onHover(perform: { hovering in
+                                        buttonBG = hovering ? Color.red.opacity(0.7) : .red
+                                    })
+                                    .onAppear(perform: {
+                                        if buttonBG != .red && buttonBG != Color.red.opacity(0.7) {
+                                            buttonBG = .red
+                                        }
+                                    })
+                                Text(downloadStatus)
+                                    .foregroundColor(.white)
+                                    .lineLimit(4)
+                                    .padding(6)
+                                    .padding(.horizontal, 4)
+                            }
+                        }.buttonStyle(BorderlessButtonStyle())
+                        Text("Click to Copy")
+                            .font(.caption)
+                    }
                 }
             }
             .fixedSize()
