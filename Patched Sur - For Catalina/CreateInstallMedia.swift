@@ -46,7 +46,8 @@ struct CreateInstallMedia: View {
                                     let diskUtilList = try shellOut(to: "diskutil list /Volumes/\(volume.replacingOccurrences(of: " ", with: "\\ "))")
                                     var diskStart = diskUtilList.split(separator: "\n")[2]
                                     diskStart.removeFirst("   0:      GUID_partition_scheme                        *32.0 GB    ".count)
-                                    diskID = String(diskStart.prefix(5))
+                                    diskID = String(diskStart.prefix(6))
+                                    if diskID.hasSuffix("s") { diskID.removeLast() }
                                     try shellOut(to: "diskutil eraseDisk JHFS+ Install\\ macOS\\ Big\\ Sur\\ Beta GPT \(diskID)")
                                     downloadStatus = "Copying Installer..."
                                 } catch {
