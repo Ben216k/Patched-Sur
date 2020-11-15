@@ -40,5 +40,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 class AppInfo {
     static let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     static let build = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
-    static let micropatcher = "0.5.0"
+    static let micropatcher = { () -> String in
+        guard let micropatchers = try? MicropatcherRequirements(fromURL: "https://bensova.github.io/patched-sur/micropatcher.json") else {
+            return "0.5.0"
+        }
+        let micropatcher = micropatchers.filter { $0.patcher <= Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)! }.last!
+        return micropatcher.version
+    }()
 }

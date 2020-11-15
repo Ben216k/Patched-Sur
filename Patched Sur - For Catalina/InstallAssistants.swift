@@ -123,3 +123,73 @@ func newJSONEncoder() -> JSONEncoder {
     }
     return encoder
 }
+
+// MARK: - MicropatcherRequirementElement
+struct MicropatcherRequirement: Codable {
+    let version: String
+    let patcher: Int
+}
+
+// MARK: MicropatcherRequirementElement convenience initializers and mutators
+
+extension MicropatcherRequirement {
+    init(data: Data) throws {
+        self = try newJSONDecoder().decode(MicropatcherRequirement.self, from: data)
+    }
+
+    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
+    }
+
+    init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
+    }
+
+    func with(
+        version: String? = nil,
+        patcher: Int? = nil
+    ) -> MicropatcherRequirement {
+        return MicropatcherRequirement(
+            version: version ?? self.version,
+            patcher: patcher ?? self.patcher
+        )
+    }
+
+    func jsonData() throws -> Data {
+        return try newJSONEncoder().encode(self)
+    }
+
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
+}
+
+typealias MicropatcherRequirements = [MicropatcherRequirement]
+
+extension Array where Element == MicropatcherRequirements.Element {
+    init(data: Data) throws {
+        self = try newJSONDecoder().decode(MicropatcherRequirements.self, from: data)
+    }
+
+    init(_ json: String, using encoding: String.Encoding = .utf8) throws {
+        guard let data = json.data(using: encoding) else {
+            throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
+        }
+        try self.init(data: data)
+    }
+
+    init(fromURL url: URL) throws {
+        try self.init(data: try Data(contentsOf: url))
+    }
+
+    func jsonData() throws -> Data {
+        return try newJSONEncoder().encode(self)
+    }
+
+    func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
+        return String(data: try self.jsonData(), encoding: encoding)
+    }
+}
