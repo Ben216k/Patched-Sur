@@ -14,16 +14,20 @@ struct Settings: View {
     var body: some View {
         ZStack {
             BackGradientView(releaseTrack: releaseTrack)
-            HStack {
-                SideImageView(releaseTrack: releaseTrack)
-                    .padding(.leading, 30)
+            ScrollView {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Patched Sur Settings")
-                        .bold()
-                        .font(.title2)
-                        .foregroundColor(.white)
                     HStack {
-                        Button {
+                        Text("Patched Sur Settings")
+                            .bold()
+                            .font(.title)
+                            .foregroundColor(.white)
+                        Spacer()
+                        CustomColoredButton("Back to Home") {
+                            at = 0
+                        }
+                    }
+                    HStack {
+                        CustomColoredButton("Disable Animations") {
                             _ = try? shellOut(to: "defaults write -g NSAutomaticWindowAnimationsEnabled -bool false")
                             _ = try? shellOut(to: "defaults write -g NSScrollAnimationEnabled -bool false")
                             _ = try? shellOut(to: "defaults write -g NSWindowResizeTime -float 0.001")
@@ -43,25 +47,8 @@ struct Settings: View {
                             _ = try? shellOut(to: "defaults write com.apple.Mail DisableReplyAnimations -bool true")
                             _ = try? shellOut(to: "defaults write NSGlobalDomain NSWindowResizeTime .001")
                             self.showingAlert = true
-                        } label: {
-                            ZStack {
-                                if releaseTrack == "Public Beta" {
-                                    Rectangle().foregroundColor(.blue)
-                                } else if releaseTrack == "Developer" {
-                                    Rectangle().foregroundColor(.red)
-                                } else if releaseTrack == "Release" {
-                                    Rectangle().foregroundColor(.green)
-                                }
-                                Text("Disable Animations")
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                                    .padding(4)
-                                    .padding(.horizontal, 4)
-                            }.fixedSize()
-                            .cornerRadius(7.5)
                         }
-                        .buttonStyle(BorderlessButtonStyle())
-                        Button {
+                        CustomColoredButton("Enable Animations") {
                             _ = try? shellOut(to: "defaults delete -g NSAutomaticWindowAnimationsEnabled")
                             _ = try? shellOut(to: "defaults delete -g NSScrollAnimationEnabled")
                             _ = try? shellOut(to: "defaults delete -g NSWindowResizeTime")
@@ -81,22 +68,6 @@ struct Settings: View {
                             _ = try? shellOut(to: "defaults delete com.apple.Mail DisableReplyAnimations")
                             _ = try? shellOut(to: "defaults delete NSGlobalDomain NSWindowResizeTime")
                             self.showingAlert = true
-                        } label: {
-                            ZStack {
-                                if releaseTrack == "Public Beta" {
-                                    Rectangle().foregroundColor(.blue)
-                                } else if releaseTrack == "Developer" {
-                                    Rectangle().foregroundColor(.red)
-                                } else if releaseTrack == "Release" {
-                                    Rectangle().foregroundColor(.green)
-                                }
-                                Text("Enable Animations")
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                                    .padding(4)
-                                    .padding(.horizontal, 4)
-                            }.fixedSize()
-                            .cornerRadius(7.5)
                         }
                         .alert(isPresented: $showingAlert) {
                             Alert(title: Text("Changes Made Successfully"), message: Text("A reboot is required to apply these changes."), dismissButton: .default(Text("Okay")))
@@ -106,32 +77,61 @@ struct Settings: View {
                     .padding(.bottom, 2)
                     Text("Manage Animations. Disabling animations can greatly improve performance on Macs without Metal. A reboot is required to apply these changes.")
                         .font(.caption)
-                    Button {
-                        at = 0
-                    } label: {
-                        ZStack {
-                            if releaseTrack == "Public Beta" {
-                                Rectangle().foregroundColor(.blue)
-                            } else if releaseTrack == "Developer" {
-                                Rectangle().foregroundColor(.orange)
-                            } else if releaseTrack == "Release" {
-                                Rectangle().foregroundColor(.green)
-                            }
-                            Text("Back to Home")
-                                .font(.caption)
-                                .foregroundColor(.white)
-                                .padding(4)
-                                .padding(.horizontal, 4)
-                        }.fixedSize()
-                        .cornerRadius(7.5)
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    .padding(.top, 11)
+                    
                 }.font(.subheadline)
                 .foregroundColor(.white)
                 .padding(.leading, 2)
-                .padding(.trailing, 30)
-            }
+                .padding(.horizontal, 50)
+            }.padding(.vertical, 40)
+        }
+        .environment(\.releaseTrack, releaseTrack)
+    }
+}
+
+struct CustomColoredButton: View {
+    @Environment(\.releaseTrack) var releaseTrack
+    let text: String
+    let action: () -> ()
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            ZStack {
+                if releaseTrack == "Public Beta" {
+                    Rectangle().foregroundColor(.blue)
+                } else if releaseTrack == "Developer" {
+                    Rectangle().foregroundColor(.orange)
+                } else if releaseTrack == "Release" {
+                    Rectangle().foregroundColor(.green)
+                }
+                Text(text)
+                    .font(.caption)
+                    .foregroundColor(.white)
+                    .padding(4)
+                    .padding(.horizontal, 4)
+            }.fixedSize()
+            .cornerRadius(7.5)
+        }
+        .buttonStyle(BorderlessButtonStyle())
+    }
+    
+    init(_ text: String, action: @escaping () -> ()) {
+        self.text = text
+        self.action = action
+    }
+}
+
+extension EnvironmentValues {
+    private struct ReleaseTrackKey: EnvironmentKey {
+        static let defaultValue = "Release"
+    }
+    
+    public var releaseTrack: String {
+        get {
+            self[ReleaseTrackKey]
+        } set {
+            self[ReleaseTrackKey] = newValue
         }
     }
 }
