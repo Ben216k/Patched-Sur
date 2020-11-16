@@ -54,7 +54,7 @@ struct ButtonsView: View {
         } else if p == 3 {
             RunActionsDisplayView(action: {
                 do {
-                    try shellOut(to: "echo '\(password)' | sudo -S '/Volumes/\(installerName)/patch-kexts.sh'")
+                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S '/Volumes/\(installerName)/patch-kexts.sh'")
                     p = 4
                 } catch {
                     errorMessage = error.localizedDescription
@@ -91,7 +91,7 @@ struct ButtonsView: View {
             Button {
                 DispatchQueue.global(qos: .background).async {
                     do {
-                        try shellOut(to: "echo \"\(password)\" | sudo -S sudo reboot")
+                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S sudo reboot")
                     } catch {
                         print("Error, but they can do it themselves.")
                     }

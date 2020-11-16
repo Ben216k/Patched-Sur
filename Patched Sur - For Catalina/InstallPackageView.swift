@@ -185,7 +185,7 @@ struct InstallPackageView: View {
                         Button {
                             if password != "" {
                                 do {
-                                    try shellOut(to: "echo \"\(password)\" | sudo -S echo Hi")
+                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\")replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S echo Hi")
                                     if installer != nil {
                                         p = 5
                                     } else {
@@ -231,9 +231,9 @@ struct InstallPackageView: View {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     if package == "~/.patched-sur/InstallAssistant.pkg" {
-                                        try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
+                                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\")replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
                                     } else {
-                                        try shellOut(to: "echo \"\(password)\" | sudo -S installer -pkg \"\(package)\" -target /")
+                                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\")replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg \"\(package)\" -target /")
                                     }
                                     _ = try? shellOut(to: "echo \"\(track)\" > ~/.patched-sur/track.txt")
                                     p = 5

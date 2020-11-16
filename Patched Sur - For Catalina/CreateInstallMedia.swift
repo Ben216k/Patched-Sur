@@ -74,7 +74,7 @@ struct CreateInstallMedia: View {
                                                                                 reasonForActivity,
                                                                                 &assertionID )
                                     if success == kIOReturnSuccess {
-                                        try shellOut(to: "echo \"\(password)\" | sudo -S \"\(installer ?? "\((try? Folder(path: "/Applications/Install macOS Big Sur.app").path) ?? "/Applications/Install macOS Big Sur Beta.app")")/Contents/Resources/createinstallmedia\" --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
+                                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\")replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S \"\(installer ?? "\((try? Folder(path: "/Applications/Install macOS Big Sur.app").path) ?? "/Applications/Install macOS Big Sur Beta.app")")/Contents/Resources/createinstallmedia\" --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
                                         
                                         success = IOPMAssertionRelease(assertionID)
                                         downloadStatus = "Adding Kexts..."
@@ -100,7 +100,7 @@ struct CreateInstallMedia: View {
                                 do {
 //                                    try shellOut(to: "~/.patched-sur/big-sur-micropatcher/micropatcher.sh")
 //                                    try patchUSB(password)
-                                    try shellOut(to: "echo \"\(password)\" | sudo -S /Volumes/Patched-Sur/.patch-usb.sh")
+                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\")replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S /Volumes/Patched-Sur/.patch-usb.sh")
                                     downloadStatus = "Installing SetVars Tool..."
                                 } catch {
                                     downloadStatus = error.localizedDescription
@@ -119,7 +119,7 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    try shellOut(to: "echo \"\(password)\" | sudo -S ~/.patched-sur/big-sur-micropatcher/install-setvars.sh")
+                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\")replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S ~/.patched-sur/big-sur-micropatcher/install-setvars.sh")
                                     downloadStatus = "Injecting Full App..."
                                 } catch {
                                     downloadStatus = error.localizedDescription

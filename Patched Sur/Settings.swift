@@ -77,7 +77,6 @@ struct Settings: View {
                     .padding(.bottom, 2)
                     Text("Manage Animations. Disabling animations can greatly improve performance on Macs without Metal. A reboot is required to apply these changes.")
                         .font(.caption)
-                    
                 }.font(.subheadline)
                 .foregroundColor(.white)
                 .padding(.leading, 2)
