@@ -45,11 +45,22 @@ struct HowItWorks_Previews: PreviewProvider {
 }
 
 let howItWorks = """
-How about I do this later? I need to focus on the app right now. That's fair, right? Well, yeah. I do appreciate my beta testers, but I'm not going to write paragraph after paragraph about how this app works, if they are just going to click Continue. I'll do it later.
+Hi everyone! It's me BenSova again and I wanted to have a little chat with you guys.
 
-Version 0.0.3... or..
+I started noticing that people don't understand how little credit I deserve. I wrote this app to take the concepts of the micropatcher and give it a user-friendly UI. So, no, I did not make the kexts, I did not discover *any* of the tricks that are used to get past macOS's checks, not even the EFI Boot or really anything along those lines. I made it into an app.
 
-Maybe a different beta... or..
+Are you ready for the actual list (that was definitely not stolen from the micropatcher's readme)?
 
-How about before the release? Yeah, that's good.
+- ASentientBot: Made the Hax patches for the installer and brought GeForce Tesla (9400M/320M) framebuffer to Big Sur
+- jackluke: Figured out how to bypass compatibility checks on the installer USB.
+- highvoltage12v: Made the first WiFi kexts used with Big Sur
+- ParrotGeek: developed the LegacyUSBInjector kext to get USB ports working on some older Macs and figuring out a way to skip the terminal commands when opening the installer app on the USB.
+- testheit: Helped with the kmutil command in the micropatcher (that is used in Patched Sur too)
+- barrykn: Made the micropatcher that introduced me to the patching process and restored my faith in my really old computer. My hat is down to barrykn, and yours should be too.
+- and several others who helped with making Big Sur run as great as it does on unsupported Macs.
+
+See? I did not include myself in that list for a reason. I wanted to make it easier for you, and that's all I accomplished. I'm not one of the crazy smart people that figured this all out, I am the one bringing it to you. As much as I appreciate all of the thanks I've been getting, I can't take that much credit (also quick question, how do you properly reply to a thanks, I use no problem, but it never sounds right).
+
+Now, on how it works... that I'm not going to work on (yet)!
+
 """
