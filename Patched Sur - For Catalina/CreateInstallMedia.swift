@@ -101,31 +101,13 @@ struct CreateInstallMedia: View {
 //                                    try shellOut(to: "~/.patched-sur/big-sur-micropatcher/micropatcher.sh")
 //                                    try patchUSB(password)
                                     try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S /Volumes/Patched-Sur/.patch-usb.sh")
-                                    downloadStatus = "Installing SetVars Tool..."
-                                } catch {
-                                    downloadStatus = error.localizedDescription
-                                }
-                            }
-                        }
-                } else if downloadStatus == "Installing SetVars Tool..." {
-                    Color.secondary
-                        .cornerRadius(10)
-                        .frame(minWidth: 200, maxWidth: 450)
-                    Text("Installing SetVars Tool...")
-                        .foregroundColor(.white)
-                        .lineLimit(4)
-                        .padding(6)
-                        .padding(.horizontal, 4)
-                        .onAppear {
-                            DispatchQueue.global(qos: .background).async {
-                                do {
-                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S ~/.patched-sur/big-sur-micropatcher/install-setvars.sh")
                                     downloadStatus = "Injecting Full App..."
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }
                             }
                         }
+                    }
                 } else if downloadStatus == "Injecting Full App..." {
                     Color.secondary
                         .cornerRadius(10)
