@@ -107,7 +107,6 @@ struct CreateInstallMedia: View {
                                 }
                             }
                         }
-                    }
                 } else if downloadStatus == "Injecting Full App..." {
                     Color.secondary
                         .cornerRadius(10)

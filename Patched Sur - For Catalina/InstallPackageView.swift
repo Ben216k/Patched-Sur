@@ -148,8 +148,8 @@ struct InstallPackageView: View {
                                 .padding(6)
                                 .padding(.horizontal, 4)
                                 .onAppear {
-                                    _ = try? shellOut(to: "rm ~/.patched-sur/InstallAssistant.pkg")
                                     DispatchQueue.global(qos: .background).async {
+                                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallAssistant.pkg")
                                         do {
                                             try shellOut(to: "curl -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
                                             let versionFile = try Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallInfo.txt")

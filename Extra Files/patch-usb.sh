@@ -19,7 +19,7 @@ error() {
     exit 1
 }
 
-echo 'Welcome to Patched Sur! (v0.0.2 build 10)'
+echo 'Welcome to Patched Sur! (v0.0.4)'
 echo 'This script *should only* be used through'
 echo 'the Patched Sur app unless being tested'
 echo 'for patcher development'

@@ -16,6 +16,7 @@ struct ContentView: View {
     var model: String
     var cpu: String
     var memory: String
+    var buildNumber: String
     var body: some View {
         ZStack {
             colorScheme == .dark ? Color.black : Color.white
@@ -33,7 +34,7 @@ struct ContentView: View {
             } else if atLocation == 2 {
                 KextPatchView(at: $atLocation)
             } else if atLocation == 3 {
-                AboutMyMac(systemVersion: systemVersion, releaseTrack: releaseTrack, gpu: gpu, model: model, cpu: cpu, memory: memory, at: $atLocation)
+                AboutMyMac(systemVersion: systemVersion, releaseTrack: releaseTrack, gpu: gpu, model: model, cpu: cpu, memory: memory, buildNumber: buildNumber, at: $atLocation)
             } else if atLocation == 4 {
                 Settings(releaseTrack: releaseTrack, at: $atLocation)
             } else {
@@ -57,6 +58,8 @@ struct ContentView: View {
         model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
         cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
         memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
+        buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
+        buildNumber.removeFirst(14)
     }
 }
 

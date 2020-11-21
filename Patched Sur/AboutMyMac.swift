@@ -14,6 +14,7 @@ struct AboutMyMac: View {
     var model: String
     var cpu: String
     var memory: String
+    let buildNumber: String
     @Binding var at: Int
     var body: some View {
         ZStack {
@@ -22,7 +23,7 @@ struct AboutMyMac: View {
                 SideImageView(releaseTrack: releaseTrack)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
-                    Text("Version \(systemVersion) Beta").font(.subheadline)
+                    Text("Version \(systemVersion)\(buildNumber.count == 5 ? "" : " Beta") (\(buildNumber))").font(.subheadline)
                     Rectangle().frame(height: 15).opacity(0).fixedSize()
                     Text("Model         ").font(.subheadline).bold() + Text(model)
                     Text("CPU            ").font(.subheadline).bold() + Text(cpu)
