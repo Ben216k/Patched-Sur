@@ -71,31 +71,34 @@ struct ButtonsView: View {
                 }
             }, text: "Patching Kexts...")
         case -2:
-            Button {
-                let pasteboard = NSPasteboard.general
-                pasteboard.declareTypes([.string], owner: nil)
-                pasteboard.setString(errorMessage, forType: .string)
-            } label: {
-                ZStack {
-                    buttonBG
-                        .cornerRadius(10)
-                        .frame(minWidth: 200, maxWidth: 450)
-                        .onHover(perform: { hovering in
-                            buttonBG = hovering ? Color.red.opacity(0.7) : .red
-                        })
-                        .onAppear(perform: {
-                            if buttonBG != .red && buttonBG != Color.red.opacity(0.7) {
-                                buttonBG = .red
-                            }
-                        })
-                    Text(errorMessage)
-                        .foregroundColor(.white)
-                        .lineLimit(6)
-                        .padding(6)
-                        .padding(.horizontal, 4)
-                }
-            }.buttonStyle(BorderlessButtonStyle())
-            .fixedSize()
+            VStack {
+                Button {
+                    let pasteboard = NSPasteboard.general
+                    pasteboard.declareTypes([.string], owner: nil)
+                    pasteboard.setString(errorMessage, forType: .string)
+                } label: {
+                    ZStack {
+                        buttonBG
+                            .cornerRadius(10)
+                            .frame(minWidth: 200, maxWidth: 450)
+                            .onHover(perform: { hovering in
+                                buttonBG = hovering ? Color.red.opacity(0.7) : .red
+                            })
+                            .onAppear(perform: {
+                                if buttonBG != .red && buttonBG != Color.red.opacity(0.7) {
+                                    buttonBG = .red
+                                }
+                            })
+                        Text(errorMessage)
+                            .foregroundColor(.white)
+                            .lineLimit(6)
+                            .padding(6)
+                            .padding(.horizontal, 4)
+                    }
+                }.buttonStyle(BorderlessButtonStyle())
+                .fixedSize()
+                Text("Click to Copy")
+            }
         case 4:
             Button {
                 DispatchQueue.global(qos: .background).async {
