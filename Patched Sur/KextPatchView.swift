@@ -25,33 +25,42 @@ struct ButtonsView: View {
     @State var errorMessage = ""
     @State var installerName = ""
     var body: some View {
-        if p == 0 {
+        switch p {
+        case 0:
             DoubleButtonView(first: {
                 at = 0
             }, second: {
                 p = 1
             }, text: "Continue")
-        } else if p == 1 {
+        case 1:
             RunActionsDisplayView(action: {
                 do {
                     installerName = (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
-                    try shellOut(to: "[[ -d '/Volumes/\(installerName)/\(installerName).app' ]]")
+                    try shellOut(to: "[[ -d '/Volumes/\(installerName)/patch-kexts.sh' ]]")
                     p = 2
                 } catch {
                     p = -1
                 }
             }, text: "Detecting Volumes")
-        } else if p == -1 {
-            DoubleButtonView(first: {
-                at = 0
-            }, second: {
-                p = 1
-            }, text: "Plug in USB Installer and Try Again")
-        } else if p == 2 {
+        case -1:
+            VStack {
+                DoubleButtonView(first: {
+                    at = 0
+                }, second: {
+                    p = 1
+                }, text: "Plug in USB Installer and Try Again")
+                Button {
+                    p = 2
+                } label: {
+                    Text("Force Skip Check")
+                        .font(.caption)
+                }.buttonStyle(BorderlessButtonStyle())
+            }
+        case 2:
             EnterPasswordButton(password: $password) {
                 p = 3
             }
-        } else if p == 3 {
+        case 3:
             RunActionsDisplayView(action: {
                 do {
                     try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S '/Volumes/\(installerName)/patch-kexts.sh'")
@@ -61,7 +70,7 @@ struct ButtonsView: View {
                     p = -2
                 }
             }, text: "Patching Kexts...")
-        } else if p == -2 {
+        case -2:
             Button {
                 let pasteboard = NSPasteboard.general
                 pasteboard.declareTypes([.string], owner: nil)
@@ -87,7 +96,7 @@ struct ButtonsView: View {
                 }
             }.buttonStyle(BorderlessButtonStyle())
             .fixedSize()
-        } else if p == 4 {
+        case 4:
             Button {
                 DispatchQueue.global(qos: .background).async {
                     do {
@@ -110,6 +119,8 @@ struct ButtonsView: View {
                 }
             }
             .buttonStyle(BorderlessButtonStyle())
+        default:
+            Text("Something went wrong. This number is out of range.\nError 0x\(p)")
         }
     }
 }
