@@ -98,6 +98,7 @@ struct ButtonsView: View {
                 }.buttonStyle(BorderlessButtonStyle())
                 .fixedSize()
                 Text("Click to Copy")
+                    .font(.caption)
             }
         case 4:
             Button {
