@@ -13,7 +13,7 @@ struct MacCompatibility: View {
     var body: some View {
         VStack {
             Text("Mac Compatibility").bold()
-            Text("This Mac has not been tested and verified to work with this patcher. Most likely, your Mac should work, but currently support can not be confirmed. Continue at your own risk.")
+            Text("I haven't set this up yet, so continue at your own risk, but you'll probably be fine.")
                 .padding()
                 .multilineTextAlignment(.center)
             Button {
