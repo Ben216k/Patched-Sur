@@ -1,0 +1,1 @@
+/tmp/Patched Sur.dst/Applications/Patched Sur - For Catalina.app

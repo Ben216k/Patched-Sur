@@ -38,7 +38,7 @@ struct DoubleButtonView: View {
                     buttonBG
                         .cornerRadius(10)
                         .onHover(perform: { hovering in
-                            buttonBG = hovering ? Color.blue.opacity(0.7) : Color.blue
+                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
                         })
                     Text(text)
                         .foregroundColor(.white)

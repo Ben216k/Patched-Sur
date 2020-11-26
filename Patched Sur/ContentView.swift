@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var atLocation = 0
+    @Binding var atLocation: Int
     let systemVersion: String
     let releaseTrack: String
     var gpu: String
@@ -23,14 +23,7 @@ struct ContentView: View {
             if atLocation == 0 {
                 MainView(at: $atLocation)
             } else if atLocation == 1 {
-                VStack {
-                    Text("Updating is currently supported in post-install Patched Sur")
-                    Button {
-                        atLocation = 0
-                    } label: {
-                        Text("Back")
-                    }
-                }.navigationTitle("Patched Sur")
+                UpdateView(at: $atLocation)
             } else if atLocation == 2 {
                 KextPatchView(at: $atLocation)
             } else if atLocation == 3 {
@@ -46,11 +39,12 @@ struct ContentView: View {
                         Text("Back")
                     }
                 }
+                .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
             }
         }
     }
     
-    init() {
+    init(at: Binding<Int>) {
         systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
         releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
         gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
@@ -60,14 +54,7 @@ struct ContentView: View {
         memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
         buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
         buildNumber.removeFirst(14)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .frame(minWidth: 650, maxWidth: 650, minHeight: 350, maxHeight: 350)
-            .background(Color.white)
+        _atLocation = at
     }
 }
 
@@ -81,7 +68,9 @@ struct MainView: View {
                 .fontWeight(.heavy)
             HStack {
                 Button {
-                    at = 1
+                    withAnimation(Animation.linear(duration: 0)) {
+                        at = 1
+                    }
                 } label: {
                     VStack {
                         Image(systemName: "arrow.clockwise.circle")
@@ -153,6 +142,6 @@ struct MainView: View {
                 .buttonStyle(BorderlessButtonStyle())
 //                .padding(.trailing, 1)
             }
-        }.navigationTitle("")
+        }.navigationTitle("Patched Sur")
     }
 }

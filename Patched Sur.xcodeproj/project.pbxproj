@@ -18,6 +18,7 @@
 		767167522550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		76772CEA25410B40003FE2A2 /* InstallerChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76772CE925410B40003FE2A2 /* InstallerChooser.swift */; };
+		768F51F6256E05190069096E /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51F5256E05190069096E /* UpdateView.swift */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
 		7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* ContentView.swift */; };
 		7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E069251BFF9400C5FB9A /* Assets.xcassets */; };
@@ -36,6 +37,9 @@
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
 		76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */; };
+		76F11501256EDAD4001AB749 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
+		76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11508256EE9FB001AB749 /* PatchedVersion.swift */; };
+		76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11510256EED85001AB749 /* UpdateAppView.swift */; };
 		76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */; };
 		76FBF0E4253CEB2F0049A94E /* FinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0E3253CEB2F0049A94E /* FinishedView.swift */; };
 /* End PBXBuildFile section */
@@ -45,10 +49,12 @@
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		76315577254CC96C00646CE9 /* PatchUSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchUSB.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
+		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
 		76671F332522B3090004E0C2 /* InstallPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallPackageView.swift; sourceTree = "<group>"; };
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
 		76747BD82523A66F004596CC /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
 		76772CE925410B40003FE2A2 /* InstallerChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerChooser.swift; sourceTree = "<group>"; };
+		768F51F5256E05190069096E /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - For Catalina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7692E065251BFF9300C5FB9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7692E067251BFF9300C5FB9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +81,8 @@
 		76C1A8F22562DF9400D1A41D /* EFIIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = EFIIcon.icns; sourceTree = "<group>"; };
 		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KextPatchView.swift; sourceTree = "<group>"; };
+		76F11508256EE9FB001AB749 /* PatchedVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchedVersion.swift; sourceTree = "<group>"; };
+		76F11510256EED85001AB749 /* UpdateAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppView.swift; sourceTree = "<group>"; };
 		76F6EED72552684A001508E8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallMethodView.swift; sourceTree = "<group>"; };
 		76FBF0E3253CEB2F0049A94E /* FinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedView.swift; sourceTree = "<group>"; };
@@ -168,10 +176,13 @@
 				7631556F254C984900646CE9 /* ExtraViews.swift */,
 				7631558E254DDB6C00646CE9 /* AboutMyMac.swift */,
 				7692E083251BFFB400C5FB9A /* Assets.xcassets */,
+				3F42EB03255176F700365279 /* Settings.swift */,
 				7692E088251BFFB400C5FB9A /* Info.plist */,
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
+				76F11508256EE9FB001AB749 /* PatchedVersion.swift */,
 				7692E085251BFFB400C5FB9A /* Preview Content */,
-				3F42EB03255176F700365279 /* Settings.swift */,
+				768F51F5256E05190069096E /* UpdateView.swift */,
+				76F11510256EED85001AB749 /* UpdateAppView.swift */,
 			);
 			path = "Patched Sur";
 			sourceTree = "<group>";
@@ -197,6 +208,7 @@
 				76C1A8F22562DF9400D1A41D /* EFIIcon.icns */,
 				76C1A8F12562DF8300D1A41D /* InstallIcon.icns */,
 				76FEEFAD254F4DBD0079CEFC /* patch-usb.sh */,
+				7643F616256F2A4700A9D61E /* NameComponent.plist */,
 			);
 			path = "Extra Files";
 			sourceTree = "<group>";
@@ -335,12 +347,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */,
+				768F51F6256E05190069096E /* UpdateView.swift in Sources */,
 				767167522550AE42000FAE80 /* ShellOut.swift in Sources */,
+				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
 				76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */,
 				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
 				3F42EB04255176F700365279 /* Settings.swift in Sources */,
+				76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */,
 				7692E080251BFFB300C5FB9A /* PatchedSurApp.swift in Sources */,
 				7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */,
+				76F11501256EDAD4001AB749 /* InstallAssistants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +498,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -493,7 +509,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = 0.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -510,7 +526,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -521,7 +537,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = 0.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -538,9 +554,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DSTROOT = "/tmp/Post-Install.dst";
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur/Info.plist";
@@ -549,7 +566,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = 0.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -565,9 +582,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DSTROOT = "/tmp/Post-Install.dst";
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur/Info.plist";
@@ -576,7 +594,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = 0.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -21,7 +21,7 @@ struct ButtonsView: View {
     @Binding var at: Int
     @State var p = 0
     @State var password = ""
-    @State var buttonBG = Color.blue
+    @State var buttonBG = Color.accentColor
     @State var errorMessage = ""
     @State var installerName = ""
     var body: some View {
