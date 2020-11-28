@@ -82,12 +82,21 @@ struct UpdateAppView: View {
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
                                     do {
+                                        print("Pre-Download Clean Up...")
                                         try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
-                                        _ = try? File(path: "~/.patched-sur/Patched-Sur.pkg").delete()
-                                        try shellOut(to: "curl -L \(latest.assets[2].browserDownloadURL) -o ~/.patched-sur/Patched-Sur.pkg")
-                                        try shellOut(to: "open ~/.patched-sur/Patched-Sur.pkg")
+                                        _ = try? File(path: "~/.patched-sur/Patched-Sur.zip").delete()
+                                        _ = try? Folder(path: "~/.patched-sur/Patched Sur.app").delete()
+                                        print("Starting Download of updated Patched Sur...")
+                                        try shellOut(to: "curl -L \(latest.assets[1].browserDownloadURL) -o ~/.patched-sur/Patched-Sur.zip")
+                                        print("Unzipping download...")
+                                        try shellOut(to: "unzip ~/.patched-sur/Patched-Sur.zip")
+                                        print("Starting Patched Sur Updater...")
+                                        let appOutput = try shellOut(to: "~/.patched-sur/Patched\\ Sur.app/Contents/MacOS/Patched\\ Sur --update")
+                                        print(appOutput)
+                                        print("Updater started, closing app.")
                                         NSApplication.shared.terminate(nil)
                                     } catch {
+                                        print(error.localizedDescription)
                                         errorMessage = "Download Failed"
                                         downloading = false
                                     }

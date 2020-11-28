@@ -46,14 +46,21 @@ struct ContentView: View {
     
     init(at: Binding<Int>) {
         systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
+        print("Detected System Version: \(systemVersion)")
         releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
+        print("Detected Release Track: \(releaseTrack)")
         gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
         gpu.removeLast(2)
+        print("Detected GPU: \(gpu)")
         model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
+        print("Detected Mac Model: \(model)")
         cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+        print("Detected CPU: \(cpu)")
         memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
+        print("Detected Memory Amount: \(memory)")
         buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
         buildNumber.removeFirst(14)
+        print("Detected macOS Build Number: \(buildNumber)")
         _atLocation = at
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F42EB04255176F700365279 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42EB03255176F700365279 /* Settings.swift */; };
+		760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760C7D1A25719C27004817F1 /* UpdateAppAction.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		7625796B25423FDC00508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796A25423FDC00508A71 /* Files */; };
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		3F42EB03255176F700365279 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		760C7D1A25719C27004817F1 /* UpdateAppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppAction.swift; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		76315577254CC96C00646CE9 /* PatchUSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchUSB.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */,
+				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
 				7692E081251BFFB300C5FB9A /* ContentView.swift */,
 				76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */,
 				7631556F254C984900646CE9 /* ExtraViews.swift */,
@@ -348,6 +351,7 @@
 			files = (
 				7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */,
 				768F51F6256E05190069096E /* UpdateView.swift in Sources */,
+				760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */,
 				767167522550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
 				76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */,

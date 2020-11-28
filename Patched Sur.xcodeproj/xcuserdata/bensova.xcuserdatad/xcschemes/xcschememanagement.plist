@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Archive Patched Sur.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>Patched Sur - Big Sur.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
