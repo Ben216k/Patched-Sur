@@ -23,7 +23,10 @@ struct ContentView: View {
             if atLocation == 0 {
                 MainView(at: $atLocation)
             } else if atLocation == 1 {
-                UpdateView(at: $atLocation)
+//                UpdateView(at: $atLocation)
+                Button("Nice try bud, Let's go back.") {
+                    atLocation = 0
+                }
             } else if atLocation == 2 {
                 KextPatchView(at: $atLocation)
             } else if atLocation == 3 {
@@ -45,22 +48,83 @@ struct ContentView: View {
     }
     
     init(at: Binding<Int>) {
-        systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
-        print("Detected System Version: \(systemVersion)")
-        releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
-        print("Detected Release Track: \(releaseTrack)")
-        gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
-        gpu.removeLast(2)
-        print("Detected GPU: \(gpu)")
-        model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
-        print("Detected Mac Model: \(model)")
-        cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
-        print("Detected CPU: \(cpu)")
-        memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
-        print("Detected Memory Amount: \(memory)")
-        buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
-        buildNumber.removeFirst(14)
-        print("Detected macOS Build Number: \(buildNumber)")
+        if !AppInfo.debug {
+            systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
+            print("Detected System Version: \(systemVersion)")
+            releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
+            print("Detected Release Track: \(releaseTrack)")
+            gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+            gpu.removeLast(2)
+            print("Detected GPU: \(gpu)")
+            model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
+            print("Detected Mac Model: \(model)")
+            cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+            print("Detected CPU: \(cpu)")
+            memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
+            print("Detected Memory Amount: \(memory)")
+            buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
+            buildNumber.removeFirst(14)
+            print("Detected macOS Build Number: \(buildNumber)")
+        } else {
+            if !CommandLine.arguments.contains("versionFormatted") {
+                systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
+                print("Detected System Version: \(systemVersion)")
+            } else {
+                print("DEBUG OVERRIDE: Skipping macOS Formatted System Version Check.")
+                print("Overriding System Version: 11.XX.YY")
+                systemVersion = "11.XX.YY"
+            }
+            if !CommandLine.arguments.contains("releaseTrack") {
+                releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
+                print("Detected Release Track: \(releaseTrack)")
+            } else {
+                print("DEBUG OVERRIDE: Skipping Patched Sur Release Track Check.")
+                print("Overriding Release Track: Release")
+                releaseTrack = "Release"
+            }
+            if !CommandLine.arguments.contains("gpuCheck") {
+                gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+                gpu.removeLast(2)
+                print("Detected GPU: \(gpu)")
+            } else {
+                print("DEBUG OVERRIDE: Skipping Hardware GPU Check.")
+                print("Overriding GPU: Integrated HD Bug Graphics")
+                gpu = "Integrated HD Bug Graphics"
+            }
+            if !CommandLine.arguments.contains("macModel") {
+                model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
+                print("Detected Mac Model: \(model)")
+            } else {
+                print("DEBUG OVERRIDE: Skipping Hardware Mac Model Check.")
+                print("Overriding Mac Model: MacModelD,B")
+                model = "MacModelD,B"
+            }
+            if !CommandLine.arguments.contains("cpuCheck") {
+                cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+                print("Detected CPU: \(cpu)")
+            } else {
+                print("DEBUG OVERRIDE: Skipping Hardware CPU Check.")
+                print("Overriding GPU: Intel iDebug Core @ 100.3GHz")
+                cpu = "Intel iDebug Core @ 100.3GHz"
+            }
+            if !CommandLine.arguments.contains("memoryCheck") {
+                memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
+                print("Detected Memory Amount: \(memory)")
+            } else {
+                print("DEBUG OVERRIDE: Skipping Hardware Memory Check.")
+                print("Overriding Memory Amount: 10k")
+                memory = "10k"
+            }
+            if !CommandLine.arguments.contains("buildNumber") {
+                buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
+                buildNumber.removeFirst(14)
+                print("Detected macOS Build Number: \(buildNumber)")
+            } else {
+                print("DEBUG OVERRIDE: Skipping macOS Build Number Check.")
+                print("Overriding Build Number: 20XYYZZZ")
+                buildNumber = "20XYYZZZ"
+            }
+        }
         _atLocation = at
     }
 }

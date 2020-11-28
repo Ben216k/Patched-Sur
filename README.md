@@ -40,7 +40,7 @@ To see if your Mac is supported [click here](https://bensova.gitbook.io/big-sur/
 
 **14.** Open the Patch Kexts section and enter your password. Then, you should be able to reboot and enjoy Big Sur!
 
-#### How do I choose a my own installer? (v0.0.2+)
+#### How do I choose a my own installer?
 
 To choose a different installer that you already have downloaded, click `View Other Versions`. Then, click `Find an Installer` and navigate to the InstallAssistant.pkg or Install macOS Big Sur Beta.app file you would like to use.
 
@@ -52,10 +52,8 @@ To update macOS, follow the steps below.
 
 **2.** Select the version you want to update to, (the latest version should be pre-selected).
 
-**3.** Once it finishes downloading the package, it will prompt you to insert a USB drive, (unless `Install macOS Big Sur Beta` is plugged in, in which will skip the prompt and select the drive).
+**3.** Once it finishes downloading the package, it will prompt you to install which will restart your computer after a little bit.
 
-**4.** Copy the installer onto the USB.
+**4.** After the update finishes, open the post install app and patch your kexts.
 
-**5.** Boot into the installer and reinstall macOS onto your Big Sur drive.
-
-**6.** Once that is complete, you can boot into macOS, rerun the post-install patch kexts tool, and enjoy the latest version of macOS Big Sur.
+**5.** Enjoy the latest version of macOS!

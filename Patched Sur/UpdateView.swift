@@ -37,7 +37,7 @@ struct UpdateView: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    if let patchedVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter { !$0.prerelease } {
+                                    if let patchedVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
                                         if patchedVersions[0].tagName != "v\(AppInfo.version)" {
                                             latestPatch = patchedVersions[0]
                                             progress = 1

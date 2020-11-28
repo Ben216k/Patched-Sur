@@ -22,9 +22,24 @@ struct PatchedSurStartup {
         print("")
         if CommandLine.arguments.count > 1 {
             switch CommandLine.arguments[1] {
-            case "--update", "-u":
-                print("Detected --update option, starting Patched Sur update.")
-                updatePatchedApp()
+//            case "--update", "-u":
+//                print("Detected --update option, starting Patched Sur update.")
+//                updatePatchedApp()
+            case "--debug", "-d":
+                print("Detected --debug option, starting DEBUG mode.")
+                print("\n==========================================\n")
+                print("With debug mode, you can disable many features within the app to try to diagnose crashes.\n")
+                print("You can disable any of the following:")
+                print("versionFormatted\nreleaseTrack\ngpuCheck\nmacModel\ncpuCheck\nmemoryCheck\nbuildNumber")
+                print("\nTo disable on of these, type it's name after the debug option, for example:\n")
+                print("/path/to/patched-sur/binary --debug buildNumber memoryCount")
+                print("\nYou can have any number of disabled options, just separate them with spaces.")
+                print("All keys must be spelt right, otherwise they will be ignored.")
+                print("\n==========================================\n")
+                AppInfo.debug = true
+                print("Starting normal Patched Sur with debug changes...")
+                print("")
+                PatchedSurApp.main()
             case "--safe", "-s":
                 print("Detected --safe option, starting straight into Patch Kexts.")
                 AppInfo.safe = true
@@ -82,4 +97,5 @@ class AppInfo {
         return micropatcher.version
     }()
     static var safe = false
+    static var debug = false
 }

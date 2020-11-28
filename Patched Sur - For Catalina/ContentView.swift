@@ -29,7 +29,7 @@ struct AllViews : View {
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false
-    @State var releaseTrack = ReleaseTrack.publicbeta
+    @State var releaseTrack = ReleaseTrack.release
     @State var installMethod = InstallMethod.update
     @State var installInfo = nil as InstallAssistant?
     @State var useCurrent = false
