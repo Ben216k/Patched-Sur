@@ -1,0 +1,21 @@
+//
+//  main.swift
+//  Patched Sur - For Catalina
+//
+//  Created by Benjamin Sova on 12/1/20.
+//
+
+import Foundation
+
+print("Hello! If you're seeing this, you are seeing the logs of (pre-install) Patched Sur!")
+print("Or maybe running this from the command line...")
+print("")
+print("Patched Sur v\((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "x.y.z") Build \(Int(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "-100") ?? -100)")
+#if DEBUG
+print("Running From Xcode in DEBUG configuration.")
+#else
+print("Running Either Normally or From Terminal in RELEASE configuration.")
+#endif
+print("")
+print("Starting App Delegate.")
+AppDelegate.main()

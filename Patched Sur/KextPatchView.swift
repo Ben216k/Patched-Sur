@@ -35,10 +35,14 @@ struct ButtonsView: View {
         case 1:
             RunActionsDisplayView(action: {
                 do {
+                    print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta\"...")
                     installerName = (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
+                    print("Assuming USB is at \"/Volumes/\(installerName)\"")
                     try shellOut(to: "[[ -d '/Volumes/\(installerName)/patch-kexts.sh' ]]")
                     p = 2
                 } catch {
+                    print("USB is not at either detected place or does not have patch-kexts.sh on it.")
+                    print("Requesting user to plug back in the usb drive.")
                     p = -1
                 }
             }, text: "Detecting Volumes")
@@ -63,9 +67,15 @@ struct ButtonsView: View {
         case 3:
             RunActionsDisplayView(action: {
                 do {
-                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S '/Volumes/\(installerName)/patch-kexts.sh'")
+                    let patchOutput = try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S '/Volumes/\(installerName)/patch-kexts.sh'")
+                    print("\n==========================================\n")
+                    print(patchOutput)
+                    print("\n==========================================\n")
                     p = 4
                 } catch {
+                    print("\n==========================================\n")
+                    print(error.localizedDescription)
+                    print("\n==========================================\n")
                     errorMessage = error.localizedDescription
                     p = -2
                 }
@@ -106,7 +116,7 @@ struct ButtonsView: View {
                     do {
                         try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S sudo reboot")
                     } catch {
-                        print("Error, but they can do it themselves.")
+                        print("Error running restart, but they can do it themselves.")
                     }
                 }
             } label: {

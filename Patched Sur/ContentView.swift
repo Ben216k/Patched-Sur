@@ -23,10 +23,7 @@ struct ContentView: View {
             if atLocation == 0 {
                 MainView(at: $atLocation)
             } else if atLocation == 1 {
-//                UpdateView(at: $atLocation)
-                Button("Nice try bud, Let's go back.") {
-                    atLocation = 0
-                }
+                UpdateView(at: $atLocation)
             } else if atLocation == 2 {
                 KextPatchView(at: $atLocation)
             } else if atLocation == 3 {
@@ -51,6 +48,7 @@ struct ContentView: View {
         if !AppInfo.debug {
             systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
             print("Detected System Version: \(systemVersion)")
+            _ = try? shellOut(to: "touch ~/.patched-sur/track.txt")
             releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
             print("Detected Release Track: \(releaseTrack)")
             gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
@@ -126,6 +124,8 @@ struct ContentView: View {
             }
         }
         _atLocation = at
+        print("Loading main screen.")
+        print("")
     }
 }
 

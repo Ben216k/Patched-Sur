@@ -15,6 +15,7 @@ struct UpdateAppView: View {
     @State var downloading = false
     @State var downloadProgress = 0 as CGFloat
     @State var errorMessage = ""
+    @Binding var skipCheck: Bool
     var body: some View {
         VStack {
             HStack {
@@ -41,7 +42,8 @@ struct UpdateAppView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 Button {
-                    
+                    skipCheck = true
+                    p = 0
                 } label: {
                     ZStack {
                         ZStack {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftShell
 
 struct Settings: View {
     @State private var showingAlert = false
@@ -24,6 +25,21 @@ struct Settings: View {
                         Spacer()
                         CustomColoredButton("Back to Home") {
                             at = 0
+                        }
+                        CustomColoredButton("Print somethings") {
+                            print("Starting Download of random file...")
+                            _ = try? shellOut(to: "rm -rf ~/.patched-sur/Download.html")
+                            let asyncCommand = runAsync(bash: "sleep 3 && curl -L -o ~/.patched-sur/Download.html https://support.apple.com/en-us/HT211983").onCompletion { command in
+                                at = 0
+                            }
+                            asyncCommand.stdout.onStringOutput {
+                                print($0)
+                            }
+                            do {
+                                try asyncCommand.finish()
+                            } catch {
+                                print("SOMETHING WENT WRONG")
+                            }
                         }
                     }
                     HStack {
