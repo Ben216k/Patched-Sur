@@ -13,9 +13,13 @@ struct UpdateAppView: View {
     @State var hovered = nil as String?
     @Binding var p: Int
     @State var downloading = false
-    @State var downloadProgress = 0 as CGFloat
     @State var errorMessage = ""
     @Binding var skipCheck: Bool
+    @State var downloadSize = 55357820
+    @State var downloadProgress = CGFloat(0)
+    @State var currentSize = 10
+    let timer = Timer.publish(every: 0.25, on: .current, in: .common).autoconnect()
+    
     var body: some View {
         VStack {
             HStack {
@@ -72,9 +76,15 @@ struct UpdateAppView: View {
                 if downloading {
                     ZStack {
                         ZStack(alignment: .leading) {
-                            Color.accentColor.opacity(0.4).cornerRadius(10)
-                            Color.accentColor.cornerRadius(10).frame(width: downloadProgress * 140)
-                        }
+                            Color.accentColor.opacity(0.4).frame(width: 140)
+                            Color.accentColor.frame(width: min(downloadProgress * 140, 140))
+                        }.cornerRadius(10)
+                        .onReceive(timer, perform: { _ in
+                            if let sizeCode = try? shellOut(to: "stat -f %z ~/.patched-sur/Patched-Sur.zip") {
+                                currentSize = Int(Float(sizeCode) ?? 10000)
+                                downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(latest.assets[1].size)
+                            }
+                        })
                         Text("Downloading Update")
                             .font(.subheadline)
                             .fontWeight(.regular)
@@ -88,13 +98,18 @@ struct UpdateAppView: View {
                                         try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
                                         _ = try? File(path: "~/.patched-sur/Patched-Sur.zip").delete()
                                         _ = try? Folder(path: "~/.patched-sur/Patched Sur.app").delete()
+                                        print("Getting download size of Patched Sur...")
+                                        if let sizeString = try? shellOut(to: "curl -sI \(latest.assets[1].browserDownloadURL) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                            downloadSize = sizeInt
+                                        }
+                                        print("Projected size: \(downloadSize)")
                                         print("Starting Download of updated Patched Sur...")
                                         try shellOut(to: "curl -L \(latest.assets[1].browserDownloadURL) -o ~/.patched-sur/Patched-Sur.zip")
                                         print("Unzipping download...")
                                         try shellOut(to: "unzip ~/.patched-sur/Patched-Sur.zip")
                                         print("Starting Patched Sur Updater...")
-                                        let appOutput = try shellOut(to: "~/.patched-sur/Patched\\ Sur.app/Contents/MacOS/Patched\\ Sur --update")
-                                        print(appOutput)
+//                                        let appOutput = try shellOut(to: "~/.patched-sur/Patched\\ Sur.app/Contents/MacOS/Patched\\ Sur --update")
+//                                        print(appOutput)
                                         print("Updater started, closing app.")
                                         NSApplication.shared.terminate(nil)
                                     } catch {

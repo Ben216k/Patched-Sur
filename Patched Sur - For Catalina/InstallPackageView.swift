@@ -151,7 +151,19 @@ struct InstallPackageView: View {
                                     DispatchQueue.global(qos: .background).async {
                                         _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallAssistant.pkg")
                                         do {
-                                            try shellOut(to: "curl -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
+                                            let reasonForActivity = "Reason for activity" as CFString
+                                            var assertionID: IOPMAssertionID = 0
+                                            var success = IOPMAssertionCreateWithName( kIOPMAssertionTypeNoDisplaySleep as CFString,
+                                                                                        IOPMAssertionLevel(kIOPMAssertionLevelOn),
+                                                                                        reasonForActivity,
+                                                                                        &assertionID )
+                                            if success == kIOReturnSuccess {
+                                                try shellOut(to: "curl -L -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
+                                                success = IOPMAssertionRelease(assertionID)
+                                            } else {
+                                                downloadStatus = "Unable to pull system attention."
+                                                return
+                                            }
                                             let versionFile = try Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallInfo.txt")
                                             try versionFile.write(installInfo!.jsonString()!, encoding: .utf8)
                                             buttonBG = .accentColor
