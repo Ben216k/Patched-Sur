@@ -1,0 +1,8 @@
+blank_issues_enabled: ture
+contact_links:
+  - name: Suggest a Feature!
+    url: https://github.com/BenSova/Patched-Sur/discussions/new?category=ideas
+    about: Request any features, and discuss new ideas.
+  - name: Ask a Question
+    url: https://github.com/BenSova/Patched-Sur/discussions/new?category=questions
+    about: Ask any question and get help with Patched Sur.
