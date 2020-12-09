@@ -23,7 +23,7 @@ struct ContentView: View {
             if atLocation == 0 {
                 MainView(at: $atLocation)
             } else if atLocation == 1 {
-                UpdateView(at: $atLocation)
+                UpdateView(at: $atLocation, buildNumber: buildNumber)
             } else if atLocation == 2 {
                 KextPatchView(at: $atLocation)
             } else if atLocation == 3 {

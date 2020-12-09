@@ -35,6 +35,12 @@ struct ButtonsView: View {
         case 1:
             RunActionsDisplayView(action: {
                 do {
+                    print("Checking for kexts at \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\"")
+                    if (try? shellOut(to: "[[ -d \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\" ]]")) != nil {
+                        print("Found pre-downloaded kexts!")
+                        p = 2
+                        return
+                    }
                     print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta\"...")
                     installerName = (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
                     print("Assuming USB is at \"/Volumes/\(installerName)\"")

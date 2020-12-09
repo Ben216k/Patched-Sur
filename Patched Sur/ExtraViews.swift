@@ -129,3 +129,40 @@ struct EnterPasswordButton: View {
         }.fixedSize()
     }
 }
+
+struct TextAndButtonView: View {
+    let t: String
+    let b: String
+    let action: () -> ()
+    @State var hovered = false
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .foregroundColor(.secondary)
+                .cornerRadius(10)
+            HStack(spacing: 0) {
+                Text(t)
+                    .padding(6)
+                    .padding(.leading, 4)
+                    .foregroundColor(.white)
+                Button {
+                    action()
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(!hovered ? .accentColor : Color.accentColor.opacity(0.7))
+                            .cornerRadius(10)
+                        Text(b)
+                            .padding(6)
+                            .padding(.horizontal, 4)
+                            .foregroundColor(.white)
+                    }.fixedSize()
+                }.buttonStyle(BorderlessButtonStyle())
+                .onHover {
+                    hovered = $0
+                }
+            }
+        }.fixedSize()
+    }
+}

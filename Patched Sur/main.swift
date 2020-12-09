@@ -19,6 +19,7 @@ print("")
 print("Patched Sur v\((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "x.y.z") Build \(Int(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "-100") ?? -100)")
 #if DEBUG
 print("Running From Xcode in DEBUG configuration.")
+AppInfo.debug = true
 #else
 print("Running Either Normally or From Terminal in RELEASE configuration.")
 #endif

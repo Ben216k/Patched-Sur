@@ -96,26 +96,32 @@ extension Color {
 
 struct SideImageView: View {
     let releaseTrack: String
+    let scale: CGFloat
     var body: some View {
         if releaseTrack == "Public Beta" {
             Image("BigSurLake")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 145, height: 145)
+                .frame(width: scale, height: scale)
                 .padding()
         } else if releaseTrack == "Developer" {
             Image("BigSurSideShot")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 145, height: 145)
+                .frame(width: scale, height: scale)
                 .padding()
         } else if releaseTrack == "Release" {
             Image("BigSurSafari")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 145, height: 145)
+                .frame(width: scale, height: scale)
                 .padding()
         }
+    }
+    
+    init(releaseTrack: String, scale: CGFloat = 145) {
+        self.releaseTrack = releaseTrack
+        self.scale = scale
     }
 }
 

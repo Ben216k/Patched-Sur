@@ -12,10 +12,14 @@ struct UpdateView: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var at: Int
     @State var progress = 0
-    @State var installers = [] as InstallAssistants
+    @State var installers = nil as InstallAssistants?
     @State var track = ReleaseTrack.release
     @State var latestPatch = nil as PatchedVersion?
-    @State var skipAppCheck = false
+    @State var skipAppCheck = true
+    @State var installInfo = nil as InstallAssistant?
+    @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
+    @State var appLocation = nil as String?
+    let buildNumber: String
     var body: some View {
         ZStack {
             if progress == 0 || progress == 2 {
@@ -43,19 +47,30 @@ struct UpdateView: View {
                                         if patchedVersions[0].tagName != "v\(AppInfo.version)" {
                                             latestPatch = patchedVersions[0]
                                             progress = 1
+                                            print("Found update v\(AppInfo.version).")
+                                            print("Offering update.\n")
                                             return
                                         }
                                     }
                                     print("No updates found or user choose to skip the app update check.")
                                     print("Figuring out what update track to use...")
-                                    if let trackFile = try? File(path: "~/.patched-sur/track.txt").readAsString() {
+                                    if var trackFile = try? File(path: "~/.patched-sur/track.txt").readAsString() {
+                                        trackFile.removeLast()
+                                        print("Found track file with contents \(trackFile).")
                                         track = ReleaseTrack(rawValue: trackFile) ?? .release
                                     }
                                     print("Using update track \(track).")
                                     print("Pinging installer list to find the latest updates...")
                                     installers = try InstallAssistants(fromURL:  URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)
                                     print("Filtering incompatible installers...")
-                                    installers = installers.filter { $0.minVersion <= AppInfo.build }
+                                    installers = installers!.filter { $0.minVersion <= AppInfo.build }
+                                    print("Finding latest build...")
+                                    installers!.sort { $0.orderNumber < $1.orderNumber }
+                                    installInfo = installers!.last
+                                    if AppInfo.debug {
+                                        print("Latest Build: \(installers!.last!.buildNumber)")
+                                        print("Install Info: \(installInfo!.buildNumber)")
+                                    }
                                     print("Switching to show updates screen...")
                                     print("")
                                     progress = 2
@@ -78,7 +93,9 @@ struct UpdateView: View {
                         at = 0
                     }
             case 2:
-                Text("\(installers[0].version)")
+                UpdateStatusView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, p: $progress)
+            case 3:
+                DownloadView(p: $progress, installInfo: $installInfo)
             default:
                 VStack {
                     Text("Uh-oh! Something went wrong going through the software update steps.\nError 1x\(progress)")
