@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftShell
 
 struct StartInstallView: View {
     @State var correctPassword = false
@@ -26,9 +27,9 @@ struct StartInstallView: View {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     print("Installing package...")
-                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
+                                    try runAndPrint(bash: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
                                     print("Starting OS Install...")
-                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S \"/Applications/Install macOS Big Sur Beta.app/Contents/Resources/startosinstall\" --volume / --nointeraction")
+                                    try runAndPrint(bash: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S \"/Applications/Install macOS Big Sur Beta.app/Contents/Resources/startosinstall\" --volume / --nointeraction")
                                     print("Done, we should restart any time now...")
                                 } catch {
                                     errorT = error.localizedDescription

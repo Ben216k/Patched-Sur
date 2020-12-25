@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Files
+import SwiftShell
 
 struct DownloadView: View {
     @State var downloadStatus = "Downloading Kexts..."
@@ -60,16 +61,16 @@ struct DownloadView: View {
                                         _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
                                         _ = try? shellOut(to: "rm -rf ~/.patched-sur/big-sur-micropatcher*")
                                         _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
+                                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/__MACOSX")
                                         print("Starting download of micropatcher...")
                                         if let sizeString = try? shellOut(to: "curl -sI https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1 | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                             downloadSize = sizeInt
                                         }
                                         try shellOut(to: "curl -Lo big-sur-micropatcher.zip https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1", at: "~/.patched-sur")
                                         print("Unzipping kexts...")
-                                        try shellOut(to: "unzip big-sur-micropatcher.zip", at: "~/.patched-sur")
+                                        try runAndPrint(bash: "unzip ~/.patched-sur/big-sur-micropatcher.zip -d ~/.patched-sur")
                                         print("Post-download clean up...")
-                                        _ = try? File(path: "~/.patched-sur/big-sur-micropatcher*").delete()
-//                                        try shellOut(to: "mv ~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher) ~/.patched-sur/big-sur-micropatcher")
+                                        _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
                                         print("Finished downloading the micropatcher!")
                                         kextDownloaded = true
                                     } catch {
@@ -97,7 +98,7 @@ struct DownloadView: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    _ = try? shellOut(to: "sleep 1")
+                                    _ = try? shellOut(to: "sleep 3")
                                     _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallAssistant.pkg")
                                     if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                         installSize = sizeInt

@@ -108,8 +108,8 @@ struct UpdateAppView: View {
                                         print("Unzipping download...")
                                         try shellOut(to: "unzip ~/.patched-sur/Patched-Sur.zip")
                                         print("Starting Patched Sur Updater...")
-//                                        let appOutput = try shellOut(to: "~/.patched-sur/Patched\\ Sur.app/Contents/MacOS/Patched\\ Sur --update")
-//                                        print(appOutput)
+                                        let appOutput = try shellOut(to: "~/.patched-sur/Patched\\ Sur.app/Contents/MacOS/Patched\\ Sur --update")
+                                        print(appOutput)
                                         print("Updater started, closing app.")
                                         NSApplication.shared.terminate(nil)
                                     } catch {

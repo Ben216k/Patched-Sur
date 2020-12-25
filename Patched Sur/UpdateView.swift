@@ -96,6 +96,8 @@ struct UpdateView: View {
                 UpdateStatusView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, p: $progress)
             case 3:
                 DownloadView(p: $progress, installInfo: $installInfo)
+            case 4:
+                StartInstallView()
             default:
                 VStack {
                     Text("Uh-oh! Something went wrong going through the software update steps.\nError 1x\(progress)")

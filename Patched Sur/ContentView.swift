@@ -19,7 +19,7 @@ struct ContentView: View {
     var buildNumber: String
     var body: some View {
         ZStack {
-            colorScheme == .dark ? Color.black : Color.white
+//            colorScheme == .dark ? Color.black : Color.white
             if atLocation == 0 {
                 MainView(at: $atLocation)
             } else if atLocation == 1 {
