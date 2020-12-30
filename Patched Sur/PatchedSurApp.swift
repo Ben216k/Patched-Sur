@@ -13,7 +13,6 @@ struct PatchedSurApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(at: $atLocation)
-//                .frame(minWidth: 600, maxWidth: 600, minHeight: atLocation != 1 ? 325 : 249, maxHeight: atLocation != 1 ? 325 : 249)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
         }
     }
@@ -39,15 +38,16 @@ final class AppInfo {
     static let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     static let build = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
     static let micropatcher = { () -> String in
-        print("Looking for latest Micropatcher version...")
-        guard let micropatchers = try? MicropatcherRequirements(fromURL: "https://bensova.github.io/patched-sur/micropatcher.json") else {
-            print("No versions found, defaulting to v0.5.0")
-            return "0.5.0"
-        }
-        print("Found Micropatcher List!")
-        let micropatcher = micropatchers.filter { $0.patcher <= Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)! }.last!
-        print("Detected Micropatcher Version \(micropatcher.version)")
-        return micropatcher.version
+//        print("Looking for latest Micropatcher version...")
+//        guard let micropatchers = try? MicropatcherRequirements(fromURL: "https://bensova.github.io/patched-sur/micropatcher.json") else {
+//            print("No versions found, defaulting to v0.5.0")
+//            return "0.5.0"
+//        }
+//        print("Found Micropatcher List!")
+//        let micropatcher = micropatchers.filter { $0.patcher <= Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)! }.last!
+//        print("Detected Micropatcher Version \(micropatcher.version)")
+//        return micropatcher.version
+        return "0.5.1"
     }()
     static var safe = false
     static var debug = false
@@ -55,13 +55,14 @@ final class AppInfo {
 
 struct PatchedSurLogger: TextOutputStream {
     var logLocation = ""
+    var logContents = ""
+    let logFile: File
 
-    func write(_ string: String) {
+    mutating func write(_ string: String) {
         print(string, terminator: "")
         do {
-            try Folder.home.createFileIfNeeded(at: logLocation)
-            let logFile = try File(path: "~/\(logLocation)")
-            try logFile.append(string)
+            logContents.append(string)
+            try logFile.write(logContents)
         } catch {
             print("Unable to write message to log. This is unexpected." as Any)
         }
@@ -73,5 +74,11 @@ struct PatchedSurLogger: TextOutputStream {
         let stringDate = format.string(from: Date())
         print("Log file will be stored at: ~/.patched-sur/logs/Post-\(stringDate).log" as Any)
         logLocation = ".patched-sur/logs/Post-\(stringDate).log"
+        do {
+            try Folder.home.createFileIfNeeded(at: logLocation)
+            logFile = try File(path: "~/\(logLocation)")
+        } catch {
+            fatalError("UNABLE TO CREATE LOG FILE, THIS IS NOT GOOD FOR DEBUGGING")
+        }
     }
 }

@@ -7,12 +7,14 @@
 
 import SwiftUI
 import SwiftShell
+import Files
 
 struct StartInstallView: View {
     @State var correctPassword = false
     @State var password = ""
     @State var errorT = ""
     @State var buttonBG = Color.red
+    @Binding var installerPath: String
     var body: some View {
         VStack {
             Text("Ready to Update!")
@@ -26,11 +28,24 @@ struct StartInstallView: View {
                         .onAppear(perform: {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-                                    print("Installing package...")
-                                    try runAndPrint(bash: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
-                                    print("Starting OS Install...")
-                                    try runAndPrint(bash: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S \"/Applications/Install macOS Big Sur Beta.app/Contents/Resources/startosinstall\" --volume / --nointeraction")
-                                    print("Done, we should restart any time now...")
+                                    if !installerPath.hasSuffix("app") {
+                                        print("Clean up before extraction...")
+                                        _ = try? runAndPrint(bash: "rm -rf ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app")
+                                        print("Installing package...")
+                                        if installerPath == "~/.patched-sur/InstallAssistant.pkg" {
+                                            try runAndPrint(bash: "pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/trash")
+                                        } else {
+                                            try runAndPrint(bash: "pkgutil --expand-full '\(installerPath)' ~/.patched-sur/trash")
+                                        }
+                                        _ = try? runAndPrint(bash: "rm -rf ~/.patched-sur/trash")
+                                        print("Starting OS Install...")
+                                        try runAndPrint(bash: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction")
+                                        print("Done, we should restart any time now...")
+                                    } else {
+                                        print("Starting OS Install...")
+                                        try runAndPrint(bash: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S '\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction")
+                                        print("Done, we should restart any time now...")
+                                    }
                                 } catch {
                                     errorT = error.localizedDescription
                                 }

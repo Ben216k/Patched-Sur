@@ -35,6 +35,7 @@
 		7692E090251C077400C5FB9A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E08F251C077400C5FB9A /* MainView.swift */; };
 		7692E0A2251C163200C5FB9A /* VolumeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E0A1251C163200C5FB9A /* VolumeSelector.swift */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
+		76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1D33A259933880032F7D9 /* CompatInfo.swift */; };
 		76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D32524ED78002C57EA /* MacCompatibility.swift */; };
 		76A626D82525055B002C57EA /* HowItWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D72525055B002C57EA /* HowItWorks.swift */; };
 		76A626DC25252C5A002C57EA /* CreateInstallMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */; };
@@ -87,6 +88,7 @@
 		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7692E0A1251C163200C5FB9A /* VolumeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelector.swift; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		76A1D33A259933880032F7D9 /* CompatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatInfo.swift; sourceTree = "<group>"; };
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
 		76A626D72525055B002C57EA /* HowItWorks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorks.swift; sourceTree = "<group>"; };
 		76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallMedia.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				76FBF0E3253CEB2F0049A94E /* FinishedView.swift */,
 				7692E069251BFF9400C5FB9A /* Assets.xcassets */,
 				767167502550AE42000FAE80 /* ShellOut.swift */,
+				76A1D33A259933880032F7D9 /* CompatInfo.swift */,
 				76747BD82523A66F004596CC /* InstallAssistants.swift */,
 				7692E071251BFF9400C5FB9A /* Info.plist */,
 				7692E072251BFF9400C5FB9A /* Patched_Sur___For_Catalina.entitlements */,
@@ -361,6 +364,7 @@
 				76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */,
 				7692E0A2251C163200C5FB9A /* VolumeSelector.swift in Sources */,
 				76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */,
+				76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */,
 				76FBF0E4253CEB2F0049A94E /* FinishedView.swift in Sources */,
 				76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */,
 				76A626D82525055B002C57EA /* HowItWorks.swift in Sources */,
@@ -531,7 +535,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -539,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -559,7 +563,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -567,7 +571,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,7 +591,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
@@ -615,7 +619,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = Z3S9P7U36J;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;

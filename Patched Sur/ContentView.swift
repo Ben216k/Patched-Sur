@@ -48,6 +48,7 @@ struct ContentView: View {
         if !AppInfo.debug {
             systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
             print("Detected System Version: \(systemVersion)")
+            _ = try? shellOut(to: "mkdir ~/.patched-sur")
             _ = try? shellOut(to: "touch ~/.patched-sur/track.txt")
             releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
             print("Detected Release Track: \(releaseTrack)")

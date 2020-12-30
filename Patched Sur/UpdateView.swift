@@ -18,7 +18,6 @@ struct UpdateView: View {
     @State var skipAppCheck = true
     @State var installInfo = nil as InstallAssistant?
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
-    @State var appLocation = nil as String?
     let buildNumber: String
     var body: some View {
         ZStack {
@@ -97,7 +96,7 @@ struct UpdateView: View {
             case 3:
                 DownloadView(p: $progress, installInfo: $installInfo)
             case 4:
-                StartInstallView()
+                StartInstallView(installerPath: $packageLocation)
             default:
                 VStack {
                     Text("Uh-oh! Something went wrong going through the software update steps.\nError 1x\(progress)")
