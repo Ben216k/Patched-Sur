@@ -10,8 +10,7 @@ import SwiftUI
 struct ReleaseTrackView: View {
     @Binding var track: ReleaseTrack
     @Binding var p: Int
-    @State var hovered = nil as ReleaseTrack?
-    @State var buttonBG = Color.accentColor
+    @State var hovered = nil as String?
     var body: some View {
         VStack {
             Text("Set Update Track")
@@ -42,15 +41,6 @@ struct ReleaseTrackView: View {
                             .padding(8)
                             .background(track == .release ? Color.secondary.opacity(0.07) : Color.secondary.opacity(0.05))
                             .cornerRadius(10)
-                            .onHover(perform: { hovering in
-                                if hovering {
-                                    hovered = .release
-                                } else {
-                                    if hovered == .release {
-                                        hovered = nil
-                                    }
-                                }
-                            })
                     }
                 }.buttonStyle(BorderlessButtonStyle())
                 Button {
@@ -67,15 +57,6 @@ struct ReleaseTrackView: View {
                             .padding(8)
                             .background(track == .publicbeta ? Color.secondary.opacity(0.07) : Color.secondary.opacity(0.05))
                             .cornerRadius(10)
-                            .onHover(perform: { hovering in
-                                if hovering {
-                                    hovered = .publicbeta
-                                } else {
-                                    if hovered == .publicbeta {
-                                        hovered = nil
-                                    }
-                                }
-                            })
                     }
                 }.buttonStyle(BorderlessButtonStyle())
                 Button {
@@ -92,34 +73,43 @@ struct ReleaseTrackView: View {
                             .padding(8)
                             .background(track == .developer ? Color.secondary.opacity(0.07) : Color.secondary.opacity(0.05))
                             .cornerRadius(10)
-                            .onHover(perform: { hovering in
-                                if hovering {
-                                    hovered = .developer
-                                } else {
-                                    if hovered == .developer {
-                                        hovered = nil
-                                    }
-                                }
-                            })
                     }
                 }.buttonStyle(BorderlessButtonStyle())
             }
-            Button {
-                p = 10
-            } label: {
-                ZStack {
-                    buttonBG
-                        .cornerRadius(10)
-                        .onHover(perform: { hovering in
-                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
-                        })
-                    Text("Continue")
-                        .foregroundColor(.white)
-                        .padding(5)
-                        .padding(.horizontal, 10)
+            HStack {
+                Button {
+                    p = 2
+                } label: {
+                    ZStack {
+                        (hovered == "BACK" ? Color.secondary.opacity(0.7) : Color.secondary)
+                            .cornerRadius(10)
+                            .onHover(perform: { hovering in
+                                hovered = hovering ? "BACK" : nil
+                            })
+                        Text("Back")
+                            .foregroundColor(.white)
+                            .padding(5)
+                            .padding(.horizontal, 10)
+                    }
                 }
+                .buttonStyle(BorderlessButtonStyle())
+                Button {
+                    p = 10
+                } label: {
+                    ZStack {
+                        (hovered == "CONTINUE" ? Color.accentColor.opacity(0.7) : Color.accentColor)
+                            .cornerRadius(10)
+                            .onHover(perform: { hovering in
+                                hovered = hovering ? "CONTINUE" : nil
+                            })
+                        Text("Continue")
+                            .foregroundColor(.white)
+                            .padding(5)
+                            .padding(.horizontal, 10)
+                    }
+                }
+                .buttonStyle(BorderlessButtonStyle())
             }
-            .buttonStyle(BorderlessButtonStyle())
             .padding(.top, 10)
         }
     }

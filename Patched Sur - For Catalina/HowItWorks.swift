@@ -10,31 +10,60 @@ import SwiftUI
 struct HowItWorks: View {
     @Binding var p: Int
     @State var buttonBG = Color.accentColor
+    @State var hovered = nil as String?
     var body: some View {
         VStack {
-            Text("How it Works").bold()
+            ZStack {
+                Text("How it Works").bold()
+                HStack {
+                    Button {
+                        p = 1
+                    } label: {
+                        ZStack {
+                            (hovered == "BACK" ? Color.secondary.opacity(0.7) : Color.secondary)
+                                .cornerRadius(10)
+                                .onHover(perform: { hovering in
+                                    hovered = hovering ? "BACK" : nil
+                                })
+                            Text("Back")
+                                .font(.subheadline)
+                                .fontWeight(.regular)
+                                .foregroundColor(.white)
+                                .padding(6)
+                                .padding(.horizontal, 4)
+                        }
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding(.leading, 15)
+                    Spacer()
+                    Button {
+                        p = 9
+                    } label: {
+                        ZStack {
+                            (hovered == "CONTINUE" ? Color.accentColor.opacity(0.7) : Color.accentColor)
+                                .cornerRadius(10)
+                                .onHover(perform: { hovering in
+                                    hovered = hovering ? "CONTINUE" : nil
+                                })
+                            Text("Continue")
+                                .font(.subheadline)
+                                .fontWeight(.regular)
+                                .foregroundColor(.white)
+                                .padding(6)
+                                .padding(.horizontal, 4)
+                        }
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding(.trailing, 15)
+                }
+            }
             ScrollView {
                 Text(howItWorks)
                     .padding()
                     .multilineTextAlignment(.center)
             }
-            Button {
-                p = 9
-            } label: {
-                ZStack {
-                    buttonBG
-                        .cornerRadius(10)
-                        .onHover(perform: { hovering in
-                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
-                        })
-                    Text("Continue")
-                        .foregroundColor(.white)
-                        .padding(5)
-                        .padding(.horizontal, 50)
-                }
-            }
             .buttonStyle(BorderlessButtonStyle())
-        }.padding()
+        }.padding(.top, 15)
     }
 }
 

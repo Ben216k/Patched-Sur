@@ -122,6 +122,23 @@ struct InstallerChooser: View {
             .padding()
             HStack {
                 Button {
+                    p = 4
+                } label: {
+                    ZStack {
+                        hovered == "GO-BACK" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
+                        Text("Back")
+                            .font(.subheadline)
+                            .fontWeight(.regular)
+                            .foregroundColor(.white)
+                            .padding(6)
+                            .padding(.horizontal, 3)
+                    }.onHover { hovering in
+                        hovered = hovering ? "GO-BACK" : nil
+                    }
+                }.buttonStyle(BorderlessButtonStyle())
+                .fixedSize()
+                .padding([.vertical, .leading])
+                Button {
                     let dialog = NSOpenPanel()
 
                     dialog.title = "Choose an macOS Big Sur Installer"
@@ -147,7 +164,7 @@ struct InstallerChooser: View {
                 } label: {
                     ZStack {
                         hovered == "CHOOSE-OTHER" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
-                        Text("Find an Installer")
+                        Text("Browse")
                             .font(.subheadline)
                             .fontWeight(.regular)
                             .foregroundColor(.white)
@@ -158,7 +175,7 @@ struct InstallerChooser: View {
                     }
                 }.buttonStyle(BorderlessButtonStyle())
                 .fixedSize()
-                .padding()
+                .padding([.vertical, .trailing])
                 Spacer()
             }
         }
