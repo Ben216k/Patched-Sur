@@ -140,74 +140,74 @@ struct UpdateStatusView: View {
             }.fixedSize().font(.caption)
             
             TextAndButtonView(t: "View Other", b: "macOS Versions") {
-
+                
             }.font(.caption)
 
-            ZStack {
-                Rectangle()
-                    .foregroundColor(.secondary)
-                    .cornerRadius(10)
-                HStack(spacing: 0) {
-                    Text("Use macOS")
-                        .padding(6)
-                        .padding(.leading, 4)
-                        .foregroundColor(.white)
-                    Button {
-                        withAnimation {
-                            showOtherInstallers.toggle()
-                        }
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(hovered != "OS-LATEST" ? .accentColor : Color.accentColor.opacity(0.7))
-                                .cornerRadius(10)
-                            Text("Latest")
-                                .padding(6)
-                                .padding(.horizontal, 4)
-                                .foregroundColor(.white)
-                        }.fixedSize()
-                    }.buttonStyle(BorderlessButtonStyle())
-                    .onHover {
-                        hovered = $0 ? "OS-LATEST" : nil
-                    }
-                    if showOtherInstallers {
-                        Button {
-                            showOtherInstallers.toggle()
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(hovered != "OS-REINSTALL" ? .accentColor : Color.accentColor.opacity(0.7))
-                                    .cornerRadius(10)
-                                Text("Reinstall")
-                                    .padding(6)
-                                    .padding(.horizontal, 4)
-                                    .foregroundColor(.white)
-                            }.fixedSize()
-                        }.buttonStyle(BorderlessButtonStyle())
-                        .onHover {
-                            hovered = $0 ? "OS-REINSTALL" : nil
-                        }
-                        .padding(.leading, 5)
-                        Button {
-                            showOtherInstallers.toggle()
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(hovered != "OS-CUSTOM" ? .accentColor : Color.accentColor.opacity(0.7))
-                                    .cornerRadius(10)
-                                Text("Use My Own")
-                                    .padding(6)
-                                    .padding(.horizontal, 4)
-                                    .foregroundColor(.white)
-                            }.fixedSize()
-                        }.buttonStyle(BorderlessButtonStyle())
-                        .onHover {
-                            hovered = $0 ? "OS-CUSTOM" : nil
-                        }
-                        .padding(.leading, 5)
-                    }
-                }
-            }.fixedSize().font(.caption)
+//            ZStack {
+//                Rectangle()
+//                    .foregroundColor(.secondary)
+//                    .cornerRadius(10)
+//                HStack(spacing: 0) {
+//                    Text("Use macOS")
+//                        .padding(6)
+//                        .padding(.leading, 4)
+//                        .foregroundColor(.white)
+//                    Button {
+//                        withAnimation {
+//                            showOtherInstallers.toggle()
+//                        }
+//                    } label: {
+//                        ZStack {
+//                            Rectangle()
+//                                .foregroundColor(hovered != "OS-LATEST" ? .accentColor : Color.accentColor.opacity(0.7))
+//                                .cornerRadius(10)
+//                            Text("Latest")
+//                                .padding(6)
+//                                .padding(.horizontal, 4)
+//                                .foregroundColor(.white)
+//                        }.fixedSize()
+//                    }.buttonStyle(BorderlessButtonStyle())
+//                    .onHover {
+//                        hovered = $0 ? "OS-LATEST" : nil
+//                    }
+//                    if showOtherInstallers {
+//                        Button {
+//                            showOtherInstallers.toggle()
+//                        } label: {
+//                            ZStack {
+//                                Rectangle()
+//                                    .foregroundColor(hovered != "OS-REINSTALL" ? .accentColor : Color.accentColor.opacity(0.7))
+//                                    .cornerRadius(10)
+//                                Text("Reinstall")
+//                                    .padding(6)
+//                                    .padding(.horizontal, 4)
+//                                    .foregroundColor(.white)
+//                            }.fixedSize()
+//                        }.buttonStyle(BorderlessButtonStyle())
+//                        .onHover {
+//                            hovered = $0 ? "OS-REINSTALL" : nil
+//                        }
+//                        .padding(.leading, 5)
+//                        Button {
+//                            showOtherInstallers.toggle()
+//                        } label: {
+//                            ZStack {
+//                                Rectangle()
+//                                    .foregroundColor(hovered != "OS-CUSTOM" ? .accentColor : Color.accentColor.opacity(0.7))
+//                                    .cornerRadius(10)
+//                                Text("Use My Own")
+//                                    .padding(6)
+//                                    .padding(.horizontal, 4)
+//                                    .foregroundColor(.white)
+//                            }.fixedSize()
+//                        }.buttonStyle(BorderlessButtonStyle())
+//                        .onHover {
+//                            hovered = $0 ? "OS-CUSTOM" : nil
+//                        }
+//                        .padding(.leading, 5)
+//                    }
+//                }
+//            }.fixedSize().font(.caption)
         }
     }
 }

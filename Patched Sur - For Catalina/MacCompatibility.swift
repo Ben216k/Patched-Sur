@@ -31,12 +31,16 @@ struct MacCompatibility: View {
                                 .onHover(perform: { hovering in
                                     hovered = hovering ? "BACK" : nil
                                 })
-                            Text("Back")
-                                .font(.subheadline)
-                                .fontWeight(.regular)
-                                .foregroundColor(.white)
-                                .padding(6)
-                                .padding(.horizontal, 4)
+                            HStack(spacing: 3) {
+                                if #available(OSX 11.0, *) {
+                                    Image(systemName: "chevron.left.circle")
+                                        .font(.body)
+                                }
+                                Text("Back")
+                            }.font(.subheadline)
+                            .foregroundColor(.white)
+                            .padding(6)
+                            .padding(.horizontal, 4)
                         }
                     }
                     .buttonStyle(BorderlessButtonStyle())
@@ -53,12 +57,16 @@ struct MacCompatibility: View {
                                 .onHover(perform: { hovering in
                                     hovered = hovering ? "CONTINUE" : nil
                                 })
-                            Text("Continue")
-                                .font(.subheadline)
-                                .fontWeight(.regular)
-                                .foregroundColor(.white)
-                                .padding(6)
-                                .padding(.horizontal, 4)
+                            HStack(spacing: 3) {
+                                Text("Continue")
+                                if #available(OSX 11.0, *) {
+                                    Image(systemName: "chevron.right.circle")
+                                        .font(.body)
+                                }
+                            }.font(.subheadline)
+                            .foregroundColor(.white)
+                            .padding(6)
+                            .padding(.horizontal, 4)
                         }
                     }
                     .buttonStyle(BorderlessButtonStyle())
@@ -136,6 +144,8 @@ struct MacCompatibility: View {
                 }
             } else if progress2 == .noCompat {
                 Text("Unable to find the compatability report for your model. Your Mac will probably work assuming that this feature is new and not many people have contributed yet. However, you can still try it and if you do, please contribute your results, it's not that hard and well help more people in the future!")
+                    .padding()
+                    .multilineTextAlignment(.center)
             } else {
                 Text("Verifing Mac")
                     .bold()
@@ -185,7 +195,7 @@ struct VerifierProgressBar: View {
                                 return
                             }
                             progress = CGFloat(0.01)
-//                            macModel = "MacBookPro10,2"
+//                            macModel = "MacBookPro8,1"
                             print("Detected model:" + macModel)
                             print("Downloading model details from: https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/Compatibility/\(macModel.replacingOccurrences(of: ",", with: "%2C")).json")
                             do {
