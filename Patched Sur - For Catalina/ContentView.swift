@@ -14,7 +14,7 @@ struct ContentView: View {
             AllViews()
         }
         .frame(minWidth: 500, maxWidth: 500, minHeight: 300, maxHeight: 300)
-//        .background(colorScheme == .dark ? Color.black : Color.white)
+        .background(colorScheme == .dark ? Color.clear : Color.white)
     }
 }
 

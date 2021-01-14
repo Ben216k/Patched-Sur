@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Files
+import SwiftShell
 
 struct UpdateAppView: View {
     let latest: PatchedVersion
@@ -104,7 +105,7 @@ struct UpdateAppView: View {
                                         }
                                         print("Projected size: \(downloadSize)")
                                         print("Starting Download of updated Patched Sur...")
-                                        try shellOut(to: "curl -L \(latest.assets[1].browserDownloadURL) -o ~/.patched-sur/Patched-Sur.zip")
+                                        try runAndPrint(bash: "curl -L \(latest.assets[1].browserDownloadURL) -o ~/.patched-sur/Patched-Sur.zip")
                                         print("Unzipping download...")
                                         try shellOut(to: "unzip ~/.patched-sur/Patched-Sur.zip")
                                         print("Starting Patched Sur Updater...")

@@ -20,7 +20,7 @@ struct UpdateStatusView: View {
     var body: some View {
         VStack {
             Rectangle().foregroundColor(.clear).frame(height: 10)
-            if installInfo?.buildNumber != .some(buildNumber) {
+            if installInfo?.buildNumber != .some(buildNumber) || AppInfo.reinstall {
                 HStack(spacing: 0) {
                     SideImageView(releaseTrack: releaseTrack.rawValue, scale: 60)
                     VStack(alignment: .leading) {
@@ -139,9 +139,9 @@ struct UpdateStatusView: View {
                 }
             }.fixedSize().font(.caption)
             
-            TextAndButtonView(t: "View Other", b: "macOS Versions") {
-                
-            }.font(.caption)
+//            TextAndButtonView(t: "View Other", b: "macOS Versions") {
+//
+//            }.font(.caption)
 
 //            ZStack {
 //                Rectangle()

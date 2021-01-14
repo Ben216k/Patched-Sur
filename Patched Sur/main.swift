@@ -7,11 +7,11 @@
 
 import Foundation
 
-var mainLogger = PatchedSurLogger()
-
-func print(_ string: String) {
-    print(string, to: &mainLogger)
-}
+//var mainLogger = PatchedSurLogger()
+//
+//func print(_ string: String) {
+//    print(string, to: &mainLogger)
+//}
 
 print("Hello! If you're seeing this, you are seeing the logs of Patched Sur!")
 print("Or maybe running this from the command line...")
@@ -48,6 +48,10 @@ if CommandLine.arguments.count > 1 {
         print("Detected --safe option, starting straight into Patch Kexts.")
         AppInfo.safe = true
         PatchedSurSafeApp.main()
+    case "--allow-reinstall", "-r":
+        print("Detected --allow-reinstall option, reinstalls enabled.")
+        AppInfo.reinstall = true
+        PatchedSurApp.main()
     default:
         print("Unknown option detected. Defaulting to normal mode.")
         PatchedSurApp.main()

@@ -66,7 +66,7 @@ struct DownloadView: View {
                                         if let sizeString = try? shellOut(to: "curl -sI https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1 | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                             downloadSize = sizeInt
                                         }
-                                        try shellOut(to: "curl -Lo big-sur-micropatcher.zip https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1", at: "~/.patched-sur")
+                                        try runAndPrint(bash: "curl -Lo ~/.patched-sur/big-sur-micropatcher.zip https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1")
                                         print("Unzipping kexts...")
                                         try runAndPrint(bash: "unzip ~/.patched-sur/big-sur-micropatcher.zip -d ~/.patched-sur")
                                         print("Post-download clean up...")
@@ -103,7 +103,7 @@ struct DownloadView: View {
                                     if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                         installSize = sizeInt
                                     }
-                                    try shellOut(to: "curl -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
+                                    try runAndPrint(bash: "curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
                                     p = 4
                                 } catch {
                                     downloadStatus = error.localizedDescription
