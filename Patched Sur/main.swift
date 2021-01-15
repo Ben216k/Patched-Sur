@@ -24,11 +24,16 @@ AppInfo.debug = true
 print("Running Either Normally or From Terminal in RELEASE configuration.")
 #endif
 print("")
-if CommandLine.arguments.count > 1 {
-    switch CommandLine.arguments[1] {
+
+CommandLine.arguments.forEach { arg in
+    switch arg {
+    case "--help", "-h":
+        print("Help mode does not exist yet...")
+        exit(0)
     case "--update", "-u":
         print("Detected --update option, starting Patched Sur update.")
         updatePatchedApp()
+        exit(0)
     case "--debug", "-d":
         print("Detected --debug option, starting DEBUG mode.")
         print("\n==========================================\n")
@@ -43,20 +48,22 @@ if CommandLine.arguments.count > 1 {
         AppInfo.debug = true
         print("Starting normal Patched Sur with debug changes...")
         print("")
-        PatchedSurApp.main()
     case "--safe", "-s":
         print("Detected --safe option, starting straight into Patch Kexts.")
+        print("Note: all other command line options will be ignored.")
+        print("")
         AppInfo.safe = true
         PatchedSurSafeApp.main()
+        exit(0)
     case "--allow-reinstall", "-r":
         print("Detected --allow-reinstall option, reinstalls enabled.")
         AppInfo.reinstall = true
-        PatchedSurApp.main()
+    case "--force-skip-download", "-pre":
+        print("Detected --force-skip-download, skipping the download files step in the updater.")
+        AppInfo.usePredownloaded = true
     default:
-        print("Unknown option detected. Defaulting to normal mode.")
-        PatchedSurApp.main()
+        print("Unknown option detected. Ignoring option. (Use --help to see available options)")
     }
-} else {
-    print("No options detected. Defaulting to normal mode.")
-    PatchedSurApp.main()
 }
+
+PatchedSurApp.main()

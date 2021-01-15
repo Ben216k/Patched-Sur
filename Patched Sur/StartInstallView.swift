@@ -33,9 +33,9 @@ struct StartInstallView: View {
                                         _ = try? runAndPrint(bash: "rm -rf ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app")
                                         print("Installing package...")
                                         if installerPath == "~/.patched-sur/InstallAssistant.pkg" {
-                                            try runAndPrint(bash: "pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/trash")
+                                            try runAndPrint(bash: "cd ~/.patched-sur && pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/trash")
                                         } else {
-                                            try runAndPrint(bash: "pkgutil --expand-full '\(installerPath)' ~/.patched-sur/trash")
+                                        try runAndPrint(bash: "cd ~/.patched-sur && pkgutil --expand-full '\(installerPath)' ~/.patched-sur/trash")
                                         }
                                         _ = try? runAndPrint(bash: "rm -rf ~/.patched-sur/trash")
                                         print("Starting OS Install...")

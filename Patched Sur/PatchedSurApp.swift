@@ -52,6 +52,7 @@ final class AppInfo {
     static var safe = false
     static var debug = false
     static var reinstall = false
+    static var usePredownloaded = false
 }
 
 struct PatchedSurLogger: TextOutputStream {

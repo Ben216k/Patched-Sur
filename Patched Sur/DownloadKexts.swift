@@ -55,26 +55,31 @@ struct DownloadView: View {
                             .lineLimit(4)
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
-                                    do {
-                                        print("Cleaning up before download...")
-                                        _ = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
-                                        _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
-                                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/big-sur-micropatcher*")
-                                        _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
-                                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/__MACOSX")
-                                        print("Starting download of micropatcher...")
-                                        if let sizeString = try? shellOut(to: "curl -sI https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1 | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                                            downloadSize = sizeInt
+                                    if !AppInfo.usePredownloaded {
+                                        do {
+                                            print("Cleaning up before download...")
+                                            _ = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
+                                            _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
+                                            _ = try? shellOut(to: "rm -rf ~/.patched-sur/big-sur-micropatcher*")
+                                            _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
+                                            _ = try? shellOut(to: "rm -rf ~/.patched-sur/__MACOSX")
+                                            print("Starting download of micropatcher...")
+                                            if let sizeString = try? shellOut(to: "curl -sI https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1 | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                                downloadSize = sizeInt
+                                            }
+                                            try runAndPrint(bash: "curl -Lo ~/.patched-sur/big-sur-micropatcher.zip https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1")
+                                            print("Unzipping kexts...")
+                                            try runAndPrint(bash: "unzip ~/.patched-sur/big-sur-micropatcher.zip -d ~/.patched-sur")
+                                            print("Post-download clean up...")
+                                            _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
+                                            _ = try? shellOut(to: "rm -rf ~/.patched-sur/__MACOSX")
+                                            print("Finished downloading the micropatcher!")
+                                            kextDownloaded = true
+                                        } catch {
+                                            downloadStatus = error.localizedDescription
                                         }
-                                        try runAndPrint(bash: "curl -Lo ~/.patched-sur/big-sur-micropatcher.zip https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1")
-                                        print("Unzipping kexts...")
-                                        try runAndPrint(bash: "unzip ~/.patched-sur/big-sur-micropatcher.zip -d ~/.patched-sur")
-                                        print("Post-download clean up...")
-                                        _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
-                                        print("Finished downloading the micropatcher!")
+                                    } else {
                                         kextDownloaded = true
-                                    } catch {
-                                        downloadStatus = error.localizedDescription
                                     }
                                 }
                             }
@@ -97,16 +102,20 @@ struct DownloadView: View {
                         .lineLimit(4)
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
-                                do {
-                                    _ = try? shellOut(to: "sleep 3")
-                                    _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallAssistant.pkg")
-                                    if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                                        installSize = sizeInt
+                                if !AppInfo.usePredownloaded {
+                                    do {
+                                        _ = try? shellOut(to: "sleep 3")
+                                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallAssistant.pkg")
+                                        if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                            installSize = sizeInt
+                                        }
+                                        try runAndPrint(bash: "curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
+                                        p = 4
+                                    } catch {
+                                        downloadStatus = error.localizedDescription
                                     }
-                                    try runAndPrint(bash: "curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
+                                } else {
                                     p = 4
-                                } catch {
-                                    downloadStatus = error.localizedDescription
                                 }
                             }
                         }
