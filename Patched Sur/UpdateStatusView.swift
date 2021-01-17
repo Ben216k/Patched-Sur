@@ -48,7 +48,7 @@ struct UpdateStatusView: View {
             Rectangle().foregroundColor(.clear).frame(height: 0)
             TextAndButtonView(t: "What's New?", b: "Release Notes") {
                 let versionPieces = installInfo!.version.split(separator: " ")
-                NSWorkspace.shared.open(URL(string: "https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-\(versionPieces[0].replacingOccurrences(of: ".", with: "_"))\(versionPieces.contains("Beta") || versionPieces.contains("RC") ? "-beta" : "")-release-notes")!)
+                NSWorkspace.shared.open(URL(string: installInfo!.notes ?? "https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-\(versionPieces[0].replacingOccurrences(of: ".", with: "_"))\(versionPieces.contains("Beta") || versionPieces.contains("RC") ? "-beta" : "")-release-notes")!)
             }.font(.caption)
             ZStack {
                 Rectangle()

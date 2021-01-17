@@ -31,12 +31,17 @@ struct StartInstallView: View {
                                     if !installerPath.hasSuffix("app") {
                                         print("Clean up before extraction...")
                                         _ = try? runAndPrint(bash: "rm -rf ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app")
-                                        print("Installing package...")
+                                        _ = try? runAndPrint(bash: "rm -rf ~/.patched-sur/pkg-extract")
+                                        print("Unpacking package...")
                                         if installerPath == "~/.patched-sur/InstallAssistant.pkg" {
-                                            try runAndPrint(bash: "cd ~/.patched-sur && pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/trash")
+                                            try runAndPrint(bash: "cd ~/.patched-sur && pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/pkg-extract")
                                         } else {
-                                        try runAndPrint(bash: "cd ~/.patched-sur && pkgutil --expand-full '\(installerPath)' ~/.patched-sur/trash")
+                                            try runAndPrint(bash: "cd ~/.patched-sur && pkgutil --expand-full '\(installerPath)' ~/.patched-sur/pkg-extract")
                                         }
+                                        print("Organizing package...")
+                                        try runAndPrint(bash: "mv ~/.patched-sur/pkg-extract/Payload/Applications/Install\\ macOS\\ Big\\ Sur*.app ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app")
+                                        try runAndPrint(bash: "mkdir ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
+                                        try runAndPrint(bash: "mv ~/.patched-sur/pkg-extract/SharedSupport.dmg ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
                                         _ = try? runAndPrint(bash: "rm -rf ~/.patched-sur/trash")
                                         print("Starting OS Install...")
                                         try runAndPrint(bash: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction")
