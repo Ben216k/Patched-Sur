@@ -21,7 +21,7 @@ struct ContentView: View {
         ZStack {
 //            colorScheme == .dark ? Color.black : Color.white
             if atLocation == 0 {
-                MainView(at: $atLocation)
+                MainView(at: $atLocation, model: model)
             } else if atLocation == 1 {
                 UpdateView(at: $atLocation, buildNumber: buildNumber)
             } else if atLocation == 2 {
@@ -133,6 +133,7 @@ struct ContentView: View {
 struct MainView: View {
     @State var hovered = -1
     @Binding var at: Int
+    var model: String
     var body: some View {
         VStack {
             Text("Patched Sur")
@@ -160,7 +161,15 @@ struct MainView: View {
                 .buttonStyle(BorderlessButtonStyle())
 //                .padding(.leading, 1)
                 Button {
-                    at = 2
+                    if !model.hasPrefix("iMac14,") {
+                        at = 2
+                    } else {
+                        let errorAlert = NSAlert()
+                        errorAlert.alertStyle = .informational
+                        errorAlert.informativeText = "You don't need to patch the kexts on Late 2013 iMacs. Big Sur is already running at full functionality."
+                        errorAlert.messageText = "Patch Kexts Unnecessary"
+                        errorAlert.runModal()
+                    }
                 } label: {
                     VStack {
                         Image(systemName: "doc.circle")
