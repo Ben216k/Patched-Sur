@@ -43,6 +43,8 @@ struct StartInstallView: View {
                                         try runAndPrint(bash: "mkdir ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
                                         try runAndPrint(bash: "mv ~/.patched-sur/pkg-extract/SharedSupport.dmg ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
                                         _ = try? runAndPrint(bash: "rm -rf ~/.patched-sur/trash")
+                                        print("Injecting Hax...")
+                                        try runAndPrint(bash: "launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
                                         print("Starting OS Install...")
                                         try runAndPrint(bash: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction")
                                         print("Done, we should restart any time now...")
