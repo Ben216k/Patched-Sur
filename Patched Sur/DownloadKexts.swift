@@ -62,6 +62,8 @@ struct DownloadView: View {
                                             _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
                                             _ = try? shellOut(to: "rm -rf ~/.patched-sur/big-sur-micropatcher*")
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
+                                            _ = try? File(path: "~/.patched-sur/Helper.app.zip").delete()
+                                            _ = try? shellOut(to: "rm -rf ~/.patched-sur/Helper.app")
                                             _ = try? shellOut(to: "rm -rf ~/.patched-sur/__MACOSX")
                                             print("Starting download of micropatcher...")
                                             if let sizeString = try? shellOut(to: "curl -sI https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1 | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
@@ -70,8 +72,13 @@ struct DownloadView: View {
                                             try runAndPrint(bash: "curl -Lo ~/.patched-sur/big-sur-micropatcher.zip https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1")
                                             print("Unzipping kexts...")
                                             try runAndPrint(bash: "unzip ~/.patched-sur/big-sur-micropatcher.zip -d ~/.patched-sur")
+                                            print("Downloading Helper...")
+                                            try runAndPrint(bash: "curl -Lo ~/.patched-sur/Helper.app.zip https://github.com/patched-sur/patched-sur.github.io/raw/main/Helper.app.zip")
+                                            print("Unzipping Helper...")
+                                            try runAndPrint(bash: "unzip ~/.patched-sur/Helper.app.zip -d ~/.patched-sur")
                                             print("Post-download clean up...")
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
+                                            _ = try? File(path: "~/.patched-sur/Helper.app.zip").delete()
                                             _ = try? shellOut(to: "rm -rf ~/.patched-sur/__MACOSX")
                                             print("Finished downloading the micropatcher!")
                                             kextDownloaded = true

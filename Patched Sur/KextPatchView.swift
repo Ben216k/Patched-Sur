@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct KextPatchView: View {
+    @State var unpatch = ""
     @Binding var at: Int
     var body: AnyView {
         AnyView(VStack {
@@ -24,14 +25,23 @@ struct ButtonsView: View {
     @State var buttonBG = Color.accentColor
     @State var errorMessage = ""
     @State var installerName = ""
+    @State var unpatch = ""
     var body: some View {
         switch p {
         case 0:
-            DoubleButtonView(first: {
-                at = 0
-            }, second: {
-                p = 1
-            }, text: "Continue")
+            VStack(spacing: 4) {
+                DoubleButtonView(first: {
+                    at = 0
+                }, second: {
+                    p = 1
+                }, text: "Continue")
+                Button {
+                    unpatch = " -u"
+                } label: {
+                    Text("Unpatch Kexts")
+                        .font(.callout)
+                }.buttonStyle(BorderlessButtonStyle())
+            }
         case 1:
             RunActionsDisplayView(action: {
                 do {
@@ -44,7 +54,7 @@ struct ButtonsView: View {
                     print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta\"...")
                     installerName = (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
                     print("Assuming USB is at \"/Volumes/\(installerName)\"")
-                    try shellOut(to: "[[ -d '/Volumes/\(installerName)/patch-kexts.sh' ]]")
+                    try shellOut(to: "[[ -d '/Volumes/\(installerName)/patch-kexts.sh\(unpatch)' ]]")
                     p = 2
                 } catch {
                     print("USB is not at either detected place or does not have patch-kexts.sh on it.")
@@ -147,7 +157,13 @@ struct ButtonsView: View {
 
 struct TopKextsView: View {
     var body: some View {
-        Text("Patch Kexts").bold()
+        ZStack(alignment: .trailing) {
+            HStack {
+                Spacer()
+                Text("Patch Kexts").bold()
+                Spacer()
+            }
+        }
         Text("Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. Makes sense right?")
             .padding()
             .multilineTextAlignment(.center)
