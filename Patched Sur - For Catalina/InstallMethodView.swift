@@ -10,6 +10,7 @@ import SwiftUI
 struct InstallMethodView: View {
     @Binding var method: InstallMethod
     @State var buttonBG = Color.accentColor
+    @State var buttonBG2 = Color.secondary
     @Binding var p: Int
     @State var hovered = nil as InstallMethod?
     var body: some View {
@@ -70,28 +71,46 @@ struct InstallMethodView: View {
                     }
                 }.buttonStyle(BorderlessButtonStyle())
             }
-            Button {
-                if method != .clean {
-                    p = 3
+            HStack {
+                Button {
+                    p = 9
+                } label: {
+                    ZStack {
+                        buttonBG2
+                            .cornerRadius(10)
+                            .onHover(perform: { hovering in
+                                buttonBG2 = hovering ? Color.secondary.opacity(0.7) : Color.secondary
+                            })
+                        Text("Back")
+                            .foregroundColor(.white)
+                            .padding(5)
+                            .padding(.horizontal, 10)
+                    }
                 }
-            } label: {
-                ZStack {
-                    buttonBG
-                        .cornerRadius(10)
-                        .onHover(perform: { hovering in
-                            if method != .clean {
-                                buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
-                            }
-                        })
-                    Text("Continue")
-                        .foregroundColor(.white)
-                        .padding(5)
-                        .padding(.horizontal, 10)
+                .buttonStyle(BorderlessButtonStyle())
+                Button {
+                    if method != .clean {
+                        p = 3
+                    }
+                } label: {
+                    ZStack {
+                        buttonBG
+                            .cornerRadius(10)
+                            .onHover(perform: { hovering in
+                                if method != .clean {
+                                    buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
+                                }
+                            })
+                        Text("Continue")
+                            .foregroundColor(.white)
+                            .padding(5)
+                            .padding(.horizontal, 10)
+                    }
                 }
+                .buttonStyle(BorderlessButtonStyle())
+                .opacity(method == .clean ? 0.4 : 1)
             }
-            .buttonStyle(BorderlessButtonStyle())
             .padding(.top, 10)
-            .opacity(method == .clean ? 0.4 : 1)
         }
     }
 }

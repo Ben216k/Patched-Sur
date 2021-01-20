@@ -38,7 +38,10 @@ struct AllViews : View {
     var body: some View {
         switch progress {
         case 0:
-            MainView(p: $progress)
+            ZStack {
+                MainView(p: $progress)
+//                EnterPasswordPrompt(password: $password, show: .constant(true))
+            }
         case 1:
             MacCompatibility(p: $progress)
         case 2:

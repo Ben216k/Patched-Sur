@@ -17,6 +17,7 @@
 		76315578254CC96C00646CE9 /* PatchUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76315577254CC96C00646CE9 /* PatchUSB.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
 		76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76671F332522B3090004E0C2 /* InstallPackageView.swift */; };
+		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		767167522550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
@@ -50,6 +51,10 @@
 		76F11501256EDAD4001AB749 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11508256EE9FB001AB749 /* PatchedVersion.swift */; };
 		76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11510256EED85001AB749 /* UpdateAppView.swift */; };
+		76FB2B0D25B7FB29000AA55F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76FB2B0C25B7FB29000AA55F /* Assets.xcassets */; };
+		76FB2B1025B7FB29000AA55F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76FB2B0F25B7FB29000AA55F /* Preview Assets.xcassets */; };
+		76FB2B1D25B7FB49000AA55F /* Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB2B1C25B7FB49000AA55F /* Extras.swift */; };
+		76FB2B2225B7FB56000AA55F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB2B2125B7FB56000AA55F /* main.swift */; };
 		76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */; };
 		76FBF0E4253CEB2F0049A94E /* FinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0E3253CEB2F0049A94E /* FinishedView.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +71,7 @@
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
 		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
 		76671F332522B3090004E0C2 /* InstallPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallPackageView.swift; sourceTree = "<group>"; };
+		76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
 		76747BD82523A66F004596CC /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
 		76772CE925410B40003FE2A2 /* InstallerChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerChooser.swift; sourceTree = "<group>"; };
@@ -157,6 +163,7 @@
 				76D639DC2576302500B38FBE /* main.swift */,
 				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
 				7692E067251BFF9300C5FB9A /* ContentView.swift */,
+				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
 				76772CE925410B40003FE2A2 /* InstallerChooser.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,
@@ -374,6 +381,7 @@
 				76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */,
 				76A626D82525055B002C57EA /* HowItWorks.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
+				76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +547,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -567,7 +575,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -595,7 +603,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -624,7 +632,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";

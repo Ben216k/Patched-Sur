@@ -323,10 +323,10 @@ struct ProgressBar: View {
         ZStack(alignment: .leading) {
             Rectangle().frame(minWidth: length)
                 .opacity(0.3)
-                .foregroundColor(Color(.systemTeal))
+                .foregroundColor(Color.accentColor.opacity(0.3))
             
             Rectangle().frame(width: min(value*length, length))
-                .foregroundColor(Color(.systemBlue))
+                .foregroundColor(.accentColor)
                 .animation(.linear)
         }.cornerRadius(10)
     }
