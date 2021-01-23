@@ -29,45 +29,11 @@ struct Settings: View {
                     }
                     HStack {
                         CustomColoredButton("Disable Animations") {
-                            _ = try? shellOut(to: "defaults write -g NSAutomaticWindowAnimationsEnabled -bool false")
-                            _ = try? shellOut(to: "defaults write -g NSScrollAnimationEnabled -bool false")
-                            _ = try? shellOut(to: "defaults write -g NSWindowResizeTime -float 0.001")
-                            _ = try? shellOut(to: "defaults write -g QLPanelAnimationDuration -float 0")
-                            _ = try? shellOut(to: "defaults write -g NSScrollViewRubberbanding -bool false")
-                            _ = try? shellOut(to: "defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false")
-                            _ = try? shellOut(to: "defaults write -g NSToolbarFullScreenAnimationDuration -float 0")
-                            _ = try? shellOut(to: "defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0")
-                            _ = try? shellOut(to: "defaults write com.apple.dock autohide-time-modifier -float 0")
-                            _ = try? shellOut(to: "defaults write com.apple.dock autohide-delay -float 0")
-                            _ = try? shellOut(to: "defaults write com.apple.dock expose-animation-duration -float 0")
-                            _ = try? shellOut(to: "defaults write com.apple.dock springboard-show-duration -float 0")
-                            _ = try? shellOut(to: "defaults write com.apple.dock springboard-hide-duration -float 0")
-                            _ = try? shellOut(to: "defaults write com.apple.dock springboard-page-duration -float 0")
-                            _ = try? shellOut(to: "defaults write com.apple.finder DisableAllAnimations -bool true")
-                            _ = try? shellOut(to: "defaults write com.apple.Mail DisableSendAnimations -bool true")
-                            _ = try? shellOut(to: "defaults write com.apple.Mail DisableReplyAnimations -bool true")
-                            _ = try? shellOut(to: "defaults write NSGlobalDomain NSWindowResizeTime .001")
+                            disableAnimations()
                             self.showingAlert = true
                         }
                         CustomColoredButton("Enable Animations") {
-                            _ = try? shellOut(to: "defaults delete -g NSAutomaticWindowAnimationsEnabled")
-                            _ = try? shellOut(to: "defaults delete -g NSScrollAnimationEnabled")
-                            _ = try? shellOut(to: "defaults delete -g NSWindowResizeTime")
-                            _ = try? shellOut(to: "defaults delete -g QLPanelAnimationDuration")
-                            _ = try? shellOut(to: "defaults delete -g NSScrollViewRubberbanding")
-                            _ = try? shellOut(to: "defaults delete -g NSDocumentRevisionsWindowTransformAnimation")
-                            _ = try? shellOut(to: "defaults delete -g NSToolbarFullScreenAnimationDuration")
-                            _ = try? shellOut(to: "defaults delete -g NSBrowserColumnAnimationSpeedMultiplier")
-                            _ = try? shellOut(to: "defaults delete com.apple.dock autohide-time-modifier")
-                            _ = try? shellOut(to: "defaults delete com.apple.dock autohide-delay")
-                            _ = try? shellOut(to: "defaults delete com.apple.dock expose-animation-duration")
-                            _ = try? shellOut(to: "defaults delete com.apple.dock springboard-show-duration")
-                            _ = try? shellOut(to: "defaults delete com.apple.dock springboard-hide-duration")
-                            _ = try? shellOut(to: "defaults delete com.apple.dock springboard-page-duration")
-                            _ = try? shellOut(to: "defaults delete com.apple.finder DisableAllAnimations")
-                            _ = try? shellOut(to: "defaults delete com.apple.Mail DisableSendAnimations")
-                            _ = try? shellOut(to: "defaults delete com.apple.Mail DisableReplyAnimations")
-                            _ = try? shellOut(to: "defaults delete NSGlobalDomain NSWindowResizeTime")
+                            enableAnimations()
                             self.showingAlert = true
                         }
                         .alert(isPresented: $showingAlert) {
@@ -77,12 +43,35 @@ struct Settings: View {
                     }.padding(.top, 10)
                     .padding(.bottom, 2)
                     Text("Manage Animations. Disabling animations can greatly improve performance on Macs without Metal. A reboot is required to apply these changes.")
+                    CustomColoredButton("Contribute Your Expriences") {
+                        NSWorkspace.shared.open("https://github.com/BenSova/Patched-Sur-Compatibility")
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding(.top, 10)
+                    .padding(.bottom, 2)
+                    Text("The preinstall app in Patched Sur has a new feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
+                        .font(.caption)
+                    CustomColoredButton("Clean Leftovers") {
+                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallAssistant.pkg")
+                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/Install\\ macOS Big\\ Sur*.app")
+                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallInfo.txt")
+                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/trash")
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding(.top, 10)
+                    .padding(.bottom, 2)
+                    Text("Sometimes, Patched Sur accidentally leaves little leftovers from when something ran. This could at times save 12GB of storage space, this is suggested especially after you run the updater.")
+                        .font(.caption)
+                    Text("Patched Sur by Ben Sova")
+                        .bold()
+                        .padding(.top, 5)
+                    Text("Thanks to BarryKN, ASentientBot, jackluke, highvoltage12v, ParrotGeek, testheit, Ausdauersportler, StarPlayrX, ASentientHedgehog, John_Val, fromeister2009 and many others!")
                         .font(.caption)
                 }.font(.subheadline)
                 .foregroundColor(.white)
                 .padding(.leading, 2)
-                .padding(.horizontal, 50)
-            }.padding(.vertical, 40)
+                .padding(.horizontal, 35)
+            }.padding(.vertical, 25)
         }
         .environment(\.releaseTrack, releaseTrack)
     }
@@ -134,4 +123,46 @@ extension EnvironmentValues {
             self[ReleaseTrackKey] = newValue
         }
     }
+}
+
+func disableAnimations() {
+    _ = try? shellOut(to: "defaults write -g NSAutomaticWindowAnimationsEnabled -bool false")
+    _ = try? shellOut(to: "defaults write -g NSScrollAnimationEnabled -bool false")
+    _ = try? shellOut(to: "defaults write -g NSWindowResizeTime -float 0.001")
+    _ = try? shellOut(to: "defaults write -g QLPanelAnimationDuration -float 0")
+    _ = try? shellOut(to: "defaults write -g NSScrollViewRubberbanding -bool false")
+    _ = try? shellOut(to: "defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false")
+    _ = try? shellOut(to: "defaults write -g NSToolbarFullScreenAnimationDuration -float 0")
+    _ = try? shellOut(to: "defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0")
+    _ = try? shellOut(to: "defaults write com.apple.dock autohide-time-modifier -float 0")
+    _ = try? shellOut(to: "defaults write com.apple.dock autohide-delay -float 0")
+    _ = try? shellOut(to: "defaults write com.apple.dock expose-animation-duration -float 0")
+    _ = try? shellOut(to: "defaults write com.apple.dock springboard-show-duration -float 0")
+    _ = try? shellOut(to: "defaults write com.apple.dock springboard-hide-duration -float 0")
+    _ = try? shellOut(to: "defaults write com.apple.dock springboard-page-duration -float 0")
+    _ = try? shellOut(to: "defaults write com.apple.finder DisableAllAnimations -bool true")
+    _ = try? shellOut(to: "defaults write com.apple.Mail DisableSendAnimations -bool true")
+    _ = try? shellOut(to: "defaults write com.apple.Mail DisableReplyAnimations -bool true")
+    _ = try? shellOut(to: "defaults write NSGlobalDomain NSWindowResizeTime .001")
+}
+
+func enableAnimations() {
+    _ = try? shellOut(to: "defaults delete -g NSAutomaticWindowAnimationsEnabled")
+    _ = try? shellOut(to: "defaults delete -g NSScrollAnimationEnabled")
+    _ = try? shellOut(to: "defaults delete -g NSWindowResizeTime")
+    _ = try? shellOut(to: "defaults delete -g QLPanelAnimationDuration")
+    _ = try? shellOut(to: "defaults delete -g NSScrollViewRubberbanding")
+    _ = try? shellOut(to: "defaults delete -g NSDocumentRevisionsWindowTransformAnimation")
+    _ = try? shellOut(to: "defaults delete -g NSToolbarFullScreenAnimationDuration")
+    _ = try? shellOut(to: "defaults delete -g NSBrowserColumnAnimationSpeedMultiplier")
+    _ = try? shellOut(to: "defaults delete com.apple.dock autohide-time-modifier")
+    _ = try? shellOut(to: "defaults delete com.apple.dock autohide-delay")
+    _ = try? shellOut(to: "defaults delete com.apple.dock expose-animation-duration")
+    _ = try? shellOut(to: "defaults delete com.apple.dock springboard-show-duration")
+    _ = try? shellOut(to: "defaults delete com.apple.dock springboard-hide-duration")
+    _ = try? shellOut(to: "defaults delete com.apple.dock springboard-page-duration")
+    _ = try? shellOut(to: "defaults delete com.apple.finder DisableAllAnimations")
+    _ = try? shellOut(to: "defaults delete com.apple.Mail DisableSendAnimations")
+    _ = try? shellOut(to: "defaults delete com.apple.Mail DisableReplyAnimations")
+    _ = try? shellOut(to: "defaults delete NSGlobalDomain NSWindowResizeTime")
 }

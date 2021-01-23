@@ -15,7 +15,7 @@ struct UpdateView: View {
     @State var installers = nil as InstallAssistants?
     @State var track = ReleaseTrack.release
     @State var latestPatch = nil as PatchedVersion?
-    @State var skipAppCheck = true
+    @State var skipAppCheck = false
     @State var installInfo = nil as InstallAssistant?
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
     let buildNumber: String
