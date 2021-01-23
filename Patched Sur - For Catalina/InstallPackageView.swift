@@ -222,7 +222,7 @@ struct InstallPackageView: View {
                         Button {
                             if password != "" {
                                 do {
-                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S echo Hi")
+                                    try call("echo Hi", p: password)
                                     if installer != nil {
                                         p = 5
                                     } else {
@@ -268,11 +268,11 @@ struct InstallPackageView: View {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     if package == "~/.patched-sur/InstallAssistant.pkg" {
-                                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
+                                        try call("installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /", p: password)
                                     } else {
-                                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg \"\(package)\" -target /")
+                                        try call("installer -pkg \"\(package)\" -target /", p: password)
                                     }
-                                    _ = try? shellOut(to: "echo \"\(track)\" > ~/.patched-sur/track.txt")
+                                    _ = try? call("echo \"\(track)\" > ~/.patched-sur/track.txt")
                                     p = 5
                                 } catch {
                                     downloadStatus = error.localizedDescription

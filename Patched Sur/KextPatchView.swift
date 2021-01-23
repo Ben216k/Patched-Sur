@@ -47,15 +47,15 @@ struct ButtonsView: View {
             RunActionsDisplayView(action: {
                 do {
                     print("Checking for kexts at \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\"")
-                    if (try? shellOut(to: "[[ -d \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\" ]]")) != nil {
+                    if (try? call("[[ -d \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\" ]]")) != nil {
                         print("Found pre-downloaded kexts!")
                         p = 2
                         return
                     }
                     print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta\"...")
-                    installerName = (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
+                    installerName = (try? call("[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
                     print("Assuming USB is at \"/Volumes/\(installerName)\"")
-                    try shellOut(to: "[[ -d '/Volumes/\(installerName)/patch-kexts.sh\(unpatch)' ]]")
+                    try call("[[ -d '/Volumes/\(installerName)/patch-kexts.sh\(unpatch)' ]]")
                     p = 2
                 } catch {
                     print("USB is not at either detected place or does not have patch-kexts.sh on it.")
@@ -84,7 +84,7 @@ struct ButtonsView: View {
         case 3:
             RunActionsDisplayView(action: {
                 do {
-                    let patchOutput = try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S '/Volumes/\(installerName)/patch-kexts.sh'")
+                    let patchOutput = try call("'/Volumes/\(installerName)/patch-kexts.sh'", p: password)
                     print("\n==========================================\n")
                     print(patchOutput)
                     print("\n==========================================\n")
@@ -131,7 +131,7 @@ struct ButtonsView: View {
             Button {
                 DispatchQueue.global(qos: .background).async {
                     do {
-                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S sudo reboot")
+                        try call("reboot", p: password)
                     } catch {
                         print("Error running restart, but they can do it themselves.")
                         presentAlert(m: "Failed to Reboot", i: "You can do it yourself! Cmd+Control+Eject (or Cmd+Control+Power if you want it to be faster) will reboot your computer, or you can use the Apple logo in the corner of the screen. Your choice, they all work.")

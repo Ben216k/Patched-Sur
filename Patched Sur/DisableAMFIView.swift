@@ -18,14 +18,14 @@ struct DisableAMFIView: View {
                 .multilineTextAlignment(.center)
             EnterPasswordButton(password: $password) {
                 do {
-                    let current = (try? shellOut(to: "nvram boot-args")) ?? "-no_compat_check"
-                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S nvram boot-args=\"\(current) amfi_get_out_of_my_way=1\"")
+                    let current = (try? call("nvram boot-args")) ?? "-no_compat_check"
+                    try call("nvram boot-args=\"\(current) amfi_get_out_of_my_way=1\"", p: password)
                 } catch {
                     print("Failed to update NVRAM.")
                     presentAlert(m: "Failed to update boot-args", i: "Patched Sur was unable to update your boot-args. If you want to do it yourself,  run nvram boot-args=\"-no_compat_check amfi_get_out_of_my_way=1\" in terminal. Yes, you are telling AMFI to get out of your way. After that, restart then run Patched Sur again.", s: .warning)
                 }
                 do {
-                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S reboot")
+                    try call("reboot", p: password)
                 } catch {
                     print("Failed to reboot, telling the user to do it themself.")
                     presentAlert(m: "Failed to Reboot", i: "You can do it yourself! Cmd+Control+Eject (or Cmd+Control+Power if you want it to be faster) will reboot your computer, or you can use the Apple logo in the corner of the screen. Your choice, they all work.", s: .warning)

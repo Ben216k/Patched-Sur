@@ -97,7 +97,7 @@ struct EnterPasswordButton: View {
             Button {
                 if password != "" {
                     do {
-                        try shellOut(to: "echo \"\(password)\" | sudo -S echo Hi")
+                        try call("echo Hi", p: password)
                         onDone()
                     } catch {
                         invalidPassword = true

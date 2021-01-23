@@ -46,22 +46,22 @@ struct ContentView: View {
     
     init(at: Binding<Int>) {
         if !AppInfo.debug {
-            systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
+            systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
             print("Detected System Version: \(systemVersion)")
-//            _ = try? shellOut(to: "mkdir ~/.patched-sur")
-//            _ = try? shellOut(to: "touch ~/.patched-sur/track.txt")
-            releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
+//            _ = try? call("mkdir ~/.patched-sur")
+//            _ = try? call("touch ~/.patched-sur/track.txt")
+            releaseTrack = (try? call("cat ~/.patched-sur/track.txt")) ?? "INVALID"
             print("Detected Release Track: \(releaseTrack)")
-            gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+            gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
             gpu.removeLast(2)
             print("Detected GPU: \(gpu)")
-            model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
+            model = (try? call("sysctl -n hw.model")) ?? "MacModelX,Y"
             print("Detected Mac Model: \(model)")
-            cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+            cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
             print("Detected CPU: \(cpu)")
-            memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
+            memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
             print("Detected Memory Amount: \(memory)")
-            buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
+            buildNumber = (try? call("sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
             if buildNumber.count > 14 {
                 buildNumber.removeFirst(14)
             } else {
@@ -70,7 +70,7 @@ struct ContentView: View {
             print("Detected macOS Build Number: \(buildNumber)")
         } else {
             if !CommandLine.arguments.contains("versionFormatted") {
-                systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
+                systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
                 print("Detected System Version: \(systemVersion)")
             } else {
                 print("DEBUG OVERRIDE: Skipping macOS Formatted System Version Check.")
@@ -78,7 +78,7 @@ struct ContentView: View {
                 systemVersion = "11.XX.YY"
             }
             if !CommandLine.arguments.contains("releaseTrack") {
-                releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
+                releaseTrack = (try? call("cat ~/.patched-sur/track.txt")) ?? "INVALID"
                 print("Detected Release Track: \(releaseTrack)")
             } else {
                 print("DEBUG OVERRIDE: Skipping Patched Sur Release Track Check.")
@@ -86,7 +86,7 @@ struct ContentView: View {
                 releaseTrack = "Release"
             }
             if !CommandLine.arguments.contains("gpuCheck") {
-                gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+                gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
                 gpu.removeLast(2)
                 print("Detected GPU: \(gpu)")
             } else {
@@ -95,7 +95,7 @@ struct ContentView: View {
                 gpu = "Integrated HD Bug Graphics"
             }
             if !CommandLine.arguments.contains("macModel") {
-                model = (try? shellOut(to: "sysctl -n hw.model")) ?? "MacModelX,Y"
+                model = (try? call("sysctl -n hw.model")) ?? "MacModelX,Y"
                 print("Detected Mac Model: \(model)")
             } else {
                 print("DEBUG OVERRIDE: Skipping Hardware Mac Model Check.")
@@ -103,7 +103,7 @@ struct ContentView: View {
                 model = "MacModelD,B"
             }
             if !CommandLine.arguments.contains("cpuCheck") {
-                cpu = (try? shellOut(to: "sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+                cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
                 print("Detected CPU: \(cpu)")
             } else {
                 print("DEBUG OVERRIDE: Skipping Hardware CPU Check.")
@@ -111,7 +111,7 @@ struct ContentView: View {
                 cpu = "Intel iDebug Core @ 100.3GHz"
             }
             if !CommandLine.arguments.contains("memoryCheck") {
-                memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
+                memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
                 print("Detected Memory Amount: \(memory)")
             } else {
                 print("DEBUG OVERRIDE: Skipping Hardware Memory Check.")
@@ -119,7 +119,7 @@ struct ContentView: View {
                 memory = "10k"
             }
             if !CommandLine.arguments.contains("buildNumber") {
-                buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
+                buildNumber = (try? call("sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
                 buildNumber.removeFirst(14)
                 print("Detected macOS Build Number: \(buildNumber)")
             } else {
@@ -154,8 +154,8 @@ struct MainView: View {
                             print("Some details were failed to fetch in the inital launch sequence.")
                             print("Warning user, and attempting to recover.")
                             do {
-                                try shellOut(to: "[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")
-                                try shellOut(to: "[[ -e ~/.patched-sur/track.txt ]] || echo Release > ~/.patched-sur/track.txt")
+                                try call("[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")
+                                try call("[[ -e ~/.patched-sur/track.txt ]] || echo Release > ~/.patched-sur/track.txt")
                                 presentAlert(m: "Patched Sur Needs To Restart", i: "The Patched Sur app encountered a problem during launch that prevented access to some necessary data that is required during updates. Patched Sur ran some opperations that should protect against this problem, and simply restarting the app should fix this problem. When you click okay, the app will close and then you should be able to open it again and this problem will be solved.", s: .informational)
                                 exit(0)
                             } catch {

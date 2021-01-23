@@ -14,7 +14,6 @@
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		7625796B25423FDC00508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796A25423FDC00508A71 /* Files */; };
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
-		76315578254CC96C00646CE9 /* PatchUSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76315577254CC96C00646CE9 /* PatchUSB.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
 		763AA41125BBCFF100C7C14F /* DisableAMFIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AA41025BBCFF100C7C14F /* DisableAMFIView.swift */; };
 		76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76671F332522B3090004E0C2 /* InstallPackageView.swift */; };
@@ -64,7 +63,6 @@
 		761112342576CBAA0065D7CB /* InstallIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = InstallIcon.icns; sourceTree = "<group>"; };
 		762908AD25760F630021244B /* EFIIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = EFIIcon.icns; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
-		76315577254CC96C00646CE9 /* PatchUSB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchUSB.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
 		763AA41025BBCFF100C7C14F /* DisableAMFIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableAMFIView.swift; sourceTree = "<group>"; };
 		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				7692E0A1251C163200C5FB9A /* VolumeSelector.swift */,
 				76A626DF25252C7C002C57EA /* ConfirmVolume.swift */,
 				76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */,
-				76315577254CC96C00646CE9 /* PatchUSB.swift */,
 				76FBF0E3253CEB2F0049A94E /* FinishedView.swift */,
 				7692E069251BFF9400C5FB9A /* Assets.xcassets */,
 				767167502550AE42000FAE80 /* ShellOut.swift */,
@@ -371,7 +368,6 @@
 				7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */,
 				7692E090251C077400C5FB9A /* MainView.swift in Sources */,
 				76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */,
-				76315578254CC96C00646CE9 /* PatchUSB.swift in Sources */,
 				76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */,
 				7692E0A2251C163200C5FB9A /* VolumeSelector.swift in Sources */,
 				76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */,

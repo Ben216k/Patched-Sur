@@ -39,7 +39,7 @@ struct UpdateStatusView: View {
                     print("Check for AMFI...")
                     var bootargs = ""
                     do {
-                        bootargs = try shellOut(to: "nvram boot-args")
+                        bootargs = try call("nvram boot-args")
                     } catch {
                         print("Failed to check boot args. This is unexpected, and should be impossible.")
                         presentAlert(m: "Failed to check boot-args.", i: "Patched Sur failed to check your boot args, which should be impossible. If the boot-args value did not exist, you wouldn't be able to boot macOS, so that couldn't be an issue.\n\n\(error.localizedDescription)")
@@ -99,7 +99,7 @@ struct UpdateStatusView: View {
                     if showMoreTracks {
                         Button {
                             do {
-                                try shellOut(to: "echo '\(releaseTrack != .release ? "Release" : (releaseTrack != .publicbeta ? "Public Beta" : "Developer"))' > ~/.patched-sur/track.txt")
+                                try call("echo '\(releaseTrack != .release ? "Release" : (releaseTrack != .publicbeta ? "Public Beta" : "Developer"))' > ~/.patched-sur/track.txt")
                                 showMoreTracks = false
                                 releaseTrack = releaseTrack != .release ? .release : (releaseTrack != .publicbeta ? .publicbeta : .developer)
                                 p = 0
@@ -128,7 +128,7 @@ struct UpdateStatusView: View {
                         .padding(.horizontal, 5)
                         Button {
                             do {
-                                try shellOut(to: "echo '\(releaseTrack != .developer ? "Developer" : (releaseTrack != .publicbeta ? "Public Beta" : "Release"))' > ~/.patched-sur/track.txt")
+                                try call("echo '\(releaseTrack != .developer ? "Developer" : (releaseTrack != .publicbeta ? "Public Beta" : "Release"))' > ~/.patched-sur/track.txt")
                                 showMoreTracks = false
                                 releaseTrack = releaseTrack != .developer ? .developer : (releaseTrack != .publicbeta ? .publicbeta : .release)
                                 p = 0

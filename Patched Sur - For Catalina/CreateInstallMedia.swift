@@ -38,17 +38,13 @@ struct CreateInstallMedia: View {
                         .padding(.horizontal, 4)
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
-//                                if (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta/Install macOS Big Sur Beta.app' ]]")) != nil {
-//                                    downloadStatus = "Adding Kexts..."
-//                                    return
-//                                }
                                 do {
-                                    let diskUtilList = try shellOut(to: "diskutil list /Volumes/\(volume.replacingOccurrences(of: " ", with: "\\ "))")
+                                    let diskUtilList = try call("diskutil list /Volumes/\(volume.replacingOccurrences(of: " ", with: "\\ "))")
                                     var diskStart = diskUtilList.split(separator: "\n")[2]
                                     diskStart.removeFirst("   0:      GUID_partition_scheme                        *32.0 GB    ".count)
                                     diskID = String(diskStart.prefix(6))
                                     if diskID.hasSuffix("s") { diskID.removeLast() }
-                                    try shellOut(to: "diskutil eraseDisk JHFS+ Install\\ macOS\\ Big\\ Sur\\ Beta GPT \(diskID)")
+                                    try call("diskutil eraseDisk JHFS+ Install\\ macOS\\ Big\\ Sur GPT \(diskID)")
                                     downloadStatus = "Copying Installer..."
                                 } catch {
                                     downloadStatus = error.localizedDescription
@@ -74,7 +70,7 @@ struct CreateInstallMedia: View {
                                                                                 reasonForActivity,
                                                                                 &assertionID )
                                     if success == kIOReturnSuccess {
-                                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S \"\(installer ?? "\((try? Folder(path: "/Applications/Install macOS Big Sur.app").path) ?? "/Applications/Install macOS Big Sur Beta.app")")/Contents/Resources/createinstallmedia\" --volume /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta --nointeraction")
+                                        try call("\(installer?.replacingOccurrences(of: " ", with: "\\ ") ?? "Install\\ macOS\\ Big\\ Sur*.app")/Contents/Resources/createinstallmedia --volume /Volumes/Install\\ macOS\\ Big\\ Sur --nointeraction", p: password)
                                         
                                         success = IOPMAssertionRelease(assertionID)
                                         downloadStatus = "Adding Kexts..."
@@ -98,9 +94,7 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
-//                                    try shellOut(to: "~/.patched-sur/big-sur-micropatcher/micropatcher.sh")
-//                                    try patchUSB(password)
-                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S /Volumes/Patched-Sur/.patch-usb.sh")
+                                    try call("/Volumes/Patched-Sur/.patch-usb.sh", p: password)
                                     downloadStatus = "Injecting Full App..."
                                 } catch {
                                     downloadStatus = error.localizedDescription
@@ -119,8 +113,8 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .utility).async {
                                 do {
-                                    _ = try shellOut(to: "rm -rf \"/Applications/Patched Sur.app\"")
-                                    try shellOut(to: "cp -rf \"/Volumes/Patched-Sur/.fullApp.app\" \"/Applications/Patched Sur.app\"")
+                                    _ = try call("rm -rf \"/Applications/Patched Sur.app\"")
+                                    try call("cp -rf \"/Volumes/Patched-Sur/.fullApp.app\" \"/Applications/Patched Sur.app\"")
                                     p = 8
                                 } catch {
                                     downloadStatus = error.localizedDescription

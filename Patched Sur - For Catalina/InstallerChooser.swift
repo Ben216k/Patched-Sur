@@ -222,7 +222,7 @@ struct InstallerCell: View {
                         }
                     } else {
                         if AppInfo.build >= installer.minVersion {
-                            hovered == installer.version ? Color.blue.opacity(0.7).cornerRadius(10) : Color.blue.cornerRadius(10)
+                            hovered == installer.version ? Color.accentColor.opacity(0.7).cornerRadius(10) : Color.accentColor.cornerRadius(10)
                         } else {
                             hovered == installer.version ? Color.red.opacity(0.7).cornerRadius(10) : Color.red.cornerRadius(10)
                         }

@@ -57,8 +57,8 @@ func updatePatchedApp() {
     print("Deleting old copy of Patched Sur")
 
     do {
-        try shellOut(to: "rm -r '/Applications/Patched Sur.app'")
-        try shellOut(to: "[[ ! -d '/Applications/Patched Sur.app' ]]")
+        try call("rm -r '/Applications/Patched Sur.app'")
+        try call("[[ ! -d '/Applications/Patched Sur.app' ]]")
     } catch {
         print("\n==========================================\n")
 
@@ -79,7 +79,7 @@ func updatePatchedApp() {
     print("Starting copy of \(newApp.path) to /Applications/Patched Sur.app")
     
     do {
-        try shellOut(to: "cp -rf ~/.patched-sur/Patched\\ Sur.app /Applications")
+        try call("cp -rf ~/.patched-sur/Patched\\ Sur.app /Applications")
     } catch {
         print("\n==========================================\n")
         
@@ -105,8 +105,8 @@ func updatePatchedApp() {
     print("Switching to full Patched Sur...")
     
     do {
-//        try shellOut(to: "'/Applications/Patched Sur.app/Contents/MacOS/Patched Sur' &")
-        try shellOut(to: "open '/Applications/Patched Sur.app/'")
+//        try call("'/Applications/Patched Sur.app/Contents/MacOS/Patched Sur' &")
+        try call("open '/Applications/Patched Sur.app/'")
     } catch {
         print("Failed to open Patched Sur app, but you can do that yourself.")
         let errorAlert = NSAlert()
