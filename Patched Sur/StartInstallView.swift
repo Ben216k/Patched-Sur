@@ -52,14 +52,16 @@ struct StartInstallView: View {
 //                                        print("Starting helper for startosinstall...")
 //                                        try shellOut(to: "open ~/.patched-sur/Helper.app")
                                         print("Starting OS Install....")
-                                        try call("exec ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password)
+                                        try exec("~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password)
 //                                        print("Done, we should restart any time now...")
 //                                        print("Helper started, quitting app.")
 //                                        exit(0)
                                     } else {
+                                        print("Injecting Hax...")
+                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
                                         print("Starting OS Install...")
-                                        try call("'\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password)
-                                        print("Done, we should restart any time now...")
+                                        try exec("'\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password)
+//                                        print("Done, we should restart any time now...")
                                     }
                                 } catch {
                                     errorT = error.localizedDescription

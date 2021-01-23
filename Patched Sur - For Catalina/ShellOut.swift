@@ -15,6 +15,10 @@ import Dispatch
     try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at)
 }
 
+
+@discardableResult func exec(_ cmd: String, p: String, at: String = ".") throws -> String {
+    try shellOut(to: "exec echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at)
+}
 // MARK: - API
 
 /**
