@@ -1,28 +1,16 @@
-//
-//  InstallAssistants.swift
-//  Patched Sur - For Catalina
-//
-//  Created by Benjamin Sova on 9/29/20.
-//
-
-import Foundation
-
-extension URL: ExpressibleByStringLiteral {
-    public init(stringLiteral value: StringLiteralType) {
-        self = URL(string: value)!
-    }
-}
-
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
 //   let installAssistants = try InstallAssistants(json)
 
+import Foundation
+
 // MARK: - InstallAssistant
 struct InstallAssistant: Codable {
-    var url: URL
-    var date, buildNumber, version: String
-    var minVersion, orderNumber: Int
+    let url: String
+    let date, buildNumber, version: String
+    let minVersion, orderNumber: Int
+    let notes: String?
 
     enum CodingKeys: String, CodingKey {
         case url = "URL"
@@ -31,6 +19,7 @@ struct InstallAssistant: Codable {
         case version = "Version"
         case minVersion = "MinVersion"
         case orderNumber = "OrderNumber"
+        case notes = "Notes"
     }
 }
 
@@ -50,24 +39,6 @@ extension InstallAssistant {
 
     init(fromURL url: URL) throws {
         try self.init(data: try Data(contentsOf: url))
-    }
-
-    func with(
-        url: URL? = nil,
-        date: String? = nil,
-        buildNumber: String? = nil,
-        version: String? = nil,
-        minVersion: Int? = nil,
-        orderNumber: Int? = nil
-    ) -> InstallAssistant {
-        return InstallAssistant(
-            url: url ?? self.url,
-            date: date ?? self.date,
-            buildNumber: buildNumber ?? self.buildNumber,
-            version: version ?? self.version,
-            minVersion: minVersion ?? self.minVersion,
-            orderNumber: orderNumber ?? self.orderNumber
-        )
     }
 
     func jsonData() throws -> Data {
@@ -123,6 +94,13 @@ func newJSONEncoder() -> JSONEncoder {
     }
     return encoder
 }
+
+extension URL: ExpressibleByStringInterpolation {
+    public init(stringLiteral: String) {
+        self.init(string: stringLiteral)!
+    }
+}
+
 
 // MARK: - MicropatcherRequirementElement
 struct MicropatcherRequirement: Codable {

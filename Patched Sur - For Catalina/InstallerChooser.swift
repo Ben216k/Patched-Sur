@@ -29,7 +29,7 @@ struct InstallerChooser: View {
                     .padding()
                     .onAppear {
                         do {
-                            fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Public").json")!)
+                            fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)
                             fetchedInstallers!.sort { $0.orderNumber > $1.orderNumber }
                             current = try? .init(try File(path: "~/.patched-sur/InstallInfo.txt").readAsString())
                         } catch {
@@ -88,27 +88,36 @@ struct InstallerChooser: View {
             Button {
                 if track == .publicbeta {
                     track = .developer
-                } else {
+                } else if track == .release {
                     track = .publicbeta
+                } else {
+                    track = .release
                 }
                 DispatchQueue.global(qos: .background).async {
                     let oldInstallers = fetchedInstallers
                     do {
-                        fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Public").json")!)
+                        fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)
                         fetchedInstallers!.sort { $0.orderNumber > $1.orderNumber }
                     } catch {
-                        if track == .publicbeta {
-                            track = .developer
-                        } else {
+                        if track == .developer {
                             track = .publicbeta
+                        } else if track == .publicbeta {
+                            track = .release
+                        } else {
+                            track = .developer
                         }
                         fetchedInstallers = oldInstallers
+                        let errorAlert = NSAlert()
+                        errorAlert.alertStyle = .critical
+                        errorAlert.informativeText = error.localizedDescription
+                        errorAlert.messageText = "Unable to Switch Release Track, Error Obtainning New Data"
+                        errorAlert.runModal()
                     }
                 }
             } label: {
                 ZStack {
                     hovered == "CHANGE-TRACK" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
-                    Text("\(track == .developer ? "Developer" : "Public Beta")")
+                    Text("\(track == .developer ? "Developer" : (track == .publicbeta ? "Public Beta" : "Release"))")
                         .font(.subheadline)
                         .fontWeight(.regular)
                         .foregroundColor(.white)
@@ -121,6 +130,23 @@ struct InstallerChooser: View {
             .fixedSize()
             .padding()
             HStack {
+                Button {
+                    p = 4
+                } label: {
+                    ZStack {
+                        hovered == "GO-BACK" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
+                        Text("Back")
+                            .font(.subheadline)
+                            .fontWeight(.regular)
+                            .foregroundColor(.white)
+                            .padding(6)
+                            .padding(.horizontal, 3)
+                    }.onHover { hovering in
+                        hovered = hovering ? "GO-BACK" : nil
+                    }
+                }.buttonStyle(BorderlessButtonStyle())
+                .fixedSize()
+                .padding([.vertical, .leading])
                 Button {
                     let dialog = NSOpenPanel()
 
@@ -147,7 +173,7 @@ struct InstallerChooser: View {
                 } label: {
                     ZStack {
                         hovered == "CHOOSE-OTHER" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
-                        Text("Find an Installer")
+                        Text("Browse")
                             .font(.subheadline)
                             .fontWeight(.regular)
                             .foregroundColor(.white)
@@ -158,7 +184,7 @@ struct InstallerChooser: View {
                     }
                 }.buttonStyle(BorderlessButtonStyle())
                 .fixedSize()
-                .padding()
+                .padding([.vertical, .trailing])
                 Spacer()
             }
         }
@@ -196,7 +222,7 @@ struct InstallerCell: View {
                         }
                     } else {
                         if AppInfo.build >= installer.minVersion {
-                            hovered == installer.version ? Color.blue.opacity(0.7).cornerRadius(10) : Color.blue.cornerRadius(10)
+                            hovered == installer.version ? Color.accentColor.opacity(0.7).cornerRadius(10) : Color.accentColor.cornerRadius(10)
                         } else {
                             hovered == installer.version ? Color.red.opacity(0.7).cornerRadius(10) : Color.red.cornerRadius(10)
                         }

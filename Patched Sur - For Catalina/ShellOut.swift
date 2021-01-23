@@ -7,6 +7,14 @@
 import Foundation
 import Dispatch
 
+@discardableResult func call(_ cmd: String, at: String = ".") throws -> String {
+    try shellOut(to: cmd, at: at)
+}
+
+@discardableResult func call(_ cmd: String, p: String, at: String = ".") throws -> String {
+    try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at)
+}
+
 // MARK: - API
 
 /**

@@ -10,46 +10,67 @@ import SwiftUI
 struct HowItWorks: View {
     @Binding var p: Int
     @State var buttonBG = Color.accentColor
+    @State var hovered = nil as String?
     var body: some View {
         VStack {
-            Text("How it Works").bold()
+            ZStack {
+                Text("How it Works").bold()
+                HStack {
+                    Button {
+                        p = 1
+                    } label: {
+                        ZStack {
+                            (hovered == "BACK" ? Color.secondary.opacity(0.7) : Color.secondary)
+                                .cornerRadius(10)
+                                .onHover(perform: { hovering in
+                                    hovered = hovering ? "BACK" : nil
+                                })
+                            Text("Back")
+                                .font(.subheadline)
+                                .fontWeight(.regular)
+                                .foregroundColor(.white)
+                                .padding(6)
+                                .padding(.horizontal, 4)
+                        }
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding(.leading, 15)
+                    Spacer()
+                    Button {
+                        p = 9
+                    } label: {
+                        ZStack {
+                            (hovered == "CONTINUE" ? Color.accentColor.opacity(0.7) : Color.accentColor)
+                                .cornerRadius(10)
+                                .onHover(perform: { hovering in
+                                    hovered = hovering ? "CONTINUE" : nil
+                                })
+                            Text("Continue")
+                                .font(.subheadline)
+                                .fontWeight(.regular)
+                                .foregroundColor(.white)
+                                .padding(6)
+                                .padding(.horizontal, 4)
+                        }
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding(.trailing, 15)
+                }
+            }
             ScrollView {
                 Text(howItWorks)
                     .padding()
                     .multilineTextAlignment(.center)
             }
-            Button {
-                p = 9
-            } label: {
-                ZStack {
-                    buttonBG
-                        .cornerRadius(10)
-                        .onHover(perform: { hovering in
-                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
-                        })
-                    Text("Continue")
-                        .foregroundColor(.white)
-                        .padding(5)
-                        .padding(.horizontal, 50)
-                }
-            }
             .buttonStyle(BorderlessButtonStyle())
-        }.padding()
-    }
-}
-
-struct HowItWorks_Previews: PreviewProvider {
-    static var previews: some View {
-        HowItWorks(p: .constant(3))
+        }.padding(.top, 15)
     }
 }
 
 let howItWorks = """
 Patched Sur is a simple Application for running macOS on unsupported Macs. It used all official software from Apple, but optimizes it for your Mac.
 
-PLEASE REMEMBER: Patched Sur should work perfectly fine on most Macs, but a lot can go wrong with the process, especially if you don't read the instructions. I don't suggest using Patched Sur with Mac Pros as there is a much better patcher that is designed for those Macs, StarPlayrX's Big Mac patcher. Even if you don't have a Mac Pro, a lot still can go wrong that might result in data loss, a slow software (while in Big Sur), kernel panics, no entry signs, and more. Please always make a Time Machine Backup before using Patched Sur in case anything goes wrong and you need to reset your Mac.
-
-Also note: If you have FireVault on, turn it off. Patched Big Sur has several problems with it, and it will not work with FireVault on.
+PLEASE REMEMBER: Patched Sur should work perfectly fine on most Macs, but a lot can go wrong with the process, especially if you don't read the instructions. A lot can go wrong that might result in data loss, a slow software (while in Big Sur), kernel panics, no entry signs, and more. Please always make a Time Machine Backup before using Patched Sur in case anything goes wrong and you need to reset your Mac.
 
 Just note though, this isn't all by me. I only made the app and made the changes to make it easy for anyone to go through this process. Here's where everyone else came to help:
 
@@ -59,6 +80,7 @@ Just note though, this isn't all by me. I only made the app and made the changes
 - ParrotGeek: developed the LegacyUSBInjector kext to get USB ports working on some older Macs and figuring out a way to skip the terminal commands when opening the installer app on the USB.
 - testheit: Helped with the kmutil command in the micropatcher (that is used in Patched Sur too)
 - barrykn: Made the micropatcher that introduced me to the patching process and restored my faith in my really old computer. My hat is down to barrykn, and yours should be too.
+- Ausdauersportler: Integrated patches for iMac Metal GPU support.
 - and several others who helped with making Big Sur run as great as it does on unsupported Macs.
 
 Yeah, I didn't even do a third of the work, but just so you know your Mac is safe, here's everything Patched Sur does.

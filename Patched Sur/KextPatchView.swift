@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct KextPatchView: View {
+    @State var unpatch = ""
     @Binding var at: Int
     var body: AnyView {
         AnyView(VStack {
-            TopKextsView()
-            ButtonsView(at: $at)
+            TopKextsView(unpatch: $unpatch)
+            ButtonsView(at: $at, unpatch: $unpatch)
         }.navigationTitle("Patched Sur"))
     }
 }
@@ -21,24 +22,44 @@ struct ButtonsView: View {
     @Binding var at: Int
     @State var p = 0
     @State var password = ""
-    @State var buttonBG = Color.blue
+    @State var buttonBG = Color.accentColor
     @State var errorMessage = ""
     @State var installerName = ""
+    @Binding var unpatch: String
     var body: some View {
         switch p {
         case 0:
-            DoubleButtonView(first: {
-                at = 0
-            }, second: {
-                p = 1
-            }, text: "Continue")
+            VStack {
+                DoubleButtonView(first: {
+                    at = 0
+                }, second: {
+                    p = 1
+                }, text: "Continue")
+                Button {
+                    unpatch = " -u"
+                    p = 1
+                } label: {
+                    Text("Unpatch Kexts")
+                        .font(.caption)
+                }.buttonStyle(BorderlessButtonStyle())
+            }
         case 1:
             RunActionsDisplayView(action: {
                 do {
-                    installerName = (try? shellOut(to: "[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
-                    try shellOut(to: "[[ -d '/Volumes/\(installerName)/patch-kexts.sh' ]]")
+                    print("Checking for kexts at \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\"")
+                    if (try? call("[[ -d \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\" ]]")) != nil {
+                        print("Found pre-downloaded kexts!")
+                        p = 2
+                        return
+                    }
+                    print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta\"...")
+                    installerName = (try? call("[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
+                    print("Assuming USB is at \"/Volumes/\(installerName)\"")
+                    try call("[[ -d '/Volumes/\(installerName)/patch-kexts.sh\(unpatch)' ]]")
                     p = 2
                 } catch {
+                    print("USB is not at either detected place or does not have patch-kexts.sh on it.")
+                    print("Requesting user to plug back in the usb drive.")
                     p = -1
                 }
             }, text: "Detecting Volumes")
@@ -63,9 +84,15 @@ struct ButtonsView: View {
         case 3:
             RunActionsDisplayView(action: {
                 do {
-                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S '/Volumes/\(installerName)/patch-kexts.sh'")
+                    let patchOutput = try call("'/Volumes/\(installerName)/patch-kexts.sh'", p: password)
+                    print("\n==========================================\n")
+                    print(patchOutput)
+                    print("\n==========================================\n")
                     p = 4
                 } catch {
+                    print("\n==========================================\n")
+                    print(error.localizedDescription)
+                    print("\n==========================================\n")
                     errorMessage = error.localizedDescription
                     p = -2
                 }
@@ -104,9 +131,10 @@ struct ButtonsView: View {
             Button {
                 DispatchQueue.global(qos: .background).async {
                     do {
-                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S sudo reboot")
+                        try call("reboot", p: password)
                     } catch {
-                        print("Error, but they can do it themselves.")
+                        print("Error running restart, but they can do it themselves.")
+                        presentAlert(m: "Failed to Reboot", i: "You can do it yourself! Cmd+Control+Eject (or Cmd+Control+Power if you want it to be faster) will reboot your computer, or you can use the Apple logo in the corner of the screen. Your choice, they all work.")
                     }
                 }
             } label: {
@@ -130,8 +158,15 @@ struct ButtonsView: View {
 }
 
 struct TopKextsView: View {
+    @Binding var unpatch: String
     var body: some View {
-        Text("Patch Kexts").bold()
+        ZStack(alignment: .trailing) {
+            HStack {
+                Spacer()
+                Text(unpatch == "" ? "Patch Kexts" : "Unpatch Kexts").bold()
+                Spacer()
+            }
+        }
         Text("Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. Makes sense right?")
             .padding()
             .multilineTextAlignment(.center)

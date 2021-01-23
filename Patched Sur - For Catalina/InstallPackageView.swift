@@ -14,6 +14,7 @@ struct InstallPackageView: View {
     @Binding var installInfo: InstallAssistant?
     @State var downloadProgress: CGFloat = 0
     @State var buttonBG = Color.accentColor
+    @State var buttonBG2 = Color.accentColor
     @State var invalidPassword = false
     @Binding var password: String
     @Binding var p: Int
@@ -82,48 +83,72 @@ struct InstallPackageView: View {
                         .padding(.horizontal, 4)
                 } else if downloadStatus.hasPrefix("Download macOS") {
                     VStack {
-                        Button {
-                            if !useCurrent {
-                                if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                                    downloadSize = sizeInt
+                        HStack {
+                            Button {
+                                if !useCurrent {
+                                    if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                        downloadSize = sizeInt
+                                    }
+                                    downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
+                                } else {
+                                    downloadStatus = ""
                                 }
-                                downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
-                            } else {
                                 buttonBG = Color.accentColor
-                                downloadStatus = ""
-                            }
-                        } label: {
-                            ZStack {
-                                buttonBG
-                                    .cornerRadius(10)
-                                if package == "~/.patched-sur/InstallAssistant.pkg" && installer == nil {
-                                    Text("\(useCurrent ? "Use" : "Download") macOS \(installInfo!.version)")
-                                        .foregroundColor(.white)
-                                        .padding(6)
-                                        .padding(.horizontal, 4)
-                                } else if package != "~/.patched-sur/InstallAssistant.pkg" {
-                                    Text("Use Pre-Downloaded InstallAssistant")
-                                        .foregroundColor(.white)
-                                        .padding(6)
-                                        .padding(.horizontal, 4)
-                                } else {
-                                    Text("Use Pre-Downloaded Installer App")
-                                        .foregroundColor(.white)
-                                        .padding(6)
-                                        .padding(.horizontal, 4)
+                            } label: {
+                                ZStack {
+                                    buttonBG
+                                        .cornerRadius(10)
+                                    if package == "~/.patched-sur/InstallAssistant.pkg" && installer == nil {
+                                        Text("\(useCurrent ? "Use" : "Download") macOS \(installInfo!.version)")
+                                            .foregroundColor(.white)
+                                            .padding(6)
+                                            .padding(.horizontal, 4)
+                                    } else if package != "~/.patched-sur/InstallAssistant.pkg" {
+                                        Text("Use Pre-Downloaded InstallAssistant")
+                                            .foregroundColor(.white)
+                                            .padding(6)
+                                            .padding(.horizontal, 4)
+                                    } else {
+                                        Text("Use Pre-Downloaded Installer App")
+                                            .foregroundColor(.white)
+                                            .padding(6)
+                                            .padding(.horizontal, 4)
+                                    }
+                                }
+                                .onHover { (hovering) in
+                                    if useCurrent || package != "~/.patched-sur/InstallAssistant.pkg" {
+                                        buttonBG = hovering ? Color.green.opacity(0.7) : Color.green
+                                    } else {
+                                        buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
+                                    }
+                                }
+                                .onAppear {
+                                    buttonBG = useCurrent ? Color.green : Color.accentColor
+                                }
+                                
+                            }.buttonStyle(BorderlessButtonStyle())
+                            if package == "~/.patched-sur/InstallAssistant.pkg" && installer == nil && useCurrent {
+                                Button {
+                                    if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                        downloadSize = sizeInt
+                                    }
+                                    downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
+                                    buttonBG = Color.accentColor
+                                } label: {
+                                    ZStack {
+                                        buttonBG2
+                                            .cornerRadius(10)
+                                        Text("Redownload")
+                                            .foregroundColor(.white)
+                                            .padding(6)
+                                            .padding(.horizontal, 4)
+                                    }
+                                }.buttonStyle(BorderlessButtonStyle())
+                                .onHover { (hovering) in
+                                    buttonBG2 = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
                                 }
                             }
-                            .onHover { (hovering) in
-                                if useCurrent || package != "~/.patched-sur/InstallAssistant.pkg" {
-                                    buttonBG = hovering ? Color.green.opacity(0.7) : Color.green
-                                } else {
-                                    buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
-                                }
-                            }
-                            .onAppear {
-                                buttonBG = useCurrent ? Color.green : Color.accentColor
-                            }
-                        }.buttonStyle(BorderlessButtonStyle())
+                        }
                         Button {
                             p = 11
                         } label: {
@@ -151,7 +176,19 @@ struct InstallPackageView: View {
                                     DispatchQueue.global(qos: .background).async {
                                         _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallAssistant.pkg")
                                         do {
-                                            try shellOut(to: "curl -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
+                                            let reasonForActivity = "Reason for activity" as CFString
+                                            var assertionID: IOPMAssertionID = 0
+                                            var success = IOPMAssertionCreateWithName( kIOPMAssertionTypeNoDisplaySleep as CFString,
+                                                                                        IOPMAssertionLevel(kIOPMAssertionLevelOn),
+                                                                                        reasonForActivity,
+                                                                                        &assertionID )
+                                            if success == kIOReturnSuccess {
+                                                try shellOut(to: "curl -L -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
+                                                success = IOPMAssertionRelease(assertionID)
+                                            } else {
+                                                downloadStatus = "Unable to pull system attention."
+                                                return
+                                            }
                                             let versionFile = try Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallInfo.txt")
                                             try versionFile.write(installInfo!.jsonString()!, encoding: .utf8)
                                             buttonBG = .accentColor
@@ -185,7 +222,7 @@ struct InstallPackageView: View {
                         Button {
                             if password != "" {
                                 do {
-                                    try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S echo Hi")
+                                    try call("echo Hi", p: password)
                                     if installer != nil {
                                         p = 5
                                     } else {
@@ -231,11 +268,11 @@ struct InstallPackageView: View {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     if package == "~/.patched-sur/InstallAssistant.pkg" {
-                                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /")
+                                        try call("installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /", p: password)
                                     } else {
-                                        try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S installer -pkg \"\(package)\" -target /")
+                                        try call("installer -pkg \"\(package)\" -target /", p: password)
                                     }
-                                    _ = try? shellOut(to: "echo \"\(track)\" > ~/.patched-sur/track.txt")
+                                    _ = try? call("echo \"\(track)\" > ~/.patched-sur/track.txt")
                                     p = 5
                                 } catch {
                                     downloadStatus = error.localizedDescription
@@ -286,10 +323,10 @@ struct ProgressBar: View {
         ZStack(alignment: .leading) {
             Rectangle().frame(minWidth: length)
                 .opacity(0.3)
-                .foregroundColor(Color(.systemTeal))
+                .foregroundColor(Color.accentColor.opacity(0.3))
             
             Rectangle().frame(width: min(value*length, length))
-                .foregroundColor(Color(.systemBlue))
+                .foregroundColor(.accentColor)
                 .animation(.linear)
         }.cornerRadius(10)
     }

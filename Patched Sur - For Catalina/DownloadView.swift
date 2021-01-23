@@ -30,7 +30,7 @@ struct DownloadView: View {
                 if downloadStatus == "Downloading Files..." {
                     ProgressBar(value: $downloadProgress, length: 175)
                         .onReceive(timer, perform: { _ in
-                            if let sizeCode = try? shellOut(to: "stat -f %z ~/.patched-sur/big-sur-micropatcher.zip") {
+                            if let sizeCode = try? call("stat -f %z ~/.patched-sur/big-sur-micropatcher.zip") {
                                 currentSize = Int(Float(sizeCode) ?? 10000)
                                 downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
                             }
@@ -43,15 +43,15 @@ struct DownloadView: View {
                                 do {
                                     _ = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
                                     _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
-                                    _ = try? shellOut(to: "rm -rf ~/.patched-sur/big-sur-micropatcher*")
+                                    _ = try? call("rm -rf ~/.patched-sur/big-sur-micropatcher*")
                                     _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
                                     if let sizeString = try? shellOut(to: "curl -sI https://codeload.github.com/barrykn/big-sur-micropatcher/zip/v\(AppInfo.micropatcher) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                         downloadSize = sizeInt
                                     }
-                                    try shellOut(to: "curl -o big-sur-micropatcher.zip https://codeload.github.com/barrykn/big-sur-micropatcher/zip/v\(AppInfo.micropatcher)", at: "~/.patched-sur")
-                                    try shellOut(to: "unzip big-sur-micropatcher.zip", at: "~/.patched-sur")
+                                    try call("curl -o ~/.patched-sur/big-sur-micropatcher.zip https://codeload.github.com/barrykn/big-sur-micropatcher/zip/v\(AppInfo.micropatcher)")
+                                    try call("unzip big-sur-micropatcher.zip", at: "~/.patched-sur")
                                     _ = try? File(path: "~/.patched-sur/big-sur-micropatcher*").delete()
-                                    try shellOut(to: "mv ~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher) ~/.patched-sur/big-sur-micropatcher")
+                                    try call("mv ~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher) ~/.patched-sur/big-sur-micropatcher")
                                     p = 4
                                 } catch {
                                     downloadStatus = error.localizedDescription

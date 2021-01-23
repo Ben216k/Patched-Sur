@@ -38,7 +38,7 @@ struct DoubleButtonView: View {
                     buttonBG
                         .cornerRadius(10)
                         .onHover(perform: { hovering in
-                            buttonBG = hovering ? Color.blue.opacity(0.7) : Color.blue
+                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
                         })
                     Text(text)
                         .foregroundColor(.white)
@@ -97,7 +97,7 @@ struct EnterPasswordButton: View {
             Button {
                 if password != "" {
                     do {
-                        try shellOut(to: "echo \"\(password)\" | sudo -S echo Hi")
+                        try call("echo Hi", p: password)
                         onDone()
                     } catch {
                         invalidPassword = true
@@ -126,6 +126,43 @@ struct EnterPasswordButton: View {
             .buttonStyle(BorderlessButtonStyle())
             .padding(.top, 10)
             .opacity(password == "" ? 0.4 : 1)
+        }.fixedSize()
+    }
+}
+
+struct TextAndButtonView: View {
+    let t: String
+    let b: String
+    let action: () -> ()
+    @State var hovered = false
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .foregroundColor(.secondary)
+                .cornerRadius(10)
+            HStack(spacing: 0) {
+                Text(t)
+                    .padding(6)
+                    .padding(.leading, 4)
+                    .foregroundColor(.white)
+                Button {
+                    action()
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(!hovered ? .accentColor : Color.accentColor.opacity(0.7))
+                            .cornerRadius(10)
+                        Text(b)
+                            .padding(6)
+                            .padding(.horizontal, 4)
+                            .foregroundColor(.white)
+                    }.fixedSize()
+                }.buttonStyle(BorderlessButtonStyle())
+                .onHover {
+                    hovered = $0
+                }
+            }
         }.fixedSize()
     }
 }
