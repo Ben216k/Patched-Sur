@@ -133,6 +133,7 @@ struct ButtonsView: View {
                         try shellOut(to: "echo \(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")) | sudo -S sudo reboot")
                     } catch {
                         print("Error running restart, but they can do it themselves.")
+                        presentAlert(m: "Failed to Reboot", i: "You can do it yourself! Cmd+Control+Eject (or Cmd+Control+Power if you want it to be faster) will reboot your computer, or you can use the Apple logo in the corner of the screen. Your choice, they all work.")
                     }
                 }
             } label: {

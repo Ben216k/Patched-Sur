@@ -99,11 +99,11 @@ struct CustomColoredButton: View {
         } label: {
             ZStack {
                 if releaseTrack == "Public Beta" {
-                    Rectangle().foregroundColor(.blue)
+                    Rectangle().foregroundColor(.init("Blue"))
                 } else if releaseTrack == "Developer" {
-                    Rectangle().foregroundColor(.orange)
+                    Rectangle().foregroundColor(.red)
                 } else if releaseTrack == "Release" {
-                    Rectangle().foregroundColor(.green)
+                    Rectangle().foregroundColor(.accentColor)
                 }
                 Text(text)
                     .font(.caption)

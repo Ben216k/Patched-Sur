@@ -31,58 +31,7 @@ struct UpdateView: View {
             }
             switch progress {
             case 0:
-                VStack {
-                    Text("Checking For Updates...")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    ProgressView()
-                        .progressViewStyle(LinearProgressViewStyle())
-                        .padding(.horizontal)
-                        .onAppear {
-                            DispatchQueue.global(qos: .background).async {
-                                do {
-                                    print("Checking for updates to Patched Sur...")
-                                    if !skipAppCheck, let patchedVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
-                                        if patchedVersions[0].tagName != "v\(AppInfo.version)" {
-                                            latestPatch = patchedVersions[0]
-                                            progress = 1
-                                            print("Found update v\(AppInfo.version).")
-                                            print("Offering update.\n")
-                                            return
-                                        }
-                                    }
-                                    print("No updates found or user choose to skip the app update check.")
-                                    print("Figuring out what update track to use...")
-                                    if var trackFile = try? File(path: "~/.patched-sur/track.txt").readAsString() {
-                                        trackFile.removeLast()
-                                        print("Found track file with contents \(trackFile).")
-                                        track = ReleaseTrack(rawValue: trackFile) ?? .release
-                                    }
-                                    print("Using update track \(track).")
-                                    print("Pinging installer list to find the latest updates...")
-                                    installers = try InstallAssistants(fromURL:  URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)
-                                    print("Filtering incompatible installers...")
-                                    installers = installers!.filter { $0.minVersion <= AppInfo.build }
-                                    print("Finding latest build...")
-                                    installers!.sort { $0.orderNumber < $1.orderNumber }
-                                    installInfo = installers!.last
-                                    if AppInfo.debug {
-                                        print("Latest Build: \(installers!.last!.buildNumber)")
-                                        print("Install Info: \(installInfo!.buildNumber)")
-                                    }
-                                    print("Switching to show updates screen...")
-                                    print("")
-                                    progress = 2
-                                } catch {
-                                    print("\n==========================================\n")
-                                    print("Failed to fetch installer list.")
-                                    print(error.localizedDescription)
-                                    print("\n==========================================\n")
-                                }
-                            }
-                        }
-                }
-                .fixedSize()
+                UpdateCheckerView(progress: $progress, installers: $installers, track: $track, latestPatch: $latestPatch, skipAppCheck: $skipAppCheck, installInfo: $installInfo)
             case 1:
                 UpdateAppView(latest: latestPatch!, p: $progress, skipCheck: $skipAppCheck)
             case -1:
@@ -97,8 +46,8 @@ struct UpdateView: View {
                 DownloadView(p: $progress, installInfo: $installInfo)
             case 4:
                 StartInstallView(installerPath: $packageLocation)
-//            case 5:
-//                InstallerChooser()
+            case 6:
+                DisableAMFIView()
             default:
                 VStack {
                     Text("Uh-oh! Something went wrong going through the software update steps.\nError 1x\(progress)")
@@ -112,6 +61,9 @@ struct UpdateView: View {
     }
 }
 
+//            case 5:
+//                InstallerChooser()
+
 enum ReleaseTrack: String, CustomStringConvertible {
     case release = "Release"
     case publicbeta = "Public Beta"
@@ -120,3 +72,67 @@ enum ReleaseTrack: String, CustomStringConvertible {
     var description: String { rawValue }
 }
 
+struct UpdateCheckerView: View {
+    @Binding var progress: Int
+    @Binding var installers: InstallAssistants?
+    @Binding var track: ReleaseTrack
+    @Binding var latestPatch: PatchedVersion?
+    @Binding var skipAppCheck: Bool
+    @Binding var installInfo: InstallAssistant?
+    var body: some View {
+        VStack {
+            Text("Checking For Updates...")
+                .font(.title2)
+                .fontWeight(.semibold)
+            ProgressView()
+                .progressViewStyle(LinearProgressViewStyle())
+                .padding(.horizontal)
+                .onAppear {
+                    DispatchQueue.global(qos: .background).async {
+                        do {
+                            print("Checking for updates to Patched Sur...")
+                            if !skipAppCheck, let patchedVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
+                                if patchedVersions[0].tagName != "v\(AppInfo.version)" {
+                                    latestPatch = patchedVersions[0]
+                                    progress = 1
+                                    print("Found update v\(AppInfo.version).")
+                                    print("Offering update.\n")
+                                    return
+                                }
+                            }
+                            print("No updates found or user choose to skip the app update check.")
+                            print("Figuring out what update track to use...")
+                            if var trackFile = try? File(path: "~/.patched-sur/track.txt").readAsString() {
+                                if trackFile.count > 0 {
+                                    trackFile.removeLast()
+                                }
+                                print("Found track file with contents \(trackFile).")
+                                track = ReleaseTrack(rawValue: trackFile) ?? .release
+                            }
+                            print("Using update track \(track).")
+                            print("Pinging installer list to find the latest updates...")
+                            installers = try InstallAssistants(fromURL:  URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)
+                            print("Filtering incompatible installers...")
+                            installers = installers!.filter { $0.minVersion <= AppInfo.build }
+                            print("Finding latest build...")
+                            installers!.sort { $0.orderNumber < $1.orderNumber }
+                            installInfo = installers!.last
+                            if AppInfo.debug {
+                                print("Latest Build: \(installers!.last!.buildNumber)")
+                                print("Install Info: \(installInfo!.buildNumber)")
+                            }
+                            print("Switching to show updates screen...")
+                            print("")
+                            progress = 2
+                        } catch {
+                            print("\n==========================================\n")
+                            print("Failed to fetch installer list.")
+                            print(error.localizedDescription)
+                            print("\n==========================================\n")
+                        }
+                    }
+                }
+        }
+        .fixedSize()
+    }
+}

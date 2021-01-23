@@ -35,11 +35,11 @@ struct AboutMyMac: View {
                         } label: {
                             ZStack {
                                 if releaseTrack == "Public Beta" {
-                                    Rectangle().foregroundColor(.blue)
+                                    Rectangle().foregroundColor(.init("Blue"))
                                 } else if releaseTrack == "Developer" {
                                     Rectangle().foregroundColor(.red)
                                 } else if releaseTrack == "Release" {
-                                    Rectangle().foregroundColor(.green)
+                                    Rectangle().foregroundColor(.accentColor)
                                 }
                                 Text("Back to Home")
                                     .font(.caption)
@@ -55,11 +55,11 @@ struct AboutMyMac: View {
                         } label: {
                             ZStack {
                                 if releaseTrack == "Public Beta" {
-                                    Rectangle().foregroundColor(.blue)
+                                    Rectangle().foregroundColor(.init("Blue"))
                                 } else if releaseTrack == "Developer" {
                                     Rectangle().foregroundColor(.red)
                                 } else if releaseTrack == "Release" {
-                                    Rectangle().foregroundColor(.green)
+                                    Rectangle().foregroundColor(.accentColor)
                                 }
                                 Text("Software Update")
                                     .font(.caption)
@@ -126,14 +126,17 @@ struct SideImageView: View {
 }
 
 struct BackGradientView: View {
+    @Environment(\.colorScheme) var colorScheme
     let releaseTrack: String
     var body: some View {
         if releaseTrack == "Public Beta" {
             LinearGradient(gradient: .init(colors: [.init(r: 196, g: 0, b: 255), .init(r: 117, g: 0, b: 255)]), startPoint: .topLeading, endPoint: .bottomTrailing)
         } else if releaseTrack == "Developer" {
-            LinearGradient(gradient: .init(colors: [.init(r: 255, g: 226, b: 0), .init(r: 254, g: 110, b: 16)]), startPoint: .bottomLeading, endPoint: .topTrailing)
+            LinearGradient(gradient: .init(colors: [.init(r: 237, g: 36, b: 5), .init(r: 254, g: 110, b: 16)]), startPoint: .bottomLeading, endPoint: .topTrailing)
         } else if releaseTrack == "Release" {
-            LinearGradient(gradient: .init(colors: [.init(r: 80, g: 241, b: 255), .init(r: 105, g: 244, b: 180)]), startPoint: .leading, endPoint: .trailing)
+            LinearGradient(gradient: .init(colors: [.init(r: 0, g: 220, b: 239), .init(r: 5, g: 229, b: 136)]), startPoint: .leading, endPoint: .trailing)
+                .opacity(colorScheme == .dark ? 0.9 : 0.96)
+                .background(Color.black)
         }
     }
 }

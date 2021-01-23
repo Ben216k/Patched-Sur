@@ -53,6 +53,7 @@ final class AppInfo {
     static var debug = false
     static var reinstall = false
     static var usePredownloaded = false
+    static var preventUpdate = false
 }
 
 struct PatchedSurLogger: TextOutputStream {
@@ -83,4 +84,12 @@ struct PatchedSurLogger: TextOutputStream {
             fatalError("UNABLE TO CREATE LOG FILE, THIS IS NOT GOOD FOR DEBUGGING")
         }
     }
+}
+
+func presentAlert(m: String, i: String, s: NSAlert.Style = .critical) {
+    let errorAlert = NSAlert()
+    errorAlert.alertStyle = s
+    errorAlert.informativeText = i
+    errorAlert.messageText = m
+    errorAlert.runModal()
 }

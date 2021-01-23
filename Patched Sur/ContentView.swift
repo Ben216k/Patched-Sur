@@ -21,7 +21,7 @@ struct ContentView: View {
         ZStack {
 //            colorScheme == .dark ? Color.black : Color.white
             if atLocation == 0 {
-                MainView(at: $atLocation, model: model)
+                MainView(at: $atLocation, buildNumber: buildNumber, model: model)
             } else if atLocation == 1 {
                 UpdateView(at: $atLocation, buildNumber: buildNumber)
             } else if atLocation == 2 {
@@ -48,8 +48,8 @@ struct ContentView: View {
         if !AppInfo.debug {
             systemVersion = (try? shellOut(to: "sw_vers -productVersion")) ?? "11.xx.yy"
             print("Detected System Version: \(systemVersion)")
-            _ = try? shellOut(to: "mkdir ~/.patched-sur")
-            _ = try? shellOut(to: "touch ~/.patched-sur/track.txt")
+//            _ = try? shellOut(to: "mkdir ~/.patched-sur")
+//            _ = try? shellOut(to: "touch ~/.patched-sur/track.txt")
             releaseTrack = (try? shellOut(to: "cat ~/.patched-sur/track.txt")) ?? "INVALID"
             print("Detected Release Track: \(releaseTrack)")
             gpu = (try? shellOut(to: "system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
@@ -62,7 +62,11 @@ struct ContentView: View {
             memory = (try? shellOut(to: "echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
             print("Detected Memory Amount: \(memory)")
             buildNumber = (try? shellOut(to: "sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
-            buildNumber.removeFirst(14)
+            if buildNumber.count > 14 {
+                buildNumber.removeFirst(14)
+            } else {
+                AppInfo.preventUpdate = true
+            }
             print("Detected macOS Build Number: \(buildNumber)")
         } else {
             if !CommandLine.arguments.contains("versionFormatted") {
@@ -133,16 +137,31 @@ struct ContentView: View {
 struct MainView: View {
     @State var hovered = -1
     @Binding var at: Int
+    var buildNumber: String
     var model: String
     var body: some View {
         VStack {
             Text("Patched Sur")
                 .font(.title2)
                 .fontWeight(.heavy)
+            Text("v\(AppInfo.version) (\(AppInfo.build))")
             HStack {
                 Button {
                     withAnimation(Animation.linear(duration: 0)) {
-                        at = 1
+                        if buildNumber.count >= 5 {
+                            at = 1
+                        } else {
+                            print("Some details were failed to fetch in the inital launch sequence.")
+                            print("Warning user, and attempting to recover.")
+                            do {
+                                try shellOut(to: "[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")
+                                try shellOut(to: "[[ -e ~/.patched-sur/track.txt ]] || echo Release > ~/.patched-sur/track.txt")
+                                presentAlert(m: "Patched Sur Needs To Restart", i: "The Patched Sur app encountered a problem during launch that prevented access to some necessary data that is required during updates. Patched Sur ran some opperations that should protect against this problem, and simply restarting the app should fix this problem. When you click okay, the app will close and then you should be able to open it again and this problem will be solved.", s: .informational)
+                                exit(0)
+                            } catch {
+                                presentAlert(m: "Patched Sur Does Not Have The Required Information To Update", i: "The Patched Sur app encountered a problem during launch that prevented access to some necessary data that is required during updates. Patched Sur ran some opperations that would protect against this problem, but these failed. This problem should rarely happen, but it did so there's not much I can do.\n\n\(error.localizedDescription)")
+                            }
+                        }
                     }
                 } label: {
                     VStack {
