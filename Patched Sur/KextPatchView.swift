@@ -12,8 +12,8 @@ struct KextPatchView: View {
     @Binding var at: Int
     var body: AnyView {
         AnyView(VStack {
-            TopKextsView()
-            ButtonsView(at: $at)
+            TopKextsView(unpatch: $unpatch)
+            ButtonsView(at: $at, unpatch: $unpatch)
         }.navigationTitle("Patched Sur"))
     }
 }
@@ -25,11 +25,11 @@ struct ButtonsView: View {
     @State var buttonBG = Color.accentColor
     @State var errorMessage = ""
     @State var installerName = ""
-    @State var unpatch = ""
+    @Binding var unpatch: String
     var body: some View {
         switch p {
         case 0:
-            VStack(spacing: 4) {
+            VStack {
                 DoubleButtonView(first: {
                     at = 0
                 }, second: {
@@ -37,9 +37,10 @@ struct ButtonsView: View {
                 }, text: "Continue")
                 Button {
                     unpatch = " -u"
+                    p = 1
                 } label: {
                     Text("Unpatch Kexts")
-                        .font(.callout)
+                        .font(.caption)
                 }.buttonStyle(BorderlessButtonStyle())
             }
         case 1:
@@ -157,11 +158,12 @@ struct ButtonsView: View {
 }
 
 struct TopKextsView: View {
+    @Binding var unpatch: String
     var body: some View {
         ZStack(alignment: .trailing) {
             HStack {
                 Spacer()
-                Text("Patch Kexts").bold()
+                Text(unpatch == "" ? "Patch Kexts" : "Unpatch Kexts").bold()
                 Spacer()
             }
         }
