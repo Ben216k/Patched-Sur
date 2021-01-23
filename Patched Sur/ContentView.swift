@@ -145,6 +145,7 @@ struct MainView: View {
                 .font(.title2)
                 .fontWeight(.heavy)
             Text("v\(AppInfo.version) (\(AppInfo.build))")
+                .padding(.bottom, 3)
             HStack {
                 Button {
                     withAnimation(Animation.linear(duration: 0)) {
@@ -172,7 +173,7 @@ struct MainView: View {
                     }
                     .foregroundColor(.primary)
                     .padding()
-                    .background((hovered == 0) ? Color.secondary.opacity(0.25).cornerRadius(20) : Color.clear.opacity(0.0001).cornerRadius(20))
+                    .background((hovered == 0) ? Color.init("AccentColor-1").opacity(0.15).cornerRadius(20) : Color.clear.opacity(0.0001).cornerRadius(20))
                     .onHover { (hovering) in
                         hovered = hovering ? 0 : -1
                     }
@@ -198,7 +199,7 @@ struct MainView: View {
                     }
                     .foregroundColor(.primary)
                     .padding()
-                    .background((hovered != 1) ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
+                    .background((hovered != 1) ? Color.white.opacity(0.0001).cornerRadius(20) : Color.init("AccentColor-1").opacity(0.15).cornerRadius(20))
                     .onHover(perform: { hovering in
                         hovered = hovering ? 1 : -1
                     })
@@ -216,7 +217,7 @@ struct MainView: View {
                     }
                     .foregroundColor(.primary)
                     .padding()
-                    .background(hovered != 2 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
+                    .background(hovered != 2 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.init("AccentColor-1").opacity(0.15).cornerRadius(20))
                     .onHover(perform: { hovering in
                         hovered = hovering ? 2 : -1
                     })
@@ -234,7 +235,7 @@ struct MainView: View {
                     }
                     .foregroundColor(.primary)
                     .padding()
-                    .background(hovered != 3 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.secondary.opacity(0.25).cornerRadius(20))
+                    .background(hovered != 3 ? Color.white.opacity(0.0001).cornerRadius(20) : Color.init("AccentColor-1").opacity(0.15).cornerRadius(20))
                     .onHover(perform: { hovering in
                         hovered = hovering ? 3 : -1
                     })

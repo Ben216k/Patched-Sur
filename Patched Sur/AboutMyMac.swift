@@ -131,11 +131,13 @@ struct BackGradientView: View {
     var body: some View {
         if releaseTrack == "Public Beta" {
             LinearGradient(gradient: .init(colors: [.init(r: 196, g: 0, b: 255), .init(r: 117, g: 0, b: 255)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .opacity(colorScheme == .dark ? 0.7 : 0.96)
         } else if releaseTrack == "Developer" {
             LinearGradient(gradient: .init(colors: [.init(r: 237, g: 36, b: 5), .init(r: 254, g: 110, b: 16)]), startPoint: .bottomLeading, endPoint: .topTrailing)
+                .opacity(colorScheme == .dark ? 0.5 : 0.96)
         } else if releaseTrack == "Release" {
             LinearGradient(gradient: .init(colors: [.init(r: 0, g: 220, b: 239), .init(r: 5, g: 229, b: 136)]), startPoint: .leading, endPoint: .trailing)
-                .opacity(colorScheme == .dark ? 0.9 : 0.96)
+                .opacity(colorScheme == .dark ? 0.7 : 0.96)
                 .background(Color.black)
         }
     }

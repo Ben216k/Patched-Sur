@@ -9,6 +9,8 @@
 import SwiftUI
 import Files
 import SwiftShell
+import IOKit
+import IOKit.pwr_mgt
 
 struct DownloadView: View {
     @State var downloadStatus = "Downloading Kexts..."
@@ -116,7 +118,18 @@ struct DownloadView: View {
                                         if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                             installSize = sizeInt
                                         }
-                                        try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
+                                        let reasonForActivity = "Reason for activity" as CFString
+                                        var assertionID: IOPMAssertionID = 0
+                                        var success = IOPMAssertionCreateWithName( kIOPMAssertionTypeNoDisplaySleep as CFString,
+                                                                                    IOPMAssertionLevel(kIOPMAssertionLevelOn),
+                                                                                    reasonForActivity,
+                                                                                    &assertionID )
+                                        if success == kIOReturnSuccess {
+                                            try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
+                                            success = IOPMAssertionRelease(assertionID)
+                                        } else {
+                                            try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
+                                        }
                                         p = 4
                                     } catch {
                                         downloadStatus = error.localizedDescription

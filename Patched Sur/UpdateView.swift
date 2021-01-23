@@ -95,7 +95,7 @@ struct UpdateCheckerView: View {
                                 if patchedVersions[0].tagName != "v\(AppInfo.version)" {
                                     latestPatch = patchedVersions[0]
                                     progress = 1
-                                    print("Found update v\(AppInfo.version).")
+                                    print("Found update \(latestPatch?.tagName ?? "INVALID").")
                                     print("Offering update.\n")
                                     return
                                 }
