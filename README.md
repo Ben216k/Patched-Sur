@@ -20,7 +20,7 @@ To see if your Mac is supported [click here](https://bensova.gitbook.io/big-sur/
    - How much functionality you will get out of macOS once the patching process is complete
    - How the patcher works, and what it does to your Mac
 
-**4.** Next, you can choose what update track you would like to update with. `Release` is the default (however, it is currently unavailable, since macOS Big Sur is not released yet), but you can also choose `Public Beta` and `Developer Beta`.
+**4.** Next, you can choose what update track you would like to update with. `Release` is the default, but you can also choose `Public Beta` and `Developer Beta` if you want one of the beta tracks. (Note: Apple does not always release InstallAssistant.pkgs for the beta tracks, this means you might be unable to get certian betas.)
 
 **5.** Then, you can select whether you want to update macOS from Catalina to Big Sur (or Big Sur to Big Sur if you are switching from a different patcher) or do a clean install of Big Sur (currently unavailable).
 
@@ -59,3 +59,5 @@ To update macOS, follow the steps below.
 **4.** After the update finishes, open the post install app and patch your kexts.
 
 **5.** Enjoy the latest version of macOS!
+
+Note: Apple does not always release InstallAssistant.pkgs for the beta tracks, this means you might be unable to get certian betas.

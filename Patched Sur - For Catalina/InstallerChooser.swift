@@ -118,7 +118,7 @@ struct InstallerChooser: View {
                 ZStack {
                     hovered == "CHANGE-TRACK" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
                     Text("\(track == .developer ? "Developer" : (track == .publicbeta ? "Public Beta" : "Release"))")
-                        .font(.subheadline)
+                        .font(.caption)
                         .fontWeight(.regular)
                         .foregroundColor(.white)
                         .padding(6)
@@ -136,7 +136,7 @@ struct InstallerChooser: View {
                     ZStack {
                         hovered == "GO-BACK" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
                         Text("Back")
-                            .font(.subheadline)
+                            .font(.caption)
                             .fontWeight(.regular)
                             .foregroundColor(.white)
                             .padding(6)
@@ -174,7 +174,7 @@ struct InstallerChooser: View {
                     ZStack {
                         hovered == "CHOOSE-OTHER" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
                         Text("Browse")
-                            .font(.subheadline)
+                            .font(.caption)
                             .fontWeight(.regular)
                             .foregroundColor(.white)
                             .padding(6)

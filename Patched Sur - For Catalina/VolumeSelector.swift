@@ -117,11 +117,3 @@ struct VolumeSelector: View {
         self._selected = volume
     }
 }
-
-struct VolumeSelector_Previews: PreviewProvider {
-    static var previews: some View {
-        VolumeSelector(p: .constant(1), volume: .constant(""))
-            .frame(minWidth: 500, maxWidth: 500, minHeight: 300, maxHeight: 300)
-            .background(Color.white)
-    }
-}

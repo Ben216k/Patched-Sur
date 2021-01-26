@@ -27,7 +27,20 @@ print("")
 CommandLine.arguments.forEach { arg in
     switch arg {
     case "--help", "-h":
-        print("Help mode does not exist yet...")
+//        print("Help mode does not exist yet...")
+        print("\n--help (-h):")
+        print("Shows this screen!")
+//        print("--update (-u)   Starts the inapp updater (you don't need this)")
+        print("--debug (-d):")
+        print("  Starts the app with specific checks disabled.")
+        print("--safe (-s): ")
+        print("  Starts the app without showing the main prompts")
+        print("  and forcing the Patch Kexts section to be shown.")
+        print("--allow-reinstall (-r):")
+        print("  Allow reinstalling macOS on the update macOS screen.")
+        print("--force-skip-download (-p):")
+        print("  Skip the download step on the macOS updater, and using")
+        print("  the InstallAssistant that was already downloaded.")
         exit(0)
     case "--update", "-u":
         print("Detected --update option, starting Patched Sur update.")
@@ -57,7 +70,7 @@ CommandLine.arguments.forEach { arg in
     case "--allow-reinstall", "-r":
         print("Detected --allow-reinstall option, reinstalls enabled.")
         AppInfo.reinstall = true
-    case "--force-skip-download", "-pre":
+    case "--force-skip-download", "-pre", "-p":
         print("Detected --force-skip-download, skipping the download files step in the updater.")
         AppInfo.usePredownloaded = true
     default:
