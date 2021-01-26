@@ -70,8 +70,11 @@ struct CreateInstallMedia: View {
                                                                                 reasonForActivity,
                                                                                 &assertionID )
                                     if success == kIOReturnSuccess {
-                                        try call("\(installer?.replacingOccurrences(of: " ", with: "\\ ") ?? "Install\\ macOS\\ Big\\ Sur*.app")/Contents/Resources/createinstallmedia --volume /Volumes/Install\\ macOS\\ Big\\ Sur --nointeraction", p: password)
-                                        
+                                        if (try? shellOut(to: "[[ -d /Applications/Install\\ macOS\\ Big\\ Sur\\ Beta.app ]]")) != nil {
+                                            try call("\(installer?.replacingOccurrences(of: " ", with: "\\ ") ?? "/Applications/Install\\ macOS\\ Big\\ Sur\\ Beta.app")/Contents/Resources/createinstallmedia --volume /Volumes/Install\\ macOS\\ Big\\ Sur --nointeraction", p: password)
+                                        } else {
+                                            try call("\(installer?.replacingOccurrences(of: " ", with: "\\ ") ?? "/Applications/Install\\ macOS\\ Big\\ Sur.app")/Contents/Resources/createinstallmedia --volume /Volumes/Install\\ macOS\\ Big\\ Sur --nointeraction", p: password)
+                                        }
                                         success = IOPMAssertionRelease(assertionID)
                                         downloadStatus = "Adding Kexts..."
                                     } else {

@@ -98,6 +98,17 @@ struct EnterPasswordButton: View {
                 if password != "" {
                     do {
                         try call("echo Hi", p: password)
+                        print("Saving password to keychain, so we don't have to prompt again...")
+                        guard let passwordData = password.data(using: .utf8) else {
+                            print("It doesn't really matter, but the saving failed.")
+                            return
+                        }
+                        let keychaintry = KeyChain.save(key: "bensova.Patched-Sur.userpass", data: passwordData)
+                        if keychaintry == noErr {
+                            print("Saved!")
+                        } else {
+                            print("It doesn't really matter, but the saving failed.")
+                        }
                         onDone()
                     } catch {
                         invalidPassword = true
@@ -127,6 +138,26 @@ struct EnterPasswordButton: View {
             .padding(.top, 10)
             .opacity(password == "" ? 0.4 : 1)
         }.fixedSize()
+        .onAppear {
+            print("Checking for password in keychain...")
+            guard let passwordData = KeyChain.load(key: "bensova.Patched-Sur.userpass") else {
+                print("Not there, so prompting for password.")
+                return
+            }
+            print("Something is in keychain, attemping to decode...")
+            guard let passwordN = String(data: passwordData, encoding: .utf8) else {
+                print("Unable to decode data, so promting for password.")
+                return
+            }
+            print("Decoded password, checking to see if it is still valid...")
+            if (try? call("echo Hi", p: password)) == nil {
+                print("Password is invalid, so promting for password.")
+                return
+            }
+            print("The password is correct, so skipping this prompt.")
+            password = passwordN
+            onDone()
+        }
     }
 }
 

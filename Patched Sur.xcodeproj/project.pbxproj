@@ -13,6 +13,7 @@
 		760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760C7D1A25719C27004817F1 /* UpdateAppAction.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		7625796B25423FDC00508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796A25423FDC00508A71 /* Files */; };
+		762A066825BF93A80037655D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A066725BF93A80037655D /* Keychain.swift */; };
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
 		763AA41125BBCFF100C7C14F /* DisableAMFIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AA41025BBCFF100C7C14F /* DisableAMFIView.swift */; };
@@ -62,6 +63,7 @@
 		760C7D1A25719C27004817F1 /* UpdateAppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppAction.swift; sourceTree = "<group>"; };
 		761112342576CBAA0065D7CB /* InstallIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = InstallIcon.icns; sourceTree = "<group>"; };
 		762908AD25760F630021244B /* EFIIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = EFIIcon.icns; sourceTree = "<group>"; };
+		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
 		763AA41025BBCFF100C7C14F /* DisableAMFIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableAMFIView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				763AA41025BBCFF100C7C14F /* DisableAMFIView.swift */,
 				7609BD17257FF8DB0054B76F /* DownloadKexts.swift */,
 				7609BD1D258008B70054B76F /* StartInstallView.swift */,
+				762A066725BF93A80037655D /* Keychain.swift */,
 			);
 			path = "Patched Sur";
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				763AA41125BBCFF100C7C14F /* DisableAMFIView.swift in Sources */,
 				76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */,
 				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
+				762A066825BF93A80037655D /* Keychain.swift in Sources */,
 				3F42EB04255176F700365279 /* Settings.swift in Sources */,
 				76A0B78D25749FC100E392D1 /* main.swift in Sources */,
 				76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */,
@@ -541,12 +545,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur - For Catalina/Patched_Sur___For_Catalina.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -569,12 +573,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur - For Catalina/Patched_Sur___For_Catalina.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -597,9 +601,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur/Patched_Sur.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -626,9 +630,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur/Patched_Sur.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";

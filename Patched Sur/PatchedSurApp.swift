@@ -14,6 +14,7 @@ struct PatchedSurApp: App {
         WindowGroup {
             ContentView(at: $atLocation)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
+                .accentColor(Color("AccentColor"))
         }
     }
 }
@@ -23,6 +24,7 @@ struct PatchedSurSafeApp: App {
         WindowGroup {
             KextPatchView(at: .constant(-11))
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
+                .accentColor(Color("AccentColor"))
         }
     }
 }

@@ -26,7 +26,7 @@ struct HowItWorks: View {
                                     hovered = hovering ? "BACK" : nil
                                 })
                             Text("Back")
-                                .font(.subheadline)
+                                .font(.caption)
                                 .fontWeight(.regular)
                                 .foregroundColor(.white)
                                 .padding(6)
@@ -46,7 +46,7 @@ struct HowItWorks: View {
                                     hovered = hovering ? "CONTINUE" : nil
                                 })
                             Text("Continue")
-                                .font(.subheadline)
+                                .font(.caption)
                                 .fontWeight(.regular)
                                 .foregroundColor(.white)
                                 .padding(6)

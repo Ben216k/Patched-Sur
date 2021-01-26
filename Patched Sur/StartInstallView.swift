@@ -20,6 +20,8 @@ struct StartInstallView: View {
             Text("Ready to Update!")
                 .bold()
             Text("Once you enter your password, Patched Sur will finish preparing for the update and restart into the macOS Updater. After a while, macOS will be finished installing and you can patch the kexts and then enjoy macOS.")
+                .padding()
+                .multilineTextAlignment(.center)
             if correctPassword && errorT == "" {
                 ZStack {
                     Color.secondary
@@ -52,15 +54,18 @@ struct StartInstallView: View {
 //                                        print("Starting helper for startosinstall...")
 //                                        try shellOut(to: "open ~/.patched-sur/Helper.app")
                                         print("Starting OS Install....")
-                                        try exec("~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password)
+                                        try call("DYLD_INSERT_LIBRARIES=~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password)
 //                                        print("Done, we should restart any time now...")
 //                                        print("Helper started, quitting app.")
 //                                        exit(0)
                                     } else {
-                                        print("Injecting Hax...")
-                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
-                                        print("Starting OS Install...")
-                                        try exec("'\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password)
+//                                        print("Injecting Hax...")
+//                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
+//                                        print("Throwing app instructions...")
+//                                        try call("touch ~/.patched-sur/startosinstall")
+//                                        print("Restarting app...")
+//                                        print("Starting OS Install...")
+                                        try call("DYLD_INSERT_LIBRARIES=~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib '\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password)
 //                                        print("Done, we should restart any time now...")
                                     }
                                 } catch {

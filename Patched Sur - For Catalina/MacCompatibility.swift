@@ -39,7 +39,7 @@ struct MacCompatibility: View {
 //                                        .font(.body)
 //                                }
                                 Text("Back")
-                            }.font(.subheadline)
+                            }.font(.caption)
                             .foregroundColor(.white)
                             .padding(6)
                             .padding(.horizontal, 4)
@@ -75,7 +75,7 @@ struct MacCompatibility: View {
 //                                    Image(systemName: "chevron.right.circle")
 //                                        .font(.body)
 //                                }
-                            }.font(.subheadline)
+                            }.font(.caption)
                             .foregroundColor(.white)
                             .padding(6)
                             .padding(.horizontal, 4)
@@ -224,6 +224,7 @@ struct VerifierProgressBar: View {
                     .padding(7)
                     .onAppear {
                         DispatchQueue.global(qos: .background).async {
+                            _ = try? shellOut(to: "mkdir ~/.patched-sur")
                             var macModel = ""
                             do {
                                 macModel = try shellOut(to: "sysctl -n hw.model")
@@ -243,7 +244,6 @@ struct VerifierProgressBar: View {
                             }
                             progress = CGFloat(0.25)
                             do {
-                                _ = try? shellOut(to: "mkdir ~/.patched-sur")
                                 _ = try? shellOut(to: "rm -rf ~/.patched-sur/DetectProblems.sh")
                                 try shellOut(to: "curl -o DetectProblems.sh https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/DetectProblems.sh", at: "~/.patched-sur")
                                 try shellOut(to: "chmod u+x ~/.patched-sur/DetectProblems.sh")
