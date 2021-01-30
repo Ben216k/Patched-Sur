@@ -69,6 +69,7 @@
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
 		763AA41025BBCFF100C7C14F /* DisableAMFIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableAMFIView.swift; sourceTree = "<group>"; };
 		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
+		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		76671F332522B3090004E0C2 /* InstallPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallPackageView.swift; sourceTree = "<group>"; };
 		766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaxDownloadView.swift; sourceTree = "<group>"; };
 		76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
@@ -247,6 +248,7 @@
 				761112342576CBAA0065D7CB /* InstallIcon.icns */,
 				762908AD25760F630021244B /* EFIIcon.icns */,
 				76FEEFAD254F4DBD0079CEFC /* patch-usb.sh */,
+				764EB40B25C61D190033184B /* banner.png */,
 				7643F616256F2A4700A9D61E /* NameComponent.plist */,
 			);
 			path = "Extra Files";
