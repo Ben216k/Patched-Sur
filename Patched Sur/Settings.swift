@@ -56,6 +56,7 @@ struct Settings: View {
                         _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS Big\\ Sur*.app")
                         _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
                         _ = try? call("rm -rf ~/.patched-sur/trash")
+                        presentAlert(m: "Cleaned Leftovers", i: "The files have been deleted, you should see some more free space (assuming that there actually were big files to be cleaned).", s: .informational)
                     }
                     .buttonStyle(BorderlessButtonStyle())
                     .padding(.top, 10)

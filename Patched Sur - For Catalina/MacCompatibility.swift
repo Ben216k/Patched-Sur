@@ -234,7 +234,6 @@ struct VerifierProgressBar: View {
                                 return
                             }
                             progress = CGFloat(0.01)
-                            macModel = "MacBookPro9,2"
                             print("Detected model:" + macModel)
                             print("Downloading model details from: https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/Compatibility/\(macModel.replacingOccurrences(of: ",", with: "%2C")).json")
                             do {
