@@ -16,6 +16,7 @@ struct HaxDownloadView: View {
                 .bold()
             Text("Since the installer checks to make sure your Mac is supported, we need to skip this check to make sure you can actually update macOS. To do this, we need to use ASentientBot's Hax.dylib to skip this check. As soon as this is done, the app will close and reopen then the updater will continue.")
                 .padding()
+                .multilineTextAlignment(.center)
             ZStack {
                 Color.secondary
                     .cornerRadius(10)
