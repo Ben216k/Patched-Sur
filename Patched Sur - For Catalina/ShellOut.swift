@@ -1,24 +1,29 @@
 /**
  *  ShellOut
  *  Copyright (c) John Sundell 2017
- *  Licensed under the MIT license. See LICENSE file.
+ *  Licensed under the MIT license.
  */
 
 import Foundation
 import Dispatch
 
-@discardableResult func call(_ cmd: String, at: String = ".") throws -> String {
-    try shellOut(to: cmd, at: at)
+let psHandle = StringHandle.init(handlingClosure: { (string) in
+    print(string)
+})
+
+@discardableResult func call(_ cmd: String, at: String = "~/.patched-sur") throws -> String {
+    try shellOut(to: cmd, at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
 
-@discardableResult func call(_ cmd: String, p: String, at: String = ".") throws -> String {
-    try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at)
+@discardableResult func call(_ cmd: String, p: String, at: String = "~/.patched-sur") throws -> String {
+    try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
 
 
-@discardableResult func exec(_ cmd: String, p: String, at: String = ".") throws -> String {
-    try shellOut(to: "exec echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at)
+@discardableResult func exec(_ cmd: String, p: String, at: String = "~/.patched-sur") throws -> String {
+    try shellOut(to: "exec echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
+
 // MARK: - API
 
 /**
@@ -27,10 +32,9 @@ import Dispatch
  *  - parameter command: The command to run
  *  - parameter arguments: The arguments to pass to the command
  *  - parameter path: The path to execute the commands at (defaults to current folder)
- *  - parameter process: Which process to use to perform the command (default: A new one)
- *  - parameter outputHandle: Any `FileHandle` that any output (STDOUT) should be redirected to
+ *  - parameter outputHandle: Any `Handle` that any output (STDOUT) should be redirected to
  *              (at the moment this is only supported on macOS)
- *  - parameter errorHandle: Any `FileHandle` that any error output (STDERR) should be redirected to
+ *  - parameter errorHandle: Any `Handle` that any error output (STDERR) should be redirected to
  *              (at the moment this is only supported on macOS)
  *
  *  - returns: The output of running the command
@@ -39,21 +43,14 @@ import Dispatch
  *  Use this function to "shell out" in a Swift script or command line tool
  *  For example: `shellOut(to: "mkdir", arguments: ["NewFolder"], at: "~/CurrentFolder")`
  */
-@discardableResult public func shellOut(
-    to command: String,
-    arguments: [String] = [],
-    at path: String = "~/.patched-sur/",
-    process: Process = .init(),
-    outputHandle: FileHandle? = nil,
-    errorHandle: FileHandle? = nil
-) throws -> String {
+@discardableResult public func shellOut(to command: String,
+                                        arguments: [String] = [],
+                                        at path: String = "~/.patched-sur",
+                                        outputHandle: Handle? = nil,
+                                        errorHandle: Handle? = nil) throws -> String {
+    let process = Process()
     let command = "cd \(path.escapingSpaces) && \(command) \(arguments.joined(separator: " "))"
-
-    return try process.launchBash(
-        with: command,
-        outputHandle: outputHandle,
-        errorHandle: errorHandle
-    )
+    return try process.launchBash(with: command, outputHandle: outputHandle, errorHandle: errorHandle)
 }
 
 /**
@@ -61,10 +58,9 @@ import Dispatch
  *
  *  - parameter commands: The commands to run
  *  - parameter path: The path to execute the commands at (defaults to current folder)
- *  - parameter process: Which process to use to perform the command (default: A new one)
- *  - parameter outputHandle: Any `FileHandle` that any output (STDOUT) should be redirected to
+ *  - parameter outputHandle: Any `Handle` that any output (STDOUT) should be redirected to
  *              (at the moment this is only supported on macOS)
- *  - parameter errorHandle: Any `FileHandle` that any error output (STDERR) should be redirected to
+ *  - parameter errorHandle: Any `Handle` that any error output (STDERR) should be redirected to
  *              (at the moment this is only supported on macOS)
  *
  *  - returns: The output of running the command
@@ -73,22 +69,12 @@ import Dispatch
  *  Use this function to "shell out" in a Swift script or command line tool
  *  For example: `shellOut(to: ["mkdir NewFolder", "cd NewFolder"], at: "~/CurrentFolder")`
  */
-@discardableResult public func shellOut(
-    to commands: [String],
-    at path: String = "~/.patched-sur/",
-    process: Process = .init(),
-    outputHandle: FileHandle? = nil,
-    errorHandle: FileHandle? = nil
-) throws -> String {
+@discardableResult public func shellOut(to commands: [String],
+                                        at path: String = "~/.patched-sur",
+                                        outputHandle: Handle? = nil,
+                                        errorHandle: Handle? = nil) throws -> String {
     let command = commands.joined(separator: " && ")
-
-    return try shellOut(
-        to: command,
-        at: path,
-        process: process,
-        outputHandle: outputHandle,
-        errorHandle: errorHandle
-    )
+    return try shellOut(to: command, at: path, outputHandle: outputHandle, errorHandle: errorHandle)
 }
 
 /**
@@ -96,9 +82,8 @@ import Dispatch
  *
  *  - parameter command: The command to run
  *  - parameter path: The path to execute the commands at (defaults to current folder)
- *  - parameter process: Which process to use to perform the command (default: A new one)
- *  - parameter outputHandle: Any `FileHandle` that any output (STDOUT) should be redirected to
- *  - parameter errorHandle: Any `FileHandle` that any error output (STDERR) should be redirected to
+ *  - parameter outputHandle: Any `Handle` that any output (STDOUT) should be redirected to
+ *  - parameter errorHandle: Any `Handle` that any error output (STDERR) should be redirected to
  *
  *  - returns: The output of running the command
  *  - throws: `ShellOutError` in case the command couldn't be performed, or it returned an error
@@ -108,20 +93,11 @@ import Dispatch
  *
  *  See `ShellOutCommand` for more info.
  */
-@discardableResult public func shellOut(
-    to command: ShellOutCommand,
-    at path: String = "~/.patched-sur/",
-    process: Process = .init(),
-    outputHandle: FileHandle? = nil,
-    errorHandle: FileHandle? = nil
-) throws -> String {
-    return try shellOut(
-        to: command.string,
-        at: path,
-        process: process,
-        outputHandle: outputHandle,
-        errorHandle: errorHandle
-    )
+@discardableResult public func shellOut(to command: ShellOutCommand,
+                                        at path: String = "~/.patched-sur",
+                                        outputHandle: Handle? = nil,
+                                        errorHandle: Handle? = nil) throws -> String {
+    return try shellOut(to: command.string, at: path, outputHandle: outputHandle, errorHandle: errorHandle)
 }
 
 /// Structure used to pre-define commands for use with ShellOut
@@ -132,228 +108,6 @@ public struct ShellOutCommand {
     /// Initialize a value using a string that makes up the underlying command
     public init(string: String) {
         self.string = string
-    }
-}
-
-/// Git commands
-public extension ShellOutCommand {
-    /// Initialize a git repository
-    static func gitInit() -> ShellOutCommand {
-        return ShellOutCommand(string: "git init")
-    }
-
-    /// Clone a git repository at a given URL
-    static func gitClone(url: URL, to path: String? = nil, allowingPrompt: Bool = true) -> ShellOutCommand {
-        var command = "\(git(allowingPrompt: allowingPrompt)) clone \(url.absoluteString)"
-        path.map { command.append(argument: $0) }
-        command.append(" --quiet")
-
-        return ShellOutCommand(string: command)
-    }
-
-    /// Create a git commit with a given message (also adds all untracked file to the index)
-    static func gitCommit(message: String, allowingPrompt: Bool = true) -> ShellOutCommand {
-        var command = "\(git(allowingPrompt: allowingPrompt)) add . && git commit -a -m"
-        command.append(argument: message)
-        command.append(" --quiet")
-
-        return ShellOutCommand(string: command)
-    }
-
-    /// Perform a git push
-    static func gitPush(remote: String? = nil, branch: String? = nil, allowingPrompt: Bool = true) -> ShellOutCommand {
-        var command = "\(git(allowingPrompt: allowingPrompt)) push"
-        remote.map { command.append(argument: $0) }
-        branch.map { command.append(argument: $0) }
-        command.append(" --quiet")
-
-        return ShellOutCommand(string: command)
-    }
-
-    /// Perform a git pull
-    static func gitPull(remote: String? = nil, branch: String? = nil, allowingPrompt: Bool = true) -> ShellOutCommand {
-        var command = "\(git(allowingPrompt: allowingPrompt)) pull"
-        remote.map { command.append(argument: $0) }
-        branch.map { command.append(argument: $0) }
-        command.append(" --quiet")
-
-        return ShellOutCommand(string: command)
-    }
-
-    /// Run a git submodule update
-    static func gitSubmoduleUpdate(initializeIfNeeded: Bool = true, recursive: Bool = true, allowingPrompt: Bool = true) -> ShellOutCommand {
-        var command = "\(git(allowingPrompt: allowingPrompt)) submodule update"
-
-        if initializeIfNeeded {
-            command.append(" --init")
-        }
-
-        if recursive {
-            command.append(" --recursive")
-        }
-
-        command.append(" --quiet")
-        return ShellOutCommand(string: command)
-    }
-
-    /// Checkout a given git branch
-    static func gitCheckout(branch: String) -> ShellOutCommand {
-        let command = "git checkout".appending(argument: branch)
-                                    .appending(" --quiet")
-
-        return ShellOutCommand(string: command)
-    }
-
-    private static func git(allowingPrompt: Bool) -> String {
-        return allowingPrompt ? "git" : "env GIT_TERMINAL_PROMPT=0 git"
-    }
-}
-
-/// File system commands
-public extension ShellOutCommand {
-    /// Create a folder with a given name
-    static func createFolder(named name: String) -> ShellOutCommand {
-        let command = "mkdir".appending(argument: name)
-        return ShellOutCommand(string: command)
-    }
-
-    /// Create a file with a given name and contents (will overwrite any existing file with the same name)
-    static func createFile(named name: String, contents: String) -> ShellOutCommand {
-        var command = "echo"
-        command.append(argument: contents)
-        command.append(" > ")
-        command.append(argument: name)
-
-        return ShellOutCommand(string: command)
-    }
-
-    /// Move a file from one path to another
-    static func moveFile(from originPath: String, to targetPath: String) -> ShellOutCommand {
-        let command = "mv".appending(argument: originPath)
-                          .appending(argument: targetPath)
-
-        return ShellOutCommand(string: command)
-    }
-    
-    /// Copy a file from one path to another
-    static func copyFile(from originPath: String, to targetPath: String) -> ShellOutCommand {
-        let command = "cp".appending(argument: originPath)
-                          .appending(argument: targetPath)
-        
-        return ShellOutCommand(string: command)
-    }
-    
-    /// Remove a file
-    static func removeFile(from path: String, arguments: [String] = ["-f"]) -> ShellOutCommand {
-        let command = "rm".appending(arguments: arguments)
-                          .appending(argument: path)
-        
-        return ShellOutCommand(string: command)
-    }
-
-    /// Open a file using its designated application
-    static func openFile(at path: String) -> ShellOutCommand {
-        let command = "open".appending(argument: path)
-        return ShellOutCommand(string: command)
-    }
-
-    /// Read a file as a string
-    static func readFile(at path: String) -> ShellOutCommand {
-        let command = "cat".appending(argument: path)
-        return ShellOutCommand(string: command)
-    }
-
-    /// Create a symlink at a given path, to a given target
-    static func createSymlink(to targetPath: String, at linkPath: String) -> ShellOutCommand {
-        let command = "ln -s".appending(argument: targetPath)
-                             .appending(argument: linkPath)
-
-        return ShellOutCommand(string: command)
-    }
-
-    /// Expand a symlink at a given path, returning its target path
-    static func expandSymlink(at path: String) -> ShellOutCommand {
-        let command = "readlink".appending(argument: path)
-        return ShellOutCommand(string: command)
-    }
-}
-
-/// Marathon commands
-public extension ShellOutCommand {
-    /// Run a Marathon Swift script
-    static func runMarathonScript(at path: String, arguments: [String] = []) -> ShellOutCommand {
-        let command = "marathon run".appending(argument: path)
-                                    .appending(arguments: arguments)
-
-        return ShellOutCommand(string: command)
-    }
-
-    /// Update all Swift packages managed by Marathon
-    static func updateMarathonPackages() -> ShellOutCommand {
-        return ShellOutCommand(string: "marathon update")
-    }
-}
-
-/// Swift Package Manager commands
-public extension ShellOutCommand {
-    /// Enum defining available package types when using the Swift Package Manager
-    enum SwiftPackageType: String {
-        case library
-        case executable
-    }
-
-    /// Enum defining available build configurations when using the Swift Package Manager
-    enum SwiftBuildConfiguration: String {
-        case debug
-        case release
-    }
-
-    /// Create a Swift package with a given type (see SwiftPackageType for options)
-    static func createSwiftPackage(withType type: SwiftPackageType = .library) -> ShellOutCommand {
-        let command = "swift package init --type \(type.rawValue)"
-        return ShellOutCommand(string: command)
-    }
-
-    /// Update all Swift package dependencies
-    static func updateSwiftPackages() -> ShellOutCommand {
-        return ShellOutCommand(string: "swift package update")
-    }
-
-    /// Generate an Xcode project for a Swift package
-    static func generateSwiftPackageXcodeProject() -> ShellOutCommand {
-        return ShellOutCommand(string: "swift package generate-xcodeproj")
-    }
-
-    /// Build a Swift package using a given configuration (see SwiftBuildConfiguration for options)
-    static func buildSwiftPackage(withConfiguration configuration: SwiftBuildConfiguration = .debug) -> ShellOutCommand {
-        return ShellOutCommand(string: "swift build -c \(configuration.rawValue)")
-    }
-
-    /// Test a Swift package using a given configuration (see SwiftBuildConfiguration for options)
-    static func testSwiftPackage(withConfiguration configuration: SwiftBuildConfiguration = .debug) -> ShellOutCommand {
-        return ShellOutCommand(string: "swift test -c \(configuration.rawValue)")
-    }
-}
-
-/// Fastlane commands
-public extension ShellOutCommand {
-    /// Run Fastlane using a given lane
-    static func runFastlane(usingLane lane: String) -> ShellOutCommand {
-        let command = "fastlane".appending(argument: lane)
-        return ShellOutCommand(string: command)
-    }
-}
-
-/// CocoaPods commands
-public extension ShellOutCommand {
-    /// Update all CocoaPods dependencies
-    static func updateCocoaPods() -> ShellOutCommand {
-        return ShellOutCommand(string: "pod update")
-    }
-
-    /// Install all CocoaPods dependencies
-    static func installCocoaPods() -> ShellOutCommand {
-        return ShellOutCommand(string: "pod install")
     }
 }
 
@@ -373,24 +127,12 @@ public struct ShellOutError: Swift.Error {
 
 extension ShellOutError: CustomStringConvertible {
     public var description: String {
-        if message != "" && output != "" {
-            return """
-                   Error 1x\(terminationStatus)
-                   Message: "\(message)"
-                   "\(output)"
-                   """
-        }
-        if message == "" {
-            return """
-                   Error 1x\(terminationStatus)
-                   \(output)
-                   """
-        } else {
-            return """
-                   Error 1x\(terminationStatus)
-                   \(message)
-                   """
-        }
+        return """
+               ShellOut encountered an error
+               Status code: \(terminationStatus)
+               Message: "\(message)"
+               Output: "\(output)"
+               """
     }
 }
 
@@ -400,10 +142,52 @@ extension ShellOutError: LocalizedError {
     }
 }
 
+/// Protocol adopted by objects that handles command output
+public protocol Handle {
+    /// Method called each time command provide new output data
+    func handle(data: Data)
+
+    /// Optional method called when command has finished to close the handle
+    func endHandling()
+}
+
+public extension Handle {
+    func endHandling() {}
+}
+
+extension FileHandle: Handle {
+    public func handle(data: Data) {
+        write(data)
+    }
+    
+    public func endHandling() {
+        closeFile()
+    }
+}
+
+/// Handle to get async output from the command. The `handlingClosure` will be called each time new output string appear.
+public struct StringHandle: Handle {
+    private let handlingClosure: (String) -> Void
+
+    /// Default initializer
+    ///
+    /// - Parameter handlingClosure: closure called each time new output string is provided
+    public init(handlingClosure: @escaping (String) -> Void) {
+        self.handlingClosure = handlingClosure
+    }
+    
+    public func handle(data: Data) {
+        guard !data.isEmpty else { return }
+        let output = data.shellOutput()
+        guard !output.isEmpty else { return }
+        handlingClosure(output)
+    }
+}
+
 // MARK: - Private
 
 private extension Process {
-    @discardableResult func launchBash(with command: String, outputHandle: FileHandle? = nil, errorHandle: FileHandle? = nil) throws -> String {
+    @discardableResult func launchBash(with command: String, outputHandle: Handle? = nil, errorHandle: Handle? = nil) throws -> String {
         launchPath = "/bin/bash"
         arguments = ["-c", command]
 
@@ -427,7 +211,7 @@ private extension Process {
             let data = handler.availableData
             outputQueue.async {
                 outputData.append(data)
-                outputHandle?.write(data)
+                outputHandle?.handle(data: data)
             }
         }
 
@@ -435,7 +219,7 @@ private extension Process {
             let data = handler.availableData
             outputQueue.async {
                 errorData.append(data)
-                errorHandle?.write(data)
+                errorHandle?.handle(data: data)
             }
         }
         #endif
@@ -451,13 +235,8 @@ private extension Process {
 
         waitUntilExit()
 
-        if let handle = outputHandle, !handle.isStandard {
-            handle.closeFile()
-        }
-
-        if let handle = errorHandle, !handle.isStandard {
-            handle.closeFile()
-        }
+        outputHandle?.endHandling()
+        errorHandle?.endHandling()
 
         #if !os(Linux)
         outputPipe.fileHandleForReading.readabilityHandler = nil
@@ -477,14 +256,6 @@ private extension Process {
 
             return outputData.shellOutput()
         }
-    }
-}
-
-private extension FileHandle {
-    var isStandard: Bool {
-        return self === FileHandle.standardOutput ||
-            self === FileHandle.standardError ||
-            self === FileHandle.standardInput
     }
 }
 

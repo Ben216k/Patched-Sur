@@ -19,7 +19,7 @@ struct StartInstallView: View {
         VStack {
             Text("Ready to Update!")
                 .bold()
-            Text("Once you enter your password, Patched Sur will finish preparing for the update and restart into the macOS Updater. After a while, macOS will be finished installing and you can patch the kexts and then enjoy macOS.")
+            Text("Once you enter your password, Patched Sur will finish preparing for the update and restart into the macOS Updater. After a while, macOS will be finished installing and you can patch the kexts and then enjoy macOS. This will take a while! Just like the preparing for update part of system preferences, this isn't the fastest thing in the world.")
                 .padding()
                 .multilineTextAlignment(.center)
             if correctPassword && errorT == "" {
@@ -50,22 +50,22 @@ struct StartInstallView: View {
 //                                        print("Unzipping Hax script...")
 //                                        try call("")
                                         // DYLD_INSERT_LIBRARIES=~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib
-                                        print("Injecting Hax...")
-                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
-                                        _ = try? call("sleep 2")
+//                                        print("Injecting Hax...")
+//                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
+//                                        _ = try? call("sleep 2")
                                         print("Starting OS Install....")
                                         try call("~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password)
 //                                        print("Done, we should restart any time now...")
 //                                        print("Helper started, quitting app.")
 //                                        exit(0)
                                     } else {
-                                        print("Injecting Hax...")
-                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
-                                        _ = try? call("sleep 2")
+//                                        print("Injecting Hax...")
+//                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
+//                                        _ = try? call("sleep 2")
 //                                        print("Throwing app instructions...")
 //                                        try call("touch ~/.patched-sur/startosinstall")
 //                                        print("Restarting app...")
-//                                        print("Starting OS Install...")
+                                        print("Starting OS Install...")
                                         try call("'\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password)
 //                                        print("Done, we should restart any time now...")
                                     }
