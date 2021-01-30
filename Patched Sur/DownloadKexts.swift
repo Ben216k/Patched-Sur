@@ -64,8 +64,6 @@ struct DownloadView: View {
                                             _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
                                             _ = try? call("rm -rf ~/.patched-sur/big-sur-micropatcher*")
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
-                                            _ = try? File(path: "~/.patched-sur/Helper.app.zip").delete()
-                                            _ = try? call("rm -rf ~/.patched-sur/Helper.app")
                                             _ = try? call("rm -rf ~/.patched-sur/__MACOSX")
                                             print("Starting download of micropatcher...")
                                             if let sizeString = try? call("curl -sI https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1 | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
@@ -74,15 +72,27 @@ struct DownloadView: View {
                                             try call("curl -Lo ~/.patched-sur/big-sur-micropatcher.zip https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1")
                                             print("Unzipping kexts...")
                                             try call("unzip ~/.patched-sur/big-sur-micropatcher.zip -d ~/.patched-sur")
-                                            print("Downloading Helper...")
-                                            try call("curl -Lo ~/.patched-sur/Helper.app.zip https://github.com/patched-sur/patched-sur.github.io/raw/main/Helper.app.zip")
-                                            print("Unzipping Helper...")
-                                            try call("unzip ~/.patched-sur/Helper.app.zip -d ~/.patched-sur")
                                             print("Post-download clean up...")
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
-                                            _ = try? File(path: "~/.patched-sur/Helper.app.zip").delete()
                                             _ = try? call("rm -rf ~/.patched-sur/__MACOSX")
                                             print("Finished downloading the micropatcher!")
+                                            _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
+                                            if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                                installSize = sizeInt
+                                            }
+                                            let reasonForActivity = "Reason for activity" as CFString
+                                            var assertionID: IOPMAssertionID = 0
+                                            var success = IOPMAssertionCreateWithName( kIOPMAssertionTypeNoDisplaySleep as CFString,
+                                                                                        IOPMAssertionLevel(kIOPMAssertionLevelOn),
+                                                                                        reasonForActivity,
+                                                                                        &assertionID )
+                                            if success == kIOReturnSuccess {
+                                                try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
+                                                success = IOPMAssertionRelease(assertionID)
+                                            } else {
+                                                try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
+                                            }
+                                            p = 4
                                             kextDownloaded = true
                                         } catch {
                                             downloadStatus = error.localizedDescription
@@ -111,32 +121,15 @@ struct DownloadView: View {
                         .lineLimit(4)
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
-                                if !AppInfo.usePredownloaded {
-                                    do {
-                                        _ = try? call("sleep 3")
-                                        _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
-                                        if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                                            installSize = sizeInt
-                                        }
-                                        let reasonForActivity = "Reason for activity" as CFString
-                                        var assertionID: IOPMAssertionID = 0
-                                        var success = IOPMAssertionCreateWithName( kIOPMAssertionTypeNoDisplaySleep as CFString,
-                                                                                    IOPMAssertionLevel(kIOPMAssertionLevelOn),
-                                                                                    reasonForActivity,
-                                                                                    &assertionID )
-                                        if success == kIOReturnSuccess {
-                                            try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
-                                            success = IOPMAssertionRelease(assertionID)
-                                        } else {
-                                            try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
-                                        }
-                                        p = 4
-                                    } catch {
-                                        downloadStatus = error.localizedDescription
-                                    }
-                                } else {
-                                    p = 4
-                                }
+//                                if !AppInfo.usePredownloaded {
+////                                    do {
+////
+////                                    } catch {
+////                                        downloadStatus = error.localizedDescription
+////                                    }
+//                                } else {
+//                                    p = 4
+//                                }
                             }
                         }
                         .padding(6)

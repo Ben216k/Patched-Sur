@@ -29,6 +29,15 @@ struct PatchedSurSafeApp: App {
     }
 }
 
+struct PatchedSurOSInstallApp: App {
+    var body: some Scene {
+        WindowGroup {
+            UpdateView(at: .constant(-11), buildNumber: "Yes")
+                .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
+                .accentColor(Color("AccentColor"))
+        }
+    }
+}
 
 extension Color {
     static let background = Color("Background")
@@ -56,6 +65,7 @@ final class AppInfo {
     static var reinstall = false
     static var usePredownloaded = false
     static var preventUpdate = false
+    static var startingInstall = false
 }
 
 struct PatchedSurLogger: TextOutputStream {

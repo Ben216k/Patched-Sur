@@ -24,6 +24,17 @@ print("Running Either Normally or From Terminal in RELEASE configuration.")
 #endif
 print("")
 
+print("Quick check to see if we are supposed to be running statosinstall...")
+if let date = UserDefaults.standard.object(forKey: "installStarted") as? Date {
+    if let diff = Calendar.current.dateComponents([.minute], from: date, to: Date()).minute, diff < 10 {
+        print("Starting OS install...")
+        AppInfo.startingInstall = true
+        PatchedSurOSInstallApp.main()
+        exit(0)
+    }
+}
+print("Nope! Conitnuing.")
+
 CommandLine.arguments.forEach { arg in
     switch arg {
     case "--help", "-h":

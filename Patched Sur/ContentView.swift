@@ -48,9 +48,9 @@ struct ContentView: View {
         if !AppInfo.debug {
             systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
             print("Detected System Version: \(systemVersion)")
-//            _ = try? call("mkdir ~/.patched-sur")
-//            _ = try? call("touch ~/.patched-sur/track.txt")
-            releaseTrack = (try? call("cat ~/.patched-sur/track.txt")) ?? "INVALID"
+            _ = try? call("[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")
+            _ = try? call("[[ -e ~/.patched-sur/track.txt ]] || echo Release > ~/.patched-sur/track.txt")
+            releaseTrack = (try? call("cat ~/.patched-sur/track.txt")) ?? "Release"
             print("Detected Release Track: \(releaseTrack)")
             gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
             gpu.removeLast(2)

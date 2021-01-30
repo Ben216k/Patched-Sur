@@ -48,6 +48,8 @@ struct UpdateView: View {
                 StartInstallView(installerPath: $packageLocation)
             case 6:
                 DisableAMFIView()
+            case 7:
+                HaxDownloadView(installInfo: installInfo)
             default:
                 VStack {
                     Text("Uh-oh! Something went wrong going through the software update steps.\nError 1x\(progress)")
@@ -79,15 +81,33 @@ struct UpdateCheckerView: View {
     @Binding var latestPatch: PatchedVersion?
     @Binding var skipAppCheck: Bool
     @Binding var installInfo: InstallAssistant?
+    @State var checkingForUpdatesText = "Checking For Updates..."
     var body: some View {
         VStack {
-            Text("Checking For Updates...")
+            Text(checkingForUpdatesText)
                 .font(.title2)
                 .fontWeight(.semibold)
             ProgressView()
                 .progressViewStyle(LinearProgressViewStyle())
                 .padding(.horizontal)
                 .onAppear {
+                    print("Checking to see if we are running startosinstall...")
+                    if AppInfo.startingInstall {
+                        print("We are!")
+                        if let infoData = UserDefaults.standard.string(forKey: "installInfo") {
+                            guard let info = try? InstallAssistant(infoData) else {
+                                print("This really should not have happened 2...")
+                                checkingForUpdatesText = "Failed to Get Install Inforamtion 2"
+                                return
+                            }
+                            installInfo = info
+                            progress = 3
+                        } else {
+                            print("This really should not have happened...")
+                            checkingForUpdatesText = "Failed to Get Install Inforamtion"
+                        }
+                        return
+                    }
                     DispatchQueue.global(qos: .background).async {
                         do {
                             print("Checking for updates to Patched Sur...")
