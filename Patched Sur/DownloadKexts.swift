@@ -45,9 +45,13 @@ struct DownloadView: View {
                             ProgressBar(value: $downloadProgress, length: 230)
                                 .onReceive(timer, perform: { _ in
                                     DispatchQueue.global(qos: .background).async {
-                                        if let sizeCode = try? call("stat -f %z ~/.patched-sur/big-sur-micropatcher.zip") {
-                                            currentSize = Int(Float(sizeCode) ?? 10000)
-                                            downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
+                                        if kextDownloaded {
+                                            downloadProgress = 1
+                                        } else {
+                                            if let sizeCode = try? call("stat -f %z ~/.patched-sur/big-sur-micropatcher.zip") {
+                                                currentSize = Int(Float(sizeCode) ?? 10000)
+                                                downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
+                                            }
                                         }
                                     }
                                 })
@@ -76,6 +80,7 @@ struct DownloadView: View {
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
                                             _ = try? call("rm -rf ~/.patched-sur/__MACOSX")
                                             print("Finished downloading the micropatcher!")
+                                            kextDownloaded = true
                                             _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
                                             if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                                 installSize = sizeInt
@@ -93,7 +98,6 @@ struct DownloadView: View {
                                                 try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
                                             }
                                             p = 4
-                                            kextDownloaded = true
                                         } catch {
                                             downloadStatus = error.localizedDescription
                                         }
