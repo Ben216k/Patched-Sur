@@ -9,14 +9,23 @@ import SwiftUI
 
 struct HaxDownloadView: View {
     @State var errorT = ""
+    @State var done = false
     let installInfo: InstallAssistant?
+    let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
     var body: some View {
         VStack {
             Text("Starting Installer Enviorment")
                 .bold()
-            Text("Since the installer checks to make sure your Mac is supported, we need to skip this check to make sure you can actually update macOS. To do this, we need to use ASentientBot's Hax.dylib to skip this check. As soon as this is done, the app will close and reopen then the updater will continue.")
-                .padding()
+            (Text("Since the installer checks to make sure your Mac is supported, we need to skip this check to make sure you can actually update macOS. To do this, we need to use ASentientBot's Hax.dylib to skip this check. ") + Text("STAY HERE").bold() + Text(" because as soon as this is done, Patched Sur will need you to open it again."))
                 .multilineTextAlignment(.center)
+                .padding()
+                .onReceive(timer) { _ in
+                    if done {
+                        presentAlert(m: "Patched Sur Needs To Restart", i: "So that Patched Sur can properly inject the skip combatibilty check dynamic library, the app needs to restart. When you press \"Okay\" the app will close and you will have to reopen it within the next 10 minutes, otherwise it will open back up to the main screen. Otherwise, the update process will continue after the app restarts.")
+                        UserDefaults.standard.set(Date(), forKey: "installStarted")
+                        exit(0)
+                    }
+                }
             ZStack {
                 Color.secondary
                     .cornerRadius(10)
@@ -25,17 +34,15 @@ struct HaxDownloadView: View {
                         DispatchQueue.global(qos: .background).async {
                             do {
                                 print("Downloading Hax...")
-                                try call("curl -Lo HaxDoNotSeal.dylib https://github.com/barrykn/big-sur-micropatcher/raw/main/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib", at: "~/.patched-sur")
+                                try call("curl -Lo Hax4.dylib https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/Hax4.dylib", at: "~/.patched-sur")
                                 print("Confirming Hax permissions...")
-                                try call("chmod u+x ~/.patched-sur/HaxDoNotSeal.dylib")
+                                try call("chmod u+x ~/.patched-sur/Hax4.dylib")
                                 print("Injecting Hax...")
-                                try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/HaxDoNotSeal.dylib")
+                                try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/Hax4.dylib")
                                 print("Saving app instructions...")
-                                UserDefaults.standard.set(Date(), forKey: "installStarted")
                                 UserDefaults.standard.set(try! installInfo!.jsonString()!, forKey: "installInfo")
-                                print("Restarting app...")
-                                try call("open \"\(CommandLine.arguments[0])\"")
-                                exit(0)
+                                print("Prompting for app restart...")
+                                done = true
                             } catch {
                                 errorT = error.localizedDescription
                             }

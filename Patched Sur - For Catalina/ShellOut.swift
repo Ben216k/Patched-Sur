@@ -128,8 +128,7 @@ public struct ShellOutError: Swift.Error {
 extension ShellOutError: CustomStringConvertible {
     public var description: String {
         return """
-               ShellOut encountered an error
-               Status code: \(terminationStatus)
+               Error 1x\(terminationStatus)
                Message: "\(message)"
                Output: "\(output)"
                """

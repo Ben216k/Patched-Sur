@@ -18,7 +18,7 @@ struct DownloadView: View {
     @State var downloadSize = 55357820
     @State var downloadProgress = CGFloat(0)
     @State var currentSize = 10
-    let timer = Timer.publish(every: 0.25, on: .current, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
     
     var body: some View {
         VStack {
