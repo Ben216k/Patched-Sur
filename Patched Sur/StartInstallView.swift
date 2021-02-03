@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftShell
 import Files
 
 struct StartInstallView: View {
@@ -45,29 +44,11 @@ struct StartInstallView: View {
                                         try call("mkdir ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
                                         try call("mv ~/.patched-sur/pkg-extract/SharedSupport.dmg ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
                                         _ = try? call("rm -rf ~/.patched-sur/trash")
-//                                        print("Sending keychain information to helper...")
-//                                        try call("~/.patched-sur/Helper.app/Contents/MacOS/Patched\\ Sur\\ Helper -p \"\(password.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\""))\"")
-//                                        print("Unzipping Hax script...")
-//                                        try call("")
-                                        // DYLD_INSERT_LIBRARIES=~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib
-//                                        print("Injecting Hax...")
-//                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
-//                                        _ = try? call("sleep 2")
-                                        print("Starting OS Install....")
+                                        print("Starting OS Installer....")
                                         try call("~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password)
-//                                        print("Done, we should restart any time now...")
-//                                        print("Helper started, quitting app.")
-//                                        exit(0)
                                     } else {
-//                                        print("Injecting Hax...")
-//                                        try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/big-sur-micropatcher/payloads/ASentientBot-Hax/BarryKN-fork/HaxDoNotSeal.dylib")
-//                                        _ = try? call("sleep 2")
-//                                        print("Throwing app instructions...")
-//                                        try call("touch ~/.patched-sur/startosinstall")
-//                                        print("Restarting app...")
                                         print("Starting OS Install...")
                                         try call("'\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password)
-//                                        print("Done, we should restart any time now...")
                                     }
                                 } catch {
                                     errorT = error.localizedDescription
@@ -79,7 +60,7 @@ struct StartInstallView: View {
                         .lineLimit(4)
                         .padding(6)
                         .padding(.horizontal, 4)
-                }
+                }.fixedSize()
             } else if !correctPassword {
                 EnterPasswordButton(password: $password) {
                     correctPassword = true
@@ -114,6 +95,6 @@ struct StartInstallView: View {
                         .font(.caption)
                 }.fixedSize()
             }
-        }
+        }.frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
     }
 }

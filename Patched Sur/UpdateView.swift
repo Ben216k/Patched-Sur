@@ -101,6 +101,7 @@ struct UpdateCheckerView: View {
                                 return
                             }
                             installInfo = info
+                            AppInfo.usePredownloaded = UserDefaults.standard.bool(forKey: "preDownloaded")
                             progress = 3
                         } else {
                             print("This really should not have happened...")

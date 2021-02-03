@@ -77,6 +77,7 @@ struct EnterPasswordButton: View {
     @Binding var password: String
     @State var buttonBG = Color.accentColor
     var onDone: () -> ()
+    var onSaveFail: () -> () = {}
     @State var invalidPassword = false
     var body: some View {
         HStack {
@@ -101,6 +102,7 @@ struct EnterPasswordButton: View {
                         print("Saving password to keychain, so we don't have to prompt again...")
                         guard let passwordData = password.data(using: .utf8) else {
                             print("It doesn't really matter, but the saving failed.")
+                            onSaveFail()
                             return
                         }
                         let keychaintry = KeyChain.save(key: "bensova.Patched-Sur.userpass", data: passwordData)
@@ -108,6 +110,7 @@ struct EnterPasswordButton: View {
                             print("Saved!")
                         } else {
                             print("It doesn't really matter, but the saving failed.")
+                            onSaveFail()
                         }
                         onDone()
                     } catch {

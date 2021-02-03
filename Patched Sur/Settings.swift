@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftShell
 
 struct Settings: View {
     @State private var showingAlert = false

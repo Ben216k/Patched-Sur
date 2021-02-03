@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftShell
 
 struct DisableAMFIView: View {
     @State var password = ""

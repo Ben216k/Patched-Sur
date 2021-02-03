@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Files
-import SwiftShell
 
 struct UpdateAppView: View {
     let latest: PatchedVersion

@@ -103,6 +103,7 @@ struct DownloadView: View {
                                         }
                                     } else {
                                         kextDownloaded = true
+                                        p = 4
                                     }
                                 }
                             }

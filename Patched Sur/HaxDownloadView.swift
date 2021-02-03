@@ -12,6 +12,8 @@ struct HaxDownloadView: View {
     @State var done = false
     let installInfo: InstallAssistant?
     let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
+    @State var hasPassword = false
+    @State var password = ""
     var body: some View {
         VStack {
             Text("Starting Installer Enviorment")
@@ -26,34 +28,44 @@ struct HaxDownloadView: View {
                         exit(0)
                     }
                 }
-            ZStack {
-                Color.secondary
-                    .cornerRadius(10)
-                    .frame(minWidth: 200, maxWidth: 450)
-                    .onAppear(perform: {
-                        DispatchQueue.global(qos: .background).async {
-                            do {
-                                print("Downloading Hax...")
-                                try call("curl -Lo Hax4.dylib https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/Hax4.dylib", at: "~/.patched-sur")
-                                print("Confirming Hax permissions...")
-                                try call("chmod u+x ~/.patched-sur/Hax4.dylib")
-                                print("Injecting Hax...")
-                                try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/Hax4.dylib")
-                                print("Saving app instructions...")
-                                UserDefaults.standard.set(try! installInfo!.jsonString()!, forKey: "installInfo")
-                                print("Prompting for app restart...")
-                                done = true
-                            } catch {
-                                errorT = error.localizedDescription
+            if hasPassword {
+                ZStack {
+                    Color.secondary
+                        .cornerRadius(10)
+                        .frame(minWidth: 200, maxWidth: 450)
+                        .onAppear(perform: {
+                            DispatchQueue.global(qos: .background).async {
+                                do {
+                                    print("Downloading Hax...")
+                                    try call("curl -Lo Hax4.dylib https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/Hax4.dylib", at: "~/.patched-sur")
+                                    print("Confirming Hax permissions...")
+                                    try call("chmod u+x ~/.patched-sur/Hax4.dylib")
+                                    print("Injecting Hax...")
+                                    try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/Hax4.dylib", p: password)
+                                    sleep(2)
+                                    print("Saving app instructions...")
+                                    UserDefaults.standard.set(try! installInfo!.jsonString()!, forKey: "installInfo")
+                                    UserDefaults.standard.set(AppInfo.usePredownloaded, forKey: "preDownloaded")
+                                    print("Prompting for app restart...")
+                                    done = true
+                                } catch {
+                                    errorT = error.localizedDescription
+                                }
                             }
-                        }
-                    })
-                Text("Preparing for Update...")
-                    .foregroundColor(.white)
-                    .lineLimit(4)
-                    .padding(6)
-                    .padding(.horizontal, 4)
-            }.fixedSize()
+                        })
+                    Text("Preparing for Update...")
+                        .foregroundColor(.white)
+                        .lineLimit(4)
+                        .padding(6)
+                        .padding(.horizontal, 4)
+                }.fixedSize()
+            } else {
+                EnterPasswordButton(password: $password) {
+                    hasPassword = true
+                } onSaveFail: {
+                    print("Oh well.")
+                }
+            }
         }
     }
 }
