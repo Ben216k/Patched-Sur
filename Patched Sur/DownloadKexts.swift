@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Files
-import SwiftShell
 import IOKit
 import IOKit.pwr_mgt
 

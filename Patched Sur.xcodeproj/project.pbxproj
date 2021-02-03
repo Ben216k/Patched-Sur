@@ -12,7 +12,6 @@
 		7609BD1E258008B70054B76F /* StartInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD1D258008B70054B76F /* StartInstallView.swift */; };
 		760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760C7D1A25719C27004817F1 /* UpdateAppAction.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
-		7625796B25423FDC00508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796A25423FDC00508A71 /* Files */; };
 		762A066825BF93A80037655D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A066725BF93A80037655D /* Keychain.swift */; };
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
@@ -26,6 +25,7 @@
 		76772CEA25410B40003FE2A2 /* InstallerChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76772CE925410B40003FE2A2 /* InstallerChooser.swift */; };
 		767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */; };
 		76870F92257358BD0099A4B9 /* UpdateStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76870F91257358BC0099A4B9 /* UpdateStatusView.swift */; };
+		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
 		768F51F6256E05190069096E /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51F5256E05190069096E /* UpdateView.swift */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
 		7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* ContentView.swift */; };
@@ -126,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7625796B25423FDC00508A71 /* Files in Frameworks */,
+				768D516525CA4FD90091D1F0 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +287,7 @@
 			);
 			name = "Patched Sur";
 			packageProductDependencies = (
-				7625796A25423FDC00508A71 /* Files */,
+				768D516425CA4FD90091D1F0 /* Files */,
 			);
 			productName = "Patched Sur";
 			productReference = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */;
@@ -709,7 +709,7 @@
 			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
 		};
-		7625796A25423FDC00508A71 /* Files */ = {
+		768D516425CA4FD90091D1F0 /* Files */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
