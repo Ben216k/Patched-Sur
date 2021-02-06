@@ -33,7 +33,9 @@ struct MainView : View {
                             .padding(5)
                             .padding(.horizontal, 50)
                             .onAppear() {
-                                p = 1
+                                withAnimation {
+                                    p = 1
+                                }
                             }
                     } else {
                         Text("Start")

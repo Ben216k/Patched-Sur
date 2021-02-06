@@ -38,33 +38,33 @@ struct AllViews : View {
         switch progress {
         case 0:
             ZStack {
-                MainView(p: $progress)
+                MainView(p: $progress).transition(.moveAway)
 //                EnterPasswordPrompt(password: $password, show: .constant(true))
             }
         case 1:
-            MacCompatibility(p: $progress)
+            MacCompatibility(p: $progress).transition(.moveAway)
         case 2:
-            HowItWorks(p: $progress)
+            HowItWorks(p: $progress).transition(.moveAway)
         case 9:
-            ReleaseTrackView(track: $releaseTrack, p: $progress)
+            ReleaseTrackView(track: $releaseTrack, p: $progress).transition(.moveAway)
         case 10:
-            InstallMethodView(method: $installMethod, p: $progress)
+            InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
         case 3:
-            DownloadView(p: $progress)
+            DownloadView(p: $progress).transition(.moveAway)
         case 4:
-            InstallPackageView(installInfo: $installInfo, password: $password, p: $progress, overrideInstaller: $overrideinstaller, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation)
+            InstallPackageView(installInfo: $installInfo, password: $password, p: $progress, overrideInstaller: $overrideinstaller, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
         case 5:
-            VolumeSelector(p: $progress, volume: $volume)
+            VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
         case 6:
-            ConfirmVolumeView(volume: $volume, p: $progress)
+            ConfirmVolumeView(volume: $volume, p: $progress).transition(.moveAway)
         case 7:
-            CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation)
+            CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation).transition(.moveAway)
         case 8:
-            FinishedView(app: appLocation ?? "/Applications/Install macOS Big Sur Beta.app/")
+            FinishedView(app: appLocation ?? "/Applications/Install macOS Big Sur Beta.app/").transition(.moveAway)
         case 11:
-            InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation)
+            InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
         default:
-            Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress)")
+            Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress)").transition(.moveAway)
         }
     }
 }

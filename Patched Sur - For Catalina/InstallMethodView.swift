@@ -73,7 +73,9 @@ struct InstallMethodView: View {
             }
             HStack {
                 Button {
-                    p = 9
+                    withAnimation {
+                        p = 9
+                    }
                 } label: {
                     ZStack {
                         buttonBG2
@@ -90,7 +92,9 @@ struct InstallMethodView: View {
                 .buttonStyle(BorderlessButtonStyle())
                 Button {
                     if method != .clean {
-                        p = 3
+                        withAnimation {
+                            p = 3
+                        }
                     }
                 } label: {
                     ZStack {

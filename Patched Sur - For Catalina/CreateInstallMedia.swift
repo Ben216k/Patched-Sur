@@ -118,7 +118,9 @@ struct CreateInstallMedia: View {
                                 do {
                                     _ = try call("rm -rf \"/Applications/Patched Sur.app\"")
                                     try call("cp -rf \"/Volumes/Patched-Sur/.fullApp.app\" \"/Applications/Patched Sur.app\"")
-                                    p = 8
+                                    withAnimation {
+                                        p = 8
+                                    }
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }

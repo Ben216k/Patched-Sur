@@ -52,7 +52,9 @@ struct DownloadView: View {
                                     try call("unzip big-sur-micropatcher.zip", at: "~/.patched-sur")
                                     _ = try? File(path: "~/.patched-sur/big-sur-micropatcher*").delete()
                                     try call("mv ~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher) ~/.patched-sur/big-sur-micropatcher")
-                                    p = 4
+                                    withAnimation {
+                                        p = 4
+                                    }
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }

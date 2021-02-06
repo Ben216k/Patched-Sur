@@ -47,3 +47,12 @@ class AppInfo {
         return micropatcher.version
     }()
 }
+
+extension AnyTransition {
+
+    static var moveAway: AnyTransition {
+        return .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
+
+    }
+
+}

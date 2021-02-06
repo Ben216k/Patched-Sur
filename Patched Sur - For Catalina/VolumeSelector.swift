@@ -58,7 +58,9 @@ struct VolumeSelector: View {
             HStack {
                 Button {
                     if volumes.contains(selected) {
-                        pro = 6
+                        withAnimation {
+                            pro = 6
+                        }
                     }
                 } label: {
                     ZStack {

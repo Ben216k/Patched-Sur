@@ -131,7 +131,9 @@ struct InstallerChooser: View {
             .padding()
             HStack {
                 Button {
-                    p = 4
+                    withAnimation {
+                        p = 4
+                    }
                 } label: {
                     ZStack {
                         hovered == "GO-BACK" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
@@ -167,7 +169,9 @@ struct InstallerChooser: View {
                                 installer = path
                             }
                             useCurrent = true
-                            p = 4
+                            withAnimation {
+                                p = 4
+                            }
                         }
                     }
                 } label: {
@@ -211,7 +215,9 @@ struct InstallerCell: View {
             Button {
                 useCurrent = c
                 installInfo = installer
-                p = 4
+                withAnimation {
+                    p = 4
+                }
             } label: {
                 ZStack {
                     if c {

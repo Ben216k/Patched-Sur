@@ -22,7 +22,9 @@ struct MacCompatibility: View {
                 HStack {
                     Button {
                         if progress2 == .clean {
-                            p = 0
+                            withAnimation {
+                                p = 0
+                            }
                         }
                     } label: {
                         ZStack {
@@ -51,7 +53,9 @@ struct MacCompatibility: View {
                     Button {
 //                        withAnimation {
                             if progress2 == .clean || progress2 == .noCompat {
-                                p = 2
+                                withAnimation {
+                                    p = 2
+                                }
                             } else if progress2 == .issues {
                                 if problems.map({ $0.type }).contains("Fatal") {
                                     alert = .init(title: Text("Fatal Errors Were Detected"), message: Text("There are some errors that were detected that could cause huge problems with Big Sur. Please resolve them if you can, otherwise you will not be able to install Big Sur."), dismissButton: .cancel(Text("Okay")))

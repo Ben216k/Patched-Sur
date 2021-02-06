@@ -78,7 +78,9 @@ struct ReleaseTrackView: View {
             }
             HStack {
                 Button {
-                    p = 2
+                    withAnimation {
+                        p = 2
+                    }
                 } label: {
                     ZStack {
                         (hovered == "BACK" ? Color.secondary.opacity(0.7) : Color.secondary)
@@ -94,7 +96,9 @@ struct ReleaseTrackView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 Button {
-                    p = 10
+                    withAnimation {
+                        p = 10
+                    }
                 } label: {
                     ZStack {
                         (hovered == "CONTINUE" ? Color.accentColor.opacity(0.7) : Color.accentColor)

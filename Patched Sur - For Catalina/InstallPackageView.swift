@@ -150,7 +150,9 @@ struct InstallPackageView: View {
                             }
                         }
                         Button {
-                            p = 11
+                            withAnimation {
+                                p = 11
+                            }
                         } label: {
                             Text("View Other Versions")
                         }.buttonStyle(BorderlessButtonStyle())
@@ -224,7 +226,9 @@ struct InstallPackageView: View {
                                 do {
                                     try call("echo Hi", p: password)
                                     if installer != nil {
-                                        p = 5
+                                        withAnimation {
+                                            p = 5
+                                        }
                                     } else {
                                         downloadStatus = "Installing Package..."
                                     }
@@ -273,7 +277,9 @@ struct InstallPackageView: View {
                                         try call("installer -pkg \"\(package)\" -target /", p: password)
                                     }
                                     _ = try? call("echo \"\(track)\" > ~/.patched-sur/track.txt")
-                                    p = 5
+                                    withAnimation {
+                                        p = 5
+                                    }
                                 } catch {
                                     downloadStatus = error.localizedDescription
                                 }

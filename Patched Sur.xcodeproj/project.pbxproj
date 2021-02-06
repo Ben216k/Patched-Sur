@@ -547,9 +547,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -575,9 +575,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -603,7 +603,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -632,7 +632,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";

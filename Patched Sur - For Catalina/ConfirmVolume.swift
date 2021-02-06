@@ -20,7 +20,9 @@ struct ConfirmVolumeView: View {
                 .multilineTextAlignment(.center)
             HStack {
                 Button {
-                    p = 5
+                    withAnimation {
+                        p = 5
+                    }
                 } label: {
                     ZStack {
                         buttonBG2
@@ -36,7 +38,9 @@ struct ConfirmVolumeView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 Button {
-                    p = 7
+                    withAnimation {
+                        p = 7
+                    }
                 } label: {
                     ZStack {
                         buttonBG
