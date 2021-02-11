@@ -104,7 +104,7 @@ struct UpdateAppView: View {
                                         }
                                         print("Projected size: \(downloadSize)")
                                         print("Starting Download of updated Patched Sur...")
-                                        try call("curl -L \(latest.assets[1].browserDownloadURL) -o ~/.patched-sur/Patched-Sur.zip")
+                                        try call("curl -L \(latest.assets[2].browserDownloadURL) -o ~/.patched-sur/Patched-Sur.zip")
                                         print("Unzipping download...")
                                         try call("unzip ~/.patched-sur/Patched-Sur.zip")
                                         print("Starting Patched Sur Updater...")
