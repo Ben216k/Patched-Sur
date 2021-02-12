@@ -12,9 +12,9 @@ print("Hello! If you're seeing this, you are seeing the logs of (pre-install) Pa
 print("Or maybe running this from the command line...")
 print("")
 print("Patched Sur v\((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "x.y.z") Build \(Int(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "-100") ?? -100)")
-//#if DEBUG
+#if DEBUG
 print("Running From Xcode in DEBUG configuration.")
-//#else
+#else
 print("Running Either Normally or From Terminal in RELEASE configuration.")
 print("Checking for Patched Sur dmg...")
 if (try? call("[[ -d /Volumes/Patched-Sur ]]", at: ".")) == nil {
@@ -27,7 +27,7 @@ if (try? call("[[ -d /Volumes/Patched-Sur ]]", at: ".")) == nil {
 }
 print("Making sure that 100% we have what we want...")
 _ = try? call("mkdir ~/.patched-sur", at: ".")
-//#endif
+#endif
 print("")
 print("Starting App Delegate.")
 AppDelegate.main()
