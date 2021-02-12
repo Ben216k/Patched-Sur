@@ -10,11 +10,16 @@ import Files
 
 struct PatchedSurApp: App {
     @State var atLocation = 0
+    @State var hovered: String?
     var body: some Scene {
         WindowGroup {
             ContentView(at: $atLocation)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
                 .accentColor(Color("AccentColor"))
+        }
+        SwiftUI.Settings {
+            Settings(releaseTrack: "Release", at: .constant(-10), hovered: hovered)
+                .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
         }
     }
 }

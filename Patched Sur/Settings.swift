@@ -11,7 +11,9 @@ struct Settings: View {
     @State private var showingAlert = false
     let releaseTrack: String
     @Binding var at: Int
-    @State var hovered: String?
+    @State var hovered = nil as String?
+    @State var password = ""
+    @State var showPasswordPrompt = false
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 2) {
@@ -20,8 +22,10 @@ struct Settings: View {
                         .bold()
                         .font(.title)
                     Spacer()
-                    CustomColoredButton("Back to Home", hovered: $hovered) {
-                        at = 0
+                    if at != -10 {
+                        CustomColoredButton("Back to Home", hovered: $hovered) {
+                            at = 0
+                        }
                     }
                 }
                 HStack {
@@ -48,6 +52,41 @@ struct Settings: View {
                 .padding(.bottom, 2)
                 Text("The preinstall app in Patched Sur has a new feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
                     .font(.caption)
+                CustomColoredButton("Enable Graphics Switching", hovered: $hovered) {
+                    showPasswordPrompt = true
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .padding(.top, 10)
+                .padding(.bottom, 2)
+                .sheet(isPresented: $showPasswordPrompt, content: {
+                    ZStack(alignment: .topTrailing) {
+                        VStack {
+                            HStack {
+                                Text("Patched Sur Requries Your Password to Contninue").bold()
+                                    .font(Font.body.bold())
+                                Spacer()
+                                CustomColoredButton("Cancel", hovered: $hovered) {
+                                    showPasswordPrompt = false
+                                }
+                            }.padding(.bottom)
+                            EnterPasswordButton(password: $password) {
+                                do {
+                                    print("Stopping displaypolicyd...")
+                                    try call("launchctl stop system/com.apple.displaypolicyd", p: password)
+                                    print("Enabling Automatic Graphics Switching...")
+                                    try call("launchctl disable system/com.apple.displaypolicyd", p: password)
+                                    showPasswordPrompt = false
+                                    presentAlert(m: "Graphics Switching Enabled", i: "Now graphics will switch automatically! A restart might be required for changes to take effect.", s: .informational)
+                                } catch {
+                                    showPasswordPrompt = false
+                                    presentAlert(m: "Failed to Enable Graphics Switching", i: error.localizedDescription, s: .critical)
+                                }
+                            }
+                        }
+                    }.padding(20)
+                })
+                Text("If you have a Mac with mutliple GPUs, then you probably want automatic graphics switching enabled for graphics switching. Thanks to @15wat for finding this solution.")
+                    .font(.caption)
                 CustomColoredButton("Clean Leftovers", hovered: $hovered) {
                     _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
                     _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS Big\\ Sur*.app")
@@ -58,13 +97,15 @@ struct Settings: View {
                 .buttonStyle(BorderlessButtonStyle())
                 .padding(.top, 10)
                 .padding(.bottom, 2)
-                Text("Sometimes, Patched Sur accidentally leaves little leftovers from when something ran. This could at times save 12GB of storage space, this is suggested especially after you run the updater.")
-                    .font(.caption)
-                Text("Patched Sur by Ben Sova")
-                    .bold()
-                    .padding(.top, 5)
-                Text("Thanks to BarryKN, ASentientBot, jackluke, highvoltage12v, ParrotGeek, testheit, Ausdauersportler, StarPlayrX, ASentientHedgehog, John_Val, fromeister2009 and many others!")
-                    .font(.caption)
+                Group {
+                    Text("Sometimes, Patched Sur accidentally leaves little leftovers from when something ran. This could at times save 12GB of storage space, this is suggested especially after you run the updater.")
+                        .font(.caption)
+                    Text("Patched Sur by Ben Sova")
+                        .bold()
+                        .padding(.top, 5)
+                    Text("Thanks to BarryKN, ASentientBot, jackluke, highvoltage12v, ParrotGeek, testheit, Ausdauersportler, StarPlayrX, ASentientHedgehog, John_Val, fromeister2009 and many others!")
+                        .font(.caption)
+                }
             }.font(.subheadline)
             .padding(.leading, 2)
             .padding(.horizontal, 35)
