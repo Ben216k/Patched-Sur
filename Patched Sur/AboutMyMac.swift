@@ -25,7 +25,7 @@ struct AboutMyMac: View {
                     Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
                     Text("Version \(systemVersion)\(buildNumber.count == 5 ? "" : " Beta") (\(buildNumber))").font(.subheadline)
                     Rectangle().frame(height: 15).opacity(0).fixedSize()
-                    Text("Model         ").font(.subheadline).bold() + Text("MacBookPro9,2")
+                    Text("Model         ").font(.subheadline).bold() + Text(model)
                     Text("CPU            ").font(.subheadline).bold() + Text(cpu)
                     Text("GPU            ").font(.subheadline).bold() + Text(gpu)
                     Text("Memory     ").bold() + Text(memory) + Text("GB")
