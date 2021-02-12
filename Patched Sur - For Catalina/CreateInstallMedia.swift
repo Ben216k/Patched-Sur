@@ -39,6 +39,9 @@ struct CreateInstallMedia: View {
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
                                 do {
+                                    print("Disabling bad Spotlight Indexing...")
+                                    _ = try call("sudo mdutil -i off", p: password)
+                                    print("Phrasing for diskID...")
                                     let diskUtilList = try call("diskutil list /Volumes/\(volume.replacingOccurrences(of: " ", with: "\\ "))")
                                     var diskStart = diskUtilList.split(separator: "\n")[2]
                                     diskStart.removeFirst("   0:      GUID_partition_scheme                        *32.0 GB    ".count)
@@ -47,6 +50,7 @@ struct CreateInstallMedia: View {
                                     try call("diskutil eraseDisk JHFS+ Install\\ macOS\\ Big\\ Sur GPT \(diskID)")
                                     downloadStatus = "Copying Installer..."
                                 } catch {
+                                    _ = try? call("sudo mdutil -i on", p: password)
                                     downloadStatus = error.localizedDescription
                                 }
                             }
@@ -81,6 +85,7 @@ struct CreateInstallMedia: View {
                                         downloadStatus = "Unable to pull system attention."
                                     }
                                 } catch {
+                                    _ = try? call("sudo mdutil -i off", p: password)
                                     downloadStatus = error.localizedDescription
                                 }
                             }
@@ -100,6 +105,7 @@ struct CreateInstallMedia: View {
                                     try call("/Volumes/Patched-Sur/.patch-usb.sh", p: password)
                                     downloadStatus = "Injecting Full App..."
                                 } catch {
+                                    _ = try? call("sudo mdutil -i on", p: password)
                                     downloadStatus = error.localizedDescription
                                 }
                             }
@@ -118,10 +124,12 @@ struct CreateInstallMedia: View {
                                 do {
                                     _ = try call("rm -rf \"/Applications/Patched Sur.app\"")
                                     try call("cp -rf \"/Volumes/Patched-Sur/.fullApp.app\" \"/Applications/Patched Sur.app\"")
+                                    _ = try? call("sudo mdutil -i on", p: password)
                                     withAnimation {
                                         p = 8
                                     }
                                 } catch {
+                                    _ = try? call("sudo mdutil -i on", p: password)
                                     downloadStatus = error.localizedDescription
                                 }
                             }
