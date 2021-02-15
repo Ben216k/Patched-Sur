@@ -10,12 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var atLocation: Int
-    let systemVersion: String
     let releaseTrack: String
-    var gpu: String
     var model: String
-    var cpu: String
-    var memory: String
     var buildNumber: String
     var body: some View {
         ZStack {
@@ -27,7 +23,7 @@ struct ContentView: View {
             } else if atLocation == 2 {
                 KextPatchView(at: $atLocation)
             } else if atLocation == 3 {
-                AboutMyMac(systemVersion: systemVersion, releaseTrack: releaseTrack, gpu: gpu, model: model, cpu: cpu, memory: memory, buildNumber: buildNumber, at: $atLocation)
+                AboutMyMac(releaseTrack: releaseTrack, model: model, buildNumber: buildNumber, at: $atLocation)
             } else if atLocation == 4 {
                 Settings(releaseTrack: releaseTrack, at: $atLocation)
             } else {
@@ -45,92 +41,22 @@ struct ContentView: View {
     }
     
     init(at: Binding<Int>) {
-        if !AppInfo.debug {
-            systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
-            print("Detected System Version: \(systemVersion)")
-            _ = try? call("[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")
-            _ = try? call("[[ -e ~/.patched-sur/track.txt ]] || echo Release > ~/.patched-sur/track.txt")
-            releaseTrack = (try? call("cat ~/.patched-sur/track.txt")) ?? "Release"
-            print("Detected Release Track: \(releaseTrack)")
-            gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
-            gpu.removeLast(2)
-            print("Detected GPU: \(gpu)")
-            model = (try? call("sysctl -n hw.model")) ?? "MacModelX,Y"
-            print("Detected Mac Model: \(model)")
-            cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
-            print("Detected CPU: \(cpu)")
-            memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
-            print("Detected Memory Amount: \(memory)")
-            buildNumber = (try? call("sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
-            if buildNumber.count > 14 {
-                buildNumber.removeFirst(14)
-            } else {
-                AppInfo.preventUpdate = true
-            }
-            print("Detected macOS Build Number: \(buildNumber)")
+        _ = try? call("[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")
+        _ = try? call("[[ -e ~/.patched-sur/track.txt ]] || echo Release > ~/.patched-sur/track.txt")
+        model = (try? call("sysctl -n hw.model")) ?? "MacModelX,Y"
+        print("Detected Mac Model: \(model)")
+        buildNumber = (try? call("sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
+        if buildNumber.count > 14 {
+            buildNumber.removeFirst(14)
         } else {
-            if !CommandLine.arguments.contains("versionFormatted") {
-                systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
-                print("Detected System Version: \(systemVersion)")
-            } else {
-                print("DEBUG OVERRIDE: Skipping macOS Formatted System Version Check.")
-                print("Overriding System Version: 11.XX.YY")
-                systemVersion = "11.XX.YY"
-            }
-            if !CommandLine.arguments.contains("releaseTrack") {
-                releaseTrack = (try? call("cat ~/.patched-sur/track.txt")) ?? "INVALID"
-                print("Detected Release Track: \(releaseTrack)")
-            } else {
-                print("DEBUG OVERRIDE: Skipping Patched Sur Release Track Check.")
-                print("Overriding Release Track: Release")
-                releaseTrack = "Release"
-            }
-            if !CommandLine.arguments.contains("gpuCheck") {
-                gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
-                gpu.removeLast(2)
-                print("Detected GPU: \(gpu)")
-            } else {
-                print("DEBUG OVERRIDE: Skipping Hardware GPU Check.")
-                print("Overriding GPU: Integrated HD Bug Graphics")
-                gpu = "Integrated HD Bug Graphics"
-            }
-            if !CommandLine.arguments.contains("macModel") {
-                model = (try? call("sysctl -n hw.model")) ?? "MacModelX,Y"
-                print("Detected Mac Model: \(model)")
-            } else {
-                print("DEBUG OVERRIDE: Skipping Hardware Mac Model Check.")
-                print("Overriding Mac Model: MacModelD,B")
-                model = "MacModelD,B"
-            }
-            if !CommandLine.arguments.contains("cpuCheck") {
-                cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
-                print("Detected CPU: \(cpu)")
-            } else {
-                print("DEBUG OVERRIDE: Skipping Hardware CPU Check.")
-                print("Overriding GPU: Intel iDebug Core @ 100.3GHz")
-                cpu = "Intel iDebug Core @ 100.3GHz"
-            }
-            if !CommandLine.arguments.contains("memoryCheck") {
-                memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
-                print("Detected Memory Amount: \(memory)")
-            } else {
-                print("DEBUG OVERRIDE: Skipping Hardware Memory Check.")
-                print("Overriding Memory Amount: 10k")
-                memory = "10k"
-            }
-            if !CommandLine.arguments.contains("buildNumber") {
-                buildNumber = (try? call("sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
-                buildNumber.removeFirst(14)
-                print("Detected macOS Build Number: \(buildNumber)")
-            } else {
-                print("DEBUG OVERRIDE: Skipping macOS Build Number Check.")
-                print("Overriding Build Number: 20XYYZZZ")
-                buildNumber = "20XYYZZZ"
-            }
+            AppInfo.preventUpdate = true
         }
-        _atLocation = at
-        print("Loading main screen.")
+        print("Detected macOS Build Number: \(buildNumber)")
+        releaseTrack = (try? call("cat ~/.patched-sur/track.txt")) ?? "Release"
+        print("Detected Release Track: \(releaseTrack)")
+        print("Loading Main Screen...")
         print("")
+        self._atLocation = at
     }
 }
 

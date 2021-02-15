@@ -16,6 +16,7 @@ struct AboutMyMac: View {
     var memory: String
     let buildNumber: String
     @Binding var at: Int
+    
     var body: some View {
         ZStack {
             BackGradientView(releaseTrack: releaseTrack)
@@ -75,6 +76,22 @@ struct AboutMyMac: View {
                 .foregroundColor(.white)
             }
         }
+    }
+    
+    init(releaseTrack: String, model: String, buildNumber: String, at: Binding<Int>) {
+        self.releaseTrack = releaseTrack
+        self.model = model
+        self.buildNumber = buildNumber
+        self._at = at
+        memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
+        print("Detected Memory Amount: \(memory)")
+        gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+        gpu.removeLast(2)
+        print("Detected GPU: \(gpu)")
+        cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+        print("Detected CPU: \(cpu)")
+        systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
+        print("Detected System Version: \(systemVersion)")
     }
 }
 
