@@ -14,6 +14,7 @@ struct Settings: View {
     @State var hovered = nil as String?
     @State var password = ""
     @State var showPasswordPrompt = false
+    @State var disablingSwitching = false
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 2) {
@@ -52,10 +53,18 @@ struct Settings: View {
                 .padding(.bottom, 2)
                 Text("The preinstall app in Patched Sur has a new feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
                     .font(.caption)
-                CustomColoredButton("Enable Graphics Switching", hovered: $hovered) {
-                    showPasswordPrompt = true
+                HStack {
+                    CustomColoredButton("Enable Graphics Switching", hovered: $hovered) {
+                        showPasswordPrompt = true
+                        disablingSwitching = false
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    CustomColoredButton("Disable", hovered: $hovered) {
+                        showPasswordPrompt = true
+                        disablingSwitching = true
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
                 }
-                .buttonStyle(BorderlessButtonStyle())
                 .padding(.top, 10)
                 .padding(.bottom, 2)
                 .sheet(isPresented: $showPasswordPrompt, content: {
@@ -70,16 +79,30 @@ struct Settings: View {
                                 }
                             }.padding(.bottom)
                             EnterPasswordButton(password: $password) {
-                                do {
-                                    print("Stopping displaypolicyd...")
-                                    _ = try? call("launchctl stop system/com.apple.displaypolicyd", p: password)
-                                    print("Enabling Automatic Graphics Switching...")
-                                    try call("launchctl disable system/com.apple.displaypolicyd", p: password)
-                                    showPasswordPrompt = false
-                                    presentAlert(m: "Graphics Switching Enabled", i: "Now graphics will switch automatically! A restart might be required for changes to take effect.", s: .informational)
-                                } catch {
-                                    showPasswordPrompt = false
-                                    presentAlert(m: "Failed to Enable Graphics Switching", i: error.localizedDescription, s: .critical)
+                                if !disablingSwitching {
+                                    do {
+                                        print("Stopping displaypolicyd...")
+                                        _ = try? call("launchctl stop system/com.apple.displaypolicyd", p: password)
+                                        print("Enabling Automatic Graphics Switching...")
+                                        try call("launchctl disable system/com.apple.displaypolicyd", p: password)
+                                        showPasswordPrompt = false
+                                        presentAlert(m: "Graphics Switching Enabled", i: "Now graphics will switch automatically! A restart might be required for changes to take effect.", s: .informational)
+                                    } catch {
+                                        showPasswordPrompt = false
+                                        presentAlert(m: "Failed to Enable Graphics Switching", i: error.localizedDescription, s: .critical)
+                                    }
+                                } else {
+                                    do {
+                                        print("Disabling Automatic Graphics Switching...")
+                                        try call("launchctl enable system/com.apple.displaypolicyd", p: password)
+                                        print("Starting displaypolicyd...")
+                                        _ = try? call("launchctl kickstart system/com.apple.displaypolicyd", p: password)
+                                        showPasswordPrompt = false
+                                        presentAlert(m: "Graphics Switching Disabled", i: "Now graphics will no longer switch automatically! A restart might be required for changes to take effect.", s: .informational)
+                                    } catch {
+                                        showPasswordPrompt = false
+                                        presentAlert(m: "Failed to Diable Graphics Switching", i: error.localizedDescription, s: .critical)
+                                    }
                                 }
                             }
                         }
