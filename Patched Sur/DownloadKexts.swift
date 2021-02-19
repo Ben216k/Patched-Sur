@@ -69,10 +69,10 @@ struct DownloadView: View {
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
                                             _ = try? call("rm -rf ~/.patched-sur/__MACOSX")
                                             print("Starting download of micropatcher...")
-                                            if let sizeString = try? call("curl -sI https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1 | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
+                                            if let sizeString = try? call("curl -sI https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
                                                 downloadSize = sizeInt
                                             }
-                                            try call("curl -Lo ~/.patched-sur/big-sur-micropatcher.zip https://www.dropbox.com/s/wb55vorpsid82mh/big-sur-micropatcher.zip?dl=1")
+                                            try call("curl -Lo ~/.patched-sur/big-sur-micropatcher.zip https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main")
                                             print("Unzipping kexts...")
                                             try call("unzip ~/.patched-sur/big-sur-micropatcher.zip -d ~/.patched-sur")
                                             print("Post-download clean up...")

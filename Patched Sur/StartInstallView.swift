@@ -14,6 +14,7 @@ struct StartInstallView: View {
     @State var errorT = ""
     @State var buttonBG = Color.red
     @Binding var installerPath: String
+    @State var currentText = ""
     var body: some View {
         VStack {
             Text("Ready to Update!")
@@ -22,45 +23,69 @@ struct StartInstallView: View {
                 .padding()
                 .multilineTextAlignment(.center)
             if correctPassword && errorT == "" {
-                ZStack {
-                    Color.secondary
-                        .cornerRadius(10)
-                        .frame(minWidth: 200, maxWidth: 450)
-                        .onAppear(perform: {
-                            DispatchQueue.global(qos: .background).async {
-                                do {
-                                    if !installerPath.hasSuffix("app") {
-                                        print("Clean up before extraction...")
-                                        _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app")
-                                        _ = try? call("rm -rf ~/.patched-sur/pkg-extract")
-                                        print("Unpacking package...")
-                                        if installerPath == "~/.patched-sur/InstallAssistant.pkg" {
-                                            try call("cd ~/.patched-sur && pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/pkg-extract")
-                                        } else {
-                                            try call("cd ~/.patched-sur && pkgutil --expand-full '\(installerPath)' ~/.patched-sur/pkg-extract")
+                VStack {
+                    ZStack {
+                        Color.secondary
+                            .cornerRadius(10)
+                            .frame(minWidth: 200, maxWidth: 450)
+                            .onAppear(perform: {
+                                DispatchQueue.global(qos: .background).async {
+                                    do {
+                                        let handle: (String) -> () = {
+                                            if currentText.hasPrefix("""
+                                                
+                                                Preparing:
+                                                """) {
+                                                currentText.removeFirst("""
+                                                
+                                                Preparing:
+                                                """.count)
+                                            }
+                                            currentText = $0 != "Password:" ? $0 : "Starting OS Installer"
                                         }
-                                        print("Organizing package...")
-                                        try call("mv ~/.patched-sur/pkg-extract/Payload/Applications/Install\\ macOS\\ Big\\ Sur*.app ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app")
-                                        try call("mkdir ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
-                                        try call("mv ~/.patched-sur/pkg-extract/SharedSupport.dmg ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
-                                        _ = try? call("rm -rf ~/.patched-sur/trash")
-                                        print("Starting OS Installer....")
-                                        try call("~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password)
-                                    } else {
-                                        print("Starting OS Install...")
-                                        try call("'\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password)
+                                        if !installerPath.hasSuffix("app") {
+                                            currentText = "Cleaning up before extraction"
+                                            print("Clean up before extraction...")
+                                            _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app")
+                                            _ = try? call("rm -rf ~/.patched-sur/pkg-extract")
+                                            currentText = "Unpacking package"
+                                            print("Unpacking package...")
+                                            if installerPath == "~/.patched-sur/InstallAssistant.pkg" {
+                                                try call("cd ~/.patched-sur && pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/pkg-extract", h: handle)
+                                            } else {
+                                                try call("cd ~/.patched-sur && pkgutil --expand-full '\(installerPath)' ~/.patched-sur/pkg-extract", h: handle)
+                                            }
+                                            currentText = "Organizing package"
+                                            print("Organizing package...")
+                                            try call("mv ~/.patched-sur/pkg-extract/Payload/Applications/Install\\ macOS\\ Big\\ Sur*.app ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app")
+                                            try call("mkdir ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
+                                            try call("mv ~/.patched-sur/pkg-extract/SharedSupport.dmg ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
+                                            _ = try? call("rm -rf ~/.patched-sur/trash")
+                                            currentText = "Starting OS Installer"
+                                            print("Starting OS Installer....")
+                                            try call("~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
+                                        } else {
+                                            currentText = "Starting OS Installer"
+                                            print("Starting OS Installer...")
+                                            try call("'\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password, h: handle)
+                                        }
+                                    } catch {
+                                        errorT = error.localizedDescription
                                     }
-                                } catch {
-                                    errorT = error.localizedDescription
                                 }
-                            }
-                        })
-                    Text("Preparing for Update...")
-                        .foregroundColor(.white)
-                        .lineLimit(4)
-                        .padding(6)
-                        .padding(.horizontal, 4)
-                }.fixedSize()
+                            })
+                        Text("Preparing for Update...")
+                            .foregroundColor(.white)
+                            .lineLimit(4)
+                            .padding(6)
+                            .padding(.horizontal, 4)
+                    }.fixedSize()
+                    Text(currentText)
+                        .font(.caption)
+                        .frame(width: 250)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                }
             } else if !correctPassword {
                 EnterPasswordButton(password: $password) {
                     correctPassword = true
@@ -75,7 +100,6 @@ struct StartInstallView: View {
                         ZStack {
                             buttonBG
                                 .cornerRadius(10)
-                                .frame(minWidth: 200, maxWidth: 450)
                                 .onHover(perform: { hovering in
                                     buttonBG = hovering ? Color.red.opacity(0.7) : .red
                                 })
@@ -89,7 +113,7 @@ struct StartInstallView: View {
                                 .lineLimit(4)
                                 .padding(6)
                                 .padding(.horizontal, 4)
-                        }
+                        }.frame(minWidth: 200, maxWidth: 450)
                     }.buttonStyle(BorderlessButtonStyle())
                     Text("Click to Copy")
                         .font(.caption)

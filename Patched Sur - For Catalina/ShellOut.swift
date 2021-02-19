@@ -7,21 +7,29 @@
 import Foundation
 import Dispatch
 
-let psHandle = StringHandle.init(handlingClosure: { (string) in
-    print(string)
-})
-
-@discardableResult func call(_ cmd: String, at: String = "~/.patched-sur") throws -> String {
-    try shellOut(to: cmd, at: at, outputHandle: psHandle, errorHandle: psHandle)
+@discardableResult func call(_ cmd: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
+    let psHandle = StringHandle(handlingClosure: { (string) in
+        print(string)
+        handle(string)
+    })
+    return try shellOut(to: cmd, at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
 
-@discardableResult func call(_ cmd: String, p: String, at: String = "~/.patched-sur") throws -> String {
-    try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
+@discardableResult func call(_ cmd: String, p: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
+    let psHandle = StringHandle(handlingClosure: { (string) in
+        print(string)
+        handle(string)
+    })
+    return try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
 
 
-@discardableResult func exec(_ cmd: String, p: String, at: String = "~/.patched-sur") throws -> String {
-    try shellOut(to: "exec echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
+@discardableResult func exec(_ cmd: String, p: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
+    let psHandle = StringHandle(handlingClosure: { (string) in
+        print(string)
+        handle(string)
+    })
+    return try shellOut(to: "exec echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
 
 // MARK: - API

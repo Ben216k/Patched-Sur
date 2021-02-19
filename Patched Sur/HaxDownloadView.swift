@@ -37,11 +37,11 @@ struct HaxDownloadView: View {
                             DispatchQueue.global(qos: .background).async {
                                 do {
                                     print("Downloading Hax...")
-                                    try call("curl -Lo Hax4.dylib https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/Hax4.dylib", at: "~/.patched-sur")
+                                    try call("curl -Lo Hax5.dylib https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/Hax5/Hax5.dylib", at: "~/.patched-sur")
                                     print("Confirming Hax permissions...")
-                                    try call("chmod u+x ~/.patched-sur/Hax4.dylib")
+                                    try call("chmod u+x ~/.patched-sur/Hax5.dylib")
                                     print("Injecting Hax...")
-                                    try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/Hax4.dylib", p: password)
+                                    try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/Hax5.dylib", p: password)
                                     sleep(2)
                                     print("Saving app instructions...")
                                     UserDefaults.standard.set(try! installInfo!.jsonString()!, forKey: "installInfo")

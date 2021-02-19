@@ -26,6 +26,7 @@ struct ButtonsView: View {
     @State var errorMessage = ""
     @State var installerName = ""
     @Binding var unpatch: String
+    @State var currentText = ""
     var body: some View {
         switch p {
         case 0:
@@ -46,17 +47,28 @@ struct ButtonsView: View {
         case 1:
             RunActionsDisplayView(action: {
                 do {
-                    print("Checking for kexts at \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\"")
-                    if (try? call("[[ -d \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\" ]]")) != nil {
-                        print("Found pre-downloaded kexts!")
+                    print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta\"...")
+                    if (try? call("[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil {
+                        print("Found installer at Beta path")
+                        installerName = "/Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta"
                         p = 2
                         return
                     }
-                    print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta\"...")
-                    installerName = (try? call("[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil ? "Install macOS Big Sur Beta" : "Install macOS Big Sur"
-                    print("Assuming USB is at \"/Volumes/\(installerName)\"")
-                    try call("[[ -d '/Volumes/\(installerName)/patch-kexts.sh\(unpatch)' ]]")
-                    p = 2
+                    print("Checking for USB at \"/Volumes/Install macOS Big Sur\"")
+                    if (try? call("[[ -d '/Volumes/Install macOS Big Sur' ]]")) != nil {
+                        print("Found installer at Regular path")
+                        installerName = "/Volumes/Install\\ macOS\\ Big\\ Sur"
+                        p = 2
+                        return
+                    }
+                    print("Checking for kexts at \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\"")
+                    if (try? call("[[ -d ~/.patched-sur/big-sur-micropatcher/payloads/kexts ]]")) != nil {
+                        print("Found pre-downloaded kexts!")
+                        installerName = "~/.patched-sur/big-sur-micropatcher/payloads"
+                        p = 2
+                        return
+                    }
+                    throw ShellOutError(terminationStatus: 1, errorData: .init(), outputData: .init())
                 } catch {
                     print("USB is not at either detected place or does not have patch-kexts.sh on it.")
                     print("Requesting user to plug back in the usb drive.")
@@ -82,21 +94,22 @@ struct ButtonsView: View {
                 p = 3
             }
         case 3:
-            RunActionsDisplayView(action: {
-                do {
-                    let patchOutput = try call("'/Volumes/\(installerName)/patch-kexts.sh'", p: password)
-                    print("\n==========================================\n")
-                    print(patchOutput)
-                    print("\n==========================================\n")
-                    p = 4
-                } catch {
-                    print("\n==========================================\n")
-                    print(error.localizedDescription)
-                    print("\n==========================================\n")
-                    errorMessage = error.localizedDescription
-                    p = -2
-                }
-            }, text: "Patching Kexts...")
+            VStack {
+                RunActionsDisplayView(action: {
+                    do {
+                        try call("\(installerName)/patch-kexts.sh", p: password, h: { currentText = $0 })
+                        p = 4
+                    } catch {
+                        errorMessage = error.localizedDescription
+                        p = -2
+                    }
+                }, text: "Patching Kexts...")
+                Text(currentText)
+                    .font(.caption)
+                    .frame(width: 250)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+            }
         case -2:
             VStack {
                 Button {
