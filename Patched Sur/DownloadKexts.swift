@@ -81,8 +81,12 @@ struct DownloadView: View {
                                             print("Finished downloading the micropatcher!")
                                             kextDownloaded = true
                                             _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
-                                            if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                                                installSize = sizeInt
+                                            if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'") {
+                                                let sizeStrings = sizeString.split(separator: "\r\n")
+                                                print(sizeStrings)
+                                                if sizeStrings.count > 0, let sizeInt = Int(sizeStrings[0]) {
+                                                    downloadSize = sizeInt
+                                                }
                                             }
                                             let reasonForActivity = "Reason for activity" as CFString
                                             var assertionID: IOPMAssertionID = 0

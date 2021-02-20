@@ -24,7 +24,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct AllViews : View {
-    @State var progress = 0
+    @State var progress = 4
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false

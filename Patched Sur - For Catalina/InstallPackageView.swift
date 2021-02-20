@@ -86,8 +86,12 @@ struct InstallPackageView: View {
                         HStack {
                             Button {
                                 if !useCurrent {
-                                    if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                                        downloadSize = sizeInt
+                                    if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'") {
+                                        let sizeStrings = sizeString.split(separator: "\r\n")
+                                        print(sizeStrings)
+                                        if sizeStrings.count > 0, let sizeInt = Int(sizeStrings[0]) {
+                                            downloadSize = sizeInt
+                                        }
                                     }
                                     downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
                                 } else {
@@ -129,8 +133,11 @@ struct InstallPackageView: View {
                             }.buttonStyle(BorderlessButtonStyle())
                             if package == "~/.patched-sur/InstallAssistant.pkg" && installer == nil && useCurrent {
                                 Button {
-                                    if let sizeString = try? shellOut(to: "curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                                        downloadSize = sizeInt
+                                    if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'") {
+                                        let sizeStrings = sizeString.split(separator: "\n")
+                                        if sizeStrings.count > 0, let sizeInt = Int(sizeStrings[0]) {
+                                            downloadSize = sizeInt
+                                        }
                                     }
                                     downloadStatus = downloadStatus.replacingOccurrences(of: "Download", with: "Downloading") + "..."
                                     buttonBG = Color.accentColor
@@ -163,7 +170,7 @@ struct InstallPackageView: View {
                             ProgressBar(value: $downloadProgress)
                                 .onReceive(timer, perform: { _ in
                                     DispatchQueue.global(qos: .background).async {
-                                        if let sizeCode = try? shellOut(to: "stat -f %z ~/.patched-sur/InstallAssistant.pkg") {
+                                        if let sizeCode = try? call("stat -f %z ~/.patched-sur/InstallAssistant.pkg") {
                                             currentSize = Int(Float(sizeCode) ?? 10000)
                                             downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
                                         }
@@ -176,7 +183,7 @@ struct InstallPackageView: View {
                                 .padding(.horizontal, 4)
                                 .onAppear {
                                     DispatchQueue.global(qos: .background).async {
-                                        _ = try? shellOut(to: "rm -rf ~/.patched-sur/InstallAssistant.pkg")
+                                        _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
                                         do {
                                             let reasonForActivity = "Reason for activity" as CFString
                                             var assertionID: IOPMAssertionID = 0
@@ -185,11 +192,10 @@ struct InstallPackageView: View {
                                                                                         reasonForActivity,
                                                                                         &assertionID )
                                             if success == kIOReturnSuccess {
-                                                try shellOut(to: "curl -L -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
+                                                try call("curl -L -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
                                                 success = IOPMAssertionRelease(assertionID)
                                             } else {
-                                                downloadStatus = "Unable to pull system attention."
-                                                return
+                                                try call("curl -L -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
                                             }
                                             let versionFile = try Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallInfo.txt")
                                             try versionFile.write(installInfo!.jsonString()!, encoding: .utf8)
