@@ -35,6 +35,11 @@ if let date = UserDefaults.standard.object(forKey: "installStarted") as? Date {
 }
 print("Nope! Conitnuing.")
 
+print("Checking if we want to fix depercated values...")
+if (try? call("[[ -e track.txt ]]")) != nil {
+    
+}
+
 CommandLine.arguments.forEach { arg in
     switch arg {
     case "--help", "-h":
@@ -42,8 +47,8 @@ CommandLine.arguments.forEach { arg in
         print("\n--help (-h):")
         print("Shows this screen!")
 //        print("--update (-u)   Starts the inapp updater (you don't need this)")
-        print("--debug (-d):")
-        print("  Starts the app with specific checks disabled.")
+//        print("--debug (-d):")
+//        print("  Starts the app with specific checks disabled.")
         print("--safe (-s): ")
         print("  Starts the app without showing the main prompts")
         print("  and forcing the Patch Kexts section to be shown.")
@@ -77,6 +82,11 @@ CommandLine.arguments.forEach { arg in
         print("")
         AppInfo.safe = true
         PatchedSurSafeApp.main()
+        exit(0)
+    case "--daemon", "-d":
+        print("Detected --daemon option, starting straight into the update checker.")
+        print("Note: all other command line options will be ignored.")
+        patchDaemon()
         exit(0)
     case "--allow-reinstall", "-r":
         print("Detected --allow-reinstall option, reinstalls enabled.")

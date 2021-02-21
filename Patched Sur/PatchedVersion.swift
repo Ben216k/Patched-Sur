@@ -12,7 +12,7 @@ struct PatchedVersion: Codable {
     let htmlURL: String
     let id: Int
     let author: Author
-    let nodeID, tagName, targetCommitish, name: String
+    var nodeID, tagName, targetCommitish, name: String
     let draft, prerelease: Bool
     let createdAt, publishedAt: Date
     let assets: [Asset]

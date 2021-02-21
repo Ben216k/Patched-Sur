@@ -47,6 +47,7 @@
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
 		76D639DD2576302500B38FBE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D639DC2576302500B38FBE /* main.swift */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
+		76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */; };
 		76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */; };
 		76F11501256EDAD4001AB749 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11508256EE9FB001AB749 /* PatchedVersion.swift */; };
@@ -104,6 +105,7 @@
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
 		76D639DC2576302500B38FBE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchDaemon.swift; sourceTree = "<group>"; };
 		76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KextPatchView.swift; sourceTree = "<group>"; };
 		76F11508256EE9FB001AB749 /* PatchedVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchedVersion.swift; sourceTree = "<group>"; };
 		76F11510256EED85001AB749 /* UpdateAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				76A0B78C25749FC100E392D1 /* main.swift */,
+				76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */,
 				7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */,
 				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
 				767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */,
@@ -396,6 +399,7 @@
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
 				7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */,
 				763AA41125BBCFF100C7C14F /* DisableAMFIView.swift in Sources */,
+				76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */,
 				76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */,
 				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
 				762A066825BF93A80037655D /* Keychain.swift in Sources */,
@@ -547,7 +551,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -575,7 +579,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 50;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -603,7 +607,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -632,7 +636,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";

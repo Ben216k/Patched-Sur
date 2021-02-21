@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -18,6 +19,24 @@ struct ContentView: View {
 //            colorScheme == .dark ? Color.black : Color.white
             if atLocation == 0 {
                 MainView(at: $atLocation, buildNumber: buildNumber, model: model)
+                    .onAppear {
+                        let center = UNUserNotificationCenter.current()
+                        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                            
+                            if let error = error {
+                                print("ERROR ERROR")
+                                print(error.localizedDescription)
+                                return
+                            }
+                            
+                            if granted {
+                                print("Success!")
+                            } else {
+                                print("confusion")
+                            }
+                            // Enable or disable features based on the authorization.
+                        }
+                    }
             } else if atLocation == 1 {
                 UpdateView(at: $atLocation, buildNumber: buildNumber)
             } else if atLocation == 2 {
@@ -43,7 +62,8 @@ struct ContentView: View {
     init(at: Binding<Int>) {
         _ = try? call("[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")
         _ = try? call("[[ -e ~/.patched-sur/track.txt ]] || echo Release > ~/.patched-sur/track.txt")
-        model = (try? call("sysctl -n hw.model")) ?? "MacModelX,Y"
+        model = (try? call("nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product")) ?? "4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product    MacModelX,Y"
+        model.removeFirst("4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product ".count)
         print("Detected Mac Model: \(model)")
         buildNumber = (try? call("sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
         if buildNumber.count > 14 {
