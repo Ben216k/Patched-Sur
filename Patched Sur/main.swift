@@ -36,19 +36,18 @@ if let date = UserDefaults.standard.object(forKey: "installStarted") as? Date {
 print("Nope! Conitnuing.")
 
 print("Checking if we want to fix depercated values...")
-if (try? call("[[ -e track.txt ]]")) != nil {
-    
+if (try? call("[[ -e ~/.patched-sur/track.txt ]]", at: ".")) != nil {
+    print("We're switching to the new stuff!")
+    UserDefaults.standard.setValue((try? call("cat ~/.patched-sur/track.txt")) ?? "Release", forKey: "UpdateTrack")
+    _ = try? call("rm -rf ~/.patched-sur/track.txt", at: ".")
 }
 
 CommandLine.arguments.forEach { arg in
     switch arg {
     case "--help", "-h":
-//        print("Help mode does not exist yet...")
         print("\n--help (-h):")
         print("Shows this screen!")
 //        print("--update (-u)   Starts the inapp updater (you don't need this)")
-//        print("--debug (-d):")
-//        print("  Starts the app with specific checks disabled.")
         print("--safe (-s): ")
         print("  Starts the app without showing the main prompts")
         print("  and forcing the Patch Kexts section to be shown.")
@@ -62,20 +61,6 @@ CommandLine.arguments.forEach { arg in
         print("Detected --update option, starting Patched Sur update.")
         updatePatchedApp()
         exit(0)
-//    case "--debug", "-d":
-//        print("Detected --debug option, starting DEBUG mode.")
-//        print("\n==========================================\n")
-//        print("With debug mode, you can disable many features within the app to try to diagnose crashes.\n")
-//        print("You can disable any of the following:")
-//        print("versionFormatted\nreleaseTrack\ngpuCheck\nmacModel\ncpuCheck\nmemoryCheck\nbuildNumber")
-//        print("\nTo disable on of these, type it's name after the debug option, for example:\n")
-//        print("/path/to/patched-sur/binary --debug buildNumber memoryCount")
-//        print("\nYou can have any number of disabled options, just separate them with spaces.")
-//        print("All keys must be spelt right, otherwise they will be ignored.")
-//        print("\n==========================================\n")
-//        AppInfo.debug = true
-//        print("Starting normal Patched Sur with debug changes...")
-//        print("")
     case "--safe", "-s":
         print("Detected --safe option, starting straight into Patch Kexts.")
         print("Note: all other command line options will be ignored.")

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+extension UserDefaults {
+    static let data = UserDefaults(suiteName: "52RY4VB4F6.bensova.Patched-Sur-Data")!
+}
+
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -24,7 +28,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct AllViews : View {
-    @State var progress = 4
+    @State var progress = 0
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false

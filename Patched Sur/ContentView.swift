@@ -61,8 +61,7 @@ struct ContentView: View {
     
     init(at: Binding<Int>) {
         _ = try? call("[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")
-        _ = try? call("[[ -e ~/.patched-sur/track.txt ]] || echo Release > ~/.patched-sur/track.txt")
-        model = (try? call("nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product")) ?? "4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product    MacModelX,Y"
+        model = (try? call("nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product")) ?? "4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product \((try? call("sysctl -n hw.model")) ?? "MacModelX,Y")"
         model.removeFirst("4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:oem-product ".count)
         print("Detected Mac Model: \(model)")
         buildNumber = (try? call("sw_vers | grep BuildVersion:")) ?? "20xyyzzz"
@@ -72,7 +71,9 @@ struct ContentView: View {
             AppInfo.preventUpdate = true
         }
         print("Detected macOS Build Number: \(buildNumber)")
-        releaseTrack = (try? call("cat ~/.patched-sur/track.txt")) ?? "Release"
+        var track = UserDefaults.standard.string(forKey: "Release")
+        if track == nil { track = "Release" }
+        releaseTrack = track!
         print("Detected Release Track: \(releaseTrack)")
         print("Loading Main Screen...")
         print("")

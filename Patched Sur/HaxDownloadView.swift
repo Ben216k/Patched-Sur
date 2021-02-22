@@ -41,7 +41,7 @@ struct HaxDownloadView: View {
                                     print("Confirming Hax permissions...")
                                     try call("chmod u+x ~/.patched-sur/Hax5.dylib")
                                     print("Injecting Hax...")
-                                    try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/Hax5.dylib", p: password)
+                                    try call("launchctl setenv DYLD_INSERT_LIBRARIES ~/.patched-sur/Hax5.dylib")
                                     sleep(2)
                                     print("Saving app instructions...")
                                     UserDefaults.standard.set(try! installInfo!.jsonString()!, forKey: "installInfo")
