@@ -17,8 +17,8 @@ struct DisableAMFIView: View {
                 .multilineTextAlignment(.center)
             EnterPasswordButton(password: $password) {
                 do {
-                    var current = (try? call("nvram boot-args")) ?? "boot-args    -no_compat_check"
-                    current.removeFirst("boot-args    ".count)
+                    var current = (try? call("nvram boot-args")) ?? "boot-args -no_compat_check"
+                    current.removeFirst("boot-args ".count)
                     try call("nvram boot-args=\"\(current) amfi_get_out_of_my_way=1\"", p: password)
                 } catch {
                     print("Failed to update NVRAM.")
