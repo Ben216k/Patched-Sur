@@ -18,6 +18,7 @@ struct UpdateView: View {
     @State var skipAppCheck = false
     @State var installInfo = nil as InstallAssistant?
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
+    @State var password = ""
     let buildNumber: String
     var body: some View {
         ZStack {
@@ -45,11 +46,11 @@ struct UpdateView: View {
             case 3:
                 DownloadView(p: $progress, installInfo: $installInfo)
             case 4:
-                StartInstallView(installerPath: $packageLocation)
+                StartInstallView(password: $password, installerPath: $packageLocation)
             case 6:
                 DisableAMFIView()
             case 7:
-                HaxDownloadView(installInfo: installInfo)
+                HaxDownloadView(installInfo: installInfo, password: $password, p: $progress)
             default:
                 VStack {
                     Text("Uh-oh! Something went wrong going through the software update steps.\nError 1x\(progress)")

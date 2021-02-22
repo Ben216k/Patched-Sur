@@ -9,8 +9,7 @@ import SwiftUI
 import Files
 
 struct StartInstallView: View {
-    @State var correctPassword = false
-    @State var password = ""
+    @Binding var password: String
     @State var errorT = ""
     @State var buttonBG = Color.red
     @Binding var installerPath: String
@@ -22,7 +21,7 @@ struct StartInstallView: View {
             Text("Once you enter your password, Patched Sur will finish preparing for the update and restart into the macOS Updater. After a while, macOS will be finished installing and you can patch the kexts and then enjoy macOS. This will take a while! Just like the preparing for update part of system preferences, this isn't the fastest thing in the world.")
                 .padding()
                 .multilineTextAlignment(.center)
-            if correctPassword && errorT == "" {
+            if errorT == "" {
                 VStack {
                     ZStack {
                         Color.secondary
@@ -86,10 +85,10 @@ struct StartInstallView: View {
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
                 }
-            } else if !correctPassword {
-                EnterPasswordButton(password: $password) {
-                    correctPassword = true
-                }
+//            } else if !correctPassword {
+//                EnterPasswordButton(password: $password) {
+//                    correctPassword = true
+//                }
             } else {
                 VStack {
                     Button {
