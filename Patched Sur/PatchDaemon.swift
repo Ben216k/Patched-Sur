@@ -16,16 +16,20 @@ func patchDaemon() {
     while true {
         print("Checking for Patched Sur updates first...")
         if let patcherVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
-            print("Checking if we have a different version...")
-            if patcherVersions[0].tagName != "v\(AppInfo.version)" {
-                print("Sending update notification!")
-                var tagName = patcherVersions[0].tagName
-                tagName.removeFirst()
-                scheduleNotification(title: "Patched Sur \(patcherVersions[0].tagName)", body: "Patched Sur can now be updated to Version \(tagName). Open Patched Sur then click Update macOS to learn more.")
-            }
+            print("Checking if we already checked for this...")
+            if UserDefaults.standard.string(forKey: "LastCheckedVersion") != patcherVersions[0].tagName {
+                print("Checking if we have a different version...")
+                if patcherVersions[0].tagName != "v\(AppInfo.version)" {
+                    print("Sending update notification!")
+                    var tagName = patcherVersions[0].tagName
+                    tagName.removeFirst()
+                    scheduleNotification(title: "Patched Sur \(patcherVersions[0].tagName)", body: "Patched Sur can now be updated to Version \(tagName). Open Patched Sur then click Update macOS to learn more.")
+                } else { print("Nope, we're up-to-date.") }
+            } else { print("We already have sent this notification.") }
         } else {
             print("Failed to fetch them. oh well...")
         }
+        print("Checking for macOS updates...")
         sleep(100000000)
     }
     
@@ -51,7 +55,7 @@ func scheduleNotification(title: String, body: String, inSeconds: TimeInterval =
 
     // Add this notification to the UserNotificationCenter
     UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
-        if error != nil {
+        if let error = error {
             print("\(error)")
             completion(false)
         } else {
