@@ -71,7 +71,7 @@ struct ContentView: View {
             AppInfo.preventUpdate = true
         }
         print("Detected macOS Build Number: \(buildNumber)")
-        var track = UserDefaults.standard.string(forKey: "Release")
+        var track = UserDefaults.standard.string(forKey: "UpdateTrack")
         if track == nil { track = "Release" }
         releaseTrack = track!
         print("Detected Release Track: \(releaseTrack)")

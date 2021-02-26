@@ -63,7 +63,7 @@ struct StartInstallView: View {
 //                                            try call("mv ~/.patched-sur/pkg-extract/Payload/Applications/Install\\ macOS\\ Big\\ Sur*.app ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app")
 //                                            try call("mkdir ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
 //                                            try call("mv ~/.patched-sur/pkg-extract/SharedSupport.dmg ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
-//                                            _ = try? call("rm -rf ~/.patched-sur/trash")
+//                                            _ = try? call("rm -rf ~/.patched-sur/pkg-extract")
                                             currentText = "Starting OS Installer m2"
                                             print("Starting OS Installer m2....")
                                             try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)

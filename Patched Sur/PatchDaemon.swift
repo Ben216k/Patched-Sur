@@ -11,7 +11,7 @@ import UserNotifications
 func patchDaemon() {
     print("Patched Sur Update Daemon Started.")
 //    print("Just so we don't mess with after boot preformance,")
-//    print("we'll sleep for a couple minutes then check.")
+//    print("we'll sleep for a few minutes then check.")
 //    sleep(600)
     while true {
         print("Checking for Patched Sur updates first...")
@@ -29,7 +29,8 @@ func patchDaemon() {
         } else {
             print("Failed to fetch them. oh well...")
         }
-        print("Checking for macOS updates...")
+        print("Now checking for macOS updates...")
+        
         sleep(100000000)
     }
     

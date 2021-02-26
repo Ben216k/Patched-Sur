@@ -92,24 +92,6 @@ struct UpdateCheckerView: View {
                 .progressViewStyle(LinearProgressViewStyle())
                 .padding(.horizontal)
                 .onAppear {
-                    print("Checking to see if we are running startosinstall...")
-                    if AppInfo.startingInstall {
-                        print("We are!")
-                        if let infoData = UserDefaults.standard.string(forKey: "installInfo") {
-                            guard let info = try? InstallAssistant(infoData) else {
-                                print("This really should not have happened 2...")
-                                checkingForUpdatesText = "Failed to Get Install Inforamtion 2"
-                                return
-                            }
-                            installInfo = info
-                            AppInfo.usePredownloaded = UserDefaults.standard.bool(forKey: "preDownloaded")
-                            progress = 3
-                        } else {
-                            print("This really should not have happened...")
-                            checkingForUpdatesText = "Failed to Get Install Inforamtion"
-                        }
-                        return
-                    }
                     DispatchQueue.global(qos: .background).async {
                         do {
                             print("Checking for updates to Patched Sur...")
@@ -124,13 +106,7 @@ struct UpdateCheckerView: View {
                             }
                             print("No updates found or user choose to skip the app update check.")
                             print("Figuring out what update track to use...")
-                            if var trackFile = try? File(path: "~/.patched-sur/track.txt").readAsString() {
-                                if trackFile.count > 0 {
-                                    trackFile.removeLast()
-                                }
-                                print("Found track file with contents \(trackFile).")
-                                track = ReleaseTrack(rawValue: trackFile) ?? .release
-                            }
+                            track = ReleaseTrack(rawValue: UserDefaults.standard.string(forKey: "UpdateTrack") ?? "Release") ?? .release
                             print("Using update track \(track).")
                             print("Pinging installer list to find the latest updates...")
                             installers = try InstallAssistants(fromURL:  URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)

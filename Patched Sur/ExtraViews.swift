@@ -173,19 +173,18 @@ struct TextAndButtonView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.accentColor.opacity(0.3))
                 .cornerRadius(10)
             HStack(spacing: 0) {
                 Text(t)
                     .padding(6)
                     .padding(.leading, 4)
-                    .foregroundColor(.white)
                 Button {
                     action()
                 } label: {
                     ZStack {
                         Rectangle()
-                            .foregroundColor(!hovered ? .accentColor : Color.accentColor.opacity(0.7))
+                            .foregroundColor(!hovered ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.5))
                             .cornerRadius(10)
                         Text(b)
                             .padding(6)

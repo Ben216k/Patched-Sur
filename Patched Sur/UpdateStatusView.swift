@@ -55,8 +55,6 @@ struct UpdateStatusView: View {
                             p = 6
                         }), secondaryButton: .cancel())
                     }
-//                    print("Redirecting to Patched Sur docs website...")
-//                    NSWorkspace.shared.open(URL(string: "https://bensova.gitbook.io/big-sur/postinstall-after-upgrade/updating-macos")!)
                 }.font(Font.caption.bold())
             } else {
                 VStack(alignment: .leading) {
@@ -73,13 +71,12 @@ struct UpdateStatusView: View {
             }.font(.caption)
             ZStack {
                 Rectangle()
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.accentColor.opacity(0.3))
                     .cornerRadius(10)
                 HStack(spacing: 0) {
                     Text("Update Track")
                         .padding(6)
                         .padding(.leading, 4)
-                        .foregroundColor(.white)
                     Button {
                         withAnimation {
                             showMoreTracks.toggle()
@@ -100,19 +97,10 @@ struct UpdateStatusView: View {
                     }
                     if showMoreTracks {
                         Button {
-                            do {
-                                try call("echo '\(releaseTrack != .release ? "Release" : (releaseTrack != .publicbeta ? "Public Beta" : "Developer"))' > ~/.patched-sur/track.txt")
-                                showMoreTracks = false
-                                releaseTrack = releaseTrack != .release ? .release : (releaseTrack != .publicbeta ? .publicbeta : .developer)
-                                p = 0
-                            } catch {
-                                showMoreTracks = false
-                                let errorAlert = NSAlert()
-                                errorAlert.alertStyle = .critical
-                                errorAlert.informativeText = error.localizedDescription
-                                errorAlert.messageText = "Unable to Switch Release Track"
-                                errorAlert.runModal()
-                            }
+                            UserDefaults.standard.setValue(releaseTrack != .release ? "Release" : (releaseTrack != .publicbeta ? "Public Beta" : "Developer"), forKey: "UpdateTrack")
+                            showMoreTracks = false
+                            releaseTrack = releaseTrack != .release ? .release : (releaseTrack != .publicbeta ? .publicbeta : .developer)
+                            p = 0
                         } label: {
                             ZStack {
                                 Rectangle()
@@ -129,19 +117,10 @@ struct UpdateStatusView: View {
                         }
                         .padding(.horizontal, 5)
                         Button {
-                            do {
-                                try call("echo '\(releaseTrack != .developer ? "Developer" : (releaseTrack != .publicbeta ? "Public Beta" : "Release"))' > ~/.patched-sur/track.txt")
-                                showMoreTracks = false
-                                releaseTrack = releaseTrack != .developer ? .developer : (releaseTrack != .publicbeta ? .publicbeta : .release)
-                                p = 0
-                            } catch {
-                                showMoreTracks = false
-                                let errorAlert = NSAlert()
-                                errorAlert.alertStyle = .critical
-                                errorAlert.informativeText = error.localizedDescription
-                                errorAlert.messageText = "Unable to Switch Release Track"
-                                errorAlert.runModal()
-                            }
+                            UserDefaults.standard.setValue(releaseTrack != .developer ? "Developer" : (releaseTrack != .publicbeta ? "Public Beta" : "Release"), forKey: "UpdateTrack")
+                            showMoreTracks = false
+                            releaseTrack = releaseTrack != .developer ? .developer : (releaseTrack != .publicbeta ? .publicbeta : .release)
+                            p = 0
                         } label: {
                             ZStack {
                                 Rectangle()
