@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct NotificationsView: View {
-    @State var hovered = ""
+    @State var hovered: String? = ""
     @State var notifications = "NOTHING"
     @State var autoUpdate = "NOUPDATE"
     @Binding var p: Int
+    @State var showPassword = false
+    @State var password = ""
+    @State var allowNotifications = false
     var body: some View {
         VStack {
             Text("Update Notifications")
@@ -158,7 +162,7 @@ struct NotificationsView: View {
                     hovered = $0 ? "BACK" : ""
                 }
                 Button {
-                    
+                    showPassword = true
                 } label: {
                     ZStack {
                         Rectangle()
@@ -174,6 +178,67 @@ struct NotificationsView: View {
                     hovered = $0 ? "CONFIRM" : ""
                 }
             }.padding(.top, 5)
+            .sheet(isPresented: $showPassword) {
+                ZStack(alignment: .topTrailing) {
+                    VStack {
+                        if !allowNotifications {
+                            HStack {
+                                Text("Patched Sur Requries Your Password to Setup a Daemon").bold()
+                                    .font(Font.body.bold())
+                                Spacer()
+                                CustomColoredButton("Cancel", hovered: $hovered) {
+                                    showPassword = false
+                                }
+                            }.padding(.bottom)
+                            EnterPasswordButton(password: $password) {
+                                do {
+                                    print("Setting up Launchctl...")
+                                    try call("launchctl unload /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
+                                    _ = try? call("rm -rf /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
+                                    try call("curl -Lo /Library/LaunchAgents/PatchedSurDaemon.plist https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/PatchedSurDaemon.plist", p: password)
+                                    try call("launchctl load -w /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
+                                    try call("launchctl enable u-bensova.Patched-Sur.Daemon", p: "password")
+                                    print("Saving configuration...")
+                                    UserDefaults.standard.setValue(notifications, forKey: "Notifications")
+                                    UserDefaults.standard.setValue(autoUpdate, forKey: "AutoUpdate")
+                                    print("Prompting for allow notifications...")
+                                    allowNotifications = true
+                                } catch {
+                                    showPassword = false
+                                    presentAlert(m: "Failed to Configure Daemon", i: error.localizedDescription, s: .informational)
+                                }
+                            }
+                        } else {
+                            Text("Patched Sur needs permissions to send notifications to continue.")
+                                .onAppear {
+                                    if notifications == "NOTHING" {
+                                        presentAlert(m: "Setup Notifications!", i: "Patched Sur will correctly notify you about the updates based on your new preferences.", s: .informational)
+                                        showPassword = false
+                                        allowNotifications = false
+                                        p = 2
+                                    } else {
+                                        let center = UNUserNotificationCenter.current()
+                                        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+                                            if let error = error {
+                                                print("Failed to allow notifications")
+                                                print(error.localizedDescription)
+                                                presentAlert(m: "Patched Sur Cannot Send Notifcations", i: "You must of denied Patched Sur from sending notifications. If you want Patched Sur to send notifcations, open System Preferences > Notifications > Patched Sur then allow notifcations.\n\nError: \(error.localizedDescription)", s: .informational)
+                                            }
+                                            
+                                            if granted {
+                                                print("Allowed notifcations!")
+                                                presentAlert(m: "Setup Notifications!", i: "Patched Sur will correctly notify you about the updates based on your new preferences.", s: .informational)
+                                            }
+                                        }
+                                        showPassword = false
+                                        allowNotifications = false
+                                        p = 2
+                                    }
+                                }
+                        }
+                    }
+                }.padding(20)
+            }
         }
     }
 }

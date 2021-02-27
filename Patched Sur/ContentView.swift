@@ -19,24 +19,6 @@ struct ContentView: View {
 //            colorScheme == .dark ? Color.black : Color.white
             if atLocation == 0 {
                 MainView(at: $atLocation, buildNumber: buildNumber, model: model)
-                    .onAppear {
-                        let center = UNUserNotificationCenter.current()
-                        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-                            
-                            if let error = error {
-                                print("ERROR ERROR")
-                                print(error.localizedDescription)
-                                return
-                            }
-                            
-                            if granted {
-                                print("Success!")
-                            } else {
-                                print("confusion")
-                            }
-                            // Enable or disable features based on the authorization.
-                        }
-                    }
             } else if atLocation == 1 {
                 UpdateView(at: $atLocation, buildNumber: buildNumber)
             } else if atLocation == 2 {
