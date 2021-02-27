@@ -63,6 +63,7 @@
 		7609BD1D258008B70054B76F /* StartInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInstallView.swift; sourceTree = "<group>"; };
 		760C7D1A25719C27004817F1 /* UpdateAppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppAction.swift; sourceTree = "<group>"; };
 		761112342576CBAA0065D7CB /* InstallIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = InstallIcon.icns; sourceTree = "<group>"; };
+		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		762908AD25760F630021244B /* EFIIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = EFIIcon.icns; sourceTree = "<group>"; };
 		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
@@ -247,6 +248,7 @@
 		76FEEFAC254F4DA80079CEFC /* Extra Files */ = {
 			isa = PBXGroup;
 			children = (
+				762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */,
 				761112342576CBAA0065D7CB /* InstallIcon.icns */,
 				762908AD25760F630021244B /* EFIIcon.icns */,
 				76FEEFAD254F4DBD0079CEFC /* patch-usb.sh */,

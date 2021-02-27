@@ -193,9 +193,9 @@ struct NotificationsView: View {
                             EnterPasswordButton(password: $password) {
                                 do {
                                     print("Setting up Launchctl...")
-                                    try call("launchctl unload /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
+                                    _ = try? call("launchctl unload /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
                                     _ = try? call("rm -rf /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
-                                    try call("curl -Lo /Library/LaunchAgents/PatchedSurDaemon.plist https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/PatchedSurDaemon.plist", p: password)
+                                    try call("curl -Lo /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/PatchedSurDaemon.plist", p: password)
                                     try call("launchctl load -w /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
                                     try call("launchctl enable u-bensova.Patched-Sur.Daemon", p: "password")
                                     print("Saving configuration...")
