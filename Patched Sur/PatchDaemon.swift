@@ -10,8 +10,10 @@ import UserNotifications
 
 func patchDaemon() {
     print("Patched Sur Update Daemon Started.")
-    prin
-    
+    print("Patched Sur Update Daemon Started.")
+    print("Just so we don't mess with after boot preformance,")
+    print("we'll sleep for a few minutes then check.")
+    sleep(600)
     while true {
         print("Checking for Patched Sur updates first...")
         if let patcherVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
