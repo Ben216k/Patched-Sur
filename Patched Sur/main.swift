@@ -24,17 +24,6 @@ print("Running Either Normally or From Terminal in RELEASE configuration.")
 #endif
 print("")
 
-print("Quick check to see if we are supposed to be running statosinstall...")
-if let date = UserDefaults.standard.object(forKey: "installStarted") as? Date {
-    if let diff = Calendar.current.dateComponents([.minute], from: date, to: Date()).minute, diff < 10 {
-        print("Starting OS install...")
-        AppInfo.startingInstall = true
-        PatchedSurOSInstallApp.main()
-        exit(0)
-    }
-}
-print("Nope! Conitnuing.")
-
 print("Checking if we want to fix depercated values...")
 if (try? call("[[ -e ~/.patched-sur/track.txt ]]", at: ".")) != nil {
     print("We're switching to the new stuff!")
@@ -80,7 +69,7 @@ CommandLine.arguments.forEach { arg in
         print("Detected --force-skip-download, skipping the download files step in the updater.")
         AppInfo.usePredownloaded = true
     default:
-        print("Unknown option detected. Ignoring option. (Use --help to see available options)")
+        print("Unknown option (\(arg)) detected. Ignoring option. (Use --help to see available options)")
     }
 }
 
