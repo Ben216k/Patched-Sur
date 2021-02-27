@@ -36,7 +36,6 @@ CommandLine.arguments.forEach { arg in
     case "--help", "-h":
         print("\n--help (-h):")
         print("Shows this screen!")
-//        print("--update (-u)   Starts the inapp updater (you don't need this)")
         print("--safe (-s): ")
         print("  Starts the app without showing the main prompts")
         print("  and forcing the Patch Kexts section to be shown.")
@@ -45,6 +44,12 @@ CommandLine.arguments.forEach { arg in
         print("--force-skip-download (-p):")
         print("  Skip the download step on the macOS updater, and using")
         print("  the InstallAssistant that was already downloaded.")
+        print("--daemon (-d):")
+        print("  Runs the Patched Sur update daemon. Perferably this")
+        print("  should only be done by launchctl.")
+        print("--update (-u):")
+        print("  Runs the app updater. This assumes that a copy of")
+        print("  Patched Sur is inside the ~/.patched-sur directory.")
         exit(0)
     case "--update", "-u":
         print("Detected --update option, starting Patched Sur update.")

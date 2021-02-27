@@ -24,10 +24,23 @@ func patchDaemon() {
                     if patcherVersions[0].tagName != "v\(AppInfo.version)" {
                         print("There is a new update!")
                         if UserDefaults.standard.string(forKey: "AutoUpdate") == "AUTOUPDATE" {
+                            var tagName = patcherVersions[0].tagName
+                            tagName.removeFirst()
                             print("Auto updating is enabled, so let's update the app.")
+                            print("Starting Download of updated Patched Sur...")
+                            guard (try? call("curl -L \(patcherVersions[0].assets[2].browserDownloadURL) -o ~/.patched-sur/Patched-Sur.zip")) != nil else {
+                                print("Failed to download, sending normal update notification.")
+                                scheduleNotification(title: "Patched Sur \(patcherVersions[0].tagName)", body: "Patched Sur can now be updated to Version \(tagName). Open Patched Sur then click Update macOS to learn more.")
+                                return
+                            }
+                            print("Unzipping download...")
+                            guard (try? call("unzip ~/.patched-sur/Patched-Sur.zip")) != nil else {
+                                print("Failed to unzip, sending normal update notification.")
+                                scheduleNotification(title: "Patched Sur \(patcherVersions[0].tagName)", body: "Patched Sur can now be updated to Version \(tagName). Open Patched Sur then click Update macOS to learn more.")
+                                return
+                            }
+                            print("Starting Patched Sur Updater...")
                             updatePatchedApp { (success) in
-                                var tagName = patcherVersions[0].tagName
-                                tagName.removeFirst()
                                 if success {
                                     print("Updater succeded, sending notification.")
                                     scheduleNotification(title: "Patched Sur \(patcherVersions[0].tagName)", body: "Patched Sur was automatically updated to Version \(tagName). Go to https://github.com/BenSova/Patched-Sur/releases to learn more.")
