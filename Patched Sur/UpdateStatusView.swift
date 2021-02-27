@@ -208,6 +208,9 @@ struct UpdateStatusView: View {
 //                    }
 //                }
 //            }.fixedSize().font(.caption)
+            TextAndButtonView(t: "Configure", b: "Notifications") {
+                p = 8
+            }.font(.caption)
             TextAndButtonView(t: "Go", b: "Back") {
                 p = -1
             }.font(.caption)

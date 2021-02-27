@@ -45,6 +45,7 @@
 		76A626DC25252C5A002C57EA /* CreateInstallMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */; };
 		76A626E025252C7C002C57EA /* ConfirmVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626DF25252C7C002C57EA /* ConfirmVolume.swift */; };
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
+		76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF37BC25E8C73500403208 /* NotificationsView.swift */; };
 		76D639DD2576302500B38FBE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D639DC2576302500B38FBE /* main.swift */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
 		76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */; };
@@ -103,6 +104,7 @@
 		76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallMedia.swift; sourceTree = "<group>"; };
 		76A626DF25252C7C002C57EA /* ConfirmVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmVolume.swift; sourceTree = "<group>"; };
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
+		76CF37BC25E8C73500403208 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		76D639DC2576302500B38FBE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchDaemon.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				7609BD17257FF8DB0054B76F /* DownloadKexts.swift */,
 				766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */,
 				7609BD1D258008B70054B76F /* StartInstallView.swift */,
+				76CF37BC25E8C73500403208 /* NotificationsView.swift */,
 				762A066725BF93A80037655D /* Keychain.swift */,
 			);
 			path = "Patched Sur";
@@ -392,6 +395,7 @@
 				7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */,
 				7609BD1E258008B70054B76F /* StartInstallView.swift in Sources */,
 				768F51F6256E05190069096E /* UpdateView.swift in Sources */,
+				76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */,
 				760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */,
 				766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */,
 				767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */,

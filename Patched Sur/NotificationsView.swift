@@ -11,13 +11,16 @@ struct NotificationsView: View {
     @State var hovered = ""
     @State var notifications = "NOTHING"
     @State var autoUpdate = "NOUPDATE"
+    @Binding var p: Int
     var body: some View {
         VStack {
             Text("Update Notifications")
-                .bold()
+                .font(Font.body.bold())
             Text("Since your Mac is unsupported, Software Update will never inform you about macOS updates, because it doesn't have anything new that supports your Mac. However, Patched Sur can provide this functionality on it's own, also providing for notifications for updates to the patcher if you would like.")
-                .padding(20)
+                .padding()
+                .padding(.horizontal)
                 .multilineTextAlignment(.center)
+                .font(.body)
             // MARK: - Get Notifications For
             ZStack {
                 Rectangle()
@@ -32,12 +35,12 @@ struct NotificationsView: View {
                     } label: {
                         ZStack {
                             Rectangle()
-                                .foregroundColor(hovered != "NOTHING" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.5))
+                                .foregroundColor(hovered != "NOTHING" ? (notifications == "NOTHING" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.2)) : Color.accentColor.opacity(0.5))
                                 .cornerRadius(10)
                             Text("Nothing")
                                 .padding(6)
                                 .padding(.horizontal, 4)
-                                .foregroundColor(.white)
+                                .foregroundColor(notifications == "NOTHING" ? .white : .primary)
                         }.fixedSize()
                     }.buttonStyle(BorderlessButtonStyle())
                     .onHover {
@@ -48,12 +51,12 @@ struct NotificationsView: View {
                     } label: {
                         ZStack {
                             Rectangle()
-                                .foregroundColor(hovered != "MACOS" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.5))
+                                .foregroundColor(hovered != "MACOS" ? (notifications == "MACOS" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.2)) : Color.accentColor.opacity(0.5))
                                 .cornerRadius(10)
                             Text("macOS")
                                 .padding(6)
                                 .padding(.horizontal, 4)
-                                .foregroundColor(.white)
+                                .foregroundColor(notifications == "MACOS" ? .white : .primary)
                         }.fixedSize()
                     }.buttonStyle(BorderlessButtonStyle())
                     .onHover {
@@ -64,12 +67,12 @@ struct NotificationsView: View {
                     } label: {
                         ZStack {
                             Rectangle()
-                                .foregroundColor(hovered != "PATCHEDSUR" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.5))
+                                .foregroundColor(hovered != "PATCHEDSUR" ? (notifications == "PATCHEDSUR" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.2)) : Color.accentColor.opacity(0.5))
                                 .cornerRadius(10)
                             Text("Patched Sur")
                                 .padding(6)
                                 .padding(.horizontal, 4)
-                                .foregroundColor(.white)
+                                .foregroundColor(notifications == "PATCHEDSUR" ? .white : .primary)
                         }.fixedSize()
                     }.buttonStyle(BorderlessButtonStyle())
                     .onHover {
@@ -80,12 +83,12 @@ struct NotificationsView: View {
                     } label: {
                         ZStack {
                             Rectangle()
-                                .foregroundColor(hovered != "BOTH" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.5))
+                                .foregroundColor(hovered != "BOTH" ? (notifications == "BOTH" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.2)) : Color.accentColor.opacity(0.5))
                                 .cornerRadius(10)
                             Text("Both")
                                 .padding(6)
                                 .padding(.horizontal, 4)
-                                .foregroundColor(.white)
+                                .foregroundColor(notifications == "BOTH" ? .white : .primary)
                         }.fixedSize()
                     }.buttonStyle(BorderlessButtonStyle())
                     .onHover {
@@ -103,32 +106,32 @@ struct NotificationsView: View {
                         .padding(6)
                         .padding(.leading, 4)
                     Button {
-                        
+                        autoUpdate = "AUTOUPDATE"
                     } label: {
                         ZStack {
                             Rectangle()
-                                .foregroundColor(hovered != "AUTOUPDATE" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.5))
+                                .foregroundColor(hovered != "AUTOUPDATE" ? (autoUpdate == "AUTOUPDATE" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.2)) : Color.accentColor.opacity(0.5))
                                 .cornerRadius(10)
                             Text("Patched Sur")
                                 .padding(6)
                                 .padding(.horizontal, 4)
-                                .foregroundColor(.white)
+                                .foregroundColor(autoUpdate == "AUTOUPDATE" ? .white : .primary)
                         }.fixedSize()
                     }.buttonStyle(BorderlessButtonStyle())
                     .onHover {
                         hovered = $0 ? "AUTOUPDATE" : ""
                     }.padding(.trailing, 5)
                     Button {
-                        
+                        autoUpdate = "NOUPDATE"
                     } label: {
                         ZStack {
                             Rectangle()
-                                .foregroundColor(hovered != "NOUPDATE" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.5))
+                                .foregroundColor(hovered != "NOUPDATE" ? (autoUpdate == "NOUPDATE" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.2)) : Color.accentColor.opacity(0.5))
                                 .cornerRadius(10)
                             Text("Nothing")
                                 .padding(6)
                                 .padding(.horizontal, 4)
-                                .foregroundColor(.white)
+                                .foregroundColor(autoUpdate == "NOUPDATE" ? .white : .primary)
                         }.fixedSize()
                     }.buttonStyle(BorderlessButtonStyle())
                     .onHover {
@@ -136,10 +139,41 @@ struct NotificationsView: View {
                     }
                 }
             }.fixedSize()
-            // MARK: - Go Back
-            TextAndButtonView(t: "Go", b: "Back") {
-                
-            }
+            // MARK: - Confirm
+            HStack {
+                Button {
+                    p = 2
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(hovered != "BACK" ? Color.accentColor.opacity(0.2) : Color.accentColor.opacity(0.5))
+                            .cornerRadius(10)
+                        Text("Back")
+                            .padding(6)
+                            .padding(.horizontal, 4)
+                            .foregroundColor(.primary)
+                    }.fixedSize()
+                }.buttonStyle(BorderlessButtonStyle())
+                .onHover {
+                    hovered = $0 ? "BACK" : ""
+                }
+                Button {
+                    
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(hovered != "CONFIRM" ? Color.accentColor.opacity(0.8) : Color.accentColor.opacity(0.5))
+                            .cornerRadius(10)
+                        Text("Confirm")
+                            .padding(6)
+                            .padding(.horizontal, 4)
+                            .foregroundColor(.white)
+                    }.fixedSize()
+                }.buttonStyle(BorderlessButtonStyle())
+                .onHover {
+                    hovered = $0 ? "CONFIRM" : ""
+                }
+            }.padding(.top, 5)
         }
     }
 }

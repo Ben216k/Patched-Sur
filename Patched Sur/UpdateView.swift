@@ -25,7 +25,7 @@ struct UpdateView: View {
             if progress == 0 || progress == 2 {
                 VStack {
                     Text("Software Update")
-                        .font(.title)
+                        .font(.title2)
                         .bold()
                     Spacer()
                 }.padding(25)
@@ -51,6 +51,8 @@ struct UpdateView: View {
                 DisableAMFIView()
             case 7:
                 HaxDownloadView(installInfo: installInfo, password: $password, p: $progress)
+            case 8:
+                NotificationsView(p: $progress).font(.caption)
             default:
                 VStack {
                     Text("Uh-oh! Something went wrong going through the software update steps.\nError 1x\(progress)")
