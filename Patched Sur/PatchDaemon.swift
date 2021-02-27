@@ -63,7 +63,8 @@ func patchDaemon() {
         } else {
             print("Failed to fetch them. oh well...")
         }
-        sleep(100000000)
+        print("Waiting for a really long time again...")
+        sleep(10800)
     }
     
 }
