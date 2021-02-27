@@ -97,10 +97,12 @@ struct ButtonsView: View {
             VStack {
                 RunActionsDisplayView(action: {
                     do {
-                        try call("\(installerName)/patch-kexts.sh", p: password, h: { currentText = $0 })
+                        let patchKextsOutput = try call("\(installerName)/patch-kexts.sh", p: password, h: { currentText = $0 })
+                        UserDefaults.standard.setValue(patchKextsOutput, forKey: "PatchKextsLastRun")
                         p = 4
                     } catch {
                         errorMessage = error.localizedDescription
+                        UserDefaults.standard.setValue(error.localizedDescription, forKey: "PatchKextsLastRun")
                         p = -2
                     }
                 }, text: "Patching Kexts...")
@@ -137,6 +139,7 @@ struct ButtonsView: View {
                     }
                 }.buttonStyle(BorderlessButtonStyle())
                 .fixedSize()
+                .frame(minWidth: 200, maxWidth: 450)
                 Text("Click to Copy")
                     .font(.caption)
             }

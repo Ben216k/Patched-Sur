@@ -15,6 +15,7 @@ struct Settings: View {
     @State var password = ""
     @State var showPasswordPrompt = false
     @State var disablingSwitching = false
+    @State var showPatchKextsLog = false
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 2) {
@@ -29,100 +30,139 @@ struct Settings: View {
                         }
                     }
                 }
-                HStack {
-                    CustomColoredButton("Disable Animations", hovered: $hovered) {
-                        disableAnimations()
-                        self.showingAlert = true
-                    }
-                    CustomColoredButton("Enable Animations", hovered: $hovered) {
-                        enableAnimations()
-                        self.showingAlert = true
-                    }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Changes Made Successfully"), message: Text("A reboot is required to apply these changes."), dismissButton: .default(Text("Okay")))
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                }.padding(.top, 10)
-                .padding(.bottom, 2)
-                Text("Manage Animations. Disabling animations can greatly improve performance on Macs without Metal. A reboot is required to apply these changes.")
-                CustomColoredButton("Contribute Your Experiences", hovered: $hovered) {
-                    NSWorkspace.shared.open("https://github.com/BenSova/Patched-Sur-Compatibility")
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                .padding(.top, 10)
-                .padding(.bottom, 2)
-                Text("The preinstall app in Patched Sur has a new feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
-                    .font(.caption)
-                HStack {
-                    CustomColoredButton("Enable Graphics Switching", hovered: $hovered) {
-                        showPasswordPrompt = true
-                        disablingSwitching = false
+                Group {
+                    HStack {
+                        CustomColoredButton("Disable Animations", hovered: $hovered) {
+                            disableAnimations()
+                            self.showingAlert = true
+                        }
+                        CustomColoredButton("Enable Animations", hovered: $hovered) {
+                            enableAnimations()
+                            self.showingAlert = true
+                        }
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Changes Made Successfully"), message: Text("A reboot is required to apply these changes."), dismissButton: .default(Text("Okay")))
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                    }.padding(.top, 10)
+                    .padding(.bottom, 2)
+                    Text("Manage Animations. Disabling animations can greatly improve performance on Macs without Metal. A reboot is required to apply these changes.")
+                    CustomColoredButton("Contribute Your Experiences", hovered: $hovered) {
+                        NSWorkspace.shared.open("https://github.com/BenSova/Patched-Sur-Compatibility")
                     }
                     .buttonStyle(BorderlessButtonStyle())
-                    CustomColoredButton("Disable", hovered: $hovered) {
-                        showPasswordPrompt = true
-                        disablingSwitching = true
+                    .padding(.top, 10)
+                    .padding(.bottom, 2)
+                    Text("The preinstall app in Patched Sur has a new feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
+                        .font(.caption)
+                    HStack {
+                        CustomColoredButton("Enable Graphics Switching", hovered: $hovered) {
+                            showPasswordPrompt = true
+                            disablingSwitching = false
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                        CustomColoredButton("Disable", hovered: $hovered) {
+                            showPasswordPrompt = true
+                            disablingSwitching = true
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
                     }
-                    .buttonStyle(BorderlessButtonStyle())
-                }
-                .padding(.top, 10)
-                .padding(.bottom, 2)
-                .sheet(isPresented: $showPasswordPrompt, content: {
-                    ZStack(alignment: .topTrailing) {
-                        VStack {
-                            HStack {
-                                Text("Patched Sur Requries Your Password to Contninue").bold()
-                                    .font(Font.body.bold())
-                                Spacer()
-                                CustomColoredButton("Cancel", hovered: $hovered) {
-                                    showPasswordPrompt = false
-                                }
-                            }.padding(.bottom)
-                            EnterPasswordButton(password: $password) {
-                                if !disablingSwitching {
-                                    do {
-                                        print("Stopping displaypolicyd...")
-                                        _ = try? call("launchctl stop system/com.apple.displaypolicyd", p: password)
-                                        print("Enabling Automatic Graphics Switching...")
-                                        try call("launchctl disable system/com.apple.displaypolicyd", p: password)
+                    .padding(.top, 10)
+                    .padding(.bottom, 2)
+                    .sheet(isPresented: $showPasswordPrompt, content: {
+                        ZStack(alignment: .topTrailing) {
+                            VStack {
+                                HStack {
+                                    Text("Patched Sur Requries Your Password to Contninue").bold()
+                                        .font(Font.body.bold())
+                                    Spacer()
+                                    CustomColoredButton("Cancel", hovered: $hovered) {
                                         showPasswordPrompt = false
-                                        presentAlert(m: "Graphics Switching Enabled", i: "Now graphics will switch automatically! A restart might be required for changes to take effect.", s: .informational)
-                                    } catch {
-                                        showPasswordPrompt = false
-                                        presentAlert(m: "Failed to Enable Graphics Switching", i: error.localizedDescription, s: .critical)
                                     }
-                                } else {
-                                    do {
-                                        print("Disabling Automatic Graphics Switching...")
-                                        try call("launchctl enable system/com.apple.displaypolicyd", p: password)
-                                        print("Starting displaypolicyd...")
-                                        _ = try? call("launchctl kickstart system/com.apple.displaypolicyd", p: password)
-                                        showPasswordPrompt = false
-                                        presentAlert(m: "Graphics Switching Disabled", i: "Now graphics will no longer switch automatically! A restart might be required for changes to take effect.", s: .informational)
-                                    } catch {
-                                        showPasswordPrompt = false
-                                        presentAlert(m: "Failed to Diable Graphics Switching", i: error.localizedDescription, s: .critical)
+                                }.padding(.bottom)
+                                EnterPasswordButton(password: $password) {
+                                    if !disablingSwitching {
+                                        do {
+                                            print("Stopping displaypolicyd...")
+                                            _ = try? call("launchctl stop system/com.apple.displaypolicyd", p: password)
+                                            print("Enabling Automatic Graphics Switching...")
+                                            try call("launchctl disable system/com.apple.displaypolicyd", p: password)
+                                            showPasswordPrompt = false
+                                            presentAlert(m: "Graphics Switching Enabled", i: "Now graphics will switch automatically! A restart might be required for changes to take effect.", s: .informational)
+                                        } catch {
+                                            showPasswordPrompt = false
+                                            presentAlert(m: "Failed to Enable Graphics Switching", i: error.localizedDescription, s: .critical)
+                                        }
+                                    } else {
+                                        do {
+                                            print("Disabling Automatic Graphics Switching...")
+                                            try call("launchctl enable system/com.apple.displaypolicyd", p: password)
+                                            print("Starting displaypolicyd...")
+                                            _ = try? call("launchctl kickstart system/com.apple.displaypolicyd", p: password)
+                                            showPasswordPrompt = false
+                                            presentAlert(m: "Graphics Switching Disabled", i: "Now graphics will no longer switch automatically! A restart might be required for changes to take effect.", s: .informational)
+                                        } catch {
+                                            showPasswordPrompt = false
+                                            presentAlert(m: "Failed to Diable Graphics Switching", i: error.localizedDescription, s: .critical)
+                                        }
                                     }
                                 }
                             }
-                        }
-                    }.padding(20)
-                })
-                Text("If you have a Mac with mutliple GPUs, then you probably want automatic graphics switching enabled for graphics switching. Thanks to @15wat for finding this solution.")
-                    .font(.caption)
-                CustomColoredButton("Clean Leftovers", hovered: $hovered) {
-                    _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
-                    _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS Big\\ Sur*.app")
-                    _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
-                    _ = try? call("rm -rf ~/.patched-sur/trash")
-                    presentAlert(m: "Cleaned Leftovers", i: "The files have been deleted, you should see some more free space (assuming that there actually were big files to be cleaned).", s: .informational)
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                .padding(.top, 10)
-                .padding(.bottom, 2)
-                Group {
+                        }.padding(20)
+                    })
+                    Text("If you have a Mac with mutliple GPUs, then you probably want automatic graphics switching enabled for graphics switching. Thanks to @15wat for finding this solution.")
+                        .font(.caption)
+                    CustomColoredButton("Clean Leftovers", hovered: $hovered) {
+                        _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
+                        _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS Big\\ Sur*.app")
+                        _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
+                        _ = try? call("rm -rf ~/.patched-sur/trash")
+                        presentAlert(m: "Cleaned Leftovers", i: "The files have been deleted, you should see some more free space (assuming that there actually were big files to be cleaned).", s: .informational)
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding(.top, 10)
+                    .padding(.bottom, 2)
                     Text("Sometimes, Patched Sur accidentally leaves little leftovers from when something ran. This could at times save 12GB of storage space, this is suggested especially after you run the updater.")
                         .font(.caption)
+                }
+                Group {
+                    CustomColoredButton("Show Patch Kext Logs", hovered: $hovered) {
+                        showPatchKextsLog = true
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding(.top, 10)
+                    .padding(.bottom, 2)
+                    Text("If you're having trouble with Patch Kexts not working, it might be worth seeing the logs and looking for errors. This could help someone trying to help you out figure out the problem, so if you can, provide this to anyone trying to help you")
+                        .font(.caption)
+                        .sheet(isPresented: $showPatchKextsLog, content: {
+                            ZStack(alignment: .topTrailing) {
+                                VStack {
+                                    HStack {
+                                        Text("Patch Kexts Logs").bold()
+                                            .font(Font.body.bold())
+                                        Spacer()
+                                        CustomColoredButton("Close", hovered: $hovered) {
+                                            showPatchKextsLog = false
+                                        }
+                                        if UserDefaults.standard.string(forKey: "PatchKextsLastRun") != nil {
+                                            CustomColoredButton("Copy", hovered: $hovered) {
+                                                let pasteboard = NSPasteboard.general
+                                                pasteboard.declareTypes([.string], owner: nil)
+                                                pasteboard.setString(UserDefaults.standard.string(forKey: "PatchKextsLastRun") ?? "No Logs Captured", forType: .string)
+                                                presentAlert(m: "Copied!", i: "The last logs from Patch Kexts has been copied to your clipboard. This might help out with debugging, and make sure to share this with anyone trying to help you with your problem.", s: .informational)
+                                            }
+                                        }
+                                    }.padding(.bottom)
+                                    ScrollView {
+                                        Text(UserDefaults.standard.string(forKey: "PatchKextsLastRun") ?? "No Logs Captured")
+                                            .font(.system(size: 11, design: .monospaced))
+                                    }
+                                }
+                            }.padding(20)
+                            .frame(width: 580, height: 305)
+                        })
+                }
+                Group {
                     Text("Patched Sur by Ben Sova")
                         .bold()
                         .padding(.top, 5)
