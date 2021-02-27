@@ -193,11 +193,11 @@ struct NotificationsView: View {
                             EnterPasswordButton(password: $password) {
                                 do {
                                     print("Setting up Launchctl...")
-                                    _ = try? call("launchctl unload /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
-                                    _ = try? call("rm -rf /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
+                                    _ = try? call("launchctl unload /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist", p: password)
+                                    _ = try? call("rm -rf /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist", p: password)
                                     try call("curl -Lo /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/PatchedSurDaemon.plist", p: password)
-                                    try call("launchctl load -w /Library/LaunchAgents/PatchedSurDaemon.plist", p: password)
-                                    try call("launchctl enable u-bensova.Patched-Sur.Daemon", p: "password")
+                                    try call("launchctl load -w /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist", p: password)
+                                    _ try? call("launchctl enable system/u-bensova.Patched-Sur.Daemon", p: password)
                                     print("Saving configuration...")
                                     UserDefaults.standard.setValue(notifications, forKey: "Notifications")
                                     UserDefaults.standard.setValue(autoUpdate, forKey: "AutoUpdate")
@@ -212,7 +212,7 @@ struct NotificationsView: View {
                             Text("Patched Sur needs permissions to send notifications to continue.")
                                 .onAppear {
                                     if notifications == "NOTHING" {
-                                        presentAlert(m: "Setup Notifications!", i: "Patched Sur will correctly notify you about the updates based on your new preferences.", s: .informational)
+//                                        presentAlert(m: "Setup Notifications!", i: "Patched Sur will correctly notify you about the updates based on your new preferences.", s: .informational)
                                         showPassword = false
                                         allowNotifications = false
                                         p = 2
@@ -222,12 +222,12 @@ struct NotificationsView: View {
                                             if let error = error {
                                                 print("Failed to allow notifications")
                                                 print(error.localizedDescription)
-                                                presentAlert(m: "Patched Sur Cannot Send Notifcations", i: "You must of denied Patched Sur from sending notifications. If you want Patched Sur to send notifcations, open System Preferences > Notifications > Patched Sur then allow notifcations.\n\nError: \(error.localizedDescription)", s: .informational)
+//                                                presentAlert(m: "Patched Sur Cannot Send Notifcations", i: "You must of denied Patched Sur from sending notifications. If you want Patched Sur to send notifcations, open System Preferences > Notifications > Patched Sur then allow notifcations.\n\nError: \(error.localizedDescription)", s: .informational)
                                             }
                                             
                                             if granted {
                                                 print("Allowed notifcations!")
-                                                presentAlert(m: "Setup Notifications!", i: "Patched Sur will correctly notify you about the updates based on your new preferences.", s: .informational)
+//                                                presentAlert(m: "Setup Notifications!", i: "Patched Sur will correctly notify you about the updates based on your new preferences.", s: .informational)
                                             }
                                         }
                                         showPassword = false

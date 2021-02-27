@@ -11,5 +11,11 @@
 	</array>
 	<key>KeepAlive</key>
 	<false/>
+	<key>StandardOutPath</key>
+	<string>/var/log/patched-sur-daemon.log</string>
+	<key>StandardErrorPath</key>
+	<string>/var/log/patched-sur-daemon.log</string>
+	<key>Debug</key>
+	<true/>
 </dict>
 </plist>
