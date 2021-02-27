@@ -10,16 +10,16 @@ import UserNotifications
 
 func patchDaemon() {
     print("Patched Sur Update Daemon Started.")
-    print("Patched Sur Update Daemon Started.")
     print("Just so we don't mess with after boot preformance,")
     print("we'll sleep for a few minutes then check.")
-    sleep(600)
+//    sleep(600)
     while true {
         print("Checking for Patched Sur updates first...")
         if let patcherVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
             print("Checking if we already checked for this...")
             if UserDefaults.standard.string(forKey: "LastCheckedPSVersion") != patcherVersions[0].tagName {
                 print("Checking if we have a different version...")
+                print([patcherVersions[0].tagName].description + " C: " + ["v\(AppInfo.version)"].description)
                 if patcherVersions[0].tagName != "v\(AppInfo.version)" {
                     print("Sending update notification!")
                     var tagName = patcherVersions[0].tagName
@@ -44,8 +44,10 @@ func patchDaemon() {
             }
             if UserDefaults.standard.string(forKey: "LastCheckedOSVersion") != macOSversions[0].buildNumber {
                 print("Checking our build number to compare...")
-                if let buildNumber = (try? call("sw_vers | grep BuildVersion:", at: ".")) {
+                if var buildNumber = (try? call("sw_vers | grep BuildVersion:", at: ".")) {
                     print("Checking if we have a different build number...")
+                    buildNumber.removeFirst("BuildVersion: ".count)
+                    print([macOSversions[0].buildNumber].description + " C: " + [buildNumber].description)
                     if buildNumber != macOSversions[0].buildNumber {
                         print("Sending update notification!")
                         scheduleNotification(title: "Software Update", body: "macOS Big Sur \(macOSversions[0].version) (\(macOSversions[0].buildNumber)) can now be installed on your device. Open Patched Sur then click Update macOS to learn more.")
