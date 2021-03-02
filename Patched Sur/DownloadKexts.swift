@@ -20,17 +20,18 @@ struct DownloadView: View {
     @State var buttonBG = Color.red
     @State var downloadSize = 553578200
     @State var installSize = 21382031300000
+    @State var assistantSizeTxt = "0"
     @State var downloadProgress = CGFloat(0)
     @State var installProgress = CGFloat(0)
     @State var currentSize = 10
     @Binding var installInfo: InstallAssistant?
     @State var kextDownloaded = false
-    let timer = Timer.publish(every: 0.25, on: .current, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
     
     var body: some View {
         VStack {
             Text("Downloading Kexts and macOS").bold()
-            Text("The kext patches allow you to use hardware like WiFi and USB ports, so that your Mac stays at its full functionality. macOS is being downloaded straight from Apple, in the form of an InstallAssistant.pkg file. With this, we can extract out the Installer app then start a macOS install.")
+            Text("The kext patches allow you to use hardware like WiFi and USB ports, so that your Mac stays at its full functionality. macOS is being downloaded straight from Apple, in the form of an InstallAssistant.pkg file. With this, we can extract out the Installer app then start a macOS install. (Sometimes the progress bar breaks, but no matter what it's downloading.)")
                 .padding(10)
                 .multilineTextAlignment(.center)
             if downloadStatus == "Downloading Kexts..." {
@@ -69,15 +70,13 @@ struct DownloadView: View {
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
                                             _ = try? call("rm -rf ~/.patched-sur/__MACOSX")
                                             print("Starting download of micropatcher...")
-                                            if let sizeString = try? call("curl -sI https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-                                                downloadSize = sizeInt
-                                            }
                                             try call("curl -Lo ~/.patched-sur/big-sur-micropatcher.zip https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main")
                                             print("Unzipping kexts...")
                                             try call("unzip ~/.patched-sur/big-sur-micropatcher.zip -d ~/.patched-sur")
                                             print("Post-download clean up...")
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
                                             _ = try? call("rm -rf ~/.patched-sur/__MACOSX")
+                                            _ = try? call("mv ")
                                             print("Finished downloading the micropatcher!")
                                             kextDownloaded = true
                                             _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
@@ -121,6 +120,7 @@ struct DownloadView: View {
                                 if let sizeCode = try? call("stat -f %z ~/.patched-sur/InstallAssistant.pkg") {
                                     currentSize = Int(Float(sizeCode) ?? 10000)
                                     installProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(installSize)
+                                    assistantSizeTxt = (try? call("echo \(sizeCode) | awk '{ print $1/1000000000 }'")) ?? "0.0"
                                 }
                             }
                         })
@@ -143,6 +143,8 @@ struct DownloadView: View {
                         .padding(6)
                         .padding(.horizontal, 4)
                 }.fixedSize()
+                Text("\(assistantSizeTxt) / 12 GB")
+                    .font(.caption)
             } else {
                 VStack {
                     Button {
@@ -167,6 +169,7 @@ struct DownloadView: View {
                                 .lineLimit(4)
                                 .padding(6)
                                 .padding(.horizontal, 4)
+                                .frame(minWidth: 200, maxWidth: 450)
                         }
                     }.buttonStyle(BorderlessButtonStyle())
                     Text("Click to Copy")
