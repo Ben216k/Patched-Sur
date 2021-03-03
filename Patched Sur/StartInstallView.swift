@@ -45,28 +45,33 @@ struct StartInstallView: View {
                                         if !installerPath.hasSuffix("app") {
                                             currentText = "Cleaning up before extraction"
                                             print("Clean up before extraction...")
-                                            _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS\\ Big\\ Sur*.app", p: password)
+                                            if (try? call("[[ -d /Applications/Install\\ macOS\\ Big\\ Sur.app ]]")) != nil || (try? call("[[ -d /Applications/Install\\ macOS\\ Big\\ Sur\\ Beta.app ]]")) != nil {
+                                                if (try? call("mkdir /Applications/Backup-Installers", p: password)) != nil {
+                                                    _ = try? call("echo 'This folder was created by Patched Sur to protect your existing macOS installers while the patcher runs.' > /Applications/Backup-Installers/README.txt")
+                                                    _ = try? call("mv /Applications/Install\\ macOS\\ Big\\ Sur*.app /Applications/Backup-Installers/", p: password)
+                                                }
+                                            }
                                             _ = try? call("rm -rf ~/.patched-sur/pkg-extract", p: password)
                                             currentText = "Unpacking package"
                                             print("Unpacking package...")
-//                                            try call("installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /", p: password)
-                                            if installerPath == "~/.patched-sur/InstallAssistant.pkg" {
-                                                try call("cd ~/.patched-sur && pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/pkg-extract", h: handle)
-                                            } else {
-                                                try call("cd ~/.patched-sur && pkgutil --expand-full '\(installerPath)' ~/.patched-sur/pkg-extract", h: handle)
-                                            }
-                                            currentText = "Organizing package"
-                                            print("Organizing package...")
-                                            try call("mv ~/.patched-sur/pkg-extract/Payload/Applications/Install\\ macOS\\ Big\\ Sur*.app ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app")
-                                            try call("mkdir ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
-                                            try call("ln -fFh ~/.patched-sur/pkg-extract/SharedSupport.dmg ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport", p: password)
-                                            try call("/bin/chmod 0644 ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport/SharedSupport.dmg", p: password)
-                                            try call("/usr/sbin/chown -R root:wheel ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport/SharedSupport.dmg", p: password)
-                                            try call("/usr/bin/chflags -h norestricted ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport/SharedSupport.dmg", p: password)
-                                            _ = try? call("rm -rf ~/.patched-sur/pkg-extract", p: password)
+                                            try call("installer -pkg ~/.patched-sur/InstallAssistant.pkg -target /", p: password)
+//                                            if installerPath == "~/.patched-sur/InstallAssistant.pkg" {
+//                                                try call("cd ~/.patched-sur && pkgutil --expand-full ~/.patched-sur/InstallAssistant.pkg ~/.patched-sur/pkg-extract", h: handle)
+//                                            } else {
+//                                                try call("cd ~/.patched-sur && pkgutil --expand-full '\(installerPath)' ~/.patched-sur/pkg-extract", h: handle)
+//                                            }
+//                                            currentText = "Organizing package"
+//                                            print("Organizing package...")
+//                                            try call("mv ~/.patched-sur/pkg-extract/Payload/Applications/Install\\ macOS\\ Big\\ Sur*.app ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app")
+//                                            try call("mkdir ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport")
+//                                            try call("ln -fFh ~/.patched-sur/pkg-extract/SharedSupport.dmg ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport", p: password)
+//                                            try call("/bin/chmod 0644 ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport/SharedSupport.dmg", p: password)
+//                                            try call("/usr/sbin/chown -R root:wheel ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport/SharedSupport.dmg", p: password)
+//                                            try call("/usr/bin/chflags -h norestricted ~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/SharedSupport/SharedSupport.dmg", p: password)
+//                                            _ = try? call("rm -rf ~/.patched-sur/pkg-extract", p: password)
                                             currentText = "Starting OS Installer"
                                             print("Starting OS Installer....")
-                                            try call("~/.patched-sur/Install\\ macOS\\ Big\\ Sur.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
+                                            try call("/Applications/Install\\ macOS\\ Big\\ Sur.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
                                         } else {
                                             currentText = "Starting OS Installer"
                                             print("Starting OS Installer...")
