@@ -76,7 +76,7 @@ struct DownloadView: View {
                                             print("Post-download clean up...")
                                             _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
                                             _ = try? call("rm -rf ~/.patched-sur/__MACOSX")
-                                            _ = try? call("mv ")
+                                            _ = try? call("mv ~/.patched-sur/big-sur-micropatcher-main ~/.patched-sur/big-sur-micropatcher")
                                             print("Finished downloading the micropatcher!")
                                             kextDownloaded = true
                                             _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
