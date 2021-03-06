@@ -51,7 +51,7 @@ struct DownloadView: View {
                                     try call("curl -o ~/.patched-sur/big-sur-micropatcher.zip https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main")
                                     try call("unzip big-sur-micropatcher.zip", at: "~/.patched-sur")
                                     _ = try? File(path: "~/.patched-sur/big-sur-micropatcher*").delete()
-                                    try call("mv ~/.patched-sur/big-sur-micropatcher-\(AppInfo.micropatcher) ~/.patched-sur/big-sur-micropatcher")
+                                    try call("mv ~/.patched-sur/big-sur-micropatcher-main ~/.patched-sur/big-sur-micropatcher")
                                     withAnimation {
                                         p = 4
                                     }

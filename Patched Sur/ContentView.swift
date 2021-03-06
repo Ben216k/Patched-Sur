@@ -35,8 +35,16 @@ struct ContentView: View {
                     } label: {
                         Text("Back")
                     }
+                }.frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
+            }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text("v\(AppInfo.version) (\(AppInfo.build))")
+                        .font(.caption)
+                        .padding()
                 }
-                .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
             }
         }
     }

@@ -64,6 +64,7 @@ struct DownloadView: View {
                                     if !AppInfo.usePredownloaded {
                                         do {
                                             print("Cleaning up before download...")
+                                            _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
                                             _ = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
                                             _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
                                             _ = try? call("rm -rf ~/.patched-sur/big-sur-micropatcher*")
@@ -79,7 +80,6 @@ struct DownloadView: View {
                                             _ = try? call("mv ~/.patched-sur/big-sur-micropatcher-main ~/.patched-sur/big-sur-micropatcher")
                                             print("Finished downloading the micropatcher!")
                                             kextDownloaded = true
-                                            _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
                                             if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'") {
                                                 let sizeStrings = sizeString.split(separator: "\r\n")
                                                 print(sizeStrings)

@@ -71,7 +71,7 @@ struct StartInstallView: View {
 //                                            _ = try? call("rm -rf ~/.patched-sur/pkg-extract", p: password)
                                             currentText = "Starting OS Installer"
                                             print("Starting OS Installer....")
-                                            try call("/Applications/Install\\ macOS\\ Big\\ Sur.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
+                                            try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
                                         } else {
                                             currentText = "Starting OS Installer"
                                             print("Starting OS Installer...")
