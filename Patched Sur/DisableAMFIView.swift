@@ -22,7 +22,7 @@ struct DisableAMFIView: View {
                     try call("nvram boot-args=\"\(current) amfi_get_out_of_my_way=1\"", p: password)
                 } catch {
                     print("Failed to update NVRAM.")
-                    presentAlert(m: "Failed to update boot-args", i: "Patched Sur was unable to update your boot-args. If you want to do it yourself,  run sudo nvram boot-args=\"-no_compat_check amfi_get_out_of_my_way=1\" in terminal. Yes, you are telling AMFI to get out of your way. After that, restart then run Patched Sur again.", s: .warning)
+                    presentAlert(m: "Failed to update boot-args", i: "Patched Sur was unable to update your boot-args. This is probably because SIP is enabled, but you can disabled AMFI without disabling SIP.\n\n1. Boot into Recovery Mode (⌘⌥R on Startup)\n2. Open Terminal under Utilities.\n3. Type in: nvram boot-args=\"-no_compat_check amfi_get_out_of_my_way=1\"\n4. Press enter and restart your computer, then try running Patched Sur again.", s: .warning)
                 }
                 do {
                     try call("reboot", p: password)
