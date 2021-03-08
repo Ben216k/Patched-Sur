@@ -50,6 +50,10 @@ struct InstallerChooser: View {
                         }.padding([.bottom, .horizontal])
                     }
                 }
+                Text("Do not attempt to use the updater with an older version of macOS.\nThis includes downgrading from the macOS beta to a stable release.")
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom)
                 if let error = errorL {
                     Button {
                         let pasteboard = NSPasteboard.general
@@ -217,7 +221,7 @@ struct InstallerCell: View {
             Button {
                 useCurrent = c
                 installInfo = installer
-                p = 2
+                p = useCurrent ? 7 : 2
             } label: {
                 ZStack {
                     if c {
