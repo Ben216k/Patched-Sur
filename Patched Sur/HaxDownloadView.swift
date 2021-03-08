@@ -15,6 +15,7 @@ struct HaxDownloadView: View {
     @State var hasPassword = false
     @Binding var password: String
     @Binding var p: Int
+    @Binding var useCurrent: Bool
     var body: some View {
         VStack {
             Text("Starting Installer Enviorment")
@@ -51,7 +52,7 @@ struct HaxDownloadView: View {
 //                                    UserDefaults.standard.set(AppInfo.usePredownloaded, forKey: "preDownloaded")
 //                                    print("Prompting for app restart...")
 //                                    done = true
-                                    p = 3
+                                    p = useCurrent ? 4 : 3
                                 } catch {
                                     errorT = error.localizedDescription
                                 }

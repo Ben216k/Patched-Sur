@@ -15,14 +15,19 @@ struct UpdateView: View {
     @State var installers = nil as InstallAssistants?
     @State var track = ReleaseTrack.release
     @State var latestPatch = nil as PatchedVersion?
+    #if DEBUG
+    @State var skipAppCheck = true
+    #else
     @State var skipAppCheck = false
+    #endif
     @State var installInfo = nil as InstallAssistant?
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
     @State var password = ""
+    @State var useCurrent = false
     let buildNumber: String
     var body: some View {
         ZStack {
-            if progress == 0 || progress == 2 {
+            if progress == 0 {
                 VStack {
                     Text("Software Update")
                         .font(.title2)
@@ -47,19 +52,16 @@ struct UpdateView: View {
                 DownloadView(p: $progress, installInfo: $installInfo)
             case 4:
                 StartInstallView(password: $password, installerPath: $packageLocation)
+            case 5:
+                InstallerChooser(p: $progress, installInfo: $installInfo, track: $track, useCurrent: $useCurrent, package: $packageLocation)
             case 6:
                 DisableAMFIView()
             case 7:
-                HaxDownloadView(installInfo: installInfo, password: $password, p: $progress)
+                HaxDownloadView(installInfo: installInfo, password: $password, p: $progress, useCurrent: $useCurrent)
             case 8:
                 NotificationsView(p: $progress).font(.caption)
             default:
-                VStack {
-                    Text("Uh-oh! Something went wrong going through the software update steps.\nError 1x\(progress)")
-                    Button("Go Back Home") {
-                        at = 0
-                    }
-                }
+                Text("Sad")
             }
         }
         .navigationTitle("Patched Sur")

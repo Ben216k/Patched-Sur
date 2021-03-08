@@ -20,11 +20,11 @@ struct UpdateStatusView: View {
     @State var alert: Alert?
     var body: some View {
         VStack {
-            Rectangle().foregroundColor(.clear).frame(height: 10)
+//            Rectangle().foregroundColor(.clear).frame(height: 10)
             if installInfo?.buildNumber != .some(buildNumber) || AppInfo.reinstall {
                 HStack(spacing: 0) {
-                    SideImageView(releaseTrack: releaseTrack.rawValue, scale: 60)
-                    VStack(alignment: .leading) {
+                    SideImageView(releaseTrack: releaseTrack.rawValue, scale: 70)
+                    VStack(alignment: .leading, spacing: 0) {
                         Text("An update is available!")
                             .font(.headline)
                             .fontWeight(.semibold)
@@ -33,8 +33,15 @@ struct UpdateStatusView: View {
                             .bold()
                         Text("Released \(installInfo?.date ?? "0.0.0") • Build \(installInfo?.buildNumber ?? "0.0.0")")
                             .font(.caption)
+                        Button {
+                            p = 5
+                        } label: {
+                            Text("View Other Versions")
+                        }.buttonStyle(BorderlessButtonStyle())
+                        .font(.caption)
+                        .padding(.top, 2)
                     }
-                }
+                }.fixedSize()
                 TextAndButtonView(t: "Start the", b: "macOS Update!") {
                     print("Check for AMFI...")
                     var bootargs = ""
@@ -62,6 +69,12 @@ struct UpdateStatusView: View {
                         .font(.title)
                     Text("Current Build \(buildNumber)")
                         .font(.caption)
+                    Button {
+                        p = 5
+                    } label: {
+                        Text("View Other Versions")
+                    }.buttonStyle(BorderlessButtonStyle())
+                    .font(.caption)
                 }.padding(.bottom)
             }
             Rectangle().foregroundColor(.clear).frame(height: 0)
@@ -218,6 +231,6 @@ struct UpdateStatusView: View {
             alert = nil
         }), content: {
             alert!
-        })
+        }).padding(.bottom, 10)
     }
 }

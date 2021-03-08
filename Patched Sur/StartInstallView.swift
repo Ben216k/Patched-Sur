@@ -72,10 +72,12 @@ struct StartInstallView: View {
                                             currentText = "Starting OS Installer"
                                             print("Starting OS Installer....")
                                             try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
+//                                            try call("[[ -e /Applications/Install\\ macOS\\ Big\\ Sur.app/Contents/Resources/startosinstall ]]")
                                         } else {
                                             currentText = "Starting OS Installer"
                                             print("Starting OS Installer...")
                                             try call("'\(installerPath)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password, h: handle)
+//                                            try call("[[ -e '\(installerPath)/Contents/Resources/startosinstall' ]]")
                                         }
                                     } catch {
                                         errorT = error.localizedDescription
