@@ -242,5 +242,8 @@ struct UpdateStatusView: View {
         }), content: {
             alert!
         }).padding(.bottom, 10)
+        .onAppear {
+            UserDefaults.standard.setValue(installInfo?.buildNumber ?? "v0.0.0", forKey: "LastCheckedOSVersion")
+        }
     }
 }

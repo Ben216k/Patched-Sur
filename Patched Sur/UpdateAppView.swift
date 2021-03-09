@@ -166,6 +166,9 @@ struct UpdateAppView: View {
 //                Text(releaseNotesThing)
             }
         }.padding(20)
+        .onAppear {
+            UserDefaults.standard.setValue(latest.tagName, forKey: "LastCheckedPSVersion")
+        }
     }
 }
 //
