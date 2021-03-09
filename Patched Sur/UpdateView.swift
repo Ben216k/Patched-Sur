@@ -49,7 +49,7 @@ struct UpdateView: View {
             case 2:
                 UpdateStatusView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, p: $progress)
             case 3:
-                DownloadView(p: $progress, installInfo: $installInfo)
+                DownloadView(p: $progress, installInfo: $installInfo, useCurrent: $useCurrent)
             case 4:
                 StartInstallView(password: $password, installerPath: $packageLocation)
             case 5:

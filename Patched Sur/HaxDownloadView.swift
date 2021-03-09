@@ -52,7 +52,7 @@ struct HaxDownloadView: View {
 //                                    UserDefaults.standard.set(AppInfo.usePredownloaded, forKey: "preDownloaded")
 //                                    print("Prompting for app restart...")
 //                                    done = true
-                                    p = useCurrent ? 4 : 3
+                                    p = 3
                                 } catch {
                                     errorT = error.localizedDescription
                                 }

@@ -60,7 +60,7 @@ struct UpdateStatusView: View {
                         presentAlert(m: "Failed to check SIP Status", i: "Patched Sur failed to check your SIP status, which should be impossible.\n\n\(error.localizedDescription)", s: .critical)
                     }
                     bootargs.removeFirst("boot-args    ".count)
-                    if csrstatus.contains("status: disabled") {
+                    if csrstatus.contains("status: enabled") {
                         print("CSR is Enabled! The updater cannot be run.")
                         presentAlert(m: "SIP Appears to Be On", i: "Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with SIP off, so Patched Sur needs you to disable SIP before continuing. To disable it:\n\n1. Boot into Recovery Mode (⌘⌥R on Startup)\n2. Open Terminal under Utilities.\n3. Type in: nvram boot-args=\"-no_compat_check amfi_get_out_of_my_way=1\" then press enter.\nType in: csrutil disable then press enter.\n5. Press enter and restart your computer, then try running Patched Sur again.")
                     } else if !bootargs.contains("amfi_get_out_of_my_way=1") {
