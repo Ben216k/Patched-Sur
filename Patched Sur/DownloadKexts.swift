@@ -87,6 +87,7 @@ struct DownloadView: View {
                                                     downloadSize = sizeInt
                                                 }
                                             }
+                                            _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
                                             let reasonForActivity = "Reason for activity" as CFString
                                             var assertionID: IOPMAssertionID = 0
                                             var success = IOPMAssertionCreateWithName( kIOPMAssertionTypeNoDisplaySleep as CFString,
@@ -98,6 +99,10 @@ struct DownloadView: View {
                                                 success = IOPMAssertionRelease(assertionID)
                                             } else {
                                                 try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo!.url)")
+                                            }
+                                            print("Updating InstallInfo.txt")
+                                            if let versionFile = try? Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallInfo.txt") {
+                                                _ = try? versionFile.write(installInfo!.jsonString()!, encoding: .utf8)
                                             }
                                             p = 4
                                         } catch {
