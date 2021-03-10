@@ -11,12 +11,12 @@
         }
       },
       {
-        "package": "SwiftShell",
-        "repositoryURL": "https://github.com/kareman/SwiftShell",
+        "package": "VeliaUI",
+        "repositoryURL": "https://github.com/BenSova/VeliaUI",
         "state": {
-          "branch": null,
-          "revision": "99680b2efc7c7dbcace1da0b3979d266f02e213c",
-          "version": "5.1.0"
+          "branch": "main",
+          "revision": "29546573e042c673a16be96ab048918cc2141ddc",
+          "version": null
         }
       }
     ]

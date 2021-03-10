@@ -6,7 +6,7 @@
 //
 
 import Cocoa
-import SwiftUI
+import VeliaUI
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -19,12 +19,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Create the window and set the content view.
         window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 500, height: 300),
-            styleMask: [.titled, .miniaturizable, .fullSizeContentView],
+            contentRect: NSRect(x: 0, y: 0, width: 584, height: 346),
+            styleMask: [.titled, .miniaturizable, .fullSizeContentView, .borderless],
             backing: .buffered, defer: false)
         window.isReleasedWhenClosed = true
         window.center()
         window.setFrameAutosaveName("Main Window")
+        window.titleVisibility = .hidden
+        window.titlebarAppearsTransparent = true
         window.contentView = NSHostingView(rootView: contentView)
         window.makeKeyAndOrderFront(nil)
     }

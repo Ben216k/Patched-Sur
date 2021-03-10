@@ -28,7 +28,7 @@
 		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
 		768F51F6256E05190069096E /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51F5256E05190069096E /* UpdateView.swift */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
-		7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* ContentView.swift */; };
+		7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* CentralView.swift */; };
 		7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E069251BFF9400C5FB9A /* Assets.xcassets */; };
 		7692E06D251BFF9400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E06C251BFF9400C5FB9A /* Preview Assets.xcassets */; };
 		7692E070251BFF9400C5FB9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7692E06E251BFF9400C5FB9A /* Main.storyboard */; };
@@ -47,6 +47,8 @@
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
 		76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF37BC25E8C73500403208 /* NotificationsView.swift */; };
 		76D639DD2576302500B38FBE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D639DC2576302500B38FBE /* main.swift */; };
+		76D8437B25F861DE006C6565 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76D8437A25F861DE006C6565 /* VeliaUI */; };
+		76D8437D25F861E6006C6565 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76D8437C25F861E6006C6565 /* VeliaUI */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
 		76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */; };
 		76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */; };
@@ -56,6 +58,29 @@
 		76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */; };
 		76FBF0E4253CEB2F0049A94E /* FinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0E3253CEB2F0049A94E /* FinishedView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		76D8437625F85FF2006C6565 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76D8437825F86047006C6565 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3F42EB03255176F700365279 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -83,7 +108,7 @@
 		768F51F5256E05190069096E /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - For Catalina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7692E065251BFF9300C5FB9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7692E067251BFF9300C5FB9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7692E067251BFF9300C5FB9A /* CentralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralView.swift; sourceTree = "<group>"; };
 		7692E069251BFF9400C5FB9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7692E06C251BFF9400C5FB9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7692E06F251BFF9400C5FB9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D8437B25F861DE006C6565 /* VeliaUI in Frameworks */,
 				7625796725423FD600508A71 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D8437D25F861E6006C6565 /* VeliaUI in Frameworks */,
 				768D516525CA4FD90091D1F0 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,10 +189,8 @@
 		7692E064251BFF9300C5FB9A /* Patched Sur - For Catalina */ = {
 			isa = PBXGroup;
 			children = (
-				76D639DC2576302500B38FBE /* main.swift */,
-				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
-				7692E067251BFF9300C5FB9A /* ContentView.swift */,
-				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
+				76D8437E25F8646B006C6565 /* CoreCode */,
+				76D8437F25F86486006C6565 /* Views */,
 				76772CE925410B40003FE2A2 /* InstallerChooser.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,
@@ -245,6 +270,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		76D8437E25F8646B006C6565 /* CoreCode */ = {
+			isa = PBXGroup;
+			children = (
+				76D639DC2576302500B38FBE /* main.swift */,
+				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
+			);
+			path = CoreCode;
+			sourceTree = "<group>";
+		};
+		76D8437F25F86486006C6565 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7692E067251BFF9300C5FB9A /* CentralView.swift */,
+				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		76FEEFAC254F4DA80079CEFC /* Extra Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +311,7 @@
 				7692E05E251BFF9300C5FB9A /* Sources */,
 				7692E05F251BFF9300C5FB9A /* Frameworks */,
 				7692E060251BFF9300C5FB9A /* Resources */,
+				76D8437825F86047006C6565 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -276,6 +320,7 @@
 			name = "Patched Sur - For Catalina";
 			packageProductDependencies = (
 				7625796625423FD600508A71 /* Files */,
+				76D8437A25F861DE006C6565 /* VeliaUI */,
 			);
 			productName = "Patched Sur - For Catalina";
 			productReference = 7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */;
@@ -288,6 +333,7 @@
 				7692E079251BFFB200C5FB9A /* Sources */,
 				7692E07A251BFFB200C5FB9A /* Frameworks */,
 				7692E07B251BFFB200C5FB9A /* Resources */,
+				76D8437625F85FF2006C6565 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -296,6 +342,7 @@
 			name = "Patched Sur";
 			packageProductDependencies = (
 				768D516425CA4FD90091D1F0 /* Files */,
+				76D8437C25F861E6006C6565 /* VeliaUI */,
 			);
 			productName = "Patched Sur";
 			productReference = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */;
@@ -329,7 +376,7 @@
 			mainGroup = 7692E059251BFF9300C5FB9A;
 			packageReferences = (
 				7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */,
-				76E3B55D25736854003A06F4 /* XCRemoteSwiftPackageReference "SwiftShell" */,
+				76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */,
 			);
 			productRefGroup = 7692E063251BFF9300C5FB9A /* Products */;
 			projectDirPath = "";
@@ -375,7 +422,7 @@
 				76772CEA25410B40003FE2A2 /* InstallerChooser.swift in Sources */,
 				76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */,
 				76A626DC25252C5A002C57EA /* CreateInstallMedia.swift in Sources */,
-				7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */,
+				7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */,
 				7692E090251C077400C5FB9A /* MainView.swift in Sources */,
 				76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */,
 				76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */,
@@ -557,7 +604,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -567,8 +614,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Extra\\ Files",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -585,7 +636,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -595,8 +646,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Extra\\ Files",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -613,7 +668,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -624,8 +679,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Extra\\ Files",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -642,7 +701,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 62;
+				CURRENT_PROJECT_VERSION = 63;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -653,8 +712,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Extra\\ Files",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -703,12 +766,12 @@
 				minimumVersion = 4.1.1;
 			};
 		};
-		76E3B55D25736854003A06F4 /* XCRemoteSwiftPackageReference "SwiftShell" */ = {
+		76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kareman/SwiftShell";
+			repositoryURL = "https://github.com/BenSova/VeliaUI";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -723,6 +786,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
+		};
+		76D8437A25F861DE006C6565 /* VeliaUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */;
+			productName = VeliaUI;
+		};
+		76D8437C25F861E6006C6565 /* VeliaUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */;
+			productName = VeliaUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

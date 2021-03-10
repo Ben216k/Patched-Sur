@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CentralView.swift
 //  Patched Sur - For Catalina
 //
 //  Created by Benjamin Sova on 9/23/20.
@@ -13,7 +13,6 @@ struct ContentView: View {
         ZStack {
             AllViews()
         }
-        .frame(minWidth: 500, maxWidth: 500, minHeight: 300, maxHeight: 300)
     }
 }
 
@@ -40,7 +39,7 @@ struct AllViews : View {
             case 0:
                 ZStack {
                     MainView(p: $progress).transition(.moveAway)
-    //                EnterPasswordPrompt(password: $password, show: .constant(true))
+                    EnterPasswordPrompt(password: $password, show: .constant(true))
                 }
             case 1:
                 MacCompatibility(p: $progress).transition(.moveAway)
