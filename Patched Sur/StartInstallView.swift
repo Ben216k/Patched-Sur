@@ -29,6 +29,7 @@ struct StartInstallView: View {
                             .frame(minWidth: 200, maxWidth: 450)
                             .onAppear(perform: {
                                 DispatchQueue.global(qos: .background).async {
+                                    AppInfo.canReleaseAttention = false
                                     do {
                                         let handle: (String) -> () = {
                                             if currentText.hasPrefix("""
@@ -81,6 +82,7 @@ struct StartInstallView: View {
 //                                            try call("[[ -e '\(installerPath)/Contents/Resources/startosinstall' ]]")
                                         }
                                     } catch {
+                                        AppInfo.canReleaseAttention = true
                                         errorT = error.localizedDescription
                                     }
                                 }

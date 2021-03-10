@@ -13,6 +13,7 @@
 		760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760C7D1A25719C27004817F1 /* UpdateAppAction.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		762A066825BF93A80037655D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A066725BF93A80037655D /* Keychain.swift */; };
+		762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */; };
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
 		763AA41125BBCFF100C7C14F /* DisableAMFIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AA41025BBCFF100C7C14F /* DisableAMFIView.swift */; };
@@ -91,6 +92,7 @@
 		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		762908AD25760F630021244B /* EFIIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = EFIIcon.icns; sourceTree = "<group>"; };
 		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPatchedSur.swift; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
 		763AA41025BBCFF100C7C14F /* DisableAMFIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableAMFIView.swift; sourceTree = "<group>"; };
@@ -165,6 +167,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		762F8C1D25F87ED20021E4AF /* CoreCode */ = {
+			isa = PBXGroup;
+			children = (
+				76A0B78C25749FC100E392D1 /* main.swift */,
+				7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */,
+				76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */,
+			);
+			path = CoreCode;
+			sourceTree = "<group>";
+		};
+		762F8C1E25F87EE00021E4AF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7692E059251BFF9300C5FB9A = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +212,6 @@
 				76D8437E25F8646B006C6565 /* CoreCode */,
 				76D8437F25F86486006C6565 /* Views */,
 				76772CE925410B40003FE2A2 /* InstallerChooser.swift */,
-				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
-				7692E08F251C077400C5FB9A /* MainView.swift */,
 				76A626D32524ED78002C57EA /* MacCompatibility.swift */,
 				76A626D72525055B002C57EA /* HowItWorks.swift */,
 				76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */,
@@ -226,9 +244,8 @@
 		7692E07E251BFFB300C5FB9A /* Patched Sur */ = {
 			isa = PBXGroup;
 			children = (
-				76A0B78C25749FC100E392D1 /* main.swift */,
-				76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */,
-				7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */,
+				762F8C1D25F87ED20021E4AF /* CoreCode */,
+				762F8C1E25F87EE00021E4AF /* Views */,
 				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
 				767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */,
 				7692E081251BFFB300C5FB9A /* ContentView.swift */,
@@ -284,6 +301,8 @@
 			children = (
 				7692E067251BFF9300C5FB9A /* CentralView.swift */,
 				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
+				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
+				7692E08F251C077400C5FB9A /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -448,6 +467,7 @@
 				760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */,
 				766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */,
 				767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */,
+				762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */,
 				767167522550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
 				7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */,

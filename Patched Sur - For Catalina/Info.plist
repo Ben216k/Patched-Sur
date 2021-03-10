@@ -28,5 +28,9 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2021 BenSova under the MIT License</string>
+	<key>MDItemKeywords</key>
+	<string>unsupported,bensova,patcher,big sur</string>
 </dict>
 </plist>

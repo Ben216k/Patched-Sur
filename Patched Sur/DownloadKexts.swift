@@ -62,6 +62,7 @@ struct DownloadView: View {
                             .lineLimit(4)
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
+                                    AppInfo.canReleaseAttention = false
                                     if !AppInfo.usePredownloaded {
                                         do {
                                             print("Cleaning up before download...")
@@ -111,6 +112,7 @@ struct DownloadView: View {
                                             }
                                             p = 4
                                         } catch {
+                                            AppInfo.canReleaseAttention = true
                                             downloadStatus = error.localizedDescription
                                         }
                                     } else {
@@ -138,19 +140,6 @@ struct DownloadView: View {
                         Text("Downloading macOS...")
                             .foregroundColor(.white)
                             .lineLimit(4)
-                            .onAppear {
-                                DispatchQueue.global(qos: .background).async {
-    //                                if !AppInfo.usePredownloaded {
-    ////                                    do {
-    ////
-    ////                                    } catch {
-    ////                                        downloadStatus = error.localizedDescription
-    ////                                    }
-    //                                } else {
-    //                                    p = 4
-    //                                }
-                                }
-                            }
                             .padding(6)
                             .padding(.horizontal, 4)
                     }.fixedSize()

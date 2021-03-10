@@ -102,6 +102,7 @@ struct ButtonsView: View {
         case 3:
             VStack {
                 RunActionsDisplayView(action: {
+                    AppInfo.canReleaseAttention = false
                     do {
                         let patchKextsOutput = try call("\(installerName)/patch-kexts.sh", p: password, h: { currentText = $0 })
                         UserDefaults.standard.setValue(patchKextsOutput, forKey: "PatchKextsLastRun")
@@ -111,6 +112,7 @@ struct ButtonsView: View {
                         UserDefaults.standard.setValue(error.localizedDescription, forKey: "PatchKextsLastRun")
                         p = -2
                     }
+                    AppInfo.canReleaseAttention = true
                 }, text: "Patching Kexts...")
                 Text(currentText)
                     .font(.caption)

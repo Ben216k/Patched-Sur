@@ -39,6 +39,7 @@ struct HaxDownloadView: View {
                         .onAppear(perform: {
                             DispatchQueue.global(qos: .background).async {
                                 do {
+                                    AppInfo.canReleaseAttention = false
                                     print("Downloading Hax...")
                                     try call("curl -Lo Hax5.dylib https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/Hax5/Hax5.dylib", at: "~/.patched-sur")
                                     print("Confirming Hax permissions...")
@@ -54,6 +55,7 @@ struct HaxDownloadView: View {
 //                                    done = true
                                     p = 3
                                 } catch {
+                                    AppInfo.canReleaseAttention = true
                                     errorT = error.localizedDescription
                                 }
                             }

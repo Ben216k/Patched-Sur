@@ -56,7 +56,7 @@ struct EnterPasswordPrompt: View {
                         }.padding(.bottom, 12)
                         HStack {
                             Spacer()
-                            NativeButton("Continue", keyEquivalent: .none) {
+                            NativeButton("Cancel", keyEquivalent: .none) {
                                 
                             }
                             NativeButton("Continue", keyEquivalent: .return) {

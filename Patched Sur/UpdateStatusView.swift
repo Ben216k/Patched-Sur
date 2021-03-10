@@ -66,6 +66,7 @@ struct UpdateStatusView: View {
                     } else if !bootargs.contains("amfi_get_out_of_my_way=1") {
                         print("AMFI is not set, warning user.")
                         alert = .init(title: Text("AMFI Appears to Be On"), message: Text("Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with AMFI off, so Patched Sur will quickly turn this off then restart your Mac, so then you can continue with updating."), primaryButton: .default(Text("Continue"), action: {
+                            AppInfo.canReleaseAttention = false
                             p = 6
                         }), secondaryButton: .cancel())
                     } else {

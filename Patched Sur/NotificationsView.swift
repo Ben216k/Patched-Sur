@@ -187,6 +187,7 @@ struct NotificationsView: View {
                                     .font(Font.body.bold())
                                 Spacer()
                                 CustomColoredButton("Cancel", hovered: $hovered) {
+                                    AppInfo.canReleaseAttention = false
                                     showPassword = false
                                 }
                             }.padding(.bottom)
@@ -207,6 +208,7 @@ struct NotificationsView: View {
                                     showPassword = false
                                     presentAlert(m: "Failed to Configure Daemon", i: error.localizedDescription, s: .informational)
                                 }
+                                AppInfo.canReleaseAttention = true
                             }
                         } else {
                             Text("Patched Sur needs permissions to send notifications to continue.")
