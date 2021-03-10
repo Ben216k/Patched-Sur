@@ -5,8 +5,10 @@
 //  Created by Benjamin Sova on 9/23/20.
 //
 
-import SwiftUI
+import VeliaUI
 import UserNotifications
+
+// MARK: - Content View
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -16,18 +18,19 @@ struct ContentView: View {
     var buildNumber: String
     var body: some View {
         ZStack {
-//            colorScheme == .dark ? Color.black : Color.white
-            if atLocation == 0 {
-                MainView(at: $atLocation, buildNumber: buildNumber, model: model)
-            } else if atLocation == 1 {
+            switch atLocation {
+            case 0:
+//                MainView(at: $atLocation, buildNumber: buildNumber, model: model)
+                MainView(at: $atLocation)
+            case 1:
                 UpdateView(at: $atLocation, buildNumber: buildNumber)
-            } else if atLocation == 2 {
+            case 2:
                 KextPatchView(at: $atLocation)
-            } else if atLocation == 3 {
+            case 3:
                 AboutMyMac(releaseTrack: releaseTrack, model: model, buildNumber: buildNumber, at: $atLocation)
-            } else if atLocation == 4 {
+            case 4:
                 Settings(releaseTrack: releaseTrack, at: $atLocation)
-            } else {
+            default:
                 VStack {
                     Text("Invalid Progress Number\natLocal: \(atLocation)")
                     Button {
@@ -46,7 +49,7 @@ struct ContentView: View {
                         .padding()
                 }
             }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
     
     init(at: Binding<Int>) {
@@ -71,7 +74,51 @@ struct ContentView: View {
     }
 }
 
+// MARK: - Main View
+
 struct MainView: View {
+    @State var hovered: String?
+    @Binding var at: Int
+    var body: some View {
+        VStack {
+            HStack(spacing: 15) {
+                VIHeader(p: "Patched Sur", s: "v\(AppInfo.version) (\(AppInfo.build))")
+                    .alignment(.leading)
+                    .padding(.leading, 30)
+                Spacer()
+                VIButton(id: "GITHUB", h: $hovered) {
+                    Image("GitHubMark")
+                } onClick: {
+                    NSWorkspace.shared.open("https://github.com/BenSova/Patched-Sur")
+                }
+                VIButton(id: "INFO", h: $hovered) {
+                    Image(systemName: "info.circle")
+                } onClick: {
+                    at = 3
+                }
+                .padding(.trailing, 30)
+            }.padding(.top, 40)
+            Spacer()
+            VStack(alignment: .leading, spacing: 5) {
+                VISimpleCell(t: "Update macOS", d: "Go from your current version of macOS to a newer one,\nwhere there's something new.", s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
+                    at = 1
+                }
+                VISimpleCell(t: "Patch Kexts", d: "Kexts provide macOS with it's full functionality. So that\neverything works like it should.", s: "doc.circle", id: "KEXTS", h: $hovered) {
+                    at = 2
+                }
+                VISimpleCell(t: "Settings", d: "Disable animations, enable graphics switching, show\nlogs from Patch Kexts, and maybe more.", s: "gearshape", id: "ABOUT", h: $hovered) {
+                    at = 4
+                }
+            }.padding(.horizontal, 40)
+            .padding(.bottom)
+            Spacer()
+        }
+        .edgesIgnoringSafeArea(.all)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+struct MainViewOLD: View {
     @State var hovered = -1
     @Binding var at: Int
     var buildNumber: String
@@ -89,7 +136,7 @@ struct MainView: View {
                         if buildNumber.count >= 5 {
                             at = 1
                         } else {
-                            print("Some details were failed to fetch in the inital launch sequence.")
+                            print("Some details were failed to fetch in the initial launch sequence.")
                             print("Warning user, and attempting to recover.")
                             do {
                                 try call("[[ -d ~/.patched-sur ]] || mkdir ~/.patched-sur")

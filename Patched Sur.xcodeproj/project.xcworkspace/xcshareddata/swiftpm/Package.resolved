@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/JohnSundell/Files.git",
         "state": {
           "branch": null,
-          "revision": "22fe84797d499ffca911ccd896b34efaf06a50b9",
-          "version": "4.1.1"
+          "revision": "d273b5b7025d386feef79ef6bad7de762e106eaf",
+          "version": "4.2.0"
         }
       },
       {
@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/BenSova/VeliaUI",
         "state": {
           "branch": "main",
-          "revision": "29546573e042c673a16be96ab048918cc2141ddc",
+          "revision": "739708c2b92c3baeab6d137a5add760620e482a6",
           "version": null
         }
       }

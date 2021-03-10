@@ -180,6 +180,7 @@
 		762F8C1E25F87EE00021E4AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7692E081251BFFB300C5FB9A /* ContentView.swift */,
 				762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */,
 			);
 			path = Views;
@@ -248,7 +249,6 @@
 				762F8C1E25F87EE00021E4AF /* Views */,
 				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
 				767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */,
-				7692E081251BFFB300C5FB9A /* ContentView.swift */,
 				76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */,
 				7631556F254C984900646CE9 /* ExtraViews.swift */,
 				7631558E254DDB6C00646CE9 /* AboutMyMac.swift */,

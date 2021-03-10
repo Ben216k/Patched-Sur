@@ -61,7 +61,8 @@ struct PatchedSurApp: App {
             ContentView(at: $atLocation)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
                 .accentColor(Color("AccentColor"))
-        }.commands {
+        }.windowStyle(HiddenTitleBarWindowStyle())
+        .commands {
             CommandGroup(replacing: CommandGroupPlacement.appInfo) {
                 Button(action: {
                     appDelegate.showAboutPanel()

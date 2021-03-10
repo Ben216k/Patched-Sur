@@ -136,7 +136,7 @@ struct SideImageView: View {
         }
     }
     
-    init(releaseTrack: String, scale: CGFloat = 145) {
+    init(releaseTrack: String, scale: CGFloat = 140) {
         self.releaseTrack = releaseTrack
         self.scale = scale
     }
