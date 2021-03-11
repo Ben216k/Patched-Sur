@@ -5,9 +5,123 @@
 //  Created by Benjamin Sova on 10/31/20.
 //
 
-import SwiftUI
+import VeliaUI
 
-struct Settings: View {
+struct PSSettings: View {
+    @Binding var at: Int
+    @State var hovered: String?
+    var body: some View {
+        VStack {
+            HStack(spacing: 15) {
+                VIHeader(p: "Extra Settings", s: "Some Useful Tools/Patches")
+                    .alignment(.leading)
+                Spacer()
+                VIButton(id: "BACK", h: $hovered) {
+                    Image(systemName: "chevron.backward.circle")
+                    Text("Back")
+                } onClick: {
+                    at = 0
+                }.inPad()
+            }.padding(.top, 40)
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading) {
+                    Group {
+                        Text("Extra Patches")
+                            .font(Font.title3.bold())
+                        
+                        // MARK: Animations
+                        
+                        HStack {
+                            VIButton(id: "ANI-DISABLE", h: $hovered) {
+                                Image(systemName: "dot.circle.and.cursorarrow")
+                                Text("Disable Animations")
+                            } onClick: {
+                                
+                            }.inPad()
+                            VIButton(id: "ANI-ENABLE", h: $hovered) {
+                                Image(systemName: "cursorarrow.motionlines.click")
+                                Text("Enable")
+                            } onClick: {
+                                
+                            }.inPad()
+                        }
+                        Text("Disabling animations can help Macs without Metal. Since they don't have graphics acceleration, Big Sur runs extremely slow, so disabling animations will help a little bit.")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.bottom, 15)
+                        
+                        // MARK: Graphics Switching
+                        
+                        HStack {
+                            VIButton(id: "GX-ENABLE", h: $hovered) {
+                                Image(systemName: "arrow.triangle.swap")
+                                Text("Enable Graphics Switching")
+                            } onClick: {
+                                
+                            }.inPad()
+                            VIButton(id: "GX-DISABLE", h: $hovered) {
+                                Image(systemName: "smallcircle.fill.circle")
+                                Text("Disable")
+                            } onClick: {
+                                
+                            }.inPad()
+                        }
+                        Text("If you have a Mac with mutliple GPUs, then you probably want automatic graphics switching enabled for graphics switching. Thanks to @15wat for finding this solution.")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.bottom, 15)
+                    }
+                    
+                    Group {
+                        Text("Extra Tools")
+                            .font(Font.title3.bold())
+                        
+                        // MARK: Patch Kexts Logs
+                        
+                        VIButton(id: "PATCH-LOGS", h: $hovered) {
+                            Image(systemName: "doc.text.below.ecg")
+                            Text("Show Patch Kexts Logs")
+                        } onClick: {
+                            
+                        }.inPad()
+                        Text("If you're having trouble with Patch Kexts not working, it might be worth seeing the logs and looking for errors. This could help someone trying to help you out figure out the problem, so if you can, provide this to anyone trying to help you.")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.bottom, 15)
+                        
+                        // MARK: Clean Up Leftovers
+                        
+                        VIButton(id: "CLEAN-UP", h: $hovered) {
+                            Image(systemName: "trash")
+                            Text("Clean Up Patched Sur Leftovers")
+                        } onClick: {
+                            
+                        }.inPad()
+                        Text("Sometimes, Patched Sur accidentally leaves little leftovers from when something ran. This could at times save 12GB of storage space, this is suggested especially after you run the updater.")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.bottom, 15)
+                        
+                        // MARK: Contribute Your Experiences
+                        
+                        VIButton(id: "CONTRIBUTE", h: $hovered) {
+                            Image(systemName: "desktopcomputer")
+                            Text("Contribute Your Experiences")
+                        } onClick: {
+                            
+                        }.inPad()
+                        Text("The preinstall app in Patched Sur has a feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.bottom, 15)
+                        
+                    }
+                    
+                    Rectangle()
+                        .foregroundColor(Color.white.opacity(0.000001))
+                        .frame(height: 40)
+                }.font(.system(size: 11.5))
+            }
+        }.padding(.horizontal, 30)
+    }
+}
+
+struct PSOLDSettings: View {
     @State private var showingAlert = false
     let releaseTrack: String
     @Binding var at: Int
@@ -215,7 +329,7 @@ extension EnvironmentValues {
     private struct ReleaseTrackKey: EnvironmentKey {
         static let defaultValue = "Release"
     }
-    
+
     public var releaseTrack: String {
         get {
             self[ReleaseTrackKey]
@@ -223,46 +337,4 @@ extension EnvironmentValues {
             self[ReleaseTrackKey] = newValue
         }
     }
-}
-
-func disableAnimations() {
-    _ = try? call("defaults write -g NSAutomaticWindowAnimationsEnabled -bool false")
-    _ = try? call("defaults write -g NSScrollAnimationEnabled -bool false")
-    _ = try? call("defaults write -g NSWindowResizeTime -float 0.001")
-    _ = try? call("defaults write -g QLPanelAnimationDuration -float 0")
-    _ = try? call("defaults write -g NSScrollViewRubberbanding -bool false")
-    _ = try? call("defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false")
-    _ = try? call("defaults write -g NSToolbarFullScreenAnimationDuration -float 0")
-    _ = try? call("defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0")
-    _ = try? call("defaults write com.apple.dock autohide-time-modifier -float 0")
-    _ = try? call("defaults write com.apple.dock autohide-delay -float 0")
-    _ = try? call("defaults write com.apple.dock expose-animation-duration -float 0")
-    _ = try? call("defaults write com.apple.dock springboard-show-duration -float 0")
-    _ = try? call("defaults write com.apple.dock springboard-hide-duration -float 0")
-    _ = try? call("defaults write com.apple.dock springboard-page-duration -float 0")
-    _ = try? call("defaults write com.apple.finder DisableAllAnimations -bool true")
-    _ = try? call("defaults write com.apple.Mail DisableSendAnimations -bool true")
-    _ = try? call("defaults write com.apple.Mail DisableReplyAnimations -bool true")
-    _ = try? call("defaults write NSGlobalDomain NSWindowResizeTime .001")
-}
-
-func enableAnimations() {
-    _ = try? call("defaults delete -g NSAutomaticWindowAnimationsEnabled")
-    _ = try? call("defaults delete -g NSScrollAnimationEnabled")
-    _ = try? call("defaults delete -g NSWindowResizeTime")
-    _ = try? call("defaults delete -g QLPanelAnimationDuration")
-    _ = try? call("defaults delete -g NSScrollViewRubberbanding")
-    _ = try? call("defaults delete -g NSDocumentRevisionsWindowTransformAnimation")
-    _ = try? call("defaults delete -g NSToolbarFullScreenAnimationDuration")
-    _ = try? call("defaults delete -g NSBrowserColumnAnimationSpeedMultiplier")
-    _ = try? call("defaults delete com.apple.dock autohide-time-modifier")
-    _ = try? call("defaults delete com.apple.dock autohide-delay")
-    _ = try? call("defaults delete com.apple.dock expose-animation-duration")
-    _ = try? call("defaults delete com.apple.dock springboard-show-duration")
-    _ = try? call("defaults delete com.apple.dock springboard-hide-duration")
-    _ = try? call("defaults delete com.apple.dock springboard-page-duration")
-    _ = try? call("defaults delete com.apple.finder DisableAllAnimations")
-    _ = try? call("defaults delete com.apple.Mail DisableSendAnimations")
-    _ = try? call("defaults delete com.apple.Mail DisableReplyAnimations")
-    _ = try? call("defaults delete NSGlobalDomain NSWindowResizeTime")
 }

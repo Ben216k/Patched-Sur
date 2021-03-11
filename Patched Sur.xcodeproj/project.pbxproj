@@ -28,6 +28,7 @@
 		76870F92257358BD0099A4B9 /* UpdateStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76870F91257358BC0099A4B9 /* UpdateStatusView.swift */; };
 		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
 		768F51F6256E05190069096E /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51F5256E05190069096E /* UpdateView.swift */; };
+		7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691808725F9DB80003FB34C /* SettingsActions.swift */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
 		7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* CentralView.swift */; };
 		7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E069251BFF9400C5FB9A /* Assets.xcassets */; };
@@ -108,6 +109,7 @@
 		767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerChooser.swift; sourceTree = "<group>"; };
 		76870F91257358BC0099A4B9 /* UpdateStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStatusView.swift; sourceTree = "<group>"; };
 		768F51F5256E05190069096E /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
+		7691808725F9DB80003FB34C /* SettingsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActions.swift; sourceTree = "<group>"; };
 		7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - For Catalina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7692E065251BFF9300C5FB9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7692E067251BFF9300C5FB9A /* CentralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralView.swift; sourceTree = "<group>"; };
@@ -180,10 +182,19 @@
 		762F8C1E25F87EE00021E4AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7692E081251BFFB300C5FB9A /* ContentView.swift */,
 				762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */,
+				7692E081251BFFB300C5FB9A /* ContentView.swift */,
+				3F42EB03255176F700365279 /* Settings.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7691808625F9DB5C003FB34C /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				7691808725F9DB80003FB34C /* SettingsActions.swift */,
+			);
+			path = Actions;
 			sourceTree = "<group>";
 		};
 		7692E059251BFF9300C5FB9A = {
@@ -247,13 +258,13 @@
 			children = (
 				762F8C1D25F87ED20021E4AF /* CoreCode */,
 				762F8C1E25F87EE00021E4AF /* Views */,
+				7691808625F9DB5C003FB34C /* Actions */,
 				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
 				767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */,
 				76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */,
 				7631556F254C984900646CE9 /* ExtraViews.swift */,
 				7631558E254DDB6C00646CE9 /* AboutMyMac.swift */,
 				7692E083251BFFB400C5FB9A /* Assets.xcassets */,
-				3F42EB03255176F700365279 /* Settings.swift */,
 				76F11510256EED85001AB749 /* UpdateAppView.swift */,
 				7692E088251BFFB400C5FB9A /* Info.plist */,
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
@@ -478,6 +489,7 @@
 				762A066825BF93A80037655D /* Keychain.swift in Sources */,
 				3F42EB04255176F700365279 /* Settings.swift in Sources */,
 				76A0B78D25749FC100E392D1 /* main.swift in Sources */,
+				7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */,
 				76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */,
 				76870F92257358BD0099A4B9 /* UpdateStatusView.swift in Sources */,
 				7692E080251BFFB300C5FB9A /* PatchedSurApp.swift in Sources */,

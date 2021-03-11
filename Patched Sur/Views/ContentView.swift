@@ -29,7 +29,7 @@ struct ContentView: View {
             case 3:
                 AboutMyMac(releaseTrack: releaseTrack, model: model, buildNumber: buildNumber, at: $atLocation)
             case 4:
-                Settings(releaseTrack: releaseTrack, at: $atLocation)
+                PSSettings(at: $atLocation)
             default:
                 VStack {
                     Text("Invalid Progress Number\natLocal: \(atLocation)")

@@ -39,7 +39,7 @@ struct AllViews : View {
             case 0:
                 ZStack {
                     MainView(p: $progress).transition(.moveAway)
-                    EnterPasswordPrompt(password: $password, show: .constant(true))
+//                    EnterPasswordPrompt(password: $password, show: .constant(true))
                 }
             case 1:
                 MacCompatibility(p: $progress).transition(.moveAway)
