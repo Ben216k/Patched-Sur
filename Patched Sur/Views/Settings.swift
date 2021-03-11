@@ -36,13 +36,15 @@ struct PSSettings: View {
                                 Image(systemName: "dot.circle.and.cursorarrow")
                                 Text("Disable Animations")
                             } onClick: {
-                                
+                                disableAnimations()
+                                presentAlert(m: "Disabled Animations!", i: "Once you restart your Mac, the changes will be applied, and Big Sur should preform slightly better.", s: .informational)
                             }.inPad()
                             VIButton(id: "ANI-ENABLE", h: $hovered) {
                                 Image(systemName: "cursorarrow.motionlines.click")
                                 Text("Enable")
                             } onClick: {
-                                
+                                enableAnimations()
+                                presentAlert(m: "Enabled Animations!", i: "Once you restart your Mac, the changes will be applied.", s: .informational)
                             }.inPad()
                         }
                         Text("Disabling animations can help Macs without Metal. Since they don't have graphics acceleration, Big Sur runs extremely slow, so disabling animations will help a little bit.")
@@ -109,7 +111,6 @@ struct PSSettings: View {
                         Text("The preinstall app in Patched Sur has a feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.bottom, 15)
-                        
                     }
                     
                     Rectangle()
