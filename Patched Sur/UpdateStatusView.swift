@@ -43,15 +43,15 @@ struct UpdateStatusView: View {
                     }
                 }.fixedSize()
                 TextAndButtonView(t: "Start the", b: "macOS Update!") {
-                    print("Check for AMFI...")
-                    var bootargs = ""
+                    print("Checking for Library Validation...")
+                    var libraryValidation = ""
                     do {
-                        bootargs = try call("nvram boot-args")
+                        libraryValidation = try call("defaults read /Library/Preferences/com.apple.security.libraryvalidation.plist DisableLibraryValidation")
                     } catch {
-                        print("Failed to check boot args. This is unexpected, and should be impossible.")
-                        presentAlert(m: "Failed to check boot-args.", i: "Patched Sur failed to check your boot args, which should be impossible. If the boot-args value did not exist, you wouldn't be able to boot macOS, so that couldn't be an issue.\n\n\(error.localizedDescription)", s: .critical)
-                        return
+                        print("Failed to check library validation status.")
+                        presentAlert(m: "Failed to check Library Validation Status", i: "Patched Sur failed to check your SIP status, which should be impossible.\n\n\(error.localizedDescription)", s: .critical)
                     }
+                    print("Checking for SIP...")
                     var csrstatus = ""
                     do {
                         csrstatus = try call("csrutil status")
@@ -59,17 +59,16 @@ struct UpdateStatusView: View {
                         print("Failed to check csr status.")
                         presentAlert(m: "Failed to check SIP Status", i: "Patched Sur failed to check your SIP status, which should be impossible.\n\n\(error.localizedDescription)", s: .critical)
                     }
-                    bootargs.removeFirst("boot-args    ".count)
                     if csrstatus.contains("status: enabled") {
                         print("CSR is Enabled! The updater cannot be run.")
-                        presentAlert(m: "SIP Appears to Be On", i: "Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with SIP off, so Patched Sur needs you to disable SIP before continuing. To disable it:\n\n1. Boot into Recovery Mode (⌘⌥R on Startup)\n2. Open Terminal under Utilities.\n3. Type in: nvram boot-args=\"-no_compat_check amfi_get_out_of_my_way=1\" then press enter.\nType in: csrutil disable then press enter.\n5. Press enter and restart your computer, then try running Patched Sur again.")
-                    } else if !bootargs.contains("amfi_get_out_of_my_way=1") {
-                        print("AMFI is not set, warning user.")
-                        alert = .init(title: Text("AMFI Appears to Be On"), message: Text("Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with AMFI off, so Patched Sur will quickly turn this off then restart your Mac, so then you can continue with updating."), primaryButton: .default(Text("Continue"), action: {
+                        presentAlert(m: "SIP Appears to Be On", i: "Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with SIP off, so Patched Sur needs you to disable SIP before continuing. To disable it:\n\n1. Boot into Recovery Mode (⌘⌥R on Startup)\n2. Open Terminal under Utilities.\n3. Type in: csrutil disable then press enter.\n4. Press enter and restart your computer, then try running Patched Sur again.")
+                    } else if !libraryValidation.contains("1") {
+                        print("Library Validation is not set, warning user.")
+                        alert = .init(title: Text("Library Validation Appears to Be On"), message: Text("Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with Library Validation off, so Patched Sur will quickly turn this off then restart your Mac, so then you can continue with updating."), primaryButton: .default(Text("Continue"), action: {
                             p = 6
                         }), secondaryButton: .cancel())
                     } else {
-                        print("AMFI is off, continuing...")
+                        print("Library Validation is off, continuing...")
                         p = 7
                     }
                 }.font(Font.caption.bold())
