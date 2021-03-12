@@ -10,70 +10,87 @@ import VeliaUI
 struct EnterPasswordPrompt: View {
     @Binding var password: String
     @Binding var show: Bool
+    let onSuccess: () -> ()
+    var onCancel: (() -> ())?
+    @State var xOffset = 0 as CGFloat
     var body: some View {
-        ZStack {
-            Rectangle()
-                .foregroundColor(.black)
-                .opacity(0.5)
+        if show {
             ZStack {
                 Rectangle()
-                    .foregroundColor(.init(NSColor.windowBackgroundColor))
-                HStack(alignment: .top, spacing: 0) {
-                    Image("PSIcon")
-                        .padding(.trailing, -15)
-                        .padding(.leading, 15)
-                        .padding(.top, 10)
-                    VStack(alignment: .leading) {
-                        Text("Patched Sur would like to make changes.")
-                            .bold()
-                        Text("Enter your password to allow this.")
-                            .foregroundColor(.secondary)
-                            .padding(.top, 1)
-                            .padding(.bottom, 12)
-                        VStack(alignment: .trailing, spacing: 8) {
-                            HStack {
-                                ZStack(alignment: .trailing) {
-                                    Rectangle()
-                                        .frame(width: 80)
-                                        .foregroundColor(.clear)
-                                        .fixedSize()
-                                    Text("User Name:")
+                    .foregroundColor(.black)
+                    .opacity(0.5)
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.init(NSColor.windowBackgroundColor))
+                    HStack(alignment: .top, spacing: 0) {
+                        Image("PSIcon")
+                            .padding(.trailing, -15)
+                            .padding(.leading, 15)
+                            .padding(.top, 10)
+                        VStack(alignment: .leading) {
+                            Text("Patched Sur would like to make changes.")
+                                .bold()
+                            Text("Enter your password to allow this.")
+                                .foregroundColor(.secondary)
+                                .padding(.top, 1)
+                                .padding(.bottom, 12)
+                            VStack(alignment: .trailing, spacing: 8) {
+                                HStack {
+                                    ZStack(alignment: .trailing) {
+                                        Rectangle()
+                                            .frame(width: 80)
+                                            .foregroundColor(.clear)
+                                            .fixedSize()
+                                        Text("User Name:")
+                                    }
+                                    TextField("Username", text: .constant((try! call("whoami"))))
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
                                 }
-                                TextField("Username", text: .constant("bensova"))
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                            }
-                            HStack {
-                                ZStack(alignment: .trailing) {
-                                    Rectangle()
-                                        .frame(width: 80)
-                                        .foregroundColor(.clear)
-                                        .fixedSize()
-                                    Text("Password:")
+                                HStack {
+                                    ZStack(alignment: .trailing) {
+                                        Rectangle()
+                                            .frame(width: 80)
+                                            .foregroundColor(.clear)
+                                            .fixedSize()
+                                        Text("Password:")
+                                    }
+                                    SecureField("Password", text: $password)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .onAppear {
+                                            password = ""
+                                        }
                                 }
-                                SecureField("Password", text: .constant("password"))
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                            }.padding(.bottom, 12)
+                            HStack {
+                                Spacer()
+                                NativeButton("Cancel", keyEquivalent: .none) {
+                                    (onCancel ?? {})()
+                                    withAnimation {
+                                        show = false
+                                    }
+                                }
+                                NativeButton("Continue", keyEquivalent: .return) {
+                                    if (try? call("echo Correct Password!", p: password)) != nil {
+                                        onSuccess()
+                                        withAnimation {
+                                            show = false
+                                        }
+                                    } else {
+                                        password = ""
+                                    }
+                                }
                             }
-                        }.padding(.bottom, 12)
-                        HStack {
-                            Spacer()
-                            NativeButton("Cancel", keyEquivalent: .none) {
-                                
-                            }
-                            NativeButton("Continue", keyEquivalent: .return) {
-                                
-                            }
-                        }
-                    }.padding()
-                    .padding(.horizontal, 10)
+                        }.padding()
+                        .padding(.horizontal, 10)
+                    }
                 }
+                .frame(width: 425, height: 200)
+                .cornerRadius(10)
+                .offset(x: xOffset)
             }
-            .frame(width: 425, height: 200)
-            .cornerRadius(10)
         }
     }
 }
-
-// MARK: - Action closure for controls
 
 private var controlActionClosureProtocolAssociatedObjectKey: UInt8 = 0
 
@@ -105,10 +122,6 @@ extension ControlActionClosureProtocol {
 }
 
 extension NSControl: ControlActionClosureProtocol {}
-
-// MARK: -
-
-
 
 @available(macOS 10.15, *)
 struct NativeButton: NSViewRepresentable {

@@ -7,7 +7,10 @@
 
 import Foundation
 
+// MARK: Manage Animations
+
 func disableAnimations() {
+    print("Disabling animations...")
     _ = try? call("defaults write -g NSAutomaticWindowAnimationsEnabled -bool false")
     _ = try? call("defaults write -g NSScrollAnimationEnabled -bool false")
     _ = try? call("defaults write -g NSWindowResizeTime -float 0.001")
@@ -29,6 +32,7 @@ func disableAnimations() {
 }
 
 func enableAnimations() {
+    print("Enabling animations...")
     _ = try? call("defaults delete -g NSAutomaticWindowAnimationsEnabled")
     _ = try? call("defaults delete -g NSScrollAnimationEnabled")
     _ = try? call("defaults delete -g NSWindowResizeTime")
@@ -47,4 +51,40 @@ func enableAnimations() {
     _ = try? call("defaults delete com.apple.Mail DisableSendAnimations")
     _ = try? call("defaults delete com.apple.Mail DisableReplyAnimations")
     _ = try? call("defaults delete NSGlobalDomain NSWindowResizeTime")
+}
+
+// MARK: Manage Graphics Switching
+
+func enableGxSwitching(p password: String) {
+    do {
+        print("Stopping displaypolicyd...")
+        _ = try? call("launchctl stop system/com.apple.displaypolicyd", p: password)
+        print("Enabling Automatic Graphics Switching...")
+        try call("launchctl disable system/com.apple.displaypolicyd", p: password)
+        presentAlert(m: "Graphics Switching Enabled", i: "Now graphics will switch automatically! A restart might be required for changes to take effect.", s: .informational)
+    } catch {
+        presentAlert(m: "Failed to Enable Graphics Switching", i: error.localizedDescription, s: .critical)
+    }
+}
+
+func disableGxSwitching(p password: String) {
+    do {
+        print("Disabling Automatic Graphics Switching...")
+        try call("launchctl enable system/com.apple.displaypolicyd", p: password)
+        print("Starting displaypolicyd...")
+        _ = try? call("launchctl kickstart system/com.apple.displaypolicyd", p: password)
+        presentAlert(m: "Graphics Switching Disabled", i: "Now graphics will no longer switch automatically! A restart might be required for changes to take effect.", s: .informational)
+    } catch {
+        presentAlert(m: "Failed to Diable Graphics Switching", i: error.localizedDescription, s: .critical)
+    }
+}
+
+// MARK: Clean Leftovers
+
+func cleanLeftovers() {
+    _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
+    _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS Big\\ Sur*.app")
+    _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
+    _ = try? call("rm -rf ~/.patched-sur/trash")
+    presentAlert(m: "Cleaned Leftovers", i: "The files have been deleted, you should see some more free space (assuming that there actually were big files to be cleaned).", s: .informational)
 }

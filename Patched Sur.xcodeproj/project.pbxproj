@@ -54,6 +54,7 @@
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
 		76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */; };
 		76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */; };
+		76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		76F11501256EDAD4001AB749 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11508256EE9FB001AB749 /* PatchedVersion.swift */; };
 		76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11510256EED85001AB749 /* UpdateAppView.swift */; };
@@ -480,6 +481,7 @@
 				767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */,
 				762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */,
 				767167522550AE42000FAE80 /* ShellOut.swift in Sources */,
+				76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */,
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
 				7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */,
 				763AA41125BBCFF100C7C14F /* DisableLVView.swift in Sources */,

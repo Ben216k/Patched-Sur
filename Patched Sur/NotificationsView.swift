@@ -183,13 +183,9 @@ struct NotificationsView: View {
                     VStack {
                         if !allowNotifications {
                             HStack {
-                                Text("Patched Sur Requries Your Password to Setup a Daemon").bold()
+                                Text("Patched Sur Requires Your Password to Setup a Daemon").bold()
                                     .font(Font.body.bold())
                                 Spacer()
-                                CustomColoredButton("Cancel", hovered: $hovered) {
-                                    AppInfo.canReleaseAttention = false
-                                    showPassword = false
-                                }
                             }.padding(.bottom)
                             EnterPasswordButton(password: $password) {
                                 do {
