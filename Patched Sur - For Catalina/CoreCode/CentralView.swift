@@ -43,13 +43,24 @@ struct AllViews : View {
                     VIHeader(p: "Patched Sur", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $compressed)
                         .alignment(.leading)
                     Spacer()
-                    VIButton(id: "HELP", h: $hovered) {
-                        Image("QuestionMark")
-                            .resizable()
-                            .frame(width: compressed ? 10 : 15, height: compressed ? 10 : 15)
-                            .scaleEffect(compressed ? 1.2 : 1)
-                    } onClick: {
-//                        presentHIW = true
+                    if compressed {
+                        VIButton(id: "BACKBUTTON", h: $hovered) {
+                            Image("BackArrow")
+                                .resizable()
+                                .frame(width: compressed ? 10 : 15, height: compressed ? 10 : 15)
+                                .scaleEffect(compressed ? 1.2 : 1)
+                        } onClick: {
+                            if progress == 1 {
+                                withAnimation {
+                                    progress = 0
+                                    compressed = false
+                                }
+                            } else if progress != 0 {
+                                withAnimation {
+                                    progress -= 1
+                                }
+                            }
+                        }
                     }
                     VIButton(id: "GITHUB", h: $hovered) {
                         Image("GitHubMark")

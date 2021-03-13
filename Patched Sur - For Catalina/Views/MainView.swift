@@ -20,7 +20,7 @@ struct MainView : View {
                 .padding()
             VIButton(id: "START", h: $hovered) {
                 Text("Get Started")
-                Image("ArrowRightCircle")
+                Image("ForwardArrowCircle")
             } onClick: {
                 withAnimation {
                     p += 1

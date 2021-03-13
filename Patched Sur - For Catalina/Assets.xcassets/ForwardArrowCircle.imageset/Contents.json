@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ArrowLeftCircle.png",
+      "filename" : "ForwardArrowCircle.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ArrowLeftCircle@2x.png",
+      "filename" : "ForwardArrowCircle@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ArrowLeftCircle@3x.png",
+      "filename" : "ForwardArrowCircle@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

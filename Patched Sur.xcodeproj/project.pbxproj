@@ -225,7 +225,6 @@
 				76D8437E25F8646B006C6565 /* CoreCode */,
 				76D8437F25F86486006C6565 /* Views */,
 				76772CE925410B40003FE2A2 /* InstallerChooser.swift */,
-				76A626D32524ED78002C57EA /* MacCompatibility.swift */,
 				76A626D72525055B002C57EA /* HowItWorks.swift */,
 				76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */,
 				76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */,
@@ -315,6 +314,7 @@
 				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,
+				76A626D32524ED78002C57EA /* MacCompatibility.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
