@@ -304,6 +304,7 @@
 			children = (
 				76D639DC2576302500B38FBE /* main.swift */,
 				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
+				7692E067251BFF9300C5FB9A /* CentralView.swift */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -311,7 +312,6 @@
 		76D8437F25F86486006C6565 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7692E067251BFF9300C5FB9A /* CentralView.swift */,
 				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,

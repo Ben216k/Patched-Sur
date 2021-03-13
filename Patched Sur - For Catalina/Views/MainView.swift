@@ -5,49 +5,28 @@
 //  Created by Benjamin Sova on 9/23/20.
 //
 
-import SwiftUI
+import VeliaUI
 
 struct MainView : View {
-    @State var buttonBG = Color.accentColor
-    @State var status = "Start"
+    @Binding var hovered: String?
     @Binding var p: Int
+    @Binding var c: Bool
     
     var body: some View {
-        VStack {
+        VStack() {
             Text("Welcome to Patched Sur!").bold()
-            Text("Patched Sur is a simple, easy to use patcher for macOS Big Sur on your unsupported Mac. It sets up the ideal environment for Big Sur and makes sure all your favorite services, like iCloud, still work.")
-                .padding()
+            Text("This patcher is made to provide you with the simplest upgrade to macOS Big Sur on your unsupported Mac. It prepares everything to be perfect by the end of the installation, and makes sure that nothing will go wrong with your installtion. By the end, Patched Sur will try to make your Mac run just like a supported one.")
                 .multilineTextAlignment(.center)
-            Button {
-                status = "Loading..."
-            } label: {
-                ZStack {
-                    buttonBG
-                        .cornerRadius(10)
-                        .onHover(perform: { hovering in
-                            buttonBG = hovering ? Color.accentColor.opacity(0.7) : Color.accentColor
-                        })
-                    if status == "Loading..." {
-                        Text("Loading...")
-                            .foregroundColor(.white)
-                            .padding(5)
-                            .padding(.horizontal, 50)
-                            .onAppear() {
-                                withAnimation {
-                                    p = 1
-                                }
-                            }
-                    } else {
-                        Text("Start")
-                            .foregroundColor(.white)
-                            .padding(5)
-                            .padding(.horizontal, 50)
-                    }
+                .padding()
+            VIButton(id: "START", h: $hovered) {
+                Text("Get Started")
+                Image("ArrowRightCircle")
+            } onClick: {
+                withAnimation {
+                    p += 1
+                    c = true
                 }
-            }
-            .buttonStyle(BorderlessButtonStyle())
-            Text("v\(AppInfo.version) (\(AppInfo.build))")
-                .font(.caption)
+            }.inPad()
         }
     }
 }

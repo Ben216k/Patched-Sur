@@ -11,7 +11,7 @@ struct MacCompatibility: View {
     @Binding var p: Int
     @State var hovered = nil as String?
     @State var info: CompatInfo?
-    @State var progress2 = VerifyProgess.downloading
+    @State var progress2 = VerifyProgress.downloading
     @State var problems: [ProblemInfo] = []
     @State var known = [] as [Substring]
     @State var alert: Alert?
@@ -202,7 +202,7 @@ struct MacCompatibility: View {
     }
 }
 
-enum VerifyProgess {
+enum VerifyProgress {
     case downloading
     case verifing
     case issues
@@ -213,7 +213,7 @@ enum VerifyProgess {
 
 struct VerifierProgressBar: View {
     @State var progress = CGFloat(0)
-    @Binding var progress2: VerifyProgess
+    @Binding var progress2: VerifyProgress
     @Binding var info: CompatInfo?
     @Binding var problems: [ProblemInfo]
     @Binding var known: [Substring]
@@ -233,7 +233,7 @@ struct VerifierProgressBar: View {
                             do {
                                 macModel = try shellOut(to: "sysctl -n hw.model")
                             } catch {
-                                progress2 = VerifyProgess.errored
+                                progress2 = VerifyProgress.errored
                                 errorX = "Failed to detect Mac Model\n\(error.localizedDescription)"
                                 return
                             }
@@ -251,7 +251,7 @@ struct VerifierProgressBar: View {
                                 try shellOut(to: "curl -o DetectProblems.sh https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/DetectProblems.sh", at: "~/.patched-sur")
                                 try shellOut(to: "chmod u+x ~/.patched-sur/DetectProblems.sh")
                             } catch {
-                                progress2 = VerifyProgess.errored
+                                progress2 = VerifyProgress.errored
                                 errorX = "Failed to download possible problems.\n\(error.localizedDescription)"
                                 return
                             }
