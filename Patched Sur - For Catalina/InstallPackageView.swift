@@ -340,6 +340,6 @@ struct ProgressBar: View {
             Rectangle().frame(width: min(value*length, length))
                 .foregroundColor(.accentColor)
                 .animation(.linear)
-        }.cornerRadius(10)
+        }.cornerRadius(20)
     }
 }

@@ -15,6 +15,20 @@ struct MacCompatibility: View {
     @State var problems: [ProblemInfo] = []
     @State var known = [] as [Substring]
     @State var alert: Alert?
+    
+    var body: some View {
+        Text("BUILD")
+    }
+}
+
+struct MacCompatibilityOLD: View {
+    @Binding var p: Int
+    @State var hovered = nil as String?
+    @State var info: CompatInfo?
+    @State var progress2 = VerifyProgress.downloading
+    @State var problems: [ProblemInfo] = []
+    @State var known = [] as [Substring]
+    @State var alert: Alert?
     var body: some View {
         VStack {
             ZStack {
