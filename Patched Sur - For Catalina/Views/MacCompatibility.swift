@@ -5,7 +5,9 @@
 //  Created by Benjamin Sova on 9/30/20.
 //
 
-import SwiftUI
+import VeliaUI
+
+// MARK: Top Level
 
 struct MacCompatibility: View {
     @Binding var p: Int
@@ -17,7 +19,139 @@ struct MacCompatibility: View {
     @State var alert: Alert?
     
     var body: some View {
-        Text("BUILD")
+        VStack {
+            switch progress2 {
+            case .downloading, .verifying, .errored:
+                VerifyMacView(progress2: $progress2, info: $info, known: $known, problems: $problems)
+            case .issues:
+                Text("Issues")
+            case .clean:
+                CompatibilityReport(info: $info, known: $known)
+            case .noCompat:
+                Text("Nothing")
+            }
+        }
+    }
+}
+
+// MARK: Verifier
+
+struct VerifyMacView: View {
+    @State var barProgress = 0.1 as CGFloat
+    @Binding var progress2: VerifyProgress
+    @State var errorX = ""
+    @Binding var info: CompatInfo?
+    @Binding var known: [Substring]
+    @Binding var problems: [ProblemInfo]
+    
+    var body: some View {
+        VStack {
+            Text("Verifying Mac")
+                .bold()
+            Text("This first step is essential to how reliable Patched Sur is. This step tries to detect as many problems caused as possible before running into them. This includes FileVault, Fusion Drives and many other problems. Don't worry, this will be quick.")
+                .padding()
+                .multilineTextAlignment(.center)
+            ZStack {
+                ProgressBar(value: $barProgress, length: 200)
+                HStack {
+                    if progress2 == .downloading {
+                        Image("DownloadArrow")
+                        Text("Fetching Information")
+                            .onAppear {
+                                DispatchQueue.global(qos: .background).async {
+                                    downloadCompat(info: &info, known: &known, barProgress: { barProgress = $0 }, progress2: &progress2, errorX: &errorX)
+                                }
+                            }
+                    } else if progress2 == .verifying {
+                        Image("CheckCircle")
+                        Text("Verifying Mac")
+                            .onAppear {
+                                DispatchQueue.global(qos: .background).async {
+                                    verifyCompat(problems: &problems, progress2: &progress2, errorX: &errorX, info: info)
+                                }
+                            }
+                    }
+                }.foregroundColor(.white)
+                .padding(7)
+            }.fixedSize()
+        }
+    }
+}
+
+// MARK: Compatibility Report
+
+struct CompatibilityReport: View {
+    @Environment(\.colorScheme) var scheme
+    @Binding var info: CompatInfo?
+    @Binding var known: [Substring]
+    
+    var body: some View {
+        VStack {
+            Text(info!.macName)
+                .font(.system(size: 17)).bold()
+            HStack(spacing: 1) {
+                Text("Reported by: ")
+                ZStack {
+                    if known.contains(Substring(info!.author)) {
+                        Rectangle()
+                            .foregroundColor(.accentColor)
+                            .cornerRadius(10)
+                            .opacity(scheme == .light ? 1 : 0.8)
+                    }
+                    HStack(spacing: 1) {
+                        Text(info!.author).bold()
+                    }.foregroundColor(known.contains(Substring(info!.author)) ? .white : .primary)
+                    .padding(known.contains(Substring(info!.author)) ? 1 : 0)
+                    .padding(.horizontal, known.contains(Substring(info!.author)) ? 2 : 0)
+                }.fixedSize()
+                if info!.approved.count > 0 {
+                    Text(" (\(info!.approved.count) \(info!.approved.count == 1 ? "person" : "others") approve\(info!.approved.count == 1 ? "s" : ""))")
+                }
+            }.font(.system(size: 11))
+            Text(info!.details)
+                .padding(5)
+                .padding(.horizontal, 5)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 7)
+            HStack(alignment: .top, spacing: 20) {
+                VStack(alignment: .leading, spacing: 2) {
+                    ForEach(info!.works, id: \.self) { item in
+                        HStack {
+                            Rectangle()
+                                .foregroundColor(.green)
+                                .frame(width: 10, height: 10)
+                                .cornerRadius(10)
+                            Text(item)
+                                .font(.system(size: 12))
+                        }
+                    }
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    ForEach(info!.unknown, id: \.self) { item in
+                        HStack {
+                            Rectangle()
+                                .foregroundColor(.gray)
+                                .frame(width: 10, height: 10)
+                                .cornerRadius(10)
+                            Text(item)
+                                .font(.system(size: 11.5))
+                        }
+                    }
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    ForEach(info!.warns, id: \.self) { item in
+                        HStack {
+                            Rectangle()
+                                .foregroundColor(.red)
+                                .frame(width: 10, height: 10)
+                                .cornerRadius(10)
+                            Text(item)
+                                .font(.system(size: 12))
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -200,9 +334,9 @@ struct MacCompatibilityOLD: View {
                     }
                 }.padding(.bottom)
             } else {
-                Text("Verifing Mac")
+                Text("Verifying Mac")
                     .bold()
-                Text("This first step is esentail to how realiable Patched Sur is. This step tries to detect as many problems caused as possible before running into them. This includes FileVault, Fusion Drives and many other problems.")
+                Text("This first step is essential to how reliable Patched Sur is. This step tries to detect as many problems caused as possible before running into them. This includes FileVault, Fusion Drives and many other problems.")
                     .padding()
                     .multilineTextAlignment(.center)
                 VerifierProgressBar(progress2: $progress2, info: $info, problems: $problems, known: $known)
@@ -218,7 +352,7 @@ struct MacCompatibilityOLD: View {
 
 enum VerifyProgress {
     case downloading
-    case verifing
+    case verifying
     case issues
     case clean
     case noCompat
@@ -279,11 +413,11 @@ struct VerifierProgressBar: View {
                                 }
                             }
                             progress = CGFloat(0.55)
-                            progress2 = .verifing
+                            progress2 = .verifying
                         }
                     }
-            case .verifing:
-                Text("Verifing Mac...")
+            case .verifying:
+                Text("Verifying Mac...")
                     .foregroundColor(.white)
                     .padding(7)
                     .onAppear {
