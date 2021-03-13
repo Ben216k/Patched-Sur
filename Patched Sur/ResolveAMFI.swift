@@ -122,7 +122,12 @@ struct ResolveAMFI: View {
                         }.buttonStyle(BorderlessButtonStyle())
                         .fixedSize()
                         .frame(minWidth: 200, maxWidth: 450)
-                        Text("Click to Copy")
+                        HStack {
+                            Text("Click to Copy")
+                            Link(destination: "https://bensova.gitbook.io/big-sur/postinstall-after-upgrade/amfi-problems") {
+                                Text("Learn How To Fix This")
+                            }
+                        }
                             .font(.caption)
                     }
                 } else {
@@ -136,7 +141,7 @@ struct ResolveAMFI: View {
                             .foregroundColor(.white)
                             .padding(5)
                             .padding(.horizontal, 50)
-                    }
+                    }.fixedSize()
                 }
             }
         }
