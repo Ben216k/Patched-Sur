@@ -23,7 +23,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct AllViews : View {
-    @State var progress = 0
+    @State var progress = PSPage.main
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false
@@ -53,14 +53,18 @@ struct AllViews : View {
                                 .scaleEffect(compressed ? 1.2 : 1)
                         } onClick: {
                             background = Color.clear
-                            if progress == 1 {
+                            if progress == .verify {
                                 withAnimation {
-                                    progress = 0
+                                    progress = .main
                                     compressed = false
                                 }
-                            } else if progress != 0 {
+                            } else if progress == .volume {
                                 withAnimation {
-                                    progress -= 1
+                                    progress = .macOS
+                                }
+                            } else if progress != .main {
+                                withAnimation {
+                                    progress = PSPage(rawValue: progress.rawValue - 1)!
                                 }
                             }
                         }
@@ -78,35 +82,35 @@ struct AllViews : View {
                 Spacer()
                 Group {
                     switch progress {
-                    case 0:
+                    case .main:
 //                        ZStack {
                             MainView(hovered: $hovered, p: $progress, c: $compressed).transition(.moveAway)
         //                    EnterPasswordPrompt(password: $password, show: .constant(true))
 //                        }
-                    case 1:
+                    case .verify:
                         MacCompatibility(p: $progress, background: $background).transition(.moveAway)
-                    case 2:
-                        HowItWorks(p: $progress).transition(.moveAway)
-                    case 9:
-                        ReleaseTrackView(track: $releaseTrack, p: $progress).transition(.moveAway)
-                    case 10:
-                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
-                    case 3:
-                        DownloadView(p: $progress).transition(.moveAway)
-                    case 4:
-                        InstallPackageView(installInfo: $installInfo, password: $password, p: $progress, overrideInstaller: $overrideinstaller, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
-                    case 5:
-                        VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
-                    case 6:
-                        ConfirmVolumeView(volume: $volume, p: $progress).transition(.moveAway)
-                    case 7:
-                        CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation).transition(.moveAway)
-                    case 8:
-                        FinishedView(app: appLocation ?? "/Applications/Install macOS Big Sur Beta.app/").transition(.moveAway)
-                    case 11:
-                        InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
+//                    case 2:
+//                        HowItWorks(p: $progress).transition(.moveAway)
+//                    case .track:
+//                        ReleaseTrackView(track: $releaseTrack, p: $progress).transition(.moveAway)
+////                    case 10:
+////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
+//                    case .kexts:
+//                        DownloadView(p: $progress).transition(.moveAway)
+//                    case .macOS:
+//                        InstallPackageView(installInfo: $installInfo, password: $password, p: $progress, overrideInstaller: $overrideinstaller, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
+//                    case .volume:
+//                        VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
+////                    case .:
+////                        ConfirmVolumeView(volume: $volume, p: $progress).transition(.moveAway)
+//                    case .create:
+//                        CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation).transition(.moveAway)
+//                    case .done:
+//                        FinishedView(app: appLocation ?? "/Applications/Install macOS Big Sur Beta.app/").transition(.moveAway)
+//                    case .packages:
+//                        InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
                     default:
-                        Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress)").transition(.moveAway)
+                        Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress.hashValue)").transition(.moveAway)
                     }
                 }
                 .padding(.bottom, 10)
@@ -124,6 +128,18 @@ struct AllViews : View {
         }.edgesIgnoringSafeArea(.all)
         .frame(width: 600, height: 325)
     }
+}
+
+enum PSPage: Int {
+    case main = 0
+    case verify = 1
+    case track = 2
+    case kexts = 3
+    case macOS = 4
+    case packages = 5
+    case volume = 6
+    case create = 7
+    case done = 8
 }
 
 enum ReleaseTrack: String, CustomStringConvertible {

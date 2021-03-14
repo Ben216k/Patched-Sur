@@ -10,7 +10,7 @@ import VeliaUI
 // MARK: Top Level
 
 struct MacCompatibility: View {
-    @Binding var p: Int
+    @Binding var p: PSPage
     @State var hovered = nil as String?
     @State var info: CompatInfo?
     @State var progress2 = VerifyProgress.downloading
@@ -48,9 +48,9 @@ struct VerifyMacView: View {
     var body: some View {
         VStack {
             Text("Verifying Mac")
-                .bold()
-            Text("This first step is essential to how reliable Patched Sur is. This step tries to detect as many problems caused as possible before running into them. This includes FileVault, Fusion Drives and many other problems. Don't worry, this will be quick.")
-                .padding()
+                .font(.system(size: 15)).bold()
+            Text("This first step is essential to how reliable Patched Sur is. This step tries to detect as many problems caused as possible before running into them. This includes FileVault, no graphics acceleration and some other problems. Don't worry, this will be quick.")
+                .padding(.vertical)
                 .multilineTextAlignment(.center)
             ZStack {
                 ProgressBar(value: $barProgress, length: 200)
@@ -68,7 +68,7 @@ struct VerifyMacView: View {
                         Text("Verifying Mac")
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
-                                    verifyCompat(problems: { problems.append($0) }, progress2: &progress2, errorX: &errorX, info: info)
+                                    verifyCompat(barProgress: { barProgress = $0 }, problems: { problems.append($0) }, progress2: &progress2, errorX: &errorX, info: info)
                                 }
                             }
                     }
@@ -86,7 +86,7 @@ struct CompatibilityReport: View {
     @Binding var info: CompatInfo?
     @Binding var known: [Substring]
     @State var hovered: String?
-    @Binding var p: Int
+    @Binding var p: PSPage
     
     var body: some View {
         VStack {
@@ -158,7 +158,7 @@ struct CompatibilityReport: View {
                 Text("Continue")
                 Image("ForwardArrowCircle")
             } onClick: {
-                p = 3
+                p = .track
             }.inPad()
             .padding(.top, 10)
         }
@@ -228,21 +228,21 @@ struct IssuesView: View {
 
 struct NoCompatibilityView: View {
     @State var hovered: String?
-    @Binding var p: Int
+    @Binding var p: PSPage
+    
     var body: some View {
         Text("Unknown Compatibility")
-            .font(.system(size: 17)).bold()
-            .padding(5)
+            .font(.system(size: 15)).bold()
         Text("Depending on your Mac, Patched Sur might or might not run great, and Patched Sur did not find any compatibility reports for your Mac, so it cannot currently tell you. Don't worry though, not many people have given insight on how well Patched Sur runs on all the different Macs, so your Mac probably will run perfectly fine. Once you upgrade, you can contribute your experiences (go into Settings in the post install app), and help out future people with your Mac!")
+            .padding(.vertical)
             .multilineTextAlignment(.center)
             .frame(width: 540)
         VIButton(id: "CONTINUE3", h: $hovered) {
             Text("Continue")
             Image("ForwardArrowCircle")
         } onClick: {
-            p = 2
+            p = .track
         }.inPad()
-        .padding(5)
     }
 }
 
