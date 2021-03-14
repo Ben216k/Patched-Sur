@@ -20,6 +20,7 @@ func downloadCompat(info: inout CompatInfo?, known: inout [Substring], barProgre
         return
     }
     barProgress(0.1)
+    macModel = "2hroi"
     print("Detected model:" + macModel)
     print("Downloading model details from: https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/Compatibility/\(macModel.replacingOccurrences(of: ",", with: "%2C")).json")
     do {

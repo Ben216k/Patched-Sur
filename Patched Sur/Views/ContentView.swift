@@ -24,14 +24,19 @@ struct ContentView: View {
 //                MainView(at: $atLocation, buildNumber: buildNumber, model: model)
                 MainView(at: $atLocation, model: model)
             case 1:
+                Color.white.opacity(0.001)
                 UpdateView(at: $atLocation, buildNumber: buildNumber)
             case 2:
+                Color.white.opacity(0.001)
                 KextPatchView(at: $atLocation)
             case 3:
+                Color.white.opacity(0.001)
                 AboutMyMac(releaseTrack: releaseTrack, model: model, buildNumber: buildNumber, at: $atLocation)
             case 4:
+                Color.white.opacity(0.001)
                 PSSettings(at: $atLocation)
             default:
+                Color.white.opacity(0.001)
                 VStack {
                     Text("Invalid Progress Number\natLocal: \(atLocation)")
                     Button {

@@ -29,7 +29,7 @@ struct MacCompatibility: View {
             case .clean:
                 CompatibilityReport(info: $info, known: $known, p: $p)
             case .noCompat:
-                Text("Nothing")
+                NoCompatibilityView(p: $p)
             }
         }
     }
@@ -221,6 +221,28 @@ struct IssuesView: View {
                 progress2 = info != nil ? .clean : .noCompat
             }), secondaryButton: .cancel())
         }
+    }
+}
+
+// MARK: No Compatibility
+
+struct NoCompatibilityView: View {
+    @State var hovered: String?
+    @Binding var p: Int
+    var body: some View {
+        Text("Unknown Compatibility")
+            .font(.system(size: 17)).bold()
+            .padding(5)
+        Text("Depending on your Mac, Patched Sur might or might not run great, and Patched Sur did not find any compatibility reports for your Mac, so it cannot currently tell you. Don't worry though, not many people have given insight on how well Patched Sur runs on all the different Macs, so your Mac probably will run perfectly fine. Once you upgrade, you can contribute your experiences (go into Settings in the post install app), and help out future people with your Mac!")
+            .multilineTextAlignment(.center)
+            .frame(width: 540)
+        VIButton(id: "CONTINUE3", h: $hovered) {
+            Text("Continue")
+            Image("ForwardArrowCircle")
+        } onClick: {
+            p = 2
+        }.inPad()
+        .padding(5)
     }
 }
 

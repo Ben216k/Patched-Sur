@@ -79,10 +79,10 @@ struct AllViews : View {
                 Group {
                     switch progress {
                     case 0:
-                        ZStack {
+//                        ZStack {
                             MainView(hovered: $hovered, p: $progress, c: $compressed).transition(.moveAway)
         //                    EnterPasswordPrompt(password: $password, show: .constant(true))
-                        }
+//                        }
                     case 1:
                         MacCompatibility(p: $progress, background: $background).transition(.moveAway)
                     case 2:
