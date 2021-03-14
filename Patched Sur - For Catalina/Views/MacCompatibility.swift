@@ -17,6 +17,7 @@ struct MacCompatibility: View {
     @State var problems: [ProblemInfo] = []
     @State var known = [] as [Substring]
     @State var alert: Alert?
+    @Binding var background: Color
     
     var body: some View {
         VStack {
@@ -24,9 +25,9 @@ struct MacCompatibility: View {
             case .downloading, .verifying, .errored:
                 VerifyMacView(progress2: $progress2, info: $info, known: $known, problems: $problems)
             case .issues:
-                Text("Issues")
+                IssuesView(problems: $problems, background: $background, progress2: $progress2, info: $info)
             case .clean:
-                CompatibilityReport(info: $info, known: $known)
+                CompatibilityReport(info: $info, known: $known, p: $p)
             case .noCompat:
                 Text("Nothing")
             }
@@ -67,7 +68,7 @@ struct VerifyMacView: View {
                         Text("Verifying Mac")
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
-                                    verifyCompat(problems: &problems, progress2: &progress2, errorX: &errorX, info: info)
+                                    verifyCompat(problems: { problems.append($0) }, progress2: &progress2, errorX: &errorX, info: info)
                                 }
                             }
                     }
@@ -84,6 +85,8 @@ struct CompatibilityReport: View {
     @Environment(\.colorScheme) var scheme
     @Binding var info: CompatInfo?
     @Binding var known: [Substring]
+    @State var hovered: String?
+    @Binding var p: Int
     
     var body: some View {
         VStack {
@@ -94,7 +97,7 @@ struct CompatibilityReport: View {
                 ZStack {
                     if known.contains(Substring(info!.author)) {
                         Rectangle()
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.green)
                             .cornerRadius(10)
                             .opacity(scheme == .light ? 1 : 0.8)
                     }
@@ -102,19 +105,19 @@ struct CompatibilityReport: View {
                         Text(info!.author).bold()
                     }.foregroundColor(known.contains(Substring(info!.author)) ? .white : .primary)
                     .padding(known.contains(Substring(info!.author)) ? 1 : 0)
-                    .padding(.horizontal, known.contains(Substring(info!.author)) ? 2 : 0)
+                    .padding(.horizontal, known.contains(Substring(info!.author)) ? 3 : 0)
                 }.fixedSize()
                 if info!.approved.count > 0 {
                     Text(" (\(info!.approved.count) \(info!.approved.count == 1 ? "person" : "others") approve\(info!.approved.count == 1 ? "s" : ""))")
                 }
             }.font(.system(size: 11))
             Text(info!.details)
-                .padding(5)
-                .padding(.horizontal, 5)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.top, 5)
                 .multilineTextAlignment(.center)
-                .padding(.bottom, 7)
+                .padding(.bottom, 2)
             HStack(alignment: .top, spacing: 20) {
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 1.5) {
                     ForEach(info!.works, id: \.self) { item in
                         HStack {
                             Rectangle()
@@ -126,7 +129,7 @@ struct CompatibilityReport: View {
                         }
                     }
                 }
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 1.5) {
                     ForEach(info!.unknown, id: \.self) { item in
                         HStack {
                             Rectangle()
@@ -138,7 +141,7 @@ struct CompatibilityReport: View {
                         }
                     }
                 }
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 1.5) {
                     ForEach(info!.warns, id: \.self) { item in
                         HStack {
                             Rectangle()
@@ -151,6 +154,72 @@ struct CompatibilityReport: View {
                     }
                 }
             }
+            VIButton(id: "CONTINUE1", h: $hovered) {
+                Text("Continue")
+                Image("ForwardArrowCircle")
+            } onClick: {
+                p = 3
+            }.inPad()
+            .padding(.top, 10)
+        }
+    }
+}
+
+// MARK: Issues View
+
+struct IssuesView: View {
+    @Binding var problems: [ProblemInfo]
+    @Binding var background: Color
+    @State var hovered: String?
+    @State var showAreYouSure = false
+    @Binding var progress2: VerifyProgress
+    @Binding var info: CompatInfo?
+    
+    var body: some View {
+        VStack {
+            ScrollView {
+                if problems[0].severity != .warning {
+                    Text("\(problems[0].severity == .fatal ? "Fatal" : "Possible") Problem Detected")
+                        .bold()
+                    Text(problems[0].title)
+                        .font(.system(size: 17)).bold()
+                        .padding(5)
+//                        .onAppear {
+//                            background = (problems[0].severity == .fatal ? Color.red : Color.orange).opacity(0.1)
+//                        }
+                    Text(problems[0].description)
+                        .frame(width: 540)
+                        .multilineTextAlignment(.center)
+                    if problems[0].severity == .fatal {
+                        Text("You cannot upgrade to Big Sur because of this.")
+                            .bold()
+                            .padding(.vertical, 10)
+                    } else {
+                        VIButton(id: "CONTINUE", h: $hovered) {
+                            Text("Continue Anyway")
+                            Image("ForwardArrowCircle")
+                        } onClick: {
+                            showAreYouSure = true
+                        }.inPad()
+                        .padding(.vertical, 10)
+                    }
+                }
+                if problems.count > 1 {
+                    Text("Other Problems")
+                        .bold()
+                        .padding(.bottom, 10)
+                    ForEach(problems.filter { $0.title != problems[0].title }, id: \.title) { item in
+                        Text(item.title)
+                            .bold()
+                        Text(item.description)
+                            .frame(width: 540)
+                    }
+                }
+            }.frame(maxHeight: 250).fixedSize()
+        }.alert(isPresented: $showAreYouSure) {
+            Alert(title: Text("Are you sure you want to continue?"), message: Text("Patched Sur detected problems that could (and will) cause problems with Big Sur. Your Mac might not be at its full potential, and in some cases it might be good to just say on Catalina."), primaryButton: .destructive(Text("Continue"), action: {
+                progress2 = info != nil ? .clean : .noCompat
+            }), secondaryButton: .cancel())
         }
     }
 }
@@ -205,7 +274,7 @@ struct MacCompatibilityOLD: View {
                                     p = 2
                                 }
                             } else if progress2 == .issues {
-                                if problems.map({ $0.type }).contains("Fatal") {
+                                if problems.map({ $0.severity }).contains(.fatal) {
                                     alert = .init(title: Text("Fatal Errors Were Detected"), message: Text("There are some errors that were detected that could cause huge problems with Big Sur. Please resolve them if you can, otherwise you will not be able to install Big Sur."), dismissButton: .cancel(Text("Okay")))
                                 } else {
                                     alert = .init(title: Text("Some Possible Problems Were Detected"), message: Text("There are some problems that were detected that might cause some problems with Big Sur. While you could be fine, it's best to resolve as many of these as you can before starting installiation."), primaryButton: .default(Text("Continue"), action: { progress2 = info != nil ? .clean : .noCompat }), secondaryButton: .cancel())
@@ -318,14 +387,14 @@ struct MacCompatibilityOLD: View {
                     VStack(alignment: .leading) {
                         ForEach(problems, id: \.title) { problem in
                             HStack {
-                                Image(problem.type == "Fatal" ? "Fatal2" : "Warn2")
+                                Image(problem.severity == .fatal ? "Fatal2" : "Warn2")
                                     .resizable()
                                     .frame(width: 40, height: 40)
                                     .offset(y: -0.75)
                                 VStack(alignment: .leading) {
                                     Text(problem.title)
                                         .bold()
-                                    Text(problem.problemInfoDescription)
+                                    Text(problem.description)
                                         .font(.system(size: 10))
                                         .lineLimit(3)
                                 }
@@ -434,7 +503,7 @@ struct VerifierProgressBar: View {
                                         }
                                         return
                                     }
-                                    let detectedProblem = ProblemInfo(title: String(details[1]), problemInfoDescription: String(details[2]), type: String(details[0]))
+                                    let detectedProblem = ProblemInfo(title: String(details[1]), description: String(details[2]), severity: .warning)
                                     problems.append(detectedProblem)
                                 }
                                 if problems.count > 0 {

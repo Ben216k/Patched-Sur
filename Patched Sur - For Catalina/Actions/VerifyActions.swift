@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: Download Compatibility Info
+
 func downloadCompat(info: inout CompatInfo?, known: inout [Substring], barProgress: (CGFloat) -> (), progress2: inout VerifyProgress, errorX: inout String) {
     _ = try? shellOut(to: "mkdir ~/.patched-sur")
     var macModel = ""
@@ -25,16 +27,6 @@ func downloadCompat(info: inout CompatInfo?, known: inout [Substring], barProgre
     } catch {
         print("Failed to fetch Mac Model compatibility report... Assuming it doesn't exist!")
     }
-    barProgress(0.6)
-    do {
-        _ = try? shellOut(to: "rm -rf ~/.patched-sur/DetectProblems.sh")
-        try shellOut(to: "curl -o DetectProblems.sh https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/DetectProblems.sh", at: "~/.patched-sur")
-        try shellOut(to: "chmod u+x ~/.patched-sur/DetectProblems.sh")
-    } catch {
-        progress2 = VerifyProgress.errored
-        errorX = "Failed to download possible problems.\n\(error.localizedDescription)"
-        return
-    }
     barProgress(0.9)
     if info != nil {
         do {
@@ -48,29 +40,54 @@ func downloadCompat(info: inout CompatInfo?, known: inout [Substring], barProgre
     progress2 = .verifying
 }
 
-func verifyCompat(problems: inout [ProblemInfo], progress2: inout VerifyProgress, errorX: inout String, info: CompatInfo?) {
-    do {
-        let problemsToBe = try shellOut(to: "~/.patched-sur/DetectProblems.sh")
-        problemsToBe.split(separator: "\n").forEach { problem in
-            let details = problem.split(separator: ";")
-            guard details.count == 3 else {
-                if problem != "\n" {
-                    print("Invalid check! Please report this to @BenSova as soon as possible!")
-                    print("Include this in your message:")
-                    print(problem)
-                }
-                return
-            }
-            let detectedProblem = ProblemInfo(title: String(details[1]), problemInfoDescription: String(details[2]), type: String(details[0]))
-            problems.append(detectedProblem)
-        }
-        if problems.count > 0 {
-            progress2 = .issues
-        } else {
-            progress2 = info != nil ? .clean : .noCompat
-        }
-    } catch {
-        progress2 = .errored
-        errorX = error.localizedDescription
+// MARK: Verify Compatibility
+
+func verifyCompat(problems: (ProblemInfo) -> (), progress2: inout VerifyProgress, errorX: inout String, info: CompatInfo?) {
+    
+    var hasProblem = false
+    
+    // MARK: BigMac Check
+    
+    if let macModel = try? call("sysctl -n hw.model"), macModel.contains("MacPro") {
+        problems(ProblemInfo(title: "There's a Better Patcher for Mac Pros", description: "While Patched Sur is a great for a lot of Macs, Mac Pros really shouldn't be used with this patcher. They don't have the proper patches, and there's another easy-to-use patcher designed specifically for Mac Pros. It's StarPlayrX's BigMac Patcher, and it'll give you an amazing experience for your Mac.", severity: .severe))
+        hasProblem = true
     }
+    
+    // MARK: FileVault Check
+    
+    if let fileVault = try? call("fdesetup status"), !fileVault.contains("FileVault is On.") {
+        if (try? call("sw_vers -productVersion | grep 10")) != nil {
+            problems(ProblemInfo(title: "FileVault is On.", description: "Your Mac has FileVault enabled. While this is a good encryption tool, it breaks on Big Sur with unsupported Macs. You'll be completely unable to boot into recovery mode, and at times you may be unable to unlock your disk. You must disable this before running the patcher. You can do that by going into System Preferences, clicking Security & Privacy, go to FileVault, and click the lock icon and disable it.", severity: .fatal))
+            hasProblem = true
+        }
+    }
+    
+    // MARK: Metal Check
+    
+    if let metalStatus = try? call("system_profiler SPDisplaysDataType | grep Metal"), !metalStatus.contains(": Supported") {
+        problems(ProblemInfo(title: "No Graphics Acceleration", description: "Your Mac doesn't support Metal graphics acceleration, so Big Sur will run EXTREMELY SLOW. Do not expect it to be fast and do not expect it to run well. You cannot fix this and a patch is in progress to fix this, but it's current state is extremely unstable. If you would like to continue, you may, but don't expect a magical complete Big Sur experience.", severity: .severe))
+        hasProblem = true
+    }
+    
+    if hasProblem {
+        progress2 = .issues
+    } else {
+        progress2 = info != nil ? .clean : .noCompat
+    }
+    
 }
+
+// MARK: ProblemInfo
+
+struct ProblemInfo {
+    let title, description: String
+    let severity: ProblemSeverity
+}
+
+enum ProblemSeverity {
+    case warning
+    case severe
+    case fatal
+}
+
+// MARK: CompatInfo

@@ -49,7 +49,3 @@ extension CompatInfo {
         return String(data: try self.jsonData(), encoding: encoding)
     }
 }
-
-struct ProblemInfo {
-    let title, problemInfoDescription, type: String
-}
