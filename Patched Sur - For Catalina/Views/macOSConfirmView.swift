@@ -108,7 +108,6 @@ struct macOSConfirmView: View {
                 .btColor(.gray)
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
-                        installers = fetchInstallers(errorX: { errorX = $0 }, track: track)
                         print("Checking for pre-downloaded installer...")
                         if (try? call("[[ -e ~/.patched-sur/InstallAssistant.pkg ]]")) != nil && ((try? call("[[ -e ~/.patched-sur/InstallInfo.txt ]]")) != nil) {
                             print("Verifying pre-downloaded installer...")
@@ -120,6 +119,7 @@ struct macOSConfirmView: View {
                                 installInfo = .init(url: installerPath, date: "", buildNumber: "CustomPKG", version: baseInfo.version, minVersion: 0, orderNumber: 0, notes: nil)
                             }
                         }
+                        installers = fetchInstallers(errorX: { errorX = $0 }, track: track)
                     }
                 }
             }
