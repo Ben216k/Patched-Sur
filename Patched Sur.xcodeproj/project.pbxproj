@@ -17,6 +17,8 @@
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
 		763AA41125BBCFF100C7C14F /* DisableLVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AA41025BBCFF100C7C14F /* DisableLVView.swift */; };
+		763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B28C125FF0D2300389448 /* InstallAssistantActions.swift */; };
+		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
 		76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76671F332522B3090004E0C2 /* InstallPackageView.swift */; };
 		766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */; };
@@ -30,6 +32,7 @@
 		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
 		768F51F6256E05190069096E /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51F5256E05190069096E /* UpdateView.swift */; };
 		7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691808725F9DB80003FB34C /* SettingsActions.swift */; };
+		769289D925FEEF64002F9CAC /* macOSConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769289D825FEEF64002F9CAC /* macOSConfirmView.swift */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
 		7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* CentralView.swift */; };
 		7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E069251BFF9400C5FB9A /* Assets.xcassets */; };
@@ -56,7 +59,6 @@
 		76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */; };
 		76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */; };
 		76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
-		76F11501256EDAD4001AB749 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11508256EE9FB001AB749 /* PatchedVersion.swift */; };
 		76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11510256EED85001AB749 /* UpdateAppView.swift */; };
 		76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */; };
@@ -99,6 +101,7 @@
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
 		763AA41025BBCFF100C7C14F /* DisableLVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableLVView.swift; sourceTree = "<group>"; };
+		763B28C125FF0D2300389448 /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
 		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		76870F91257358BC0099A4B9 /* UpdateStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStatusView.swift; sourceTree = "<group>"; };
 		768F51F5256E05190069096E /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		7691808725F9DB80003FB34C /* SettingsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActions.swift; sourceTree = "<group>"; };
+		769289D825FEEF64002F9CAC /* macOSConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSConfirmView.swift; sourceTree = "<group>"; };
 		7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - For Catalina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7692E065251BFF9300C5FB9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7692E067251BFF9300C5FB9A /* CentralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralView.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				764F516725FC960D004F49C6 /* VerifyActions.swift */,
+				76747BD82523A66F004596CC /* InstallAssistants.swift */,
+				763B28C125FF0D2300389448 /* InstallAssistantActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -237,7 +243,6 @@
 				764F516425FC95C7004F49C6 /* Actions */,
 				76772CE925410B40003FE2A2 /* InstallerChooser.swift */,
 				76A626D72525055B002C57EA /* HowItWorks.swift */,
-				76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */,
 				76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */,
 				76DB62FE251C637000AB8865 /* DownloadView.swift */,
 				76671F332522B3090004E0C2 /* InstallPackageView.swift */,
@@ -248,7 +253,6 @@
 				7692E069251BFF9400C5FB9A /* Assets.xcassets */,
 				767167502550AE42000FAE80 /* ShellOut.swift */,
 				76A1D33A259933880032F7D9 /* CompatInfo.swift */,
-				76747BD82523A66F004596CC /* InstallAssistants.swift */,
 				7692E071251BFF9400C5FB9A /* Info.plist */,
 				7692E072251BFF9400C5FB9A /* Patched_Sur___For_Catalina.entitlements */,
 				7692E06B251BFF9400C5FB9A /* Preview Content */,
@@ -326,6 +330,8 @@
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,
 				76A626D32524ED78002C57EA /* MacCompatibility.swift */,
+				76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */,
+				769289D825FEEF64002F9CAC /* macOSConfirmView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769289D925FEEF64002F9CAC /* macOSConfirmView.swift in Sources */,
 				76A626E025252C7C002C57EA /* ConfirmVolume.swift in Sources */,
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
@@ -465,6 +472,7 @@
 				76772CEA25410B40003FE2A2 /* InstallerChooser.swift in Sources */,
 				76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */,
 				76A626DC25252C5A002C57EA /* CreateInstallMedia.swift in Sources */,
+				763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */,
 				7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */,
 				7692E090251C077400C5FB9A /* MainView.swift in Sources */,
 				76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */,
@@ -502,13 +510,13 @@
 				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
 				762A066825BF93A80037655D /* Keychain.swift in Sources */,
 				3F42EB04255176F700365279 /* Settings.swift in Sources */,
+				763B28C7260052D200389448 /* InstallAssistants.swift in Sources */,
 				76A0B78D25749FC100E392D1 /* main.swift in Sources */,
 				7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */,
 				76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */,
 				76870F92257358BD0099A4B9 /* UpdateStatusView.swift in Sources */,
 				7692E080251BFFB300C5FB9A /* PatchedSurApp.swift in Sources */,
 				7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */,
-				76F11501256EDAD4001AB749 /* InstallAssistants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -91,8 +91,10 @@ struct AllViews : View {
                         MacCompatibility(p: $progress, background: $background).transition(.moveAway)
 //                    case 2:
 //                        HowItWorks(p: $progress).transition(.moveAway)
-//                    case .track:
-//                        ReleaseTrackView(track: $releaseTrack, p: $progress).transition(.moveAway)
+                    case .track:
+                        ReleaseTrackView(track: $releaseTrack, p: $progress).transition(.moveAway)
+                    case .macOS:
+                        macOSConfirmView(p: $progress, installInfo: $installInfo, track: $releaseTrack)
 ////                    case 10:
 ////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
 //                    case .kexts:
@@ -134,8 +136,8 @@ enum PSPage: Int {
     case main = 0
     case verify = 1
     case track = 2
-    case kexts = 3
-    case macOS = 4
+    case macOS = 3
+    case kexts = 4
     case packages = 5
     case volume = 6
     case create = 7
