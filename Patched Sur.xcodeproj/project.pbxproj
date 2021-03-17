@@ -43,6 +43,7 @@
 		7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */; };
 		7692E090251C077400C5FB9A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E08F251C077400C5FB9A /* MainView.swift */; };
 		7692E0A2251C163200C5FB9A /* VolumeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E0A1251C163200C5FB9A /* VolumeSelector.swift */; };
+		769F37F32601A4DC007A1246 /* DownloadActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F22601A4DC007A1246 /* DownloadActions.swift */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
 		76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1D33A259933880032F7D9 /* CompatInfo.swift */; };
 		76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D32524ED78002C57EA /* MacCompatibility.swift */; };
@@ -132,6 +133,7 @@
 		7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Patched_Sur.entitlements; sourceTree = "<group>"; };
 		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7692E0A1251C163200C5FB9A /* VolumeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelector.swift; sourceTree = "<group>"; };
+		769F37F22601A4DC007A1246 /* DownloadActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActions.swift; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76A1D33A259933880032F7D9 /* CompatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatInfo.swift; sourceTree = "<group>"; };
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				764F516725FC960D004F49C6 /* VerifyActions.swift */,
 				76747BD82523A66F004596CC /* InstallAssistants.swift */,
 				763B28C125FF0D2300389448 /* InstallAssistantActions.swift */,
+				769F37F22601A4DC007A1246 /* DownloadActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -241,7 +244,6 @@
 				764F516425FC95C7004F49C6 /* Actions */,
 				76A626D72525055B002C57EA /* HowItWorks.swift */,
 				76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */,
-				76DB62FE251C637000AB8865 /* DownloadView.swift */,
 				76671F332522B3090004E0C2 /* InstallPackageView.swift */,
 				7692E0A1251C163200C5FB9A /* VolumeSelector.swift */,
 				76A626DF25252C7C002C57EA /* ConfirmVolume.swift */,
@@ -329,6 +331,7 @@
 				76A626D32524ED78002C57EA /* MacCompatibility.swift */,
 				76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */,
 				769289D825FEEF64002F9CAC /* macOSConfirmView.swift */,
+				76DB62FE251C637000AB8865 /* DownloadView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				76A626D82525055B002C57EA /* HowItWorks.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
 				76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */,
+				769F37F32601A4DC007A1246 /* DownloadActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

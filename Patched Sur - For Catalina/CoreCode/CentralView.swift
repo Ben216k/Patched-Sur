@@ -97,8 +97,8 @@ struct AllViews : View {
                         macOSConfirmView(p: $progress, installInfo: $installInfo, track: $releaseTrack)
 ////                    case 10:
 ////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
-//                    case .kexts:
-//                        DownloadView(p: $progress).transition(.moveAway)
+                    case .kexts:
+                        DownloadKextsView(p: $progress).transition(.moveAway)
 //                    case .macOS:
 //                        InstallPackageView(installInfo: $installInfo, password: $password, p: $progress, overrideInstaller: $overrideinstaller, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
 //                    case .volume:
@@ -138,7 +138,7 @@ enum PSPage: Int {
     case track = 2
     case macOS = 3
     case kexts = 4
-    case packages = 5
+    case package = 5
     case volume = 6
     case create = 7
     case done = 8

@@ -31,7 +31,9 @@ struct macOSConfirmView: View {
                         Text("Download macOS \(installers[0].version)")
                     } onClick: {
                         installInfo = installers[0]
-                        p = .kexts
+                        withAnimation {
+                            p = .kexts
+                        }
                     }.inPad()
                 } else {
                     HStack {
@@ -39,7 +41,9 @@ struct macOSConfirmView: View {
                             Image("ForwardArrowCircle")
                             Text("Use macOS \(installers[0].version)")
                         } onClick: {
-                            p = .kexts
+                            withAnimation {
+                                p = .kexts
+                            }
                         }.inPad()
                         .btColor(.init("GreenTint"))
                         VIButton(id: "DOWNLOAD", h: $hovered) {
@@ -47,7 +51,9 @@ struct macOSConfirmView: View {
                             Text("Redownload")
                         } onClick: {
                             installInfo = installers[0]
-                            p = .kexts
+                            withAnimation {
+                                p = .kexts
+                            }
                         }.inPad()
                     }
                 }
@@ -90,7 +96,7 @@ struct macOSConfirmView: View {
                         VIButton(id: installer.buildNumber, h: $hovered) {
                             Text(installer.version)
                         } onClick: {
-                            alert = .init(title: Text("Patched Sur will use an old version of macOS"), message: Text("Older versions of macOS may be missing security updates and bug fixes. Are you sure you want to use macOS \(installer.version) even though the latest version of macOS is \(installers[0].version)?"), primaryButton: .default(Text("Continue"), action: { installInfo = installer; p = .kexts }), secondaryButton: .default(Text("Continue")))
+                            alert = .init(title: Text("Patched Sur will use an old version of macOS"), message: Text("Older versions of macOS may be missing security updates and bug fixes. Are you sure you want to use macOS \(installer.version) even though the latest version of macOS is \(installers[0].version)?"), primaryButton: .default(Text("Continue"), action: { installInfo = installer; withAnimation { p = .kexts } }), secondaryButton: .default(Text("Continue")))
                         }.inPad()
                         .btColor(.gray)
                         .useHoverAccent()
