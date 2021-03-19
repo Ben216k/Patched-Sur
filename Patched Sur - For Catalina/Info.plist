@@ -24,13 +24,13 @@
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>MDItemKeywords</key>
+	<string>unsupported,bensova,patcher,big sur</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2021 BenSova under the MIT License</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2021 BenSova under the MIT License</string>
-	<key>MDItemKeywords</key>
-	<string>unsupported,bensova,patcher,big sur</string>
 </dict>
 </plist>

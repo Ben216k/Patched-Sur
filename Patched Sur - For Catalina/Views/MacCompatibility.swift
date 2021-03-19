@@ -17,7 +17,6 @@ struct MacCompatibility: View {
     @State var problems: [ProblemInfo] = []
     @State var known = [] as [Substring]
     @State var alert: Alert?
-    @Binding var background: Color
     
     var body: some View {
         VStack {
@@ -25,7 +24,7 @@ struct MacCompatibility: View {
             case .downloading, .verifying, .errored:
                 VerifyMacView(progress2: $progress2, info: $info, known: $known, problems: $problems)
             case .issues:
-                IssuesView(problems: $problems, background: $background, progress2: $progress2, info: $info)
+                IssuesView(problems: $problems, progress2: $progress2, info: $info)
             case .clean:
                 CompatibilityReport(info: $info, known: $known, p: $p)
             case .noCompat:
@@ -172,7 +171,6 @@ struct CompatibilityReport: View {
 
 struct IssuesView: View {
     @Binding var problems: [ProblemInfo]
-    @Binding var background: Color
     @State var hovered: String?
     @State var showAreYouSure = false
     @Binding var progress2: VerifyProgress

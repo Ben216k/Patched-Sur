@@ -6,6 +6,7 @@
 //
 
 import VeliaUI
+import Files
 
 struct macOSDownloadView: View {
     @State var errorX = ""
@@ -44,6 +45,19 @@ struct macOSDownloadView: View {
                                         return
                                     }
                                     macOSDownload(installInfo: installInfo, size: { downloadSize = $0 }, next: {
+                                        print("Verifying installer location")
+                                        guard let path = (try? File(path: "~/.patched-sur/InstallAssistant.pkg"))?.path else {
+                                            print("Failed to resolve installer path.")
+                                            errorX = "Failed to resolve installer path.\nThis means an unknown error occurred while downloading the macOS InstallAssistant.\nPlease go back and try again.\nThis is not a patcher bug."
+                                            return
+                                        }
+                                        print("Verifying installer download finished")
+                                        var alert: Alert?
+                                        guard verifyInstaller(alert: &alert, path: path) else {
+                                            errorX = "The macOS download failed.\nThe reason for this is unknown since the download should not have cut out, unless something outside of the patcher was messing with it.\nPlease go back and try again.\nThis is not a patcher bug."
+                                            return
+                                        }
+                                        installInfo = .init(url: path, date: "", buildNumber: "CustomPKG", version: installInfo!.version, minVersion: 0, orderNumber: 0, notes: nil)
                                         withAnimation {
                                             p = .volume
                                         }

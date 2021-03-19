@@ -35,11 +35,11 @@ struct AllViews : View {
     @State var appLocation = nil as String?
     @State var compressed = false
     @State var hovered: String?
-    @State var background = Color.clear
+    @State var hasKexts = false
     
     var body: some View {
         ZStack {
-            background
+            Color.clear
             VStack {
                 HStack(spacing: 15) {
                     VIHeader(p: "Patched Sur", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $compressed)
@@ -52,7 +52,6 @@ struct AllViews : View {
                                 .frame(width: compressed ? 10 : 15, height: compressed ? 10 : 15)
                                 .scaleEffect(compressed ? 1.2 : 1)
                         } onClick: {
-                            background = Color.clear
                             if progress == .verify {
                                 withAnimation {
                                     progress = .main
@@ -88,7 +87,7 @@ struct AllViews : View {
         //                    EnterPasswordPrompt(password: $password, show: .constant(true))
 //                        }
                     case .verify:
-                        MacCompatibility(p: $progress, background: $background).transition(.moveAway)
+                        MacCompatibility(p: $progress).transition(.moveAway)
 //                    case 2:
 //                        HowItWorks(p: $progress).transition(.moveAway)
                     case .track:
@@ -98,7 +97,7 @@ struct AllViews : View {
 ////                    case 10:
 ////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
                     case .kexts:
-                        DownloadKextsView(p: $progress).transition(.moveAway)
+                        DownloadKextsView(p: $progress, hasKexts: $hasKexts).transition(.moveAway)
                     case .package:
                         macOSDownloadView(p: $progress, installInfo: $installInfo)
 //                    case .volume:

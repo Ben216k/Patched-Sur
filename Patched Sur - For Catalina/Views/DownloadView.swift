@@ -18,6 +18,7 @@ struct DownloadKextsView: View {
     @State var downloadSize = 55357820
     @State var downloadProgress = CGFloat(0)
     @State var currentSize = 10
+    @Binding var hasKexts: Bool
     let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
     
     var body: some View {
@@ -41,7 +42,14 @@ struct DownloadKextsView: View {
                         Text("Downloading Files...")
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
+                                    if hasKexts == true {
+                                        withAnimation {
+                                            p = .package
+                                        }
+                                        return
+                                    }
                                     kextDownload(size: { downloadSize = $0 }, next: {
+                                        hasKexts = true
                                         withAnimation {
                                             p = .package
                                         }
