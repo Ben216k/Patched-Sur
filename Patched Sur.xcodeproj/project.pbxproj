@@ -44,6 +44,7 @@
 		7692E090251C077400C5FB9A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E08F251C077400C5FB9A /* MainView.swift */; };
 		7692E0A2251C163200C5FB9A /* VolumeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E0A1251C163200C5FB9A /* VolumeSelector.swift */; };
 		769F37F32601A4DC007A1246 /* DownloadActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F22601A4DC007A1246 /* DownloadActions.swift */; };
+		769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F42601AF06007A1246 /* macOSDownloadView.swift */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
 		76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1D33A259933880032F7D9 /* CompatInfo.swift */; };
 		76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D32524ED78002C57EA /* MacCompatibility.swift */; };
@@ -134,6 +135,7 @@
 		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7692E0A1251C163200C5FB9A /* VolumeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelector.swift; sourceTree = "<group>"; };
 		769F37F22601A4DC007A1246 /* DownloadActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActions.swift; sourceTree = "<group>"; };
+		769F37F42601AF06007A1246 /* macOSDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSDownloadView.swift; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76A1D33A259933880032F7D9 /* CompatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatInfo.swift; sourceTree = "<group>"; };
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
@@ -243,8 +245,8 @@
 				76D8437F25F86486006C6565 /* Views */,
 				764F516425FC95C7004F49C6 /* Actions */,
 				76A626D72525055B002C57EA /* HowItWorks.swift */,
-				76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */,
 				76671F332522B3090004E0C2 /* InstallPackageView.swift */,
+				76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */,
 				7692E0A1251C163200C5FB9A /* VolumeSelector.swift */,
 				76A626DF25252C7C002C57EA /* ConfirmVolume.swift */,
 				76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */,
@@ -332,6 +334,7 @@
 				76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */,
 				769289D825FEEF64002F9CAC /* macOSConfirmView.swift */,
 				76DB62FE251C637000AB8865 /* DownloadView.swift */,
+				769F37F42601AF06007A1246 /* macOSDownloadView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */,
 				769289D925FEEF64002F9CAC /* macOSConfirmView.swift in Sources */,
 				76A626E025252C7C002C57EA /* ConfirmVolume.swift in Sources */,
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,

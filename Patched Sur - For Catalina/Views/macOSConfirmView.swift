@@ -21,9 +21,15 @@ struct macOSConfirmView: View {
         VStack {
             Text("macOS Big Sur Version")
                 .font(.system(size: 15)).bold()
+            #if DEBUG
+            Text("While in most cases you'll want the latest version of macOS Big Sur, you might for whatever reason want an older version, and you can configure that here. If you want to use a pre-downloaded InstallAssistant.pkg or installer app, you can by clicking browse. If you just want to download and use the latest version of macOS, just click Download. macOS is automatically downloaded in an instant depending on the track you select.")
+                .multilineTextAlignment(.center)
+                .padding(.vertical)
+            #else
             Text("While in most cases you'll want the latest version of macOS Big Sur, you might for whatever reason want an older version, and you can configure that here. If you want to use a pre-downloaded InstallAssistant.pkg or installer app, you can by clicking browse. If you just want to download and use the latest version of macOS, just click Download.")
                 .multilineTextAlignment(.center)
                 .padding(.vertical)
+            #endif
             if installers.count > 0 {
                 if installInfo == nil {
                     VIButton(id: "DOWNLOAD", h: $hovered) {
@@ -39,7 +45,7 @@ struct macOSConfirmView: View {
                     HStack {
                         VIButton(id: "USE", h: $hovered) {
                             Image("ForwardArrowCircle")
-                            Text("Use macOS \(installers[0].version)")
+                            Text("Use macOS \(installInfo?.version ?? "Pre-downloaded")")
                         } onClick: {
                             withAnimation {
                                 p = .kexts
@@ -126,6 +132,8 @@ struct macOSConfirmView: View {
                             }
                         }
                         installers = fetchInstallers(errorX: { errorX = $0 }, track: track)
+                        print("Checking if the pre-downloaded installer is recent...")
+                        if installInfo?.version != installers[0].version { installInfo = nil }
                     }
                 }
             }

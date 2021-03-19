@@ -7,6 +7,8 @@
 
 import VeliaUI
 
+// MARK: Fetch Installers
+
 func fetchInstallers(errorX: (String) -> (), track: ReleaseTrack) -> InstallAssistants {
     do {
         print("Fetching installers from 'https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json'")
@@ -30,6 +32,8 @@ func fetchInstallers(errorX: (String) -> (), track: ReleaseTrack) -> InstallAssi
         return []
     }
 }
+
+// MARK: Verify Installer
 
 func verifyInstaller(alert: inout Alert?, path: String) -> Bool {
     print("Verifying pre-downloaded installer at path \(path)")

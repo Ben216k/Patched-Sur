@@ -99,8 +99,8 @@ struct AllViews : View {
 ////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
                     case .kexts:
                         DownloadKextsView(p: $progress).transition(.moveAway)
-//                    case .macOS:
-//                        InstallPackageView(installInfo: $installInfo, password: $password, p: $progress, overrideInstaller: $overrideinstaller, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
+                    case .package:
+                        macOSDownloadView(p: $progress, installInfo: $installInfo)
 //                    case .volume:
 //                        VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
 ////                    case .:

@@ -27,7 +27,7 @@ struct ReleaseTrackView: View {
                 } onClick: {
                     track = .release
                 }.inPad()
-                .btColor(.gray)
+                .btColor(track != .release ? .gray : .init("Accent"))
                 .useHoverAccent()
                 VIButton(id: "BETA", h: $hovered) {
                     Image("AntCircle\(track != .developer ? "" : "Fill")")
@@ -36,7 +36,7 @@ struct ReleaseTrackView: View {
                 } onClick: {
                     track = .developer
                 }.inPad()
-                .btColor(.gray)
+                .btColor(track != .developer ? .gray : .init("Accent"))
                 .useHoverAccent()
             }.padding(.bottom)
             VIButton(id: "CONTINUE", h: $hovered) {
