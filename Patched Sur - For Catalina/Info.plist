@@ -30,6 +30,10 @@
 	<string>Copyright © 2021 BenSova under the MIT License</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSSupportsSuddenTermination</key>
+	<false/>
+	<key>NSSupportsAutomaticTermination</key>
+	<false/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

@@ -23,7 +23,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct AllViews : View {
-    @State var progress = PSPage.main
+    @State var progress = PSPage.volume
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false
@@ -33,7 +33,7 @@ struct AllViews : View {
     @State var useCurrent = false
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
     @State var appLocation = nil as String?
-    @State var compressed = false
+    @State var compressed = true
     @State var hovered: String?
     @State var hasKexts = false
     
@@ -100,8 +100,8 @@ struct AllViews : View {
                         DownloadKextsView(p: $progress, hasKexts: $hasKexts).transition(.moveAway)
                     case .package:
                         macOSDownloadView(p: $progress, installInfo: $installInfo)
-//                    case .volume:
-//                        VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
+                    case .volume:
+                        VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
 ////                    case .:
 ////                        ConfirmVolumeView(volume: $volume, p: $progress).transition(.moveAway)
 //                    case .create:

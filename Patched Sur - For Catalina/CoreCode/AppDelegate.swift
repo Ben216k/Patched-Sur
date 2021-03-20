@@ -33,6 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+//        let queue = DispatchQueue(label: "DownloadKexts")
+//        queue.
+        // https://stackoverflow.com/a/34574966
+//        queue.suspend()
+        _ = try? call("killall curl")
     }
 
 }

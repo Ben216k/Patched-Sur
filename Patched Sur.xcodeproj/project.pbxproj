@@ -19,6 +19,7 @@
 		763AA41125BBCFF100C7C14F /* DisableLVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AA41025BBCFF100C7C14F /* DisableLVView.swift */; };
 		763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B28C125FF0D2300389448 /* InstallAssistantActions.swift */; };
 		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
+		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
 		76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76671F332522B3090004E0C2 /* InstallPackageView.swift */; };
 		766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */; };
@@ -41,7 +42,8 @@
 		7692E084251BFFB400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E083251BFFB400C5FB9A /* Assets.xcassets */; };
 		7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */; };
 		7692E090251C077400C5FB9A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E08F251C077400C5FB9A /* MainView.swift */; };
-		7692E0A2251C163200C5FB9A /* VolumeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E0A1251C163200C5FB9A /* VolumeSelector.swift */; };
+		769532442605A144007A1BB4 /* VolumeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769532432605A144007A1BB4 /* VolumeSelectorView.swift */; };
+		769532472605A987007A1BB4 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 769532462605A987007A1BB4 /* WaterfallGrid */; };
 		769F37F32601A4DC007A1246 /* DownloadActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F22601A4DC007A1246 /* DownloadActions.swift */; };
 		769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F42601AF06007A1246 /* macOSDownloadView.swift */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
@@ -49,7 +51,6 @@
 		76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D32524ED78002C57EA /* MacCompatibility.swift */; };
 		76A626D82525055B002C57EA /* HowItWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D72525055B002C57EA /* HowItWorks.swift */; };
 		76A626DC25252C5A002C57EA /* CreateInstallMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */; };
-		76A626E025252C7C002C57EA /* ConfirmVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626DF25252C7C002C57EA /* ConfirmVolume.swift */; };
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
 		76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF37BC25E8C73500403208 /* NotificationsView.swift */; };
 		76D639DD2576302500B38FBE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D639DC2576302500B38FBE /* main.swift */; };
@@ -102,6 +103,7 @@
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
 		763AA41025BBCFF100C7C14F /* DisableLVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableLVView.swift; sourceTree = "<group>"; };
 		763B28C125FF0D2300389448 /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
+		763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleVolumesActions.swift; sourceTree = "<group>"; };
 		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 		7692E088251BFFB400C5FB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Patched_Sur.entitlements; sourceTree = "<group>"; };
 		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		7692E0A1251C163200C5FB9A /* VolumeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelector.swift; sourceTree = "<group>"; };
+		769532432605A144007A1BB4 /* VolumeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelectorView.swift; sourceTree = "<group>"; };
 		769F37F22601A4DC007A1246 /* DownloadActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActions.swift; sourceTree = "<group>"; };
 		769F37F42601AF06007A1246 /* macOSDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSDownloadView.swift; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -140,7 +142,6 @@
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
 		76A626D72525055B002C57EA /* HowItWorks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorks.swift; sourceTree = "<group>"; };
 		76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallMedia.swift; sourceTree = "<group>"; };
-		76A626DF25252C7C002C57EA /* ConfirmVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmVolume.swift; sourceTree = "<group>"; };
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
 		76CF37BC25E8C73500403208 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		76D639DC2576302500B38FBE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -160,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769532472605A987007A1BB4 /* WaterfallGrid in Frameworks */,
 				76D8437B25F861DE006C6565 /* VeliaUI in Frameworks */,
 				7625796725423FD600508A71 /* Files in Frameworks */,
 			);
@@ -204,6 +206,7 @@
 				76747BD82523A66F004596CC /* InstallAssistants.swift */,
 				763B28C125FF0D2300389448 /* InstallAssistantActions.swift */,
 				769F37F22601A4DC007A1246 /* DownloadActions.swift */,
+				763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -246,8 +249,6 @@
 				76A626D72525055B002C57EA /* HowItWorks.swift */,
 				76671F332522B3090004E0C2 /* InstallPackageView.swift */,
 				76FBF0DB253B83ED0049A94E /* InstallMethodView.swift */,
-				7692E0A1251C163200C5FB9A /* VolumeSelector.swift */,
-				76A626DF25252C7C002C57EA /* ConfirmVolume.swift */,
 				76A626DB25252C5A002C57EA /* CreateInstallMedia.swift */,
 				76FBF0E3253CEB2F0049A94E /* FinishedView.swift */,
 				7692E069251BFF9400C5FB9A /* Assets.xcassets */,
@@ -334,6 +335,7 @@
 				769289D825FEEF64002F9CAC /* macOSConfirmView.swift */,
 				76DB62FE251C637000AB8865 /* DownloadView.swift */,
 				769F37F42601AF06007A1246 /* macOSDownloadView.swift */,
+				769532432605A144007A1BB4 /* VolumeSelectorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -371,6 +373,7 @@
 			packageProductDependencies = (
 				7625796625423FD600508A71 /* Files */,
 				76D8437A25F861DE006C6565 /* VeliaUI */,
+				769532462605A987007A1BB4 /* WaterfallGrid */,
 			);
 			productName = "Patched Sur - For Catalina";
 			productReference = 7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */;
@@ -427,6 +430,7 @@
 			packageReferences = (
 				7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */,
 				76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */,
+				769532452605A987007A1BB4 /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
 			);
 			productRefGroup = 7692E063251BFF9300C5FB9A /* Products */;
 			projectDirPath = "";
@@ -467,7 +471,6 @@
 			files = (
 				769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */,
 				769289D925FEEF64002F9CAC /* macOSConfirmView.swift in Sources */,
-				76A626E025252C7C002C57EA /* ConfirmVolume.swift in Sources */,
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
 				76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */,
@@ -479,9 +482,10 @@
 				7692E090251C077400C5FB9A /* MainView.swift in Sources */,
 				76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */,
 				76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */,
-				7692E0A2251C163200C5FB9A /* VolumeSelector.swift in Sources */,
+				769532442605A144007A1BB4 /* VolumeSelectorView.swift in Sources */,
 				76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */,
 				76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */,
+				763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */,
 				76FBF0E4253CEB2F0049A94E /* FinishedView.swift in Sources */,
 				76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */,
 				76A626D82525055B002C57EA /* HowItWorks.swift in Sources */,
@@ -822,6 +826,14 @@
 				minimumVersion = 4.1.1;
 			};
 		};
+		769532452605A987007A1BB4 /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.1;
+			};
+		};
 		76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BenSova/VeliaUI";
@@ -842,6 +854,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
+		};
+		769532462605A987007A1BB4 /* WaterfallGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 769532452605A987007A1BB4 /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
+			productName = WaterfallGrid;
 		};
 		76D8437A25F861DE006C6565 /* VeliaUI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -61,7 +61,7 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> (), p
     
     print("Checking if FileVault is on...")
     
-    if let fileVault = try? call("fdesetup status"), !fileVault.contains("FileVault is On.") {
+    if let fileVault = try? call("fdesetup status"), fileVault.contains("FileVault is On.") {
         if (try? call("sw_vers -productVersion | grep 10")) != nil {
             problems(ProblemInfo(title: "FileVault is On.", description: "Your Mac has FileVault enabled. While this is a good encryption tool, it breaks on Big Sur with unsupported Macs. You'll be completely unable to boot into recovery mode, and at times you may be unable to unlock your disk. You must disable this before running the patcher. You can do that by going into System Preferences, clicking Security & Privacy, go to FileVault, and click the lock icon and disable it.", severity: .fatal))
             hasProblem = true
