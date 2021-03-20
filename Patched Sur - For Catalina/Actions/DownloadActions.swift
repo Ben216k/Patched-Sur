@@ -18,8 +18,12 @@ func kextDownload(size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
         _ = try? call("rm -rf ~/.patched-sur/big-sur-micropatcher*")
         _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
         print("Getting projected size")
-        if let sizeString = try? shellOut(to: "curl -sI https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main | grep -i Content-Length | awk '{print $2}'"), let sizeInt = Int(sizeString) {
-            size(sizeInt)
+        if let sizeString = try? call("curl -sI https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main | grep -i Content-Length | awk '{print $2}'") {
+            let sizeStrings = sizeString.split(separator: "\r\n")
+            print(sizeStrings)
+            if sizeStrings.count > 0, let sizeInt = Int(sizeStrings[0]) {
+                size(sizeInt)
+            }
         }
         print("Starting download of patches")
         try call("curl -o ~/.patched-sur/big-sur-micropatcher.zip https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main")
@@ -43,7 +47,8 @@ func macOSDownload(installInfo: InstallAssistant?, size: (Int) -> (), next: () -
     _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
     print("Getting projected InstallAssistant size")
     if let sizeString = try? call("curl -sI \(installInfo!.url) | grep -i Content-Length | awk '{print $2}'") {
-        let sizeStrings = sizeString.split(separator: "\n")
+        let sizeStrings = sizeString.split(separator: "\r\n")
+        print(sizeStrings)
         if sizeStrings.count > 0, let sizeInt = Int(sizeStrings[0]) {
             size(sizeInt)
         }
