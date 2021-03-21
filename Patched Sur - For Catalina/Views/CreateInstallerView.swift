@@ -9,10 +9,13 @@ import VeliaUI
 
 struct CreateInstallerView: View {
     @Binding var p: PSPage
-    @State var errorX = "CREATE"
+    @State var errorX = "PATCH"
     @Binding var password: String
     @Binding var showPass: Bool
     @State var hovered: String?
+    @State var progressText = ""
+    @Binding var volume: String
+    @Binding var installInfo: InstallAssistant?
     
     var body: some View {
         VStack {
@@ -36,12 +39,61 @@ struct CreateInstallerView: View {
                         
                     }
                 }.animation(.none)
+            } else if errorX == "EXTRACT" {
+                VIButton(id: "NEVER-HAPPENING", h: .constant("MUHAHAHA")) {
+                    Image("PackageCircle")
+                    Text("Extracting Package")
+                }.inPad()
+                .btColor(.gray)
+                .onAppear {
+                    DispatchQueue.global(qos: .background).async {
+                        if installInfo!.buildNumber == "CustomPKG" {
+                            extractPackage(package: installInfo!.url, password: password, errorX: { errorX = $0 })
+                        } else {
+                            errorX = "CREATE"
+                        }
+                    }
+                }
             } else if errorX == "CREATE" {
                 VIButton(id: "NEVER-HAPPENING", h: .constant("MUHAHAHA")) {
                     Image("DriveCircle")
                     Text("Creating Installer")
                 }.inPad()
                 .btColor(.gray)
+                .onAppear {
+                    DispatchQueue.global(qos: .background).async {
+                        if installInfo!.buildNumber == "CustomPKG" {
+                            createInstallMedia(volume: volume, installer: "/Applications/PSInstaller.app", password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
+                        } else {
+                            createInstallMedia(volume: volume, installer: installInfo!.url, password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
+                        }
+                    }
+                }
+                Text(progressText)
+                    .font(.caption)
+                    .lineLimit(2)
+            } else if errorX == "PATCH" {
+                VIButton(id: "NEVER-HAPPENING", h: .constant("MUHAHAHA")) {
+                    Image("ToolsCircle")
+                    Text("Patching Installer")
+                }.inPad()
+                .btColor(.gray)
+                .onAppear {
+                    DispatchQueue.global(qos: .background).async {
+                        patchInstaller(password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
+                    }
+                }
+                Text(progressText)
+                    .font(.caption)
+                    .lineLimit(2)
+            } else if errorX == "DONE" {
+                Text("Done!")
+                    .bold()
+                    .onAppear {
+                        p = .done
+                    }
+            } else {
+                VIError(errorX)
             }
         }
     }

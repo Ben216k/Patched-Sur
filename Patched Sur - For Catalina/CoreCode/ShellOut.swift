@@ -1,6 +1,7 @@
 /**
  *  ShellOut
  *  Copyright (c) John Sundell 2017
+ *  Slightly modified by Ben Sova
  *  Licensed under the MIT license.
  */
 
@@ -9,16 +10,16 @@ import Dispatch
 
 @discardableResult func call(_ cmd: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
     let psHandle = StringHandle(handlingClosure: { (string) in
-        print(string)
-        handle(string)
+        print(string.replacingOccurrences(of: "Password:", with: ""))
+        handle(string.replacingOccurrences(of: "Password:", with: ""))
     })
     return try shellOut(to: cmd, at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
 
 @discardableResult func call(_ cmd: String, p: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
     let psHandle = StringHandle(handlingClosure: { (string) in
-        print(string)
-        handle(string)
+        print(string.replacingOccurrences(of: "Password:", with: ""))
+        handle(string.replacingOccurrences(of: "Password:", with: ""))
     })
     return try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
@@ -137,8 +138,8 @@ extension ShellOutError: CustomStringConvertible {
     public var description: String {
         return """
                Error 1x\(terminationStatus)
-               Message: "\(message)"
-               Output: "\(output)"
+               Message: "\(message.replacingOccurrences(of: "Password:", with: ""))"
+               Output: "\(output.replacingOccurrences(of: "Password:", with: ""))"
                """
     }
 }

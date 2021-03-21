@@ -33,7 +33,7 @@ struct AllViews : View {
     @State var useCurrent = false
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
     @State var appLocation = nil as String?
-    @State var compressed = true
+    @State var compressed = false
     @State var hovered: String?
     @State var hasKexts = true
     @State var showPass = false
@@ -103,7 +103,7 @@ struct AllViews : View {
                     case .volume:
                         VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
                     case .create:
-                        CreateInstallerView(p: $progress, password: $password, showPass: $showPass).transition(.moveAway)
+                        CreateInstallerView(p: $progress, password: $password, showPass: $showPass, volume: $volume, installInfo: $installInfo).transition(.moveAway)
 //                    case .create:
 //                        CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation).transition(.moveAway)
 //                    case .done:
