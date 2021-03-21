@@ -52,7 +52,7 @@ struct AllViews : View {
                                 .frame(width: compressed ? 10 : 15, height: compressed ? 10 : 15)
                                 .scaleEffect(compressed ? 1.2 : 1)
                         } onClick: {
-                            if progress == .verify {
+                            if progress == .credits {
                                 withAnimation {
                                     progress = .main
                                     compressed = false
@@ -86,10 +86,12 @@ struct AllViews : View {
                             MainView(hovered: $hovered, p: $progress, c: $compressed).transition(.moveAway)
         //                    EnterPasswordPrompt(password: $password, show: .constant(true))
 //                        }
+                    case .credits:
+                        CreditsView(p: $progress).transition(.moveAway)
+                    case .remember:
+                        RememberPleaseView(p: $progress).transition(.moveAway)
                     case .verify:
                         MacCompatibility(p: $progress).transition(.moveAway)
-//                    case 2:
-//                        HowItWorks(p: $progress).transition(.moveAway)
                     case .track:
                         ReleaseTrackView(track: $releaseTrack, p: $progress).transition(.moveAway)
                     case .macOS:
@@ -102,8 +104,6 @@ struct AllViews : View {
                         macOSDownloadView(p: $progress, installInfo: $installInfo)
                     case .volume:
                         VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
-////                    case .:
-////                        ConfirmVolumeView(volume: $volume, p: $progress).transition(.moveAway)
 //                    case .create:
 //                        CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation).transition(.moveAway)
 //                    case .done:
@@ -133,14 +133,16 @@ struct AllViews : View {
 
 enum PSPage: Int {
     case main = 0
-    case verify = 1
-    case track = 2
-    case macOS = 3
-    case kexts = 4
-    case package = 5
-    case volume = 6
-    case create = 7
-    case done = 8
+    case credits = 1
+    case remember = 2
+    case verify = 3
+    case track = 4
+    case macOS = 5
+    case kexts = 6
+    case package = 7
+    case volume = 8
+    case create = 9
+    case done = 10
 }
 
 enum ReleaseTrack: String, CustomStringConvertible {

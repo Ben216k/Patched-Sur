@@ -13,6 +13,8 @@
 		760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760C7D1A25719C27004817F1 /* UpdateAppAction.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		762A066825BF93A80037655D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A066725BF93A80037655D /* Keychain.swift */; };
+		762DA8FE2606BA6300A9235A /* RememberPleaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */; };
+		762DA9002606C0B400A9235A /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FF2606C0B400A9235A /* CreditsView.swift */; };
 		762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */; };
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
@@ -43,7 +45,6 @@
 		7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */; };
 		7692E090251C077400C5FB9A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E08F251C077400C5FB9A /* MainView.swift */; };
 		769532442605A144007A1BB4 /* VolumeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769532432605A144007A1BB4 /* VolumeSelectorView.swift */; };
-		769532472605A987007A1BB4 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 769532462605A987007A1BB4 /* WaterfallGrid */; };
 		769F37F32601A4DC007A1246 /* DownloadActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F22601A4DC007A1246 /* DownloadActions.swift */; };
 		769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F42601AF06007A1246 /* macOSDownloadView.swift */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
@@ -98,6 +99,8 @@
 		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		762908AD25760F630021244B /* EFIIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = EFIIcon.icns; sourceTree = "<group>"; };
 		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberPleaseView.swift; sourceTree = "<group>"; };
+		762DA8FF2606C0B400A9235A /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPatchedSur.swift; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
@@ -161,7 +164,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				769532472605A987007A1BB4 /* WaterfallGrid in Frameworks */,
 				76D8437B25F861DE006C6565 /* VeliaUI in Frameworks */,
 				7625796725423FD600508A71 /* Files in Frameworks */,
 			);
@@ -330,6 +332,8 @@
 				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,
+				762DA8FF2606C0B400A9235A /* CreditsView.swift */,
+				762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */,
 				76A626D32524ED78002C57EA /* MacCompatibility.swift */,
 				76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */,
 				769289D825FEEF64002F9CAC /* macOSConfirmView.swift */,
@@ -373,7 +377,6 @@
 			packageProductDependencies = (
 				7625796625423FD600508A71 /* Files */,
 				76D8437A25F861DE006C6565 /* VeliaUI */,
-				769532462605A987007A1BB4 /* WaterfallGrid */,
 			);
 			productName = "Patched Sur - For Catalina";
 			productReference = 7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */;
@@ -430,7 +433,6 @@
 			packageReferences = (
 				7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */,
 				76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */,
-				769532452605A987007A1BB4 /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
 			);
 			productRefGroup = 7692E063251BFF9300C5FB9A /* Products */;
 			projectDirPath = "";
@@ -490,7 +492,9 @@
 				76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */,
 				76A626D82525055B002C57EA /* HowItWorks.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
+				762DA8FE2606BA6300A9235A /* RememberPleaseView.swift in Sources */,
 				76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */,
+				762DA9002606C0B400A9235A /* CreditsView.swift in Sources */,
 				769F37F32601A4DC007A1246 /* DownloadActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -826,14 +830,6 @@
 				minimumVersion = 4.1.1;
 			};
 		};
-		769532452605A987007A1BB4 /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
-			requirement = {
-				kind = exactVersion;
-				version = 1.0.1;
-			};
-		};
 		76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BenSova/VeliaUI";
@@ -854,11 +850,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
-		};
-		769532462605A987007A1BB4 /* WaterfallGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 769532452605A987007A1BB4 /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
-			productName = WaterfallGrid;
 		};
 		76D8437A25F861DE006C6565 /* VeliaUI */ = {
 			isa = XCSwiftPackageProductDependency;

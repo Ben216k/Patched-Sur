@@ -24,7 +24,7 @@ struct MainView : View {
                 Image("ForwardArrowCircle")
             } onClick: {
                 withAnimation {
-                    p = .verify
+                    p = .credits
                     c = true
                 }
             }.inPad()
