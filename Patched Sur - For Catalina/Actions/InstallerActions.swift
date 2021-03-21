@@ -15,14 +15,6 @@ func extractPackage(package: String, password: String, errorX: (String) -> (), b
         _ = try? call("rm -rf /Applications/PSInstaller.app", p: password)
         print("Extracting Package at \(package)")
         try call("installer -pkg '\(package)' -target /", p: password)
-        print("Moving installer to Patched Sur location")
-        do {
-            try call("mv '/Applications/Install macOS Big Sur.app' /Applications/PSInstaller.app", p: password)
-            beta("")
-        } catch {
-            _ = try? call("mv '/Applications/Install macOS Big Sur Beta.app' /Applications/PSInstaller.app", p: password)
-            beta(" Beta")
-        }
         print("Done extracting package.")
         errorX("CREATE")
     } catch {
@@ -31,7 +23,7 @@ func extractPackage(package: String, password: String, errorX: (String) -> (), b
     }
 }
 
-func createInstallMedia(volume: String, installer: String, password: String, progressText: @escaping (String) -> (), errorX: (String) -> ()) {
+func createInstallMedia(volume: String, installInfo: InstallAssistant, password: String, progressText: @escaping (String) -> (), errorX: (String) -> ()) {
     do {
         progressText("Temporarily disabling Spotlight indexng")
         print("Disabling bad Spotlight Indexing")
@@ -45,7 +37,11 @@ func createInstallMedia(volume: String, installer: String, password: String, pro
         _ = try? call("sleep 2")
         print("Starting createinstallmedia")
         progressText("Starting createinstallmedia")
-        try call("'\(installer)/Contents/Resources/createinstallmedia' --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
+        if installInfo.buildNumber == "CustomAPP" {
+            try call("'\(installInfo.url)/Contents/Resources/createinstallmedia' --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
+        } else {
+            try call("/Applications/Install\\ macOS\\ Big\\ Sur*/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
+        }
         print("Finished createinstallmedia!")
         errorX("PATCH")
     } catch {

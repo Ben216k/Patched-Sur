@@ -6,7 +6,6 @@
 //
 
 import VeliaUI
-import WaterfallGrid
 
 struct VolumeSelector: View {
     @Binding var p: PSPage

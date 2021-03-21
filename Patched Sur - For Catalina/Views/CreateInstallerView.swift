@@ -63,11 +63,7 @@ struct CreateInstallerView: View {
                 .btColor(.gray)
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
-                        if installInfo!.buildNumber == "CustomPKG" {
-                            createInstallMedia(volume: volume, installer: "/Applications/PSInstaller.app", password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
-                        } else {
-                            createInstallMedia(volume: volume, installer: installInfo!.url, password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
-                        }
+                        createInstallMedia(volume: volume, installInfo: installInfo!, password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
                     }
                 }
                 Text(progressText)
@@ -81,12 +77,6 @@ struct CreateInstallerView: View {
                 .btColor(.gray)
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
-                        do {
-                            try call("mv '/Volumes/Install macOS Big Sur\(isBeta)/PSInstaller.app' '/Volumes/Install macOS Big Sur\(isBeta)/Install macOS Big Sur\(isBeta).app'", p: password)
-                        } catch {
-                            errorX = "Failed to move installer.\n\(error.localizedDescription)"
-                            return
-                        }
                         patchInstaller(password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
                     }
                 }
