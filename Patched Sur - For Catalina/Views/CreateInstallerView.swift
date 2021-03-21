@@ -16,6 +16,7 @@ struct CreateInstallerView: View {
     @State var progressText = ""
     @Binding var volume: String
     @Binding var installInfo: InstallAssistant?
+    @State var isBeta = ""
     
     var body: some View {
         VStack {
@@ -48,7 +49,7 @@ struct CreateInstallerView: View {
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
                         if installInfo!.buildNumber == "CustomPKG" {
-                            extractPackage(package: installInfo!.url, password: password, errorX: { errorX = $0 })
+                            extractPackage(package: installInfo!.url, password: password, errorX: { errorX = $0 }, beta: { isBeta = $0 })
                         } else {
                             errorX = "CREATE"
                         }
@@ -80,6 +81,12 @@ struct CreateInstallerView: View {
                 .btColor(.gray)
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
+                        do {
+                            try call("mv '/Volumes/Install macOS Big Sur\(isBeta)/PSInstaller.app' '/Volumes/Install macOS Big Sur\(isBeta)/Install macOS Big Sur\(isBeta).app'", p: password)
+                        } catch {
+                            errorX = "Failed to move installer.\n\(error.localizedDescription)"
+                            return
+                        }
                         patchInstaller(password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
                     }
                 }

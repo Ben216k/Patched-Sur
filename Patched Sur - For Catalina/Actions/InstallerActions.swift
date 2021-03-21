@@ -7,17 +7,22 @@
 
 import Foundation
 
-func extractPackage(package: String, password: String, errorX: (String) -> ()) {
+func extractPackage(package: String, password: String, errorX: (String) -> (), beta: (String) -> ()) {
     do {
         print("Cleaning up before extraction")
-        _ = try? call("rm -rf '/Applications/Install macOS Big Sur.app'")
-        _ = try? call("rm -rf '/Applications/Install macOS Big Sur Beta.app'")
-        _ = try? call("rm -rf /Applications/PSInstaller.app")
+        _ = try? call("rm -rf '/Applications/Install macOS Big Sur.app'", p: password)
+        _ = try? call("rm -rf '/Applications/Install macOS Big Sur Beta.app'", p: password)
+        _ = try? call("rm -rf /Applications/PSInstaller.app", p: password)
         print("Extracting Package at \(package)")
         try call("installer -pkg '\(package)' -target /", p: password)
         print("Moving installer to Patched Sur location")
-        _ = try? call("mv '/Applications/Install macOS Big Sur.app' /Applications/PSInstaller.app", p: password)
-        _ = try? call("mv '/Applications/Install macOS Big Sur Beta.app' /Applications/PSInstaller.app", p: password)
+        do {
+            try call("mv '/Applications/Install macOS Big Sur.app' /Applications/PSInstaller.app", p: password)
+            beta("")
+        } catch {
+            _ = try? call("mv '/Applications/Install macOS Big Sur Beta.app' /Applications/PSInstaller.app", p: password)
+            beta(" Beta")
+        }
         print("Done extracting package.")
         errorX("CREATE")
     } catch {

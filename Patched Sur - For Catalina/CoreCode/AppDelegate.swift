@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // https://stackoverflow.com/a/34574966
 //        queue.suspend()
         _ = try? call("killall curl")
+        _ = try? call("killall createinstallmedia")
     }
 
 }

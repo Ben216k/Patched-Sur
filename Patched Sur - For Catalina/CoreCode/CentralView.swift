@@ -35,7 +35,7 @@ struct AllViews : View {
     @State var appLocation = nil as String?
     @State var compressed = false
     @State var hovered: String?
-    @State var hasKexts = true
+    @State var hasKexts = false
     @State var showPass = false
     
     var body: some View {
@@ -104,14 +104,10 @@ struct AllViews : View {
                         VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
                     case .create:
                         CreateInstallerView(p: $progress, password: $password, showPass: $showPass, volume: $volume, installInfo: $installInfo).transition(.moveAway)
-//                    case .create:
-//                        CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation).transition(.moveAway)
                     case .done:
                         DoneView()
-//                    case .packages:
-//                        InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
-                    default:
-                        Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress.hashValue)").transition(.moveAway)
+//                    default:
+//                        Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress.hashValue)").transition(.moveAway)
                     }
                 }
                 .padding(.bottom, 10)
