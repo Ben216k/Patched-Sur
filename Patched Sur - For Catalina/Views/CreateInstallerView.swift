@@ -9,7 +9,7 @@ import VeliaUI
 
 struct CreateInstallerView: View {
     @Binding var p: PSPage
-    @State var errorX = "PATCH"
+    @State var errorX = "EXTRACT"
     @Binding var password: String
     @Binding var showPass: Bool
     @State var hovered: String?
@@ -90,7 +90,9 @@ struct CreateInstallerView: View {
                 Text("Done!")
                     .bold()
                     .onAppear {
-                        p = .done
+                        withAnimation {
+                            p = .done
+                        }
                     }
             } else {
                 VIError(errorX)

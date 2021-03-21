@@ -64,7 +64,7 @@ func patchInstaller(password: String, progressText: @escaping (String) -> (), er
         _ = try? call("rm -rf '/Applications/Patched Sur.app'")
         try call("cp -rf '/Volumes/Patched-Sur/.fullApp.app' '/Applications/Patched Sur.app'")
         print("Successfully patched USB.")
-        errorX = "DONE"
+        errorX("DONE")
     } catch {
         _ = try? call("sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist", p: password)
         _ = try? call("sudo launchctl enable system/com.apple.displaypolicyd", p: password)

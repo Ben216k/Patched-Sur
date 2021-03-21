@@ -46,7 +46,7 @@ struct AllViews : View {
                     VIHeader(p: "Patched Sur", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $compressed)
                         .alignment(.leading)
                     Spacer()
-                    if compressed {
+                    if compressed && (progress != .done) {
                         VIButton(id: "BACKBUTTON", h: $hovered) {
                             Image("BackArrow")
                                 .resizable()
@@ -106,8 +106,8 @@ struct AllViews : View {
                         CreateInstallerView(p: $progress, password: $password, showPass: $showPass, volume: $volume, installInfo: $installInfo).transition(.moveAway)
 //                    case .create:
 //                        CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation).transition(.moveAway)
-//                    case .done:
-//                        FinishedView(app: appLocation ?? "/Applications/Install macOS Big Sur Beta.app/").transition(.moveAway)
+                    case .done:
+                        DoneView()
 //                    case .packages:
 //                        InstallerChooser(p: $progress, installInfo: $installInfo, track: $releaseTrack, useCurrent: $useCurrent, package: $packageLocation, installer: $appLocation).transition(.moveAway)
                     default:

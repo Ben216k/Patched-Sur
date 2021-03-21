@@ -30,6 +30,7 @@
 		7674026B2606EEBD00E39469 /* CreateInstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026A2606EEBD00E39469 /* CreateInstallerView.swift */; };
 		7674026D2606F99100E39469 /* InstallerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026C2606F99100E39469 /* InstallerActions.swift */; };
 		7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
+		767402702607DF8300E39469 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026F2607DF8300E39469 /* DoneView.swift */; };
 		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */; };
 		76870F92257358BD0099A4B9 /* UpdateStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76870F91257358BC0099A4B9 /* UpdateStatusView.swift */; };
@@ -119,6 +120,7 @@
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
 		7674026A2606EEBD00E39469 /* CreateInstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerView.swift; sourceTree = "<group>"; };
 		7674026C2606F99100E39469 /* InstallerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerActions.swift; sourceTree = "<group>"; };
+		7674026F2607DF8300E39469 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		76747BD82523A66F004596CC /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
 		767D6F9B25AA294C00A773AE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerChooser.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				769F37F42601AF06007A1246 /* macOSDownloadView.swift */,
 				769532432605A144007A1BB4 /* VolumeSelectorView.swift */,
 				7674026A2606EEBD00E39469 /* CreateInstallerView.swift */,
+				7674026F2607DF8300E39469 /* DoneView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 			files = (
 				769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */,
 				769289D925FEEF64002F9CAC /* macOSConfirmView.swift in Sources */,
+				767402702607DF8300E39469 /* DoneView.swift in Sources */,
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
 				76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */,
