@@ -27,6 +27,9 @@
 		766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */; };
 		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
+		7674026B2606EEBD00E39469 /* CreateInstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026A2606EEBD00E39469 /* CreateInstallerView.swift */; };
+		7674026D2606F99100E39469 /* InstallerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026C2606F99100E39469 /* InstallerActions.swift */; };
+		7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */; };
 		76870F92257358BD0099A4B9 /* UpdateStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76870F91257358BC0099A4B9 /* UpdateStatusView.swift */; };
@@ -114,6 +117,8 @@
 		766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaxDownloadView.swift; sourceTree = "<group>"; };
 		76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
+		7674026A2606EEBD00E39469 /* CreateInstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerView.swift; sourceTree = "<group>"; };
+		7674026C2606F99100E39469 /* InstallerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerActions.swift; sourceTree = "<group>"; };
 		76747BD82523A66F004596CC /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
 		767D6F9B25AA294C00A773AE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerChooser.swift; sourceTree = "<group>"; };
@@ -209,6 +214,7 @@
 				763B28C125FF0D2300389448 /* InstallAssistantActions.swift */,
 				769F37F22601A4DC007A1246 /* DownloadActions.swift */,
 				763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */,
+				7674026C2606F99100E39469 /* InstallerActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -322,6 +328,7 @@
 				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
 				7692E067251BFF9300C5FB9A /* CentralView.swift */,
 				767167502550AE42000FAE80 /* ShellOut.swift */,
+				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -330,7 +337,6 @@
 			isa = PBXGroup;
 			children = (
 				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
-				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7692E08F251C077400C5FB9A /* MainView.swift */,
 				762DA8FF2606C0B400A9235A /* CreditsView.swift */,
 				762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */,
@@ -340,6 +346,7 @@
 				76DB62FE251C637000AB8865 /* DownloadView.swift */,
 				769F37F42601AF06007A1246 /* macOSDownloadView.swift */,
 				769532432605A144007A1BB4 /* VolumeSelectorView.swift */,
+				7674026A2606EEBD00E39469 /* CreateInstallerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -476,6 +483,7 @@
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
 				76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */,
+				7674026B2606EEBD00E39469 /* CreateInstallerView.swift in Sources */,
 				764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */,
 				76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */,
 				76A626DC25252C5A002C57EA /* CreateInstallMedia.swift in Sources */,
@@ -484,6 +492,7 @@
 				7692E090251C077400C5FB9A /* MainView.swift in Sources */,
 				76FBF0DC253B83ED0049A94E /* InstallMethodView.swift in Sources */,
 				76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */,
+				7674026D2606F99100E39469 /* InstallerActions.swift in Sources */,
 				769532442605A144007A1BB4 /* VolumeSelectorView.swift in Sources */,
 				76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */,
 				76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */,
@@ -513,6 +522,7 @@
 				762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */,
 				76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */,
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
+				7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */,
 				7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */,
 				763AA41125BBCFF100C7C14F /* DisableLVView.swift in Sources */,
 				76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */,

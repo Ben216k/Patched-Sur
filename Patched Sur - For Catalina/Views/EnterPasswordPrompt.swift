@@ -65,6 +65,7 @@ struct EnterPasswordPrompt: View {
                                 Spacer()
                                 NativeButton("Cancel", keyEquivalent: .none) {
                                     (onCancel ?? {})()
+                                    password = ""
                                     withAnimation {
                                         show = false
                                     }

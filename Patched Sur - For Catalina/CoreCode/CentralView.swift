@@ -23,7 +23,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct AllViews : View {
-    @State var progress = PSPage.volume
+    @State var progress = PSPage.main
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false
@@ -35,7 +35,8 @@ struct AllViews : View {
     @State var appLocation = nil as String?
     @State var compressed = true
     @State var hovered: String?
-    @State var hasKexts = false
+    @State var hasKexts = true
+    @State var showPass = false
     
     var body: some View {
         ZStack {
@@ -82,10 +83,7 @@ struct AllViews : View {
                 Group {
                     switch progress {
                     case .main:
-//                        ZStack {
-                            MainView(hovered: $hovered, p: $progress, c: $compressed).transition(.moveAway)
-        //                    EnterPasswordPrompt(password: $password, show: .constant(true))
-//                        }
+                        MainView(hovered: $hovered, p: $progress, c: $compressed).transition(.moveAway)
                     case .credits:
                         CreditsView(p: $progress).transition(.moveAway)
                     case .remember:
@@ -104,6 +102,8 @@ struct AllViews : View {
                         macOSDownloadView(p: $progress, installInfo: $installInfo)
                     case .volume:
                         VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
+                    case .create:
+                        CreateInstallerView(p: $progress, password: $password, showPass: $showPass).transition(.moveAway)
 //                    case .create:
 //                        CreateInstallMedia(volume: $volume, password: $password, overrideInstaller: $overrideinstaller, p: $progress, installer: $appLocation).transition(.moveAway)
 //                    case .done:
@@ -126,6 +126,9 @@ struct AllViews : View {
 //                        .padding()
 //                }
 //            }
+            EnterPasswordPrompt(password: $password, show: $showPass) {
+                
+            }
         }.edgesIgnoringSafeArea(.all)
         .frame(width: 600, height: 325)
     }

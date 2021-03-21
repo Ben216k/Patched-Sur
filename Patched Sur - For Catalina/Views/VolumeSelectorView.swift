@@ -52,7 +52,7 @@ struct VolumeSelector: View {
                             Text("Continue")
                             Image("ForwardArrowCircle")
                         } onClick: {
-                            alert = .init(title: Text("\(volume) will be erased."), message: Text("All the files on this volume will be completely erased. This cannot be undone. Are you sure you would like to continue?"), primaryButton: .default(Text("Continue and Erase")) { p = .create }, secondaryButton: .cancel())
+                            alert = .init(title: Text("\(volume) will be erased."), message: Text("All the files on this volume will be completely erased. This cannot be undone. Are you sure you would like to continue?"), primaryButton: .default(Text("Continue and Erase")) { withAnimation { p = .create } }, secondaryButton: .cancel())
                         }.inPad()
                     }
                 }.alert($alert)
