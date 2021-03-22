@@ -7,6 +7,8 @@
 
 import Foundation
 import Files
+import IOKit
+import IOKit.pwr_mgt
 
 // MARK: Download Kexts
 

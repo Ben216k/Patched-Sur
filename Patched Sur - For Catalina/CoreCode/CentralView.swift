@@ -28,7 +28,6 @@ struct AllViews : View {
     @State var volume = ""
     @State var overrideinstaller = false
     @State var releaseTrack = ReleaseTrack.release
-    @State var installMethod = InstallMethod.update
     @State var installInfo = nil as InstallAssistant?
     @State var useCurrent = false
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
