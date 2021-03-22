@@ -48,11 +48,7 @@ struct CreateInstallerView: View {
                 .btColor(.gray)
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
-                        if installInfo!.buildNumber == "CustomPKG" {
-                            extractPackage(package: installInfo!.url, password: password, errorX: { errorX = $0 }, beta: { isBeta = $0 })
-                        } else {
-                            errorX = "CREATE"
-                        }
+                        extractPackage(installInfo: installInfo!, password: password, errorX: { errorX = $0 }, beta: { isBeta = $0 })
                     }
                 }
             } else if errorX == "CREATE" {

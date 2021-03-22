@@ -7,15 +7,27 @@
 
 import Foundation
 
-func extractPackage(package: String, password: String, errorX: (String) -> (), beta: (String) -> ()) {
+// MARK: Extract/Move Installer
+
+func extractPackage(installInfo: InstallAssistant, password: String, errorX: (String) -> (), beta: (String) -> ()) {
     do {
-        print("Cleaning up before extraction")
-        _ = try? call("rm -rf '/Applications/Install macOS Big Sur.app'", p: password)
-        _ = try? call("rm -rf '/Applications/Install macOS Big Sur Beta.app'", p: password)
-        _ = try? call("rm -rf /Applications/PSInstaller.app", p: password)
-        print("Extracting Package at \(package)")
-        try call("installer -pkg '\(package)' -target /", p: password)
-        print("Done extracting package.")
+        if installInfo.buildNumber == "CustomPKG" {
+            print("Cleaning up before extraction")
+            _ = try? call("rm -rf '/Applications/Install macOS Big Sur.app'", p: password)
+            _ = try? call("rm -rf '/Applications/Install macOS Big Sur Beta.app'", p: password)
+            _ = try? call("rm -rf /Applications/PSInstaller.app", p: password)
+            print("Extracting Package at \(installInfo.url)")
+            try call("installer -pkg '\(installInfo.url)' -target /", p: password)
+            print("Done extracting package.")
+        } else {
+            if installInfo.url != "/Applications/Install macOS Big Sur.app" {
+                print("Cleaning up before move.")
+                _ = try? call("rm -rf '/Applications/Install macOS Big Sur.app'", p: password)
+                print("Moving installer app")
+                try call("mv '\(installInfo.url)' '/Applications/Install macOS Big Sur.app'")
+                print("Done moving this app for this dumb workaround that I have to use for dumb reasons.")
+            }
+        }
         errorX("CREATE")
     } catch {
         print("Failed to extract package.")
@@ -23,9 +35,11 @@ func extractPackage(package: String, password: String, errorX: (String) -> (), b
     }
 }
 
+// MARK: Create Install Media
+
 func createInstallMedia(volume: String, installInfo: InstallAssistant, password: String, progressText: @escaping (String) -> (), errorX: (String) -> ()) {
     do {
-        progressText("Temporarily disabling Spotlight indexng")
+        progressText("Temporarily disabling Spotlight indexing")
         print("Disabling bad Spotlight Indexing")
         _ = try? call("launchctl disable system/com.apple.displaypolicyd", p: password)
         _ = try? call("launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist", p: password)
@@ -37,11 +51,7 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
         _ = try? call("sleep 2")
         print("Starting createinstallmedia")
         progressText("Starting createinstallmedia")
-        if installInfo.buildNumber == "CustomAPP" {
-            try call("'\(installInfo.url)/Contents/Resources/createinstallmedia' --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
-        } else {
-            try call("/Applications/Install\\ macOS\\ Big\\ Sur*/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
-        }
+        try call("/Applications/Install\\ macOS\\ Big\\ Sur*/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
         print("Finished createinstallmedia!")
         errorX("PATCH")
     } catch {
@@ -51,6 +61,8 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
         errorX(error.localizedDescription)
     }
 }
+
+// MARK: Patch Installer
 
 func patchInstaller(password: String, progressText: @escaping (String) -> (), errorX: (String) -> ()) {
     do {
