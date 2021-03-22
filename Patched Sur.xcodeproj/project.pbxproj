@@ -23,7 +23,6 @@
 		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
-		76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76671F332522B3090004E0C2 /* InstallPackageView.swift */; };
 		766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */; };
 		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
@@ -110,7 +109,6 @@
 		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
-		76671F332522B3090004E0C2 /* InstallPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallPackageView.swift; sourceTree = "<group>"; };
 		766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaxDownloadView.swift; sourceTree = "<group>"; };
 		76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 				76D8437E25F8646B006C6565 /* CoreCode */,
 				76D8437F25F86486006C6565 /* Views */,
 				764F516425FC95C7004F49C6 /* Actions */,
-				76671F332522B3090004E0C2 /* InstallPackageView.swift */,
 				7692E069251BFF9400C5FB9A /* Assets.xcassets */,
 				7692E071251BFF9400C5FB9A /* Info.plist */,
 				7692E072251BFF9400C5FB9A /* Patched_Sur___For_Catalina.entitlements */,
@@ -484,7 +481,6 @@
 				76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */,
 				7674026D2606F99100E39469 /* InstallerActions.swift in Sources */,
 				769532442605A144007A1BB4 /* VolumeSelectorView.swift in Sources */,
-				76671F342522B3090004E0C2 /* InstallPackageView.swift in Sources */,
 				76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */,
 				763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */,
 				76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */,
