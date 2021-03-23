@@ -22,7 +22,20 @@ struct VolumeSelector: View {
             Text("To install patched Big Sur initially, you need a USB install that will assist with the upgrade. This provides an environment where the patcher can be sure that everything will go properly. This USB needs to be 16GB or bigger. Internal partitions won't work, but external partitions do depending on the partition map (which will probably be correct with the GUID Partition Mac). If your drive doesn't show up, make sure it is formatted as MacOS Extended Journaled.")
                 .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
-            if let volumes = volumeList {
+            if volumeList == [] {
+                VIButton(id: "NODRIVES", h: $hovered) {
+                    Image("ExclaimCircle")
+                    Text("No compatible drives were detected.")
+                }.btColor(.red)
+                .inPad()
+                VIButton(id: "REFRESH", h: $hovered) {
+                    Image("RefreshCircle")
+                    Text("Refresh")
+                } onClick: {
+                    volumeList = nil
+                }.btColor(.gray)
+                .inPad()
+            } else if let volumes = volumeList {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(volumes, id: \.self) { name in
