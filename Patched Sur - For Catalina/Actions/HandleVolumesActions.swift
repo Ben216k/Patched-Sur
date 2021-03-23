@@ -27,30 +27,37 @@ func detectVolumes(onVol: (String) -> ()) -> [String] {
             return
         }
         
+        let diskInfoLines = diskInfo.split(separator: "\n")
+        
         // MARK: Synthesized Check
         print("Checking if the volume is synthesized")
-        guard !diskInfo.contains("(synthesized):") else {
+        guard (try? call("echo '\(diskInfoLines[0])' | grep 'synthesized'")) == nil else {
             print("Volume is synthesized, this is incompatible")
             return
         }
         
         // MARK: Internal Drive Check
         print("Checking if the drive is internal")
-        guard !diskInfo.contains("(internal, physical):") else {
+        guard (try? call("echo '\(diskInfoLines[0])' | grep 'internal, physical'")) == nil else {
             print("Volume is an internal drive, this is incompatible")
             return
         }
         
         // MARK: Disk Image Check
         print("Checking if the drive is a disk image")
-        guard !diskInfo.contains("(disk image):") else {
+        guard (try? call("echo '\(diskInfoLines[0])' | grep 'disk image'")) == nil else {
             print("Volume is a disk image, this is incompatible")
             return
         }
         
         // MARK: Has EFI Check
         print("Checking if the drive has an EFI partition")
-        guard !diskInfo.contains("1:                        EFI EFI") else {
+        var efiCheckStuff = diskInfoLines[2]
+        efiCheckStuff.removeFirst(11)
+        efiCheckStuff = Substring(efiCheckStuff.replacingOccurrences(of: "*", with: ""))
+        efiCheckStuff = efiCheckStuff.prefix("GUID_partition_scheme".count)
+        print([efiCheckStuff])
+        guard efiCheckStuff == "GUID_partition_scheme" else {
             print("Volume does not have an EFI partition, this is incompatible")
             return
         }
