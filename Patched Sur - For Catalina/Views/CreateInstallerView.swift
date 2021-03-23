@@ -33,7 +33,6 @@ struct CreateInstallerView: View {
                         showPass = true
                     }
                 }.inPad()
-                .btColor(.accentColor)
                 .onAppear {
                     withAnimation(Animation.default.delay(0.25)) {
                         showPass = true

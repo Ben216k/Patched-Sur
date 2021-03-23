@@ -43,7 +43,8 @@ struct EnterPasswordPrompt: View {
                                             .fixedSize()
                                         Text("User Name:")
                                     }
-                                    TextField("Username", text: .constant((try! call("whoami"))))
+//                                    TextField("Username", text: .constant((try! call("whoami"))))
+                                    TextField("Username", text: .constant(NSFullUserName()))
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                 }
                                 HStack {
