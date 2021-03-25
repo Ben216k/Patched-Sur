@@ -74,7 +74,12 @@ struct PSSettings: View {
                                     Image(systemName: "smallcircle.fill.circle")
                                     Text("Disable")
                                 } onClick: {
-                                    disableGxSwitching(p: password)
+                                    withAnimation {
+                                        showPassPrompt = true
+                                    }
+                                    passAction = {
+                                        disableGxSwitching(p: password)
+                                    }
                                 }.inPad()
                             }
                             Text("If you have a Mac with mutliple GPUs, then you probably want automatic graphics switching enabled for graphics switching. Thanks to @15wat for finding this solution.")
