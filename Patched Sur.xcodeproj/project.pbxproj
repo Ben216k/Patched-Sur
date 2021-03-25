@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F42EB04255176F700365279 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42EB03255176F700365279 /* Settings.swift */; };
+		3F42EB04255176F700365279 /* PSSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42EB03255176F700365279 /* PSSettings.swift */; };
 		7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD17257FF8DB0054B76F /* DownloadKexts.swift */; };
 		7609BD1E258008B70054B76F /* StartInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD1D258008B70054B76F /* StartInstallView.swift */; };
 		760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760C7D1A25719C27004817F1 /* UpdateAppAction.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		762A066825BF93A80037655D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A066725BF93A80037655D /* Keychain.swift */; };
+		762A1DB4260C19B80009620B /* PatchKextsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A1DB3260C19B80009620B /* PatchKextsView.swift */; };
 		762DA8FE2606BA6300A9235A /* RememberPleaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */; };
 		762DA9002606C0B400A9235A /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FF2606C0B400A9235A /* CreditsView.swift */; };
 		762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */; };
@@ -90,7 +91,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3F42EB03255176F700365279 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		3F42EB03255176F700365279 /* PSSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSSettings.swift; sourceTree = "<group>"; };
 		7609BD17257FF8DB0054B76F /* DownloadKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadKexts.swift; sourceTree = "<group>"; };
 		7609BD1D258008B70054B76F /* StartInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInstallView.swift; sourceTree = "<group>"; };
 		760C7D1A25719C27004817F1 /* UpdateAppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppAction.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		762908AD25760F630021244B /* EFIIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = EFIIcon.icns; sourceTree = "<group>"; };
 		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		762A1DB3260C19B80009620B /* PatchKextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchKextsView.swift; sourceTree = "<group>"; };
 		762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberPleaseView.swift; sourceTree = "<group>"; };
 		762DA8FF2606C0B400A9235A /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPatchedSur.swift; sourceTree = "<group>"; };
@@ -193,7 +195,8 @@
 			children = (
 				762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */,
 				7692E081251BFFB300C5FB9A /* ContentView.swift */,
-				3F42EB03255176F700365279 /* Settings.swift */,
+				3F42EB03255176F700365279 /* PSSettings.swift */,
+				762A1DB3260C19B80009620B /* PatchKextsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */,
 				762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */,
 				76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */,
+				762A1DB4260C19B80009620B /* PatchKextsView.swift in Sources */,
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
 				7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */,
 				7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */,
@@ -513,7 +517,7 @@
 				76ECB7FA254BAF3100C928D6 /* KextPatchView.swift in Sources */,
 				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
 				762A066825BF93A80037655D /* Keychain.swift in Sources */,
-				3F42EB04255176F700365279 /* Settings.swift in Sources */,
+				3F42EB04255176F700365279 /* PSSettings.swift in Sources */,
 				763B28C7260052D200389448 /* InstallAssistants.swift in Sources */,
 				76A0B78D25749FC100E392D1 /* main.swift in Sources */,
 				7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */,
