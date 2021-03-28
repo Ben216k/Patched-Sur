@@ -120,7 +120,6 @@ struct MainView: View {
                         errorAlert.messageText = "Patch Kexts Unnecessary"
                         errorAlert.runModal()
                     }
-                    at = 2
                 }
                 VISimpleCell(t: "Settings", d: "Disable animations, enable graphics switching, show\nlogs from Patch Kexts, and maybe more.", s: "gearshape", id: "ABOUT", h: $hovered) {
                     at = 4

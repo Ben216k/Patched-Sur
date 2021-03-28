@@ -14,6 +14,10 @@
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		762A066825BF93A80037655D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A066725BF93A80037655D /* Keychain.swift */; };
 		762A1DB4260C19B80009620B /* PatchKextsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A1DB3260C19B80009620B /* PatchKextsView.swift */; };
+		762CBCA5260C20E5008F0A86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CBCA4260C20E5008F0A86 /* AppDelegate.swift */; };
+		762CBCA7260C20E5008F0A86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CBCA6260C20E5008F0A86 /* ViewController.swift */; };
+		762CBCA9260C20E8008F0A86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCA8260C20E8008F0A86 /* Assets.xcassets */; };
+		762CBCAC260C20E8008F0A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCAA260C20E8008F0A86 /* Main.storyboard */; };
 		762DA8FE2606BA6300A9235A /* RememberPleaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */; };
 		762DA9002606C0B400A9235A /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FF2606C0B400A9235A /* CreditsView.swift */; };
 		762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */; };
@@ -24,6 +28,7 @@
 		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
+		7654ABF72610284200FE0927 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */; };
 		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
@@ -100,6 +105,13 @@
 		762908AD25760F630021244B /* EFIIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = EFIIcon.icns; sourceTree = "<group>"; };
 		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		762A1DB3260C19B80009620B /* PatchKextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchKextsView.swift; sourceTree = "<group>"; };
+		762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - Recovery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		762CBCA4260C20E5008F0A86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		762CBCA6260C20E5008F0A86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		762CBCA8260C20E8008F0A86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		762CBCAB260C20E8008F0A86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		762CBCAD260C20E8008F0A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		762CBCAE260C20E8008F0A86 /* Patched_Sur___Recovery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Patched_Sur___Recovery.entitlements"; sourceTree = "<group>"; };
 		762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberPleaseView.swift; sourceTree = "<group>"; };
 		762DA8FF2606C0B400A9235A /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPatchedSur.swift; sourceTree = "<group>"; };
@@ -159,6 +171,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		762CBC9F260C20E5008F0A86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7692E05F251BFF9300C5FB9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -180,6 +199,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		762CBCA3260C20E5008F0A86 /* Patched Sur - Recovery */ = {
+			isa = PBXGroup;
+			children = (
+				762CBCA4260C20E5008F0A86 /* AppDelegate.swift */,
+				762CBCA6260C20E5008F0A86 /* ViewController.swift */,
+				762CBCA8260C20E8008F0A86 /* Assets.xcassets */,
+				762CBCAA260C20E8008F0A86 /* Main.storyboard */,
+				762CBCAD260C20E8008F0A86 /* Info.plist */,
+				762CBCAE260C20E8008F0A86 /* Patched_Sur___Recovery.entitlements */,
+			);
+			path = "Patched Sur - Recovery";
+			sourceTree = "<group>";
+		};
 		762F8C1D25F87ED20021E4AF /* CoreCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +262,7 @@
 				76FEEFAC254F4DA80079CEFC /* Extra Files */,
 				7692E064251BFF9300C5FB9A /* Patched Sur - For Catalina */,
 				7692E07E251BFFB300C5FB9A /* Patched Sur */,
+				762CBCA3260C20E5008F0A86 /* Patched Sur - Recovery */,
 				7692E063251BFF9300C5FB9A /* Products */,
 				7692E09A251C09AB00C5FB9A /* Frameworks */,
 			);
@@ -240,6 +273,7 @@
 			children = (
 				7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */,
 				7692E07D251BFFB200C5FB9A /* Patched Sur.app */,
+				762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -358,6 +392,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		762CBCA1260C20E5008F0A86 /* Patched Sur - Recovery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 762CBCAF260C20E8008F0A86 /* Build configuration list for PBXNativeTarget "Patched Sur - Recovery" */;
+			buildPhases = (
+				762CBC9E260C20E5008F0A86 /* Sources */,
+				762CBC9F260C20E5008F0A86 /* Frameworks */,
+				762CBCA0260C20E5008F0A86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Patched Sur - Recovery";
+			productName = "Patched Sur - Recovery";
+			productReference = 762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */;
+			productType = "com.apple.product-type.application";
+		};
 		7692E061251BFF9300C5FB9A /* Patched Sur - For Catalina */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7692E075251BFF9400C5FB9A /* Build configuration list for PBXNativeTarget "Patched Sur - For Catalina" */;
@@ -408,9 +459,12 @@
 		7692E05A251BFF9300C5FB9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
+					762CBCA1260C20E5008F0A86 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					7692E061251BFF9300C5FB9A = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -438,11 +492,21 @@
 			targets = (
 				7692E061251BFF9300C5FB9A /* Patched Sur - For Catalina */,
 				7692E07C251BFFB200C5FB9A /* Patched Sur */,
+				762CBCA1260C20E5008F0A86 /* Patched Sur - Recovery */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		762CBCA0260C20E5008F0A86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				762CBCA9260C20E8008F0A86 /* Assets.xcassets in Resources */,
+				762CBCAC260C20E8008F0A86 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7692E060251BFF9300C5FB9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -465,6 +529,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		762CBC9E260C20E5008F0A86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				762CBCA7260C20E5008F0A86 /* ViewController.swift in Sources */,
+				7654ABF72610284200FE0927 /* ShellOut.swift in Sources */,
+				762CBCA5260C20E5008F0A86 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7692E05E251BFF9300C5FB9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,6 +605,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		762CBCAA260C20E8008F0A86 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				762CBCAB260C20E8008F0A86 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		7692E06E251BFF9400C5FB9A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -542,6 +624,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		762CBCB0260C20E8008F0A86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Patched Sur - Recovery/Patched_Sur___Recovery.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "bensova.Patched-Sur-Recovery";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		762CBCB1260C20E8008F0A86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Patched Sur - Recovery/Patched_Sur___Recovery.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "bensova.Patched-Sur-Recovery";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		7692E073251BFF9400C5FB9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -790,6 +916,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		762CBCAF260C20E8008F0A86 /* Build configuration list for PBXNativeTarget "Patched Sur - Recovery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				762CBCB0260C20E8008F0A86 /* Debug */,
+				762CBCB1260C20E8008F0A86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7692E05D251BFF9300C5FB9A /* Build configuration list for PBXProject "Patched Sur" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
