@@ -28,7 +28,6 @@
 		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
-		7654ABF72610284200FE0927 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */; };
 		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
@@ -534,7 +533,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				762CBCA7260C20E5008F0A86 /* ViewController.swift in Sources */,
-				7654ABF72610284200FE0927 /* ShellOut.swift in Sources */,
 				762CBCA5260C20E5008F0A86 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "bensova.Patched-Sur-Recovery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -661,7 +659,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "bensova.Patched-Sur-Recovery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -214,7 +214,6 @@ private extension Process {
         let errorPipe = Pipe()
         standardError = errorPipe
 
-        #if !os(Linux)
         outputPipe.fileHandleForReading.readabilityHandler = { handler in
             let data = handler.availableData
             outputQueue.async {
@@ -230,26 +229,16 @@ private extension Process {
                 errorHandle?.handle(data: data)
             }
         }
-        #endif
 
         launch()
-
-        #if os(Linux)
-        outputQueue.sync {
-            outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
-            errorData = errorPipe.fileHandleForReading.readDataToEndOfFile()
-        }
-        #endif
 
         waitUntilExit()
 
         outputHandle?.endHandling()
         errorHandle?.endHandling()
 
-        #if !os(Linux)
         outputPipe.fileHandleForReading.readabilityHandler = nil
         errorPipe.fileHandleForReading.readabilityHandler = nil
-        #endif
 
         // Block until all writes have occurred to outputData and errorData,
         // and then read the data back out.
