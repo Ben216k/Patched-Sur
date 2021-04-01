@@ -49,7 +49,7 @@ The patcher shouldn't let you upgrade anyway, but it's good to make sure it's of
 
 To choose a different installer that you already have downloaded, click `View Other Versions`. Then, click `Find an Installer` and navigate to the InstallAssistant.pkg or Install macOS Big Sur.app file you would like to use.
 
-#### How would I update macOS? (Stating in 0.1.0+)
+#### How would I update macOS? (Starting in v0.1.0+)
 
 To update macOS, follow the steps below.
 
