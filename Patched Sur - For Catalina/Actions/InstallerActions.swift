@@ -66,22 +66,26 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
 
 func patchInstaller(password: String, progressText: @escaping (String) -> (), errorX: (String) -> ()) {
     do {
+        progressText("Copying Patches to Backup Directory")
+        _ = try? call("rm -rf Patched-Sur-Patches*", p: password, at: "/usr/local/lib")
+        try call("unzip ~/.patched-sur/Patched-Sur-Patches.zip -d /usr/local/lib", p: password, at: "/usr/local/lib")
+        try call("mv Patched-Sur-Patches-* Patched-Sur-Patches", p: password, at: "/usr/local/lib")
         progressText("Starting USB Patch")
         print("Killing MDS again...")
         _ = try? call("killall mds", p: password)
         _ = try? call("killall mds_stores", p: password)
         print("Starting to patch USB installer")
-        try call("/Volumes/Patched-Sur/.patch-usb.sh", p: password, h: progressText)
+        try call("/usr/local/lib/Patched-Sur-Patches/Scripts/PatchUSB.sh", p: password, h: progressText)
         progressText("Copying Post-Install App")
         print("Copying Post-Install App")
         _ = try? call("rm -rf '/Applications/Patched Sur.app'")
-        try call("cp -rf '/Volumes/Patched-Sur/.fullApp.app' '/Applications/Patched Sur.app'")
+        try call("cp -rf '\(Bundle.main.path(forResource: "Patched Sur.app", ofType:nil)!)' '/Applications/Patched Sur.app'")
         print("Successfully patched USB.")
         errorX("DONE")
     } catch {
         _ = try? call("sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist", p: password)
         _ = try? call("sudo launchctl enable system/com.apple.displaypolicyd", p: password)
-        print("Failed to create installer media.")
+        print("Failed to patch installer media.")
         errorX(error.localizedDescription)
     }
 }

@@ -16,15 +16,6 @@ print("Patched Sur v\((Bundle.main.infoDictionary?["CFBundleShortVersionString"]
 print("Running From Xcode in DEBUG configuration.")
 #else
 print("Running Either Normally or From Terminal in RELEASE configuration.")
-print("Checking for Patched Sur dmg...")
-if (try? call("[[ -d /Volumes/Patched-Sur ]]", at: ".")) == nil {
-    print("Patched Sur DMG is not mounted.")
-    let errorAlert = NSAlert()
-    errorAlert.alertStyle = .critical
-    errorAlert.informativeText = "This app is not designed to be placed inside your Applications folder or left without the Patched Sur DMG. When the time comes for the app to be in your Applications folder, Patched Sur will move a special copy of the app into your Applications folder that is designed to run without this DMG.\n\nOpen the Patched Sur dmg (if you moved the app to the Applications folder, delete it) and double click on the app inside the DMG to run the patcher.\n\nIf this is not correct, just press okay to continue. HOWEVER, you cannot complain about \"/Volumes/Patched-Sur/.patch-usb.sh: Command Not Found\" errors later on!"
-    errorAlert.messageText = "Patched Sur DMG Not Detected"
-    errorAlert.runModal()
-}
 print("Making sure that 100% we have what we want...")
 _ = try? call("mkdir ~/.patched-sur", at: ".")
 #endif

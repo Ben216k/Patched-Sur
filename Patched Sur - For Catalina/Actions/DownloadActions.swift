@@ -16,11 +16,11 @@ func kextDownload(size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
     do {
         print("Clean up before patches download")
         _ = try Folder.home.createSubfolderIfNeeded(at: ".patched-sur")
-        _ = try? Folder(path: "~/.patched-sur/big-sur-micropatcher").delete()
-        _ = try? call("rm -rf ~/.patched-sur/big-sur-micropatcher*")
-        _ = try? File(path: "~/.patched-sur/big-sur-micropatcher.zip").delete()
+        _ = try? Folder(path: "~/.patched-sur/Patched-Sur-Patches").delete()
+        _ = try? call("rm -rf ~/.patched-sur/Patched-Sur-Patches*")
+        _ = try? File(path: "~/.patched-sur/Patched-Sur-Patches.zip").delete()
         print("Getting projected size")
-        if let sizeString = try? call("curl -sI https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main | grep -i Content-Length | awk '{print $2}'") {
+        if let sizeString = try? call("curl -sI \(AppInfo.patchesV.url) | grep -i Content-Length | awk '{print $2}'") {
             let sizeStrings = sizeString.split(separator: "\r\n")
             print(sizeStrings)
             if sizeStrings.count > 0, let sizeInt = Int(sizeStrings[0]) {
@@ -28,12 +28,7 @@ func kextDownload(size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
             }
         }
         print("Starting download of patches")
-        try call("curl -o ~/.patched-sur/big-sur-micropatcher.zip https://codeload.github.com/BenSova/big-sur-micropatcher/zip/main")
-        print("Extracting patches")
-        try call("unzip big-sur-micropatcher.zip", at: "~/.patched-sur")
-        print("Cleaning up after patches download")
-        _ = try? File(path: "~/.patched-sur/big-sur-micropatcher*").delete()
-        try call("mv ~/.patched-sur/big-sur-micropatcher-main ~/.patched-sur/big-sur-micropatcher")
+        try call("curl -Lo ~/.patched-sur/Patched-Sur-Patches.zip \(AppInfo.patchesV.url)")
         print("Finished download.")
         next()
     } catch {

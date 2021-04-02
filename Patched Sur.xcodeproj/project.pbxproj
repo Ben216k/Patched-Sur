@@ -25,6 +25,7 @@
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
 		7633BC732617744900A550A6 /* Patched Sur - Recovery.app in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */; };
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
+		7633BC7F2617D24800A550A6 /* PSPatchV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7633BC7E2617D24800A550A6 /* PSPatchV.swift */; };
 		763AA41125BBCFF100C7C14F /* DisableLVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AA41025BBCFF100C7C14F /* DisableLVView.swift */; };
 		763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B28C125FF0D2300389448 /* InstallAssistantActions.swift */; };
 		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
@@ -133,7 +134,7 @@
 		762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPatchedSur.swift; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
-		7633BC612616DCEE00A550A6 /* PatchesVersion */ = {isa = PBXFileReference; lastKnownFileType = text; path = PatchesVersion; sourceTree = "<group>"; };
+		7633BC7E2617D24800A550A6 /* PSPatchV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPatchV.swift; sourceTree = "<group>"; };
 		763AA41025BBCFF100C7C14F /* DisableLVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableLVView.swift; sourceTree = "<group>"; };
 		763B28C125FF0D2300389448 /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
 		763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleVolumesActions.swift; sourceTree = "<group>"; };
@@ -257,6 +258,7 @@
 				76747BD82523A66F004596CC /* InstallAssistants.swift */,
 				763B28C125FF0D2300389448 /* InstallAssistantActions.swift */,
 				769F37F22601A4DC007A1246 /* DownloadActions.swift */,
+				7633BC7E2617D24800A550A6 /* PSPatchV.swift */,
 				763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */,
 				7674026C2606F99100E39469 /* InstallerActions.swift */,
 			);
@@ -395,7 +397,6 @@
 		76FEEFAC254F4DA80079CEFC /* Extra Files */ = {
 			isa = PBXGroup;
 			children = (
-				7633BC612616DCEE00A550A6 /* PatchesVersion */,
 				762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */,
 				764EB40B25C61D190033184B /* banner.png */,
 				7643F616256F2A4700A9D61E /* NameComponent.plist */,
@@ -476,7 +477,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					762CBCA1260C20E5008F0A86 = {
 						CreatedOnToolsVersion = 12.4;
@@ -562,6 +563,7 @@
 			files = (
 				769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */,
 				769289D925FEEF64002F9CAC /* macOSConfirmView.swift in Sources */,
+				7633BC7F2617D24800A550A6 /* PSPatchV.swift in Sources */,
 				767402702607DF8300E39469 /* DoneView.swift in Sources */,
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
@@ -660,6 +662,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur - Recovery/Patched_Sur___Recovery.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
@@ -682,6 +685,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur - Recovery/Patched_Sur___Recovery.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
