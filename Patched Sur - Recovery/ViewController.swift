@@ -38,7 +38,7 @@ class ViewController: NSViewController {
             DispatchQueue.global(qos: .background).async { [self] in
                 print("Starting patch kexts")
 //                try call("'/Volumes/Image Volume/patch-kexts.sh' '/Volumes/\(volumeSelect.selectedItem!.title)'")
-                let patchKextsOut = runCommandReturnStr(binary: "/bin/bash", arguments: ["/Volumes/Image Volume/patch-kexts.sh", "/Volumes/\(selectInfo)"])
+                let patchKextsOut = runCommandReturnStr(binary: "/bin/bash", arguments: ["/Volumes/Image Volume/PatchKexts.sh", "/Volumes/\(selectInfo)"])
                 if patchKextsOut!.status == 0 {
                     DispatchQueue.main.async {
                         patchKextsButton.stringValue = "Restart to Finish"

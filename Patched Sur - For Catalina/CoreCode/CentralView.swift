@@ -12,13 +12,8 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             AllViews()
+                .frame(width: 600, height: 325)
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
 

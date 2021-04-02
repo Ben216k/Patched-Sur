@@ -212,7 +212,7 @@
     </scenes>
     <resources>
         <namedColor name="ErrorThing">
-            <color red="0.9618135095" green="0.89119642970000001" blue="0.89008873700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96200001239776611" green="0.89099997282028198" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
