@@ -30,34 +30,37 @@ struct DownloadKextsView: View {
                 .multilineTextAlignment(.center)
             ZStack {
                 if downloadStatus == "Downloading Files..." {
-                    ProgressBar(value: $downloadProgress, length: 200)
-                        .onReceive(timer, perform: { _ in
-                            if let sizeCode = try? call("stat -f %z ~/.patched-sur/big-sur-micropatcher.zip") {
-                                currentSize = Int(Float(sizeCode) ?? 10000)
-                                downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
-                            }
-                        })
-                    HStack {
-                        Image("DownloadArrow")
-                        Text("Downloading Files...")
-                            .onAppear {
-                                DispatchQueue.global(qos: .background).async {
-                                    if hasKexts == true {
-                                        withAnimation {
-                                            p = .package
+//                    ProgressBar(value: $downloadProgress, length: 200)
+//                        .onReceive(timer, perform: { _ in
+//                            if let sizeCode = try? call("stat -f %z ~/.patched-sur/Patched-Sur-Patches.zip") {
+//                                currentSize = Int(Float(sizeCode) ?? 10000)
+//                                downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
+//                            }
+//                        })
+                    VIButton(id: "DOWNLOAD-NEVER", h: .constant("HAHAH")) {
+                        HStack {
+                            Image("DownloadArrow")
+                            Text("Downloading Files...")
+                                .onAppear {
+                                    DispatchQueue.global(qos: .background).async {
+                                        if hasKexts == true {
+                                            withAnimation {
+                                                p = .package
+                                            }
+                                            return
                                         }
-                                        return
+                                        kextDownload(size: { downloadSize = $0 }, next: {
+                                            hasKexts = true
+                                            withAnimation {
+                                                p = .package
+                                            }
+                                        }, errorX: { downloadStatus = $0 })
                                     }
-                                    kextDownload(size: { downloadSize = $0 }, next: {
-                                        hasKexts = true
-                                        withAnimation {
-                                            p = .package
-                                        }
-                                    }, errorX: { downloadStatus = $0 })
                                 }
-                            }
-                            .padding(.vertical, 7)
-                    }.foregroundColor(.white)
+//                                .padding(.vertical, 7)
+                        }
+                    }.btColor(.gray)
+                    .inPad()
                 } else {
                     VIError(downloadStatus)
                 }

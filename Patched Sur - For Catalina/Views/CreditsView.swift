@@ -43,7 +43,7 @@ Patched Sur isn't just by me (Ben), several other people have contributed to the
 - Ausdauersportler: Integrated patches for iMac Metal GPU support.
 - StarPlayrX: Pointed out startosinstall which was later used in the patcher to allow macOS updating support without a USB.
 - ASentientHedgehog: Helped randomly along the way
-- John_val, fromeister2009, Mr. Macintosh, and Emperor Epitaph for testing some of the new features before release, and pointing out the bugs with them.
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen for testing some of the new features before release, and pointing out the bugs with them.
 - and several others who helped with making Big Sur run as great as it does on unsupported Macs.
 
 Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSundell (MIT), to help handle certain tasks.

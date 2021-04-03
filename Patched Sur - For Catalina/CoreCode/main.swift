@@ -20,5 +20,7 @@ print("Making sure that 100% we have what we want...")
 _ = try? call("mkdir ~/.patched-sur", at: ".")
 #endif
 print("")
+print("Resource Path: \(Bundle.main.resourcePath!)")
+print("")
 print("Starting App Delegate.")
 AppDelegate.main()

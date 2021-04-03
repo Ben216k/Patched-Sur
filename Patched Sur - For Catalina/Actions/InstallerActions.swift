@@ -49,6 +49,21 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
         print("Sleeping real quick")
         progressText("Sleeping for a second")
         _ = try? call("sleep 2")
+        print("Force unmounting the volume...")
+        progressText("Force unmounting the volume")
+        do {
+            let diskID = try call("df '/Volumes/\(volume)' | tail -1 | sed -e 's@ .*@@'")
+            try call("diskutil unmount force '\(diskID)'")
+            do {
+                try call("diskutil mount '\(diskID)'")
+            } catch {
+                errorX("Failed to remount drive.")
+                return
+            }
+        } catch {}
+        print("Sleeping again")
+        progressText("Sleeping again")
+        _ = try? call("sleep 2")
         print("Starting createinstallmedia")
         progressText("Starting createinstallmedia")
         try call("/Applications/Install\\ macOS\\ Big\\ Sur*/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
@@ -67,15 +82,20 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
 func patchInstaller(password: String, progressText: @escaping (String) -> (), errorX: (String) -> ()) {
     do {
         progressText("Copying Patches to Backup Directory")
+        _ = try? call("rm -rf ~/.patched-sur/__MACOSX", p: password)
+        _ = try? call("rm -rf /usr/local/lib/__MACOSX", p: password)
         _ = try? call("rm -rf Patched-Sur-Patches*", p: password, at: "/usr/local/lib")
         try call("unzip ~/.patched-sur/Patched-Sur-Patches.zip -d /usr/local/lib", p: password, at: "/usr/local/lib")
         try call("mv Patched-Sur-Patches-* Patched-Sur-Patches", p: password, at: "/usr/local/lib")
+        _ = try? call("rm -rf ~/.patched-sur/__MACOSX", p: password)
+        _ = try? call("rm -rf /usr/local/lib/__MACOSX", p: password)
         progressText("Starting USB Patch")
         print("Killing MDS again...")
         _ = try? call("killall mds", p: password)
         _ = try? call("killall mds_stores", p: password)
         print("Starting to patch USB installer")
-        try call("/usr/local/lib/Patched-Sur-Patches/Scripts/PatchUSB.sh", p: password, h: progressText)
+        try call("/usr/local/lib/Patched-Sur-Patches/Scripts/PatchUSB.sh '\(Bundle.main.resourcePath!)'", p: password, h: progressText)
+//        try call("/Users/bensova/Developer/Patched-Sur-Patches/Scripts/PatchUSB.sh '\(Bundle.main.resourcePath!)'", p: password, h: progressText)
         progressText("Copying Post-Install App")
         print("Copying Post-Install App")
         _ = try? call("rm -rf '/Applications/Patched Sur.app'")
