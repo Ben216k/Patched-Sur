@@ -79,15 +79,15 @@ struct CreateInstallerView: View {
                                         al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
                                         al.messageText = "Would you like to try again?"
                                         al.showsHelp = false
-                                        al.addButton(withTitle: "Cancel Process")
                                         al.addButton(withTitle: "Restart Process")
+                                        al.addButton(withTitle: "Go Back")
                                         al.addButton(withTitle: "Cancel")
                                         switch al.runModal() {
                                         case .alertFirstButtonReturn:
-                                            return .confirm
-                                        case .alertSecondButtonReturn:
-                                            errorX = "CREATE"
+                                            errorX = "EXTRACT"
                                             return .cancel
+                                        case .alertSecondButtonReturn:
+                                            return .confirm
                                         default:
                                             return .cancel
                                         }
@@ -114,15 +114,15 @@ struct CreateInstallerView: View {
                                         al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
                                         al.messageText = "Would you like to try again?"
                                         al.showsHelp = false
-                                        al.addButton(withTitle: "Cancel Process")
                                         al.addButton(withTitle: "Restart Process")
+                                        al.addButton(withTitle: "Go Back")
                                         al.addButton(withTitle: "Cancel")
                                         switch al.runModal() {
                                         case .alertFirstButtonReturn:
-                                            return .confirm
-                                        case .alertSecondButtonReturn:
-                                            errorX = "CREATE"
+                                            errorX = "EXTRACT"
                                             return .cancel
+                                        case .alertSecondButtonReturn:
+                                            return .confirm
                                         default:
                                             return .cancel
                                         }
@@ -152,15 +152,15 @@ struct CreateInstallerView: View {
                                         al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
                                         al.messageText = "Would you like to try again?"
                                         al.showsHelp = false
-                                        al.addButton(withTitle: "Cancel Process")
                                         al.addButton(withTitle: "Restart Process")
+                                        al.addButton(withTitle: "Go Back")
                                         al.addButton(withTitle: "Cancel")
                                         switch al.runModal() {
                                         case .alertFirstButtonReturn:
-                                            return .confirm
-                                        case .alertSecondButtonReturn:
-                                            errorX = "CREATE"
+                                            errorX = "EXTRACT"
                                             return .cancel
+                                        case .alertSecondButtonReturn:
+                                            return .confirm
                                         default:
                                             return .cancel
                                         }
