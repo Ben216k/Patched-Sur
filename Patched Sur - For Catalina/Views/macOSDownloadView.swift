@@ -17,6 +17,8 @@ struct macOSDownloadView: View {
     let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
     @Binding var p: PSPage
     @Binding var installInfo: InstallAssistant?
+    @Binding var onExit: () -> (BackMode)
+    @State var alert: Alert?
     
     var body: some View {
         VStack {
@@ -48,6 +50,31 @@ struct macOSDownloadView: View {
                                                 }
                                                 return
                                             }
+                                            DispatchQueue.main.async {
+                                                onExit = {
+                                                    let al = NSAlert()
+                                                    al.informativeText = "The macOS Big Sur is currently being downloaded so that it can be used later. This is a big download. Are you sure you want to go back?"
+                                                    al.messageText = "macOS is Downloading"
+                                                    al.showsHelp = false
+                                                    al.addButton(withTitle: "Cancel Download")
+                                                    al.addButton(withTitle: "Restart Download")
+                                                    al.addButton(withTitle: "Continue Download")
+                                                    switch al.runModal() {
+                                                    case .alertFirstButtonReturn:
+                                                        _ = try? call("killall curl")
+    //                                                    _ = try? call("sleep 0.25")
+    //                                                    downloadStatus = "Downloading Files..."
+                                                        return .confirm
+                                                    case .alertSecondButtonReturn:
+                                                        _ = try? call("killall curl")
+                                                        _ = try? call("sleep 0.25")
+                                                        errorX = ""
+                                                        return .cancel
+                                                    default:
+                                                        return .cancel
+                                                    }
+                                                }
+                                            }
                                             macOSDownload(installInfo: installInfo, size: { downloadSize = $0 }, next: {
                                                 print("Verifying installer location")
                                                 guard let path = (try? File(path: "~/.patched-sur/InstallAssistant.pkg"))?.path else {
@@ -63,9 +90,32 @@ struct macOSDownloadView: View {
                                                 }
                                                 installInfo = .init(url: path, date: "", buildNumber: "CustomPKG", version: installInfo!.version, minVersion: 0, orderNumber: 0, notes: nil)
                                                 withAnimation {
+                                                    onExit = { .confirm }
                                                     p = .volume
                                                 }
-                                            }, errorX: { errorX = $0 })
+                                            }, errorX: {
+                                                errorX = $0
+                                                DispatchQueue.main.async {
+                                                    onExit = {
+                                                        let al = NSAlert()
+                                                        al.informativeText = "macOS failed to download, however this could be solved by trying again. Would you like to attempt to download macOS again or go to the previous step?"
+                                                        al.messageText = "Would you like to restart the download?"
+                                                        al.showsHelp = false
+                                                        al.addButton(withTitle: "Restart Download")
+                                                        al.addButton(withTitle: "Go Back")
+                                                        al.addButton(withTitle: "Cancel")
+                                                        switch al.runModal() {
+                                                        case .alertFirstButtonReturn:
+                                                            errorX = ""
+                                                            return .cancel
+                                                        case .alertSecondButtonReturn:
+                                                            return .confirm
+                                                        default:
+                                                            return .cancel
+                                                        }
+                                                    }
+                                                }
+                                            })
                                         }
                                     }
                                     .padding(.vertical, 7)
@@ -77,6 +127,6 @@ struct macOSDownloadView: View {
                     VIError(errorX)
                 }
             }.fixedSize()
-        }
+        }.alert($alert)
     }
 }

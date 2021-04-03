@@ -20,6 +20,8 @@ struct DownloadKextsView: View {
     @State var currentSize = 10
     @Binding var hasKexts: Bool
     let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
+    @Binding var onExit: () -> (BackMode)
+    @State var alert: Alert?
     
     var body: some View {
         VStack {
@@ -49,12 +51,60 @@ struct DownloadKextsView: View {
                                             }
                                             return
                                         }
+                                        DispatchQueue.main.async {
+                                            onExit = {
+                                                let al = NSAlert()
+                                                al.informativeText = "The patches that will later be used by the patcher are currently downloading. Are you sure you want to go back?"
+                                                al.messageText = "The Patches Are Downloading"
+                                                al.showsHelp = false
+                                                al.addButton(withTitle: "Cancel Download")
+                                                al.addButton(withTitle: "Restart Download")
+                                                al.addButton(withTitle: "Continue Download")
+                                                switch al.runModal() {
+                                                case .alertFirstButtonReturn:
+                                                    _ = try? call("killall curl")
+//                                                    _ = try? call("sleep 0.25")
+//                                                    downloadStatus = "Downloading Files..."
+                                                    return .confirm
+                                                case .alertSecondButtonReturn:
+                                                    _ = try? call("killall curl")
+                                                    _ = try? call("sleep 0.25")
+                                                    downloadStatus = "Downloading Files..."
+                                                    return .cancel
+                                                default:
+                                                    return .cancel
+                                                }
+                                            }
+                                        }
                                         kextDownload(size: { downloadSize = $0 }, next: {
                                             hasKexts = true
                                             withAnimation {
+                                                onExit = { .confirm }
                                                 p = .package
                                             }
-                                        }, errorX: { downloadStatus = $0 })
+                                        }, errorX: {
+                                            downloadStatus = $0
+                                            DispatchQueue.main.async {
+                                                onExit = {
+                                                    let al = NSAlert()
+                                                    al.informativeText = "The patches failed to download, however this could be solved by trying again. Would you like to attempt to download the patches again or go to the previous step?"
+                                                    al.messageText = "Would you like to restart the download?"
+                                                    al.showsHelp = false
+                                                    al.addButton(withTitle: "Restart Download")
+                                                    al.addButton(withTitle: "Go Back")
+                                                    al.addButton(withTitle: "Cancel")
+                                                    switch al.runModal() {
+                                                    case .alertFirstButtonReturn:
+                                                        downloadStatus = "Downloading Files..."
+                                                        return .cancel
+                                                    case .alertSecondButtonReturn:
+                                                        return .confirm
+                                                    default:
+                                                        return .cancel
+                                                    }
+                                                }
+                                            }
+                                        })
                                     }
                                 }
 //                                .padding(.vertical, 7)
@@ -66,6 +116,7 @@ struct DownloadKextsView: View {
                 }
             }
             .fixedSize()
+            .alert($alert)
         }
     }
 }

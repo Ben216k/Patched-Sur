@@ -17,6 +17,8 @@ struct CreateInstallerView: View {
     @Binding var volume: String
     @Binding var installInfo: InstallAssistant?
     @State var isBeta = ""
+    @Binding var onExit: () -> (BackMode)
+    @State var alert: Alert?
     
     var body: some View {
         VStack {
@@ -46,8 +48,53 @@ struct CreateInstallerView: View {
                 }.inPad()
                 .btColor(.gray)
                 .onAppear {
+                    onExit = {
+                        let al = NSAlert()
+                        al.informativeText = "Are you sure you want to cancel making the patched macOS installer? You will need this to upgrade to macOS Big Sur, and it often takes a long time to make."
+                        al.messageText = "A macOS Installer is Being Made"
+                        al.showsHelp = false
+                        al.addButton(withTitle: "Cancel Process")
+                        al.addButton(withTitle: "Restart Process")
+                        al.addButton(withTitle: "Continue Process")
+                        switch al.runModal() {
+                        case .alertFirstButtonReturn:
+                            _ = try? call("killall bash")
+                            return .confirm
+                        case .alertSecondButtonReturn:
+                            _ = try? call("killall bash")
+                            _ = try? call("sleep 0.25")
+                            errorX = "EXTRACT"
+                            return .cancel
+                        default:
+                            return .cancel
+                        }
+                    }
                     DispatchQueue.global(qos: .background).async {
-                        extractPackage(installInfo: installInfo!, password: password, errorX: { errorX = $0 }, beta: { isBeta = $0 })
+                        extractPackage(installInfo: installInfo!, password: password, errorX: {
+                            errorX = $0
+                            DispatchQueue.main.async {
+                                if errorX != "CREATE" {
+                                    onExit = {
+                                        let al = NSAlert()
+                                        al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
+                                        al.messageText = "Would you like to try again?"
+                                        al.showsHelp = false
+                                        al.addButton(withTitle: "Cancel Process")
+                                        al.addButton(withTitle: "Restart Process")
+                                        al.addButton(withTitle: "Cancel")
+                                        switch al.runModal() {
+                                        case .alertFirstButtonReturn:
+                                            return .confirm
+                                        case .alertSecondButtonReturn:
+                                            errorX = "CREATE"
+                                            return .cancel
+                                        default:
+                                            return .cancel
+                                        }
+                                    }
+                                }
+                            }
+                        }, beta: { isBeta = $0 })
                     }
                 }
             } else if errorX == "CREATE" {
@@ -58,7 +105,31 @@ struct CreateInstallerView: View {
                 .btColor(.gray)
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
-                        createInstallMedia(volume: volume, installInfo: installInfo!, password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
+                        createInstallMedia(volume: volume, installInfo: installInfo!, password: password, progressText: { progressText = $0 }, errorX: {
+                            errorX = $0
+                            if errorX != "PATCH" {
+                                DispatchQueue.main.async {
+                                    onExit = {
+                                        let al = NSAlert()
+                                        al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
+                                        al.messageText = "Would you like to try again?"
+                                        al.showsHelp = false
+                                        al.addButton(withTitle: "Cancel Process")
+                                        al.addButton(withTitle: "Restart Process")
+                                        al.addButton(withTitle: "Cancel")
+                                        switch al.runModal() {
+                                        case .alertFirstButtonReturn:
+                                            return .confirm
+                                        case .alertSecondButtonReturn:
+                                            errorX = "CREATE"
+                                            return .cancel
+                                        default:
+                                            return .cancel
+                                        }
+                                    }
+                                }
+                            }
+                        })
                     }
                 }
                 Text(progressText)
@@ -72,7 +143,31 @@ struct CreateInstallerView: View {
                 .btColor(.gray)
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
-                        patchInstaller(password: password, progressText: { progressText = $0 }, errorX: { errorX = $0 })
+                        patchInstaller(password: password, progressText: { progressText = $0 }, errorX: {
+                            errorX = $0
+                            DispatchQueue.main.async {
+                                if errorX != "DONE" {
+                                    onExit = {
+                                        let al = NSAlert()
+                                        al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
+                                        al.messageText = "Would you like to try again?"
+                                        al.showsHelp = false
+                                        al.addButton(withTitle: "Cancel Process")
+                                        al.addButton(withTitle: "Restart Process")
+                                        al.addButton(withTitle: "Cancel")
+                                        switch al.runModal() {
+                                        case .alertFirstButtonReturn:
+                                            return .confirm
+                                        case .alertSecondButtonReturn:
+                                            errorX = "CREATE"
+                                            return .cancel
+                                        default:
+                                            return .cancel
+                                        }
+                                    }
+                                }
+                            }
+                        })
                     }
                 }
                 Text(progressText)
@@ -83,6 +178,7 @@ struct CreateInstallerView: View {
                     .bold()
                     .onAppear {
                         withAnimation {
+                            onExit = { .confirm }
                             p = .done
                         }
                     }

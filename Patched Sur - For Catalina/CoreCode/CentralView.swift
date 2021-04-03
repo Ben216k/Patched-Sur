@@ -31,6 +31,8 @@ struct AllViews : View {
     @State var hovered: String?
     @State var hasKexts = false
     @State var showPass = false
+    @State var backConfirm: (() -> (BackMode)) = { .confirm }
+    @State var goTo = PSPage.main
     
     var body: some View {
         ZStack {
@@ -47,19 +49,25 @@ struct AllViews : View {
                                 .frame(width: compressed ? 10 : 15, height: compressed ? 10 : 15)
                                 .scaleEffect(compressed ? 1.2 : 1)
                         } onClick: {
-                            if progress == .credits {
-                                withAnimation {
-                                    progress = .main
-                                    compressed = false
+                            switch backConfirm() {
+                            case .confirm:
+                                backConfirm = { .confirm }
+                                if progress == .credits {
+                                    withAnimation {
+                                        progress = .main
+                                        compressed = false
+                                    }
+                                } else if progress == .volume {
+                                    withAnimation {
+                                        progress = .macOS
+                                    }
+                                } else if progress != .main {
+                                    withAnimation {
+                                        progress = PSPage(rawValue: progress.rawValue - 1)!
+                                    }
                                 }
-                            } else if progress == .volume {
-                                withAnimation {
-                                    progress = .macOS
-                                }
-                            } else if progress != .main {
-                                withAnimation {
-                                    progress = PSPage(rawValue: progress.rawValue - 1)!
-                                }
+                            case .cancel:
+                                return
                             }
                         }
                     }
@@ -91,15 +99,20 @@ struct AllViews : View {
 ////                    case 10:
 ////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
                     case .kexts:
-                        DownloadKextsView(p: $progress, hasKexts: $hasKexts).transition(.moveAway)
+                        DownloadKextsView(p: $progress, hasKexts: $hasKexts, onExit: $backConfirm).transition(.moveAway)
                     case .package:
-                        macOSDownloadView(p: $progress, installInfo: $installInfo)
+                        macOSDownloadView(p: $progress, installInfo: $installInfo, onExit: $backConfirm)
                     case .volume:
                         VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
                     case .create:
-                        CreateInstallerView(p: $progress, password: $password, showPass: $showPass, volume: $volume, installInfo: $installInfo).transition(.moveAway)
+                        CreateInstallerView(p: $progress, password: $password, showPass: $showPass, volume: $volume, installInfo: $installInfo, onExit: $backConfirm).transition(.moveAway)
                     case .done:
                         DoneView()
+                    case .random:
+                        Text("Restarting View...")
+                            .onAppear {
+                                progress = goTo
+                            }
 //                    default:
 //                        Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress.hashValue)").transition(.moveAway)
                     }
@@ -136,6 +149,7 @@ enum PSPage: Int {
     case volume = 8
     case create = 9
     case done = 10
+    case random = 100000
 }
 
 enum ReleaseTrack: String, CustomStringConvertible {
@@ -146,4 +160,9 @@ enum ReleaseTrack: String, CustomStringConvertible {
     var description: String {
         rawValue
     }
+}
+
+enum BackMode {
+    case cancel
+    case confirm
 }

@@ -13,6 +13,7 @@ struct EnterPasswordPrompt: View {
     let onSuccess: () -> ()
     var onCancel: (() -> ())?
     @State var xOffset = 0 as CGFloat
+    
     var body: some View {
         if show {
             ZStack {
