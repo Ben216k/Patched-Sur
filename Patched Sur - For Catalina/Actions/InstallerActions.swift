@@ -82,6 +82,7 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
 func patchInstaller(password: String, progressText: @escaping (String) -> (), errorX: (String) -> ()) {
     do {
         progressText("Copying Patches to Backup Directory")
+        _ = try? call("mkdir /usr/local/lib", p: password)
         _ = try? call("rm -rf ~/.patched-sur/__MACOSX", p: password)
         _ = try? call("rm -rf /usr/local/lib/__MACOSX", p: password)
         _ = try? call("rm -rf Patched-Sur-Patches*", p: password, at: "/usr/local/lib")
