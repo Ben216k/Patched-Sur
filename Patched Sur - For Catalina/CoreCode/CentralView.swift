@@ -29,7 +29,7 @@ struct AllViews : View {
     @State var appLocation = nil as String?
     @State var compressed = false
     @State var hovered: String?
-    @State var hasKexts = false
+    @State var hasKexts = true
     @State var showPass = false
     @State var backConfirm: (() -> (BackMode)) = { .confirm }
     @State var goTo = PSPage.main
@@ -61,11 +61,16 @@ struct AllViews : View {
                                     withAnimation {
                                         progress = .macOS
                                     }
+                                } else if progress == .package {
+                                    withAnimation {
+                                        progress = .macOS
+                                    }
                                 } else if progress != .main {
                                     withAnimation {
                                         progress = PSPage(rawValue: progress.rawValue - 1)!
                                     }
                                 }
+                                backConfirm = { .confirm }
                             case .cancel:
                                 return
                             }
@@ -103,7 +108,7 @@ struct AllViews : View {
                     case .package:
                         macOSDownloadView(p: $progress, installInfo: $installInfo, onExit: $backConfirm)
                     case .volume:
-                        VolumeSelector(p: $progress, volume: $volume).transition(.moveAway)
+                        VolumeSelector(p: $progress, volume: $volume, onExit: $backConfirm).transition(.moveAway)
                     case .create:
                         CreateInstallerView(p: $progress, password: $password, showPass: $showPass, volume: $volume, installInfo: $installInfo, onExit: $backConfirm).transition(.moveAway)
                     case .done:

@@ -14,6 +14,7 @@ struct VolumeSelector: View {
     @State var volumeList: [String]?
     @State var onVol = ""
     @State var alert: Alert?
+    @Binding var onExit: () -> (BackMode)
     
     var body: some View {
         VStack {
@@ -78,6 +79,7 @@ struct VolumeSelector: View {
                     .onAppear {
                         DispatchQueue.global(qos: .background).async {
                             volumeList = detectVolumes(onVol: { onVol = $0 })
+                            onExit = { .confirm }
                             if !(volumeList?.contains(volume) ?? true) {
                                 if (volumeList?.filter { $0.hasPrefix("Install macOS") }.count ?? 0) > 0 {
                                     volume = volumeList!.reversed().filter { $0.hasPrefix("Install macOS") }[0]

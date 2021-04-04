@@ -28,7 +28,7 @@ func kextDownload(size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
             }
         }
         print("Starting download of patches")
-        try call("curl -Lo ~/.patched-sur/Patched-Sur-Patches.zip \(AppInfo.patchesV.url)")
+        try call("curl -Lo ~/.patched-sur/Patched-Sur-Patches.zip \(AppInfo.patchesV.url) --speed-limit 0 --speed-time 10")
         print("Finished download.")
         next()
     } catch {
@@ -39,6 +39,7 @@ func kextDownload(size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
 // MARK: Download macOS
 
 func macOSDownload(installInfo: InstallAssistant?, size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
+    var timedOut = false
     print("Cleaning up before macOS download")
     _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
     _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
@@ -60,7 +61,7 @@ func macOSDownload(installInfo: InstallAssistant?, size: (Int) -> (), next: () -
                                                     &assertionID )
         print("Starting download of macOS \(installInfo!.version)")
         if success == kIOReturnSuccess {
-            try call("curl -L -o InstallAssistant.pkg \(installInfo!.url)", at: "~/.patched-sur")
+            try call("curl -L -o InstallAssistant.pkg \(installInfo!.url) --speed-limit 0 --speed-time 10", at: "~/.patched-sur")
             print("Finished download.")
             print("Releasing sleep.")
             success = IOPMAssertionRelease(assertionID)
@@ -75,6 +76,10 @@ func macOSDownload(installInfo: InstallAssistant?, size: (Int) -> (), next: () -
         print("Continuing.")
         next()
     } catch {
-        errorX(error.localizedDescription)
+        if timedOut, let error = error as? ShellOutError {
+            errorX("Error 1x10\nMessage: \"Request timed out after losing connection.\"\nNote: This is not a patcher bug, but rather a problem with your WiFi connection.\nOutput:\n\(error.output)")
+        } else {
+            errorX(error.localizedDescription)
+        }
     }
 }
