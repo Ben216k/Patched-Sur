@@ -12,7 +12,7 @@ struct PSSettings: View {
     @State var hovered: String?
     @State var showPassPrompt = false
     @State var passAction: () -> () = {}
-    @State var password = ""
+    @Binding var password: String
     @State var showKextLogs = false
     var body: some View {
         ZStack {

@@ -14,6 +14,7 @@ import UserNotifications
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var atLocation: Int
+    @State var password = ""
     let releaseTrack: String
     var model: String
     var buildNumber: String
@@ -28,13 +29,13 @@ struct ContentView: View {
                 UpdateView(at: $atLocation, buildNumber: buildNumber)
             case 2:
                 Color.white.opacity(0.001)
-                PatchKextsView(at: $atLocation)
+                PatchKextsView(at: $atLocation, password: $password)
             case 3:
                 Color.white.opacity(0.001)
                 AboutMyMac(releaseTrack: releaseTrack, model: model, buildNumber: buildNumber, at: $atLocation)
             case 4:
                 Color.white.opacity(0.001)
-                PSSettings(at: $atLocation)
+                PSSettings(at: $atLocation, password: $password)
             default:
                 Color.white.opacity(0.001)
                 VStack {
@@ -130,5 +131,32 @@ struct MainView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+extension AnyTransition {
+    static var moveAway: AnyTransition {
+        return .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
+    }
+    static var moveAway2: AnyTransition {
+        return AnyTransition.asymmetric(insertion: AnyTransition.modifier(active: InsertItem(a: false), identity: InsertItem(a: true)), removal: AnyTransition.modifier(active: DeleteItem(a: false), identity: DeleteItem(a: true)))
+    }
+}
+
+struct InsertItem: ViewModifier {
+    let a: Bool
+    func body(content: Content) -> some View {
+        content
+            .offset(x: a ? 0 : 200, y: 0)
+            .opacity(a ? 1 : 0)
+    }
+}
+
+struct DeleteItem: ViewModifier {
+    let a: Bool
+    func body(content: Content) -> some View {
+        content
+            .offset(x: a ? 0 : -100, y: 0)
+            .opacity(a ? 1 : 0)
     }
 }

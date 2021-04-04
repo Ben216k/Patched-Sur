@@ -59,7 +59,14 @@ struct EnterPasswordPrompt: View {
                                     SecureField("Password", text: $password)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .onAppear {
-                                            password = ""
+                                            if (try? call("echo Correct Password", p: password)) != nil {
+                                                onSuccess()
+                                                withAnimation {
+                                                    show = false
+                                                }
+                                            } else {
+                                                password = ""
+                                            }
                                         }
                                 }
                             }.padding(.bottom, 12)
@@ -73,7 +80,7 @@ struct EnterPasswordPrompt: View {
                                     }
                                 }
                                 NativeButton("Continue", keyEquivalent: .return) {
-                                    if (try? call("echo Correct Password!", p: password)) != nil {
+                                    if (try? call("echo Correct Password", p: password)) != nil {
                                         onSuccess()
                                         withAnimation {
                                             show = false

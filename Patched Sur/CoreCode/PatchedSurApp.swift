@@ -101,14 +101,15 @@ struct PatchedSurApp: App {
                 } label: {
                     Text("Updating macOS")
                 }
-            }
-            CommandGroup(after: CommandGroupPlacement.help) {
                 Button {
                     NSWorkspace.shared.open(URL(string: "https://bensova.gitbook.io/big-sur/postinstall-after-upgrade/updating-the-patcher-app")!)
                 } label: {
                     Text("Updating the patcher")
                 }
             }
+//            CommandGroup(after: CommandGroupPlacement.help) {
+//                
+//            }
         }
 //        SwiftUI.Settings {
 //            Settings(releaseTrack: "Release", at: .constant(-10), hovered: hovered)

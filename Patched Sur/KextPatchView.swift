@@ -49,19 +49,25 @@ struct ButtonsView: View {
                 do {
                     print("Making sure that the micropatcher is actually in the right directory.")
                     _ = try? call("mv ~/.patched-sur/big-sur-micropatcher ~/.patched-sur/big-sur-micropatcher")
-                    print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta\"...")
-                    if (try? call("[[ -d '/Volumes/Install macOS Big Sur Beta' ]]")) != nil {
+                    print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta/KextPatches\"...")
+                    if (try? call("[[ -d '/Volumes/Install macOS Big Sur Beta/KextPatches' ]]")) != nil {
                         print("Found installer at Beta path")
                         installerName = "/Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta"
                         p = 2
                         return
                     }
-                    print("Checking for USB at \"/Volumes/Install macOS Big Sur\"")
-                    if (try? call("[[ -d '/Volumes/Install macOS Big Sur' ]]")) != nil {
+                    print("Checking for USB at \"/Volumes/Install macOS Big Sur/KextPatches\"")
+                    if (try? call("[[ -d '/Volumes/Install macOS Big Sur/KextPatches' ]]")) != nil {
                         print("Found installer at Regular path")
                         installerName = "/Volumes/Install\\ macOS\\ Big\\ Sur"
                         p = 2
                         return
+                    }
+                    print("Checking for kexts at \"/usr/local/lib/Patched-Sur-Patches/KextPatches")
+                    if (try? call("[[ -d /usr/local/lib/Patched-Sur-Patches/KextPatches ]]")) != nil {
+                        print("Found pre-downloaded kexts!")
+                        installerName = "/usr/local/lib/Patched-Sur-Patches"
+                        p = 2
                     }
                     print("Checking for kexts at \"~/.patched-sur/big-sur-micropatcher/payloads/kexts\"")
                     if (try? call("[[ -d ~/.patched-sur/big-sur-micropatcher/payloads/kexts ]]")) != nil {
@@ -80,7 +86,7 @@ struct ButtonsView: View {
                     print("Requesting user to plug back in the usb drive.")
                     p = -1
                 }
-            }, text: "Detecting Volumes")
+            }, text: "Detecting Patches")
         case -1:
             VStack {
                 DoubleButtonView(first: {

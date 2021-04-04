@@ -39,7 +39,6 @@ func kextDownload(size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
 // MARK: Download macOS
 
 func macOSDownload(installInfo: InstallAssistant?, size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
-    var timedOut = false
     print("Cleaning up before macOS download")
     _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
     _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
@@ -76,10 +75,6 @@ func macOSDownload(installInfo: InstallAssistant?, size: (Int) -> (), next: () -
         print("Continuing.")
         next()
     } catch {
-        if timedOut, let error = error as? ShellOutError {
-            errorX("Error 1x10\nMessage: \"Request timed out after losing connection.\"\nNote: This is not a patcher bug, but rather a problem with your WiFi connection.\nOutput:\n\(error.output)")
-        } else {
-            errorX(error.localizedDescription)
-        }
+        errorX(error.localizedDescription)
     }
 }
