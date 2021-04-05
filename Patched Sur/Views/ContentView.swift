@@ -47,13 +47,15 @@ struct ContentView: View {
                     }
                 }.frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
             }
-            VStack {
-                Spacer()
-                HStack {
+            if atLocation != 0 {
+                VStack {
                     Spacer()
-                    Text("v\(AppInfo.version) (\(AppInfo.build))")
-                        .font(.caption)
-                        .padding()
+                    HStack {
+                        Spacer()
+                        Text("v\(AppInfo.version) (\(AppInfo.build))")
+                            .font(.caption)
+                            .padding()
+                    }
                 }
             }
         }.edgesIgnoringSafeArea(.all)
@@ -99,31 +101,43 @@ struct MainView: View {
                 } onClick: {
                     NSWorkspace.shared.open("https://github.com/BenSova/Patched-Sur")
                 }
-                VIButton(id: "INFO", h: $hovered) {
-                    Image(systemName: "info.circle")
-                } onClick: {
-                    at = 3
-                }
                 .padding(.trailing, 30)
-            }.padding(.top, 40)
+            }.padding(.top, 40).frame(width: 600, alignment: .center)
             Spacer()
-            VStack(alignment: .leading, spacing: 5) {
-                VISimpleCell(t: "Update macOS", d: "Go from your current version of macOS to a newer one,\nwhere there's something new.", s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
-                    at = 1
-                }
-                VISimpleCell(t: "Patch Kexts", d: "Kexts provide macOS with it's full functionality. So that\neverything works like it should.", s: "doc.circle", id: "KEXTS", h: $hovered) {
-                    if !model.hasPrefix("iMac14,") {
-                        at = 2
-                    } else {
-                        let errorAlert = NSAlert()
-                        errorAlert.alertStyle = .informational
-                        errorAlert.informativeText = "You don't need to patch the kexts on Late 2013 iMacs. Big Sur is already running at full functionality."
-                        errorAlert.messageText = "Patch Kexts Unnecessary"
-                        errorAlert.runModal()
+            HStack {
+                VStack {
+                    VStack(alignment: .leading, spacing: 7) {
+                        VISimpleCell(t: "Update macOS", d: "Go from your current version of macOS to a newer one,where there's something new.", s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
+                            at = 1
+                        }
+                        VISimpleCell(t: "Patch Kexts", d: "Kexts provide macOS with it's full functionality. So that everything works like it should.", s: "doc.circle", id: "KEXTS", h: $hovered) {
+                            if !model.hasPrefix("iMac14,") {
+                                at = 2
+                            } else {
+                                let errorAlert = NSAlert()
+                                errorAlert.alertStyle = .informational
+                                errorAlert.informativeText = "You don't need to patch the kexts on Late 2013 iMacs. Big Sur is already running at full functionality."
+                                errorAlert.messageText = "Patch Kexts Unnecessary"
+                                errorAlert.runModal()
+                            }
+                        }
+                        VISimpleCell(t: "Settings", d: "Disable animations, enable graphics switching, show logs and maybe more.", s: "gearshape", id: "SETINGS", h: $hovered) {
+                            at = 4
+                        }
                     }
                 }
-                VISimpleCell(t: "Settings", d: "Disable animations, enable graphics switching, show\nlogs from Patch Kexts, and maybe more.", s: "gearshape", id: "ABOUT", h: $hovered) {
-                    at = 4
+                VStack {
+                    VStack(alignment: .leading, spacing: 7) {
+                        VISimpleCell(t: "Create Installer", d: "Make a patched macOS Big Sur installer USB drive that can (re)install macOS and more.", s: "externaldrive", id: "CREATEINSTALLER", h: $hovered) {
+                            presentAlert(m: "Silly Beta Tester", i: "You don't get this until later!")
+                        }
+                        VISimpleCell(t: "Install Recovery", d: "Add a recovery volume (it will not map to CMD-R, use Option) for the just in case moments.", s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
+                            presentAlert(m: "Silly Beta Tester", i: "You don't get this until later!")
+                        }
+                        VISimpleCell(t: "About This Mac", d: "Show info about your mac without the serial number. Good for showing off your success.", s: "info.circle", id: "ABOUT", h: $hovered) {
+                            at = 3
+                        }
+                    }
                 }
             }.padding(.horizontal, 40)
             .padding(.bottom)
