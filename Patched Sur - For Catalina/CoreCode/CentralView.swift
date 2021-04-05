@@ -29,7 +29,7 @@ struct AllViews : View {
     @State var appLocation = nil as String?
     @State var compressed = false
     @State var hovered: String?
-    @State var hasKexts = true
+    @State var hasKexts = false
     @State var showPass = false
     @State var backConfirm: (() -> (BackMode)) = { .confirm }
     @State var goTo = PSPage.main
@@ -98,17 +98,17 @@ struct AllViews : View {
                     case .verify:
                         MacCompatibility(p: $progress).transition(.moveAway)
                     case .track:
-                        ReleaseTrackView(track: $releaseTrack, p: $progress).transition(.moveAway)
+                        ReleaseTrackView(track: $releaseTrack, p: $progress, isPost: false).transition(.moveAway)
                     case .macOS:
                         macOSConfirmView(p: $progress, installInfo: $installInfo, track: $releaseTrack)
 ////                    case 10:
 ////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
                     case .kexts:
-                        DownloadKextsView(p: $progress, hasKexts: $hasKexts, onExit: $backConfirm).transition(.moveAway)
+                        DownloadKextsView(p: $progress, hasKexts: $hasKexts, onExit: $backConfirm, isPost: false).transition(.moveAway)
                     case .package:
-                        macOSDownloadView(p: $progress, installInfo: $installInfo, onExit: $backConfirm)
+                        macOSDownloadView(p: $progress, installInfo: $installInfo, onExit: $backConfirm, isPost: false)
                     case .volume:
-                        VolumeSelector(p: $progress, volume: $volume, onExit: $backConfirm).transition(.moveAway)
+                        VolumeSelector(p: $progress, volume: $volume, onExit: $backConfirm, isPost: false).transition(.moveAway)
                     case .create:
                         CreateInstallerView(p: $progress, password: $password, showPass: $showPass, volume: $volume, installInfo: $installInfo, onExit: $backConfirm).transition(.moveAway)
                     case .done:

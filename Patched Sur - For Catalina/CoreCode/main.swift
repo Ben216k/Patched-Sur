@@ -20,7 +20,13 @@ print("Making sure that 100% we have what we want...")
 _ = try? call("mkdir ~/.patched-sur", at: ".")
 #endif
 print("")
+print("App Path: \(Bundle.main.bundlePath)")
 print("Resource Path: \(Bundle.main.resourcePath!)")
+if let sharedPath = Bundle.main.sharedSupportPath {
+    print("SharedSupport Path: \(sharedPath)")
+} else {
+    print("SharedSupport unavailable, patches will be downloaded later.")
+}
 print("")
 print("Starting App Delegate.")
 AppDelegate.main()

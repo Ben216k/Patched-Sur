@@ -147,17 +147,12 @@ extension Color {
 final class AppInfo {
     static let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     static let build = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
-    static let micropatcher = { () -> String in
-//        print("Looking for latest Micropatcher version...")
-//        guard let micropatchers = try? MicropatcherRequirements(fromURL: "https://bensova.github.io/patched-sur/micropatcher.json") else {
-//            print("No versions found, defaulting to v0.5.0")
-//            return "0.5.0"
-//        }
-//        print("Found Micropatcher List!")
-//        let micropatcher = micropatchers.filter { $0.patcher <= Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)! }.last!
-//        print("Detected Micropatcher Version \(micropatcher.version)")
-//        return micropatcher.version
-        return "0.5.1"
+    static let patchesV = { () -> PSPatchV in
+        guard let patches = try? PSPatchVs(fromURL: "https://bensova.github.io/patched-sur/patches.json") else {
+            return .init(version: "fcd8a3b", compatible: 70, url: "https://github.com/BenSova/Patched-Sur-Patches/archive/refs/tags/fcd8a3b.zip")
+        }
+        let patche = patches.filter { $0.compatible <= Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)! }.last!
+        return patche
     }()
     static var safe = false
     static var debug = false

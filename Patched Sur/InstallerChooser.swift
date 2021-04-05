@@ -28,7 +28,7 @@ struct InstallerChooser: View {
                     .padding()
                     .onAppear {
                         do {
-                            fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)
+                            fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json")!)
                             fetchedInstallers!.sort { $0.orderNumber > $1.orderNumber }
                             current = try? .init(try File(path: "~/.patched-sur/InstallInfo.txt").readAsString())
                         } catch {
@@ -89,22 +89,18 @@ struct InstallerChooser: View {
                 }
             }
             Button {
-                if track == .publicbeta {
+                if track == .release {
                     track = .developer
-                } else if track == .release {
-                    track = .publicbeta
                 } else {
                     track = .release
                 }
                 let oldInstallers = fetchedInstallers
-                UserDefaults.standard.setValue(track == .publicbeta ? "Developer" : (track == .release ? "Public Beta" : "Release"), forKey: "UpdateTrack")
+                UserDefaults.standard.setValue(track == .release ? "Developer" : "Release", forKey: "UpdateTrack")
                 do {
-                    fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)
+                    fetchedInstallers = try .init(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json")!)
                     fetchedInstallers!.sort { $0.orderNumber > $1.orderNumber }
                 } catch {
                     if track == .developer {
-                        track = .publicbeta
-                    } else if track == .publicbeta {
                         track = .release
                     } else {
                         track = .developer
@@ -119,7 +115,7 @@ struct InstallerChooser: View {
             } label: {
                 ZStack {
                     hovered == "CHANGE-TRACK" ? Color.secondary.opacity(0.7).cornerRadius(10) : Color.secondary.cornerRadius(10)
-                    Text("\(track == .developer ? "Developer" : (track == .publicbeta ? "Public Beta" : "Release"))")
+                    Text("\(track == .developer ? "Developer" : "Release")")
                         .font(.subheadline)
                         .fontWeight(.regular)
                         .foregroundColor(.white)

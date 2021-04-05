@@ -22,12 +22,13 @@ struct DownloadKextsView: View {
     let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
     @Binding var onExit: () -> (BackMode)
     @State var alert: Alert?
+    let isPost: Bool
     
     var body: some View {
         VStack {
             Text("Downloading Patches")
                 .font(.system(size: 15)).bold()
-            Text("The set vars tool allows you to properly setup the NVRAM and SIP status, so that Big Sur lets you boot into it. This is the last tool you will use before installing Big Sur. The kext patches allow you to use hardware like WiFi and USB ports, so that your Mac stays at its full functionality.")
+            Text("The set vars tool allows you to properly setup the NVRAM and SIP status, so that Big Sur lets you boot into it. \(!isPost ? "This is the last tool you will use before installing Big Sur." : "You will only need this if you haven't run it before on that Mac or if you did a PRAM reset.") The kext patches allow you to use hardware like WiFi and USB ports, so that your Mac stays at its full functionality.")
                 .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
             ZStack {
@@ -42,10 +43,15 @@ struct DownloadKextsView: View {
                     VIButton(id: "DOWNLOAD-NEVER", h: .constant("HAHAH")) {
                         HStack {
                             Image("DownloadArrow")
-                            Text("Downloading Files...")
+                            Text("Downloading Files")
                                 .onAppear {
                                     DispatchQueue.global(qos: .background).async {
-                                        if hasKexts == true {
+                                        if hasKexts == true || (try? call("[[ -e '\(Bundle.main.sharedSupportPath ?? "SHSDJLSHDFJKHDS")/Patched-Sur-Patches.zip' ]]")) != nil {
+                                            withAnimation {
+                                                p = .package
+                                            }
+                                            return
+                                        } else if let patcV = try? call("cat /usr/local/lib/Patched-Sur-Patches/pspVersion"), patcV == AppInfo.patchesV.version {
                                             withAnimation {
                                                 p = .package
                                             }

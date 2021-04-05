@@ -24,11 +24,17 @@ print("Running Either Normally or From Terminal in RELEASE configuration.")
 #endif
 print("")
 
-print("Checking if we want to fix depercated values...")
+print("Checking if we want to fix v0.1.0 deprecated values...")
 if (try? call("[[ -e ~/.patched-sur/track.txt ]]", at: ".")) != nil {
     print("We're switching to the new stuff!")
     UserDefaults.standard.setValue((try? call("cat ~/.patched-sur/track.txt")) ?? "Release", forKey: "UpdateTrack")
     _ = try? call("rm -rf ~/.patched-sur/track.txt", at: ".")
+}
+
+print("Checking if we want to fix v0.2.0 deprecated values...")
+if UserDefaults.standard.string(forKey: "UpdateTrack") == "Public Beta" || UserDefaults.standard.string(forKey: "UpdateTrack") == "Developer" {
+    print("We're switching to the new stuff!")
+    UserDefaults.standard.setValue("Beta", forKey: "UpdateTrack")
 }
 
 CommandLine.arguments.forEach { arg in

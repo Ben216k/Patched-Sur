@@ -32,7 +32,9 @@ struct PatchKextsView: View {
                             .font(topCompress ? Font.system(size: 11).weight(.medium) : Font.body)
                             .padding(.leading, -5)
                     } onClick: {
-                        at = 0
+                        withAnimation {
+                            at = 0
+                        }
                     }.inPad()
                 }.padding(.top, 40)
                 Spacer()

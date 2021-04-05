@@ -21,17 +21,17 @@ struct macOSConfirmView: View {
         VStack {
             Text("macOS Big Sur Version")
                 .font(.system(size: 15)).bold()
-            #if DEBUG
-            Text("While in most cases you'll want the latest version of macOS Big Sur, you might for whatever reason want an older version, and you can configure that here. If you want to use a pre-downloaded InstallAssistant.pkg or installer app, you can by clicking browse. If you just want to download and use the latest version of macOS, just click Download. macOS is automatically downloaded in an instant depending on the track you select.")
-                .multilineTextAlignment(.center)
-                .padding(.vertical)
-            #else
             Text("While in most cases you'll want the latest version of macOS Big Sur, you might for whatever reason want an older version, and you can configure that here. If you want to use a pre-downloaded InstallAssistant.pkg or installer app, you can by clicking browse. If you just want to download and use the latest version of macOS, just click Download.")
                 .multilineTextAlignment(.center)
                 .padding(.vertical)
-            #endif
-            if installers.count > 0 {
-                if installInfo == nil {
+            if installers.count > 0 || errorX != "" {
+                if errorX != "" {
+                    Text("The available macOS installer list could not be accessed. This is probably because WiFi is unavailable. You must use a pre-downloaded macOS installer.")
+                        .multilineTextAlignment(.center)
+                        .padding(.top, -15)
+                        .padding(.bottom, 5)
+                }
+                if installInfo == nil && installers.count > 0 {
                     VIButton(id: "DOWNLOAD", h: $hovered) {
                         Image("DownloadArrow")
                         Text("Download macOS \(installers[0].version)")
@@ -41,7 +41,7 @@ struct macOSConfirmView: View {
                             p = .kexts
                         }
                     }.inPad()
-                } else {
+                } else if installInfo != nil {
                     HStack {
                         VIButton(id: "USE", h: $hovered) {
                             Image("ForwardArrowCircle")
@@ -52,15 +52,17 @@ struct macOSConfirmView: View {
                             }
                         }.inPad()
                         .btColor(.init("GreenTint"))
-                        VIButton(id: "DOWNLOAD", h: $hovered) {
-                            Image("DownloadArrow")
-                            Text("Redownload")
-                        } onClick: {
-                            installInfo = installers[0]
-                            withAnimation {
-                                p = .kexts
-                            }
-                        }.inPad()
+                        if errorX == "" {
+                            VIButton(id: "DOWNLOAD", h: $hovered) {
+                                Image("DownloadArrow")
+                                Text("Redownload")
+                            } onClick: {
+                                installInfo = installers[0]
+                                withAnimation {
+                                    p = .kexts
+                                }
+                            }.inPad()
+                        }
                     }
                 }
                 HStack {
@@ -108,8 +110,6 @@ struct macOSConfirmView: View {
                         .useHoverAccent()
                     }
                 }
-            } else if errorX != "" {
-                VIError(errorX)
             } else {
                 VIButton(id: "SOMETHING", h: .constant("12")) {
                     Image("DownloadArrow")
@@ -133,7 +133,9 @@ struct macOSConfirmView: View {
                         }
                         installers = fetchInstallers(errorX: { errorX = $0 }, track: track)
                         print("Checking if the pre-downloaded installer is recent...")
-                        if installInfo?.version != installers[0].version { installInfo = nil }
+                        if installers.count > 0 {
+                            if installInfo?.version != installers[0].version { installInfo = nil }
+                        }
                     }
                 }
             }

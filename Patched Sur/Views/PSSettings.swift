@@ -14,6 +14,7 @@ struct PSSettings: View {
     @State var passAction: () -> () = {}
     @Binding var password: String
     @State var showKextLogs = false
+    
     var body: some View {
         ZStack {
             VStack {
@@ -25,7 +26,9 @@ struct PSSettings: View {
                         Image(systemName: "chevron.backward.circle")
                         Text("Back")
                     } onClick: {
-                        at = 0
+                        withAnimation {
+                            at = 0
+                        }
                     }.inPad()
                 }.padding(.top, 40)
                 ScrollView(showsIndicators: false) {

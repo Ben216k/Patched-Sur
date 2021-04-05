@@ -19,12 +19,13 @@ struct macOSDownloadView: View {
     @Binding var installInfo: InstallAssistant?
     @Binding var onExit: () -> (BackMode)
     @State var alert: Alert?
+    let isPost: Bool
     
     var body: some View {
         VStack {
             Text("Download macOS")
                 .font(.system(size: 15)).bold()
-            Text("Currently, macOS is being downloaded straight from Apple so that you can update your Mac. This is a full installer, so it's a 12 GB download. It'll take a while, so let it go and make sure that your internet connection is good. After this is done, you'll have to select a USB drive to use for the installer then Patched Sur will use this file make the installer USB.")
+            Text("Currently, macOS is being downloaded straight from Apple\(!isPost ? "so that you can update your Mac" : "so it can be put on the installer USB"). This is a full installer, so it's a 12 GB download. It'll take a while, so let it go and make sure that your internet connection is good. After this is done, you'll have to select a USB drive to use for the installer then Patched Sur will use this file make the installer USB.")
                 .padding(.vertical)
                 .multilineTextAlignment(.center)
             ZStack {
@@ -41,7 +42,7 @@ struct macOSDownloadView: View {
                                 })
                             HStack {
                                 Image("DownloadArrow")
-                                Text("Downloading macOS \(installInfo?.version ?? "")...")
+                                Text("Downloading macOS \(installInfo?.version ?? "")")
                                     .onAppear {
                                         DispatchQueue.global(qos: .background).async {
                                             if installInfo!.buildNumber.hasPrefix("Custom") {

@@ -73,7 +73,6 @@ struct UpdateView: View {
 
 enum ReleaseTrack: String, CustomStringConvertible {
     case release = "Release"
-    case publicbeta = "Public Beta"
     case developer = "Developer"
     
     var description: String { rawValue }
@@ -116,7 +115,7 @@ struct UpdateCheckerView: View {
                                 track = ReleaseTrack(rawValue: UserDefaults.standard.string(forKey: "UpdateTrack") ?? "Release") ?? .release
                                 print("Using update track \(track).")
                                 print("Pinging installer list to find the latest updates...")
-                                installers = try InstallAssistants(fromURL:  URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!)
+                                installers = try InstallAssistants(fromURL:  URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json")!)
                                 print("Filtering incompatible installers...")
                                 installers = installers!.filter { $0.minVersion <= AppInfo.build }
                                 print("Finding latest build...")

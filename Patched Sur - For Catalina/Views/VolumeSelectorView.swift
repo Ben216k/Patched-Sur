@@ -15,12 +15,13 @@ struct VolumeSelector: View {
     @State var onVol = ""
     @State var alert: Alert?
     @Binding var onExit: () -> (BackMode)
+    let isPost: Bool
     
     var body: some View {
         VStack {
             Text("Select A USB Volume")
                 .font(.system(size: 15)).bold()
-            Text("To install patched Big Sur initially, you need a USB install that will assist with the upgrade. This provides an environment where the patcher can be sure that everything will go properly. This USB needs to be 16GB or bigger. Internal partitions won't work, but external partitions do depending on the partition map (which will probably be correct with the GUID Partition Mac). If your drive doesn't show up, make sure it is formatted as MacOS Extended Journaled.")
+            Text("\(isPost ? "To install patched Big Sur initially, you need a USB install that will assist with the upgrade. This provides an environment where the patcher can be sure that everything will go properly." : "To create an installer, you need a volume to put the installer on.") This USB needs to be 16GB or bigger. Internal partitions won't work, but external partitions do depending on the partition map (which will probably be correct with the GUID Partition Map). If your drive doesn't show up, make sure it is formatted as MacOS Extended (Journaled).")
                 .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
             if volumeList == [] {

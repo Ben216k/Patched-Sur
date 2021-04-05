@@ -180,20 +180,3 @@ struct DownloadView: View {
         }
     }
 }
-
-struct ProgressBar: View {
-    @Binding var value: CGFloat
-    var length: CGFloat = 285
-    
-    var body: some View {
-        ZStack(alignment: .leading) {
-            Rectangle().frame(minWidth: length)
-                .opacity(0.3)
-                .foregroundColor(.accentColor)
-            
-            Rectangle().frame(width: min(value*length, length))
-                .foregroundColor(.accentColor)
-                .animation(.linear)
-        }.cornerRadius(10)
-    }
-}

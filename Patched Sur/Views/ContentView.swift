@@ -23,19 +23,22 @@ struct ContentView: View {
             switch atLocation {
             case 0:
 //                MainView(at: $atLocation, buildNumber: buildNumber, model: model)
-                MainView(at: $atLocation, model: model)
+                MainView(at: $atLocation, model: model).transition(.moveAway)
             case 1:
                 Color.white.opacity(0.001)
-                UpdateView(at: $atLocation, buildNumber: buildNumber)
+                UpdateView(at: $atLocation, buildNumber: buildNumber).transition(.moveAway)
             case 2:
                 Color.white.opacity(0.001)
-                PatchKextsView(at: $atLocation, password: $password)
+                PatchKextsView(at: $atLocation, password: $password).transition(.moveAway)
             case 3:
                 Color.white.opacity(0.001)
-                AboutMyMac(releaseTrack: releaseTrack, model: model, buildNumber: buildNumber, at: $atLocation)
+                AboutMyMac(releaseTrack: releaseTrack, model: model, buildNumber: buildNumber, at: $atLocation).transition(.moveAway)
             case 4:
                 Color.white.opacity(0.001)
-                PSSettings(at: $atLocation, password: $password)
+                PSSettings(at: $atLocation, password: $password).transition(.moveAway)
+            case 5:
+                Color.white.opacity(0.001)
+                CreateInstallerOverView(at: $atLocation).transition(.moveAway)
             default:
                 Color.white.opacity(0.001)
                 VStack {
@@ -47,7 +50,7 @@ struct ContentView: View {
                     }
                 }.frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
             }
-            if atLocation != 0 {
+            if atLocation != 0 && atLocation != 5 {
                 VStack {
                     Spacer()
                     HStack {
@@ -108,11 +111,15 @@ struct MainView: View {
                 VStack {
                     VStack(alignment: .leading, spacing: 7) {
                         VISimpleCell(t: "Update macOS", d: "Go from your current version of macOS to a newer one,where there's something new.", s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
-                            at = 1
+                            withAnimation {
+                                at = 1
+                            }
                         }
                         VISimpleCell(t: "Patch Kexts", d: "Kexts provide macOS with it's full functionality. So that everything works like it should.", s: "doc.circle", id: "KEXTS", h: $hovered) {
                             if !model.hasPrefix("iMac14,") {
-                                at = 2
+                                withAnimation {
+                                    at = 2
+                                }
                             } else {
                                 let errorAlert = NSAlert()
                                 errorAlert.alertStyle = .informational
@@ -122,14 +129,18 @@ struct MainView: View {
                             }
                         }
                         VISimpleCell(t: "Settings", d: "Disable animations, enable graphics switching, show logs and maybe more.", s: "gearshape", id: "SETINGS", h: $hovered) {
-                            at = 4
+                            withAnimation {
+                                at = 4
+                            }
                         }
                     }
                 }
                 VStack {
                     VStack(alignment: .leading, spacing: 7) {
                         VISimpleCell(t: "Create Installer", d: "Make a patched macOS Big Sur installer USB drive that can (re)install macOS and more.", s: "externaldrive", id: "CREATEINSTALLER", h: $hovered) {
-                            presentAlert(m: "Silly Beta Tester", i: "You don't get this until later!")
+                            withAnimation {
+                                at = 5
+                            }
                         }
                         VISimpleCell(t: "Install Recovery", d: "Add a recovery volume (it will not map to CMD-R, use Option) for the just in case moments.", s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
                             presentAlert(m: "Silly Beta Tester", i: "You don't get this until later!")

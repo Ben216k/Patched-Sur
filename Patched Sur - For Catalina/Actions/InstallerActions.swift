@@ -86,10 +86,15 @@ func patchInstaller(password: String, progressText: @escaping (String) -> (), er
         _ = try? call("rm -rf ~/.patched-sur/__MACOSX", p: password)
         _ = try? call("rm -rf /usr/local/lib/__MACOSX", p: password)
         _ = try? call("rm -rf Patched-Sur-Patches*", p: password, at: "/usr/local/lib")
-        try call("unzip ~/.patched-sur/Patched-Sur-Patches.zip -d /usr/local/lib", p: password, at: "/usr/local/lib")
+        if let sharedSupport = Bundle.main.sharedSupportPath, (try? call("[[ -e \(sharedSupport)/Patched-Sur-Patches.zip ]]")) != nil {
+            try call("unzip \(sharedSupport)/Patched-Sur-Patches.zip -d /usr/local/lib", p: password, at: "/usr/local/lib")
+        } else {
+            try call("unzip ~/.patched-sur/Patched-Sur-Patches.zip -d /usr/local/lib", p: password, at: "/usr/local/lib")
+        }
         try call("mv Patched-Sur-Patches-* Patched-Sur-Patches", p: password, at: "/usr/local/lib")
         _ = try? call("rm -rf ~/.patched-sur/__MACOSX", p: password)
         _ = try? call("rm -rf /usr/local/lib/__MACOSX", p: password)
+        _ = try? call("echo '\(AppInfo.patchesV.version)' > /usr/local/lib/Patched-Sur-Patches/pspVersion", p: password)
         progressText("Starting USB Patch")
         print("Killing MDS again...")
         _ = try? call("killall mds", p: password)
@@ -100,7 +105,11 @@ func patchInstaller(password: String, progressText: @escaping (String) -> (), er
         progressText("Copying Post-Install App")
         print("Copying Post-Install App")
         _ = try? call("rm -rf '/Applications/Patched Sur.app'")
-        try call("cp -rf '\(Bundle.main.path(forResource: "Patched Sur.app", ofType:nil)!)' '/Applications/Patched Sur.app'")
+        if let bundlePath = Bundle.main.path(forResource: "Patched Sur.app", ofType: nil) {
+            try call("cp -rf \"\(bundlePath)\" '/Applications/Patched Sur.app'")
+        }
+        _ = try? call("cp -a \"\(Bundle.main.path(forResource: "Patched Sur.app", ofType: nil) ?? Bundle.main.bundlePath)\" /Volumes/Install\\ macOS\\ Big\\ Sur/Patched\\ Sur.app")
+        _ = try? call("cp -a \"\(Bundle.main.path(forResource: "Patched Sur.app", ofType: nil) ?? Bundle.main.bundlePath)\" /Volumes/Install\\ macOS\\ Big\\ Sur\\ Beta/Patched\\ Sur.app")
         print("Successfully patched USB.")
         _ = try? call("sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist", p: password)
         _ = try? call("sudo launchctl enable system/com.apple.displaypolicyd", p: password)

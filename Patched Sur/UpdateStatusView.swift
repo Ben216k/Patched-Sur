@@ -91,76 +91,11 @@ struct UpdateStatusView: View {
                 let versionPieces = installInfo!.version.split(separator: " ")
                 NSWorkspace.shared.open(URL(string: installInfo!.notes ?? "https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-\(versionPieces[0].replacingOccurrences(of: ".", with: "_"))\(versionPieces.contains("Beta") || versionPieces.contains("RC") ? "-beta" : "")-release-notes")!)
             }.font(.caption)
-            ZStack {
-                Rectangle()
-                    .foregroundColor(Color.accentColor.opacity(0.3))
-                    .cornerRadius(10)
-                HStack(spacing: 0) {
-                    Text("Update Track")
-                        .padding(6)
-                        .padding(.leading, 4)
-                    Button {
-                        withAnimation {
-                            showMoreTracks.toggle()
-                        }
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(hovered != "RELEASE-TRACK" ? .accentColor : Color.accentColor.opacity(0.7))
-                                .cornerRadius(10)
-                            Text(releaseTrack.rawValue)
-                                .padding(6)
-                                .padding(.horizontal, 4)
-                                .foregroundColor(.white)
-                        }.fixedSize()
-                    }.buttonStyle(BorderlessButtonStyle())
-                    .onHover {
-                        hovered = $0 ? "RELEASE-TRACK" : nil
-                    }
-                    if showMoreTracks {
-                        Button {
-                            UserDefaults.standard.setValue(releaseTrack != .release ? "Release" : (releaseTrack != .publicbeta ? "Public Beta" : "Developer"), forKey: "UpdateTrack")
-                            showMoreTracks = false
-                            releaseTrack = releaseTrack != .release ? .release : (releaseTrack != .publicbeta ? .publicbeta : .developer)
-                            p = 0
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(hovered != "RELEASE-TRACK-2" ? .accentColor : Color.accentColor.opacity(0.7))
-                                    .cornerRadius(10)
-                                Text(releaseTrack != .release ? "Release" : (releaseTrack != .publicbeta ? "Public Beta" : "Developer"))
-                                    .padding(6)
-                                    .padding(.horizontal, 4)
-                                    .foregroundColor(.white)
-                            }.fixedSize()
-                        }.buttonStyle(BorderlessButtonStyle())
-                        .onHover {
-                            hovered = $0 ? "RELEASE-TRACK-2" : nil
-                        }
-                        .padding(.horizontal, 5)
-                        Button {
-                            UserDefaults.standard.setValue(releaseTrack != .developer ? "Developer" : (releaseTrack != .publicbeta ? "Public Beta" : "Release"), forKey: "UpdateTrack")
-                            showMoreTracks = false
-                            releaseTrack = releaseTrack != .developer ? .developer : (releaseTrack != .publicbeta ? .publicbeta : .release)
-                            p = 0
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .foregroundColor(hovered != "RELEASE-TRACK-3" ? .accentColor : Color.accentColor.opacity(0.7))
-                                    .cornerRadius(10)
-                                Text(releaseTrack != .developer ? "Developer" : (releaseTrack != .publicbeta ? "Public Beta" : "Release"))
-                                    .padding(6)
-                                    .padding(.horizontal, 4)
-                                    .foregroundColor(.white)
-                            }.fixedSize()
-                        }.buttonStyle(BorderlessButtonStyle())
-                        .onHover {
-                            hovered = $0 ? "RELEASE-TRACK-3" : nil
-                        }
-                    }
-                }
-            }.fixedSize().font(.caption)
-            
+            TextAndButtonView(t: "Update Track", b: releaseTrack == .developer ? "Beta" : "Release") {
+                UserDefaults.standard.setValue(releaseTrack == .developer ? "Release" : "Developer", forKey: "UpdateTrack")
+                releaseTrack = releaseTrack == .developer ? .release : .developer
+                p = 0
+            }.font(.caption)
 //            TextAndButtonView(t: "View Other", b: "macOS Versions") {
 //
 //            }.font(.caption)

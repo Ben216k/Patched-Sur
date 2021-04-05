@@ -70,7 +70,7 @@ func patchDaemon() {
             let track = ReleaseTrack(rawValue: UserDefaults.standard.string(forKey: "UpdateTrack") ?? "Release") ?? .release
             print("Using update track \(track).")
             print("Checking for macOS updates...")
-            if var macOSversions = try? InstallAssistants(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : (track == .publicbeta ? "Public" : "Release")).json")!) {
+            if var macOSversions = try? InstallAssistants(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json")!) {
                 print("Sorting the macOS versions...")
                 macOSversions = macOSversions.sorted { (first, second) -> Bool in
                     first.orderNumber > second.orderNumber
