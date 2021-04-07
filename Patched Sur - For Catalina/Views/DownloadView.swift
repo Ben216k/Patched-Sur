@@ -23,6 +23,8 @@ struct DownloadKextsView: View {
     @Binding var onExit: () -> (BackMode)
     @State var alert: Alert?
     let isPost: Bool
+    @Binding var installInfo: InstallAssistant?
+    @State var startedDownload = false
     
     var body: some View {
         VStack {
@@ -45,48 +47,76 @@ struct DownloadKextsView: View {
                             Image("DownloadArrow")
                             Text("Downloading Files")
                                 .onAppear {
-                                    DispatchQueue.global(qos: .background).async {
-                                        if hasKexts == true || (try? call("[[ -e '\(Bundle.main.sharedSupportPath ?? "SHSDJLSHDFJKHDS")/Patched-Sur-Patches.zip' ]]")) != nil {
-                                            withAnimation {
-                                                p = .package
-                                            }
-                                            return
-                                        } else if let patcV = try? call("cat /usr/local/lib/Patched-Sur-Patches/pspVersion"), patcV == AppInfo.patchesV.version {
-                                            withAnimation {
-                                                p = .package
-                                            }
-                                            return
-                                        }
-                                        DispatchQueue.main.async {
-                                            onExit = {
-                                                let al = NSAlert()
-                                                al.informativeText = "The patches that will later be used by the patcher are currently downloading. Are you sure you want to go back?"
-                                                al.messageText = "The Patches Are Downloading"
-                                                al.showsHelp = false
-                                                al.addButton(withTitle: "Cancel Download")
-                                                al.addButton(withTitle: "Restart Download")
-                                                al.addButton(withTitle: "Continue Download")
-                                                switch al.runModal() {
-                                                case .alertFirstButtonReturn:
-                                                    _ = try? call("killall curl")
-//                                                    _ = try? call("sleep 0.25")
-//                                                    downloadStatus = "Downloading Files..."
-                                                    return .confirm
-                                                case .alertSecondButtonReturn:
-                                                    _ = try? call("killall curl")
-                                                    _ = try? call("sleep 0.25")
-                                                    downloadStatus = "Downloading Files..."
-                                                    return .cancel
-                                                default:
-                                                    return .cancel
+                                    if startedDownload {
+                                        return
+                                    } else {
+                                        startedDownload = true
+                                    }
+                                    if hasKexts == true || (try? call("[[ -e '\(Bundle.main.sharedSupportPath ?? "SHSDJLSHDFJKHDS")/Patched-Sur-Patches.zip' ]]")) != nil {
+                                        withAnimation {
+                                            if installInfo!.buildNumber.hasPrefix("Custom") {
+                                                withAnimation {
+                                                    p = .volume
+                                                }
+                                            } else {
+                                                withAnimation {
+                                                    p = .package
                                                 }
                                             }
                                         }
+                                        return
+                                    } else if let patcV = try? call("cat /usr/local/lib/Patched-Sur-Patches/pspVersion"), patcV == AppInfo.patchesV.version {
+                                        withAnimation {
+                                            if installInfo!.buildNumber.hasPrefix("Custom") {
+                                                withAnimation {
+                                                    p = .volume
+                                                }
+                                            } else {
+                                                withAnimation {
+                                                    p = .package
+                                                }
+                                            }
+                                        }
+                                        return
+                                    }
+                                    onExit = {
+                                        let al = NSAlert()
+                                        al.informativeText = "The patches that will later be used by the patcher are currently downloading. Are you sure you want to go back?"
+                                        al.messageText = "The Patches Are Downloading"
+                                        al.showsHelp = false
+                                        al.addButton(withTitle: "Cancel Download")
+                                        al.addButton(withTitle: "Restart Download")
+                                        al.addButton(withTitle: "Continue Download")
+                                        switch al.runModal() {
+                                        case .alertFirstButtonReturn:
+                                            _ = try? call("killall curl")
+//                                                    _ = try? call("sleep 0.25")
+//                                                    downloadStatus = "Downloading Files..."
+                                            return .confirm
+                                        case .alertSecondButtonReturn:
+                                            _ = try? call("killall curl")
+                                            _ = try? call("sleep 0.25")
+                                            downloadStatus = "Downloading Files..."
+                                            return .cancel
+                                        default:
+                                            return .cancel
+                                        }
+                                    }
+                                    DispatchQueue(label: "DownloadKexts", qos: .userInteractive).async {
                                         kextDownload(size: { downloadSize = $0 }, next: {
                                             hasKexts = true
                                             withAnimation {
                                                 onExit = { .confirm }
-                                                p = .package
+                                                if installInfo!.buildNumber.hasPrefix("Custom") {
+                                                    withAnimation {
+                                                        p = .volume
+                                                    }
+                                                    return
+                                                } else {
+                                                    withAnimation {
+                                                        p = .package
+                                                    }
+                                                }
                                             }
                                         }, errorX: {
                                             downloadStatus = $0

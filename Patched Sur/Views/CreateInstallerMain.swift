@@ -99,7 +99,7 @@ struct CreateInstallerOverView: View {
 //////                    case 10:
 //////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
                     case .kexts:
-                        DownloadKextsView(p: $progress, hasKexts: $hasKexts, onExit: $backConfirm, isPost: true).transition(.moveAway)
+                        DownloadKextsView(p: $progress, hasKexts: $hasKexts, onExit: $backConfirm, isPost: true, installInfo: $installInfo).transition(.moveAway)
                     case .package:
                         macOSDownloadView(p: $progress, installInfo: $installInfo, onExit: $backConfirm, isPost: true)
                     case .volume:
@@ -113,8 +113,8 @@ struct CreateInstallerOverView: View {
                             .onAppear {
                                 progress = goTo
                             }
-                    default:
-                        Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress.hashValue)").transition(.moveAway)
+//                    default:
+//                        Text("Uh-oh Looks like you went to the wrong page. Error 0x\(progress.hashValue)").transition(.moveAway)
                     }
                 }
                 .padding(.bottom, 10)

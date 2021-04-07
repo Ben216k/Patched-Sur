@@ -219,7 +219,6 @@
 		769F37F22601A4DC007A1246 /* DownloadActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActions.swift; sourceTree = "<group>"; };
 		769F37F42601AF06007A1246 /* macOSDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSDownloadView.swift; sourceTree = "<group>"; };
 		76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerMain.swift; sourceTree = "<group>"; };
-		76A070E3261BD40A0002A304 /* Patched-Sur-Patches.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "Patched-Sur-Patches.zip"; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76A1D33A259933880032F7D9 /* CompatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatInfo.swift; sourceTree = "<group>"; };
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
@@ -326,7 +325,6 @@
 		7692E059251BFF9300C5FB9A = {
 			isa = PBXGroup;
 			children = (
-				76A070E3261BD40A0002A304 /* Patched-Sur-Patches.zip */,
 				76F6EED72552684A001508E8 /* README.md */,
 				76FEEFAC254F4DA80079CEFC /* Extra Files */,
 				7692E064251BFF9300C5FB9A /* Patched Sur - For Catalina */,

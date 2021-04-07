@@ -104,7 +104,7 @@ struct AllViews : View {
 ////                    case 10:
 ////                        InstallMethodView(method: $installMethod, p: $progress).transition(.moveAway)
                     case .kexts:
-                        DownloadKextsView(p: $progress, hasKexts: $hasKexts, onExit: $backConfirm, isPost: false).transition(.moveAway)
+                        DownloadKextsView(p: $progress, hasKexts: $hasKexts, onExit: $backConfirm, isPost: false, installInfo: $installInfo).transition(.moveAway)
                     case .package:
                         macOSDownloadView(p: $progress, installInfo: $installInfo, onExit: $backConfirm, isPost: false)
                     case .volume:

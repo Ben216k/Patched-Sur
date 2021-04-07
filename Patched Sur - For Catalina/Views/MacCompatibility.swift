@@ -58,7 +58,7 @@ struct VerifyMacView: View {
                         Image("DownloadArrow")
                         Text("Fetching Information")
                             .onAppear {
-                                DispatchQueue.global(qos: .background).async {
+                                DispatchQueue(label: "FetchCompat").async {
                                     downloadCompat(info: &info, known: &known, barProgress: { barProgress = $0 }, progress2: &progress2, errorX: &errorX)
                                 }
                             }
@@ -66,7 +66,7 @@ struct VerifyMacView: View {
                         Image("CheckCircle")
                         Text("Verifying Mac")
                             .onAppear {
-                                DispatchQueue.global(qos: .background).async {
+                                DispatchQueue(label: "VerifyMac").async {
                                     verifyCompat(barProgress: { barProgress = $0 }, problems: { problems.append($0) }, progress2: &progress2, errorX: &errorX, info: info)
                                 }
                             }

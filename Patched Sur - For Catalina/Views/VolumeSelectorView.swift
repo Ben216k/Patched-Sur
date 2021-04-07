@@ -78,7 +78,7 @@ struct VolumeSelector: View {
                     }.inPad()
                     .btColor(.gray)
                     .onAppear {
-                        DispatchQueue.global(qos: .background).async {
+                        DispatchQueue(label: "DetectVolumes", qos: .userInteractive).async {
                             volumeList = detectVolumes(onVol: { onVol = $0 })
                             onExit = { .confirm }
                             if !(volumeList?.contains(volume) ?? true) {

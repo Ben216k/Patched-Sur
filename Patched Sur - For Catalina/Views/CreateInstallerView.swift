@@ -69,7 +69,7 @@ struct CreateInstallerView: View {
                             return .cancel
                         }
                     }
-                    DispatchQueue.global(qos: .background).async {
+                    DispatchQueue(label: "ExtractPackage").async {
                         extractPackage(installInfo: installInfo!, password: password, errorX: {
                             errorX = $0
                             DispatchQueue.main.async {
@@ -104,7 +104,7 @@ struct CreateInstallerView: View {
                 }.inPad()
                 .btColor(.gray)
                 .onAppear {
-                    DispatchQueue.global(qos: .background).async {
+                    DispatchQueue(label: "CreateInstaller").async {
                         createInstallMedia(volume: volume, installInfo: installInfo!, password: password, progressText: { progressText = $0 }, errorX: {
                             errorX = $0
                             if errorX != "PATCH" {
@@ -142,7 +142,7 @@ struct CreateInstallerView: View {
                 }.inPad()
                 .btColor(.gray)
                 .onAppear {
-                    DispatchQueue.global(qos: .background).async {
+                    DispatchQueue(label: "PatchKexts").async {
                         patchInstaller(password: password, progressText: { progressText = $0 }, errorX: {
                             errorX = $0
                             DispatchQueue.main.async {
