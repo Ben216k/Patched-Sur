@@ -50,7 +50,7 @@ struct ContentView: View {
                     }
                 }.frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
             }
-            if atLocation != 0 && atLocation != 5 {
+            if atLocation != 0 && atLocation != 5 && atLocation != 1 {
                 VStack {
                     Spacer()
                     HStack {

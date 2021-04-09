@@ -13,6 +13,7 @@ func fetchInstallers(errorX: (String) -> (), track: ReleaseTrack) -> InstallAssi
     do {
         print("Fetching installers from 'https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json'")
         var installers = try InstallAssistants(fromURL: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json")
+        print("Fetched: \(installers.map { $0.version })")
         print("Filtering installer list for compatible versions")
         installers = installers.filter { $0.minVersion <= AppInfo.build }
         print("Sorting installer list")

@@ -5,7 +5,7 @@
 //  Created by Benjamin Sova on 10/31/20.
 //
 
-import SwiftUI
+import VeliaUI
 
 struct AboutMyMac: View {
     var systemVersion: String
@@ -16,6 +16,7 @@ struct AboutMyMac: View {
     var memory: String
     let buildNumber: String
     @Binding var at: Int
+    @State var hovered: String?
     
     var body: some View {
         ZStack {
@@ -31,46 +32,20 @@ struct AboutMyMac: View {
                     Text("GPU            ").font(.subheadline).bold() + Text(gpu)
                     Text("Memory     ").bold() + Text(memory) + Text("GB")
                     HStack {
-                        Button {
+                        VIButton(id: "HOME", h: $hovered) {
+                            Text("Back to Home")
+                                .foregroundColor(.white)
+                        } onClick: {
                             at = 0
-                        } label: {
-                            ZStack {
-                                if releaseTrack == "Public Beta" {
-                                    Rectangle().foregroundColor(.init("Blue"))
-                                } else if releaseTrack == "Developer" {
-                                    Rectangle().foregroundColor(.red)
-                                } else if releaseTrack == "Release" {
-                                    Rectangle().foregroundColor(.accentColor)
-                                }
-                                Text("Back to Home")
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                                    .padding(4)
-                                    .padding(.horizontal, 4)
-                            }.fixedSize()
-                            .cornerRadius(7.5)
-                        }
-                        .buttonStyle(BorderlessButtonStyle())
-                        Button {
+                        }.inPad()
+                        .btColor(releaseTrack == "Beta" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
+                        VIButton(id: "SOFTWARE", h: $hovered) {
+                            Text("Software Update")
+                                .foregroundColor(.white)
+                        } onClick: {
                             at = 1
-                        } label: {
-                            ZStack {
-                                if releaseTrack == "Public Beta" {
-                                    Rectangle().foregroundColor(.init("Blue"))
-                                } else if releaseTrack == "Developer" {
-                                    Rectangle().foregroundColor(.red)
-                                } else if releaseTrack == "Release" {
-                                    Rectangle().foregroundColor(.accentColor)
-                                }
-                                Text("Software Update")
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                                    .padding(4)
-                                    .padding(.horizontal, 4)
-                            }.fixedSize()
-                            .cornerRadius(7.5)
-                        }
-                        .buttonStyle(BorderlessButtonStyle())
+                        }.inPad()
+                        .btColor(releaseTrack == "Beta" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
                     }.padding(.top, 10)
                 }.font(.subheadline)
                 .foregroundColor(.white)
@@ -115,19 +90,13 @@ struct SideImageView: View {
     let releaseTrack: String
     let scale: CGFloat
     var body: some View {
-        if releaseTrack == "Public Beta" {
+        if releaseTrack == "Beta" || releaseTrack == "Developer" {
             Image("BigSurLake")
                 .resizable()
                 .scaledToFit()
                 .frame(width: scale, height: scale)
                 .padding()
-        } else if releaseTrack == "Developer" {
-            Image("BigSurSideShot")
-                .resizable()
-                .scaledToFit()
-                .frame(width: scale, height: scale)
-                .padding()
-        } else if releaseTrack == "Release" {
+        } else {
             Image("BigSurSafari")
                 .resizable()
                 .scaledToFit()
@@ -146,13 +115,13 @@ struct BackGradientView: View {
     @Environment(\.colorScheme) var colorScheme
     let releaseTrack: String
     var body: some View {
-        if releaseTrack == "Public Beta" {
+        if releaseTrack == "Beta" {
             LinearGradient(gradient: .init(colors: [.init(r: 196, g: 0, b: 255), .init(r: 117, g: 0, b: 255)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .opacity(colorScheme == .dark ? 0.7 : 0.96)
-        } else if releaseTrack == "Developer" {
-            LinearGradient(gradient: .init(colors: [.init(r: 237, g: 36, b: 5), .init(r: 254, g: 110, b: 16)]), startPoint: .bottomLeading, endPoint: .topTrailing)
-                .opacity(colorScheme == .dark ? 0.5 : 0.96)
-        } else if releaseTrack == "Release" {
+//        } else if releaseTrack == "Developer" {
+//            LinearGradient(gradient: .init(colors: [.init(r: 237, g: 36, b: 5), .init(r: 254, g: 110, b: 16)]), startPoint: .bottomLeading, endPoint: .topTrailing)
+//                .opacity(colorScheme == .dark ? 0.5 : 0.96)
+        } else {
             LinearGradient(gradient: .init(colors: [.init(r: 0, g: 220, b: 239), .init(r: 5, g: 229, b: 136)]), startPoint: .leading, endPoint: .trailing)
                 .opacity(colorScheme == .dark ? 0.7 : 0.96)
                 .background(Color.black)

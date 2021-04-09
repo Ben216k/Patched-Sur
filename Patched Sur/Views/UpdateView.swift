@@ -5,7 +5,7 @@
 //  Created by Benjamin Sova on 11/24/20.
 //
 
-import SwiftUI
+import VeliaUI
 import Files
 
 struct UpdateView: View {
@@ -25,46 +25,61 @@ struct UpdateView: View {
     @State var password = ""
     @State var useCurrent = false
     let buildNumber: String
+    @State var topCompress = false
+    @State var hovered: String?
+    
     var body: some View {
-        ZStack {
-            if progress == 0 {
-                VStack {
-                    Text("Software Update")
-                        .font(.title2)
-                        .bold()
+        VStack {
+            if progress != 5 {
+                HStack(spacing: 15) {
+                    VIHeader(p: "Update macOS", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $topCompress)
+                        .alignment(.leading)
                     Spacer()
-                }.padding(25)
+                    VIButton(id: "BACK", h: $hovered) {
+                        Image("BackArrow")
+                            .resizable()
+                            .frame(width: topCompress ? 10 : 15, height: topCompress ? 10 : 15)
+                            .scaleEffect(topCompress ? 1.2 : 1)
+                    } onClick: {
+                        withAnimation {
+                            at = 0
+                        }
+                    }
+                }.padding(.top, 40)
+                Spacer(minLength: 0)
             }
             switch progress {
             case 0:
-                UpdateCheckerView(at: $at, progress: $progress, installers: $installers, track: $track, latestPatch: $latestPatch, skipAppCheck: $skipAppCheck, installInfo: $installInfo)
+                UpdateCheckerView(at: $at, progress: $progress, installers: $installers, track: $track, latestPatch: $latestPatch, skipAppCheck: $skipAppCheck, installInfo: $installInfo, topCompress: $topCompress).transition(.moveAway)
             case 1:
-                UpdateAppView(latest: latestPatch!, p: $progress, skipCheck: $skipAppCheck)
+                UpdateAppView(latest: latestPatch!, p: $progress, skipCheck: $skipAppCheck).transition(.moveAway)
             case -1:
                 Text("Hi You! You shouldn't really be seeing this, but here you are!")
                     .onAppear {
-                        progress = 0
-                        at = 0
-                    }
+                        withAnimation {
+                            progress = 0
+                            at = 0
+                        }
+                    }.transition(.moveAway)
             case 2:
-                UpdateStatusView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, p: $progress)
+                UpdateOSView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, p: $progress).transition(.moveAway)
             case 3:
-                DownloadView(p: $progress, installInfo: $installInfo, useCurrent: $useCurrent)
+                DownloadView(p: $progress, installInfo: $installInfo, useCurrent: $useCurrent).transition(.moveAway)
             case 4:
-                StartInstallView(password: $password, installerPath: $packageLocation)
+                StartInstallView(password: $password, installerPath: $packageLocation).transition(.moveAway)
             case 5:
-                InstallerChooser(p: $progress, installInfo: $installInfo, track: $track, useCurrent: $useCurrent, package: $packageLocation)
+                UpdateChooser(p: $progress, installInfo: $installInfo, track: $track, useCurrent: $useCurrent, package: $packageLocation).transition(.moveAway)
             case 6:
-                DisableAMFIView()
-            case 7:
-                HaxDownloadView(installInfo: installInfo, password: $password, p: $progress, useCurrent: $useCurrent)
+                DisableAMFIView().transition(.moveAway)
             case 8:
-                NotificationsView(p: $progress).font(.caption)
+                NotificationsView(p: $progress).font(.caption).transition(.moveAway)
             default:
                 Text("Sad")
             }
+            Spacer(minLength: 0)
         }
         .navigationTitle("Patched Sur")
+        .padding(.horizontal, 30)
     }
 }
 
@@ -88,6 +103,9 @@ struct UpdateCheckerView: View {
     @Binding var installInfo: InstallAssistant?
     @State var checkingForUpdatesText = "Checking For Updates..."
     @State var buttonBG = Color.accentColor
+    @Binding var topCompress: Bool
+    @State var hovered: String?
+    
     var body: some View {
         VStack {
             if checkingForUpdatesText == "Checking For Updates..." {
@@ -127,7 +145,10 @@ struct UpdateCheckerView: View {
                                 }
                                 print("Switching to show updates screen...")
                                 print("")
-                                progress = 2
+                                withAnimation {
+                                    topCompress = true
+                                    progress = 2
+                                }
                             } catch {
                                 print("Failed to fetch installer list.")
                                 print(error.localizedDescription)
@@ -139,43 +160,39 @@ struct UpdateCheckerView: View {
                 VStack {
                     Text("Failed to Check For Updates")
                         .bold()
-                        .padding(.top, 10)
+                        .padding(.top, -20)
                     Text("This probably means either your WiFi connection is down, or GitHub's web-hosting servers are down. This shouldn't be much of a problem, assuming you can update macOS manually with the pre-install app, or update the patcher app itself by downloading from the Patched Sur GitHub page.")
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 5)
-                        .padding(.horizontal)
-                    Button {
-                        let pasteboard = NSPasteboard.general
-                        pasteboard.declareTypes([.string], owner: nil)
-                        pasteboard.setString(checkingForUpdatesText, forType: .string)
-                    } label: {
-                        ZStack {
-                            Color.red
-                                .cornerRadius(10)
-                                .frame(minWidth: 200, maxWidth: 450)
-                            Text(checkingForUpdatesText)
-                                .foregroundColor(.white)
-                                .lineLimit(6)
-                                .padding(6)
-                                .padding(.horizontal, 4)
-                        }
-                    }.buttonStyle(BorderlessButtonStyle())
-                    .fixedSize()
-                    .frame(minWidth: 200, maxWidth: 450)
-                    Text("Click to Copy")
-                        .font(.caption)
-                        .padding(.bottom, 5)
-                    Button {
-                        at = 0
-                        checkingForUpdatesText = "Checking For Updates..."
-                    } label: {
-                        ZStack {
-                            buttonBG
-                                .cornerRadius(10)
-                            Text("Back")
-                                .foregroundColor(.white)
-                                .padding(5)
-                                .padding(.horizontal, 10)
+                    VIError(checkingForUpdatesText)
+//                    Button {
+//                        let pasteboard = NSPasteboard.general
+//                        pasteboard.declareTypes([.string], owner: nil)
+//                        pasteboard.setString(checkingForUpdatesText, forType: .string)
+//                    } label: {
+//                        ZStack {
+//                            Color.red
+//                                .cornerRadius(10)
+//                                .frame(minWidth: 200, maxWidth: 450)
+//                            Text(checkingForUpdatesText)
+//                                .foregroundColor(.white)
+//                                .lineLimit(6)
+//                                .padding(6)
+//                                .padding(.horizontal, 4)
+//                        }
+//                    }.buttonStyle(BorderlessButtonStyle())
+//                    .fixedSize()
+//                    .frame(minWidth: 200, maxWidth: 450)
+//                    Text("Click to Copy")
+//                        .font(.caption)
+//                        .padding(.bottom, 5)
+                    VIButton(id: "BACK", h: $hovered) {
+                        Image("BackArrowCircle")
+                        Text("Back")
+                    } onClick: {
+                        withAnimation {
+                            at = 0
+                            checkingForUpdatesText = "Checking For Updates..."
                         }
                     }
                     .buttonStyle(BorderlessButtonStyle())
@@ -183,7 +200,7 @@ struct UpdateCheckerView: View {
                         buttonBG = $0 ? Color.accentColor.opacity(0.7) : Color.accentColor
                     }
                 }
-                .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
+                .frame(minWidth: 540, maxWidth: 540, minHeight: 325, maxHeight: 325)
             }
         }
         .fixedSize()

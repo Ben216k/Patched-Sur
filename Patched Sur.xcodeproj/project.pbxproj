@@ -10,6 +10,7 @@
 		3F42EB04255176F700365279 /* PSSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42EB03255176F700365279 /* PSSettings.swift */; };
 		7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD17257FF8DB0054B76F /* DownloadKexts.swift */; };
 		7609BD1E258008B70054B76F /* StartInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD1D258008B70054B76F /* StartInstallView.swift */; };
+		760AA9CF261E72A200ADABE0 /* UpdateOSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */; };
 		760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760C7D1A25719C27004817F1 /* UpdateAppAction.swift */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		762A066825BF93A80037655D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A066725BF93A80037655D /* Keychain.swift */; };
@@ -32,7 +33,6 @@
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
 		76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76688D7A2619521C00A1450A /* PatchKextsActions.swift */; };
-		766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */; };
 		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		7674026B2606EEBD00E39469 /* CreateInstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026A2606EEBD00E39469 /* CreateInstallerView.swift */; };
@@ -41,6 +41,7 @@
 		767402702607DF8300E39469 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026F2607DF8300E39469 /* DoneView.swift */; };
 		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */; };
+		767EF2AD261E975A00769793 /* UpdateChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767EF2AC261E975A00769793 /* UpdateChooser.swift */; };
 		76870F92257358BD0099A4B9 /* UpdateStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76870F91257358BC0099A4B9 /* UpdateStatusView.swift */; };
 		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
 		768F51F6256E05190069096E /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51F5256E05190069096E /* UpdateView.swift */; };
@@ -162,6 +163,7 @@
 		3F42EB03255176F700365279 /* PSSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSSettings.swift; sourceTree = "<group>"; };
 		7609BD17257FF8DB0054B76F /* DownloadKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadKexts.swift; sourceTree = "<group>"; };
 		7609BD1D258008B70054B76F /* StartInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInstallView.swift; sourceTree = "<group>"; };
+		760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOSView.swift; sourceTree = "<group>"; };
 		760C7D1A25719C27004817F1 /* UpdateAppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppAction.swift; sourceTree = "<group>"; };
 		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
@@ -186,7 +188,6 @@
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
 		76688D7A2619521C00A1450A /* PatchKextsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchKextsActions.swift; sourceTree = "<group>"; };
-		766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaxDownloadView.swift; sourceTree = "<group>"; };
 		76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
 		7674026A2606EEBD00E39469 /* CreateInstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerView.swift; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		76747BD82523A66F004596CC /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
 		767D6F9B25AA294C00A773AE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerChooser.swift; sourceTree = "<group>"; };
+		767EF2AC261E975A00769793 /* UpdateChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChooser.swift; sourceTree = "<group>"; };
 		76870F91257358BC0099A4B9 /* UpdateStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStatusView.swift; sourceTree = "<group>"; };
 		768F51F5256E05190069096E /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		7691808725F9DB80003FB34C /* SettingsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActions.swift; sourceTree = "<group>"; };
@@ -294,6 +296,13 @@
 				3F42EB03255176F700365279 /* PSSettings.swift */,
 				762A1DB3260C19B80009620B /* PatchKextsView.swift */,
 				76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */,
+				7631558E254DDB6C00646CE9 /* AboutMyMac.swift */,
+				768F51F5256E05190069096E /* UpdateView.swift */,
+				76870F91257358BC0099A4B9 /* UpdateStatusView.swift */,
+				760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */,
+				767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */,
+				767EF2AC261E975A00769793 /* UpdateChooser.swift */,
+				7609BD17257FF8DB0054B76F /* DownloadKexts.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +327,7 @@
 			children = (
 				7691808725F9DB80003FB34C /* SettingsActions.swift */,
 				76688D7A2619521C00A1450A /* PatchKextsActions.swift */,
+				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -373,22 +383,15 @@
 				762F8C1D25F87ED20021E4AF /* CoreCode */,
 				762F8C1E25F87EE00021E4AF /* Views */,
 				7691808625F9DB5C003FB34C /* Actions */,
-				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
-				767D6FBB25AA4C5000A773AE /* InstallerChooser.swift */,
 				76ECB7F9254BAF3100C928D6 /* KextPatchView.swift */,
 				7631556F254C984900646CE9 /* ExtraViews.swift */,
-				7631558E254DDB6C00646CE9 /* AboutMyMac.swift */,
 				7692E083251BFFB400C5FB9A /* Assets.xcassets */,
 				76F11510256EED85001AB749 /* UpdateAppView.swift */,
 				7692E088251BFFB400C5FB9A /* Info.plist */,
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
 				76F11508256EE9FB001AB749 /* PatchedVersion.swift */,
 				7692E085251BFFB400C5FB9A /* Preview Content */,
-				768F51F5256E05190069096E /* UpdateView.swift */,
-				76870F91257358BC0099A4B9 /* UpdateStatusView.swift */,
 				763AA41025BBCFF100C7C14F /* DisableLVView.swift */,
-				7609BD17257FF8DB0054B76F /* DownloadKexts.swift */,
-				766D722E25C4DB4B00C990D0 /* HaxDownloadView.swift */,
 				7609BD1D258008B70054B76F /* StartInstallView.swift */,
 				76CF37BC25E8C73500403208 /* NotificationsView.swift */,
 			);
@@ -652,7 +655,6 @@
 				76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */,
 				76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */,
 				760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */,
-				766D722F25C4DB4B00C990D0 /* HaxDownloadView.swift in Sources */,
 				76A070DA261BBAD90002A304 /* CreateInstallerView.swift in Sources */,
 				767D6FBC25AA4C5000A773AE /* InstallerChooser.swift in Sources */,
 				762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */,
@@ -673,6 +675,8 @@
 				763B28C7260052D200389448 /* InstallAssistants.swift in Sources */,
 				76A0B78D25749FC100E392D1 /* main.swift in Sources */,
 				7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */,
+				767EF2AD261E975A00769793 /* UpdateChooser.swift in Sources */,
+				760AA9CF261E72A200ADABE0 /* UpdateOSView.swift in Sources */,
 				76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */,
 				76A070B9261B5AB10002A304 /* ReleaseTrackView.swift in Sources */,
 				76870F92257358BD0099A4B9 /* UpdateStatusView.swift in Sources */,
@@ -735,7 +739,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 78;
+				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -759,7 +763,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 78;
+				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -898,7 +902,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 78;
+				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -930,7 +934,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 78;
+				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -962,7 +966,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 78;
+				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -995,7 +999,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 78;
+				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
