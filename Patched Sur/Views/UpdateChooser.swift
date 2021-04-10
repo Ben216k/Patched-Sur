@@ -127,7 +127,7 @@ struct UpdateSelectCell: View {
             if convertVersionBinary(installer.version) >= convertVersionBinary(selfV) {
                 VIButton(id: "UPDDATE\(installer.buildNumber)", h: $hovered) {
                     Image("UpdateCircle")
-                    Text("Update")
+                    Text(convertVersionBinary(installer.version) > convertVersionBinary(selfV) ? "Update" : "Reinstall")
                 } onClick: {
                     if delete == nil {
                         installInfo = .init(url: installer.url, date: "", buildNumber: installer.buildNumber, version: "", minVersion: 0, orderNumber: 0, notes: nil)

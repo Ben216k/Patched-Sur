@@ -8,12 +8,13 @@
 import VeliaUI
 
 struct AboutMyMac: View {
-    var systemVersion: String
+    @State var systemVersion = "11.%.3"
     let releaseTrack: String
-    var gpu: String
-    var model: String
-    var cpu: String
-    var memory: String
+    @State var gpu = "Intel HD Graphics 400%"
+    @State var coolModel = "MacBook Pro (13-inch, M%d 2012)" as String?
+    @State var model = "MacBookPro%,2"
+    @State var cpu = "Intel(R) Core(TM) i5-3210M CPU"
+    @State var memory = "1%"
     let buildNumber: String
     @Binding var at: Int
     @State var hovered: String?
@@ -26,47 +27,82 @@ struct AboutMyMac: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
                     Text("Version \(systemVersion)\(buildNumber.count == 5 ? "" : " Beta") (\(buildNumber))").font(.subheadline)
+                        .redacted(reason: systemVersion.contains("%") ? .placeholder : .init())
                     Rectangle().frame(height: 15).opacity(0).fixedSize()
-                    Text("Model         ").font(.subheadline).bold() + Text(model)
-                    Text("CPU            ").font(.subheadline).bold() + Text(cpu)
-                    Text("GPU            ").font(.subheadline).bold() + Text(gpu)
-                    Text("Memory     ").bold() + Text(memory) + Text("GB")
+                    if let coolModel = coolModel {
+                        Text(coolModel).font(.subheadline).bold()
+                            .redacted(reason: coolModel.contains("%") ? .placeholder : .init())
+                    }
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Model       ").font(.subheadline).bold()
+                            Text("Processor    ").font(.subheadline).bold()
+                            Text("Graphics     ").font(.subheadline).bold()
+                            Text("Memory   ").bold()
+                        }
+                        VStack(alignment: .leading) {
+                            Text(model)
+                                .redacted(reason: model.contains("%") ? .placeholder : .init())
+                            Text(cpu)
+                                .redacted(reason: cpu.contains("%") ? .placeholder : .init())
+                            Text(gpu)
+                                .redacted(reason: gpu.contains("%") ? .placeholder : .init())
+                            Text("\(memory) GB")
+                                .redacted(reason: memory.contains("%") ? .placeholder : .init())
+                        }
+                    }
                     HStack {
                         VIButton(id: "HOME", h: $hovered) {
                             Text("Back to Home")
                                 .foregroundColor(.white)
                         } onClick: {
-                            at = 0
+                            withAnimation {
+                                at = 0
+                            }
                         }.inPad()
                         .btColor(releaseTrack == "Developer" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
                         VIButton(id: "SOFTWARE", h: $hovered) {
                             Text("Software Update")
                                 .foregroundColor(.white)
                         } onClick: {
-                            at = 1
+                            withAnimation {
+                                at = 1
+                            }
                         }.inPad()
                         .btColor(releaseTrack == "Developer" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
                     }.padding(.top, 10)
                 }.font(.subheadline)
                 .foregroundColor(.white)
+                .onAppear {
+                    DispatchQueue.global(qos: .background).async {
+                        withAnimation {
+                            systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
+                            print("Detected System Version: \(systemVersion)")
+                            self.model = (try? call("sysctl -n hw.model")) ?? "UnknownX,Y"
+                            cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
+                            cpu = String(cpu.split(separator: "@")[0])
+                            print("Detected CPU: \(cpu)")
+                            gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
+                            gpu.removeLast(2)
+                            print("Detected GPU: \(gpu)")
+                            memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024))\"")) ?? "-100"
+                            print("Detected Memory Amount: \(memory)")
+                            guard let newModel = try? call("curl -s 'https://support-sp.apple.com/sp/product?cc='$(system_profiler SPHardwareDataType | awk '/Serial/ {print $4}' | cut -c 9-) | sed 's|.*<configCode>\\(.*\\)</configCode>.*|\\1|'") else {
+                                coolModel = nil
+                                return
+                            }
+                            coolModel = newModel
+                        }
+                    }
+                }
             }
         }
     }
     
-    init(releaseTrack: String, model: String, buildNumber: String, at: Binding<Int>) {
+    init(releaseTrack: String, model model2: String, buildNumber: String, at: Binding<Int>) {
         self.releaseTrack = releaseTrack
-        self.model = model
         self.buildNumber = buildNumber
         self._at = at
-        memory = (try? call("echo \"$(($(sysctl -n hw.memsize) / 1024 / 1024 / 954))\"")) ?? "-100"
-        print("Detected Memory Amount: \(memory)")
-        gpu = (try? call("system_profiler SPDisplaysDataType | awk -F': ' '/^\\ *Chipset Model:/ {printf $2 \", \"}'")) ?? "INTEL!"
-        gpu.removeLast(2)
-        print("Detected GPU: \(gpu)")
-        cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
-        print("Detected CPU: \(cpu)")
-        systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
-        print("Detected System Version: \(systemVersion)")
     }
 }
 
@@ -128,3 +164,5 @@ struct BackGradientView: View {
         }
     }
 }
+
+// Anything, pretend that instead of the whole expression, it shows only the normal value you are supposed to put there, that's what you replace light or dark with, a normal value for light or a normal value for dark. Another way to think of it, is that imagine that the `colorScheme == .dark ? varA : varB` is an `if` statement for a single value (which it is), if this is true use this value otherwise use this other value.

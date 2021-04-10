@@ -28,6 +28,7 @@ struct UpdateView: View {
     @State var topCompress = false
     @State var hovered: String?
     @State var showPassPrompt = false
+    @State var osVersion = ""
     
     var body: some View {
         ZStack {
@@ -53,6 +54,9 @@ struct UpdateView: View {
                 switch progress {
                 case 0:
                     UpdateCheckerView(at: $at, progress: $progress, installers: $installers, track: $track, latestPatch: $latestPatch, skipAppCheck: $skipAppCheck, installInfo: $installInfo, topCompress: $topCompress).transition(.moveAway)
+                        .onAppear {
+                            osVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
+                        }
                 case 1:
                     UpdateAppView(latest: latestPatch!, p: $progress, skipCheck: $skipAppCheck).transition(.moveAway)
                 case -1:
@@ -64,7 +68,7 @@ struct UpdateView: View {
                             }
                         }.transition(.moveAway)
                 case 2:
-                    UpdateOSView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, p: $progress).transition(.moveAway)
+                    UpdateOSView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, osVersion: osVersion, p: $progress).transition(.moveAway)
                 case 3:
                     DownloadView(p: $progress, installInfo: $installInfo, useCurrent: $useCurrent, showPassPrompt: $showPassPrompt, password: $password).transition(.moveAway)
                 case 4:

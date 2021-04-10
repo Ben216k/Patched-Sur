@@ -119,7 +119,7 @@ struct PatchKextsView: View {
                     .btColor(.gray)
                     .onAppear {
                         DispatchQueue.global(qos: .background).async {
-                            patchKexts(legacy: legacy, location: installerName) { errorY in
+                            patchKexts(password: password, legacy: legacy, location: installerName) { errorY in
                                 if let errorY = errorY {
                                     errorX = errorY
                                     progress = -2

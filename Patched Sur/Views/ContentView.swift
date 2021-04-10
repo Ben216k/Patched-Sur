@@ -146,7 +146,9 @@ struct MainView: View {
                             presentAlert(m: "Silly Beta Tester", i: "You don't get this until later!")
                         }
                         VISimpleCell(t: "About This Mac", d: "Show info about your mac without the serial number. Good for showing off your success.", s: "info.circle", id: "ABOUT", h: $hovered) {
-                            at = 3
+                            withAnimation {
+                                at = 3
+                            }
                         }
                     }
                 }
