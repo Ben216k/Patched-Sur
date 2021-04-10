@@ -67,6 +67,12 @@ struct UpdateOSView: View {
                     VIButton(id: "STARTUPDATE", h: $hovered) {
                         Text("Start the macOS Update")
                             .font(.caption)
+                    } onClick: {
+                        checkGeneralUpdateCompat { go in
+                            withAnimation {
+                                p = go
+                            }
+                        }
                     }.inPad()
                     .padding(.bottom, -7.5)
                     Text("To update, the patcher will first download the latest patches and then the new version of macOS directly from Apple, and after that Apple’s updater will be started without the compatibility check.")
@@ -79,7 +85,7 @@ struct UpdateOSView: View {
                         NSWorkspace.shared.open(URL(string: installInfo!.notes ?? "https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-\(versionPieces[0].replacingOccurrences(of: ".", with: "_"))\(versionPieces.contains("Beta") || versionPieces.contains("RC") ? "-beta" : "")-release-notes")!)
                     }.inPad()
                     .padding(.bottom, -7.5)
-                    Text("See what’s new in macOS before updating. Thanks to Mr. Macintosh for providing these.")
+                    Text("See what’s new in macOS before updating. Thanks to Mr. Macintosh (or Apple sometimes) for providing these.")
                         .font(.caption)
                 }
                 VIButton(id: "NOTIFIS", h: $hovered) {

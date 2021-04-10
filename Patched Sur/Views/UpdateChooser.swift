@@ -80,12 +80,12 @@ struct UpdateChooser: View {
             ScrollView {
                 if let current = current {
                     Text("This version of macOS is already downloaded:")
-                    UpdateSelectCell(installer: current, delete: {}, selfV: selfV)
+                    UpdateSelectCell(installer: current, delete: {}, selfV: selfV, installInfo: $installInfo, done: {withAnimation { p = 3 }})
                 }
                 if let fetched = fetchedInstallers {
                     Text("You can download these versions of macOS:")
                     ForEach(fetched, id: \.buildNumber) { installer in
-                        UpdateSelectCell(installer: installer, delete: nil, selfV: selfV)
+                        UpdateSelectCell(installer: installer, delete: nil, selfV: selfV, installInfo: $installInfo, done: {withAnimation { p = 3 }})
                     }
                 }
                 Text("")
@@ -100,6 +100,8 @@ struct UpdateSelectCell: View {
     let delete: (() -> ())?
     @State var hovered: String?
     let selfV: String
+    @Binding var installInfo: InstallAssistant?
+    let done: () -> ()
     
     var body: some View {
         HStack {
@@ -126,10 +128,24 @@ struct UpdateSelectCell: View {
                 VIButton(id: "UPDDATE\(installer.buildNumber)", h: $hovered) {
                     Image("UpdateCircle")
                     Text("Update")
+                } onClick: {
+                    if delete == nil {
+                        installInfo = .init(url: installer.url, date: "", buildNumber: installer.buildNumber, version: "", minVersion: 0, orderNumber: 0, notes: nil)
+                        done()
+                    } else {
+                        guard let location = try? File(path: "~/.patched-sur/InstallAssistant.pkg") else {
+                            presentAlert(m: "An Unexpected Error Occurred", i: "This file appears to be missing and the full patch cannot be determined. You cannot use the pre-downloaded installer for now.")
+                            return
+                        }
+                        installInfo = .init(url: location.path, date: "", buildNumber: "CustomPKG", version: "", minVersion: 0, orderNumber: 0, notes: nil)
+                        done()
+                    }
                 }.inPad()
                 if delete == nil {
                     VIButton(id: "DOWNLOAD\(installer.buildNumber)", h: $hovered) {
                         Image("DownloadArrow")
+                    } onClick: {
+                        NSWorkspace.shared.open(URL(string: installer.url)!)
                     }.btColor(Color.gray).useHoverAccent()
                     .help("You can also download the InstallAssistant.pkg if you want.")
                 }
@@ -149,48 +165,5 @@ struct UpdateSelectCell: View {
                 }.btColor(.red)
             }
         }
-    }
-}
-
-func mergeNoDuplicate(a ar: [InstallAssistant], b: [InstallAssistant]) -> [InstallAssistant] {
-    var a = ar
-    let aV = a.map { $0.version }
-    a.append(contentsOf: b.filter { !(aV.contains($0.version)) })
-    return a
-}
-
-func fetchInstallerList(track: ReleaseTrack, fetchedInstallers: (InstallAssistants) -> (), current: (InstallAssistant) -> (), errorL: @escaping (String) -> ()) {
-    print("Checking for pre-downloaded installer...")
-    if (try? call("[[ -e ~/.patched-sur/InstallAssistant.pkg ]]")) != nil && ((try? call("[[ -e ~/.patched-sur/InstallInfo.txt ]]")) != nil) {
-        print("Verifying pre-downloaded installer...")
-        var alertX: Alert?
-        guard let installerPath = (try? File(path: "~/.patched-sur/InstallAssistant.pkg"))?.path else { print("Unable to pull installer path"); return }
-        if verifyInstaller(alert: &alertX, path: installerPath), let contents = try? File(path: "~/.patched-sur/InstallInfo.txt").readAsString() {
-            print("Phrasing installer data...")
-            guard let baseInfo = try? InstallAssistant(contents) else { return }
-            current(InstallAssistant(url: installerPath, date: baseInfo.date, buildNumber: baseInfo.buildNumber, version: baseInfo.version, minVersion: 0, orderNumber: 0, notes: nil))
-        }
-    }
-    let thingV = fetchInstallers(errorX: errorL, track: track)
-    fetchedInstallers(thingV)
-    if track != .release {
-        let publicV = fetchInstallers(errorX: {_ in}, track: .release)
-        fetchedInstallers(mergeNoDuplicate(a: thingV, b: publicV))
-    }
-}
-
-func convertVersionBinary(_ version: String) -> Int {
-    let vSections = version.split(separator: " ")
-    let vParts = vSections[0].split(separator: ".")
-    if vParts.count == 0 {
-        return 114
-    } else if vParts.count == 1 {
-        return (Int(String(vParts[0]))! * 100)
-    } else if vParts.count == 2 {
-        return (Int(String(vParts[0]))! * 100) + (Int(String(vParts[1]))! * 10)
-    } else if vParts.count == 3 {
-        return (Int(String(vParts[0]))! * 100) + (Int(String(vParts[1]))! * 10) + (Int(String(vParts[2]))! * 1)
-    } else {
-        return 114
     }
 }

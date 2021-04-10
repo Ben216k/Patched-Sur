@@ -119,9 +119,10 @@ struct PatchedSurApp: App {
 }
 
 struct PatchedSurSafeApp: App {
+    @State var password = ""
     var body: some Scene {
         WindowGroup {
-            KextPatchView(at: .constant(-11))
+            PatchKextsView(at: .constant(-11), password: $password)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
                 .accentColor(Color("AccentColor"))
         }

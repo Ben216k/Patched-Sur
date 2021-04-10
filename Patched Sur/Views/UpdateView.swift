@@ -27,59 +27,67 @@ struct UpdateView: View {
     let buildNumber: String
     @State var topCompress = false
     @State var hovered: String?
+    @State var showPassPrompt = false
     
     var body: some View {
-        VStack {
-            if progress != 5 {
-                HStack(spacing: 15) {
-                    VIHeader(p: "Update macOS", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $topCompress)
-                        .alignment(.leading)
-                    Spacer()
-                    VIButton(id: "BACK", h: $hovered) {
-                        Image("BackArrow")
-                            .resizable()
-                            .frame(width: topCompress ? 10 : 15, height: topCompress ? 10 : 15)
-                            .scaleEffect(topCompress ? 1.2 : 1)
-                    } onClick: {
-                        withAnimation {
-                            at = 0
+        ZStack {
+            VStack {
+                if progress != 5 {
+                    HStack(spacing: 15) {
+                        VIHeader(p: "Update macOS", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $topCompress)
+                            .alignment(.leading)
+                        Spacer()
+                        VIButton(id: "BACK", h: $hovered) {
+                            Image("BackArrow")
+                                .resizable()
+                                .frame(width: topCompress ? 10 : 15, height: topCompress ? 10 : 15)
+                                .scaleEffect(topCompress ? 1.2 : 1)
+                        } onClick: {
+                            withAnimation {
+                                at = 0
+                            }
                         }
-                    }
-                }.padding(.top, 40)
+                    }.padding(.top, 40)
+                    Spacer(minLength: 0)
+                }
+                switch progress {
+                case 0:
+                    UpdateCheckerView(at: $at, progress: $progress, installers: $installers, track: $track, latestPatch: $latestPatch, skipAppCheck: $skipAppCheck, installInfo: $installInfo, topCompress: $topCompress).transition(.moveAway)
+                case 1:
+                    UpdateAppView(latest: latestPatch!, p: $progress, skipCheck: $skipAppCheck).transition(.moveAway)
+                case -1:
+                    Text("Hi You! You shouldn't really be seeing this, but here you are!")
+                        .onAppear {
+                            withAnimation {
+                                progress = 0
+                                at = 0
+                            }
+                        }.transition(.moveAway)
+                case 2:
+                    UpdateOSView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, p: $progress).transition(.moveAway)
+                case 3:
+                    DownloadView(p: $progress, installInfo: $installInfo, useCurrent: $useCurrent, showPassPrompt: $showPassPrompt, password: $password).transition(.moveAway)
+                case 4:
+                    StartInstallView(password: $password, installInfo: $installInfo).transition(.moveAway)
+                case 5:
+                    UpdateChooser(p: $progress, installInfo: $installInfo, track: $track, useCurrent: $useCurrent, package: $packageLocation).transition(.moveAway)
+                case 6:
+                    DisableAMFIView().transition(.moveAway)
+                case 8:
+                    NotificationsView(p: $progress).font(.caption).transition(.moveAway)
+                default:
+                    Text("Sad")
+                }
                 Spacer(minLength: 0)
             }
-            switch progress {
-            case 0:
-                UpdateCheckerView(at: $at, progress: $progress, installers: $installers, track: $track, latestPatch: $latestPatch, skipAppCheck: $skipAppCheck, installInfo: $installInfo, topCompress: $topCompress).transition(.moveAway)
-            case 1:
-                UpdateAppView(latest: latestPatch!, p: $progress, skipCheck: $skipAppCheck).transition(.moveAway)
-            case -1:
-                Text("Hi You! You shouldn't really be seeing this, but here you are!")
-                    .onAppear {
-                        withAnimation {
-                            progress = 0
-                            at = 0
-                        }
-                    }.transition(.moveAway)
-            case 2:
-                UpdateOSView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, p: $progress).transition(.moveAway)
-            case 3:
-                DownloadView(p: $progress, installInfo: $installInfo, useCurrent: $useCurrent).transition(.moveAway)
-            case 4:
-                StartInstallView(password: $password, installerPath: $packageLocation).transition(.moveAway)
-            case 5:
-                UpdateChooser(p: $progress, installInfo: $installInfo, track: $track, useCurrent: $useCurrent, package: $packageLocation).transition(.moveAway)
-            case 6:
-                DisableAMFIView().transition(.moveAway)
-            case 8:
-                NotificationsView(p: $progress).font(.caption).transition(.moveAway)
-            default:
-                Text("Sad")
+            .navigationTitle("Patched Sur")
+            .padding(.horizontal, 30)
+            EnterPasswordPrompt(password: $password, show: $showPassPrompt) {
+                withAnimation {
+                    progress = 3
+                }
             }
-            Spacer(minLength: 0)
         }
-        .navigationTitle("Patched Sur")
-        .padding(.horizontal, 30)
     }
 }
 
