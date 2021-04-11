@@ -18,7 +18,10 @@ struct UpdateOSView: View {
     @State var showOtherInstallers = false
     @State var customInstaller = nil as String?
     @Binding var p: Int
+    @State var configuringNotifis = false
     @State var alert: Alert?
+    @Binding var showPass: Bool
+    @Binding var password: String
     
     var body: some View {
         HStack(spacing: 30) {
@@ -44,91 +47,101 @@ struct UpdateOSView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }.frame(width: 130)
             .font(.caption)
-            VStack(alignment: .leading) {
-                if (installInfo!.buildNumber != buildNumber || AppInfo.reinstall) && convertVersionBinary(osVersion) <= convertVersionBinary(installInfo!.version) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        Text("An update is available!")
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                        Text("macOS Big Sur \(installInfo?.version ?? "v0.0.0")")
-                            .font(.title)
-                            .bold()
-                        Text("Released \(installInfo?.date ?? "0.0.0") • Build \(installInfo?.buildNumber ?? "0.0.0")")
-                            .font(.caption)
-                        Button {
-                            withAnimation {
-                                p = 5
-                            }
-                        } label: {
-                            Text("View Other Versions")
-                        }.buttonStyle(BorderlessButtonStyle())
-                        .font(.caption)
-                        .padding(.top, 2)
-                    }.fixedSize()
-                    VIButton(id: "STARTUPDATE", h: $hovered) {
-                        Text("Start the macOS Update")
-                            .font(.caption)
-                    } onClick: {
-                        checkGeneralUpdateCompat { go in
-                            withAnimation {
-                                p = go
-                            }
-                        }
-                    }.inPad()
-                    .padding(.bottom, -7.5)
-                    Text("To update, the patcher will first download the latest patches and then the new version of macOS directly from Apple, and after that Apple’s updater will be started without the compatibility check.")
-                        .font(.caption)
-                    VIButton(id: "NOTES", h: $hovered) {
-                        Text("See the Release Notes")
-                            .font(.caption)
-                    } onClick: {
-                        let versionPieces = installInfo!.version.split(separator: " ")
-                        NSWorkspace.shared.open(URL(string: installInfo!.notes ?? "https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-\(versionPieces[0].replacingOccurrences(of: ".", with: "_"))\(versionPieces.contains("Beta") || versionPieces.contains("RC") ? "-beta" : "")-release-notes")!)
-                    }.inPad()
-                    .padding(.bottom, -7.5)
-                    Text("See what’s new in macOS before updating. Thanks to Mr. Macintosh (or Apple sometimes) for providing these.")
-                        .font(.caption)
-                } else {
-                    VStack(alignment: .leading, spacing: 0) {
-//                        Text("An update is available!")
-//                            .font(.headline)
-//                            .fontWeight(.semibold)
-                        Text("No new updates available.")
-                            .font(.title)
-                            .bold()
+            Group {
+                if !configuringNotifis {
+                    VStack(alignment: .leading) {
+                        if (installInfo!.buildNumber != buildNumber || AppInfo.reinstall) && convertVersionBinary(osVersion) <= convertVersionBinary(installInfo!.version) {
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text("An update is available!")
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                Text("macOS Big Sur \(installInfo?.version ?? "v0.0.0")")
+                                    .font(.title)
+                                    .bold()
+                                Text("Released \(installInfo?.date ?? "0.0.0") • Build \(installInfo?.buildNumber ?? "0.0.0")")
+                                    .font(.caption)
+                                Button {
+                                    withAnimation {
+                                        p = 5
+                                    }
+                                } label: {
+                                    Text("View Other Versions")
+                                }.buttonStyle(BorderlessButtonStyle())
+                                .font(.caption)
+                                .padding(.top, 2)
+                            }.fixedSize()
+                            VIButton(id: "STARTUPDATE", h: $hovered) {
+                                Text("Start the macOS Update")
+                                    .font(.caption)
+                            } onClick: {
+                                checkGeneralUpdateCompat { go in
+                                    withAnimation {
+                                        p = go
+                                    }
+                                }
+                            }.inPad()
+                            .padding(.bottom, -7.5)
+                            Text("To update, the patcher will first download the latest patches and then the new version of macOS directly from Apple, and after that Apple’s updater will be started without the compatibility check.")
+                                .font(.caption)
+                            VIButton(id: "NOTES", h: $hovered) {
+                                Text("See the Release Notes")
+                                    .font(.caption)
+                            } onClick: {
+                                let versionPieces = installInfo!.version.split(separator: " ")
+                                NSWorkspace.shared.open(URL(string: installInfo!.notes ?? "https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-\(versionPieces[0].replacingOccurrences(of: ".", with: "_"))\(versionPieces.contains("Beta") || versionPieces.contains("RC") ? "-beta" : "")-release-notes")!)
+                            }.inPad()
+                            .padding(.bottom, -7.5)
+                            Text("See what’s new in macOS before updating. Thanks to Mr. Macintosh (or Apple sometimes) for providing these.")
+                                .font(.caption)
+                        } else {
+                            VStack(alignment: .leading, spacing: 0) {
+        //                        Text("An update is available!")
+        //                            .font(.headline)
+        //                            .fontWeight(.semibold)
+                                Text("No new updates available.")
+                                    .font(.title)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("You're currently on \(osVersion) (\(buildNumber))")
+                                    .font(.caption)
+                                Button {
+                                    withAnimation {
+                                        p = 5
+                                    }
+                                } label: {
+                                    Text("View Other Versions")
+                                }.buttonStyle(BorderlessButtonStyle())
+                                .font(.caption)
+                                .padding(.top, 2)
+                            }.fixedSize()
+                            VIButton(id: "NOTES", h: $hovered) {
+                                Text("See the \(installInfo!.version) Release Notes")
+                                    .font(.caption)
+                            } onClick: {
+                                let versionPieces = installInfo!.version.split(separator: " ")
+                                NSWorkspace.shared.open(URL(string: installInfo!.notes ?? "https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-\(versionPieces[0].replacingOccurrences(of: ".", with: "_"))\(versionPieces.contains("Beta") || versionPieces.contains("RC") ? "-beta" : "")-release-notes")!)
+                            }.inPad()
+                            .padding(.bottom, -7.5)
                             .padding(.top, 5)
-                        Text("You're currently on \(osVersion) (\(buildNumber))")
-                            .font(.caption)
-                        Button {
+                            Text("See what’s new in the current macOS version you're on. Thanks to Mr. Macintosh (or Apple sometimes) for providing these.")
+                                .font(.caption)
+                        }
+                        VIButton(id: "NOTIFIS", h: $hovered) {
+                            Text("Configure Update Notifications")
+                                .font(.caption)
+                        } onClick: {
                             withAnimation {
-                                p = 5
+                                configuringNotifis = true
                             }
-                        } label: {
-                            Text("View Other Versions")
-                        }.buttonStyle(BorderlessButtonStyle())
-                        .font(.caption)
-                        .padding(.top, 2)
-                    }.fixedSize()
-                    VIButton(id: "NOTES", h: $hovered) {
-                        Text("See the \(installInfo!.version) Release Notes")
+                        }.inPad()
+                        .padding(.bottom, -7.5).padding(.top, 5)
+                        Text("Get notifications for updates for both macOS and the patcher.")
                             .font(.caption)
-                    } onClick: {
-                        let versionPieces = installInfo!.version.split(separator: " ")
-                        NSWorkspace.shared.open(URL(string: installInfo!.notes ?? "https://developer.apple.com/documentation/macos-release-notes/macos-big-sur-\(versionPieces[0].replacingOccurrences(of: ".", with: "_"))\(versionPieces.contains("Beta") || versionPieces.contains("RC") ? "-beta" : "")-release-notes")!)
-                    }.inPad()
-                    .padding(.bottom, -7.5)
-                    .padding(.top, 5)
-                    Text("See what’s new in the current macOS version you're on. Thanks to Mr. Macintosh (or Apple sometimes) for providing these.")
-                        .font(.caption)
+                        Spacer(minLength: 0)
+                    }.transition(.moveAway2)
+                } else {
+                    NotificationsView(showNotifis: $configuringNotifis, showPass: $showPass, password: $password)
                 }
-                VIButton(id: "NOTIFIS", h: $hovered) {
-                    Text("Configure Update Notifications")
-                        .font(.caption)
-                }.inPad()
-                .padding(.bottom, -7.5).padding(.top, 5)
-                Text("Get notifications for updates for both macOS and the patcher.")
-                    .font(.caption)
-                Spacer(minLength: 0)
             }
         }.padding(.top, 10)
     }

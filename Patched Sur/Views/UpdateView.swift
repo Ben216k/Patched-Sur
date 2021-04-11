@@ -68,7 +68,7 @@ struct UpdateView: View {
                             }
                         }.transition(.moveAway)
                 case 2:
-                    UpdateOSView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, osVersion: osVersion, p: $progress).transition(.moveAway)
+                    UpdateOSView(installers: installers, installInfo: $installInfo, releaseTrack: $track, buildNumber: buildNumber, osVersion: osVersion, p: $progress, showPass: $showPassPrompt, password: $password).transition(.moveAway)
                 case 3:
                     DownloadView(p: $progress, installInfo: $installInfo, useCurrent: $useCurrent, showPassPrompt: $showPassPrompt, password: $password).transition(.moveAway)
                 case 4:
@@ -77,8 +77,8 @@ struct UpdateView: View {
                     UpdateChooser(p: $progress, installInfo: $installInfo, track: $track, useCurrent: $useCurrent, package: $packageLocation).transition(.moveAway)
                 case 6:
                     DisableAMFIView().transition(.moveAway)
-                case 8:
-                    NotificationsView(p: $progress).font(.caption).transition(.moveAway)
+//                case 8:
+//                    NotificationsView(p: $progress).font(.caption).transition(.moveAway)
                 default:
                     Text("Sad")
                 }
@@ -87,9 +87,6 @@ struct UpdateView: View {
             .navigationTitle("Patched Sur")
             .padding(.horizontal, 30)
             EnterPasswordPrompt(password: $password, show: $showPassPrompt) {
-                withAnimation {
-                    progress = 3
-                }
             }
         }
     }
