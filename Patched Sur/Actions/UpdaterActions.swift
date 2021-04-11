@@ -132,6 +132,7 @@ func startOSInstall(password: String, installInfo: InstallAssistant, currentText
         try call("launchctl setenv DYLD_INSERT_LIBRARIES /usr/local/lib/Patched-Sur-Patches/InstallerHax/Hax6/Hax6.dylib")
         try call("sudo launchctl setenv DYLD_INSERT_LIBRARIES /usr/local/lib/Patched-Sur-Patches/InstallerHax/Hax6/Hax6.dylib", p: password)
         sleep(2)
+        print("Configuration: \(installInfo.url) and \(installInfo.buildNumber)")
         if !(installInfo.buildNumber.contains("APP")) {
             currentText("Cleaning up before extraction")
             print("Clean up before extraction...")
@@ -147,14 +148,14 @@ func startOSInstall(password: String, installInfo: InstallAssistant, currentText
             try call("installer -pkg \(installInfo.url) -target /", p: password)
             currentText("Starting OS Installer!!")
             print("Starting OS Installer IIIIII....")
-            try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
-//                        try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/createinstallmedia", p: password, h: handle)
+//            try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
+            try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/createinstallmedia", p: password, h: handle)
 //            try call("[[ -e /Applications/Install\\ macOS\\ Big\\ Sur*/Contents/Resources/startosinstall ]]")
         } else {
             currentText("Starting OS Installerii")
             print("Starting OS Installer...")
-            try call("'\(installInfo.url)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password, h: handle)
-//            try call("[[ -e '\(installInfo.url)/Contents/Resources/startosinstall' ]]")
+//            try call("'\(installInfo.url)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password, h: handle)
+            try call("'\(installInfo.url)/Contents/Resources/createinstallmedia'", p: password, h: handle)
         }
     } catch {
         AppInfo.canReleaseAttention = true

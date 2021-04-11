@@ -135,6 +135,7 @@ struct NotificationsView: View {
                             print("Failed to allow notifications")
                             print(error.localizedDescription)
                             if isRunning {
+                                _ = try? call("sleep 0.3")
                                 NSApplication.shared.abortModal()
                                 DispatchQueue.main.async {
                                     presentAlert(m: "Patched Sur Cannot Send Notifications", i: "You must have denied Patched Sur from sending notifications. If you want Patched Sur to send notifications, open System Preferences > Notifications > Patched Sur then allow notifications.\n\nError: \(error.localizedDescription)", s: .informational)

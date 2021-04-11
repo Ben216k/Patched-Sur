@@ -38,14 +38,19 @@ struct UpdateView: View {
                         VIHeader(p: "Update macOS", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $topCompress)
                             .alignment(.leading)
                         Spacer()
-                        VIButton(id: "BACK", h: $hovered) {
-                            Image("BackArrow")
-                                .resizable()
-                                .frame(width: topCompress ? 10 : 15, height: topCompress ? 10 : 15)
-                                .scaleEffect(topCompress ? 1.2 : 1)
-                        } onClick: {
-                            withAnimation {
-                                at = 0
+                        if progress != 4 {
+                            VIButton(id: "BACK", h: $hovered) {
+                                Image("BackArrow")
+                                    .resizable()
+                                    .frame(width: topCompress ? 10 : 15, height: topCompress ? 10 : 15)
+                                    .scaleEffect(topCompress ? 1.2 : 1)
+                            } onClick: {
+                                if progress == 3 {
+                                    _ = try? call("killall curl")
+                                }
+                                withAnimation {
+                                    at = 0
+                                }
                             }
                         }
                     }.padding(.top, 40)

@@ -21,6 +21,7 @@ struct UpdateChooser: View {
     @Binding var useCurrent: Bool
     @Binding var package: String
     @State var selfV = ""
+    @State var alert: Alert?
     
     var body: some View {
         HStack(spacing: 15) {
@@ -43,10 +44,38 @@ struct UpdateChooser: View {
                     .frame(width: 10, height: 10)
                     .scaleEffect(1.2)
             } onClick: {
-                withAnimation {
-                    p = 2
+                print("Initializing browse panel")
+                let dialog = NSOpenPanel()
+
+                dialog.title = "Choose an macOS Big Sur Installer"
+                dialog.showsResizeIndicator = false
+                dialog.allowsMultipleSelection = false
+                dialog.allowedFileTypes = ["app", "pkg"]
+
+                guard dialog.runModal() == NSApplication.ModalResponse.OK else { print("Browser was canceled"); return }
+                
+                print("Received response")
+                
+                guard let result = dialog.url else { print("There was no result..."); return }
+                let path: String = result.path
+                
+                guard verifyInstaller(alert: &alert, path: path) else { return }
+                
+                print("Saving installInfo")
+                if path.hasSuffix("pkg") {
+                    print("(It's a package)")
+                    installInfo = .init(url: path, date: "", buildNumber: "CustomPKG", version: "", minVersion: 0, orderNumber: 0, notes: nil)
+                } else if path.hasSuffix("app") {
+                    print("(It's an app)")
+                    installInfo = .init(url: path, date: "", buildNumber: "CustomAPP", version: "", minVersion: 0, orderNumber: 0, notes: nil)
+                } else {
+                    fatalError(path)
                 }
-            }
+                _ = try? call("sleep 1")
+                withAnimation {
+                    p = 3
+                }
+            }.alert($alert)
         }.padding(.top, 40)
         
         // MARK: Content
