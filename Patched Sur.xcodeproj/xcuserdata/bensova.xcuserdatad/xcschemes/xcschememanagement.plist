@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>PSRecovery.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Patched Sur - Big Sur.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
@@ -45,6 +50,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>760280AD2627EB920054059A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>762CBCA1260C20E5008F0A86</key>
 		<dict>
 			<key>primary</key>
