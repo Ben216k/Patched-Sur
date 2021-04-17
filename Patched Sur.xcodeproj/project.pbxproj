@@ -54,6 +54,8 @@
 		767EF2AD261E975A00769793 /* UpdateChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767EF2AC261E975A00769793 /* UpdateChooser.swift */; };
 		7680783926211A5D000ABD89 /* UpdaterActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7680783826211A5D000ABD89 /* UpdaterActions.swift */; };
 		7680783C26211AC5000ABD89 /* UpdateChooserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7680783B26211AC5000ABD89 /* UpdateChooserActions.swift */; };
+		768C297F262B533D00C2FED9 /* TinyTerminal.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 768C297E262B533D00C2FED9 /* TinyTerminal.tiff */; };
+		768C2985262B53CA00C2FED9 /* TinySecure.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 768C2984262B53CA00C2FED9 /* TinySecure.tiff */; };
 		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
 		768F51F6256E05190069096E /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51F5256E05190069096E /* UpdateView.swift */; };
 		7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691808725F9DB80003FB34C /* SettingsActions.swift */; };
@@ -231,6 +233,8 @@
 		767EF2AC261E975A00769793 /* UpdateChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChooser.swift; sourceTree = "<group>"; };
 		7680783826211A5D000ABD89 /* UpdaterActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterActions.swift; sourceTree = "<group>"; };
 		7680783B26211AC5000ABD89 /* UpdateChooserActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChooserActions.swift; sourceTree = "<group>"; };
+		768C297E262B533D00C2FED9 /* TinyTerminal.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TinyTerminal.tiff; sourceTree = "<group>"; };
+		768C2984262B53CA00C2FED9 /* TinySecure.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TinySecure.tiff; sourceTree = "<group>"; };
 		768F51F5256E05190069096E /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 		7691808725F9DB80003FB34C /* SettingsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActions.swift; sourceTree = "<group>"; };
 		769289D825FEEF64002F9CAC /* macOSConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSConfirmView.swift; sourceTree = "<group>"; };
@@ -507,6 +511,8 @@
 				76A30CB9262B319900B92DD2 /* Safari.icns */,
 				76A30CBE262B336300B92DD2 /* DiskUtility.icns */,
 				76A30CC2262B336A00B92DD2 /* PatchedSurIcon.icns */,
+				768C297E262B533D00C2FED9 /* TinyTerminal.tiff */,
+				768C2984262B53CA00C2FED9 /* TinySecure.tiff */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -694,10 +700,12 @@
 				760280B42627EB930054059A /* Assets.xcassets in Resources */,
 				76315A4D262A4F6C0065032C /* PSSpringController.xib in Resources */,
 				76A30CC3262B336A00B92DD2 /* PatchedSurIcon.icns in Resources */,
+				768C2985262B53CA00C2FED9 /* TinySecure.tiff in Resources */,
 				760280D42627F36F0054059A /* PSWelcomeController.xib in Resources */,
 				76A30CB6262B234F00B92DD2 /* InstallOSSur.icns in Resources */,
 				76A30CBF262B336300B92DD2 /* DiskUtility.icns in Resources */,
 				76A30CBA262B319900B92DD2 /* Safari.icns in Resources */,
+				768C297F262B533D00C2FED9 /* TinyTerminal.tiff in Resources */,
 				760280B72627EB930054059A /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -892,7 +900,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -915,7 +923,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -939,7 +947,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -963,7 +971,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -1102,7 +1110,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1134,7 +1142,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1166,7 +1174,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -1199,7 +1207,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 81;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";

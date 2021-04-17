@@ -9,6 +9,8 @@
 #import "PSWelcomeController.h"
 #import "PSSpringController.h"
 #import <QuartzCore/QuartzCore.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 @interface AppDelegate ()
 
@@ -59,6 +61,20 @@
     [self.window setFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y, 475, 440) display:true animate:true];
     [[self.window.contentView animator] replaceSubview:self.psWelcomeController.view with:self.psSpringController.view];
     [self.window center];
+}
+
+- (IBAction)psLaunchTerminal:(id)sender {
+    [self.window close];
+    
+    NSTask *terminalTask = [[NSTask alloc] init];
+    [terminalTask setLaunchPath:@"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"];
+    [terminalTask setStandardOutput:[NSPipe pipe]];
+    [terminalTask setStandardInput:[NSPipe pipe]];
+    [terminalTask launch];
+    [terminalTask waitUntilExit];
+    
+    NSLog(@"Done.");
+    [self.window makeKeyAndOrderFront:nil];
 }
 
 @end

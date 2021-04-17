@@ -8,6 +8,7 @@
 #import <Cocoa/Cocoa.h>
 #import "PSWelcomeController.h"
 #import "VIButton.h"
+#import "PSApp.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
@@ -26,6 +27,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString* psDetails = @"v";
+    psDetails = [psDetails stringByAppendingString:[PSApp version]];
+    psDetails = [psDetails stringByAppendingString:@" ("];
+    psDetails = [psDetails stringByAppendingString:[PSApp build]];
     
     // MARK: Title and Subtitle
     
