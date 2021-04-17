@@ -88,6 +88,10 @@
 		76A070E7261BD41B0002A304 /* PatchedSurDaemon.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
 		76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1D33A259933880032F7D9 /* CompatInfo.swift */; };
+		76A30CB6262B234F00B92DD2 /* InstallOSSur.icns in Resources */ = {isa = PBXBuildFile; fileRef = 76A30CB5262B234F00B92DD2 /* InstallOSSur.icns */; };
+		76A30CBA262B319900B92DD2 /* Safari.icns in Resources */ = {isa = PBXBuildFile; fileRef = 76A30CB9262B319900B92DD2 /* Safari.icns */; };
+		76A30CBF262B336300B92DD2 /* DiskUtility.icns in Resources */ = {isa = PBXBuildFile; fileRef = 76A30CBE262B336300B92DD2 /* DiskUtility.icns */; };
+		76A30CC3262B336A00B92DD2 /* PatchedSurIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 76A30CC2262B336A00B92DD2 /* PatchedSurIcon.icns */; };
 		76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D32524ED78002C57EA /* MacCompatibility.swift */; };
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
 		76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF37BC25E8C73500403208 /* NotificationsView.swift */; };
@@ -252,6 +256,10 @@
 		76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerMain.swift; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76A1D33A259933880032F7D9 /* CompatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatInfo.swift; sourceTree = "<group>"; };
+		76A30CB5262B234F00B92DD2 /* InstallOSSur.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = InstallOSSur.icns; sourceTree = "<group>"; };
+		76A30CB9262B319900B92DD2 /* Safari.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Safari.icns; sourceTree = "<group>"; };
+		76A30CBE262B336300B92DD2 /* DiskUtility.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DiskUtility.icns; sourceTree = "<group>"; };
+		76A30CC2262B336A00B92DD2 /* PatchedSurIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PatchedSurIcon.icns; sourceTree = "<group>"; };
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
 		76CF37BC25E8C73500403208 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
@@ -302,6 +310,7 @@
 		760280AF2627EB920054059A /* PSRecovery */ = {
 			isa = PBXGroup;
 			children = (
+				76A30CBD262B334A00B92DD2 /* Resources */,
 				76315A6D262A7E2F0065032C /* ModuleViews */,
 				760280C12627EC490054059A /* VControllers */,
 				760280B32627EB930054059A /* Assets.xcassets */,
@@ -491,6 +500,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		76A30CBD262B334A00B92DD2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				76A30CB5262B234F00B92DD2 /* InstallOSSur.icns */,
+				76A30CB9262B319900B92DD2 /* Safari.icns */,
+				76A30CBE262B336300B92DD2 /* DiskUtility.icns */,
+				76A30CC2262B336A00B92DD2 /* PatchedSurIcon.icns */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		76D8437E25F8646B006C6565 /* CoreCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,7 +693,11 @@
 			files = (
 				760280B42627EB930054059A /* Assets.xcassets in Resources */,
 				76315A4D262A4F6C0065032C /* PSSpringController.xib in Resources */,
+				76A30CC3262B336A00B92DD2 /* PatchedSurIcon.icns in Resources */,
 				760280D42627F36F0054059A /* PSWelcomeController.xib in Resources */,
+				76A30CB6262B234F00B92DD2 /* InstallOSSur.icns in Resources */,
+				76A30CBF262B336300B92DD2 /* DiskUtility.icns in Resources */,
+				76A30CBA262B319900B92DD2 /* Safari.icns in Resources */,
 				760280B72627EB930054059A /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -54,9 +54,9 @@
 - (IBAction)psWelcomeContinue:(NSButton *)sender {
     [self.window.contentView setAnimations:[NSDictionary dictionaryWithObject:[self continueAnimation] forKey:@"subviews"]];
     self.psSpringController = [[PSSpringController alloc] initWithNibName:@"PSSpringController" bundle:nil];
-    [self.window.contentView setFrame:CGRectMake(0, 0, 475, 410)];
+//    [self.window.contentView setFrame:CGRectMake(0, 0, 475, 410)];
     [self.psSpringController.view setFrame:CGRectMake(0, 0, 475, 410)];
-    [self.window setFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y, 475, 410) display:true animate:true];
+    [self.window setFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y, 475, 440) display:true animate:true];
     [[self.window.contentView animator] replaceSubview:self.psWelcomeController.view with:self.psSpringController.view];
     [self.window center];
 }
