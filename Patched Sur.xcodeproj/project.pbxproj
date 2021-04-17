@@ -30,6 +30,9 @@
 		762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */; };
 		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
+		76315A4D262A4F6C0065032C /* PSSpringController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76315A4C262A4F6C0065032C /* PSSpringController.xib */; };
+		76315A51262A4F8D0065032C /* PSSpringController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76315A50262A4F8D0065032C /* PSSpringController.m */; };
+		76315A5B262A69C00065032C /* PSApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 76315A5A262A69C00065032C /* PSApp.m */; };
 		7633BC732617744900A550A6 /* Patched Sur - Recovery.app in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */; };
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
 		7633BC7F2617D24800A550A6 /* PSPatchV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7633BC7E2617D24800A550A6 /* PSPatchV.swift */; };
@@ -198,6 +201,11 @@
 		762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPatchedSur.swift; sourceTree = "<group>"; };
 		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
+		76315A4C262A4F6C0065032C /* PSSpringController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PSSpringController.xib; sourceTree = "<group>"; };
+		76315A50262A4F8D0065032C /* PSSpringController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSSpringController.m; sourceTree = "<group>"; };
+		76315A56262A4F9C0065032C /* PSSpringController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSSpringController.h; sourceTree = "<group>"; };
+		76315A59262A69AF0065032C /* PSApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSApp.h; sourceTree = "<group>"; };
+		76315A5A262A69C00065032C /* PSApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSApp.m; sourceTree = "<group>"; };
 		7633BC7E2617D24800A550A6 /* PSPatchV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPatchV.swift; sourceTree = "<group>"; };
 		763AA41025BBCFF100C7C14F /* DisableLVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableLVView.swift; sourceTree = "<group>"; };
 		763B28C125FF0D2300389448 /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
@@ -294,16 +302,19 @@
 		760280AF2627EB920054059A /* PSRecovery */ = {
 			isa = PBXGroup;
 			children = (
-				760280C12627EC490054059A /* Views */,
+				76315A6D262A7E2F0065032C /* ModuleViews */,
+				760280C12627EC490054059A /* VControllers */,
 				760280B32627EB930054059A /* Assets.xcassets */,
 				760280B82627EB930054059A /* Info.plist */,
 				760280B92627EB930054059A /* main.m */,
 				760280BB2627EB930054059A /* PSRecovery.entitlements */,
+				76315A59262A69AF0065032C /* PSApp.h */,
+				76315A5A262A69C00065032C /* PSApp.m */,
 			);
 			path = PSRecovery;
 			sourceTree = "<group>";
 		};
-		760280C12627EC490054059A /* Views */ = {
+		760280C12627EC490054059A /* VControllers */ = {
 			isa = PBXGroup;
 			children = (
 				760280B02627EB920054059A /* AppDelegate.h */,
@@ -312,10 +323,11 @@
 				760280CE2627EDD20054059A /* PSWelcomeController.h */,
 				760280C82627EDC00054059A /* PSWelcomeController.m */,
 				760280D32627F36F0054059A /* PSWelcomeController.xib */,
-				767957A42629397900036393 /* VIButton.h */,
-				767957A02629396D00036393 /* VIButton.m */,
+				76315A56262A4F9C0065032C /* PSSpringController.h */,
+				76315A50262A4F8D0065032C /* PSSpringController.m */,
+				76315A4C262A4F6C0065032C /* PSSpringController.xib */,
 			);
-			path = Views;
+			path = VControllers;
 			sourceTree = "<group>";
 		};
 		762CBCA3260C20E5008F0A86 /* Patched Sur - Recovery */ = {
@@ -360,6 +372,15 @@
 				76CF37BC25E8C73500403208 /* NotificationsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		76315A6D262A7E2F0065032C /* ModuleViews */ = {
+			isa = PBXGroup;
+			children = (
+				767957A42629397900036393 /* VIButton.h */,
+				767957A02629396D00036393 /* VIButton.m */,
+			);
+			path = ModuleViews;
 			sourceTree = "<group>";
 		};
 		764F516425FC95C7004F49C6 /* Actions */ = {
@@ -651,6 +672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				760280B42627EB930054059A /* Assets.xcassets in Resources */,
+				76315A4D262A4F6C0065032C /* PSSpringController.xib in Resources */,
 				760280D42627F36F0054059A /* PSWelcomeController.xib in Resources */,
 				760280B72627EB930054059A /* MainMenu.xib in Resources */,
 			);
@@ -694,10 +716,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76315A5B262A69C00065032C /* PSApp.m in Sources */,
 				767957A12629396D00036393 /* VIButton.m in Sources */,
 				760280BA2627EB930054059A /* main.m in Sources */,
 				760280B22627EB920054059A /* AppDelegate.m in Sources */,
 				760280C92627EDC00054059A /* PSWelcomeController.m in Sources */,
+				76315A51262A4F8D0065032C /* PSSpringController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,6 +868,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 81;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -852,6 +877,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = bensova.PSRecovery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -865,6 +891,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 81;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -873,6 +900,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = bensova.PSRecovery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

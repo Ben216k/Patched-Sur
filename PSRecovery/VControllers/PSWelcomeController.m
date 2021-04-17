@@ -9,6 +9,9 @@
 #import "PSWelcomeController.h"
 #import "VIButton.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+
 @interface PSWelcomeController ()
 
 @property (strong) IBOutlet NSTextField *titleText;
@@ -66,7 +69,10 @@
     
     self.continueButton = [[VIButton alloc] initWithFrame:CGRectMake(239, 46, 122, 25)];
     self.continueButton.buttonText = @"Continue";
+    [self.continueButton setAction:@selector(psWelcomeContinue:)];
     [self.view addSubview:self.continueButton];
 }
 
 @end
+
+#pragma clang diagnostic pop
