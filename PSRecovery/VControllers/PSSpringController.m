@@ -49,6 +49,8 @@
 
 @implementation PSSpringController
 
+// MARK: Declare View
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.selectedApp = @"";
@@ -77,7 +79,8 @@
     
     self.continueButton = [[VIButton alloc] initWithFrame:CGRectMake(340, 18, 115, 25)];
     self.continueButton.buttonText = @"Continue";
-//    [self.continueButton setAction:@selector(psWelcomeContinue:)];
+    [self.continueButton setTarget:self];
+    [self.continueButton setAction:@selector(launchApp:)];
     [self.view addSubview:self.continueButton];
     
     // MARK: App Buttons - (Re)install macOS Big Sur
@@ -264,6 +267,43 @@
     self.psTouch.action = @selector(togglePSBackground:);
     [self.view addSubview:self.psTouch];
 }
+
+-(IBAction)launchApp:(id)sender {
+    if (![self.selectedApp isEqualToString:@""] || ![self.selectedApp isEqualToString:@"PS"] ) {
+        NSLog(@"Called to launch apps.");
+        NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
+        [mainWindow close];
+        
+        NSTask *openTask = [[NSTask alloc] init];
+        
+        if ([self.selectedApp isEqualToString:@"IMBS"]) {
+            NSLog(@"Launching Install macOS Big Sur.app");
+#if DEBUG
+            [openTask setLaunchPath:@"/Applications/Install macOS Big Sur.app/Contents/MacOS/InstallAssistant"];
+#else
+            [openTask setLaunchPath:@"/Install macOS Big Sur.app/Contents/MacOS/InstallAssistant"];
+#endif
+        } else if ([self.selectedApp isEqualToString:@"SF"]) {
+            NSLog(@"Launching Safari.app");
+            [openTask setLaunchPath:@"/Applications/Safari.app/Contents/MacOS/Safari"];
+        } else if ([self.selectedApp isEqualToString:@"DU"]) {
+            NSLog(@"Launching Disk Utility.app");
+            [openTask setLaunchPath:@"/System/Applications/Utilities/Disk Utility.app/Contents/MacOS/Disk Utility"];
+        } else {
+            [openTask setLaunchPath:@"/bin/echo"];
+            NSLog(@"Unknown task, launching echo for no reason.");
+        }
+        [openTask setStandardOutput:[NSPipe pipe]];
+        [openTask setStandardInput:[NSPipe pipe]];
+        [openTask launch];
+        [openTask waitUntilExit];
+        
+        NSLog(@"Done.");
+        [mainWindow makeKeyAndOrderFront:nil];
+    }
+}
+
+// MARK: Toggle Backgrounds
 
 -(IBAction)toggleIMBSBackground:(id)sender {
     if ([self.selectedApp isEqualToString:@"IMBS"]) {

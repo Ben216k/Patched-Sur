@@ -27,6 +27,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+
+#if !DEBUG
+    [[NSApplication sharedApplication] hideOtherApplications:nil];
+#endif
+    
     self.psWelcomeController = [[PSWelcomeController alloc] initWithNibName:@"PSWelcomeController" bundle:nil];
     self.psWelcomeController.view.frame = self.window.contentView.frame;
     [self.window.contentView addSubview:self.psWelcomeController.view];
