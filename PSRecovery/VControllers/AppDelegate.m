@@ -11,6 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "PSApp.h"
+#import "PSOSXController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +20,7 @@
 
 @property (nonatomic, strong) IBOutlet PSWelcomeController *psWelcomeController;
 @property (nonatomic, strong) IBOutlet PSSpringController *psSpringController;
+@property (nonatomic, strong) IBOutlet PSOSXController *psOSXController;
 
 @end
 
@@ -35,6 +38,7 @@
     self.psWelcomeController = [[PSWelcomeController alloc] initWithNibName:@"PSWelcomeController" bundle:nil];
     self.psWelcomeController.view.frame = self.window.contentView.frame;
     [self.window.contentView addSubview:self.psWelcomeController.view];
+    [self.window center];
 }
 
 
@@ -68,16 +72,30 @@
     [self.window center];
 }
 
+- (IBAction)psContinueToDownload:(NSButton *)sender {
+    [self.window.contentView setAnimations:[NSDictionary dictionaryWithObject:[self continueAnimation] forKey:@"subviews"]];
+    self.psOSXController = [[PSOSXController alloc] initWithNibName:@"PSOSXController" bundle:nil];
+//    [self.window.contentView setFrame:CGRectMake(0, 0, 475, 410)];
+    [self.psOSXController.view setFrame:CGRectMake(0, 0, 475, 410)];
+    [self.window setFrame:CGRectMake(self.window.frame.origin.x, self.window.frame.origin.y, 475, 440) display:true animate:true];
+    [[self.window.contentView animator] replaceSubview:self.psOSXController.view with:self.psOSXController.view];
+    [self.window center];
+}
+
 - (IBAction)psLaunchTerminal:(id)sender {
+//    [self.window close];
+//
+//    NSTask *terminalTask = [[NSTask alloc] init];
+//    [terminalTask setLaunchPath:@"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"];
+//    [terminalTask setStandardOutput:[NSPipe pipe]];
+//    [terminalTask setStandardInput:[NSPipe pipe]];
+//    [terminalTask launch];
+//    [terminalTask waitUntilExit];
+//
+//    NSLog(@"Done.");
+//    [self.window makeKeyAndOrderFront:nil];
     [self.window close];
-    
-    NSTask *terminalTask = [[NSTask alloc] init];
-    [terminalTask setLaunchPath:@"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal"];
-    [terminalTask setStandardOutput:[NSPipe pipe]];
-    [terminalTask setStandardInput:[NSPipe pipe]];
-    [terminalTask launch];
-    [terminalTask waitUntilExit];
-    
+    [PSApp runTask:@"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal" arguments:nil];
     NSLog(@"Done.");
     [self.window makeKeyAndOrderFront:nil];
 }

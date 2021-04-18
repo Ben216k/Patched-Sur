@@ -40,6 +40,8 @@
 		763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B28C125FF0D2300389448 /* InstallAssistantActions.swift */; };
 		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
+		763DA724262BC7690042F864 /* PSOSXController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763DA723262BC7690042F864 /* PSOSXController.m */; };
+		763DA728262BDE290042F864 /* PSOSXController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763DA727262BDE290042F864 /* PSOSXController.xib */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
 		76553B92262156AF00336C5B /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76553B91262156AE00336C5B /* HaxDownloadView.swift */; };
 		76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76688D7A2619521C00A1450A /* PatchKextsActions.swift */; };
@@ -216,6 +218,9 @@
 		763AA41025BBCFF100C7C14F /* DisableLVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableLVView.swift; sourceTree = "<group>"; };
 		763B28C125FF0D2300389448 /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
 		763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleVolumesActions.swift; sourceTree = "<group>"; };
+		763DA722262BC74E0042F864 /* PSOSXController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSOSXController.h; sourceTree = "<group>"; };
+		763DA723262BC7690042F864 /* PSOSXController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSOSXController.m; sourceTree = "<group>"; };
+		763DA727262BDE290042F864 /* PSOSXController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PSOSXController.xib; sourceTree = "<group>"; };
 		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
@@ -339,6 +344,9 @@
 				76315A56262A4F9C0065032C /* PSSpringController.h */,
 				76315A50262A4F8D0065032C /* PSSpringController.m */,
 				76315A4C262A4F6C0065032C /* PSSpringController.xib */,
+				763DA722262BC74E0042F864 /* PSOSXController.h */,
+				763DA723262BC7690042F864 /* PSOSXController.m */,
+				763DA727262BDE290042F864 /* PSOSXController.xib */,
 			);
 			path = VControllers;
 			sourceTree = "<group>";
@@ -699,6 +707,7 @@
 			files = (
 				760280B42627EB930054059A /* Assets.xcassets in Resources */,
 				76315A4D262A4F6C0065032C /* PSSpringController.xib in Resources */,
+				763DA728262BDE290042F864 /* PSOSXController.xib in Resources */,
 				76A30CC3262B336A00B92DD2 /* PatchedSurIcon.icns in Resources */,
 				768C2985262B53CA00C2FED9 /* TinySecure.tiff in Resources */,
 				760280D42627F36F0054059A /* PSWelcomeController.xib in Resources */,
@@ -750,6 +759,7 @@
 			files = (
 				76315A5B262A69C00065032C /* PSApp.m in Sources */,
 				767957A12629396D00036393 /* VIButton.m in Sources */,
+				763DA724262BC7690042F864 /* PSOSXController.m in Sources */,
 				760280BA2627EB930054059A /* main.m in Sources */,
 				760280B22627EB920054059A /* AppDelegate.m in Sources */,
 				760280C92627EDC00054059A /* PSWelcomeController.m in Sources */,
