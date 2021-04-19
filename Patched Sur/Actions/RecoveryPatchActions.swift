@@ -49,7 +49,7 @@ func installRecovery(password: String, statusText: (String) -> (), errorX: (Stri
 //        let recoveryDiskID = try call("diskutil list | grep Recovery | cut -c 71-")
         print("Mounting Recovery")
         statusText("Mounting Recovery")
-        try call("diskutil mount \"$(diskutil list | grep Recovery | sed 's/^.*disk/disk/')\"", p: password)
+        try call("diskutil mount \"$(diskutil list / | grep Recovery | sed 's/^.*disk/disk/' | head -n 1)\"", p: password)
         try call("mount -uw /Volumes/Recovery", p: password)
         print("Backing Up BaseSystem")
         statusText("Backing Up BaseSystem")

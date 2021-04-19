@@ -115,16 +115,26 @@ func updatePatchedApp(completion: ((Bool) -> ())? = nil) {
     print("Switching to full Patched Sur...")
     
     if completion == nil {
-        do {
-    //        try call("'/Applications/Patched Sur.app/Contents/MacOS/Patched Sur' &")
-            try call("open '/Applications/Patched Sur.app/'")
-        } catch {
+        guard let appUrl = NSWorkspace.shared.urlForApplication(withBundleIdentifier: "u-bensova.Patched-Sur") else {
             print("Failed to open Patched Sur app, but you can do that yourself.")
             let errorAlert = NSAlert()
             errorAlert.alertStyle = .critical
             errorAlert.informativeText = "Failed to open Patched Sur, but you can do this yourself."
             errorAlert.messageText = "Update Done!"
             errorAlert.runModal()
+            return
+        }
+        let configuration = NSWorkspace.OpenConfiguration()
+        configuration.createsNewApplicationInstance = true
+        NSWorkspace.shared.openApplication(at: appUrl, configuration: configuration) { (_, error) in
+            if error != nil {
+                print("Failed to open Patched Sur app, but you can do that yourself.")
+                let errorAlert = NSAlert()
+                errorAlert.alertStyle = .critical
+                errorAlert.informativeText = "Failed to open Patched Sur, but you can do this yourself."
+                errorAlert.messageText = "Update Done!"
+                errorAlert.runModal()
+            }
         }
     }
     
