@@ -39,6 +39,9 @@ struct ContentView: View {
             case 5:
                 Color.white.opacity(0.001)
                 CreateInstallerOverView(at: $atLocation).transition(.moveAway)
+            case 6:
+                Color.white.opacity(0.001)
+                RecoveryPatchView(at: $atLocation)
             default:
                 Color.white.opacity(0.001)
                 VStack {
@@ -142,8 +145,10 @@ struct MainView: View {
                                 at = 5
                             }
                         }
-                        VISimpleCell(t: "Install Recovery", d: "Add a recovery volume (it will not map to CMD-R, use Option) for the just in case moments.", s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
-                            presentAlert(m: "Silly Beta Tester", i: "You don't get this until later!")
+                        VISimpleCell(t: "Install Recovery", d: "Patch the current recovery volume (it will not map to CMD-R, use Option). Not always useful.", s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
+                            withAnimation {
+                                at = 6
+                            }
                         }
                         VISimpleCell(t: "About This Mac", d: "Show info about your mac without the serial number. Good for showing off your success.", s: "info.circle", id: "ABOUT", h: $hovered) {
                             withAnimation {

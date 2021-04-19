@@ -97,12 +97,14 @@
 		76A30CBF262B336300B92DD2 /* DiskUtility.icns in Resources */ = {isa = PBXBuildFile; fileRef = 76A30CBE262B336300B92DD2 /* DiskUtility.icns */; };
 		76A30CC3262B336A00B92DD2 /* PatchedSurIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 76A30CC2262B336A00B92DD2 /* PatchedSurIcon.icns */; };
 		76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D32524ED78002C57EA /* MacCompatibility.swift */; };
+		76B59820262CEE0E004E52BC /* RecoveryPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */; };
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
 		76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF37BC25E8C73500403208 /* NotificationsView.swift */; };
 		76D639DD2576302500B38FBE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D639DC2576302500B38FBE /* main.swift */; };
 		76D8437B25F861DE006C6565 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76D8437A25F861DE006C6565 /* VeliaUI */; };
 		76D8437D25F861E6006C6565 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76D8437C25F861E6006C6565 /* VeliaUI */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
+		76E73A68262CF77C0009D9CC /* RecoveryPatchActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */; };
 		76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */; };
 		76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11508256EE9FB001AB749 /* PatchedVersion.swift */; };
@@ -270,10 +272,12 @@
 		76A30CBE262B336300B92DD2 /* DiskUtility.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DiskUtility.icns; sourceTree = "<group>"; };
 		76A30CC2262B336A00B92DD2 /* PatchedSurIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PatchedSurIcon.icns; sourceTree = "<group>"; };
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
+		76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchView.swift; sourceTree = "<group>"; };
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
 		76CF37BC25E8C73500403208 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		76D639DC2576302500B38FBE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchActions.swift; sourceTree = "<group>"; };
 		76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchDaemon.swift; sourceTree = "<group>"; };
 		76F11508256EE9FB001AB749 /* PatchedVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchedVersion.swift; sourceTree = "<group>"; };
 		76F11510256EED85001AB749 /* UpdateAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppView.swift; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 				7609BD1D258008B70054B76F /* StartInstallView.swift */,
 				76553B91262156AE00336C5B /* HaxDownloadView.swift */,
 				76CF37BC25E8C73500403208 /* NotificationsView.swift */,
+				76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
 				7680783826211A5D000ABD89 /* UpdaterActions.swift */,
 				7680783B26211AC5000ABD89 /* UpdateChooserActions.swift */,
+				76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -823,6 +829,7 @@
 				76A070DA261BBAD90002A304 /* CreateInstallerView.swift in Sources */,
 				762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */,
 				76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */,
+				76B59820262CEE0E004E52BC /* RecoveryPatchView.swift in Sources */,
 				762A1DB4260C19B80009620B /* PatchKextsView.swift in Sources */,
 				76553B92262156AF00336C5B /* HaxDownloadView.swift in Sources */,
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
@@ -841,6 +848,7 @@
 				76A0B78D25749FC100E392D1 /* main.swift in Sources */,
 				7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */,
 				767EF2AD261E975A00769793 /* UpdateChooser.swift in Sources */,
+				76E73A68262CF77C0009D9CC /* RecoveryPatchActions.swift in Sources */,
 				760AA9CF261E72A200ADABE0 /* UpdateOSView.swift in Sources */,
 				76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */,
 				76A070B9261B5AB10002A304 /* ReleaseTrackView.swift in Sources */,

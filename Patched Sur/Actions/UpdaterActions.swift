@@ -66,7 +66,7 @@ func upDownloadKexts(useCurrent: Bool, installInfo: InstallAssistant, downloadSi
         _ = try? File(path: "~/.patched-sur/Patched-Sur-Patches.zip").delete()
         _ = try? call("rm -rf ~/.patched-sur/__MACOSX")
         print("Starting download of patches...")
-        try call("curl -Lo ~/.patched-sur/Patched-Sur-Patches.zip \(AppInfo.patchesV.url)")
+        try call("curl -Lo ~/.patched-sur/Patched-Sur-Patches.zip \(AppInfo.patchesV.url) --speed-limit 0 --speed-time 10")
         print("Finished downloading the patches!")
         kextDownloaded()
         if !(installInfo.buildNumber.contains("Custom")) {
@@ -84,10 +84,10 @@ func upDownloadKexts(useCurrent: Bool, installInfo: InstallAssistant, downloadSi
                                                         reasonForActivity,
                                                         &assertionID )
             if success == kIOReturnSuccess {
-                try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo.url)")
+                try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo.url) --speed-limit 0 --speed-time 10")
                 success = IOPMAssertionRelease(assertionID)
             } else {
-                try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo.url)")
+                try call("curl -Lo ~/.patched-sur/InstallAssistant.pkg \(installInfo.url) --speed-limit 0 --speed-time 10")
             }
             print("Updating InstallInfo.txt")
             if let versionFile = try? Folder(path: "~/.patched-sur").createFileIfNeeded(at: "InstallInfo.txt") {
