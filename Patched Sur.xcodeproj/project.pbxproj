@@ -36,7 +36,6 @@
 		7633BC732617744900A550A6 /* Patched Sur - Recovery.app in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */; };
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
 		7633BC7F2617D24800A550A6 /* PSPatchV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7633BC7E2617D24800A550A6 /* PSPatchV.swift */; };
-		763AA41125BBCFF100C7C14F /* DisableLVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763AA41025BBCFF100C7C14F /* DisableLVView.swift */; };
 		763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B28C125FF0D2300389448 /* InstallAssistantActions.swift */; };
 		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
@@ -217,7 +216,6 @@
 		76315A59262A69AF0065032C /* PSApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSApp.h; sourceTree = "<group>"; };
 		76315A5A262A69C00065032C /* PSApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSApp.m; sourceTree = "<group>"; };
 		7633BC7E2617D24800A550A6 /* PSPatchV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPatchV.swift; sourceTree = "<group>"; };
-		763AA41025BBCFF100C7C14F /* DisableLVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableLVView.swift; sourceTree = "<group>"; };
 		763B28C125FF0D2300389448 /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
 		763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleVolumesActions.swift; sourceTree = "<group>"; };
 		763DA722262BC74E0042F864 /* PSOSXController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSOSXController.h; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
 				76F11508256EE9FB001AB749 /* PatchedVersion.swift */,
 				7692E085251BFFB400C5FB9A /* Preview Content */,
-				763AA41025BBCFF100C7C14F /* DisableLVView.swift */,
 			);
 			path = "Patched Sur";
 			sourceTree = "<group>";
@@ -836,7 +833,6 @@
 				76A070E0261BBAEC0002A304 /* HandleVolumesActions.swift in Sources */,
 				7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */,
 				7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */,
-				763AA41125BBCFF100C7C14F /* DisableLVView.swift in Sources */,
 				76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */,
 				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
 				762A066825BF93A80037655D /* Keychain.swift in Sources */,
@@ -918,7 +914,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 86;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -941,7 +937,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 86;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -965,7 +961,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 86;
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -989,7 +985,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 86;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -1128,7 +1124,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 86;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1160,7 +1156,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 86;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1192,7 +1188,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 86;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -1225,7 +1221,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 83;
+				CURRENT_PROJECT_VERSION = 86;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";

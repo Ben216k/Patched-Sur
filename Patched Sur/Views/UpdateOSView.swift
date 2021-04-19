@@ -74,9 +74,47 @@ struct UpdateOSView: View {
                                 Text("Start the macOS Update")
                                     .font(.caption)
                             } onClick: {
-                                checkGeneralUpdateCompat { go in
-                                    withAnimation {
-                                        p = go
+                                checkGeneralUpdateCompat { worked in
+                                    if worked {
+                                        withAnimation {
+                                            p = 3
+                                        }
+                                        return
+                                    }
+                                    showPass = true
+                                    DispatchQueue.global(qos: .background).async {
+                                        while true {
+                                            if !showPass && password != "" {
+                                                break
+                                            }
+                                            _ = try? call("sleep 0.2")
+                                        }
+                                        DispatchQueue.main.async {
+                                            AppInfo.canReleaseAttention = false
+                                            do {
+                                                try call("defaults write /Library/Preferences/com.apple.security.libraryvalidation.plist DisableLibraryValidation -bool true", p: password)
+                                            } catch {
+                                                print("Failed to change library validation status.")
+                                                presentAlert(m: "Failed to update LV status", i: "Patched Sur was unable to disable library validation.", s: .warning)
+                                            }
+                                            let al = NSAlert()
+                                            al.informativeText = "You now need to reboot your Mac to apply the changes, then you can continue on with the updater."
+                                            al.messageText = "Successfully Disabled Library Validation"
+                                            al.showsHelp = false
+                                            al.addButton(withTitle: "Reboot Mac")
+                                            switch al.runModal() {
+                                            case .alertFirstButtonReturn:
+                                                do {
+                                                    try call("reboot", p: password)
+                                                } catch {
+                                                    print("Failed to reboot, telling the user to do it themself.")
+                                                    presentAlert(m: "Failed to Reboot", i: "You can do it yourself! Cmd+Control+Eject (or Cmd+Control+Power if you want it to be faster) will reboot your computer, or you can use the Apple logo in the corner of the screen. Your choice, they all work.", s: .warning)
+                                                    AppInfo.canReleaseAttention = true
+                                                }
+                                            default:
+                                                break
+                                            }
+                                        }
                                     }
                                 }
                             }.inPad()

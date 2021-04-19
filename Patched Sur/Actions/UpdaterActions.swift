@@ -11,14 +11,15 @@ import Files
 
 // MARK: Check General Update Compat
 
-func checkGeneralUpdateCompat(p: (Int) -> ()) {
+func checkGeneralUpdateCompat(worked: (Bool) -> ()) {
     print("Checking for Library Validation...")
     var libraryValidation = ""
     do {
         libraryValidation = try call("defaults read /Library/Preferences/com.apple.security.libraryvalidation.plist DisableLibraryValidation")
     } catch {
-        print("Failed to check library validation status.")
-        presentAlert(m: "Failed to check Library Validation Status", i: "Patched Sur failed to check your SIP status, which should be impossible.\n\n\(error.localizedDescription)", s: .critical)
+        libraryValidation = "jfhsdkljfhklasdhfkjldhskjf"
+//        print("Failed to check library validation status.")
+//        presentAlert(m: "Failed to check Library Validation Status", i: "Patched Sur failed to check your SIP status, which should be impossible.\n\n\(error.localizedDescription)", s: .critical)
     }
     print("Checking for SIP...")
     var csrstatus = ""
@@ -28,26 +29,26 @@ func checkGeneralUpdateCompat(p: (Int) -> ()) {
         print("Failed to check csr status.")
         presentAlert(m: "Failed to check SIP Status", i: "Patched Sur failed to check your SIP status, which should be impossible.\n\n\(error.localizedDescription)", s: .critical)
     }
-    if csrstatus.contains("status: enabled") {
+    if csrstatus.contains("status: enabled") || csrstatus.contains("Debugging Restrictions: enabled") {
         print("CSR is Enabled! The updater cannot be run.")
-        presentAlert(m: "SIP Appears to Be On", i: "Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with SIP off, so Patched Sur needs you to disable SIP before continuing. To disable it:\n\n1. Boot into Recovery Mode (⌘⌥R on Startup)\n2. Open Terminal under Utilities.\n3. Type in: csrutil disable then press enter.\n4. Press enter and restart your computer, then try running Patched Sur again.")
+        presentAlert(m: "SIP Appears to Be On", i: "Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with SIP off, so Patched Sur needs you to disable SIP before continuing. To disable it:\n\n1. Boot into Recovery Mode (⌘R on Startup)\n2. Open Terminal under Utilities.\n3. Type in: csrutil disable then press enter.\n4. Press enter and restart your computer, then try running Patched Sur again.")
     } else if !libraryValidation.contains("1") {
         print("Library Validation is not set, warning user.")
         let al = NSAlert()
-        al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
-        al.messageText = "Would you like to try again?"
+        al.informativeText = "Library Validation prevents Patched Sur from injecting code into the macOS installer and skipping the compatibility check. If you want to update macOS, you need to first disable Library Validation."
+        al.messageText = "Library Validation is Enabled"
         al.showsHelp = false
         al.addButton(withTitle: "Continue")
         al.addButton(withTitle: "Cancel")
         switch al.runModal() {
         case .alertFirstButtonReturn:
-            p(6)
+            worked(false)
         default:
             break
         }
     } else {
         print("Library Validation is off, continuing...")
-        p(3)
+        worked(true)
     }
 }
 

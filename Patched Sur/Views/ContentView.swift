@@ -41,7 +41,7 @@ struct ContentView: View {
                 CreateInstallerOverView(at: $atLocation).transition(.moveAway)
             case 6:
                 Color.white.opacity(0.001)
-                RecoveryPatchView(at: $atLocation)
+                RecoveryPatchView(at: $atLocation).transition(.moveAway)
             default:
                 Color.white.opacity(0.001)
                 VStack {
@@ -145,7 +145,7 @@ struct MainView: View {
                                 at = 5
                             }
                         }
-                        VISimpleCell(t: "Install Recovery", d: "Patch the current recovery volume (it will not map to CMD-R, use Option). Not always useful.", s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
+                        VISimpleCell(t: "Install Recovery", d: "Patch the current recovery volume (used with CMD-R on boot). Not always useful.", s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
                             withAnimation {
                                 at = 6
                             }

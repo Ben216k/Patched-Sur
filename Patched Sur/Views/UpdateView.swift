@@ -80,8 +80,8 @@ struct UpdateView: View {
                     StartInstallView(password: $password, installInfo: $installInfo).transition(.moveAway)
                 case 5:
                     UpdateChooser(p: $progress, installInfo: $installInfo, track: $track, useCurrent: $useCurrent, package: $packageLocation).transition(.moveAway)
-                case 6:
-                    DisableAMFIView().transition(.moveAway)
+//                case 6:
+//                    DisableAMFIView().transition(.moveAway)
 //                case 8:
 //                    NotificationsView(p: $progress).font(.caption).transition(.moveAway)
                 default:
