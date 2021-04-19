@@ -16,7 +16,7 @@ struct UpdateView: View {
     @State var track = ReleaseTrack.release
     @State var latestPatch = nil as PatchedVersion?
     #if DEBUG
-    @State var skipAppCheck = true
+    @State var skipAppCheck = false
     #else
     @State var skipAppCheck = false
     #endif
@@ -35,7 +35,7 @@ struct UpdateView: View {
             VStack {
                 if progress != 5 {
                     HStack(spacing: 15) {
-                        VIHeader(p: "Update macOS", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $topCompress)
+                        VIHeader(p: "Update \(progress == 1 ? "Patcher" : "macOS")", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $topCompress)
                             .alignment(.leading)
                         Spacer()
                         if progress != 4 {
@@ -136,7 +136,10 @@ struct UpdateCheckerView: View {
                                 if !skipAppCheck, let patchedVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
                                     if patchedVersions[0].tagName != "v\(AppInfo.version)" {
                                         latestPatch = patchedVersions[0]
-                                        progress = 1
+                                        withAnimation {
+                                            topCompress = true
+                                            progress = 1
+                                        }
                                         print("Found update \(latestPatch?.tagName ?? "INVALID").")
                                         print("Offering update.\n")
                                         return

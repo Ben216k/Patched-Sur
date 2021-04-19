@@ -394,6 +394,7 @@
 				76553B91262156AE00336C5B /* HaxDownloadView.swift */,
 				76CF37BC25E8C73500403208 /* NotificationsView.swift */,
 				76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */,
+				76F11510256EED85001AB749 /* UpdateAppView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -490,7 +491,6 @@
 				7691808625F9DB5C003FB34C /* Actions */,
 				7631556F254C984900646CE9 /* ExtraViews.swift */,
 				7692E083251BFFB400C5FB9A /* Assets.xcassets */,
-				76F11510256EED85001AB749 /* UpdateAppView.swift */,
 				7692E088251BFFB400C5FB9A /* Info.plist */,
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
 				76F11508256EE9FB001AB749 /* PatchedVersion.swift */,
