@@ -109,7 +109,25 @@ struct UpdateChooser: View {
             ScrollView {
                 if let current = current {
                     Text("This version of macOS is already downloaded:")
-                    UpdateSelectCell(installer: current, delete: {}, selfV: selfV, installInfo: $installInfo, done: {withAnimation { p = 3 }})
+                    UpdateSelectCell(installer: current, delete: {
+                        print("Making sure we want to delete the installer")
+                        let al = NSAlert()
+                        al.informativeText = "While this will save you a good 12.2 GBs of storage, it's also useful for quickly reinstalling macOS or really any other reason you might need a 12GB macOS installer."
+                        al.messageText = "Are you sure you want to delete the pre-downloaded installer?"
+                        al.showsHelp = false
+                        al.addButton(withTitle: "Delete")
+                        al.addButton(withTitle: "Cancel")
+                        switch al.runModal() {
+                        case .alertFirstButtonReturn:
+                            _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
+                            _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
+                            withAnimation {
+                                self.current = nil
+                            }
+                        default:
+                            break
+                        }
+                    }, selfV: selfV, installInfo: $installInfo, done: {withAnimation { p = 3 }})
                 }
                 if let fetched = fetchedInstallers {
                     Text("You can download these versions of macOS:")
@@ -174,7 +192,18 @@ struct UpdateSelectCell: View {
                     VIButton(id: "DOWNLOAD\(installer.buildNumber)", h: $hovered) {
                         Image("DownloadArrow")
                     } onClick: {
-                        NSWorkspace.shared.open(URL(string: installer.url)!)
+                        let al = NSAlert()
+                        al.informativeText = "You can update to this version of macOS, however you can also download it and that's the button you clicked. This popup just exists to make sure you know that. (This will just open your web browser and download the installer, nothing special.)"
+                        al.messageText = "Download the macOS Installer"
+                        al.showsHelp = false
+                        al.addButton(withTitle: "Download")
+                        al.addButton(withTitle: "Cancel")
+                        switch al.runModal() {
+                        case .alertFirstButtonReturn:
+                            NSWorkspace.shared.open(URL(string: installer.url)!)
+                        default:
+                            break
+                        }
                     }.btColor(Color.gray).useHoverAccent()
                     .help("You can also download the InstallAssistant.pkg if you want.")
                 }
@@ -183,7 +212,18 @@ struct UpdateSelectCell: View {
                     Image("DownloadArrow")
                     Text("Download")
                 } onClick: {
-                    NSWorkspace.shared.open(URL(string: installer.url)!)
+                    let al = NSAlert()
+                    al.informativeText = "You can't \"update\" to an older version of macOS, however you can download the installer if you have something you want to do with it. (This will just open your web browser and download the installer, nothing special.)"
+                    al.messageText = "Download the macOS Installer"
+                    al.showsHelp = false
+                    al.addButton(withTitle: "Download")
+                    al.addButton(withTitle: "Cancel")
+                    switch al.runModal() {
+                    case .alertFirstButtonReturn:
+                        NSWorkspace.shared.open(URL(string: installer.url)!)
+                    default:
+                        break
+                    }
                 }.inPad()
                 .btColor(.gray).useHoverAccent()
                 .help("You cannot update to an older version of macOS, but you may download this installer if you want.")
@@ -191,6 +231,8 @@ struct UpdateSelectCell: View {
             if delete != nil {
                 VIButton(id: "DELETEC", h: $hovered) {
                     Image("ThisImageIsTrash")
+                } onClick: {
+                    delete!()
                 }.btColor(.red)
             }
         }
