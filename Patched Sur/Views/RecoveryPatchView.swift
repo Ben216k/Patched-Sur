@@ -47,6 +47,16 @@ struct RecoveryPatchView: View {
                         Text("Continue")
                         Image("ForwardArrowCircle")
                     } onClick: {
+                        let sipStatus = try! call("csrutil status")
+                        if sipStatus.contains("Protection status: enable") || sipStatus.contains("Filesystem Protections: enabled") {
+                            print("Recovery probably won't work out since SIP is on.")
+                            let errorAlert = NSAlert()
+                            errorAlert.alertStyle = .warning
+                            errorAlert.informativeText = "The recovery patch cannot be installed with SIP on because of the filesystem protections. Now it might seem that the only way to turn off SIP is with recovery mode but there are other ways.\n\nIf you still have the installer USB, you might be able to boot into the EFI Boot on it. If that doesn't work or you can't do that, boot into internet recovery mode (CMD-OPTION-R on boot) and you can do it from there."
+                            errorAlert.messageText = "SIP is On"
+                            errorAlert.runModal()
+                            return
+                        }
                         withAnimation {
                             progress = 1
                         }
