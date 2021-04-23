@@ -58,7 +58,7 @@ struct UpdateOSView: View {
                                 Text("macOS Big Sur \(installInfo?.version ?? "v0.0.0")")
                                     .font(.title)
                                     .bold()
-                                Text("Released \(installInfo?.date ?? "0.0.0") • Build \(installInfo?.buildNumber ?? "0.0.0")")
+                                Text("Released \(installInfo?.localizedDate ?? "0.0.0") • Build \(installInfo?.buildNumber ?? "0.0.0")")
                                     .font(.caption)
                                 Button {
                                     withAnimation {

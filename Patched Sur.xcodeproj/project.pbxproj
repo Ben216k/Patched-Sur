@@ -135,6 +135,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		7605945826325D450005C38C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		76A070C8261BABBF0002A304 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +201,7 @@
 		760280C82627EDC00054059A /* PSWelcomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSWelcomeController.m; sourceTree = "<group>"; };
 		760280CE2627EDD20054059A /* PSWelcomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSWelcomeController.h; sourceTree = "<group>"; };
 		760280D32627F36F0054059A /* PSWelcomeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PSWelcomeController.xib; sourceTree = "<group>"; };
+		7605944B26325D420005C38C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7609BD17257FF8DB0054B76F /* DownloadKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadKexts.swift; sourceTree = "<group>"; };
 		7609BD1D258008B70054B76F /* StartInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInstallView.swift; sourceTree = "<group>"; };
 		760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOSView.swift; sourceTree = "<group>"; };
@@ -511,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				767D6F9B25AA294C00A773AE /* SwiftUI.framework */,
+				7605944B26325D420005C38C /* WidgetKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -640,6 +652,7 @@
 				7692E07B251BFFB200C5FB9A /* Resources */,
 				76D8437625F85FF2006C6565 /* Embed Libraries */,
 				76A070C8261BABBF0002A304 /* CopyFiles */,
+				7605945826325D450005C38C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -914,7 +927,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 86;
+				CURRENT_PROJECT_VERSION = 88;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -937,7 +950,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 86;
+				CURRENT_PROJECT_VERSION = 88;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -961,7 +974,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 87;
+				CURRENT_PROJECT_VERSION = 88;
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -985,7 +998,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 87;
+				CURRENT_PROJECT_VERSION = 88;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -1124,7 +1137,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 87;
+				CURRENT_PROJECT_VERSION = 88;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1156,7 +1169,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 87;
+				CURRENT_PROJECT_VERSION = 88;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1182,13 +1195,14 @@
 		7692E08B251BFFB400C5FB9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur/Patched_Sur.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 87;
+				CURRENT_PROJECT_VERSION = 88;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -1215,13 +1229,14 @@
 		7692E08C251BFFB400C5FB9A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur/Patched_Sur.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 87;
+				CURRENT_PROJECT_VERSION = 88;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
