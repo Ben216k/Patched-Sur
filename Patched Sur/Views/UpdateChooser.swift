@@ -168,7 +168,7 @@ struct UpdateSelectCell: View {
             VStack(alignment: .leading) {
                 Text("macOS \(installer.version)")
                     .font(Font.title3.bold())
-                Text("Build \(installer.buildNumber) - Released \(installer.date)")
+                Text("Build \(installer.buildNumber) - Released \(installer.localizedDate)")
             }
             Spacer()
             if convertVersionBinary(installer.version) >= convertVersionBinary(selfV) {

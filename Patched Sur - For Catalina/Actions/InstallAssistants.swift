@@ -23,6 +23,23 @@ struct InstallAssistant: Codable {
     }
 }
 
+extension InstallAssistant {
+    var localizedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDateObject = dateFormatter.date(from: date) ?? Date(timeIntervalSinceNow: -99999)
+        
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.timeStyle = .none
+        newDateFormatter.dateStyle = .medium
+        newDateFormatter.locale = Locale.current
+        newDateFormatter.doesRelativeDateFormatting = true
+        
+        return newDateFormatter.string(from: formattedDateObject)
+    }
+}
+
 // MARK: InstallAssistant convenience initializers and mutators
 
 extension InstallAssistant {
