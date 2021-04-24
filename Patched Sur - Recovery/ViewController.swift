@@ -38,6 +38,8 @@ class ViewController: NSViewController {
             DispatchQueue.global(qos: .background).async { [self] in
                 print("Starting patch kexts")
 //                try call("'/Volumes/Image Volume/patch-kexts.sh' '/Volumes/\(volumeSelect.selectedItem!.title)'")
+                _ = runCommandReturnStr(binary: "/bin/rm", arguments: ["-rf", "/Volumes/\(selectInfo) - Data/Applications/Patched Sur.app"])
+                _ = runCommandReturnStr(binary: "/bin/cp", arguments: ["-a", "/Volumes/Image Volume/Patched Sur.app", "/Volumes/\(selectInfo) - Data/Applications/Patched Sur.app"])
                 let patchKextsOut = runCommandReturnStr(binary: "/bin/bash", arguments: ["/Volumes/Image Volume/PatchKexts.sh", "/Volumes/\(selectInfo)"])
                 if patchKextsOut!.status == 0 {
                     DispatchQueue.main.async {

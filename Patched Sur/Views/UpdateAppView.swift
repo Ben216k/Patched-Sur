@@ -71,8 +71,8 @@ struct UpdateAppView: View {
                                 }
                             })
                         HStack {
-                            Image("DownloadArrow")
-                            Text("Downloading")
+                            Image("DownloadArrow").foregroundColor(.white)
+                            Text("Downloading").foregroundColor(.white)
                         }.padding(6)
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {
