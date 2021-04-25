@@ -104,8 +104,8 @@ func patchInstaller(password: String, progressText: @escaping (String) -> (), er
 //        try call("/Users/bensova/Developer/Patched-Sur-Patches/Scripts/PatchUSB.sh '\(Bundle.main.resourcePath!)'", p: password, h: progressText)
         progressText("Copying Post-Install App")
         print("Copying Post-Install App")
-        _ = try? call("rm -rf '/Applications/Patched Sur.app'")
         if let bundlePath = Bundle.main.path(forResource: "Patched Sur.app", ofType: nil) {
+            _ = try? call("rm -rf '/Applications/Patched Sur.app'")
             try call("cp -rf \"\(bundlePath)\" '/Applications/Patched Sur.app'")
         }
         _ = try? call("cp -a \"\(Bundle.main.path(forResource: "Patched Sur.app", ofType: nil) ?? Bundle.main.bundlePath)\" /Volumes/Install\\ macOS\\ Big\\ Sur/Patched\\ Sur.app")
