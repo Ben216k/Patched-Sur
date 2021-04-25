@@ -113,12 +113,12 @@ struct MainView: View {
             HStack {
                 VStack {
                     VStack(alignment: .leading, spacing: 7) {
-                        VISimpleCell(t: "Update macOS", d: "Go from your current version of macOS to a newer one,where there's something new.", s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
+                        VISimpleCell(t: "Run Updates", d: "Update either macOS or the patcher to a newer version to stay up to date.", s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
                             withAnimation {
                                 at = 1
                             }
                         }
-                        VISimpleCell(t: "Patch Kexts", d: "Kexts provide macOS with it's full functionality. So that everything works like it should.", s: "doc.circle", id: "KEXTS", h: $hovered) {
+                        VISimpleCell(t: "Patch Kexts", d: "Kexts provide macOS with it's full functionality, so that everything works like it should.", s: "doc.circle", id: "KEXTS", h: $hovered) {
                             if !model.hasPrefix("iMac14,") {
                                 withAnimation {
                                     at = 2
