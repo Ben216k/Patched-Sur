@@ -24,7 +24,7 @@ func extractPackage(installInfo: InstallAssistant, password: String, errorX: (St
                 print("Cleaning up before move.")
                 _ = try? call("rm -rf '/Applications/Install macOS Big Sur.app'", p: password)
                 print("Moving installer app")
-                try call("mv '\(installInfo.url)' '/Applications/Install macOS Big Sur.app'")
+                try call("cp -a '\(installInfo.url)' '/Applications/Install macOS Big Sur.app'", p: password)
                 print("Done moving this app for this dumb workaround that I have to use for dumb reasons.")
             }
         }
