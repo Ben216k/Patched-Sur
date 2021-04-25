@@ -27,16 +27,20 @@ func extractPackage(installInfo: InstallAssistant, password: String, errorX: (St
             if betaSHA != betaSHANew {
                 useBeta = true
             }
+        } else {
+            if installInfo.url != "/Applications/Install macOS Big Sur.app" || installInfo.url != "/Applications/Install macOS Big Sur Beta.app" {
+                print("Checking installer type")
+                useBeta = (try? call("cat '\(installInfo.url)' | grep 'Install macOS Big Sur Beta'")) != nil
+                print("Cleaning up before move.")
+                _ = try? call("rm -rf '/Applications/Install macOS Big Sur\(useBeta ? " Beta" : "").app'", p: password)
+                print("Moving installer app")
+                try call("cp -a '\(installInfo.url)' '/Applications/Install macOS Big Sur\(useBeta ? " Beta" : "").app'", p: password)
+                print("Done moving this app for this dumb workaround that I have to use for dumb reasons.")
+            } else if installInfo.url == "/Applications/Install macOS Big Sur Beta.app" {
+                useBeta = true
+            }
         }
-//        } else {
-//            if installInfo.url != "/Applications/Install macOS Big Sur.app" {
-//                print("Cleaning up before move.")
-//                _ = try? call("rm -rf '/Applications/Install macOS Big Sur.app'", p: password)
-//                print("Moving installer app")
-//                try call("cp -a '\(installInfo.url)' '/Applications/Install macOS Big Sur.app'", p: password)
-//                print("Done moving this app for this dumb workaround that I have to use for dumb reasons.")
-//            }
-//        }
+        print("Note: Using \(useBeta ? "Beta" : "Release") scheme.")
         errorX("CREATE")
     } catch {
         print("Failed to extract package.")
@@ -75,11 +79,7 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
         _ = try? call("sleep 2")
         print("Starting createinstallmedia")
         progressText("Starting createinstallmedia")
-        if installInfo.buildNumber.contains("APP") {
-            try call("'\(installInfo.url)/Contents/Resources/createinstallmedia' --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
-        } else {
-            try call("/Applications/Install\\ macOS\\ Big\\ Sur\(useBeta ? "\\ Beta" : "").app/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
-        }
+        try call("/Applications/Install\\ macOS\\ Big\\ Sur\(useBeta ? "\\ Beta" : "").app/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
         print("Finished createinstallmedia!")
         errorX("PATCH")
     } catch {
