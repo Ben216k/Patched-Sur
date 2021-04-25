@@ -76,7 +76,7 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
         print("Starting createinstallmedia")
         progressText("Starting createinstallmedia")
         if installInfo.buildNumber.contains("APP") {
-            try call("\(installInfo.url)/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
+            try call("\(installInfo.url.replacingOccurrences(of: ")", with: "\\)").replacingOccurrences(of: "(", with: "\\("))/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
         } else {
             try call("/Applications/Install\\ macOS\\ Big\\ Sur\(useBeta ? "\\ Beta" : "").app/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
         }
