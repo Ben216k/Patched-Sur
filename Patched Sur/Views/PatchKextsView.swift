@@ -16,13 +16,14 @@ struct PatchKextsView: View {
     @Binding var password: String
     @State var showPassPrompt = false
     @State var legacy = false
+    @State var unpatch = false
     @State var errorX = ""
     
     var body: some View {
         ZStack {
             VStack {
                 HStack(spacing: 15) {
-                    VIHeader(p: "Patch Kexts", s: "Make Drivers Work Basically", c: $topCompress)
+                    VIHeader(p: "\(unpatch ? "Unpatch" : "Patch") Kexts", s: "Make Drivers Work Basically", c: $topCompress)
                         .alignment(.leading)
                     Spacer()
                     VIButton(id: "BACK", h: $hovered) {
@@ -38,7 +39,7 @@ struct PatchKextsView: View {
                     }.inPad()
                 }.padding(.top, 40)
                 Spacer()
-                Text("Patch Kexts")
+                Text("\(unpatch ? "Unpatch" : "Patch") Kexts")
                     .font(.system(size: 15)).bold()
                 Text("Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. Sometimes, it might be a good idea to wait a little bit before running patch kexts, since some things might be interfering with the System volume.")
                     .multilineTextAlignment(.center)
@@ -47,7 +48,7 @@ struct PatchKextsView: View {
                 switch progress {
                 case 0:
                     VIButton(id: "STARTKP", h: $hovered) {
-                        Text("Start Patch Kexts")
+                        Text("Start \(unpatch ? "Unpatch" : "Patch")ing Kexts")
                         Image(systemName: "chevron.forward.circle")
                             .font(Font.system(size: 15).weight(.medium))
                     } onClick: {
@@ -56,6 +57,14 @@ struct PatchKextsView: View {
                             topCompress = true
                         }
                     }.inPad()
+                    .transition(.moveAway2)
+                    VIButton(id: "CHOOSEDIFF", h: $hovered) {
+                        Text("\(unpatch ? "Patch" : "Unpatch") Kexts Instead")
+                            .font(.caption)
+                    } onClick: {
+                        unpatch.toggle()
+                    }.inPad()
+                    .btColor(.gray)
                     .transition(.moveAway2)
                 case 1:
                     VIButton(id: "NEVER", h: .constant("NO")) {
@@ -114,12 +123,12 @@ struct PatchKextsView: View {
                 case 3:
                     VIButton(id: "No", h: .constant("")) {
                         Image("FileCircle")
-                        Text("Patching Kexts")
+                        Text("\(unpatch ? "Unpatch" : "Patch")ing Kexts")
                     }.inPad()
                     .btColor(.gray)
                     .onAppear {
                         DispatchQueue.global(qos: .background).async {
-                            patchKexts(password: password, legacy: legacy, location: installerName) { errorY in
+                            patchKexts(password: password, legacy: legacy, unpatch: unpatch, location: installerName) { errorY in
                                 if let errorY = errorY {
                                     errorX = errorY
                                     progress = -2

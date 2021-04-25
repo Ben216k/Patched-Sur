@@ -63,16 +63,16 @@ func detectPatches(installerName: (String?) -> (), legacy: (Bool) -> ()) {
     installerName(nil)
 }
 
-func patchKexts(password: String, legacy: Bool, location: String, errorX: (String?) -> ()) {
+func patchKexts(password: String, legacy: Bool, unpatch: Bool, location: String, errorX: (String?) -> ()) {
     print("Starting Patch Kexts")
     do {
         if legacy {
             print("Warning: Starting legacy patch kexts mode.")
             print("These patches haven't really been updated since a long time ago.")
-            let output = try call("\(location)/patch-kexts.sh", p: password)
+            let output = try call("\(location)/patch-kexts.sh\(unpatch ? " -u" : "")", p: password)
             UserDefaults.standard.setValue("Warning: Legacy Patch Kexts Mode was used.\n" + output, forKey: "PatchKextsLastRun")
         } else {
-            let output = try call("\(location)/PatchKexts.sh", p: password)
+            let output = try call("\(location)/PatchKexts.sh\(unpatch ? " -u" : "")", p: password)
             UserDefaults.standard.setValue(output, forKey: "PatchKextsLastRun")
         }
         errorX(nil)
