@@ -89,3 +89,25 @@ func cleanLeftovers() {
     _ = try? call("rm -rf ~/.patched-sur/trash")
     presentAlert(m: "Cleaned Leftovers", i: "The files have been deleted, you should see some more free space (assuming that there actually were big files to be cleaned).", s: .informational)
 }
+
+
+// MARK: Relaunch Patcher
+
+func relaunchPatcher() {
+    let appURL = URL(fileURLWithPath: "/Applications/Patched Sur.app", isDirectory: true)
+    let configuration = NSWorkspace.OpenConfiguration()
+    configuration.createsNewApplicationInstance = true
+    configuration.allowsRunningApplicationSubstitution = false
+    NSWorkspace.shared.openApplication(at: appURL, configuration: configuration) { (_, error) in
+        if error != nil {
+            print("Failed to open Patched Sur app, but you can do that yourself.")
+            let errorAlert = NSAlert()
+            errorAlert.alertStyle = .critical
+            errorAlert.informativeText = "Failed to open Patched Sur, but you can do this yourself."
+            errorAlert.messageText = "Update Done!"
+            errorAlert.runModal()
+        }
+    }
+    sleep(1)
+    exit(0)
+}

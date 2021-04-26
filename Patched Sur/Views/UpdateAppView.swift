@@ -96,7 +96,7 @@ struct UpdateAppView: View {
                                     let appOutput = try call("~/.patched-sur/Patched\\ Sur.app/Contents/MacOS/Patched\\ Sur --update")
                                     print(appOutput)
                                     print("Updater started, closing app.")
-                                    NSApplication.shared.terminate(nil)
+                                    relaunchPatcher()
                                 } catch {
                                     print(error.localizedDescription)
                                     errorMessage = "Download Failed"

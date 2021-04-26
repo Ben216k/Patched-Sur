@@ -156,6 +156,16 @@ struct PSSettings: View {
                             Text("The preinstall app in Patched Sur has a feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
+                            
+                            VIButton(id: "RELAUNCH", h: $hovered) {
+                                Image(systemName: "arrow.up.forward.app")
+                                Text("Relaunch Patcher")
+                            } onClick: {
+                                relaunchPatcher()
+                            }.inPad()
+                            Text("I don't know why you would ever want this, but I guess if you do, you can relaunch the patcher app. This will refresh a lot of the variables that are obtained when the patcher is first launched, and whatnot. Fun Fact: This is the same code that's ran once the updater is done.")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.bottom, 15)
                         }
                         
                         Rectangle()
