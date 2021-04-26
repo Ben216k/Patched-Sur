@@ -28,7 +28,7 @@ func extractPackage(installInfo: InstallAssistant, password: String, errorX: (St
                 useBeta = true
             }
         } else {
-            if installInfo.url != "/Applications/Install macOS Big Sur.app" || installInfo.url != "/Applications/Install macOS Big Sur Beta.app" {
+            if installInfo.url != "/Applications/Install macOS Big Sur.app" && installInfo.url != "/Applications/Install macOS Big Sur Beta.app" {
                 print("Checking installer type")
                 useBeta = (try? call("cat '\(installInfo.url)/Contents/Info.plist' | grep 'Install macOS Big Sur Beta'")) != nil
                 print("Cleaning up before move.")
