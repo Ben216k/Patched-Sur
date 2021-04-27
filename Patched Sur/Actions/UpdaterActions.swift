@@ -155,7 +155,7 @@ func startOSInstall(password: String, installInfo: InstallAssistant, currentText
         } else {
             currentText("Starting OS Installerii")
             print("Starting OS Installer...")
-            try call("'\(installInfo.url)/Contents/Resources/startosinstall' --volume / --nointeraction", p: password, h: handle)
+            try call("'\(installInfo.url)/Contents/Resources/startosinstall' --volume / --agreetolicense", p: password, h: handle)
 //            try call("'\(installInfo.url)/Contents/Resources/createinstallmedia'", p: password, h: handle)
         }
     } catch {
