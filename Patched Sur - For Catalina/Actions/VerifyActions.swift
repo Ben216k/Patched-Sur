@@ -51,7 +51,7 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> (), p
     print("Checking if this is a Mac Pro...")
     
     if let macModel = try? call("sysctl -n hw.model"), macModel.contains("MacPro") {
-        problems(ProblemInfo(title: "There's a Better Patcher for Mac Pros", description: "While Patched Sur is a great for a lot of Macs, Mac Pros really shouldn't be used with this patcher. They don't have the proper patches, and there's another easy-to-use patcher designed specifically for Mac Pros. It's StarPlayrX's BigMac Patcher, and it'll give you an amazing experience for your Mac.", severity: .severe))
+        problems(ProblemInfo(title: .init(localKey: "PROB-PRO-TITLE"), description: .init(localKey: "PROB-PRO-DESCRIPTION"), severity: .severe))
         hasProblem = true
     }
     
@@ -62,8 +62,8 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> (), p
     print("Checking if FileVault is on...")
     
     if let fileVault = try? call("fdesetup status"), fileVault.contains("FileVault is On.") {
-        if (try? call("sw_vers -productVersion | grep 10")) != nil {
-            problems(ProblemInfo(title: "FileVault is On.", description: "Your Mac has FileVault enabled. While this is a good encryption tool, it breaks on Big Sur with unsupported Macs. You'll be completely unable to boot into recovery mode, and at times you may be unable to unlock your disk. You must disable this before running the patcher. You can do that by going into System Preferences, clicking Security & Privacy, go to FileVault, and click the lock icon and disable it.", severity: .fatal))
+        if (try? call("sw_vers -productVersion | grep 11")) != nil {
+            problems(ProblemInfo(title: .init(localKey: "PROB-FILE-TITLE"), description: .init(localKey: "PROB-FILE-DESCRIPTION"), severity: .fatal))
             hasProblem = true
         }
     }
@@ -75,7 +75,7 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> (), p
     print("Checking for Metal...")
     
     if let metalStatus = try? call("system_profiler SPDisplaysDataType | grep Metal"), !metalStatus.contains(": Supported") {
-        problems(ProblemInfo(title: "No Graphics Acceleration", description: "Your Mac doesn't support Metal graphics acceleration, so Big Sur will run EXTREMELY SLOW. Do not expect it to be fast and do not expect it to run well. You cannot fix this and a patch is in progress to fix this, but it's current state is extremely unstable. If you would like to continue, you may, but don't expect a magical complete Big Sur experience.", severity: .severe))
+        problems(ProblemInfo(title: .init(localKey: "PROB-GX-TITLE"), description: .init(localKey: "PROB-GX-DESCRIPTION"), severity: .severe))
         hasProblem = true
     }
     
@@ -100,4 +100,10 @@ enum ProblemSeverity {
     case warning
     case severe
     case fatal
+}
+
+extension String {
+    init(localKey: String, def: String? = nil) {
+        self = NSLocalizedString(localKey, comment: def ?? localKey).description
+    }
 }

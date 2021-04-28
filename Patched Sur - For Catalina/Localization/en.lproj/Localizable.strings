@@ -2,5 +2,87 @@
   Localizable.strings
   Patched Sur
 
+  English (en)
   Created by Ben Sova on 4/25/21.
 */
+
+// Generic
+
+"GET-STARTED" = "Get Started";
+"CONTINUE" = "Continue";
+
+// Welcome Page
+
+// Reminder! "Patched Sur" is a formal name, so don't localize that.
+"PRE-WELCOME-TITLE" = "Welcome to Patched Sur!";
+"PRE-WELCOME-DESCRIPTION" = "This patcher is made to provide you with the simplest upgrade to macOS Big Sur on your unsupported Mac. It prepares everything to be perfect by the end of the installation, and makes sure that nothing will go wrong with your installation. By the end, Patched Sur will try to make your Mac run just like a supported one.";
+
+// Thanks To Page
+
+"THANKS-TITLE" = "Thanks To";
+"THANKS-CONTENT" = "Patched Sur isn't just by me (Ben), several other people have contributed to the patcher and the patches making this what it is today!
+
+- barrykn: Made the micropatcher that introduced me to the patching process and restored my faith in my really old computer. My hat is off to barrykn, and yours should be too.
+- ASentientBot: Made the Hax patches for the installer and brought GeForce Tesla (9400M/320M) framebuffer to Big Sur
+- jackluke: Figured out how to bypass compatibility checks on the installer USB.
+- highvoltage12v: Made the first WiFi kexts used with Big Sur
+- ParrotGeek: developed the LegacyUSBInjector kext to get USB ports working on some older Macs and figuring out a way to skip the terminal commands when opening the installer app on the USB.
+- testheit: Helped with the kmutil command in the micropatcher (that is used in Patched Sur too)
+- Ausdauersportler: Integrated patches for iMac Metal GPU support.
+- StarPlayrX: Pointed out startosinstall which was later used in the patcher to allow macOS updating support without a USB.
+- ASentientHedgehog: Helped randomly along the way
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen for testing some of the new features before release, and pointing out the bugs with them.
+- and several others who helped with making Big Sur run as great as it does on unsupported Macs.
+
+Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSundell (MIT), to help handle certain tasks.";
+
+// Please Remember Page
+
+"PLEASE-REMEMBER" = "Please Remember";
+"PRE-PR-1" = "Patched Sur is currently in beta and it will never be perfect. While it will not brick your Mac, it can cause you to lose your data if you don't have a backup.";
+"PRE-PR-2" = " No matter what, make a Time Machine Backup before upgrading. ";
+"PRE-PR-3" = "I (and contributors) will not be liable if something goes wrong. I will go to the best of my abilities to help if there is a problem, but I don't know everything and there are some cases where I cannot help. A lot of times, it isn't even Patched Sur's fault, so there's nothing I can do.";
+
+// Mac Compatibility Page
+
+"PRE-VERIFY-MAC" = "Verifying Mac";
+"PRE-VERIFY-QUICK" = "This first step is essential to how reliable Patched Sur is. This step tries to detect as many problems caused as possible before running into them. This includes FileVault, no graphics acceleration and some other problems. Don't worry, this will be quick.";
+"PRE-VERIFY-FETCH" = "Fetching Information";
+"PRE-VERIFY-2" = "Verifying Mac";
+
+"PRE-REPORT-BY" = "Reported by: ";
+"PERSON" = "person";
+"OTHERS" = "others";
+"APPROVES" = "approves";
+"APPROVE" = "approve";
+
+"WiFi, Ethernet and Bluetooth" = "WiFi, Ethernet and Bluetooth";
+"I/O Ports" = "I/O Ports";
+"Graphics Acceleration" = "Graphics Acceleration";
+"Sleep and Brightness" = "Sleep and Brightness";
+"FileVault" = "FileVault";
+"Personal Hotspots" = "Personal Hotspots";
+"Personal Hotspot" = "Personal Hotspot";
+"WPA2 Enterprise" = "WPA2 Enterprise";
+
+"PROB-FATAL" = "Fatal Problem Detected";
+"PROB-WARN" = "Possible Problem Detected";
+"PROB-NO-UPGRADE" = "You cannot upgrade to Big Sur because of this or other problems.";
+"PROB-CONTINUE-ANYWAY" = "Continue Anyway";
+"PROB-OTHERS" = "Other Problems";
+
+"PROB-FILE-TITLE" = "FileVault is On.";
+"PROB-FILE-DESCRIPTION" = "Your Mac has FileVault enabled. While this is a good encryption tool, it breaks on Big Sur with unsupported Macs. You'll be completely unable to boot into recovery mode, and at times you may be unable to unlock your disk. You must disable this before running the patcher. You can do that by going into System Preferences, clicking Security & Privacy, go to FileVault, and click the lock icon and disable it.";
+
+// Reminder! "BigMac" and "StarPlayrX" are a formal names, so don't localize that.
+"PROB-PRO-TITLE" = "There's a Better Patcher for Mac Pros";
+"PROB-PRO-DESCRIPTION" = "While Patched Sur is a great for a lot of Macs, Mac Pros really shouldn't be used with this patcher. They don't have the proper patches, and there's another easy-to-use patcher designed specifically for Mac Pros. It's StarPlayrX's BigMac Patcher, and it'll give you an amazing experience for your Mac.";
+
+"PROB-GX-TITLE" = "No Graphics Acceleration";
+"PROB-GX-DESCRIPTION" = "Your Mac doesn't support Metal graphics acceleration, so Big Sur will run EXTREMELY SLOW. Do not expect it to be fast and do not expect it to run well. You cannot fix this and a patch is in progress to fix this, but it's current state is extremely unstable. If you would like to continue, you may, but don't expect a magical complete Big Sur experience.";
+
+"PROB-SURE" = "Are you sure you want to continue?";
+"PROB-SURE-SURE" = "Patched Sur detected problems that could (and will) cause problems with Big Sur. Your Mac might not be at its full potential, and in some cases it might be good to just say on Catalina.";
+
+"REPORT-UNKNOWN" = "Unknown Compatibility";
+"REPORT-UNKNOWN-2" = "Depending on your Mac, Patched Sur might or might not run great, and Patched Sur did not find any compatibility reports for your Mac, so it cannot currently tell you. Don't worry though, not many people have given insight on how well Patched Sur runs on all the different Macs, so your Mac probably will run perfectly fine. Once you upgrade, you can contribute your experiences (go into Settings in the post install app), and help out future people with your Mac!";

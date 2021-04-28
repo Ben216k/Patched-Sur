@@ -46,9 +46,9 @@ struct VerifyMacView: View {
     
     var body: some View {
         VStack {
-            Text("Verifying Mac")
+            Text(.init("PRE-VERIFY-MAC"))
                 .font(.system(size: 15)).bold()
-            Text("This first step is essential to how reliable Patched Sur is. This step tries to detect as many problems caused as possible before running into them. This includes FileVault, no graphics acceleration and some other problems. Don't worry, this will be quick.")
+            Text(.init("PRE-VERIFY-QUICK"))
                 .padding(.vertical)
                 .multilineTextAlignment(.center)
             ZStack {
@@ -56,7 +56,7 @@ struct VerifyMacView: View {
                 HStack {
                     if progress2 == .downloading {
                         Image("DownloadArrow")
-                        Text("Fetching Information")
+                        Text(.init("PRE-VERIFY-FETCH"))
                             .onAppear {
                                 DispatchQueue(label: "FetchCompat").async {
                                     downloadCompat(info: &info, known: &known, barProgress: { barProgress = $0 }, progress2: &progress2, errorX: &errorX)
@@ -64,7 +64,7 @@ struct VerifyMacView: View {
                             }
                     } else if progress2 == .verifying {
                         Image("CheckCircle")
-                        Text("Verifying Mac")
+                        Text(.init("PRE-VERIFY-2"))
                             .onAppear {
                                 DispatchQueue(label: "VerifyMac").async {
                                     verifyCompat(barProgress: { barProgress = $0 }, problems: { problems.append($0) }, progress2: &progress2, errorX: &errorX, info: info)
@@ -93,7 +93,7 @@ struct CompatibilityReport: View {
                 .font(.system(size: 17)).bold()
                 .padding(.bottom, -2)
             HStack(spacing: 1) {
-                Text("Reported by: ")
+                Text(.init("PRE-REPORT-BY"))
                 ZStack {
                     if known.contains(Substring(info!.author)) {
                         Rectangle()
@@ -108,7 +108,7 @@ struct CompatibilityReport: View {
                     .padding(.horizontal, known.contains(Substring(info!.author)) ? 3 : 0)
                 }.fixedSize()
                 if info!.approved.count > 0 {
-                    Text(" (\(info!.approved.count) \(info!.approved.count == 1 ? "person" : "others") approve\(info!.approved.count == 1 ? "s" : ""))")
+                    Text(" (\(info!.approved.count) \(info!.approved.count == 1 ? NSLocalizedString("PERSON", comment: "person") : NSLocalizedString("OTHERS", comment: "others")) \(info!.approved.count == 1 ? NSLocalizedString("APPROVES", comment: "approves") : NSLocalizedString("APPROVE", comment: "approve")))")
                 }
             }.font(.system(size: 11))
             Text(info!.details)
@@ -124,7 +124,7 @@ struct CompatibilityReport: View {
                                 .foregroundColor(.green)
                                 .frame(width: 10, height: 10)
                                 .cornerRadius(10)
-                            Text(item)
+                            Text(.init(item))
                                 .font(.system(size: 12))
                         }
                     }
@@ -136,7 +136,7 @@ struct CompatibilityReport: View {
                                 .foregroundColor(.gray)
                                 .frame(width: 10, height: 10)
                                 .cornerRadius(10)
-                            Text(item)
+                            Text(.init(item))
                                 .font(.system(size: 11.5))
                         }
                     }
@@ -148,14 +148,14 @@ struct CompatibilityReport: View {
                                 .foregroundColor(.red)
                                 .frame(width: 10, height: 10)
                                 .cornerRadius(10)
-                            Text(item)
+                            Text(.init(item))
                                 .font(.system(size: 12))
                         }
                     }
                 }
             }
             VIButton(id: "CONTINUE1", h: $hovered) {
-                Text("Continue")
+                Text(.init("CONTINUE"))
                 Image("ForwardArrowCircle")
             } onClick: {
                 withAnimation {
@@ -180,7 +180,7 @@ struct IssuesView: View {
         VStack {
             ScrollView {
                 if problems[0].severity != .warning {
-                    Text("\(problems[0].severity == .fatal ? "Fatal" : "Possible") Problem Detected")
+                    Text(problems[0].severity == .fatal ? .init("PROB-FATAL") : .init("PROB-WARN"))
                         .bold()
                     Text(problems[0].title)
                         .font(.system(size: 17)).bold()
@@ -192,12 +192,12 @@ struct IssuesView: View {
                         .frame(width: 540)
                         .multilineTextAlignment(.center)
                     if problems.map(\.severity).contains(.fatal) {
-                        Text("You cannot upgrade to Big Sur because of this or other problems.")
+                        Text(.init("PROB-NO-UPGRADE"))
                             .bold()
                             .padding(.vertical, 10)
                     } else {
                         VIButton(id: "CONTINUE", h: $hovered) {
-                            Text("Continue Anyway")
+                            Text(.init("PROB-CONTINUE-ANYWAY"))
                             Image("ForwardArrowCircle")
                         } onClick: {
                             showAreYouSure = true
@@ -206,7 +206,7 @@ struct IssuesView: View {
                     }
                 }
                 if problems.count > 1 {
-                    Text("Other Problems")
+                    Text(.init("PROB-OTHERS"))
                         .bold()
                         .padding(.bottom, 10)
                     ForEach(problems.filter { $0.title != problems[0].title }, id: \.title) { item in
@@ -218,7 +218,7 @@ struct IssuesView: View {
                 }
             }.frame(maxHeight: 250).fixedSize()
         }.alert(isPresented: $showAreYouSure) {
-            Alert(title: Text("Are you sure you want to continue?"), message: Text("Patched Sur detected problems that could (and will) cause problems with Big Sur. Your Mac might not be at its full potential, and in some cases it might be good to just say on Catalina."), primaryButton: .destructive(Text("Continue"), action: {
+            Alert(title: Text(.init("PROB-SURE")), message: Text(.init("PROB-SURE-SURE")), primaryButton: .destructive(Text("Continue"), action: {
                 progress2 = info != nil ? .clean : .noCompat
             }), secondaryButton: .cancel())
         }
@@ -232,14 +232,14 @@ struct NoCompatibilityView: View {
     @Binding var p: PSPage
     
     var body: some View {
-        Text("Unknown Compatibility")
+        Text(.init("REPORT-UNKNOWN"))
             .font(.system(size: 15)).bold()
-        Text("Depending on your Mac, Patched Sur might or might not run great, and Patched Sur did not find any compatibility reports for your Mac, so it cannot currently tell you. Don't worry though, not many people have given insight on how well Patched Sur runs on all the different Macs, so your Mac probably will run perfectly fine. Once you upgrade, you can contribute your experiences (go into Settings in the post install app), and help out future people with your Mac!")
+        Text(.init("REPORT-UNKNOWN-2"))
             .padding(.vertical)
             .multilineTextAlignment(.center)
             .frame(width: 540)
         VIButton(id: "CONTINUE3", h: $hovered) {
-            Text("Continue")
+            Text(.init("CONTINUE"))
             Image("ForwardArrowCircle")
         } onClick: {
             withAnimation {

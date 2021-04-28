@@ -16,11 +16,11 @@ struct CreditsView: View {
             Text("Thanks To")
                 .font(.system(size: 15)).bold()
             ScrollView {
-                Text(creditsText)
+                Text(.init("THANKS-CONTENT"))
                     .padding(.bottom, 10)
             }
             VIButton(id: "START", h: $hovered) {
-                Text("Continue")
+                Text(.init("CONTINUE"))
                 Image("ForwardArrowCircle")
             } onClick: {
                 withAnimation {
