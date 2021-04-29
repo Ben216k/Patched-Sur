@@ -28,9 +28,9 @@ struct DownloadKextsView: View {
     
     var body: some View {
         VStack {
-            Text("Downloading Patches")
+            Text(.init("DOWNLOAD-PATCHES"))
                 .font(.system(size: 15)).bold()
-            Text("The set vars tool allows you to properly setup the NVRAM and SIP status, so that Big Sur lets you boot into it. \(!isPost ? "This is the last tool you will use before installing Big Sur." : "You will only need this if you haven't run it before on that Mac or if you did a PRAM reset.") The kext patches allow you to use hardware like WiFi and USB ports, so that your Mac stays at its full functionality.")
+            Text("\(NSLocalizedString("PRE-DP-1", comment: "PRE-DP-1")) \(!isPost ? NSLocalizedString("PRE-DP-2", comment: "PRE-DP-2") : NSLocalizedString("PRE-DP-3", comment: "PRE-DP-3")) \(NSLocalizedString("PRE-DP-4", comment: "PRE-DP-4"))")
                 .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
             ZStack {
@@ -45,7 +45,7 @@ struct DownloadKextsView: View {
                     VIButton(id: "DOWNLOAD-NEVER", h: .constant("HAHAH")) {
                         HStack {
                             Image("DownloadArrow")
-                            Text("Downloading Files")
+                            Text(.init("DOWNLOAD-FILES"))
                                 .onAppear {
                                     if startedDownload {
                                         return
@@ -81,12 +81,12 @@ struct DownloadKextsView: View {
                                     }
                                     onExit = {
                                         let al = NSAlert()
-                                        al.informativeText = "The patches that will later be used by the patcher are currently downloading. Are you sure you want to go back?"
-                                        al.messageText = "The Patches Are Downloading"
+                                        al.informativeText = NSLocalizedString("PRE-DP-CANCEL-1", comment: "PRE-DP-CANCEL-1")
+                                        al.messageText = NSLocalizedString("PRE-DP-CANCEL-2", comment: "PRE-DP-CANCEL-2")
                                         al.showsHelp = false
-                                        al.addButton(withTitle: "Cancel Download")
-                                        al.addButton(withTitle: "Restart Download")
-                                        al.addButton(withTitle: "Continue Download")
+                                        al.addButton(withTitle: NSLocalizedString("CANCEL-DOWNLOAD", comment: "CANCEL-DOWNLOAD"))
+                                        al.addButton(withTitle: NSLocalizedString("RESTART-DOWNLOAD", comment: "RESTART-DOWNLOAD"))
+                                        al.addButton(withTitle: NSLocalizedString("CONTINUE-DOWNLOAD", comment: "CONTINUE-DOWNLOAD"))
                                         switch al.runModal() {
                                         case .alertFirstButtonReturn:
                                             _ = try? call("killall curl")
@@ -123,12 +123,12 @@ struct DownloadKextsView: View {
                                             DispatchQueue.main.async {
                                                 onExit = {
                                                     let al = NSAlert()
-                                                    al.informativeText = "The patches failed to download, however this could be solved by trying again. Would you like to attempt to download the patches again or go to the previous step?"
-                                                    al.messageText = "Would you like to restart the download?"
+                                                    al.informativeText =  NSLocalizedString("PRE-DP-CANCEL-3", comment: "PRE-DP-CANCEL-3")
+                                                    al.messageText =  NSLocalizedString("PRE-DP-CANCEL-4", comment: "PRE-DP-CANCEL-4")
                                                     al.showsHelp = false
-                                                    al.addButton(withTitle: "Restart Download")
-                                                    al.addButton(withTitle: "Go Back")
-                                                    al.addButton(withTitle: "Cancel")
+                                                    al.addButton(withTitle: NSLocalizedString("RESTART-DOWNLOAD", comment: "RESTART-DOWNLOAD"))
+                                                    al.addButton(withTitle: NSLocalizedString("GO-BACK", comment: "GO-BACK"))
+                                                    al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                                                     switch al.runModal() {
                                                     case .alertFirstButtonReturn:
                                                         downloadStatus = "Downloading Files..."

@@ -19,14 +19,14 @@ struct macOSConfirmView: View {
     
     var body: some View {
         VStack {
-            Text("macOS Big Sur Version")
+            Text(.init("PRE-VERS-TITLE"))
                 .font(.system(size: 15)).bold()
-            Text("While in most cases you'll want the latest version of macOS Big Sur, you might for whatever reason want an older version, and you can configure that here. If you want to use a pre-downloaded InstallAssistant.pkg or installer app, you can by clicking browse. If you just want to download and use the latest version of macOS, just click Download.")
+            Text(.init("PRE-VERS-DESCRIPTION"))
                 .multilineTextAlignment(.center)
                 .padding(.vertical)
             if installers.count > 0 || errorX != "" {
                 if errorX != "" {
-                    Text("The available macOS installer list could not be accessed. This is probably because WiFi is unavailable. You must use a pre-downloaded macOS installer.")
+                    Text(.init("PRE-VERS-NOFI"))
                         .multilineTextAlignment(.center)
                         .padding(.top, -15)
                         .padding(.bottom, 5)
@@ -34,7 +34,9 @@ struct macOSConfirmView: View {
                 if installInfo == nil && installers.count > 0 {
                     VIButton(id: "DOWNLOAD", h: $hovered) {
                         Image("DownloadArrow")
-                        Text("Download macOS \(installers[0].version)")
+                        Text(NSLocalizedString("PRE-VERS-DOWNLOAD", comment: "PRE-VERS-DOWNLOAD").description.replacingOccurrences(of: "XX.YY.ZZ", with: installers[0].version))
+//                        Text()
+//                        Text(String(local))
                     } onClick: {
                         installInfo = installers[0]
                         withAnimation {
@@ -45,7 +47,7 @@ struct macOSConfirmView: View {
                     HStack {
                         VIButton(id: "USE", h: $hovered) {
                             Image("ForwardArrowCircle")
-                            Text("Use macOS \(installInfo?.version ?? "Pre-downloaded")")
+                            Text(installInfo != nil ? NSLocalizedString("PRE-VERS-USE", comment: "PRE-VERS-USE").description.replacingOccurrences(of: "XX.YY.ZZ", with: installInfo!.version) : NSLocalizedString("PRE-VERS-PRE", comment: "PRE-VERS-PRE"))
                         } onClick: {
                             withAnimation {
                                 p = .kexts
@@ -55,7 +57,7 @@ struct macOSConfirmView: View {
                         if errorX == "" {
                             VIButton(id: "DOWNLOAD", h: $hovered) {
                                 Image("DownloadArrow")
-                                Text("Redownload")
+                                Text(.init("PRE-VERS-REDOWNLOAD"))
                             } onClick: {
                                 installInfo = installers[0]
                                 withAnimation {
@@ -68,7 +70,7 @@ struct macOSConfirmView: View {
                 HStack {
                     VIButton(id: "BROWSE", h: $hovered) {
                         Image("Package")
-                        Text("Browse")
+                        Text(.init("BROWSE"))
                     } onClick: {
                         print("Initializing browse panel")
                         let dialog = NSOpenPanel()
@@ -113,7 +115,7 @@ struct macOSConfirmView: View {
             } else {
                 VIButton(id: "SOMETHING", h: .constant("12")) {
                     Image("DownloadArrow")
-                    Text("Fetching Installers")
+                    Text(.init("PRE-VERS-FETCH"))
                 } onClick: {
                     
                 }.inPad()

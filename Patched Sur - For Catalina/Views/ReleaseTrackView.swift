@@ -15,15 +15,15 @@ struct ReleaseTrackView: View {
     
     var body: some View {
         VStack {
-            Text("Set Update Track")
+            Text(.init("PRE-TRACK-TITLE"))
                 .font(.system(size: 15)).bold()
-            Text("Your update track defines what versions of macOS get. The Release track is the most stable, and probably what you're using already. Beta gives you access to new features of macOS early, but it's unstable at times.\(isPost ? " Currently with this install of Patched Sur, you are using the \(UserDefaults.standard.string(forKey: "UpdateTrack") ?? "Release") track." : "")")
+            Text(.init("PRE-TRACK-DESCRIPTION"))
                 .multilineTextAlignment(.center)
                 .padding(.vertical)
             HStack {
                 VIButton(id: "RELEASE", h: $hovered) {
                     Image("TriUpCircle\(track != .release ? "" : "Fill")")
-                    Text("Release")
+                    Text(.init("TRACK-RELEASE"))
                         .fontWeight(track != .release ? .regular : .heavy)
                 } onClick: {
                     track = .release
@@ -32,7 +32,7 @@ struct ReleaseTrackView: View {
                 .useHoverAccent()
                 VIButton(id: "BETA", h: $hovered) {
                     Image("AntCircle\(track != .developer ? "" : "Fill")")
-                    Text("Beta")
+                    Text(.init("TRACK-BETA"))
                         .fontWeight(track != .developer ? .regular : .heavy)
                 } onClick: {
                     track = .developer
@@ -41,7 +41,7 @@ struct ReleaseTrackView: View {
                 .useHoverAccent()
             }.padding(.bottom)
             VIButton(id: "CONTINUE", h: $hovered) {
-                Text("Continue")
+                Text(.init("CONTINUE"))
                 Image("ForwardArrowCircle")
             } onClick: {
                 withAnimation {

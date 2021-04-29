@@ -101,9 +101,3 @@ enum ProblemSeverity {
     case severe
     case fatal
 }
-
-extension String {
-    init(localKey: String, def: String? = nil) {
-        self = NSLocalizedString(localKey, comment: def ?? localKey).description
-    }
-}

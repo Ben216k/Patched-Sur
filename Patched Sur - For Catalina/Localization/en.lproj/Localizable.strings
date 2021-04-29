@@ -10,10 +10,13 @@
 
 "GET-STARTED" = "Get Started";
 "CONTINUE" = "Continue";
+"GO-BACK" = "Go Back";
+"Cancel" = "Cancel";
+"BROWSE" = "Browse";
 
 // Welcome Page
 
-// Reminder! "Patched Sur" is a formal name, so don't localize that.
+// Reminder! "Patched Sur" is a formal name, so don't localize that. (Patches/Patcher can be localized, just not Patched Sur)
 "PRE-WELCOME-TITLE" = "Welcome to Patched Sur!";
 "PRE-WELCOME-DESCRIPTION" = "This patcher is made to provide you with the simplest upgrade to macOS Big Sur on your unsupported Mac. It prepares everything to be perfect by the end of the installation, and makes sure that nothing will go wrong with your installation. By the end, Patched Sur will try to make your Mac run just like a supported one.";
 
@@ -86,3 +89,39 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 
 "REPORT-UNKNOWN" = "Unknown Compatibility";
 "REPORT-UNKNOWN-2" = "Depending on your Mac, Patched Sur might or might not run great, and Patched Sur did not find any compatibility reports for your Mac, so it cannot currently tell you. Don't worry though, not many people have given insight on how well Patched Sur runs on all the different Macs, so your Mac probably will run perfectly fine. Once you upgrade, you can contribute your experiences (go into Settings in the post install app), and help out future people with your Mac!";
+
+// Update Track Page
+
+"PRE-TRACK-TITLE" = "Set Update Track";
+"PRE-TRACK-DESCRIPTION" = "Your update track defines what versions of macOS get. The Release track is the most stable, and probably what you're using already. Beta gives you access to new features of macOS early, but it's unstable at times.";
+
+"TRACK-RELEASE" = "Release";
+"TRACK-BETA" = "Beta";
+
+// macOS Select Page
+
+"PRE-VERS-TITLE" = "macOS Big Sur Version";
+"PRE-VERS-DESCRIPTION" = "While in most cases you'll want the latest version of macOS Big Sur, you might for whatever reason want an older version, and you can configure that here. If you want to use a pre-downloaded InstallAssistant.pkg or installer app, you can by clicking browse. If you just want to download and use the latest version of macOS, just click Download.";
+"PRE-VERS-NOFI" = "The available macOS installer list could not be accessed. This is probably because WiFi is unavailable. You must use a pre-downloaded macOS installer.";
+// NOTE: In these two, XX.YY.ZZ is the macOS version. So in English, the first would show Download macOS 11.3. \(installers[0].version)
+"PRE-VERS-DOWNLOAD" = "Download macOS XX.YY.ZZ";
+"PRE-VERS-USE" = "Use macOS XX.YY.ZZ";
+"PRE-VERS-PRE" = "Use Pre-Downloaded macOS";
+"PRE-VERS-REDOWNLOAD" = "Redownload";
+"PRE-VERS-FETCH" = "Fetching Installers";
+
+// Downloading Kexts Page
+
+"DOWNLOAD-PATCHES" = "Downloading Patches";
+"DOWNLOAD-FILES" = "Downloading Files";
+"PRE-DP-1" = "The set vars tool allows you to properly setup the NVRAM and SIP status, so that Big Sur lets you boot into it.";
+"PRE-DP-2" = "This is the last tool you will use before installing Big Sur.";
+"PRE-DP-3" = "You will only need this if you haven't run it before on that Mac or if you did a PRAM reset.";
+"PRE-DP-4" = "The kext patches allow you to use hardware like WiFi and USB ports, so that your Mac stays at its full functionality.";
+"PRE-DP-CANCEL-1" = "The patches that will later be used by the patcher are currently downloading. Are you sure you want to go back?";
+"PRE-DP-CANCEL-2" = "PRE-DP-CANCEL-1";
+"CANCEL-DOWNLOAD" = "Cancel Download";
+"RESTART-DOWNLOAD" = "Restart Download";
+"CONTINUE-DOWNLOAD" = "Continue Download";
+"PRE-DP-CANCEL-3" = "The patches failed to download, however this could be solved by trying again. Would you like to attempt to download the patches again or go to the previous step?";
+"PRE-DP-CANCEL-4" = "Would you like to restart the download?";
