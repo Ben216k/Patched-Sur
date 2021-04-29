@@ -22,14 +22,14 @@ struct CreateInstallerView: View {
     
     var body: some View {
         VStack {
-            Text("Creating USB Installer")
+            Text(.init("PRE-CTI-TITLE"))
                 .font(.system(size: 15)).bold()
-            Text("Now the USB you selected is being used to create a macOS installer USB. The files copied on the disk create an environment similar to macOS Big Sur Recovery Mode. Once those files are placed on the USB, Patched Sur steps in and patches it allowing for your Mac to boot into it and giving it some useful tools for a patched Mac.")
+            Text(.init("PRE-CTI-DESCRIPTION"))
                 .multilineTextAlignment(.center)
                 .padding(.vertical, 10)
             if password == "" || showPass {
                 VIButton(id: "REQUEST-ROOT", h: $hovered) {
-                    Text("Request Root Permissions")
+                    Text(.init("REQUEST-ROOT"))
                 } onClick: {
                     withAnimation {
                         showPass = true
@@ -44,18 +44,18 @@ struct CreateInstallerView: View {
             } else if errorX == "EXTRACT" {
                 VIButton(id: "NEVER-HAPPENING", h: .constant("MUHAHAHA")) {
                     Image("PackageCircle")
-                    Text("Extracting Package")
+                    Text(.init("EXTRACT-PACKAGE"))
                 }.inPad()
                 .btColor(.gray)
                 .onAppear {
                     onExit = {
                         let al = NSAlert()
-                        al.informativeText = "Are you sure you want to cancel making the patched macOS installer? You will need this to upgrade to macOS Big Sur, and it often takes a long time to make."
-                        al.messageText = "A macOS Installer is Being Made"
+                        al.informativeText = NSLocalizedString("PRE-CTI-CANCEL-1", comment: "PRE-CTI-CANCEL-1")
+                        al.messageText = NSLocalizedString("PRE-CTI-CANCEL-2", comment: "PRE-CTI-CANCEL-2")
                         al.showsHelp = false
-                        al.addButton(withTitle: "Cancel Process")
-                        al.addButton(withTitle: "Restart Process")
-                        al.addButton(withTitle: "Continue Process")
+                        al.addButton(withTitle: NSLocalizedString("CANCEL-PROCESS", comment: "CANCEL-PROCESS"))
+                        al.addButton(withTitle: NSLocalizedString("RESTART-PROCESS", comment: "RESTART-PROCESS"))
+                        al.addButton(withTitle: NSLocalizedString("CONTINUE-PROCESS", comment: "CONTINUE-PROCESS"))
                         switch al.runModal() {
                         case .alertFirstButtonReturn:
                             _ = try? call("killall bash")
@@ -76,12 +76,12 @@ struct CreateInstallerView: View {
                                 if errorX != "CREATE" {
                                     onExit = {
                                         let al = NSAlert()
-                                        al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
-                                        al.messageText = "Would you like to try again?"
+                                        al.informativeText = NSLocalizedString("PRE-CTI-CANCEL-3", comment: "PRE-CTI-CANCEL-3")
+                                        al.messageText = NSLocalizedString("PRE-CTI-CANCEL-4", comment: "PRE-CTI-CANCEL-4")
                                         al.showsHelp = false
-                                        al.addButton(withTitle: "Restart Process")
-                                        al.addButton(withTitle: "Go Back")
-                                        al.addButton(withTitle: "Cancel")
+                                        al.addButton(withTitle: NSLocalizedString("RESTART-PROCESS", comment: "RESTART-PROCESS"))
+                                        al.addButton(withTitle: NSLocalizedString("GO-BACK", comment: "GO-BACK"))
+                                        al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                                         switch al.runModal() {
                                         case .alertFirstButtonReturn:
                                             errorX = "EXTRACT"
@@ -100,7 +100,7 @@ struct CreateInstallerView: View {
             } else if errorX == "CREATE" {
                 VIButton(id: "NEVER-HAPPENING", h: .constant("MUHAHAHA")) {
                     Image("DriveCircle")
-                    Text("Creating Installer")
+                    Text(.init("PRE-CTI-CREATING"))
                 }.inPad()
                 .btColor(.gray)
                 .onAppear {
@@ -111,12 +111,12 @@ struct CreateInstallerView: View {
                                 DispatchQueue.main.async {
                                     onExit = {
                                         let al = NSAlert()
-                                        al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
-                                        al.messageText = "Would you like to try again?"
+                                        al.informativeText = NSLocalizedString("PRE-CTI-CANCEL-3", comment: "PRE-CTI-CANCEL-3")
+                                        al.messageText = NSLocalizedString("PRE-CTI-CANCEL-4", comment: "PRE-CTI-CANCEL-4")
                                         al.showsHelp = false
-                                        al.addButton(withTitle: "Restart Process")
-                                        al.addButton(withTitle: "Go Back")
-                                        al.addButton(withTitle: "Cancel")
+                                        al.addButton(withTitle: NSLocalizedString("RESTART-PROCESS", comment: "RESTART-PROCESS"))
+                                        al.addButton(withTitle: NSLocalizedString("GO-BACK", comment: "GO-BACK"))
+                                        al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                                         switch al.runModal() {
                                         case .alertFirstButtonReturn:
                                             errorX = "EXTRACT"
@@ -149,12 +149,12 @@ struct CreateInstallerView: View {
                                 if errorX != "DONE" {
                                     onExit = {
                                         let al = NSAlert()
-                                        al.informativeText = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error."
-                                        al.messageText = "Would you like to try again?"
+                                        al.informativeText = NSLocalizedString("PRE-CTI-CANCEL-3", comment: "PRE-CTI-CANCEL-3")
+                                        al.messageText = NSLocalizedString("PRE-CTI-CANCEL-4", comment: "PRE-CTI-CANCEL-4")
                                         al.showsHelp = false
-                                        al.addButton(withTitle: "Restart Process")
-                                        al.addButton(withTitle: "Go Back")
-                                        al.addButton(withTitle: "Cancel")
+                                        al.addButton(withTitle: NSLocalizedString("RESTART-PROCESS", comment: "RESTART-PROCESS"))
+                                        al.addButton(withTitle: NSLocalizedString("GO-BACK", comment: "GO-BACK"))
+                                        al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                                         switch al.runModal() {
                                         case .alertFirstButtonReturn:
                                             errorX = "EXTRACT"

@@ -29,9 +29,9 @@ struct EnterPasswordPrompt: View {
                             .padding(.leading, 15)
                             .padding(.top, 10)
                         VStack(alignment: .leading) {
-                            Text("Patched Sur would like to make changes.")
+                            Text(.init("B-ENTER-PASS-CHANGES"))
                                 .bold()
-                            Text("Enter your password to allow this.")
+                            Text(.init("B-ENTER-PASS-ALLOW"))
                                 .foregroundColor(.secondary)
                                 .padding(.top, 1)
                                 .padding(.bottom, 12)
@@ -42,10 +42,10 @@ struct EnterPasswordPrompt: View {
                                             .frame(width: 80)
                                             .foregroundColor(.clear)
                                             .fixedSize()
-                                        Text("User Name:")
+                                        Text(.init("B-EP-USER-NAME"))
                                     }
 //                                    TextField("Username", text: .constant((try! call("whoami"))))
-                                    TextField("Username", text: .constant(NSFullUserName()))
+                                    TextField("", text: .constant(NSFullUserName()))
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                 }
                                 HStack {
@@ -54,9 +54,9 @@ struct EnterPasswordPrompt: View {
                                             .frame(width: 80)
                                             .foregroundColor(.clear)
                                             .fixedSize()
-                                        Text("Password:")
+                                        Text(.init("B-EP-PASSWORD"))
                                     }
-                                    SecureField("Password", text: $password)
+                                    SecureField(NSLocalizedString("B-EP-PASSWORD-PH", comment: "B-EP-PASSWORD-PH"), text: $password)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                         .onAppear {
                                             if (try? call("echo Correct Password", p: password)) != nil {
@@ -72,14 +72,14 @@ struct EnterPasswordPrompt: View {
                             }.padding(.bottom, 12)
                             HStack {
                                 Spacer()
-                                NativeButton("Cancel", keyEquivalent: .none) {
+                                NativeButton(NSLocalizedString("CANCEL", comment: "CANCEL"), keyEquivalent: .none) {
                                     (onCancel ?? {})()
                                     password = ""
                                     withAnimation {
                                         show = false
                                     }
                                 }
-                                NativeButton("Continue", keyEquivalent: .return) {
+                                NativeButton(NSLocalizedString("CONTINUE", comment: "CONTINUE"), keyEquivalent: .return) {
                                     if (try? call("echo Correct Password", p: password)) != nil {
                                         onSuccess()
                                         withAnimation {

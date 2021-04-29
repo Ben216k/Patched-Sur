@@ -23,9 +23,9 @@ struct macOSDownloadView: View {
     
     var body: some View {
         VStack {
-            Text("Download macOS")
+            Text(.init("PRE-DM-TITLE"))
                 .font(.system(size: 15)).bold()
-            Text("Currently, macOS is being downloaded straight from Apple \(!isPost ? "so that you can update your Mac" : "so it can be put on the installer USB"). This is a full installer, so it's a 12 GB download. It'll take a while, so let it go and make sure that your internet connection is good. After this is done, you'll have to select a USB drive to use for the installer then Patched Sur will use this file make the installer USB.")
+            Text(.init("PRE-DM-DESCRIPTION"))
                 .padding(.vertical)
                 .multilineTextAlignment(.center)
             ZStack {
@@ -42,7 +42,7 @@ struct macOSDownloadView: View {
                                 })
                             HStack {
                                 Image("DownloadArrow")
-                                Text("Downloading macOS \(installInfo?.version ?? "")")
+                                Text(NSLocalizedString("PRE-DP-1", comment: "PRE-DP-1").description.replacingOccurrences(of: "XX.YY.ZZ", with: installInfo?.version ?? ""))
                                     .onAppear {
                                         DispatchQueue(label: "DownloadMacOS").async {
                                             if installInfo!.buildNumber.hasPrefix("Custom") {
@@ -54,12 +54,12 @@ struct macOSDownloadView: View {
                                             DispatchQueue.main.async {
                                                 onExit = {
                                                     let al = NSAlert()
-                                                    al.informativeText = "The macOS Big Sur is currently being downloaded so that it can be used later. This is a big download. Are you sure you want to go back?"
-                                                    al.messageText = "macOS is Downloading"
+                                                    al.informativeText = NSLocalizedString("PRE-DM-CANCEL-1", comment: "PRE-DM-CANCEL-1")
+                                                    al.messageText = NSLocalizedString("PRE-DM-CANCEL-2", comment: "PRE-DM-CANCEL-2")
                                                     al.showsHelp = false
-                                                    al.addButton(withTitle: "Cancel Download")
-                                                    al.addButton(withTitle: "Restart Download")
-                                                    al.addButton(withTitle: "Continue Download")
+                                                    al.addButton(withTitle: NSLocalizedString("CANCEL-DOWNLOAD", comment: "CONTINUE-DOWNLOAD"))
+                                                    al.addButton(withTitle: NSLocalizedString("RESTART-DOWNLOAD", comment: "CONTINUE-DOWNLOAD"))
+                                                    al.addButton(withTitle: NSLocalizedString("CONTINUE-DOWNLOAD", comment: "CONTINUE-DOWNLOAD"))
                                                     switch al.runModal() {
                                                     case .alertFirstButtonReturn:
                                                         _ = try? call("killall curl")
@@ -99,12 +99,12 @@ struct macOSDownloadView: View {
                                                 DispatchQueue.main.async {
                                                     onExit = {
                                                         let al = NSAlert()
-                                                        al.informativeText = "macOS failed to download, however this could be solved by trying again. Would you like to attempt to download macOS again or go to the previous step?"
-                                                        al.messageText = "Would you like to restart the download?"
+                                                        al.informativeText = NSLocalizedString("PRE-DM-CANCEL-3", comment: "PRE-DM-CANCEL-3")
+                                                        al.messageText = NSLocalizedString("PRE-DP-CANCEL-4", comment: "PRE-DP-CANCEL-4")
                                                         al.showsHelp = false
-                                                        al.addButton(withTitle: "Restart Download")
-                                                        al.addButton(withTitle: "Go Back")
-                                                        al.addButton(withTitle: "Cancel")
+                                                        al.addButton(withTitle: NSLocalizedString("RESTART-DOWNLOAD", comment: "RESTART-DOWNLOAD"))
+                                                        al.addButton(withTitle: NSLocalizedString("GO-BACK", comment: "GO-BACK"))
+                                                        al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                                                         switch al.runModal() {
                                                         case .alertFirstButtonReturn:
                                                             errorX = ""

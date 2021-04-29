@@ -19,20 +19,20 @@ struct VolumeSelector: View {
     
     var body: some View {
         VStack {
-            Text("Select A USB Volume")
+            Text(.init("PRE-VOL-TITLE"))
                 .font(.system(size: 15)).bold()
-            Text("\(isPost ? "To install patched Big Sur initially, you need a USB install that will assist with the upgrade. This provides an environment where the patcher can be sure that everything will go properly." : "To create an installer, you need a volume to put the installer on.") This USB needs to be 16GB or bigger. Internal partitions won't work, but external partitions do depending on the partition map (which will probably be correct with the GUID Partition Map). If your drive doesn't show up, make sure it is formatted as MacOS Extended (Journaled).")
+            Text("\(isPost ? NSLocalizedString("PRE-VOL-1", comment: "PRE-VOL-1") : NSLocalizedString("PRE-VOL-2", comment: "PRE-VOL-2")) \(NSLocalizedString("PRE-VOL-3", comment: "PRE-VOL-3"))")
                 .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
             if volumeList == [] {
                 VIButton(id: "NODRIVES", h: $hovered) {
                     Image("ExclaimCircle")
-                    Text("No compatible drives were detected.")
+                    Text(.init("PRE-VOL-NO"))
                 }.btColor(.red)
                 .inPad()
                 VIButton(id: "REFRESH", h: $hovered) {
                     Image("RefreshCircle")
-                    Text("Refresh")
+                    Text(.init("REFRESH"))
                 } onClick: {
                     volumeList = nil
                 }.btColor(.gray)
@@ -56,17 +56,17 @@ struct VolumeSelector: View {
                 HStack {
                     VIButton(id: "REFRESH-EXCESSIVE-TEXT", h: $hovered) {
                         Image("RefreshCircle")
-                        Text("Refresh")
+                        Text(.init("REFRESH"))
                     } onClick: {
                         volumeList = nil
                     }.btColor(.gray)
                     .inPad()
                     if volumeList!.contains(volume) {
                         VIButton(id: "CONTINUE-EXCESSIVE-TEXT", h: $hovered) {
-                            Text("Continue")
+                            Text(.init("CONTINUE"))
                             Image("ForwardArrowCircle")
                         } onClick: {
-                            alert = .init(title: Text("\(volume) will be erased."), message: Text("All the files on this volume will be completely erased. This cannot be undone. Are you sure you would like to continue?"), primaryButton: .default(Text("Continue and Erase")) { withAnimation { p = .create } }, secondaryButton: .cancel())
+                            alert = .init(title: Text(NSLocalizedString("PRE-VOL-1", comment: "PRE-VOL-1").description.replacingOccurrences(of: "VOLUME", with: volume)), message: Text(.init("PRE-VOL-ERASED-2")), primaryButton: .default(Text(.init("CONTINUE-ERASE"))) { withAnimation { p = .create } }, secondaryButton: .cancel())
                         }.inPad()
                     }
                 }.alert($alert)
@@ -74,7 +74,7 @@ struct VolumeSelector: View {
                 VStack {
                     VIButton(id: "NEVER-HOVERED", h: .constant("MUHAHAHA")) {
                         Image("DriveCircle")
-                        Text("Detecting Volumes")
+                        Text(.init("PRE-VOL-DETECTING"))
                     }.inPad()
                     .btColor(.gray)
                     .onAppear {
@@ -90,7 +90,7 @@ struct VolumeSelector: View {
                             }
                         }
                     }
-                    Text("Checking \"\(onVol)\"")
+                    Text(NSLocalizedString("PRE-VOL-CHECKING", comment: "PRE-VOL-CHECKING").description.replacingOccurrences(of: "VOLUME", with: onVol))
                         .font(.caption)
                 }
             }
