@@ -1,0 +1,194 @@
+/* 
+  Localizable.strings
+  Patched Sur
+
+  English (en)
+  Created by Ben Sova on 4/25/21.
+*/
+
+// Generic
+
+"GET-STARTED" = "Get Started";
+"CONTINUE" = "Continue";
+"GO-BACK" = "Go Back";
+"Cancel" = "Cancel";
+"BROWSE" = "Browse";
+"REFRESH" = "Refresh";
+"CONTINUE-ERASE" = "Continue and Erase";
+"REQUEST-ROOT" = "Request Root Permissions";
+"EXTRACT-PACKAGE" = "Extracting Package";
+"FINISHED" = "Finished";
+
+// Enter Password Prompt
+"B-ENTER-PASS-CHANGES" = "Patched Sur would like to make changes.";
+"B-ENTER-PASS-ALLOW" = "Enter your password to allow this.";
+// The main difference here is
+"B-EP-USERNAME" = "User Name:";
+// The only difference here is the colon, which sounds dumb, but it's needed.
+"B-EP-PASSWORD" = "Password:";
+"B-EP-PASSWORD-PH" = "Password";
+
+// Welcome Page
+
+// Reminder! "Patched Sur" is a formal name, so don't localize that. (Patches/Patcher can be localized, just not Patched Sur)
+"PRE-WELCOME-TITLE" = "Welcome to Patched Sur!";
+"PRE-WELCOME-DESCRIPTION" = "This patcher is made to provide you with the simplest upgrade to macOS Big Sur on your unsupported Mac. It prepares everything to be perfect by the end of the installation, and makes sure that nothing will go wrong with your installation. By the end, Patched Sur will try to make your Mac run just like a supported one.";
+
+// Thanks To Page
+
+"THANKS-TITLE" = "Thanks To";
+"THANKS-CONTENT" = "Patched Sur isn't just by me (Ben), several other people have contributed to the patcher and the patches making this what it is today!
+
+- barrykn: Made the micropatcher that introduced me to the patching process and restored my faith in my really old computer. My hat is off to barrykn, and yours should be too.
+- ASentientBot: Made the Hax patches for the installer and brought GeForce Tesla (9400M/320M) framebuffer to Big Sur along with Non-metal Graphics Acceleration patches.
+- jackluke: Figured out how to bypass compatibility checks on the installer USB.
+- highvoltage12v: Made the first WiFi kexts used with Big Sur
+- ParrotGeek: developed the LegacyUSBInjector kext to get USB ports working on some older Macs and figuring out a way to skip the terminal commands when opening the installer app on the USB.
+- testheit: Helped with the kmutil command in the micropatcher (that is used in Patched Sur too)
+- Ausdauersportler: Integrated patches for iMac Metal GPU support.
+- StarPlayrX: Pointed out startosinstall which was later used in the patcher to allow macOS updating support without a USB.
+- ASentientHedgehog: Helped randomly along the way
+- OCLP Team: Helped with kernel-level stuff for non-Tesla cards for non-metal graphics acceleration.
+- dosdude1: OpenGL/GPUSupport swap and of course a whole bunch of patching stuff used in his patcher.
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen for testing some of the new features before release, and pointing out the bugs with them.
+- and several others who helped with making Big Sur run as great as it does on unsupported Macs.
+
+Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSundell (MIT License), to help handle certain tasks.";
+
+// Please Remember Page
+
+"PLEASE-REMEMBER" = "Please Remember";
+"PRE-PR-1" = "Patched Sur is currently in beta and it will never be perfect. While it will not brick your Mac, it can cause you to lose your data if you don't have a backup.";
+"PRE-PR-2" = " No matter what, make a Time Machine Backup before upgrading. ";
+"PRE-PR-3" = "I (and contributors) will not be liable if something goes wrong. I will go to the best of my abilities to help if there is a problem, but I don't know everything and there are some cases where I cannot help. A lot of times, it isn't even Patched Sur's fault, so there's nothing I can do.";
+
+// Mac Compatibility Page
+
+"PRE-VERIFY-MAC" = "Verifying Mac";
+"PRE-VERIFY-QUICK" = "This first step is essential to how reliable Patched Sur is. This step tries to detect as many problems caused as possible before running into them. This includes FileVault, no graphics acceleration and some other problems. Don't worry, this will be quick.";
+"PRE-VERIFY-FETCH" = "Fetching Information";
+"PRE-VERIFY-2" = "Verifying Mac";
+
+"PRE-REPORT-BY" = "Reported by: ";
+"PERSON" = "person";
+"OTHERS" = "others";
+"APPROVES" = "approves";
+"APPROVE" = "approve";
+
+"WiFi, Ethernet and Bluetooth" = "WiFi, Ethernet and Bluetooth";
+"I/O Ports" = "I/O Ports";
+"Graphics Acceleration" = "Graphics Acceleration";
+"Sleep and Brightness" = "Sleep and Brightness";
+"FileVault" = "FileVault";
+"Personal Hotspots" = "Personal Hotspots";
+"Personal Hotspot" = "Personal Hotspot";
+"WPA2 Enterprise" = "WPA2 Enterprise";
+
+"PROB-FATAL" = "Fatal Problem Detected";
+"PROB-WARN" = "Possible Problem Detected";
+"PROB-NO-UPGRADE" = "You cannot upgrade to Big Sur because of this or other problems.";
+"PROB-CONTINUE-ANYWAY" = "Continue Anyway";
+"PROB-OTHERS" = "Other Problems";
+
+"PROB-FILE-TITLE" = "FileVault is On.";
+"PROB-FILE-DESCRIPTION" = "Your Mac has FileVault enabled. While this is a good encryption tool, it breaks on Big Sur with unsupported Macs. You'll be completely unable to boot into recovery mode, and at times you may be unable to unlock your disk. You must disable this before running the patcher. You can do that by going into System Preferences, clicking Security & Privacy, go to FileVault, and click the lock icon and disable it.";
+
+// Reminder! "BigMac" and "StarPlayrX" are a formal names, so don't localize that.
+"PROB-PRO-TITLE" = "There's a Better Patcher for Mac Pros";
+"PROB-PRO-DESCRIPTION" = "While Patched Sur is a great for a lot of Macs, Mac Pros really shouldn't be used with this patcher. They don't have the proper patches, and there's another easy-to-use patcher designed specifically for Mac Pros. It's StarPlayrX's BigMac Patcher, and it'll give you an amazing experience for your Mac.";
+
+"PROB-GX-TITLE" = "No Graphics Acceleration";
+"PROB-GX-DESCRIPTION" = "Your Mac doesn't support Metal graphics acceleration, so Big Sur will run EXTREMELY SLOW. Do not expect it to be fast and do not expect it to run well. You cannot fix this and a patch is in progress to fix this, but it's current state is extremely unstable. If you would like to continue, you may, but don't expect a magical complete Big Sur experience.";
+
+"PROB-SURE" = "Are you sure you want to continue?";
+"PROB-SURE-SURE" = "Patched Sur detected problems that could (and will) cause problems with Big Sur. Your Mac might not be at its full potential, and in some cases it might be good to just say on Catalina.";
+
+"REPORT-UNKNOWN" = "Unknown Compatibility";
+"REPORT-UNKNOWN-2" = "Depending on your Mac, Patched Sur might or might not run great, and Patched Sur did not find any compatibility reports for your Mac, so it cannot currently tell you. Don't worry though, not many people have given insight on how well Patched Sur runs on all the different Macs, so your Mac probably will run perfectly fine. Once you upgrade, you can contribute your experiences (go into Settings in the post install app), and help out future people with your Mac!";
+
+// Update Track Page
+
+"PRE-TRACK-TITLE" = "Set Update Track";
+"PRE-TRACK-DESCRIPTION" = "Your update track defines what versions of macOS get. The Release track is the most stable, and probably what you're using already. Beta gives you access to new features of macOS early, but it's unstable at times.";
+
+"TRACK-RELEASE" = "Release";
+"TRACK-BETA" = "Beta";
+
+// macOS Select Page
+
+"PRE-VERS-TITLE" = "macOS Big Sur Version";
+"PRE-VERS-DESCRIPTION" = "While in most cases you'll want the latest version of macOS Big Sur, you might for whatever reason want an older version, and you can configure that here. If you want to use a pre-downloaded InstallAssistant.pkg or installer app, you can by clicking browse. If you just want to download and use the latest version of macOS, just click Download.";
+"PRE-VERS-NOFI" = "The available macOS installer list could not be accessed. This is probably because WiFi is unavailable. You must use a pre-downloaded macOS installer.";
+// NOTE: In these two, XX.YY.ZZ is the macOS version. So in English, the first would show Download macOS 11.3. \(installers[0].version)
+"PRE-VERS-DOWNLOAD" = "Download macOS XX.YY.ZZ";
+"PRE-VERS-USE" = "Use macOS XX.YY.ZZ";
+"PRE-VERS-PRE" = "Use Pre-Downloaded macOS";
+"PRE-VERS-REDOWNLOAD" = "Redownload";
+"PRE-VERS-FETCH" = "Fetching Installers";
+
+// Downloading Kexts Page
+
+"DOWNLOAD-PATCHES" = "Downloading Patches";
+"DOWNLOAD-FILES" = "Downloading Files";
+"PRE-DP-1" = "The set vars tool allows you to properly setup the NVRAM and SIP status, so that Big Sur lets you boot into it.";
+"PRE-DP-2" = "This is the last tool you will use before installing Big Sur.";
+"PRE-DP-3" = "You will only need this if you haven't run it before on that Mac or if you did a PRAM reset.";
+"PRE-DP-4" = "The kext patches allow you to use hardware like WiFi and USB ports, so that your Mac stays at its full functionality.";
+"PRE-DP-CANCEL-1" = "The patches that will later be used by the patcher are currently downloading. Are you sure you want to go back?";
+"PRE-DP-CANCEL-2" = "The Patches Are Downloading";
+"CANCEL-DOWNLOAD" = "Cancel Download";
+"RESTART-DOWNLOAD" = "Restart Download";
+"CONTINUE-DOWNLOAD" = "Continue Download";
+"PRE-DP-CANCEL-3" = "The patches failed to download, however this could be solved by trying again. Would you like to attempt to download the patches again or go to the previous step?";
+"PRE-DP-CANCEL-4" = "Would you like to restart the download?";
+
+// Downloading macOS Page
+
+"PRE-DM-TITLE" = "Downloading macOS";
+"PRE-DM-DESCRIPTION" = "Currently, macOS is being downloaded straight from Apple so it can be put on the installer USB. This is a full installer, so it's a 12 GB download. It'll take a while, so let it go and make sure that your internet connection is good. After this is done, you'll have to select a USB drive to use for the installer then Patched Sur will use this file make the installer USB.";
+"PRE-DM-BAR" = "Downloading macOS XX.YY.ZZ";
+"PRE-DM-CANCEL-1" = "The macOS Big Sur is currently being downloaded so that it can be used later. This is a big download. Are you sure you want to go back?";
+"PRE-DM-CANCEL-2" = "macOS is Downloading";
+"PRE-DM-CANCEL-3" = "macOS failed to download, however this could be solved by trying again. Would you like to attempt to download macOS again or go to the previous step?";
+
+// Select Volume Page
+
+"PRE-VOL-TITLE" = "Select A USB Volume";
+"PRE-VOL-1" = "To install patched Big Sur initially, you need a USB install that will assist with the upgrade. This provides an environment where the patcher can be sure that everything will go properly.";
+"PRE-VOL-2" = "To create an installer, you need a volume to put the installer on.";
+"PRE-VOL-3" = "This USB needs to be 16GB or bigger. Internal partitions won't work, but external partitions do depending on the partition map (which will probably be correct with the GUID Partition Map). If your drive doesn't show up, make sure it is formatted as MacOS Extended (Journaled).";
+"PRE-VOL-NO" = "No compatible drives were detected.";
+// Note: VOLUME is the volume name, do not localize it, just pretend it's a volume name and just place it into your sentence
+// Ex. If the volume was "SuperDrive", then "VOLUME will be erased." would show up as "SuperDrive will be erased."
+"PRE-VOL-ERASED" = "VOLUME will be erased.";
+"PRE-VOL-ERASED-2" = "All the files on this volume will be completely erased. This cannot be undone. Are you sure you would like to continue?";
+"PRE-VOL-DETECTING" = "Detecting Volumes";
+"PRE-VOL-CHECKING" = "Checking VOLUME";
+
+// Create Installer Page
+
+"PRE-CTI-TITLE" = "Creating USB Installer";
+"PRE-CTI-DESCRIPTION" = "Now the USB you selected is being used to create a macOS installer USB. The files copied on the disk create an environment similar to macOS Big Sur Recovery Mode. Once those files are placed on the USB, Patched Sur steps in and patches it allowing for your Mac to boot into it and giving it some useful tools for a patched Mac.";
+"PRE-CTI-CANCEL-1" = "Are you sure you want to cancel making the patched macOS installer? You will need this to upgrade to macOS Big Sur, and it often takes a long time to make.";
+"PRE-CTI-CANCEL-2" = "A macOS Installer is Being Made";
+"CANCEL-PROCESS" = "Cancel Process";
+"RESTART-PROCESS" = "Restart Process";
+"CONTINUE-PROCESS" = "Continue Process";
+"PRE-CTI-CANCEL-3" = "There was an error while creating the macOS installer USB, however you may want to try again to possibly fix this error.";
+"PRE-CTI-CANCEL-4" = "Would you like to try again?";
+"PRE-CTI-CREATING" = "Creating Installer";
+
+// Done Page
+"PRE-DONE-INFO" = "You're almost there on your way upgrading to Big Sur. The installer USB has successfully been created and it's time for a little manual work from you. If you're not directly following a tutorial, write these steps down so you know to do them (these are really easy steps, even though it looks like a lot of them):
+
+1. Restart your Mac holding down option until you see some drive appear on screen.
+2. Select the yellow or purple EFI Boot. This will immediately shutdown your computer.
+3. Turn your Mac back on, holding option again.
+4. Select Install macOS Big Sur.
+5. Once your Mac boots, select (Re)Install macOS Big Sur again. (It might sound like it, but this will not wipe any user data, it will just upgrade the system files like a standard update)
+6. When that app opens, go through the app and select your main volume (probably Macintosh HD, and NOT Install macOS Big Sur)
+7. After the update is complete and you see the log-in window, open your Applications folder and launch Patched Sur.
+8. Click Patch Kexts, then press Continue and enter your password.
+9. After that is done, reboot your Mac and enjoy Big Sur!";
+// I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
+"PRE-DONE-LINK" = "You can also find these steps on GitHub.";

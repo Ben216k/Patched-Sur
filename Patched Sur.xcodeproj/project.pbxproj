@@ -104,6 +104,7 @@
 		76D8437B25F861DE006C6565 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76D8437A25F861DE006C6565 /* VeliaUI */; };
 		76D8437D25F861E6006C6565 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76D8437C25F861E6006C6565 /* VeliaUI */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
+		76E6C72A263B8DF10063C08E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7624934D2635EA6900805E4A /* Localizable.strings */; };
 		76E73A68262CF77C0009D9CC /* RecoveryPatchActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */; };
 		76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */; };
 		76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
@@ -288,6 +289,11 @@
 		76CF37BC25E8C73500403208 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		76D639DC2576302500B38FBE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		76E6C72D263B8ED50063C08E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		76E6C72F263B8EEF0063C08E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
+		76E6C731263B90720063C08E /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		76E6C735263B93510063C08E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
+		76E6C737263B93630063C08E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchActions.swift; sourceTree = "<group>"; };
 		76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchDaemon.swift; sourceTree = "<group>"; };
 		76F11508256EE9FB001AB749 /* PatchedVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchedVersion.swift; sourceTree = "<group>"; };
@@ -710,6 +716,10 @@
 				en,
 				Base,
 				es,
+				ru,
+				uk,
+				"pt-BR",
+				"pt-PT",
 			);
 			mainGroup = 7692E059251BFF9300C5FB9A;
 			packageReferences = (
@@ -774,6 +784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76A070C3261BAAF00002A304 /* Patched Sur - Recovery.app in Resources */,
+				76E6C72A263B8DF10063C08E /* Localizable.strings in Resources */,
 				7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */,
 				7692E084251BFFB400C5FB9A /* Assets.xcassets in Resources */,
 			);
@@ -925,6 +936,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				762CBCAB260C20E8008F0A86 /* Base */,
+				76E6C72D263B8ED50063C08E /* ru */,
+				76E6C72F263B8EEF0063C08E /* uk */,
+				76E6C731263B90720063C08E /* pt-BR */,
+				76E6C735263B93510063C08E /* pt-PT */,
+				76E6C737263B93630063C08E /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
