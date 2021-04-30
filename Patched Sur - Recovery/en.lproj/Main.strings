@@ -11,9 +11,6 @@
 /* Class = "NSMenuItem"; title = "Quit Patched Sur - Recovery"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Quit Patched Sur - Recovery";
 
-/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
-"5QF-Oa-p0T.title" = "Edit";
-
 /* Class = "NSMenuItem"; title = "About Patched Sur - Recovery"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "About Patched Sur - Recovery";
 
@@ -23,14 +20,8 @@
 /* Class = "NSTextFieldCell"; title = "Patch Kexts"; ObjectID = "BaO-Di-Twc"; */
 "BaO-Di-Twc.title" = "Patch Kexts";
 
-/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
-"H8h-7b-M4v.title" = "View";
-
 /* Class = "NSWindow"; title = "Patched Sur"; ObjectID = "IQv-IB-iLA"; */
 "IQv-IB-iLA.title" = "Patched Sur";
-
-/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
-"NMo-om-nkz.title" = "Services";
 
 /* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "Oqn-jo-ekB"; */
 "Oqn-jo-ekB.title" = "Item 1";
@@ -41,14 +32,8 @@
 /* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "Z28-kx-H6s"; */
 "Z28-kx-H6s.title" = "Item 3";
 
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
-"aUF-d1-5bR.title" = "Window";
-
 /* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "dDt-pR-0Tf"; */
 "dDt-pR-0Tf.title" = "Item 2";
-
-/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
-"dMs-cI-mzQ.title" = "File";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Services";
@@ -56,8 +41,7 @@
 /* Class = "NSButtonCell"; title = "Start Patch Kexts"; ObjectID = "ial-ib-X6F"; */
 "ial-ib-X6F.title" = "Start Patch Kexts";
 
-/* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
-"jxT-CU-nIS.title" = "Format";
-
 /* Class = "NSMenu"; title = "Patched Sur - Recovery"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Patched Sur - Recovery";
+
+"RESTART-TO-FINISH" = "Restart to Finish";

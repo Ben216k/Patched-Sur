@@ -71,4 +71,6 @@ I am a living, breathing human, so don't expect me to respond right away to ever
 
 [r/BigSurPatcher Subreddit](https://www.reddit.com/r/BigSurPatcher/)
 
+[Patched Sur Discord](https://discord.gg/2DxVn4HDX6)
+
 [Unsupported Macs Discord](https://discord.com/invite/XbbWAsE) (#bensova-patcher)

@@ -43,8 +43,8 @@ class ViewController: NSViewController {
                 let patchKextsOut = runCommandReturnStr(binary: "/bin/bash", arguments: ["/Volumes/Image Volume/PatchKexts.sh", "/Volumes/\(selectInfo)"])
                 if patchKextsOut!.status == 0 {
                     DispatchQueue.main.async {
-                        patchKextsButton.stringValue = "Restart to Finish"
-                        patchKextsButton.title = "Restart to Finish"
+                        patchKextsButton.stringValue = NSLocalizedString("RESTART-TO-FINISH", comment: "RESTART-TO-FINISH")
+                        patchKextsButton.title = NSLocalizedString("RESTART-TO-FINISH", comment: "RESTART-TO-FINISH")
                         patchKextsButton.isEnabled = true
                         volumeSelect.isEnabled = false
                         errorText.string = ""
