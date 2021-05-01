@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the window and set the content view.
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 584, height: 346),
-            styleMask: [.titled, .miniaturizable, .fullSizeContentView, .borderless],
+            styleMask: [.titled, .miniaturizable, .closable, .fullSizeContentView, .borderless],
             backing: .buffered, defer: false)
         window.isReleasedWhenClosed = true
         window.center()
@@ -31,6 +31,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
     }
 
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        true
+    }
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
 //        let queue = DispatchQueue(label: "DownloadKexts")

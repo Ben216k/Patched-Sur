@@ -30,6 +30,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        true
+    }
+    
     private var aboutBoxWindowController: NSWindowController?
     
     func showAboutPanel() {
@@ -55,15 +59,16 @@ struct PatchedSurApp: App {
     
     @State var atLocation = 0
     @State var hovered: String?
+    @State var setupWindow = false
     var body: some Scene {
         WindowGroup {
             ContentView(at: $atLocation)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
                 .accentColor(Color("AccentColor"))
                 .onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification), perform: { _ in
-                    for window in NSApplication.shared.windows {
+                    if !setupWindow, let window = NSApplication.shared.mainWindow {
                         window.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
-                        window.standardWindowButton(NSWindow.ButtonType.closeButton)?.isEnabled = false
+                        setupWindow = true
                     }
                 })
         }.windowStyle(HiddenTitleBarWindowStyle())
@@ -72,7 +77,7 @@ struct PatchedSurApp: App {
                 Button(action: {
                     appDelegate.showAboutPanel()
                 }) {
-                    Text("About Patched Sur")
+                    Text(.init("PO-MN-ABOUT-PATCHER"))
                 }
             }
             CommandGroup(replacing: CommandGroupPlacement.appSettings) {
@@ -81,7 +86,7 @@ struct PatchedSurApp: App {
                         atLocation = 4
                     }
                 } label: {
-                    Text("Preferences")
+                    Text(.init("PREFERENCES"))
                 }.keyboardShortcut(.init(.init(","), modifiers: .command))
             }
             CommandGroup(after: CommandGroupPlacement.appInfo) {
@@ -90,7 +95,7 @@ struct PatchedSurApp: App {
                         atLocation = 3
                     }
                 } label: {
-                    Text("About This Mac")
+                    Text(.init("PO-AMM-TITLE"))
                 }
             }
             CommandGroup(replacing: CommandGroupPlacement.help) {
