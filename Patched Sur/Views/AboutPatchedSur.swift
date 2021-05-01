@@ -19,9 +19,9 @@ struct AboutPatchedSur: View {
                         .font(.title3)
                 }
             }.padding(.top, -10)
-            Text("A simple patcher, with a big core, to make running Big Sur on an unsupported Mac easy.")
+            Text("A simple patcher, with a big core, to make running Big Sur on an unsupported Mac easy, designed for anyone.")
                 .padding(.bottom)
-            (Text("What's in v0.2.0?").bold() + Text("\nLet's just say it's cleaned up. It's redesigned. It's recovered. It's Patched Sur, but it fixes what's missing."))
+            (Text("What's in v0.3.0?").bold() + Text("\nIt's going to be fast, powerful, and clear for everyone, even if you're non-Metal or non-English."))
         }.padding(20).padding(.horizontal, 15).frame(width: 425, height: 225)
         .multilineTextAlignment(.center)
     }

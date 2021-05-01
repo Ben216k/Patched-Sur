@@ -1,63 +1,48 @@
-
 /* Class = "NSMenuItem"; title = "Patched Sur - Recovery"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "Patched Sur - Recovery";
+"1Xt-HY-uBw.title" = "Patched Sur - 系统恢复";
 
 /* Class = "NSTextFieldCell"; title = "Patched Sur"; ObjectID = "31m-ys-XXY"; */
 "31m-ys-XXY.title" = "Patched Sur";
 
 /* Class = "NSTextFieldCell"; title = "Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. "; ObjectID = "4dt-Ym-N0I"; */
-"4dt-Ym-N0I.title" = "Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. ";
+"4dt-Ym-N0I.title" = "\n苹果在最新的系统中剔除了对老版本Mac的Wifi, USB 和很多其他系统硬件的驱动支持。安装这个系统补丁可以让您的新系统重新支持这些功能。如果您重启之后发现WiFi，蓝牙等还没有识别，删除然后重新安装这个补丁可以解决这个问题。 ";
 
 /* Class = "NSMenuItem"; title = "Quit Patched Sur - Recovery"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit Patched Sur - Recovery";
-
-/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
-"5QF-Oa-p0T.title" = "Edit";
+"4sb-4s-VLi.title" = "退出 Patched Sur - 系统恢复";
 
 /* Class = "NSMenuItem"; title = "About Patched Sur - Recovery"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About Patched Sur - Recovery";
+"5kV-Vb-QxS.title" = "关于 Patched Sur - 系统恢复";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Main Menu";
+"AYu-sK-qS6.title" = "主菜单";
 
 /* Class = "NSTextFieldCell"; title = "Patch Kexts"; ObjectID = "BaO-Di-Twc"; */
-"BaO-Di-Twc.title" = "Patch Kexts";
-
-/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
-"H8h-7b-M4v.title" = "View";
+"BaO-Di-Twc.title" = "系统补丁";
 
 /* Class = "NSWindow"; title = "Patched Sur"; ObjectID = "IQv-IB-iLA"; */
 "IQv-IB-iLA.title" = "Patched Sur";
 
-/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
-"NMo-om-nkz.title" = "Services";
-
 /* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "Oqn-jo-ekB"; */
-"Oqn-jo-ekB.title" = "Item 1";
+"Oqn-jo-ekB.title" = "物品 1";
 
 /* Class = "NSTextFieldCell"; title = "RECOVERY PATCH KEXTS"; ObjectID = "Qq5-g0-oQ0"; */
-"Qq5-g0-oQ0.title" = "RECOVERY PATCH KEXTS";
+"Qq5-g0-oQ0.title" = "恢复系统驱动补丁";
 
 /* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "Z28-kx-H6s"; */
-"Z28-kx-H6s.title" = "Item 3";
-
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
-"aUF-d1-5bR.title" = "Window";
+"Z28-kx-H6s.title" = "物品 3";
 
 /* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "dDt-pR-0Tf"; */
-"dDt-pR-0Tf.title" = "Item 2";
-
-/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
-"dMs-cI-mzQ.title" = "File";
+"dDt-pR-0Tf.title" = "物品 2";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
-"hz9-B4-Xy5.title" = "Services";
+"hz9-B4-Xy5.title" = "系统服务
+
+";
 
 /* Class = "NSButtonCell"; title = "Start Patch Kexts"; ObjectID = "ial-ib-X6F"; */
-"ial-ib-X6F.title" = "Start Patch Kexts";
-
-/* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
-"jxT-CU-nIS.title" = "Format";
+"ial-ib-X6F.title" = "开始安装系统补丁";
 
 /* Class = "NSMenu"; title = "Patched Sur - Recovery"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "Patched Sur - Recovery";
+"uQy-DD-JDr.title" = "Patched Sur - 系统恢复";
+
+"RESTART-TO-FINISH" = "您需要重启电脑来完成安装";

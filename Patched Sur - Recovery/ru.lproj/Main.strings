@@ -24,22 +24,22 @@
 "IQv-IB-iLA.title" = "Patched Sur";
 
 /* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "Oqn-jo-ekB"; */
-"Oqn-jo-ekB.title" = "Объект 1";
+"Oqn-jo-ekB.title" = "Пункт 1";
 
 /* Class = "NSTextFieldCell"; title = "RECOVERY PATCH KEXTS"; ObjectID = "Qq5-g0-oQ0"; */
 "Qq5-g0-oQ0.title" = "КЕКСТЫ ПАТЧА РЕЖИМА ВОССТАНОВЛЕНИЯ";
 
 /* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "Z28-kx-H6s"; */
-"Z28-kx-H6s.title" = "Объект 3";
+"Z28-kx-H6s.title" = "Пункт 3";
 
 /* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "dDt-pR-0Tf"; */
-"dDt-pR-0Tf.title" = "Объект 2";
+"dDt-pR-0Tf.title" = "Пункт 2";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Сервисы";
 
 /* Class = "NSButtonCell"; title = "Start Patch Kexts"; ObjectID = "ial-ib-X6F"; */
-"ial-ib-X6F.title" = "Пропатчить тексты";
+"ial-ib-X6F.title" = "Пропатчить кексты";
 
 /* Class = "NSMenu"; title = "Patched Sur - Recovery"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Patched Sur - Режим восстановления";
