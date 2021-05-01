@@ -19,9 +19,9 @@ struct DoneView: View {
                 Button {
                     NSWorkspace.shared.open(URL(string: "https://github.com/BenSova/Patched-Sur#how-do-i-use-patched-sur")!)
                 } label: {
-                    Text(.init(""))
+                    Text(.init("PRE-DONE-LINK"))
                 }.buttonStyle(LinkButtonStyle())
-                Text("(Steps 10-14)")
+                Text(.init("PRE-DONE-STEPS"))
             }
         }
     }

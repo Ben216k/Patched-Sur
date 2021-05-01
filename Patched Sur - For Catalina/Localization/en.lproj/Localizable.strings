@@ -194,6 +194,7 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 9. After that is done, reboot your Mac and enjoy Big Sur!";
 // I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
 "PRE-DONE-LINK" = "You can also find these steps on GitHub.";
+"PRE-DONE-STEPS" = "(Steps 10-14)";
 
 // MARK: Post-Install App (96)
 // Menu Bar

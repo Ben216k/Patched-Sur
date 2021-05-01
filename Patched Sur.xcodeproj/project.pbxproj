@@ -197,6 +197,8 @@
 		76020745263DA74A00A8D18A /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76020748263DBB3600A8D18A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		76020749263DBB3600A8D18A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7602074C263DCDDF00A8D18A /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
+		7602074D263DCDE000A8D18A /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		760280AE2627EB920054059A /* PSRecovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSRecovery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		760280B02627EB920054059A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		760280B12627EB920054059A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -744,6 +746,7 @@
 				da,
 				hr,
 				de,
+				el,
 			);
 			mainGroup = 7692E059251BFF9300C5FB9A;
 			packageReferences = (
@@ -972,6 +975,7 @@
 				7646DF97263CF0EB0097B136 /* da */,
 				76020744263DA74A00A8D18A /* hr */,
 				76020748263DBB3600A8D18A /* de */,
+				7602074C263DCDDF00A8D18A /* el */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -998,6 +1002,7 @@
 				7646DF99263CF0EB0097B136 /* da */,
 				76020745263DA74A00A8D18A /* hr */,
 				76020749263DBB3600A8D18A /* de */,
+				7602074D263DCDE000A8D18A /* el */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

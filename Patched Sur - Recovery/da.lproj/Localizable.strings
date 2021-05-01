@@ -7,4 +7,5 @@
 */
 
 "RESTART-TO-FINISH" = "Genstart for at afslutte";
-"SELECT-A-VOLUME" = "Select a Volume";
+"SELECT-A-VOLUME" = "Vælg diskenhed";
+"PATCHING-KEXTS" = "I gang med at patche kext filer";

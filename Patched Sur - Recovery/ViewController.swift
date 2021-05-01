@@ -20,8 +20,8 @@ class ViewController: NSViewController {
         let selectInfo = volumeSelect.selectedItem!.title
         if patchKextsButton.title != "Restart to Finish" {
             print("Start patch kexts pressed!")
-            patchKextsButton.stringValue = "Patching Kexts"
-            patchKextsButton.title = "Patching Kexts"
+            patchKextsButton.stringValue = NSLocalizedString("PATCHING-KEXTS", comment: "PATCHING-KEXTS")
+            patchKextsButton.title = NSLocalizedString("PATCHING-KEXTS", comment: "PATCHING-KEXTS")
             patchKextsButton.isEnabled = false
             volumeSelect.isEnabled = false
             print("Checking if we're on a Late 2013 iMac")

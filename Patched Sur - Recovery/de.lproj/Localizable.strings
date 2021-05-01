@@ -7,4 +7,5 @@
 */
 
 "RESTART-TO-FINISH" = "Neustarten um abzuschliessen";
-"SELECT-A-VOLUME" = "Wählen Sie ein Volume";
+"SELECT-A-VOLUME" = "Wähle ein Laufwerk";
+"PATCHING-KEXTS" = "Kexts werden gepatcht...";

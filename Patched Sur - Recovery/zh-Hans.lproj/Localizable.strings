@@ -8,3 +8,4 @@
 
 "RESTART-TO-FINISH" = "您需要重启电脑来完成安装";
 "SELECT-A-VOLUME" = "选择一个硬盘分区";
+"PATCHING-KEXTS" = "正在安装系统补丁";
