@@ -10,7 +10,7 @@ import UserNotifications
 
 func patchDaemon() {
     print("Patched Sur Update Daemon Started.")
-    print("Just so we don't mess with after boot preformance,")
+    print("Just so we don't mess with after boot performance,")
     print("we'll sleep for a few minutes then check.")
     sleep(600)
     while true {
@@ -26,7 +26,7 @@ func patchDaemon() {
                         print("Sending update notification!")
                         var tagName = patcherVersions[0].tagName
                         tagName.removeFirst()
-                        scheduleNotification(title: "Patched Sur \(patcherVersions[0].tagName)", body: "Patched Sur can now be updated to Version \(tagName). Open Patched Sur then click Update macOS to learn more.")
+                        scheduleNotification(title: "Patched Sur \(patcherVersions[0].tagName)", body: NSLocalizedString("PO-NOFI-SELF", comment: "PO-NOFI-SELF").replacingOccurrences(of: "VERSIONTAG", with: tagName))
                         print("Now making sure we don't sent this again...")
                         UserDefaults.standard.setValue(patcherVersions[0].tagName, forKey: "LastCheckedPSVersion")
                     } else { print("Nope, we're up-to-date.") }
@@ -55,7 +55,7 @@ func patchDaemon() {
                         print([macOSversions[0].buildNumber].description + " C: " + [buildNumber].description)
                         if buildNumber != macOSversions[0].buildNumber {
                             print("Sending update notification!")
-                            scheduleNotification(title: "Software Update", body: "macOS Big Sur \(macOSversions[0].version) (\(macOSversions[0].buildNumber)) can now be installed on your device. Open Patched Sur then click Update macOS to learn more.")
+                            scheduleNotification(title: "Software Update", body: NSLocalizedString("PO-NOFI-OS-DESCRIPTION", comment: "PO-NOFI-OS-DESCRIPTION").replacingOccurrences(of: "VERSIONTAG", with: "\(macOSversions[0].version) (\(macOSversions[0].buildNumber))"))
                             print("Now making sure we don't sent this again...")
                             UserDefaults.standard.setValue(macOSversions[0].buildNumber, forKey: "LastCheckedOSVersion")
                         } else {

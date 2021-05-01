@@ -6,5 +6,6 @@
   
 */
 
-"RESTART-TO-FINISH" = "Restart to Finish";
+"RESTART-TO-FINISH" = "重啟電腦來完成安裝";
 "SELECT-A-VOLUME" = "選擇一個硬盤分區";
+"PATCHING-KEXTS" = "正在安裝驅動補丁";

@@ -35,44 +35,66 @@ struct EnterPasswordPrompt: View {
                                 .foregroundColor(.secondary)
                                 .padding(.top, 1)
                                 .padding(.bottom, 12)
-                            VStack(alignment: .trailing, spacing: 8) {
-                                HStack {
-                                    ZStack(alignment: .trailing) {
-                                        Rectangle()
-                                            .frame(width: 80)
-                                            .foregroundColor(.clear)
-                                            .fixedSize()
-                                        Text(.init("B-EP-USER-NAME"))
+                            HStack(alignment: .top) {
+                                VStack(alignment: .trailing, spacing: 8) {
+                                    ZStack {
+                                        TextField("", text: .constant(""))
+                                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                                            .frame(width: 1)
+                                            .opacity(0)
+                                        Text(.init("B-EP-USERNAME"))
                                     }
-//                                    TextField("Username", text: .constant((try! call("whoami"))))
-                                    TextField("", text: .constant(NSFullUserName()))
-                                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                                }
-                                HStack {
-                                    ZStack(alignment: .trailing) {
-                                        Rectangle()
-                                            .frame(width: 80)
-                                            .foregroundColor(.clear)
-                                            .fixedSize()
+                                    ZStack {
+                                        TextField("", text: .constant(""))
+                                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                                            .frame(width: 1)
+                                            .opacity(0)
                                         Text(.init("B-EP-PASSWORD"))
                                     }
+                                }
+                                VStack(alignment: .trailing, spacing: 8) {
+                                    TextField("", text: .constant(NSFullUserName()))
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
                                     SecureField(NSLocalizedString("B-EP-PASSWORD-PH", comment: "B-EP-PASSWORD-PH"), text: $password)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                                        .onAppear {
-                                            if (try? call("echo Correct Password", p: password)) != nil {
-                                                onSuccess()
-                                                withAnimation {
-                                                    show = false
-                                                }
-                                            } else {
-                                                password = ""
-                                            }
-                                        }
-                                }
-                            }.padding(.bottom, 12)
+    //                                HStack {
+    //                                    ZStack(alignment: .trailing) {
+    //                                        Rectangle()
+    //                                            .frame(width: 85)
+    //                                            .foregroundColor(.clear)
+    //                                            .fixedSize()
+    //                                        Text(.init("B-EP-USERNAME"))
+    //                                    }
+    ////                                    TextField("Username", text: .constant((try! call("whoami"))))
+    //                                    TextField("", text: .constant(NSFullUserName()))
+    //                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+    //                                }
+    //                                HStack {
+    //                                    ZStack(alignment: .trailing) {
+    //                                        Rectangle()
+    //                                            .frame(width: 85)
+    //                                            .foregroundColor(.clear)
+    //                                            .fixedSize()
+    //                                        Text(.init("B-EP-PASSWORD"))
+    //                                    }
+    //                                    SecureField(NSLocalizedString("B-EP-PASSWORD-PH", comment: "B-EP-PASSWORD-PH"), text: $password)
+    //                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+    //                                        .onAppear {
+    //                                            if (try? call("echo Correct Password", p: password)) != nil {
+    //                                                onSuccess()
+    //                                                withAnimation {
+    //                                                    show = false
+    //                                                }
+    //                                            } else {
+    //                                                password = ""
+    //                                            }
+    //                                        }
+    //                                }
+                                }.padding(.bottom, 12)
+                            }
                             HStack {
                                 Spacer()
-                                NativeButton(NSLocalizedString("CANCEL", comment: "CANCEL"), keyEquivalent: .none) {
+                                NativeButton(NSLocalizedString("CANCEL", comment: "Cancel"), keyEquivalent: .none) {
                                     (onCancel ?? {})()
                                     password = ""
                                     withAnimation {

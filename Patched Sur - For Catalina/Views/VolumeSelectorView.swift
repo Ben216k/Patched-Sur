@@ -66,7 +66,7 @@ struct VolumeSelector: View {
                             Text(.init("CONTINUE"))
                             Image("ForwardArrowCircle")
                         } onClick: {
-                            alert = .init(title: Text(NSLocalizedString("PRE-VOL-1", comment: "PRE-VOL-1").description.replacingOccurrences(of: "VOLUME", with: volume)), message: Text(.init("PRE-VOL-ERASED-2")), primaryButton: .default(Text(.init("CONTINUE-ERASE"))) { withAnimation { p = .create } }, secondaryButton: .cancel())
+                            alert = .init(title: Text(NSLocalizedString("PRE-VOL-ERASED", comment: "PRE-VOL-ERASED").description.replacingOccurrences(of: "VOLUME", with: volume)), message: Text(.init("PRE-VOL-ERASED-2")), primaryButton: .default(Text(.init("CONTINUE-ERASE"))) { withAnimation { p = .create } }, secondaryButton: .cancel())
                         }.inPad()
                     }
                 }.alert($alert)

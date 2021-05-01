@@ -87,6 +87,7 @@ struct PatchedSurApp: App {
                 CommandGroup(replacing: CommandGroupPlacement.windowArrangement) {}
                 CommandGroup(replacing: CommandGroupPlacement.windowList) {}
                 CommandGroup(replacing: CommandGroupPlacement.saveItem) {}
+                CommandGroup(replacing: CommandGroupPlacement.systemServices) {}
             }
             CommandGroup(replacing: CommandGroupPlacement.appInfo) {
                 Button(action: {
@@ -117,19 +118,19 @@ struct PatchedSurApp: App {
                 Button {
                     NSWorkspace.shared.open(URL(string: "https://github.com/BenSova/Patched-Sur/#support")!)
                 } label: {
-                    Text("Patched Sur Help")
+                    Text(.init("PO-MN-HELP"))
                 }
             }
             CommandGroup(after: CommandGroupPlacement.help) {
                 Button {
                     NSWorkspace.shared.open(URL(string: "https://bensova.gitbook.io/big-sur/postinstall-after-upgrade/updating-macos")!)
                 } label: {
-                    Text("Updating macOS")
+                    Text(.init("PO-MN-HELP-OS"))
                 }
                 Button {
                     NSWorkspace.shared.open(URL(string: "https://bensova.gitbook.io/big-sur/postinstall-after-upgrade/updating-the-patcher-app")!)
                 } label: {
-                    Text("Updating the patcher")
+                    Text(.init("PO-MN-HELP-PATCHER"))
                 }
             }
 //            CommandGroup(after: CommandGroupPlacement.help) {
