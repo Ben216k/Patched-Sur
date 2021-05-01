@@ -51,7 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 struct PatchedSurApp: App {
-    
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @State var atLocation = 0
@@ -61,6 +60,12 @@ struct PatchedSurApp: App {
             ContentView(at: $atLocation)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
                 .accentColor(Color("AccentColor"))
+                .onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification), perform: { _ in
+                    for window in NSApplication.shared.windows {
+                        window.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
+                        window.standardWindowButton(NSWindow.ButtonType.closeButton)?.isEnabled = false
+                    }
+                })
         }.windowStyle(HiddenTitleBarWindowStyle())
         .commands {
             CommandGroup(replacing: CommandGroupPlacement.appInfo) {
