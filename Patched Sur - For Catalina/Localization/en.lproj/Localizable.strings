@@ -12,7 +12,7 @@
 "GET-STARTED" = "Get Started";
 "CONTINUE" = "Continue";
 "GO-BACK" = "Go Back";
-"Cancel" = "Cancel";
+"CANCEL" = "Cancel";
 "BROWSE" = "Browse";
 "REFRESH" = "Refresh";
 "CONTINUE-ERASE" = "Continue and Erase";
@@ -202,3 +202,28 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 "PO-MN-ABOUT-PATCHER" = "About Patched Sur";
 "PREFERENCES" = "Preferences";
 "PO-AMM-TITLE" = "About My Mac";
+"PO-MN-HELP" = "Patched Sur Help";
+"PO-MN-HELP-OS" = "Updating macOS";
+"PO-MN-HELP-PATCHER" = "Updating the patcher";
+
+// Update Notifications
+
+// VERSIONTAG is the version number of the new patcher/macOS version (like 0.3.1 or 11.3.1).
+"PO-NOFI-SELF" = "Patched Sur can now be updated to Version VERSIONTAG. Open Patched Sur then click Run Updates to learn more.";
+"PO-NOFI-OS-TITLE" = "Software Update";
+"PO-NOFI-OS-DESCRIPTION" = "macOS Big Sur VERSIONTAG can now be installed on your device. Open Patched Sur then click Update macOS to learn more.";
+
+// About Patched Sur
+
+// APPBUILD is the app's version build number, like "96".
+"PO-ATP-AUTHOR-BUILD" = "By: Ben Sova • Build APPBUILD";
+"PO-ATP-DESCRIPTION" = "A simple patcher, with a big core, to make running Big Sur on an unsupported Mac easy, designed for anyone.";
+"PO-ATP-WHATS-NEW-QUESTION" = "What's new in v0.3.0?";
+"PO-ATP-WHATS-NEW-ANSWER" = "It's going to be fast, powerful, and clear for everyone, even if you're non-Metal or non-English.";
+
+// Central View
+
+"PO-UP-TITLE" = "Run Updates";
+"PO-UP-DESCRIPTION" = "Update either macOS or the patcher to a newer version to stay up to date.";
+"PO-PK-TITLE" = "Patch Kexts";
+"PO-PK-DESCRIPTION" = "Kexts provide macOS with it's full functionality, so that everything works like it should.";
