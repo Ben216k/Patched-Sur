@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Patched Sur
+
+  Created by Ben Sova on 4/30/21.
+  
+*/
+
+"SELECT-A-VOLUME" = "Selecionar um Volume";
+"RESTART-TO-FINISH" = "Reiniciar Para Finalizar";

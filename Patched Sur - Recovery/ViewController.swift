@@ -88,7 +88,7 @@ class ViewController: NSViewController {
 //        errorScroll.cor
         versionText.stringValue = "v\(AppInfo.version) (\(AppInfo.build))"
         volumeSelect.removeAllItems()
-        volumeSelect.addItem(withTitle: "Select a Volume")
+        volumeSelect.addItem(withTitle: NSLocalizedString("SELECT-A-VOLUME", comment: "Select a Volume"))
         if let volumesNoPhrase = runCommandReturnStr(binary: "/bin/ls", arguments: ["-1", "/Volumes"]) {
             var volumes = volumesNoPhrase.message.split(separator: "\n")
             volumes = volumes.filter {

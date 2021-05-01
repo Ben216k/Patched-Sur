@@ -92,69 +92,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="325"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-Ja-L5M">
-                                <rect key="frame" x="30" y="288" width="127" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Patched Sur" id="31m-ys-XXY">
-                                    <font key="font" metaFont="systemBold" size="21.5"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b9r-ic-A28">
-                                <rect key="frame" x="30" y="271" width="159" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="RECOVERY PATCH KEXTS" id="Qq5-g0-oQ0">
-                                    <font key="font" metaFont="systemBold" size="12"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyO-9D-HpY">
-                                <rect key="frame" x="255" y="230" width="91" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Patch Kexts" id="BaO-Di-Twc">
-                                    <font key="font" metaFont="systemBold" size="15"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msZ-lA-1oI">
-                                <rect key="frame" x="30" y="53" width="527" height="155"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" alignment="center" id="4dt-Ym-N0I">
-                                    <font key="font" textStyle="body" name=".SFNS-Regular"/>
-                                    <string key="title">Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. </string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-2c-f91">
-                                <rect key="frame" x="226" y="38" width="147" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Start Patch Kexts" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ial-ib-X6F">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="startPatchKexts:" target="XfG-lQ-9wD" id="o3s-w0-FqH"/>
-                                </connections>
-                            </button>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CH2-cX-cgP">
-                                <rect key="frame" x="230" y="92" width="140" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Oqn-jo-ekB" id="wUS-hE-4Ka">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="cbP-ww-B0a">
-                                        <items>
-                                            <menuItem title="Item 1" state="on" id="Oqn-jo-ekB"/>
-                                            <menuItem title="Item 2" id="dDt-pR-0Tf"/>
-                                            <menuItem title="Item 3" id="Z28-kx-H6s"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
                             <scrollView hidden="YES" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGw-uc-mcv">
                                 <rect key="frame" x="32" y="20" width="523" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -193,6 +130,69 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-Ja-L5M">
+                                <rect key="frame" x="30" y="288" width="127" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Patched Sur" id="31m-ys-XXY">
+                                    <font key="font" metaFont="systemBold" size="21.5"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b9r-ic-A28">
+                                <rect key="frame" x="30" y="271" width="159" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="RECOVERY PATCH KEXTS" id="Qq5-g0-oQ0">
+                                    <font key="font" metaFont="systemBold" size="12"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyO-9D-HpY">
+                                <rect key="frame" x="214" y="228" width="171" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Patch Kexts" id="BaO-Di-Twc">
+                                    <font key="font" metaFont="systemBold" size="15"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msZ-lA-1oI">
+                                <rect key="frame" x="30" y="56" width="527" height="155"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" alignment="center" id="4dt-Ym-N0I">
+                                    <font key="font" textStyle="body" name=".SFNS-Regular"/>
+                                    <string key="title">Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. </string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CH2-cX-cgP">
+                                <rect key="frame" x="147" y="80" width="293" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Oqn-jo-ekB" id="wUS-hE-4Ka">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="cbP-ww-B0a">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="Oqn-jo-ekB"/>
+                                            <menuItem title="Item 2" id="dDt-pR-0Tf"/>
+                                            <menuItem title="Item 3" id="Z28-kx-H6s"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-2c-f91">
+                                <rect key="frame" x="143" y="37" width="300" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Start Patch Kexts" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ial-ib-X6F">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="startPatchKexts:" target="XfG-lQ-9wD" id="o3s-w0-FqH"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
