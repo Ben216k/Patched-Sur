@@ -126,12 +126,12 @@ struct MainView: View {
                             } else {
                                 let errorAlert = NSAlert()
                                 errorAlert.alertStyle = .informational
-                                errorAlert.informativeText = "You don't need to patch the kexts on Late 2013 iMacs. Big Sur is already running at full functionality."
-                                errorAlert.messageText = "Patch Kexts Unnecessary"
+                                errorAlert.informativeText = NSLocalizedString("PO-PK-NO-NEED-DESCRIPTION", comment: "PO-PK-NO-NEED-DESCRIPTION")
+                                errorAlert.messageText = NSLocalizedString("PO-PK-NO-NEED-TITLE", comment: "PO-PK-NO-NEED-TITLE")
                                 errorAlert.runModal()
                             }
                         }
-                        VISimpleCell(t: "Settings", d: "Disable animations, enable graphics switching, show logs and maybe more.", s: "gearshape", id: "SETINGS", h: $hovered) {
+                        VISimpleCell(t: NSLocalizedString("PO-ST-TITLE", comment: "PO-ST-TITLE"), d: NSLocalizedString("PO-ST-DESCRIPTION", comment: "PO-ST-DESCRIPTION"), s: "gearshape", id: "SETINGS", h: $hovered) {
                             withAnimation {
                                 at = 4
                             }
@@ -140,17 +140,17 @@ struct MainView: View {
                 }
                 VStack {
                     VStack(alignment: .leading, spacing: 7) {
-                        VISimpleCell(t: "Create Installer", d: "Make a patched macOS Big Sur installer USB drive that can (re)install macOS and more.", s: "externaldrive", id: "CREATEINSTALLER", h: $hovered) {
+                        VISimpleCell(t: NSLocalizedString("PO-CI-TITLE", comment: "PO-CI-TITLE"), d: NSLocalizedString("PO-CI-DESCRIPTION", comment: "PO-CI-DESCRIPTION"), s: "externaldrive", id: "CREATEINSTALLER", h: $hovered) {
                             withAnimation {
                                 at = 5
                             }
                         }
-                        VISimpleCell(t: "Install Recovery", d: "Patch the current recovery volume (used with CMD-R on boot). Not always useful.", s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
+                        VISimpleCell(t: NSLocalizedString("PO-IR-TITLE", comment: "PO-IR-TITLE"), d: NSLocalizedString("PO-IR-DESCRIPTION", comment: "PO-IR-DESCRIPTION"), s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
                             withAnimation {
                                 at = 6
                             }
                         }
-                        VISimpleCell(t: "About This Mac", d: "Show info about your mac without the serial number. Good for showing off your success.", s: "info.circle", id: "ABOUT", h: $hovered) {
+                        VISimpleCell(t: NSLocalizedString("PO-AMM-TITLE", comment: "PO-AMM-TITLE"), d:NSLocalizedString("PO-AMM-DESCRIPTION", comment: "PO-AMM-DESCRIPTION"), s: "info.circle", id: "ABOUT", h: $hovered) {
                             withAnimation {
                                 at = 3
                             }

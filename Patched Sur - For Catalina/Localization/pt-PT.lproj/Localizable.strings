@@ -32,7 +32,7 @@
 // Welcome Page
 
 // Reminder! "Patched Sur" is a formal name, so don't localize that. (Patches/Patcher can be localized, just not Patched Sur)
-"PRE-WELCOME-TITLE" = "Welcome to Patched Sur!";
+"PRE-WELCOME-TITLE" = "Bem-Vindo ao Patched Sur!";
 "PRE-WELCOME-DESCRIPTION" = "Este patcher foi feito para lhe oferecer a atualização mais simples do macOS Big Sur para o seu Mac sem compatibilidade. Prepara tudo para ficar perfeito no final da instalação. Por fim, tentará fazer o seu Mac funcionar como um compatível.";
 
 // Thanks To Page

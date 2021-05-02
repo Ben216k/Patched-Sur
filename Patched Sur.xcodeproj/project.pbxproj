@@ -255,6 +255,9 @@
 		76633BEE263E1550000A949E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF1263E257F000A949E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF2263E25A4000A949E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		76633BF5263E3755000A949E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		76633BF6263E3755000A949E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		76633BF9263EF96C000A949E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76688D7A2619521C00A1450A /* PatchKextsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchKextsActions.swift; sourceTree = "<group>"; };
 		76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
@@ -750,6 +753,7 @@
 				hr,
 				de,
 				el,
+				fr,
 			);
 			mainGroup = 7692E059251BFF9300C5FB9A;
 			packageReferences = (
@@ -962,6 +966,7 @@
 				76633BEE263E1550000A949E /* ru */,
 				76633BF1263E257F000A949E /* uk */,
 				76633BF2263E25A4000A949E /* pt-PT */,
+				76633BF9263EF96C000A949E /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -982,6 +987,7 @@
 				76020744263DA74A00A8D18A /* hr */,
 				76020748263DBB3600A8D18A /* de */,
 				7602074C263DCDDF00A8D18A /* el */,
+				76633BF5263E3755000A949E /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1009,6 +1015,7 @@
 				76020745263DA74A00A8D18A /* hr */,
 				76020749263DBB3600A8D18A /* de */,
 				7602074D263DCDE000A8D18A /* el */,
+				76633BF6263E3755000A949E /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
