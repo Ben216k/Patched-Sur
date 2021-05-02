@@ -10,7 +10,7 @@
 // MARK: Pre-Install App (96)
 // Generic
 
-"GET-STARTED" = "Get Started";
+"GET-STARTED" = "Lass uns beginnen";
 "CONTINUE" = "Weiter";
 "GO-BACK" = "Zurück";
 "CANCEL" = "Abbrechen";
@@ -34,7 +34,7 @@
 
 // Reminder! "Patched Sur" is a formal name, so don't localize that. (Patches/Patcher can be localized, just not Patched Sur)
 "PRE-WELCOME-TITLE" = "Willkommen bei Patched Sur!";
-"PRE-WELCOME-DESCRIPTION" = "Dieser Patcher ist der einfachste Weg um macOS Big Sur auf deinem nicht unterstützten Mac zu installieren. Er stellt sicher, dass nichts mit deiner Installation schief geht und bereitet alles so vor, dass es am Ende der Installation perfekt ist. Patched Sur probiert, dass sich dein Mac so läuft, wie ein unterstütztes Modell.";
+"PRE-WELCOME-DESCRIPTION" = "Dieser Patcher ist der einfachste Weg um macOS Big Sur auf deinem nicht unterstützten Mac zu installieren. Er stellt sicher, dass nichts mit deiner Installation schief geht und bereitet alles so vor, dass es am Ende der Installation kein Komplikationen geben sollte. Patched Sur versucht dein Mac so zum Laufen zu kriegen, dass er sich anfühlt wie ein unterstütztes Modell.";
 
 // Thanks To Page
 
@@ -54,14 +54,14 @@
 - dosdude1: OpenGL/GPUSupport Swap und natürlich eine ganze Menge Patch-Zeugs, welches in diesem Patcher genutzt wird.
 - Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, und riiveraluis fürs Übersetzen der App.
 - John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey und AvaQueen fürs Testen und Melden von Bugs in neuen Funktionen vor deren Veröffentlichung.
-- Und vielen anderen, welche geholfen haben Bug Sur so grossartig auf nicht unterstützten Macs zu machen.
+- Und vielen anderen, welche geholfen haben Big Sur so grossartig zu machen.
 
 Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut von JohnSundell (MIT Lizenz), welche bei bestimmten Aufgaben helfen";
 
 // Please Remember Page
 
 "PLEASE-REMEMBER" = "Bitte vergiss nicht";
-"PRE-PR-1" = "Patched Sur ist momentan in der Beta und wird nie perfekt sein. Es wird zwar nicht deinen Mac komplett blockieren, aber es kann Datenverlust verursachen, wenn du kein Backup erstellst.";
+"PRE-PR-1" = "Patched Sur ist momentan in der Beta und wird nie perfekt sein. Der Patcher wird zwar nicht deinen Mac komplett blockieren, aber es kann zu Datenverlust kommen.";
 "PRE-PR-2" = " Mach auf jeden Fall vor dem Upgrade ein Time Machine Backup. ";
 "PRE-PR-3" = "Ich (und Unterstützer) sind nicht dafür verantwortlich falls etwas schief geht. Ich werde alles mir mögliche in Bewegung setzen für den Fall dass es ein Problem gibt. Jedoch weiss ich auch nicht alles und es gibt Fälle, in denen ich auch nicht helfen kann. In den meisten Fällen ist es nicht einmal die Schuld von Patched Sur, dann gibt es nichts was ich tun kann.";
 
@@ -70,7 +70,7 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 "PRE-VERIFY-MAC" = "Mac wird verifiziert";
 "PRE-VERIFY-QUICK" = "Dieser erste Schritt ist essenziell um die Zuverlässigkeit von Patched Sur zu sichern. Dieser Schritt versucht so viele Probleme wie möglich zu finden, bevor sie auftreten. Wir Prüfen FileVault, keine Grafikbeschleunigung und einige andere Probleme. Keine Sorge, es geht schnell.";
 "PRE-VERIFY-FETCH" = "Informationen sammeln";
-"PRE-VERIFY-2" = "Mac wird verifiziert";
+"PRE-VERIFY-2" = "Dein Mac wird verifiziert";
 
 "PRE-REPORT-BY" = "Gemeldet von: ";
 "PERSON" = "Person";
@@ -107,7 +107,7 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 "PROB-SURE-SURE" = "Patched Sur hat Probleme entdeckt welche Probleme mit Big Sur verursachen können (und werden). Dein Mac wird nicht sein volles Potential ausschöpfen können und in den meisten Fällen wird es das Beste sein, auf Catalina zu bleiben.";
 
 "REPORT-UNKNOWN" = "Kompatibilität unbekannt";
-"REPORT-UNKNOWN-2" = "Je nach Mac wird Patched Sur gut oder nicht so gut laufen. Patched Sur hat keinen Kompatibilitätsreport für deinen Mac gefunden, deswegen kann es dir momentan keine definitive Antwort geben. Keine Sorge, wenige Leute haben Einsicht gegeben, wie gut Patched Sur auf allen verschiedenen Macs läuft. Wahrscheinlich wird dein Mac einwandfrei laufen. Wenn du das Upgrade durchgeführt hast, kannst du deine Erfahrung teilen (Gehe in die Einstellungen der Nachinstallations-App) und hilf zukünftigen Leuten mit deinem Mac!";
+"REPORT-UNKNOWN-2" = "Je nach Mac wird Patched Sur besser oder schlechter laufen. Patched Sur hat keinen Kompatibilitätsreport für deinen Mac gefunden, deswegen können wir dir momentan keine definitive Antwort geben. Aber keine Sorge, wenige Leute haben uns bereits Einsicht gegeben, wie gut Patched Sur auf ihren Geräten läuft. Wahrscheinlich wird dein Mac einwandfrei laufen. Wenn du das Upgrade durchgeführt hast, würden wir uns freuen wenn du deine Erfahrung teilst (Gehe dazu in die Einstellungen der Nachinstallations-App) und hilf zukünftigen Leuten mit dem Erfahrungsbericht deines Macs!";
 
 // Update Track Page
 
@@ -120,12 +120,12 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 // macOS Select Page
 
 "PRE-VERS-TITLE" = "macOS Big Sur Version";
-"PRE-VERS-DESCRIPTION" = "Normalerweise möchtest du die neuste Version von Big Sur, falls du aus irgendwelchen Gründen eine ältere Version willst, kannst du das hier konfigurieren. Wenn du selbst einen InstallAssistant.pkg oder eine Installations-App heruntergeladen hast, kannst du diese mit Durchsuchen auswählen. Wenn du einfach die neuste Version von macOS herunterladen willst, klicke einfach auf Herunterladen.";
-"PRE-VERS-NOFI" = "Die Liste mit verfügbaren macOS Installationen konnte nicht geladen werden. Wahrscheinlich bist du nicht mit dem WiFi/Internet verbunden. Du musst einen bereits heruntergeladenen macOS Installer verwenden.";
+"PRE-VERS-DESCRIPTION" = "Normalerweise möchtest du die neuste Version von Big Sur verwenden, falls du aus irgendwelchen Gründen eine ältere Version nutzen willst, kannst du das hier konfigurieren. Wenn du selbst einen InstallAssistant.pkg oder eine Installations-App heruntergeladen hast, kannst du diese mit Durchsuchen auswählen. Wenn du einfach die neuste Version von macOS herunterladen willst, klicke auf Herunterladen.";
+"PRE-VERS-NOFI" = "Die Liste mit verfügbaren macOS Versionen konnte nicht geladen werden. Wahrscheinlich hast du keine Verbindung zum Internet. Um weiter zu fahren musst du einen bereits heruntergeladenen macOS Installer verwenden.";
 // NOTE: In these two, XX.YY.ZZ is the macOS version. So in English, the first would show Download macOS 11.3. \(installers[0].version)
-"PRE-VERS-DOWNLOAD" = "Lade macOS XX.YY.ZZ herunter";
+"PRE-VERS-DOWNLOAD" = "macOS XX.YY.ZZ herunterladen";
 "PRE-VERS-USE" = "Nutze macOS XX.YY.ZZ";
-"PRE-VERS-PRE" = "Nutze bereits heruntergeladenes macOS";
+"PRE-VERS-PRE" = "Nutze ein bereits heruntergeladenes macOS";
 "PRE-VERS-REDOWNLOAD" = "Erneut herunterladen";
 "PRE-VERS-FETCH" = "Lade Installer";
 
@@ -134,8 +134,8 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 "DOWNLOAD-PATCHES" = "Patches werden heruntergeladen";
 "DOWNLOAD-FILES" = "Dateien werden heruntergeladen";
 "PRE-DP-1" = "Das set vars Tool erlaubt es dir den NVRAM und SIP-Status korrekt zu setzen, damit du in Big Sur booten kannst.";
-"PRE-DP-2" = "Das ist das letzte Tool welches du verwendest bevor du Big Sur installierst.";
-"PRE-DP-3" = "Dies ist nur benötigt, falls du es noch nie auf diesem Mac ausgeführt, oder einen PRAM Reset durchgeführt hast.";
+"PRE-DP-2" = "Das ist das letzte Tool welches du vorbereiten musst, bevor du Big Sur installieren kannst.";
+"PRE-DP-3" = "Dies ist nur benötigt, falls du diesen Mac noch nie gepatcht hast, oder einen PRAM Reset durchgeführt hast.";
 "PRE-DP-4" = "Die Kext Patches erlauben es dir Hardware wie WiFi und USB Ports zu verwenden, damit dein Mac seine volle Funktionalität behält.";
 "PRE-DP-CANCEL-1" = "Die Patches welche der Patcher später verwendet, werden gerade heruntergeladen. Bist du sicher, dass du zurück willst?";
 "PRE-DP-CANCEL-2" = "Die Patches werden heruntergeladen";
@@ -150,7 +150,7 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 "PRE-DM-TITLE" = "macOS wird heruntergeladen";
 "PRE-DM-DESCRIPTION" = "macOS wird momentan von Apple heruntergeladen um es auf den USB zu laden. Dies ist eine vollständige Installation, sprich ein Download von 12 GB. Es wird eine Weile dauern, also lass es einfach laufen und stelle sicher, dass deine Internetverbindung gut ist. Wenn dies abgeschlossen ist, musst du ein USB Laufwerk wählen, welches Patched Sur für den Installer verwenden soll.";
 "PRE-DM-BAR" = "macOS XX.YY.ZZ wird heruntergeladen";
-"PRE-DM-CANCEL-1" = "macOS Big Sur wird momentan heruntergeladen, damit es später verwendet werden kann. Dies ist ein grosser Download. Bist du sicher, dass du zurück gehen willst?";
+"PRE-DM-CANCEL-1" = "macOS Big Sur wird momentan heruntergeladen damit es später verwendet werden kann. Dies ist ein grosser Download. Bist du sicher, dass du zurück gehen willst?";
 "PRE-DM-CANCEL-2" = "macOS wird heruntergeladen";
 "PRE-DM-CANCEL-3" = "macOS konnte nicht heruntergeladen werden. Ein Neustart des Downloads könnte dies beheben. Möchtest du den Download erneut probieren oder zum vorherigen Schritt zurückkehren?";
 
@@ -188,10 +188,10 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 2. Wähle das gelbe oder violette EFI Boot. Dein Computer wird direkt heruntergefahren.
 3. Schalte deinen Mac wieder ein und drücke (und halte) die Options Taste wieder.
 4. Wähle Install macOS Big Sur.
-5. Wenn dein Mac gestartet ist, wähle Installiere macOS Big Sur erneut ((Re)Install macOS Big Sur again). (Es klingt vielleicht danach, aber dies löscht keine Benutzerdaten. Es wird lediglich die System Dateien upgraden, wie ein normales Update)
-6. Wenn die App öffnet, folge der App und wähle dein Hauptlaufwerk (Wahrscheinlich Macintosh HD, WÄHLE NICHT Install macOS Big Sur)
+5. Wenn dein Mac gestartet ist, wähle Installiere macOS Big Sur erneut ((Re)Install macOS Big Sur again). (Es klingt vielleicht danach, aber dieser Schritt löscht keine Benutzerdaten. Es werden lediglich die System Dateien geupgraded, wie ein normales Update)
+6. Wenn die Installations-App öffnet, folge einfach den Instruktionen und wähle dein Hauptlaufwerk (Wahrscheinlich Macintosh HD, WÄHLE NICHT Install macOS Big Sur)
 7. Wenn das Update abgeschlossen ist und du den Anmeldebildschirm siehst, melde dich an und starte Patched Sur aus dem Programme-Ordner.
-8. Drücke Kexkts patchen, drücke dann auf weiter und gib dein Passwort ein.
+8. Drücke Kexts patchen, drücke dann auf weiter und gib dein Passwort ein.
 9. Wenn dieser Vorgang abgeschlossen ist, starte deinen Mac neu und geniesse Big Sur!";
 // I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
 "PRE-DONE-LINK" = "Du kannst diese Schritte ebenfalls auf GitHub finden (Jedoch nur in Englisch).";
