@@ -2,7 +2,7 @@
   Localizable.strings
   Patched Sur
 
-  English (en)
+  Portuguese (pt-PT)
   Created by Ben Sova on 4/25/21.
 */
 
@@ -33,17 +33,18 @@
 
 // Reminder! "Patched Sur" is a formal name, so don't localize that. (Patches/Patcher can be localized, just not Patched Sur)
 "PRE-WELCOME-TITLE" = "Bem-Vindo ao Patched Sur!";
-"PRE-WELCOME-DESCRIPTION" = "Este patcher foi feito para lhe oferecer a atualização mais simples do macOS Big Sur para o seu Mac sem compatibilidade. Prepara tudo para ficar perfeito no final da instalação. Por fim, tentará fazer o seu Mac funcionar como um compatível.";
+"PRE-WELCOME-DESCRIPTION" = "Este patcher foi feito para lhe oferecer uma atualização mais simples do macOS Big Sur para o seu Mac sem compatibilidade. Prepara tudo para ficar perfeito no final da instalação. Por fim,
+tentará fazer com que o seu Mac funcione como se se fosse compatível.";
 
 // Thanks To Page
 
 "THANKS-TITLE" = "Agradecimentos";
-"THANKS-CONTENT" = "Patched Sur não for feet arenas por mim (Ben), Várias pessoas contribuíram para o patcher e para a construção dos patches como é hoje!
+"THANKS-CONTENT" = "Patched Sur não foi feieto apenas por mim (Ben), Várias pessoas contribuíram para o patcher e para a criação dos patches como são hoje!
 
-- barrykn: Fez o micropatcher que me apresentou ao processo de patching e restaurou minha fé no meu computador realmente antigo. Tiro o meu chapéu ao Barrykn, e devias fazer o mesmo.
-- ASentientBot: Fez os patches Hax para o instalador e adicionou o framebuffer GeForce Tesla (9400M / 320M) ao Big Sur em conjunto com os patches de aceleração de gráficas não-metálicas.
+- barrykn: Criou o micropatcher que me apresentou ao processo de patching e restaurou a minha fé no meu computador realmente antigo. Tiro o meu chapéu ao Barrykn, e devia fazer o mesmo.
+- ASentientBot: Criou os patches Hax para o instalador e adicionou o framebuffer GeForce Tesla (9400M / 320M) ao Big Sur em conjunto com os patches de aceleração de gráficas não-metálicas.
 - jackluke: Descobriu como contornar as verificações de compatibilidade no USB do instalador.
-- highvoltage12v: Fez os primeiros kexts de WiFi usados no Big Sur
+- highvoltage12v: Criou os primeiros kexts de WiFi usados no Big Sur
 - ParrotGeek: Desenvolveu o kext LegacyUSBInjector para fazer as portas USB funcionarem em alguns Macs mais antigos e descobriu uma forma de ultrapassar os comandos do terminal ao abrir o instalador no USB.
 - testheit: Ajudou com o comando kmutil no micropatcher (que também é usado no Patched Sur).
 - Ausdauersportler: Integrou patches para iMac com compatibilidade para Metal GPU.
@@ -53,7 +54,7 @@
 - dosdude1: Troca OpenGL / GPUSupport e, claro, muitas das coisas usadas no seu patcher.
 - Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, and riiveraluis pela tradução da app.
 - John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen por testarem algumas das novas funções antes do lançamento, e por apontarem os erros nas mesmas.
-- e vários outros que ajudaram a fazer o Big Sur funcionar tão bem como em Macs sem compatibilidade.
+- e vários outros que ajudaram a fazer o Big Sur funcionar tão bem em Macs sem compatibilidade.
 
 Patched Sur também usa dois frameworks de código aberto (Open Source), Files e ShellOut de JohnSundell (Licença do MIT), para ajudar a lidar com certas tarefas.";
 
@@ -159,7 +160,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "PRE-VOL-1" = "Para instalar o patched Big Sur inicialmente, você precisa de um instalador USB que ajudará na atualização. Isso fornece um ambiente onde o patcher pode ter certeza de que tudo funcionará corretamente.";
 "PRE-VOL-2" = "Para criar um instalador, você precisa de uma unidade USB para colocar o instalador.";
 "PRE-VOL-3" = "Esta unidade USB deve ter 16 GB ou mais. As partições internas não funcionarão, mas as partições externas sim, dependendo do mapa de partição (que provavelmente estará correto como Mapa de Partição GUID). Se a sua unidade não aparecer, certifique-se de que ela esteja formatada como MacOS Extendido (Journaled).";
-"PRE-VOL-NO" = "Não foram encontradas drives compatíveis.";
+"PRE-VOL-NO" = "Não foram encontradas unidades compatíveis.";
 // Note: VOLUME is the volume name, do not localize it, just pretend it's a volume name and just place it into your sentence
 // Ex. If the volume was "SuperDrive", then "VOLUME will be erased." would show up as "SuperDrive will be erased."
 "PRE-VOL-ERASED" = "VOLUME vai ser apagado.";
