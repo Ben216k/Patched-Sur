@@ -197,6 +197,11 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 "PRE-DONE-STEPS" = "(Steps 10-14)";
 
 // MARK: Post-Install App (96)
+
+// General
+
+"BACK" = "Back";
+
 // Menu Bar
 
 "PO-MN-ABOUT-PATCHER" = "About Patched Sur";
@@ -239,3 +244,49 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 "PO-PK-NO-NEED-DESCRIPTION" = "You don't need to patch the kexts on Late 2013 iMacs. Big Sur is already running at full functionality.";
 
 // Settings View
+
+"PO-ST-TITLE-ALT" = "Extra Settings";
+"PO-ST-SUBTITLE" = "Some Useful Tools/Patches";
+"PO-ST-SECTION-1" = "Extra Patches";
+"PO-ST-SECTION-2" = "Extra Tools";
+"PO-ST-RESTART-APPLY" = "Once you restart your Mac, the changes will be applied.";
+
+"PO-ST-DA-DISABLE" = "Disable Animations";
+"ENABLE" = "Enable";
+"PO-ST-DA-DISABLE-DONE" = "Disabled Animations!";
+"PO-ST-DA-DISABLE-DONE-2" = "Once you restart your Mac, the changes will be applied, and Big Sur should preform slightly better.";
+"PO-ST-DA-ENABLE-DONE" = "Enabled Animations!";
+"PO-ST-DA-DESCRIPTION" = "Disabling animations can help Macs without Metal. Since they don't have graphics acceleration, Big Sur runs extremely slow, so disabling animations will help a little bit.";
+
+"PO-ST-GXS-ENABLE" = "Enable Graphics Switching";
+"DISABLE" = "Disable";
+"PO-ST-GXS-DESCRIPTION" = "If you have a Mac with mutliple GPUs, then you probably want automatic graphics switching enabled for graphics switching. Thanks to @15wat for finding this solution.";
+"PO-ST-GXS-ENABLE-DONE" = "Graphics Switching Enabled";
+"PO-ST-GXS-ENABLE-DONE-2" = "Now graphics will switch automatically! A restart might be required for changes to take effect.";
+"PO-ST-GXS-ENABLE-FAILED" = "Failed to Enable Graphics Switching";
+"PO-ST-GXS-DISABLE-DONE" = "Graphics Switching Disabled";
+"PO-ST-GXS-DISABLE-DONE-2" = "Now graphics will no longer switch automatically! A restart might be required for changes to take effect.";
+"PO-ST-GXS-ENABLE-FAILED" = "Failed to Disable Graphics Switching";
+
+"PO-ST-PKL-BUTTON" = "Show Patch Kexts Logs";
+"PO-ST-PKL-DESCRIPTION" = "If you're having trouble with Patch Kexts not working, it might be worth seeing the logs and looking for errors. This could help someone trying to help you out figure out the problem, so if you can, provide this to anyone trying to help you.";
+"PO-ST-PKL-TITLE" = "Patch Kexts Logs";
+"PO-ST-PKL-NO-LOGS" = "No Logs Captured";
+"PO-ST-PKL-COPIED" = "Copied!";
+"PO-ST-PKL-COPIED-2" = "The last logs from Patch Kexts has been copied to your clipboard. This might help out with debugging, and make sure to share this with anyone trying to help you with your problem.";
+
+"PO-ST-CL-TITLE" = "Clean Up Patched Sur Leftovers";
+"PO-ST-CL-DESCRIPTION" = "Sometimes, Patched Sur accidentally leaves little leftovers from when something ran. This could at times save 12GB of storage space, this is suggested especially after you run the updater.";
+"PO-ST-CL-DONE" = "Cleaned Leftovers";
+"PO-ST-CL-DONE-2" = "The files have been deleted, you should see some more free space (assuming that there actually were big files to be cleaned).";
+
+"PO-ST-CYE-TITLE" = "Contribute Your Experiences";
+// Add a translation for 'Please Note: These reports are only accepted in English.' to this next value
+"PO-ST-CYE-DESCRIPTION" = "The preinstall app in Patched Sur has a feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.";
+
+"PO-ST-RL-TITLE" = "Relaunch Patcher";
+"PO-ST-RL-DESCRIPTION" = "I don't know why you would ever want this, but I guess if you do, you can relaunch the patcher app. This will refresh a lot of the variables that are obtained when the patcher is first launched, and whatnot. Fun Fact: This is the same code that's ran once the updater is done.";
+"PO-ST-RL-FAILED" = "Relaunch Failed!";
+"PO-ST-RL-FAILED-2" = "Failed to open Patched Sur, but you can do this yourself.";
+
+"PO-ST-PSBYBS" = "Patched Sur by Ben Sova";

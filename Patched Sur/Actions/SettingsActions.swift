@@ -62,9 +62,9 @@ func enableGxSwitching(p password: String) {
         _ = try? call("launchctl stop system/com.apple.displaypolicyd", p: password)
         print("Enabling Automatic Graphics Switching...")
         try call("launchctl disable system/com.apple.displaypolicyd", p: password)
-        presentAlert(m: "Graphics Switching Enabled", i: "Now graphics will switch automatically! A restart might be required for changes to take effect.", s: .informational)
+        presentAlert(m: NSLocalizedString("PO-ST-GXS-ENABLE-DONE", comment: "PO-ST-GXS-ENABLE-DONE"), i: NSLocalizedString("PO-ST-GXS-ENABLE-DONE-2", comment: "PO-ST-GXS-ENABLE-DONE-2"), s: .informational)
     } catch {
-        presentAlert(m: "Failed to Enable Graphics Switching", i: error.localizedDescription, s: .critical)
+        presentAlert(m: NSLocalizedString("PO-ST-GXS-ENABLE-FAILED", comment: "PO-ST-GXS-ENABLE-FAILED"), i: error.localizedDescription, s: .critical)
     }
 }
 
@@ -74,9 +74,9 @@ func disableGxSwitching(p password: String) {
         try call("launchctl enable system/com.apple.displaypolicyd", p: password)
         print("Starting displaypolicyd...")
         _ = try? call("launchctl kickstart system/com.apple.displaypolicyd", p: password)
-        presentAlert(m: "Graphics Switching Disabled", i: "Now graphics will no longer switch automatically! A restart might be required for changes to take effect.", s: .informational)
+        presentAlert(m: NSLocalizedString("PO-ST-GXS-DISABLE-DONE", comment: "PO-ST-GXS-DISABLE-DONE"), i: NSLocalizedString("PO-ST-GXS-DISABLE-DONE-2", comment: "PO-ST-GXS-DISABLE-DONE-2"), s: .informational)
     } catch {
-        presentAlert(m: "Failed to Diable Graphics Switching", i: error.localizedDescription, s: .critical)
+        presentAlert(m: NSLocalizedString("PO-ST-GXS-DISABLE-FAILED", comment: "PO-ST-GXS-DISABLE-FAILED"), i: error.localizedDescription, s: .critical)
     }
 }
 
@@ -87,7 +87,7 @@ func cleanLeftovers() {
     _ = try? call("rm -rf ~/.patched-sur/Install\\ macOS Big\\ Sur*.app")
     _ = try? call("rm -rf ~/.patched-sur/InstallInfo.txt")
     _ = try? call("rm -rf ~/.patched-sur/trash")
-    presentAlert(m: "Cleaned Leftovers", i: "The files have been deleted, you should see some more free space (assuming that there actually were big files to be cleaned).", s: .informational)
+    presentAlert(m: NSLocalizedString("PO-ST-CL-DONE", comment: "PO-ST-CL-DONE"), i: NSLocalizedString("PO-ST-CL-DONE-2", comment: "PO-ST-CL-DONE-2"), s: .informational)
 }
 
 
@@ -103,9 +103,10 @@ func relaunchPatcher() {
             print("Failed to open Patched Sur app, but you can do that yourself.")
             let errorAlert = NSAlert()
             errorAlert.alertStyle = .critical
-            errorAlert.informativeText = "Failed to open Patched Sur, but you can do this yourself."
-            errorAlert.messageText = "Update Done!"
+            errorAlert.informativeText = NSLocalizedString("PO-ST-RL-FAILED-2", comment: "PO-ST-RL-FAILED-2")
+            errorAlert.messageText = NSLocalizedString("PO-ST-RL-FAILED", comment: "PO-ST-RL-FAILED")
             errorAlert.runModal()
+            return
         }
     }
     sleep(1)

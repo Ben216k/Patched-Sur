@@ -19,12 +19,12 @@ struct PSSettings: View {
         ZStack {
             VStack {
                 HStack(spacing: 15) {
-                    VIHeader(p: "Extra Settings", s: "Some Useful Tools/Patches")
+                    VIHeader(p: NSLocalizedString("PO-ST-TITLE-ALT", comment: "PO-ST-TITLE-ALT"), s: NSLocalizedString("PO-ST-SUBTITLE", comment: "PO-ST-SUBTITLE"))
                         .alignment(.leading)
                     Spacer()
                     VIButton(id: "BACK", h: $hovered) {
                         Image(systemName: "chevron.backward.circle")
-                        Text("Back")
+                        Text(.init("BACK"))
                     } onClick: {
                         withAnimation {
                             at = 0
@@ -34,7 +34,7 @@ struct PSSettings: View {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         Group {
-                            Text("Extra Patches")
+                            Text(.init("PO-ST-SECTION-1"))
                                 .font(Font.title3.bold())
                             
                             // MARK: Animations
@@ -42,20 +42,20 @@ struct PSSettings: View {
                             HStack {
                                 VIButton(id: "ANI-DISABLE", h: $hovered) {
                                     Image(systemName: "dot.circle.and.cursorarrow")
-                                    Text("Disable Animations")
+                                    Text(.init("PO-ST-DA-DISABLE"))
                                 } onClick: {
                                     disableAnimations()
-                                    presentAlert(m: "Disabled Animations!", i: "Once you restart your Mac, the changes will be applied, and Big Sur should preform slightly better.", s: .informational)
+                                    presentAlert(m: NSLocalizedString("PO-ST-DA-DISABLE-DONE", comment: "PO-ST-DA-DISABLE-DONE"), i: NSLocalizedString("PO-ST-DA-DISABLE-DONE-2", comment: "PO-ST-DA-DISABLE-DONE-2"), s: .informational)
                                 }.inPad()
                                 VIButton(id: "ANI-ENABLE", h: $hovered) {
                                     Image(systemName: "cursorarrow.motionlines.click")
-                                    Text("Enable")
+                                    Text(.init("ENABLE"))
                                 } onClick: {
                                     enableAnimations()
-                                    presentAlert(m: "Enabled Animations!", i: "Once you restart your Mac, the changes will be applied.", s: .informational)
+                                    presentAlert(m: NSLocalizedString("PO-ST-DA-ENABLE-DONE", comment: "PO-ST-DA-ENABLE-DONE"), i: NSLocalizedString("PO-ST-RESTART-APPLY", comment: "PO-ST-RESTART-APPLY"), s: .informational)
                                 }.inPad()
                             }
-                            Text("Disabling animations can help Macs without Metal. Since they don't have graphics acceleration, Big Sur runs extremely slow, so disabling animations will help a little bit.")
+                            Text(.init("PO-ST-DA-DESCRIPTION"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
                             
@@ -64,7 +64,7 @@ struct PSSettings: View {
                             HStack {
                                 VIButton(id: "GX-ENABLE", h: $hovered) {
                                     Image(systemName: "arrow.triangle.swap")
-                                    Text("Enable Graphics Switching")
+                                    Text(.init("PO-ST-GXS-ENABLE"))
                                 } onClick: {
                                     withAnimation {
                                         showPassPrompt = true
@@ -75,7 +75,7 @@ struct PSSettings: View {
                                 }.inPad()
                                 VIButton(id: "GX-DISABLE", h: $hovered) {
                                     Image(systemName: "smallcircle.fill.circle")
-                                    Text("Disable")
+                                    Text(.init("DISABLE"))
                                 } onClick: {
                                     withAnimation {
                                         showPassPrompt = true
@@ -85,27 +85,27 @@ struct PSSettings: View {
                                     }
                                 }.inPad()
                             }
-                            Text("If you have a Mac with mutliple GPUs, then you probably want automatic graphics switching enabled for graphics switching. Thanks to @15wat for finding this solution.")
+                            Text(.init("PO-ST-GXS-DESCRIPTION"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
                         }
                         
                         Group {
-                            Text("Extra Tools")
+                            Text(.init("PO-ST-SECTION-2"))
                                 .font(Font.title3.bold())
                             
                             // MARK: Patch Kexts Logs
                             
                             VIButton(id: "PATCH-LOGS", h: $hovered) {
                                 Image(systemName: "doc.text.below.ecg")
-                                Text("Show Patch Kexts Logs")
+                                Text(.init("PO-ST-PKL-BUTTON"))
                             } onClick: {
                                 showKextLogs = true
                             }.inPad()
                             .sheet(isPresented: $showKextLogs, content: {
                                 VStack {
                                     HStack(spacing: 15) {
-                                        VIHeader(p: "Patch Kexts Logs", s: "", c: .constant(true))
+                                        VIHeader(p: NSLocalizedString("PO-ST-PKL-TITLE", comment: "PO-ST-PKL-TITLE"), s: "", c: .constant(true))
                                         Spacer()
                                         if UserDefaults.standard.string(forKey: "PatchKextsLastRun") != nil {
                                             VIButton(id: "LCOPY", h: $hovered) {
@@ -114,7 +114,7 @@ struct PSSettings: View {
                                                 let pasteboard = NSPasteboard.general
                                                 pasteboard.declareTypes([.string], owner: nil)
                                                 pasteboard.setString(UserDefaults.standard.string(forKey: "PatchKextsLastRun") ?? "No Logs Captured", forType: .string)
-                                                presentAlert(m: "Copied!", i: "The last logs from Patch Kexts has been copied to your clipboard. This might help out with debugging, and make sure to share this with anyone trying to help you with your problem.", s: .informational)
+                                                presentAlert(m: NSLocalizedString("PO-ST-PKL-COPIED", comment: "PO-ST-PKL-COPIED"), i: NSLocalizedString("PO-ST-PKL-COPIED-2", comment: "PO-ST-PKL-COPIED-2"), s: .informational)
                                             }
                                         }
                                         VIButton(id: "LCLOSE", h: $hovered) {
@@ -122,14 +122,14 @@ struct PSSettings: View {
                                         } onClick: { showKextLogs = false }
                                     }.padding(.bottom)
                                     ScrollView {
-                                        Text(UserDefaults.standard.string(forKey: "PatchKextsLastRun") ?? "No Logs Captured")
+                                        Text(UserDefaults.standard.string(forKey: "PatchKextsLastRun") ?? NSLocalizedString("PO-ST-PKL-NO-LOGS", comment: "PO-ST-PKL-NO-LOGS"))
                                             .font(.system(size: 11, design: .monospaced))
                                     }
                                 }.padding(.horizontal, 30)
                                 .padding(.vertical, 20)
                                 .frame(width: 580, height: 305)
                             })
-                            Text("If you're having trouble with Patch Kexts not working, it might be worth seeing the logs and looking for errors. This could help someone trying to help you out figure out the problem, so if you can, provide this to anyone trying to help you.")
+                            Text(.init("PO-ST-PKL-DESCRIPTION"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
                             
@@ -137,11 +137,11 @@ struct PSSettings: View {
                             
                             VIButton(id: "CLEAN-UP", h: $hovered) {
                                 Image(systemName: "trash")
-                                Text("Clean Up Patched Sur Leftovers")
+                                Text(.init("PO-ST-CL-TITLE"))
                             } onClick: {
                                 cleanLeftovers()
                             }.inPad()
-                            Text("Sometimes, Patched Sur accidentally leaves little leftovers from when something ran. This could at times save 12GB of storage space, this is suggested especially after you run the updater.")
+                            Text(.init("PO-ST-CL-DESCRIPTION"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
                             
@@ -149,21 +149,31 @@ struct PSSettings: View {
                             
                             VIButton(id: "CONTRIBUTE", h: $hovered) {
                                 Image(systemName: "desktopcomputer")
-                                Text("Contribute Your Experiences")
+                                Text(.init("PO-ST-CYE-TITLE"))
                             } onClick: {
                                 NSWorkspace.shared.open("https://github.com/BenSova/Patched-Sur-Compatibility")
                             }.inPad()
-                            Text("The preinstall app in Patched Sur has a feature letting new users know how well their Mac will work with Big Sur. However, something like this needs information, and that's what you can help with! Just click on the link above and follow the instructions to help out.")
+                            Text(.init("PO-ST-CYE-DESCRIPTION"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
                             
                             VIButton(id: "RELAUNCH", h: $hovered) {
                                 Image(systemName: "arrow.up.forward.app")
-                                Text("Relaunch Patcher")
+                                Text(.init("PO-ST-RL-TITLE"))
                             } onClick: {
                                 relaunchPatcher()
                             }.inPad()
-                            Text("I don't know why you would ever want this, but I guess if you do, you can relaunch the patcher app. This will refresh a lot of the variables that are obtained when the patcher is first launched, and whatnot. Fun Fact: This is the same code that's ran once the updater is done.")
+                            Text(.init("PO-ST-RL-DESCRIPTION"))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.bottom, 20)
+                        }
+                        
+                        Group {
+                            Text(.init("THANKS-TITLE"))
+                                .font(Font.title3.bold())
+                                .padding(.bottom, -2)
+                            
+                            Text(.init("THANKS-CONTENT"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
                         }
@@ -178,3 +188,7 @@ struct PSSettings: View {
         }
     }
 }
+
+//enum {
+//    case YES = true
+//}
