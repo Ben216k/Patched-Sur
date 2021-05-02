@@ -42,6 +42,7 @@
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		763DA724262BC7690042F864 /* PSOSXController.m in Sources */ = {isa = PBXBuildFile; fileRef = 763DA723262BC7690042F864 /* PSOSXController.m */; };
 		763DA728262BDE290042F864 /* PSOSXController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 763DA727262BDE290042F864 /* PSOSXController.xib */; };
+		764B82BC263F3F6900A5BCF0 /* Unsupported.plist in Resources */ = {isa = PBXBuildFile; fileRef = 764B82BB263F3F6900A5BCF0 /* Unsupported.plist */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
 		76553B92262156AF00336C5B /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76553B91262156AE00336C5B /* HaxDownloadView.swift */; };
 		76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76688D7A2619521C00A1450A /* PatchKextsActions.swift */; };
@@ -249,6 +250,7 @@
 		7646DF92263CE5DE0097B136 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7646DF97263CF0EB0097B136 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
 		7646DF99263CF0EB0097B136 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		764B82BB263F3F6900A5BCF0 /* Unsupported.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Unsupported.plist; sourceTree = "<group>"; };
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
 		76553B91262156AE00336C5B /* HaxDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaxDownloadView.swift; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				7692E067251BFF9300C5FB9A /* CentralView.swift */,
 				767167502550AE42000FAE80 /* ShellOut.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
+				764B82BB263F3F6900A5BCF0 /* Unsupported.plist */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764B82BC263F3F6900A5BCF0 /* Unsupported.plist in Resources */,
 				7633BC792617807100A550A6 /* Patched Sur.app in Resources */,
 				7624934B2635EA6900805E4A /* Localizable.strings in Resources */,
 				7633BC732617744900A550A6 /* Patched Sur - Recovery.app in Resources */,

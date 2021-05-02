@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>MacBookAir2,1</string>
+	<string>MacBookAir1,1</string>
+	<string>MacBookPro6,1</string>
+	<string>MacBookPro6,2</string>
+	<string>MacBookPro1,1</string>
+	<string>MacBookPro1,2</string>
+	<string>MacBookPro2,2</string>
+	<string>MacBookPro2,2</string>
+	<string>MacBookPro3,1</string>
+	<string>MacBookPro4,1</string>
+	<string>MacBookPro5,1</string>
+	<string>MacBookPro5,2</string>
+	<string>iMac9,1</string>
+	<string>iMac8,1</string>
+	<string>iMac7,1</string>
+	<string>iMac6,1</string>
+	<string>iMac5,1</string>
+	<string>iMac5,2</string>
+	<string>MacPro3,1</string>
+	<string>MacPro1,1</string>
+	<string>MacPro2,1</string>
+	<string>MacPro4,1</string>
+	<string>Macmini1,1</string>
+	<string>Macmini2,1</string>
+	<string>MacBook1,1</string>
+	<string>MacBook2,1</string>
+	<string>MacBook3,1</string>
+	<string>MacBook4,1</string>
+</array>
+</plist>
