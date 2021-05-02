@@ -42,7 +42,7 @@ struct macOSDownloadView: View {
                                 })
                             HStack {
                                 Image("DownloadArrow")
-                                Text(NSLocalizedString("PRE-DP-1", comment: "PRE-DP-1").description.replacingOccurrences(of: "XX.YY.ZZ", with: installInfo?.version ?? ""))
+                                Text(NSLocalizedString("PRE-DM-BAR", comment: "PRE-DM-BAR").description.replacingOccurrences(of: "XX.YY.ZZ", with: installInfo?.version ?? ""))
                                     .onAppear {
                                         DispatchQueue(label: "DownloadMacOS").async {
                                             if installInfo!.buildNumber.hasPrefix("Custom") {
