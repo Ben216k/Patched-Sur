@@ -191,7 +191,7 @@ Patched Sur também usa duas estruturas Open Source, Files e ShellOut por JohnSu
 6. Quando esse app abrir, passe pelo app e selecione seu volume principal (provavelmente Macintosh HD, e NÃO Instale MacOS Big Sur)
 7. Após a atualização estar completa e você ver a janela de login, abra sua pasta de Aplicações e inicie o Patched Sur.
 8. Clique em Patch Kexts, depois pressione Continuar e digite sua senha.
-9. Depois disso, reinicie seu Mac e aproveite o Big Sur"!;
+9. Depois disso, reinicie seu Mac e aproveite o Big Sur!";
 // I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
 "PRE-DONE-LINK" = "Você também pode encontrar estas etapas no GitHub.\nNo entanto, estas estão apenas em inglês.";
 "PRE-DONE-STEPS" = "(Passos 10-14)";

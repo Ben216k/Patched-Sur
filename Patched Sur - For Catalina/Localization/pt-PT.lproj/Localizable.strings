@@ -39,7 +39,7 @@ tentará fazer com que o seu Mac funcione como se se fosse compatível.";
 // Thanks To Page
 
 "THANKS-TITLE" = "Agradecimentos";
-"THANKS-CONTENT" = "Patched Sur não foi feieto apenas por mim (Ben), Várias pessoas contribuíram para o patcher e para a criação dos patches como são hoje!
+"THANKS-CONTENT" = "Patched Sur não foi criado apenas por mim (Ben), Várias pessoas contribuíram para o patcher e para a criação dos patches como são hoje!
 
 - barrykn: Criou o micropatcher que me apresentou ao processo de patching e restaurou a minha fé no meu computador realmente antigo. Tiro o meu chapéu ao Barrykn, e devia fazer o mesmo.
 - ASentientBot: Criou os patches Hax para o instalador e adicionou o framebuffer GeForce Tesla (9400M / 320M) ao Big Sur em conjunto com os patches de aceleração de gráficas não-metálicas.
@@ -52,7 +52,7 @@ tentará fazer com que o seu Mac funcione como se se fosse compatível.";
 - ASentientHedgehog: Ajudou várias vezes durante o processo.
 - OCLP Team: Ajudou com assuntos ao nível de kernel para placas não-Tesla e para aceleração de gráficos de placas não-metálicas.
 - dosdude1: Troca OpenGL / GPUSupport e, claro, muitas das coisas usadas no seu patcher.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, and riiveraluis pela tradução da app.
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, riiveraluis pela tradução desta aplicação.
 - John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen por testarem algumas das novas funções antes do lançamento, e por apontarem os erros nas mesmas.
 - e vários outros que ajudaram a fazer o Big Sur funcionar tão bem em Macs sem compatibilidade.
 
@@ -62,8 +62,8 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 
 "PLEASE-REMEMBER" = "Não Esquecer";
 "PRE-PR-1" = "O Patched Sur está atualmente em beta e nunca será perfeito. Embora não avarie o seu Mac, pode fazer com que você perca os seus dados se não tiver um backup.";
-"PRE-PR-2" = " Não importa o que aconteça, faça um Backup no Time Machine antes de atualizar. ";
-"PRE-PR-3" = "Eu (e os colaboradores) não somos responsáveis ​ algo que possa correr mal. Farei o melhor que puder para ajudar se houver algum problema, mas não sei tudo e há alguns casos em que não posso mesmo ajudar. Muitas vezes, nem mesmo é culpa do Patched Sur, então não há nada que eu possa fazer.";
+"PRE-PR-2" = " Seja como for, faça sempre um Backup no Time Machine antes de atualizar. ";
+"PRE-PR-3" = "Eu (e os colaboradores) não somos responsáveis ​ algo que possa correr mal. Farei o melhor que puder para ajudar se houver algum problema, mas não sei tudo e há alguns casos em que não posso mesmo ajudar. Muitas das vezes, a culpa nem sequer é do Patched Sur, e nesse caso não há nada que eu possa fazer.";
 
 // Mac Compatibility Page
 
@@ -79,7 +79,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "APPROVE" = "aprovar";
 
 "WiFi, Ethernet and Bluetooth" = "WiFi, Ethernet e Bluetooth";
-"I/O Ports" = "I/O Ports";
+"I/O Ports" = "Portas I/O";
 "Graphics Acceleration" = "Aceleração de Gráficos";
 "Sleep and Brightness" = "Pausa e Brilho";
 "FileVault" = "FileVault";
@@ -136,7 +136,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "PRE-DP-1" = "A ferramenta set vars permite que  configure corretamente o status NVRAM e SIP, para que o Big Sur permita que você inicie nele.";
 "PRE-DP-2" = "Esta é a última ferramenta que você usará antes de instalar o Big Sur.";
 "PRE-DP-3" = "Você só precisará disto se não o tiver executado antes no Mac ou se tiver feito uma reposição de PRAM.";
-"PRE-DP-4" = "Os patche kexts permitem que você use hardware como WiFi e portas USB, para que seu Mac permaneça com todas as suas funcionalidades.";
+"PRE-DP-4" = "Os patch kexts permitem que você use hardware como WiFi e portas USB, para que seu Mac permaneça com todas as suas funcionalidades.";
 "PRE-DP-CANCEL-1" = "Os patches que serão usados ​​posteriormente pelo patcher estão a ser descarregados neste momento. Tem certeza que quer voltar?";
 "PRE-DP-CANCEL-2" = "Os Patches estão a ser Descarregados";
 "CANCEL-DOWNLOAD" = "Cancelar a Descarga";
@@ -159,7 +159,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "PRE-VOL-TITLE" = "Selecionar Uma Unidade USB";
 "PRE-VOL-1" = "Para instalar o patched Big Sur inicialmente, você precisa de um instalador USB que ajudará na atualização. Isso fornece um ambiente onde o patcher pode ter certeza de que tudo funcionará corretamente.";
 "PRE-VOL-2" = "Para criar um instalador, você precisa de uma unidade USB para colocar o instalador.";
-"PRE-VOL-3" = "Esta unidade USB deve ter 16 GB ou mais. As partições internas não funcionarão, mas as partições externas sim, dependendo do mapa de partição (que provavelmente estará correto como Mapa de Partição GUID). Se a sua unidade não aparecer, certifique-se de que ela esteja formatada como MacOS Extendido (Journaled).";
+"PRE-VOL-3" = "Esta unidade USB deve ter 16 GB ou mais. As partições internas não funcionarão, mas as partições externas sim, dependendo do mapa de partição (que provavelmente estará correto como Mapa de Partição GUID). Se a sua unidade não aparecer, certifique-se de que ela esteja formatada como MacOS Expandido (Com Journaling).";
 "PRE-VOL-NO" = "Não foram encontradas unidades compatíveis.";
 // Note: VOLUME is the volume name, do not localize it, just pretend it's a volume name and just place it into your sentence
 // Ex. If the volume was "SuperDrive", then "VOLUME will be erased." would show up as "SuperDrive will be erased."
