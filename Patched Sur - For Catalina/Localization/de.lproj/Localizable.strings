@@ -193,5 +193,5 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 8. Drücke Kexts patchen, drücke dann auf weiter und gib dein Passwort ein.
 9. Wenn dieser Vorgang abgeschlossen ist, starte deinen Mac neu und geniesse Big Sur!";
 // I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
-"PRE-DONE-LINK" = "Du kannst diese Schritte ebenfalls auf GitHub finden (Jedoch nur in Englisch).";
+"PRE-DONE-LINK" = "Du kannst diese Schritte ebenfalls auf GitHub finden\n(Jedoch nur in Englisch).";
 "PRE-DONE-STEPS" = "(Schritte 10-14)";

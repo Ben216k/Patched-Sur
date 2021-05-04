@@ -251,6 +251,7 @@
 		7646DF97263CF0EB0097B136 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
 		7646DF99263CF0EB0097B136 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		764B82BB263F3F6900A5BCF0 /* Unsupported.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Unsupported.plist; sourceTree = "<group>"; };
+		764D732D2640F81000719132 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
 		76553B91262156AE00336C5B /* HaxDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaxDownloadView.swift; sourceTree = "<group>"; };
@@ -973,6 +974,7 @@
 				76633BF2263E25A4000A949E /* pt-PT */,
 				76633BF9263EF96C000A949E /* de */,
 				769932E2263F2DE8006088E9 /* el */,
+				764D732D2640F81000719132 /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

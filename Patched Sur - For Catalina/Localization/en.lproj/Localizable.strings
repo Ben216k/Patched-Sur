@@ -289,4 +289,8 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 "PO-ST-RL-FAILED" = "Relaunch Failed!";
 "PO-ST-RL-FAILED-2" = "Failed to open Patched Sur, but you can do this yourself.";
 
-"PO-ST-PSBYBS" = "Patched Sur by Ben Sova";
+// Patch Kexts Page
+
+"PO-PK-TITLE-ALT" = "Unpatch Kexts";
+"PO-PK-SUBTITLE" = "Make Drivers Work Basically";
+"PO-PK-DESCRIPTION-2" = "Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. Sometimes, it might be a good idea to wait a little bit before running patch kexts, since some things might be interfering with the System volume.";

@@ -23,13 +23,13 @@ struct PatchKextsView: View {
         ZStack {
             VStack {
                 HStack(spacing: 15) {
-                    VIHeader(p: "\(unpatch ? "Unpatch" : "Patch") Kexts", s: "Make Drivers Work Basically", c: $topCompress)
+                    VIHeader(p: unpatch ? NSLocalizedString("PO-PK-TITLE-ALT", comment: "PO-PK-TITLE-ALT") : NSLocalizedString("PO-PK-TITLE", comment: "PO-PK-TITLE"), s: "Make Drivers Work Basically", c: $topCompress)
                         .alignment(.leading)
                     Spacer()
                     VIButton(id: "BACK", h: $hovered) {
                         Image(systemName: "chevron.backward.circle")
                             .font(topCompress ? Font.system(size: 11).weight(.bold) : Font.body.weight(.medium))
-                        Text("Back")
+                        Text(.init("BACK"))
                             .font(topCompress ? Font.system(size: 11).weight(.medium) : Font.body)
                             .padding(.leading, -5)
                     } onClick: {
@@ -39,9 +39,9 @@ struct PatchKextsView: View {
                     }.inPad()
                 }.padding(.top, 40)
                 Spacer()
-                Text("\(unpatch ? "Unpatch" : "Patch") Kexts")
+                Text(unpatch ? NSLocalizedString("PO-PK-TITLE-ALT", comment: "PO-PK-TITLE-ALT") : NSLocalizedString("PO-PK-TITLE", comment: "PO-PK-TITLE"))
                     .font(.system(size: 15)).bold()
-                Text("Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. Sometimes, it might be a good idea to wait a little bit before running patch kexts, since some things might be interfering with the System volume.")
+                Text(.init("PO-PK-DESCRIPTION-2"))
                     .multilineTextAlignment(.center)
                     .padding(.vertical, 9)
                     .padding(.top, progress == -2 ? -4 : 0)

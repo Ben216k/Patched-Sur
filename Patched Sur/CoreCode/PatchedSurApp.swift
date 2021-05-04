@@ -63,16 +63,21 @@ struct PatchedSurApp: App {
     
     @State var atLocation = 0
     @State var hovered: String?
-    @State var setupWindow = false
+//    @State var setupWindow = false
     var body: some Scene {
         WindowGroup {
             ContentView(at: $atLocation)
                 .frame(minWidth: 600, maxWidth: 600, minHeight: 325, maxHeight: 325)
                 .accentColor(Color("AccentColor"))
                 .onReceive(NotificationCenter.default.publisher(for: NSApplication.willUpdateNotification), perform: { _ in
-                    if !setupWindow, let window = NSApplication.shared.mainWindow {
+                    if let window = NSApplication.shared.mainWindow {
                         window.standardWindowButton(NSWindow.ButtonType.zoomButton)?.isEnabled = false
-                        setupWindow = true
+//                        setupWindow = true
+                    }
+                })
+                .onOpenURL(perform: { url in
+                    if url == "patched-sur://patch-kexts" {
+                        atLocation = 2
                     }
                 })
         }.windowStyle(HiddenTitleBarWindowStyle())
