@@ -48,7 +48,7 @@ struct PatchKextsView: View {
                 switch progress {
                 case 0:
                     VIButton(id: "STARTKP", h: $hovered) {
-                        Text("Start \(unpatch ? "Unpatch" : "Patch")ing Kexts")
+                        Text(.init(unpatch ? "PO-PK-UN-START" : "PO-PK-START"))
                         Image(systemName: "chevron.forward.circle")
                             .font(Font.system(size: 15).weight(.medium))
                     } onClick: {
@@ -59,7 +59,7 @@ struct PatchKextsView: View {
                     }.inPad()
                     .transition(.moveAway2)
                     VIButton(id: "CHOOSEDIFF", h: $hovered) {
-                        Text("\(unpatch ? "Patch" : "Unpatch") Kexts Instead")
+                        Text(.init(unpatch ? "PO-PK-INSTEAD-REVERSE" : "PO-PK-INSTEAD"))
                             .font(.caption)
                     } onClick: {
                         unpatch.toggle()
@@ -69,7 +69,7 @@ struct PatchKextsView: View {
                 case 1:
                     VIButton(id: "NEVER", h: .constant("NO")) {
                         Image("ToolsCircle")
-                        Text("Detecting Patches")
+                        Text(.init("PO-PK-DETECT"))
                     }.inPad()
                     .btColor(.gray)
                     .transition(.moveAway2)
@@ -90,25 +90,25 @@ struct PatchKextsView: View {
                         VIButton(id: "NOPATCHER", h: .constant("")) {
                             Image(systemName: "exclamationmark.circle")
                                 .font(Font.system(size: 15).weight(.medium))
-                            Text("Patch Resources Were Not Detected")
+                            Text(.init("PO-PK-NONE-DETECTED"))
                         }.inPad()
                         .btColor(.red)
                         VIButton(id: "REFRESH", h: $hovered) {
                             Image(systemName: "arrow.triangle.2.circlepath.circle")
                                 .font(Font.system(size: 15).weight(.medium))
-                            Text("Refresh")
+                            Text(.init("REFRESH"))
                         } onClick: {
                             withAnimation {
                                 progress = 1
                             }
                         }.inPad()
                     }.transition(.moveAway2)
-                    Text("Try Plugging in a Patched Installer USB")
+                    Text(.init("PO-PK-NONE-HELP"))
                         .font(.caption)
                         .transition(.moveAway2)
                 case 2:
                     VIButton(id: "REQUESTROOT", h: $hovered) {
-                        Text("Request Root Permissions")
+                        Text(.init("REQUEST-ROOT"))
                     } onClick: {
                         withAnimation {
                             showPassPrompt = true
@@ -123,7 +123,7 @@ struct PatchKextsView: View {
                 case 3:
                     VIButton(id: "No", h: .constant("")) {
                         Image("FileCircle")
-                        Text("\(unpatch ? "Unpatch" : "Patch")ing Kexts")
+                        Text(.init(unpatch ? "PO-PK-UN-RUNNING" : "PO-PK-RUNNING"))
                     }.inPad()
                     .btColor(.gray)
                     .onAppear {
@@ -142,9 +142,9 @@ struct PatchKextsView: View {
                     VIButton(id: "Restart", h: $hovered) {
                         Image(systemName: "restart.circle")
                             .font(Font.system(size: 15).weight(.medium))
-                        Text("Restart to Finish")
+                        Text(.init("RESTART-TO-FINISH"))
                     } onClick: {
-                        
+                        _ = try? call("reboot", p: password)
                     }.inPad()
                 case -2:
                     VIError(errorX)
@@ -164,7 +164,7 @@ struct PatchKextsView: View {
                             Image(systemName: "exclamationmark.triangle.fill")
                                 .font(Font.system(size: 13).weight(.medium))
                                 .padding(.trailing, -2)
-                            Text("The Only Detected Patches Require Legacy Mode")
+                            Text(.init("PO-PK-LEGACY-ALERT"))
                                 .font(Font.system(size: 12))
                         }.padding(3)
                         .padding(.horizontal, 10)

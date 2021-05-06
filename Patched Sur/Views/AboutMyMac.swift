@@ -33,12 +33,12 @@ struct AboutMyMac: View {
                         Text(coolModel).font(.subheadline).bold()
                             .redacted(reason: coolModel.contains("%") ? .placeholder : .init())
                     }
-                    HStack {
+                    HStack(spacing: 10) {
                         VStack(alignment: .leading) {
-                            Text("Model       ").font(.subheadline).bold()
-                            Text("Processor    ").font(.subheadline).bold()
-                            Text("Graphics     ").font(.subheadline).bold()
-                            Text("Memory   ").bold()
+                            Text("Model").font(.subheadline).bold()
+                            Text("Processor").font(.subheadline).bold()
+                            Text("Graphics").font(.subheadline).bold()
+                            Text("Memory").bold()
                         }
                         VStack(alignment: .leading) {
                             Text(model)
@@ -62,7 +62,7 @@ struct AboutMyMac: View {
                         }.inPad()
                         .btColor(releaseTrack == "Developer" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
                         VIButton(id: "SOFTWARE", h: $hovered) {
-                            Text("Software Update")
+                            Text("Run Updates")
                                 .foregroundColor(.white)
                         } onClick: {
                             withAnimation {

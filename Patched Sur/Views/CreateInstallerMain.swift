@@ -30,7 +30,7 @@ struct CreateInstallerOverView: View {
             Color.clear
             VStack {
                 HStack(spacing: 15) {
-                    VIHeader(p: "Create Installer", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $compressed)
+                    VIHeader(p: .init("PO-CI-TITLE"), s: "v\(AppInfo.version) (\(AppInfo.build))", c: $compressed)
                         .alignment(.leading)
                     Spacer()
                     if progress != .done {
@@ -144,13 +144,13 @@ struct CreateInstallerMain: View {
     
     var body: some View {
         VStack {
-            Text("Create macOS Installer")
+            Text(.init("PO-CI-START-TITLE"))
                 .font(.system(size: 15)).bold()
-            Text("This tool allows you to create a Patched Sur patched macOS Big Sur installer USB, similar to how the pre-install app does it, except with a couple of changes. This can definitely be used as a just in case if you run into a problem later with the patcher. Note that you can install a recovery partition that is pretty similar to this, however currently it cannot reinstall macOS since there is no WiFi in recovery, but this can. Also note that if you are using this to upgrade, there is an easier way, which is the post-install app.")
+            Text(.init("PO-CI-START-DESCRIPTION"))
                 .multilineTextAlignment(.center)
                 .padding(.vertical)
             VIButton(id: "GETSTARTED", h: $hovered) {
-                Text("Get Started")
+                Text(.init("GET-STARTED"))
                 Image("ForwardArrowCircle")
             } onClick: {
                 withAnimation {
@@ -167,8 +167,8 @@ struct DoneView: View {
     @Binding var at: Int
     var body: some View {
         VStack {
-            Text("Finished Creating a macOS Installer")
-            Text("This installer can now be used for whatever you wanted to use it for. It is fully patched just like how it would be if you made it with the pre-install app. It contains the macOS installer (hopefully you know that), a full recovery mode environment, and of course Patched Sur for patching the kexts.")
+            Text(.init("PO-CI-FINSIHED-TITLE"))
+            Text(.init("PO-CI-FINSIHED-DESCRIPTION"))
                 .multilineTextAlignment(.center)
                 .padding(.vertical)
             VIButton(id: "HOME", h: $hovered) {
