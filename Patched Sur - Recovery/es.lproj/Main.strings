@@ -39,8 +39,9 @@
 "hz9-B4-Xy5.title" = "Servicios";
 
 /* Class = "NSButtonCell"; title = "Start Patch Kexts"; ObjectID = "ial-ib-X6F"; */
-//"ial-ib-X6F.title" = "Parchar las kexts";
-"ial-ib-X6F.title" = "Reinicia tu ordenador para terminar";
+"ial-ib-X6F.title" = "Comenzar parchar las extensiones del núcleo";
 
 /* Class = "NSMenu"; title = "Patched Sur - Recovery"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Patched Sur - Recuperación";
+
+"RESTART-TO-FINISH" = "Reinicia tu ordenador para terminar";

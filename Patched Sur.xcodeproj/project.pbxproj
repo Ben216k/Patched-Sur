@@ -326,6 +326,7 @@
 		76E6C74E263CB0C90063C08E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchActions.swift; sourceTree = "<group>"; };
 		76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchDaemon.swift; sourceTree = "<group>"; };
+		76EBA22726449AA200F50A8C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76F11508256EE9FB001AB749 /* PatchedVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchedVersion.swift; sourceTree = "<group>"; };
 		76F11510256EED85001AB749 /* UpdateAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppView.swift; sourceTree = "<group>"; };
 		76F6EED72552684A001508E8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -975,6 +976,7 @@
 				76633BF9263EF96C000A949E /* de */,
 				769932E2263F2DE8006088E9 /* el */,
 				764D732D2640F81000719132 /* pt-BR */,
+				76EBA22726449AA200F50A8C /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
