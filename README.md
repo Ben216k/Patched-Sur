@@ -23,7 +23,6 @@ Patched Sur isn't just by me (Ben), I mostly put it all together and made it eas
 - StarPlayrX: Pointed out startosinstall which was later used in the patcher to allow macOS updating support without a USB.
 - ASentientHedgehog: Helped randomly along the way
 - dosdude1: OpenGL/GPUSupport swap and of course a whole bunch of patching stuff used in his patcher.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, and riiveraluis for translating the app.
 - John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen for testing some of the new features before release, and pointing out the bugs with them.
 - and several others who helped with making Big Sur run as great as it does on unsupported Macs.
 
