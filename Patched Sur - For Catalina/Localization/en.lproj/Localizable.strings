@@ -237,7 +237,7 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 "PO-ST-DESCRIPTION" = "Disable animations, enable graphics switching, show logs and maybe more.";
 "PO-CI-TITLE" = "Create Installer";
 "PO-CI-DESCRIPTION" = "Make a patched macOS Big Sur installer USB drive that can (re)install macOS and more.";
-"PO-IR-TITLE" = "Install Recovery";
+"PO-IR-TITLE" = "Install Recovery Mode";
 "PO-IR-DESCRIPTION" = "Patch the current recovery volume (used with CMD-R on boot). Not always useful.";
 "PO-AMM-DESCRIPTION" = "Show info about your mac without the serial number. Good for showing off your success.";
 

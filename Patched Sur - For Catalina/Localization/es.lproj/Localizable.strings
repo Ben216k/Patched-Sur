@@ -1,3 +1,14 @@
+/*
+  Localizable.strings
+  Patched Sur
+ 
+  Spanish (es)
+  Created by riiveraluis on 4/25/21.
+*/
+ 
+// MARK: Pre-Install App (96)
+// Generic
+ 
 "GET-STARTED" = "Comenzar";
 "CONTINUE" = "Continuar";
 "GO-BACK" = "Regresar";
@@ -40,7 +51,7 @@
 - ASentientHedgehog: Ayudó de manera aleatoria.
 - OCLP Team: Ayudo a nivel de kernel a las tarjetas que no son Tesla y sin aceleración Metal.
 - dosdude1: Soporte de OpenGL/GPUSupport de intercambio y muchas adicciones al parche principal.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, y riiveraluis por trasladar la aplicación.
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, y riiveraluis por traducir la aplicación.
 - John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey y AvaQueen por probar algunas nuevas funciones antes de lanzamiento y mostrar fallos.
 - y muchos otros por ayudar a correr Big Sur bien en macs que no lo soportan nativamente.
  
@@ -49,14 +60,14 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 // Please Remember Page
  
 "PLEASE-REMEMBER" = "Por Favor Recuerda";
-"PRE-PR-1" = "Patched Sur está actualmente en fase de beta y nunca será perfecto. Mientras que no dañara tu mac, puede causar pérdida de data sin no tienes un respaldo previo.";
-"PRE-PR-2" = " No importa que, haz un respaldo de Time Machine antes de actualizar.";
+"PRE-PR-1" = "Patched Sur está actualmente en fase de beta y nunca será perfecto. Mientras que no dañara tu mac, puede causar pérdida de data si no tienes un respaldo previo.";
+"PRE-PR-2" = "No importa que, haz un respaldo de Time Machine antes de actualizar. ";
 "PRE-PR-3" = "Yo (y contribuyentes) no seremos responsables si algo sale mal. Yo llegaré hasta donde mis habilidades lo permitan para ayuda si surge algún problema, pero no conozco todo y pueden haber casos en los que no pueda ayudar. En muchas ocasiones no es ni culpa de Patched Sur, así que no hay nada que pueda hacer.";
  
 // Mac Compatibility Page
  
 "PRE-VERIFY-MAC" = "Verificando Mac";
-"PRE-VERIFY-QUICK" = "Este primer paso es esencial para ver como Patched Sur puede ayudar. Este paso intenta detectar varios problemas que pueden ocurrir antes de que sucedan. Esto incluye FileVault, no soporte de aceleración y algunos otros problemas. No se preocupe la verificación suele ser rápido.";
+"PRE-VERIFY-QUICK" = "Este primer paso es esencial para ver cómo Patched Sur puede ayudar. Este paso intenta detectar varios problemas que pueden ocurrir antes de que sucedan. Esto incluye FileVault, soporte para la aceleración de gráficos y algunos otros problemas. No se preocupe, esto será rápido.";
 "PRE-VERIFY-FETCH" = "Refrescando Información";
 "PRE-VERIFY-2" = "Verificando Mac";
  
@@ -69,10 +80,10 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 "WiFi, Ethernet and Bluetooth" = "WiFi, Ethernet and Bluetooth";
 "I/O Ports" = "Puertos I/O";
 "Graphics Acceleration" = "Aceleración Gráfica";
-"Sleep and Brightness" = "Hibernar and Brillo";
+"Sleep and Brightness" = "Hibernación y Brillo";
 "FileVault" = "FileVault";
-"Personal Hotspots" = "Personal Hotspots";
-"Personal Hotspot" = "Personal Hotspot";
+"Personal Hotspots" = "Hotspots Personales";
+"Personal Hotspot" = "Hotspot Personal";
 "WPA2 Enterprise" = "WPA2 Empresarial";
  
 "PROB-FATAL" = "Problema Fatal Detectado";
@@ -81,26 +92,26 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 "PROB-CONTINUE-ANYWAY" = "Continuar de todos modos";
 "PROB-OTHERS" = "Otros Problemas";
  
-"PROB-FILE-TITLE" = "FileVault Está Encendido.";
-"PROB-FILE-DESCRIPTION" = "Tu mac tiene FileVault encendido. Mientras que es una buena herramienta de cifrado, no funciona en Big Sur en macs no compatibles. De estar encendido no sería posible entrar a modo recuperación y en ocasiones no podrías desbloquear el disco. Debes desactivar esto antes de correr el parche. Puedes hacerlo yendo a ajustes del sistema, presionando Seguridad y privacidad, yendo a FileVault, y presionando el candado y desactivandolo.";
+"PROB-FILE-TITLE" = "FileVault Está Activado.";
+"PROB-FILE-DESCRIPTION" = "Tu mac tiene FileVault activado. Mientras que es una buena herramienta de cifrado, no funciona en Big Sur en macs no compatibles. Mientras está activado no sería posible entrar a modo recuperación y en ocasiones no podrías desbloquear el disco. Debes desactivar esto antes de correr el parche. Puedes hacerlo yendo a ajustes del sistema, presionando Seguridad y privacidad, yendo a FileVault, y presionando el candado y desactivándolo.";
  
 // Reminder! "BigMac" and "StarPlayrX" are a formal names, so don't localize that.
 "PROB-PRO-TITLE" = "Hay un mejor parche para Mac Pros";
-"PROB-PRO-DESCRIPTION" = "Mientras que Patched Sur es bueno para muchas Macs, Mac Pros no deberían usarse con este parche. Estas no tienen los parches adecuados, hay otra manera fácil de usar diseñada específicamente para la Mac Pro. Es tarPlayrX's BigMac Patcher, y te brindara una experiencia increíble para tu mac.";
+"PROB-PRO-DESCRIPTION" = "Mientras que Patched Sur es bueno para muchas Macs, Mac Pros no deberían usarse con este parche. Estas no tienen los parches adecuados, hay otra manera fácil de usar diseñada específicamente para la Mac Pro. Es el BigMac Patcher de StarPlayrX, y te brindara una experiencia increíble para tu mac.";
  
 "PROB-GX-TITLE" = "No Aceleración Gráfica";
 "PROB-GX-DESCRIPTION" = "Tu mac no contiene aceleración tipo Metal, así que Big Sur correrá EXTREMADAMENTE LENTO. No esperes que sea rápido o que funcione bien. No puedes arreglarlo y este parche está en progreso para resolverlo, pero en su estado actual es extremadamente inestable. Si deseas continuar, podrías, pero no esperes una experiencia mágica en Big Sur.";
  
 "PROB-SURE" = "¿Estás seguro de que deseas continuar?";
-"PROB-SURE-SURE" = "Patched Sur ha detectado problemas que podrían (y lo harán) causar problemas con Big sur. Tu mac podría no esta en su más alto potencial y en algunos caso es mejor quedarse en Catalina.";
+"PROB-SURE-SURE" = "Patched Sur ha detectado problemas que podrían (y lo harán) causar problemas con Big sur. Tu mac podría no estar en su más alto potencial y en algunos casos es mejor quedarse en Catalina.";
  
 "REPORT-UNKNOWN" = "Compatibilidad Desconocida";
-"REPORT-UNKNOWN-2" = "Dependiendo de tu mac, Patched Sur podría o no podría correr bien. Patched Sur no encontró reportes de compatibilidad con tu mac, así que no podría decirte. No te preocupes aun asi, muchas personas han reportado sus experiencias en lo bien que corre Patched Sur en diferentes macs. Así que probablemente tu Mac correrá perfectamente bien. Luego que actualices, puedes contribuir a tu experiencia (yendo a ajustes en la aplicación post instalación) y ayudar a futuras personas con tu misma Mac!";
+"REPORT-UNKNOWN-2" = "Dependiendo de tu mac, Patched Sur podría o no podría correr bien. Patched Sur no encontró reportes de compatibilidad con tu mac, así que no podría decirte. No te preocupes aun así, muchas personas han reportado sus experiencias en lo bien que corre Patched Sur en diferentes macs. Así que probablemente tu Mac correrá perfectamente bien. Luego que actualices, puedes contribuir a tu experiencia (yendo a ajustes en la aplicación post instalación) y ayudar a futuras personas con tu misma Mac!";
  
 // Update Track Page
  
 "PRE-TRACK-TITLE" = "Seleccionar Canal de Actualizaciones";
-"PRE-TRACK-DESCRIPTION" = "Tu canal de actualizaciones define que tipo de versiones de macOS tu mac recibira. El canal público es el más estable y probablemente el que ya estés utilizando. El canal beta te da acceso a las nuevas funciones de macOS antes, pero puede ser inestable.";
+"PRE-TRACK-DESCRIPTION" = "Tu canal de actualizaciones define que tipo de versiones de macOS tu mac recibirá. El canal público es el más estable y probablemente el que ya estés utilizando. El canal beta te da acceso a las nuevas funciones de macOS antes, pero puede ser inestable.";
  
 "TRACK-RELEASE" = "Público";
 "TRACK-BETA" = "Beta";
@@ -108,12 +119,12 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 // macOS Select Page
  
 "PRE-VERS-TITLE" = "Versión de macOS Big Sur";
-"PRE-VERS-DESCRIPTION" = "Mientras que en la mayoría de los casos desearás la versión más reciente de macOS Big Sur por algunas otras ocasiones podría ser el caso que prefieras una versión anterior y lo puedes configurar aquí mismo. Si deseas utilizar un instalador pre descargado (InstallAssistant.pkg) puedes presionar buscar. Si solo quieres descargar y usar la versión más reciente de macOS, presiona descargar.";
-"PRE-VERS-NOFI" = "La lista de instaladores de macOS no pudo ser accesada. Probablemente es porque la conexión WIFI no está disponible. Debes usar un instalador pre descargado.";
+"PRE-VERS-DESCRIPTION" = "Mientras que en la mayoría de los casos desearás la versión más reciente de macOS Big Sur por algunas otras ocasiones podría ser el caso que prefieras una versión anterior y lo puedes configurar aquí mismo. Si deseas utilizar un instalador pre-descargado (InstallAssistant.pkg) puedes presionar buscar. Si solo quieres descargar y usar la versión más reciente de macOS, presiona descargar.";
+"PRE-VERS-NOFI" = "La lista de instaladores de macOS no pudo ser accesada. Probablemente es porque la conexión WIFI no está disponible. Debes usar un instalador pre-descargado.";
 // NOTE: In these two, XX.YY.ZZ is the macOS version. So in English, the first would show Download macOS 11.3. \(installers[0].version)
 "PRE-VERS-DOWNLOAD" = "Descargar macOS XX.YY.ZZ";
 "PRE-VERS-USE" = "Usar macOS XX.YY.ZZ";
-"PRE-VERS-PRE" = "Usar macOS pre descargado";
+"PRE-VERS-PRE" = "Usar macOS pre-descargado";
 "PRE-VERS-REDOWNLOAD" = "Descargar Nuevamente";
 "PRE-VERS-FETCH" = "Refrescando Instaladores";
  
@@ -145,21 +156,21 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 // Select Volume Page
  
 "PRE-VOL-TITLE" = "Selecciona un USB";
-"PRE-VOL-1" = "Para instalar Big Sur parcheado inicialmente necesitaras un USB que asistira con la instalacion. Este provera un ambiente donde el parche se puede asegurar que todo va adecuadamente bien.";
+"PRE-VOL-1" = "Para instalar Big Sur parcheado inicialmente necesitaras un USB que asistirá con la instalación. Este proveerá un ambiente donde el parche se puede asegurar que todo va adecuadamente bien.";
 "PRE-VOL-2" = "Para crear un instalador necesitará un volumen donde poner el instalador.";
 "PRE-VOL-3" = "Este USB necesita tener al menos 16 GB de espacio o más. Particiones internas no funcionaran, pero particiones externas dependiendo del mapa de partición que tenga (El cual es probable que sea correcto el mapa GUID). Si tu volumen no se muestra asegurate de que este formateado como macOS Extended (Journaled).";
-"PRE-VOL-NO" = "No Volumenes compatibles fueron detectados.";
+"PRE-VOL-NO" = "No Volúmenes compatibles fueron detectados.";
 // Note: VOLUME is the volume name, do not localize it, just pretend it's a volume name and just place it into your sentence
 // Ex. If the volume was "SuperDrive", then "VOLUME will be erased." would show up as "SuperDrive will be erased."
 "PRE-VOL-ERASED" = "VOLUME sera borrado.";
 "PRE-VOL-ERASED-2" = "Todos los archivos en este volumen serán borrados. Esto no se puede revertir. ¿Estas seguro de que quieres continuar?";
-"PRE-VOL-DETECTING" = "Detectando volúmenes";
+"PRE-VOL-DETECTING" = "Detectando Volúmenes";
 "PRE-VOL-CHECKING" = "Verificando VOLUME";
  
 // Create Installer Page
  
 "PRE-CTI-TITLE" = "Creando Instalador USB";
-"PRE-CTI-DESCRIPTION" = "Ahora el USB seleccionado está siendo utilizado para crear un instalador de macOS portatil. Los archivos copiados al disco serán similares al modo recuperación de macOS Big Sur. Luego que esos archivos son copiados al USB, Patched Sur comienza a realizar los parches que permiten a tu mac encender y le otorga parches e herramientas útiles.";
+"PRE-CTI-DESCRIPTION" = "Ahora el USB seleccionado está siendo utilizado para crear un instalador de macOS portátil. Los archivos copiados al disco serán similares al modo recuperación de macOS Big Sur. Luego que esos archivos son copiados al USB, Patched Sur comienza a realizar los parches que permiten a tu mac encender y le otorga parches e herramientas útiles.";
 "PRE-CTI-CANCEL-1" = "¿Estas seguro de que quieres cancelar el proceso de parche en el instalador de macOS? Necesitas esto para actualizar a macOS Big Sur y usualmente tarda en realizarse.";
 "PRE-CTI-CANCEL-2" = "Un instalador de macOS se está realizando.";
 "CANCEL-PROCESS" = "Cancelar Proceso";
@@ -170,18 +181,18 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 "PRE-CTI-CREATING" = "Creando Instalador";
  
 // Done Page
-"PRE-DONE-INFO" = "Estas ya casi cerca de actualizar a Big Sur. El instalador en el USB fue exitosamente creado y es tiempo para que hagas un poco de trabajo manual de tu parte. Si no estás siguiendo directamente un tutorial anota estos pasos para que los sepas hacer (Son pasos realmente fáciles, aunque se vean demasiados):
+"PRE-DONE-INFO" = "Estás ya casi cerca de actualizar a Big Sur. El instalador en el USB fue exitosamente creado y es tiempo para que hagas un poco de trabajo manual de tu parte. Si no estás siguiendo directamente un tutorial anota estos pasos para que los sepas hacer (Son pasos realmente fáciles, aunque se vean demasiados):
  
 1. Reinicia tu mac presionando la tecla opción hasta que veas algunos discos aparecer en pantalla.
-2. Seleciona el disco amarillo o violeta llamado EFI Boot. Este apagará tu computadora de inmediato.
+2. Selecciona el disco amarillo o violeta llamado EFI Boot. Este apagará tu computadora de inmediato.
 3. Enciende nuevamente tu mac manteniendo nuevamente la tecla de opción.
 5. Luego que tu mac encienda, selecciona (Re)Install macOS Big Sur nuevamente. (Sonara como si fuera, pero esto no borrará ninguna data de tu volumen principal. Esté sólo actualizará los archivos del sistema como una actualización tradicional).
 6. Cuando la aplicación abra, ve por la aplicación y selecciona tu volumen principal (probablemente Macintosh HD y no Install macOS Big Sur)
 7. Luego de que la actualización se complete verás la ventana de ingreso. Luego ve al sobre de aplicaciones y abre Patched Sur.
 8. Presiona parchar Kexts, luego continuar e ingrese su contraseña.
-9. Luego que este hecho, reinicia tu mac y a disfrutar de tu mac!";
+9. Luego que esté hecho, reinicia tu mac y a disfrutar de tu mac!";
 // I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
-"PRE-DONE-LINK" = "Tambien puedes encontrar estos pasos en GitHub. (Nota: Estos pasos solo estan en ingles)";
+"PRE-DONE-LINK" = "También puedes encontrar estos pasos en GitHub. (Nota: Estos pasos solo están en ingles)";
 "PRE-DONE-STEPS" = "(Pasos 10-14)";
  
 // MARK: Post-Install App (96)
@@ -226,7 +237,7 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 "PO-CI-DESCRIPTION" = "Hacer un instalador parcheado de macOS Big Sur installer para (re)instalar macOS y mas.";
 "PO-IR-TITLE" = "Instalar Modo Recuperación";
 "PO-IR-DESCRIPTION" = "Parchear volumen de recuperación actual (usado con CMD-R). No siempre es útil.";
-"PO-AMM-DESCRIPTION" = "Mostrar info sobre tu mac sin numéro serial util enseñar tu éxito luego de la instalación.";
+"PO-AMM-DESCRIPTION" = "Mostrar info sobre tu mac sin el numero serial. Bueno para mostrar tu éxito luego de la instalación.";
  
 "PO-PK-NO-NEED-TITLE" = "Parcheo de Kexts Innecesario";
 "PO-PK-NO-NEED-DESCRIPTION" = "No necesitas parchear los kext en iMacs 2013 tarde. Big Sur ya está en funcionamiento óptimo.";

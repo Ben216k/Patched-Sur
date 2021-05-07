@@ -30,7 +30,7 @@ struct CreateInstallerOverView: View {
             Color.clear
             VStack {
                 HStack(spacing: 15) {
-                    VIHeader(p: .init("PO-CI-TITLE"), s: "v\(AppInfo.version) (\(AppInfo.build))", c: $compressed)
+                    VIHeader(p: NSLocalizedString("PO-CI-TITLE", comment: "PO-CI-TITLE"), s: "v\(AppInfo.version) (\(AppInfo.build))", c: $compressed)
                         .alignment(.leading)
                     Spacer()
                     if progress != .done {
