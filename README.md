@@ -11,19 +11,19 @@ To see if your Mac is supported [click here](https://bensova.gitbook.io/big-sur/
 
 ## Credits
 
-Patched Sur isn't just by me (Ben), I mostly put it all together and made it easier for people to use it, several other people have contributed to the patcher and the patches making this what it is today!
+Patched Sur isn't just by me (Ben), **I mostly put it all together and made it easier for people to use it**, several other people have contributed to the patcher and the patches making this what it is today!
 
-- barrykn: Made the micropatcher that introduced me to the patching process and restored my faith in my really old computer. 
-- ASentientBot: Made the Hax patches for the installer and brought GeForce Tesla (9400M/320M) framebuffer to Big Sur.
-- jackluke: Figured out how to bypass compatibility checks on the installer USB.
-- highvoltage12v: Made the first WiFi kexts used with Big Sur
-- ParrotGeek: developed the LegacyUSBInjector kext to get USB ports working on some older Macs and figuring out a way to skip the terminal commands when opening the installer app on the USB.
-- testheit: Helped with the kmutil command in the micropatcher (that is used in Patched Sur too)
-- Ausdauersportler: Integrated patches for iMac Metal GPU support.
-- StarPlayrX: Pointed out startosinstall which was later used in the patcher to allow macOS updating support without a USB.
-- ASentientHedgehog: Helped randomly along the way
-- dosdude1: OpenGL/GPUSupport swap and of course a whole bunch of patching stuff used in his patcher.
-- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen for testing some of the new features before release, and pointing out the bugs with them.
+- [barrykn](https://github.com/barrykn/): Made the micropatcher that introduced me to the patching process and restored my faith in my really old computer. He also helped pull together a lot of the patches used in this patcher.
+- [ASentientBot](https://asentientbot.github.io/): Made the Hax patches for the installer and brought GeForce Tesla (9400M/320M) framebuffer to Big Sur.
+- [jackluke](https://forums.macrumors.com/members/jackluke.1133911/): Figured out how to bypass compatibility checks on the installer USB.
+- [highvoltage12v](https://forums.macrumors.com/members/highvoltage12v.883629/): Made the first WiFi kexts used with Big Sur
+- [ParrotGeek](https://parrotgeek.com/): developed the LegacyUSBInjector kext to get USB ports working on some older Macs and figuring out a way to skip the terminal commands when opening the installer app on the USB.
+- [testheit](https://forums.macrumors.com/members/testheit.1133139/): Helped with the kmutil command in the micropatcher (that is used in Patched Sur too)
+- [Ausdauersportler](https://github.com/Ausdauersportler): Integrated patches for iMac Metal GPU support.
+- [StarPlayrX](https://github.com/starplayrx/): Pointed out startosinstall which was later used in the patcher to allow macOS updating support without a USB.
+- [ASentientHedgehog](https://github.com/moosethegoose2213/): Helped randomly along the way
+- [dosdude1](http://dosdude1.com/): OpenGL/GPUSupport swap and of course his patchers which have helped with unsupported Macs patching even in Big Sur.
+- [John_val](https://www.reddit.com/user/John_val), [fromeister2009](https://www.reddit.com/user/fromeister2009), [Mr. Macintosh](https://mrmacintosh.com/), [Emperor Epitaph](https://www.youtube.com/channel/UCxGV-Up88t5D4CpcvLS43lw), [Finder352](https://www.youtube.com/channel/UC1ANuAzvOToCVizzck3JjPg), [Monkiey](https://twitter.com/Monkiey2) and [AvaQueen](https://github.com/AvaQueen-Official/) for testing some of the new features before release, and pointing out the bugs with them.
 - and several others who helped with making Big Sur run as great as it does on unsupported Macs.
 
 Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSundell (MIT License), to help handle certain tasks.
