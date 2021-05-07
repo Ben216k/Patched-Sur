@@ -1,14 +1,3 @@
-/*
-  Localizable.strings
-  Patched Sur
- 
-  Spanish (es)
-  Created by riiveraluis on 4/25/21.
-*/
- 
-// MARK: Pre-Install App (96)
-// Generic
- 
 "GET-STARTED" = "Comenzar";
 "CONTINUE" = "Continuar";
 "GO-BACK" = "Regresar";
@@ -235,9 +224,9 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 "PO-ST-DESCRIPTION" = "Desactivar animaciones, habilitar cambio de graficas, mostrar registros y quizás más.";
 "PO-CI-TITLE" = "Crear Instalador";
 "PO-CI-DESCRIPTION" = "Hacer un instalador parcheado de macOS Big Sur installer para (re)instalar macOS y mas.";
-"PO-IR-TITLE" = "Intalar modo recuperación";
-"PO-IR-DESCRIPTION" = "Parchear el volumen de recuperación actual (usado con CMD-R en encendido). No siempre es útil.";
-"PO-AMM-DESCRIPTION" = "Mostrar info sobre tu mac sin el numero serial. Bueno para mostrar tu éxito luego de la instalación.";
+"PO-IR-TITLE" = "Instalar Modo Recuperación";
+"PO-IR-DESCRIPTION" = "Parchear volumen de recuperación actual (usado con CMD-R). No siempre es útil.";
+"PO-AMM-DESCRIPTION" = "Mostrar info sobre tu mac sin numéro serial util enseñar tu éxito luego de la instalación.";
  
 "PO-PK-NO-NEED-TITLE" = "Parcheo de Kexts Innecesario";
 "PO-PK-NO-NEED-DESCRIPTION" = "No necesitas parchear los kext en iMacs 2013 tarde. Big Sur ya está en funcionamiento óptimo.";

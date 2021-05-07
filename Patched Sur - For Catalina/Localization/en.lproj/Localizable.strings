@@ -315,4 +315,9 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 
 // MARK: About This Mac
 
-//"PO-AMM-"
+"PO-AMM-MODEL" = "Model";
+"PO-AMM-PROCESSOR" = "Processor";
+"PO-AMM-GRAPHICS" = "Graphics";
+"PO-AMM-MEMORY" = "Memory";
+"PO-AMM-BACK" = "Back to Home";
+"PO-AMM-UPDATE" = "Software Update";

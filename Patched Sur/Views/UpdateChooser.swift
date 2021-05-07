@@ -94,7 +94,7 @@ struct UpdateChooser: View {
             .btColor(.gray)
             .onAppear {
                 DispatchQueue(label: "FetchInstallers").async {
-                    selfV = (try? call("sw_vers -productVersion")) ?? "11.2.3"
+                    selfV = (try? call("sw_vers -productVersion")) ?? "11.3.1"
                     fetchInstallerList(track: track) {
                         fetchedInstallers = $0
                     } current: {

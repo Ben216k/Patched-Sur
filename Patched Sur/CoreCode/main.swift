@@ -13,6 +13,8 @@ import Foundation
 //    print(string, to: &mainLogger)
 //}
 
+//fatalError()
+
 print("Hello! If you're seeing this, you are seeing the logs of Patched Sur!")
 print("Or maybe running this from the command line...")
 print("")

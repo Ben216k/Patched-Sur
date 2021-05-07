@@ -35,10 +35,10 @@ struct AboutMyMac: View {
                     }
                     HStack(spacing: 10) {
                         VStack(alignment: .leading) {
-                            Text("Model").font(.subheadline).bold()
-                            Text("Processor").font(.subheadline).bold()
-                            Text("Graphics").font(.subheadline).bold()
-                            Text("Memory").bold()
+                            Text(.init("PO-AMM-MODEL")).font(.subheadline).bold()
+                            Text(.init("PO-AMM-PROCESSOR")).font(.subheadline).bold()
+                            Text(.init("PO-AMM-GRAPHICS")).font(.subheadline).bold()
+                            Text(.init("PO-AMM-MEMORY")).bold()
                         }
                         VStack(alignment: .leading) {
                             Text(model)
@@ -53,7 +53,7 @@ struct AboutMyMac: View {
                     }
                     HStack {
                         VIButton(id: "HOME", h: $hovered) {
-                            Text("Back to Home")
+                            Text(.init("PO-AMM-BACK"))
                                 .foregroundColor(.white)
                         } onClick: {
                             withAnimation {
@@ -62,7 +62,7 @@ struct AboutMyMac: View {
                         }.inPad()
                         .btColor(releaseTrack == "Developer" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
                         VIButton(id: "SOFTWARE", h: $hovered) {
-                            Text("Run Updates")
+                            Text(.init("PO-AMM-UPDATE"))
                                 .foregroundColor(.white)
                         } onClick: {
                             withAnimation {
