@@ -82,14 +82,14 @@ struct UpdateChooser: View {
         
         if let errorL = errorL {
             Spacer(minLength: 0)
-            Text("An error occurred while fetching available updates.")
+            Text(.init("PO-UP-CHOOSE-FAILED"))
             VIError(errorL)
             Spacer(minLength: 0)
         } else if fetchedInstallers == nil {
             Spacer(minLength: 0)
             VIButton(id: "SOMETHING", h: .constant("12")) {
                 Image("DownloadArrow")
-                Text("Fetching Installers")
+                Text(.init("PRE-VERS-FETCH"))
             }.inPad()
             .btColor(.gray)
             .onAppear {
@@ -108,15 +108,15 @@ struct UpdateChooser: View {
         } else {
             ScrollView {
                 if let current = current {
-                    Text("This version of macOS is already downloaded:")
+                    Text(.init("PO-UP-CHOOSE-PRE"))
                     UpdateSelectCell(installer: current, delete: {
                         print("Making sure we want to delete the installer")
                         let al = NSAlert()
-                        al.informativeText = "While this will save you a good 12.2 GBs of storage, it's also useful for quickly reinstalling macOS or really any other reason you might need a 12GB macOS installer."
-                        al.messageText = "Are you sure you want to delete the pre-downloaded installer?"
+                        al.informativeText = NSLocalizedString("PO-UP-CHOOSE-DELETE-2", comment: "PO-UP-CHOOSE-DELETE-2")
+                        al.messageText = NSLocalizedString("PO-UP-CHOOSE-DELETE", comment: "PO-UP-CHOOSE-DELETE")
                         al.showsHelp = false
-                        al.addButton(withTitle: "Delete")
-                        al.addButton(withTitle: "Cancel")
+                        al.addButton(withTitle: NSLocalizedString("DELETE", comment: "DELETE"))
+                        al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                         switch al.runModal() {
                         case .alertFirstButtonReturn:
                             _ = try? call("rm -rf ~/.patched-sur/InstallAssistant.pkg")
@@ -130,7 +130,7 @@ struct UpdateChooser: View {
                     }, selfV: selfV, installInfo: $installInfo, done: {withAnimation { p = 3 }})
                 }
                 if let fetched = fetchedInstallers {
-                    Text("You can download these versions of macOS:")
+                    Text(.init("PO-UP-CHOOSE-CAN"))
                     ForEach(fetched, id: \.buildNumber) { installer in
                         UpdateSelectCell(installer: installer, delete: nil, selfV: selfV, installInfo: $installInfo, done: {withAnimation { p = 3 }})
                     }
@@ -168,20 +168,20 @@ struct UpdateSelectCell: View {
             VStack(alignment: .leading) {
                 Text("macOS \(installer.version)")
                     .font(Font.title3.bold())
-                Text("Build \(installer.buildNumber) - Released \(installer.localizedDate)")
+                Text("\(NSLocalizedString("BUILD", comment: "BUILD")) \(installer.buildNumber) - \(NSLocalizedString("RELEASE", comment: "RELEASE")) \(installer.localizedDate)")
             }
             Spacer()
             if convertVersionBinary(installer.version) >= convertVersionBinary(selfV) {
                 VIButton(id: "UPDDATE\(installer.buildNumber)", h: $hovered) {
                     Image("UpdateCircle")
-                    Text(convertVersionBinary(installer.version) > convertVersionBinary(selfV) ? "Update" : "Reinstall")
+                    Text(convertVersionBinary(installer.version) > convertVersionBinary(selfV) ? .init("UPDATE") : .init("REINSTALL"))
                 } onClick: {
                     if delete == nil {
                         installInfo = .init(url: installer.url, date: "", buildNumber: installer.buildNumber, version: "", minVersion: 0, orderNumber: 0, notes: nil)
                         done()
                     } else {
                         guard let location = try? File(path: "~/.patched-sur/InstallAssistant.pkg") else {
-                            presentAlert(m: "An Unexpected Error Occurred", i: "This file appears to be missing and the full patch cannot be determined. You cannot use the pre-downloaded installer for now.")
+                            presentAlert(m: NSLocalizedString("UNEXPECTED-ERROR", comment: "UNEXPECTED-ERROR"), i: NSLocalizedString("PO-UP-CHOOSE-EXACT-PATH", comment: "PO-UP-CHOOSE-EXACT-PATH"))
                             return
                         }
                         installInfo = .init(url: location.path, date: "", buildNumber: "CustomPKG", version: "", minVersion: 0, orderNumber: 0, notes: nil)
@@ -193,11 +193,11 @@ struct UpdateSelectCell: View {
                         Image("DownloadArrow")
                     } onClick: {
                         let al = NSAlert()
-                        al.informativeText = "You can update to this version of macOS, however you can also download it and that's the button you clicked. This popup just exists to make sure you know that. (This will just open your web browser and download the installer, nothing special.)"
-                        al.messageText = "Download the macOS Installer"
+                        al.informativeText = NSLocalizedString("PO-UP-CHOOSE-DOWNLOAD-1", comment: "PO-UP-CHOOSE-DOWNLOAD-1")
+                        al.messageText = NSLocalizedString("PO-UP-CHOOSE-DOWNLOAD", comment: "PO-UP-CHOOSE-DOWNLOAD")
                         al.showsHelp = false
-                        al.addButton(withTitle: "Download")
-                        al.addButton(withTitle: "Cancel")
+                        al.addButton(withTitle: NSLocalizedString("DOWNLOAD", comment: "DOWNLOAD"))
+                        al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                         switch al.runModal() {
                         case .alertFirstButtonReturn:
                             NSWorkspace.shared.open(URL(string: installer.url)!)
@@ -205,19 +205,19 @@ struct UpdateSelectCell: View {
                             break
                         }
                     }.btColor(Color.gray).useHoverAccent()
-                    .help("You can also download the InstallAssistant.pkg if you want.")
+                    .help(NSLocalizedString("PO-UP-CHOOSE-DOWNLOAD-TIP", comment: "PO-UP-CHOOSE-DOWNLOAD-TIP"))
                 }
             } else {
                 VIButton(id: "UPDDATE\(installer.buildNumber)", h: $hovered) {
                     Image("DownloadArrow")
-                    Text("Download")
+                    Text(.init("DOWNLOAD"))
                 } onClick: {
                     let al = NSAlert()
-                    al.informativeText = "You can't \"update\" to an older version of macOS, however you can download the installer if you have something you want to do with it. (This will just open your web browser and download the installer, nothing special.)"
-                    al.messageText = "Download the macOS Installer"
+                    al.informativeText = NSLocalizedString("PO-UP-CHOOSE-DOWNLOAD-2", comment: "PO-UP-CHOOSE-DOWNLOAD-2")
+                    al.messageText = NSLocalizedString("PO-UP-CHOOSE-DOWNLOAD", comment: "PO-UP-CHOOSE-DOWNLOAD")
                     al.showsHelp = false
-                    al.addButton(withTitle: "Download")
-                    al.addButton(withTitle: "Cancel")
+                    al.addButton(withTitle: NSLocalizedString("DOWNLOAD", comment: "DOWNLOAD"))
+                    al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                     switch al.runModal() {
                     case .alertFirstButtonReturn:
                         NSWorkspace.shared.open(URL(string: installer.url)!)
@@ -226,7 +226,7 @@ struct UpdateSelectCell: View {
                     }
                 }.inPad()
                 .btColor(.gray).useHoverAccent()
-                .help("You cannot update to an older version of macOS, but you may download this installer if you want.")
+                .help(NSLocalizedString("PO-UP-CHOOSE-DOWNLOAD-TIP-2", comment: "PO-UP-CHOOSE-DOWNLOAD-TIP-2"))
             }
             if delete != nil {
                 VIButton(id: "DELETEC", h: $hovered) {

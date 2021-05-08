@@ -27,16 +27,16 @@ func checkGeneralUpdateCompat(worked: (Bool) -> ()) {
         csrstatus = try call("csrutil status")
     } catch {
         print("Failed to check csr status.")
-        presentAlert(m: "Failed to check SIP Status", i: "Patched Sur failed to check your SIP status, which should be impossible.\n\n\(error.localizedDescription)", s: .critical)
+        presentAlert(m: NSLocalizedString("PO-UP-COMPAT-FAIL-SIP", comment: "PO-UP-COMPAT-FAIL-SIP"), i: "\(NSLocalizedString("PO-UP-COMPAT-FAIL-SIP-2", comment: "PO-UP-COMPAT-FAIL-SIP-2"))\n\n\(error.localizedDescription)", s: .critical)
     }
     if csrstatus.contains("status: enabled") || csrstatus.contains("Debugging Restrictions: enabled") {
         print("CSR is Enabled! The updater cannot be run.")
-        presentAlert(m: "SIP Appears to Be On", i: "Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with SIP off, so Patched Sur needs you to disable SIP before continuing. To disable it:\n\n1. Boot into Recovery Mode (⌘R on Startup)\n2. Open Terminal under Utilities.\n3. Type in: csrutil disable then press enter.\n4. Press enter and restart your computer, then try running Patched Sur again.")
+        presentAlert(m: NSLocalizedString("PO-UP-COMPAT-SIP-ON", comment: "PO-UP-COMPAT-SIP-ON"), i: NSLocalizedString("PO-UP-COMPAT-SIP-ON-2", comment: "PO-UP-COMPAT-SIP-ON-2"))
     } else if !libraryValidation.contains("1") {
         print("Library Validation is not set, warning user.")
         let al = NSAlert()
-        al.informativeText = "Library Validation prevents Patched Sur from injecting code into the macOS installer and skipping the compatibility check. If you want to update macOS, you need to first disable Library Validation."
-        al.messageText = "Library Validation is Enabled"
+        al.informativeText = NSLocalizedString("PO-UP-COMPAT-LV-ON-2", comment: "PO-UP-COMPAT-LV-ON-2")
+        al.messageText = NSLocalizedString("PO-UP-COMPAT-LV-ON", comment: "PO-UP-COMPAT-LV-ON")
         al.showsHelp = false
         al.addButton(withTitle: "Continue")
         al.addButton(withTitle: "Cancel")
@@ -147,13 +147,13 @@ func startOSInstall(password: String, installInfo: InstallAssistant, currentText
             currentText("Unpacking package")
             print("Unpacking package...")
             try call("installer -pkg \(installInfo.url) -target /", p: password)
-            currentText("Starting OS Installer!!")
-            print("Starting OS Installer IIIIII....")
+            currentText("Starting OS Installer")
+            print("Starting OS Installer....")
             try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/startosinstall --volume / --nointeraction", p: password, h: handle)
 //            try call("/Applications/Install\\ macOS\\ Big\\ Sur*.app/Contents/Resources/createinstallmedia", p: password, h: handle)
 //            try call("[[ -e /Applications/Install\\ macOS\\ Big\\ Sur*/Contents/Resources/startosinstall ]]")
         } else {
-            currentText("Starting OS Installerii")
+            currentText("Starting OS Installer")
             print("Starting OS Installer...")
             try call("'\(installInfo.url)/Contents/Resources/startosinstall' --volume / --agreetolicense", p: password, h: handle)
 //            try call("'\(installInfo.url)/Contents/Resources/createinstallmedia'", p: password, h: handle)

@@ -36,7 +36,7 @@ struct UpdateAppView: View {
             }.padding(.top, -3)
             HStack {
                 VIButton(id: "SKIP", h: $hovered) {
-                    Text("Skip")
+                    Text(.init("SKIP"))
                     Image("ForwardArrowCircle")
                 } onClick: {
                     if !downloading {
@@ -48,7 +48,7 @@ struct UpdateAppView: View {
                 if errorMessage != "" {
                     VIButton(id: "DOWNLOAD-FAILED", h: $hovered) {
                         Image("ExclaimCircle")
-                        Text("Download Failed")
+                        Text(.init("PO-UP-APP-FAILED"))
                     } onClick: {
                         errorMessage = ""
                         downloading = true
@@ -56,7 +56,7 @@ struct UpdateAppView: View {
                     .btColor(.red)
                 } else if !downloading {
                     VIButton(id: "DOWNLOAD-UPDATE", h: $hovered) {
-                        Text("Download Update")
+                        Text(.init("PO-UP-APP-START"))
                         Image("DownloadArrow")
                     } onClick: {
                         downloading = true
@@ -72,7 +72,7 @@ struct UpdateAppView: View {
                             })
                         HStack {
                             Image("DownloadArrow").foregroundColor(.white)
-                            Text("Downloading").foregroundColor(.white)
+                            Text(.init("DOWNLOADING")).foregroundColor(.white)
                         }.padding(6)
                         .onAppear {
                             DispatchQueue.global(qos: .background).async {

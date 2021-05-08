@@ -367,3 +367,40 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 "PO-NOTIF-SETUP-DENY" = "Patched Sur Cannot Send Notifications";
 "PO-NOTIF-SETUP-DENY-2" = "You must have denied Patched Sur from sending notifications. If you want Patched Sur to send notifications, open System Preferences > Notifications > Patched Sur then allow notifications.";
 "PO-NOTIF-SETUP-FAILED" = "Failed to Configure Daemon";
+
+"PO-UP-COMPAT-FAIL-SIP" = "Failed to check SIP Status";
+"PO-UP-COMPAT-FAIL-SIP-2" = "Patched Sur failed to check your SIP status, which should be impossible.";
+"PO-UP-COMPAT-SIP-ON" = "SIP Appears to Be On";
+"PO-UP-COMPAT-SIP-ON-2" = "Since the installer checks to see if the update supports your Mac, Patched Sur needs to inject a dylib into it so that the installer doesn't care about the incompatibility. However, this can only be done with SIP off, so Patched Sur needs you to disable SIP before continuing. To disable it:
+
+1. Boot into Recovery Mode (⌘R on Startup)
+2. Open Terminal under Utilities.
+3. Type in: csrutil disable then press enter.
+4. Press enter and restart your computer, then try running Patched Sur again.";
+"PO-UP-COMPAT-LV-ON" = "Library Validation is Enabled";
+"PO-UP-COMPAT-LV-ON-2" = "Library Validation prevents Patched Sur from injecting code into the macOS installer and skipping the compatibility check. If you want to update macOS, you need to first disable Library Validation.";
+
+"SKIP" = "Skip";
+"PO-UP-APP-FAILED" = "Download Failed";
+"PO-UP-APP-START" = "Download Update";
+"DOWNLOADING" = "Downloading";
+
+// MARK: Update Chooser
+
+"PO-UP-CHOOSE-TITLE"
+"PO-UP-CHOOSE-FAILED" = "An error occurred while fetching available updates.";
+"PO-UP-CHOOSE-PRE" = "This version of macOS is already downloaded:";
+"PO-UP-CHOOSE-CAN" = "You can download these versions of macOS:";
+"PO-UP-CHOOSE-DELETE" = "Are you sure you want to delete the pre-downloaded installer?";
+"PO-UP-CHOOSE-DELETE-2" = "While this will save you a good 12.2 GBs of storage, it's also useful for quickly reinstalling macOS or really any other reason you might need a 12GB macOS installer.";
+"DELETE" = "Delete";
+"UPDATE" = "Update";
+"REINSTALL" = "Reinstall";
+"UNEXPECTED-ERROR" = "An Unexpected Error Occurred";
+"PO-UP-CHOOSE-EXACT-PATH" = "This file appears to be missing and the full patch cannot be determined. You cannot use the pre-downloaded installer for now.";
+"PO-UP-CHOOSE-DOWNLOAD" = "Download the macOS Installer";
+"PO-UP-CHOOSE-DOWNLOAD-1" = "You can update to this version of macOS, however you can also download it and that's the button you clicked. This popup just exists to make sure you know that. (This will just open your web browser and download the installer, nothing special.)";
+"PO-UP-CHOOSE-DOWNLOAD-2" = "You can't \"update\" to an older version of macOS, however you can download the installer if you have something you want to do with it. (This will just open your web browser and download the installer, nothing special.)";
+"PO-UP-CHOOSE-DOWNLOAD-TIP" = "You can also download the InstallAssistant.pkg if you want.";
+"PO-UP-CHOOSE-DOWNLOAD-TIP-2" = "You cannot update to an older version of macOS, but you may download this installer if you want.";
+"DOWNLOAD" = "Download";
