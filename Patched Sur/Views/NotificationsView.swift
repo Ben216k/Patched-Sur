@@ -20,9 +20,9 @@ struct NotificationsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Update Notifications")
+            Text(.init("PO-UP-NOTIF-TITLE-2"))
                 .font(Font.system(size: 15).bold())
-            Text("Since your Mac is unsupported, Software Update will never inform you about macOS updates, because it doesn't have anything new that supports your Mac. However, Patched Sur can provide this functionality on it's own, also providing for notifications for updates to the patcher if you would like.\n\nReceive Notifications for:")
+            Text(.init("PO-UP-NOTIF-DESCRIPTION-2"))
                 .padding(.top, 5)
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 11))
@@ -44,7 +44,7 @@ struct NotificationsView: View {
                         if notifications == "MACOS" || notifications == "BOTH" {
                             Image("CheckCircle")
                         }
-                        Text("Yes")
+                        Text(.init("YES"))
                     } onClick: {
                         if notifications != "MACOS" {
                             notifications = notifications == "PATCHER" ? "BOTH" : "MACOS"
@@ -58,7 +58,7 @@ struct NotificationsView: View {
                         if notifications != "MACOS" && notifications != "BOTH" {
                             Image("CheckCircle")
                         }
-                        Text("No")
+                        Text(.init("NO"))
                     } onClick: {
                         if notifications != "PATCHER" {
                             notifications = notifications == "BOTH" ? "PATCHER" : "NONE"
@@ -76,7 +76,7 @@ struct NotificationsView: View {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color("Accent").opacity(0.8), style: StrokeStyle(lineWidth: 2))
                 HStack {
-                    Text("Patcher")
+                    Text("Patched Sur")
                         .padding(.leading, 12)
                         .foregroundColor(Color("Accent"))
                     
@@ -84,7 +84,7 @@ struct NotificationsView: View {
                         if notifications == "PATCHER" || notifications == "BOTH" {
                             Image("CheckCircle")
                         }
-                        Text("Yes")
+                        Text(.init("YES"))
                     } onClick: {
                         if notifications != "PATCHER" {
                             notifications = notifications == "MACOS" ? "BOTH" : "PATCHER"
@@ -98,7 +98,7 @@ struct NotificationsView: View {
                         if notifications != "PATCHER" && notifications != "BOTH" {
                             Image("CheckCircle")
                         }
-                        Text("No")
+                        Text(.init("NO"))
                     } onClick: {
                         if notifications != "MACOS" {
                             notifications = notifications == "BOTH" ? "MACOS" : "NONE"
@@ -112,7 +112,7 @@ struct NotificationsView: View {
             HStack {
                 VIButton(id: "BACK", h: $hovered) {
                     Image("BackArrowCircle")
-                    Text("Back")
+                    Text(.init("BACK"))
                 } onClick: {
                     withAnimation {
                         showNotifis = false
@@ -120,11 +120,11 @@ struct NotificationsView: View {
                 }.inPad()
                 .btColor(.gray)
                 VIButton(id: "SET", h: $hovered) {
-                    Text("Confirm")
+                    Text(.init("CONFIRM"))
                     Image("ForwardArrowCircle")
                 } onClick: {
                     if notifications == "NOTHING" {
-                        presentAlert(m: "Setup Notifications!", i: "Patched Sur will correctly notify you about the updates based on your new preferences.", s: .informational)
+                        presentAlert(m: NSLocalizedString("PO-NOTIF-SETUP-DONE", comment: "PO-NOTIF-SETUP-DONE"), i: NSLocalizedString("PO-NOTIF-SETUP-DONE-2", comment: "PO-NOTIF-SETUP-DONE-2"), s: .informational)
                         return
                     }
                     isRunning = true
@@ -138,7 +138,7 @@ struct NotificationsView: View {
                                 _ = try? call("sleep 0.3")
                                 NSApplication.shared.abortModal()
                                 DispatchQueue.main.async {
-                                    presentAlert(m: "Patched Sur Cannot Send Notifications", i: "You must have denied Patched Sur from sending notifications. If you want Patched Sur to send notifications, open System Preferences > Notifications > Patched Sur then allow notifications.\n\nError: \(error.localizedDescription)", s: .informational)
+                                    presentAlert(m: NSLocalizedString("PO-NOTIF-SETUP-DENY", comment: "PO-NOTIF-SETUP-DENY"), i: "\(NSLocalizedString("PO-NOTIF-SETUP-DENY-2", comment: "PO-NOTIF-SETUP-DENY-2"))\n\n\(error.localizedDescription)", s: .informational)
                                     isRunning = false
                                 }
                                 return
@@ -150,7 +150,7 @@ struct NotificationsView: View {
                             _ = try? call("sleep 0.3")
                             NSApplication.shared.abortModal()
                             DispatchQueue.main.async {
-                                presentAlert(m: "Almost there!", i: "To finish setting up notifications, Patched Sur requires making a user daemon that will check every once in a while. To set this up, the patcher needs to have root access, so you'll be prompted to input your password, then you'll be done!", s: .informational)
+                                presentAlert(m: NSLocalizedString("PO-NOTIF-SETUP-ALMOST", comment: "PO-NOTIF-SETUP-ALMOST"), i: NSLocalizedString("PO-NOTIF-SETUP-ALMOST-2", comment: "PO-NOTIF-SETUP-ALMOST-2"), s: .informational)
                                 withAnimation {
                                     showPass = true
                                 }
@@ -173,13 +173,13 @@ struct NotificationsView: View {
                                             print("Saving configuration...")
                                             UserDefaults.standard.setValue(notifications, forKey: "Notifications")
                                             UserDefaults.standard.setValue(autoUpdate, forKey: "AutoUpdate")
-                                            presentAlert(m: "Setup Notifications!", i: "Patched Sur will notify you about the updates you want based on your new preferences.", s: .informational)
+                                            presentAlert(m: NSLocalizedString("PO-NOTIF-SETUP-DONE", comment: "PO-NOTIF-SETUP-DONE"), i: NSLocalizedString("PO-NOTIF-SETUP-DONE-2", comment: "PO-NOTIF-SETUP-DONE-2"), s: .informational)
                                             isRunning = false
                                             withAnimation {
                                                 showNotifis = false
                                             }
                                         } catch {
-                                            presentAlert(m: "Failed to Configure Daemon", i: error.localizedDescription, s: .informational)
+                                            presentAlert(m: NSLocalizedString("PO-NOTIF-SETUP-FAILED", comment: "PO-NOTIF-SETUP-FAILED"), i: error.localizedDescription, s: .informational)
                                             isRunning = false
                                         }
                                     }
@@ -188,9 +188,9 @@ struct NotificationsView: View {
                         }
                     }
                     let al = NSAlert()
-                    al.informativeText = "Before the patcher can send notifications for available updates, the patcher needs permission to send the notifications."
-                    al.messageText = "Patched Sur needs permissions to send notifications."
-                    al.addButton(withTitle: "Cancel")
+                    al.informativeText = NSLocalizedString("PO-NOTIF-SETUP-PERMS-2", comment: "PO-NOTIF-SETUP-PERMS-2")
+                    al.messageText = NSLocalizedString("PO-NOTIF-SETUP-PERMS", comment: "PO-NOTIF-SETUP-PERMS")
+                    al.addButton(withTitle: NSLocalizedString("CANCEL", comment: "CANCEL"))
                     switch al.runModal() {
                     case .alertFirstButtonReturn:
                         isRunning = false

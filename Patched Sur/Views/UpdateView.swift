@@ -35,7 +35,7 @@ struct UpdateView: View {
             VStack {
                 if progress != 5 {
                     HStack(spacing: 15) {
-                        VIHeader(p: "Update \(progress == 1 ? "Patcher" : "macOS")", s: "v\(AppInfo.version) (\(AppInfo.build))", c: $topCompress)
+                        VIHeader(p: progress == 1 ? NSLocalizedString("PO-UP-TITLE-PATCHER", comment: "PO-UP-TITLE-PATCHER") : NSLocalizedString("PO-UP-TITLE-MACOS", comment: "PO-UP-TITLE-MACOS"), s: "v\(AppInfo.version) (\(AppInfo.build))", c: $topCompress)
                             .alignment(.leading)
                         Spacer()
                         if progress != 4 {
@@ -123,7 +123,7 @@ struct UpdateCheckerView: View {
     var body: some View {
         VStack {
             if checkingForUpdatesText == "Checking For Updates..." {
-                Text(checkingForUpdatesText)
+                Text(NSLocalizedString("PO-UP-CHECKING", comment: "PO-UP-CHECKING"))
                     .font(.title2)
                     .fontWeight(.semibold)
                 ProgressView()
@@ -175,12 +175,12 @@ struct UpdateCheckerView: View {
                     }
             } else {
                 VStack {
-                    Text("Failed to Check For Updates")
+                    Text(.init("PO-UP-CHECK-FAILED"))
                         .bold()
                         .padding(.top, -20)
-                    Text("This probably means either your WiFi connection is down, or GitHub's web-hosting servers are down. This shouldn't be much of a problem, assuming you can update macOS manually with the pre-install app, or update the patcher app itself by downloading from the Patched Sur GitHub page.")
+                    Text(.init("PO-UP-CHECK-FAILED-1"))
                         .multilineTextAlignment(.center)
-                        .padding(.vertical, 5)
+                        .padding(.vertical, 0)
                     VIError(checkingForUpdatesText)
 //                    Button {
 //                        let pasteboard = NSPasteboard.general
@@ -205,13 +205,13 @@ struct UpdateCheckerView: View {
 //                        .padding(.bottom, 5)
                     VIButton(id: "BACK", h: $hovered) {
                         Image("BackArrowCircle")
-                        Text("Back")
+                        Text(.init("BACK"))
                     } onClick: {
                         withAnimation {
                             at = 0
                             checkingForUpdatesText = "Checking For Updates..."
                         }
-                    }
+                    }.inPad()
                     .buttonStyle(BorderlessButtonStyle())
                     .onHover {
                         buttonBG = $0 ? Color.accentColor.opacity(0.7) : Color.accentColor

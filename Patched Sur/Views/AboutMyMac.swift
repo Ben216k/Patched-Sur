@@ -26,7 +26,7 @@ struct AboutMyMac: View {
                 SideImageView(releaseTrack: releaseTrack)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
-                    Text("Version \(systemVersion)\(buildNumber.count < 8 ? "" : " Beta") (\(buildNumber))").font(.subheadline)
+                    Text("\(NSLocalizedString("PO-AMM-VERSION", comment: "PO-AMM-VERSION")) \(systemVersion)\(buildNumber.count < 8 ? "" : " Beta") (\(buildNumber))").font(.subheadline)
                         .redacted(reason: systemVersion.contains("%") ? .placeholder : .init())
                     Rectangle().frame(height: 15).opacity(0).fixedSize()
                     if let coolModel = coolModel {

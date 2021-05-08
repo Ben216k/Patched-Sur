@@ -321,3 +321,49 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 "PO-AMM-MEMORY" = "Memory";
 "PO-AMM-BACK" = "Back to Home";
 "PO-AMM-UPDATE" = "Software Update";
+"PO-AMM-VERSION" = "Version";
+
+// MARK: Update Status
+
+"PO-UP-CHECKING" = "Checking for Updates";
+"PO-UP-CHECK-FAILED" = "Failed to Check For Updates";
+"PO-UP-CHECK-FAILED-1" = "This probably means either your WiFi connection is down, or GitHub's web-hosting servers are down. This shouldn't be much of a problem, assuming you can update macOS manually with the pre-install app, or update the patcher app itself by downloading from the Patched Sur GitHub page.";
+"PO-UP-TITLE-PATCHER" = "Update Patcher";
+"PO-UP-TITLE-MACOS" = "Update macOS";
+
+"PO-UP-USING-TRACK" = "You are using the";
+// Imagine that this is like a sentence. First you see the above phrase, then Release or Beta, then the next text.
+// So this would read, "You are using the Release update track"
+"PO-UP-USING-TRACK-2" = "update track.";
+"PO-UP-BETA-DESCRIPTION" = "These updates can be unstable and is not always suggested for daily use.";
+"PO-UP-RELEASE-DESCRIPTION" = "These updates are normally more stable and is the default update track.";
+"PO-UP-IS-AVALIBLE" = "An update is available!";
+"RELEASED" = "Released";
+"BUILD" = "Build";
+"PO-UP-VIEW-OTHER" = "View Other Versions";
+"PO-UP-START-TITLE" = "Start the macOS Update";
+"PO-UP-START-DESCRIPTION" = "To update, the patcher will first download the latest patches and then the new version of macOS directly from Apple, and after that Apple’s updater will be started without the compatibility check.";
+"PO-UP-NOTES-TITLE" = "See the Latest Release Notes";
+"PO-UP-NOTES-DESCRIPTION" = "See what’s new in macOS before updating. Thanks to Mr. Macintosh (or Apple/9to5Mac sometimes) for providing these.";
+"PO-UP-NO-UPDATES" = "No new updates available.";
+"PO-UP-YOU-ON" = "You're currently on XX.YY.ZZ.";
+"PO-UP-NOTIF-TITLE" = "Configure Update Notifications";
+"PO-UP-NOTIF-DESCRIPTION" = "Get notifications for updates for both macOS and the patcher.";
+
+"PO-UP-NOTIF-TITLE-2" = "Update Nofications";
+// In case you don't know, /n means line down. So if I wrote Hello\nWorld, it would show up as:
+// Hello
+// World
+"PO-UP-NOTIF-DESCRIPTION-2" = "Since your Mac is unsupported, Software Update will never inform you about macOS updates, because it doesn't have anything new that supports your Mac. However, Patched Sur can provide this functionality on it's own, also providing for notifications for updates to the patcher if you would like.\n\nReceive Notifications for:";
+"NO" = "No";
+"YES" = "Yes";
+"CONFIRM" = "Confirm";
+"PO-NOTIF-SETUP-DONE" = "Setup Notifications!";
+"PO-NOTIF-SETUP-DONE-2" = "Patched Sur will correctly notify you about the updates based on your new preferences.";
+"PO-NOTIF-SETUP-PERMS" = "Patched Sur needs permissions to send notifications.";
+"PO-NOTIF-SETUP-PERMS-2" = "Before the patcher can send notifications for available updates, the patcher needs permission to send the notifications.";
+"PO-NOTIF-SETUP-ALMOST" = "Almost there!";
+"PO-NOTIF-SETUP-ALMOST-2" = "To finish setting up notifications, Patched Sur requires making a user daemon that will check every once in a while. To set this up, the patcher needs to have root access, so you'll be prompted to input your password, then you'll be done!";
+"PO-NOTIF-SETUP-DENY" = "Patched Sur Cannot Send Notifications";
+"PO-NOTIF-SETUP-DENY-2" = "You must have denied Patched Sur from sending notifications. If you want Patched Sur to send notifications, open System Preferences > Notifications > Patched Sur then allow notifications.";
+"PO-NOTIF-SETUP-FAILED" = "Failed to Configure Daemon";
