@@ -20,7 +20,7 @@ struct RecoveryPatchView: View {
         ZStack {
             VStack {
                 HStack(spacing: 15) {
-                    VIHeader(p: "Install Recovery", s: "Kind of Helpful", c: $topCompress)
+                    VIHeader(p: NSLocalizedString("PO-IR-TITLE", comment: "PO-IR-TITLE"), s: "Kind of Helpful", c: $topCompress)
                         .alignment(.leading)
                     Spacer()
                     VIButton(id: "BACK", h: $hovered) {
@@ -36,15 +36,15 @@ struct RecoveryPatchView: View {
                 }.padding(.top, 40)
                 Spacer(minLength: 0)
                 if progress == 0 {
-                    Text("DISCLAIMER")
+                    Text(.init("DISCLAMIER"))
                         .font(Font.system(size: 15).bold())
                         .transition(.moveAway2)
-                    Text("This IS NOT something that should be 100% relied on. This is mostly just a \"here, have it this is the best you can get for now.\" I have tried to make a dream recovery mode, but that has not worked out, mostly because the firmware on your Mac ignores files that appear to exist for no reason what so ever. If those files weren't ignored, I wouldn't have to make this message. You can however, do the following with recovery: Manage NVRAM values (like the SIP status and boot-args), use Disk Utility, browse the web (I guess?), and unpatch/patch kexts (and probably some other things).\nMy suggestion is to make an installer usb and hold onto it.\nYou cannot reinstall macOS with this.")
+                    Text(.init("PO-IR-DISCLAIM"))
                         .padding(.vertical, 10)
                         .multilineTextAlignment(.center)
                         .transition(.moveAway)
                     VIButton(id: "CONTINUE", h: $hovered) {
-                        Text("Continue")
+                        Text(.init("CONTINUE"))
                         Image("ForwardArrowCircle")
                     } onClick: {
                         let sipStatus = try! call("csrutil status")
@@ -52,8 +52,8 @@ struct RecoveryPatchView: View {
                             print("Recovery probably won't work out since SIP is on.")
                             let errorAlert = NSAlert()
                             errorAlert.alertStyle = .warning
-                            errorAlert.informativeText = "The recovery patch cannot be installed with SIP on because of the filesystem protections. Now it might seem that the only way to turn off SIP is with recovery mode but there are other ways.\n\nIf you still have the installer USB, you might be able to boot into the EFI Boot on it. If that doesn't work or you can't do that, boot into internet recovery mode (CMD-OPTION-R on boot) and you can do it from there."
-                            errorAlert.messageText = "SIP is On"
+                            errorAlert.informativeText = NSLocalizedString("PO-IR-SIP-ON-DESCRIPTION", comment: "PO-IR-SIP-ON-DESCRIPTION")
+                            errorAlert.messageText = NSLocalizedString("PO-IR-SIP-ON", comment: "PO-IR-SIP-ON")
                             errorAlert.runModal()
                             return
                         }
@@ -63,10 +63,10 @@ struct RecoveryPatchView: View {
                     }.inPad()
                     .transition(.moveAway2)
                 } else {
-                    Text("Patching Recovery")
+                    Text(.init("PO-IR-PATCHING"))
                         .font(Font.system(size: 15).bold())
                         .transition(.moveAway2)
-                    Text("macOS Recovery Mode is now being patched onto your Mac. This process has two steps, first is two download the required files, and second is to install them. It's super simple, and doesn't take too long. Once this is done, macOS recovery will be unlocked. Note that if you have multiple partitions, your startup disk's recovery will be (most likely) preferred and will boot instead of the other installed recoveries.")
+                    Text(.init("PO-IR-PATCHING-DESCRIPTION"))
                         .padding(.vertical, 10)
                         .padding(.horizontal, 1)
                         .multilineTextAlignment(.center)
@@ -77,7 +77,7 @@ struct RecoveryPatchView: View {
                     EmptyView()
                 case 1:
                     VIButton(id: "REQUEST", h: $hovered) {
-                        Text("Request Root Permissions")
+                        Text(.init("REQUEST-ROOT"))
                     } onClick: {
                         withAnimation {
                             showPassPrompt = true
@@ -90,7 +90,7 @@ struct RecoveryPatchView: View {
                 case 2:
                     VIButton(id: "NO", h: .constant("")) {
                         Image("DownloadArrow")
-                        Text("Downloading Recovery")
+                        Text(.init("PO-IR-DOWNLOAD-RECOVERY"))
                     }.inPad()
                     .btColor(.gray)
                     .transition(.moveAway2)
@@ -111,7 +111,7 @@ struct RecoveryPatchView: View {
                 case 3:
                     VIButton(id: "NO", h: .constant("")) {
                         Image("DownloadArrow")
-                        Text("Downloading Patches")
+                        Text(.init("DOWNLOAD-PATCHES"))
                     }.inPad()
                     .btColor(.gray)
                     .transition(.moveAway2)
@@ -133,7 +133,7 @@ struct RecoveryPatchView: View {
                     VStack {
                         VIButton(id: "NO", h: .constant("")) {
                             Image("TriUpCircle")
-                            Text("Patching Recovery")
+                            Text(.init("PO-IR-PATCHING"))
                         }.inPad()
                         .btColor(.gray)
                         .transition(.moveAway2)
@@ -159,11 +159,11 @@ struct RecoveryPatchView: View {
                     }
                 case 5:
                     VStack {
-                        Text("Done Patching Recovery!")
+                        Text(.init("PO-IR-DONE"))
                         VIButton(id: "DONE", h: $hovered) {
                             Image(systemName: "circle.grid.3x3")
                                 .font(Font.system(size: 15).weight(.medium))
-                            Text("Go Home")
+                            Text(.init("GO-HOME"))
                         } onClick: {
                             at = 0
                         }.inPad()

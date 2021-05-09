@@ -25,7 +25,7 @@ struct UpdateChooser: View {
     
     var body: some View {
         HStack(spacing: 15) {
-            VIHeader(p: "Update Chooser", s: "v\(AppInfo.version) (\(AppInfo.build))", c: .constant(true))
+            VIHeader(p: NSLocalizedString("PO-UP-CHOOSE-TITLE", comment: "PO-UP-CHOOSE-TITLE"), s: "v\(AppInfo.version) (\(AppInfo.build))", c: .constant(true))
                 .alignment(.leading)
             Spacer()
             VIButton(id: "BACK", h: $hovered) {

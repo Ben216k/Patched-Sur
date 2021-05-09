@@ -34,14 +34,14 @@ struct DownloadView: View {
     
     var body: some View {
         VStack {
-            Text("Downloading Kexts\(useCurrent ? "" : " and macOS")")
+            Text(useCurrent ? .init("DOWNLOAD-PATCHES"): .init("DOWNLOAD-PATCH-MACOS"))
                 .font(.system(size: 15)).bold()
-            Text("The patches allow you to use hardware like WiFi and allows the patcher to override installer code, so that your Mac stays at its full functionality. macOS is being downloaded straight from Apple, in the form of an InstallAssistant.pkg file. With this, we can extract out the Installer app then start a macOS install. (Sometimes the progress bar breaks, but no matter what it's downloading.)")
+            Text(.init("PO-UP-DPM-DESCRIPTION"))
                 .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
             if showPassPrompt || password == "" {
                 VIButton(id: "REQUEST", h: $hovered) {
-                    Text("Request Root Permissions")
+                    Text(.init("REQUEST-ROOT"))
                 } onClick: {
                     withAnimation {
                         showPassPrompt = true
@@ -58,7 +58,7 @@ struct DownloadView: View {
                             VIButton(id: " ", h: .constant("")) {
                                 HStack {
                                     Image("CheckCircle")
-                                    Text("Downloaded Patches")
+                                    Text(.init("DOWNLOADED-PATCHES"))
                                 }.frame(width: 216)
                             }.btColor(.gray)
                         } else {
@@ -76,7 +76,7 @@ struct DownloadView: View {
                             HStack {
                                 Image("FileCircle")
                                     .foregroundColor(.white)
-                                Text("Downloading Patches")
+                                Text(.init("DOWNLOAD-PATCHES"))
                                     .foregroundColor(.white)
                                     .lineLimit(4)
                                     .onAppear {
@@ -132,7 +132,7 @@ struct DownloadView: View {
                         HStack {
                             Image("DownloadArrow")
                                 .foregroundColor(.white)
-                            Text("Downloading macOS")
+                            Text(.init("DOWNLOADING-MACOS"))
                                 .foregroundColor(.white)
                                 .lineLimit(4)
                         }.padding(6)

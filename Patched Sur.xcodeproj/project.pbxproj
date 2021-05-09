@@ -1041,7 +1041,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 90;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -1050,7 +1050,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
-				MARKETING_VERSION = "-1000";
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = bensova.PSRecovery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1064,7 +1064,7 @@
 				CODE_SIGN_ENTITLEMENTS = PSRecovery/PSRecovery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 90;
+				CURRENT_PROJECT_VERSION = 83;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = PSRecovery/Info.plist;
@@ -1073,7 +1073,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
-				MARKETING_VERSION = "-1000";
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = bensova.PSRecovery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

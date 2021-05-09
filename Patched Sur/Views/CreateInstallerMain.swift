@@ -174,7 +174,7 @@ struct DoneView: View {
             VIButton(id: "HOME", h: $hovered) {
                 Image(systemName: "circle.grid.3x3")
                     .font(Font.system(size: 15).weight(.medium))
-                Text("Go Home")
+                Text(.init("GO-HOME"))
             } onClick: {
                 withAnimation {
                     at = 0

@@ -387,7 +387,7 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 
 // MARK: Update Chooser
 
-"PO-UP-CHOOSE-TITLE"
+"PO-UP-CHOOSE-TITLE" = "Update Chooser";
 "PO-UP-CHOOSE-FAILED" = "An error occurred while fetching available updates.";
 "PO-UP-CHOOSE-PRE" = "This version of macOS is already downloaded:";
 "PO-UP-CHOOSE-CAN" = "You can download these versions of macOS:";
@@ -404,3 +404,30 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 "PO-UP-CHOOSE-DOWNLOAD-TIP" = "You can also download the InstallAssistant.pkg if you want.";
 "PO-UP-CHOOSE-DOWNLOAD-TIP-2" = "You cannot update to an older version of macOS, but you may download this installer if you want.";
 "DOWNLOAD" = "Download";
+
+// MARK: Download Patches/macOS
+
+"DOWNLOAD-PATCH-MACOS" = "Downloading Patches and macOS";
+"DOWNLOADED-PATCHES" = "Downloaded Patches";
+"PO-UP-DPM-DESCRIPTION" = "The patches allow you to use hardware like WiFi and allows the patcher to override installer code, so that your Mac stays at its full functionality. macOS is being downloaded straight from Apple, in the form of an InstallAssistant.pkg file. With this, we can extract out the Installer app then start a macOS install. (Sometimes the progress bar breaks, but no matter what it's downloading.)";
+"DOWNLOADING-MACOS" = "Downloading macOS";
+
+// MARK: Starting OS Installer
+
+"PO-UP-SOI-TITLE" = "Ready to Update!";
+"PO-UP-SOI-DESCRIPTION" = "Now, Patched Sur will finish preparing for the update and restart into the macOS Updater. After a while, macOS will be finished installing and you can patch the kexts and then enjoy macOS. This will take a while! Just like the preparing for update part of system preferences, this isn't the fastest thing in the world.";
+"PO-UP-SOI-PREPARING" = "Preparing for Update";
+
+// MARK: Recovery Patch
+
+"DISCLAMIER" = "DISCLAMIER";
+"PO-IR-DISCLAIM" = "This IS NOT something that should be 100% relied on. This is mostly just a \"here, have it this is the best you can get for now.\" I have tried to make a dream recovery mode, but that has not worked out, mostly because the firmware on your Mac ignores files that appear to exist for no reason what so ever. If those files weren't ignored, I wouldn't have to make this message. You can however, do the following with recovery: Manage NVRAM values (like the SIP status and boot-args), use Disk Utility, browse the web (I guess?), and unpatch/patch kexts (and probably some other things).
+My suggestion is to make an installer usb and hold onto it.
+You cannot reinstall macOS with this.";
+"PO-IR-SIP-ON" = "SIP is On";
+"PO-IR-SIP-ON-DESCRIPTION" = "The recovery patch cannot be installed with SIP on because of the filesystem protections. Now it might seem that the only way to turn off SIP is with recovery mode but there are other ways.\n\nIf you still have the installer USB, you might be able to boot into the EFI Boot on it. If that doesn't work or you can't do that, boot into internet recovery mode (CMD-OPTION-R on boot) and you can do it from there.";
+"PO-IR-PATCHING" = "Patching Recovery";
+"PO-IR-PATCHING-DESCRIPTION" = "macOS Recovery Mode is now being patched onto your Mac. This process has two steps, first is two download the required files, and second is to install them. It's super simple, and doesn't take too long. Once this is done, macOS recovery will be unlocked. Note that if you have multiple partitions, your startup disk's recovery will be (most likely) preferred and will boot instead of the other installed recoveries.";
+"PO-IR-DOWNLOAD-RECOVERY" = "Downloading Recovery";
+"PO-IR-DONE" = "Done Patching Recovery!";
+"GO-HOME" = "Go Home";

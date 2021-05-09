@@ -17,16 +17,16 @@ struct StartInstallView: View {
     
     var body: some View {
         VStack {
-            Text("Ready to Update!")
+            Text(.init("PO-UP-SOI-TITLE"))
                 .bold()
-            Text("Now, Patched Sur will finish preparing for the update and restart into the macOS Updater. After a while, macOS will be finished installing and you can patch the kexts and then enjoy macOS. This will take a while! Just like the preparing for update part of system preferences, this isn't the fastest thing in the world.")
+            Text(.init("PO-UP-SOI-DESCRIPTION"))
                 .padding(.vertical)
                 .multilineTextAlignment(.center)
             if errorT == "" {
                 VStack {
                     VIButton(id: " ", h: .constant("")) {
                         Image("UpdateCircle")
-                        Text("Preparing for Update")
+                        Text(.init("PO-UP-SOI-PREPARING"))
                     }.inPad().btColor(.gray)
                     .onAppear(perform: {
                         DispatchQueue.global(qos: .background).async {
