@@ -420,6 +420,7 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 
 // MARK: Recovery Patch
 
+"PO-IR-SUBTITLE" = "Kind of Helpful";
 "DISCLAMIER" = "DISCLAMIER";
 "PO-IR-DISCLAIM" = "This IS NOT something that should be 100% relied on. This is mostly just a \"here, have it this is the best you can get for now.\" I have tried to make a dream recovery mode, but that has not worked out, mostly because the firmware on your Mac ignores files that appear to exist for no reason what so ever. If those files weren't ignored, I wouldn't have to make this message. You can however, do the following with recovery: Manage NVRAM values (like the SIP status and boot-args), use Disk Utility, browse the web (I guess?), and unpatch/patch kexts (and probably some other things).
 My suggestion is to make an installer usb and hold onto it.

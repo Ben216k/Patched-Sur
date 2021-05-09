@@ -20,7 +20,7 @@ struct RecoveryPatchView: View {
         ZStack {
             VStack {
                 HStack(spacing: 15) {
-                    VIHeader(p: NSLocalizedString("PO-IR-TITLE", comment: "PO-IR-TITLE"), s: "Kind of Helpful", c: $topCompress)
+                    VIHeader(p: NSLocalizedString("PO-IR-TITLE", comment: "PO-IR-TITLE"), s: NSLocalizedString("PO-IR-SUBTITLE", comment: "PO-IR-SUBTITLE"), c: $topCompress)
                         .alignment(.leading)
                     Spacer()
                     VIButton(id: "BACK", h: $hovered) {
@@ -165,7 +165,9 @@ struct RecoveryPatchView: View {
                                 .font(Font.system(size: 15).weight(.medium))
                             Text(.init("GO-HOME"))
                         } onClick: {
-                            at = 0
+                            withAnimation {
+                                at = 0
+                            }
                         }.inPad()
                     }.transition(.moveAway2)
                 case -1:
