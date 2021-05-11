@@ -432,3 +432,5 @@ You cannot reinstall macOS with this.";
 "PO-IR-DOWNLOAD-RECOVERY" = "Downloading Recovery";
 "PO-IR-DONE" = "Done Patching Recovery!";
 "GO-HOME" = "Go Home";
+
+// MARK: Three v0.3.0 (102)

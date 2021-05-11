@@ -196,3 +196,240 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 // I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
 "PRE-DONE-LINK" = "Estes passos também podem ser encontrados no GitHub.\nNo entanto, estão apenas em inglês.";
 "PRE-DONE-STEPS" = "(Passos 10-14)";
+
+// MARK: Post-Install App (96)
+
+// General
+
+"BACK" = "Para Trás";
+"RESTART-TO-FINISH" = "Reiniciar para Terminar";
+
+// MARK: Menu Bar
+
+"PO-MN-ABOUT-PATCHER" = "Acerca do Patched Sur";
+"PREFERENCES" = "Preferências";
+"PO-AMM-TITLE" = "Acerca deste Mac";
+"PO-MN-HELP" = "Ajuda do Patched Sur";
+"PO-MN-HELP-OS" = "Atualização do macOS";
+"PO-MN-HELP-PATCHER" = "Atualização do patcher";
+
+// MARK: Update Notifications
+
+// VERSIONTAG is the version number of the new patcher/macOS version (like 0.3.1 or 11.3.1).
+"PO-NOFI-SELF" = "O Patched Sur pode agora ser atualizado para a versão VERSIONTAG. Abre o Patched Sur e clica em Executar Atualizações para saber mais.";
+"PO-NOFI-OS-TITLE" = "Atualização do Software";
+"PO-NOFI-OS-DESCRIPTION" = "O macOS Big Sur VERSIONTAG pode agora ser instalado no teu dispositivo. Abre o Patched Sur e clica em Atualizar o macOS para saber mais.";
+
+// MARK: About Patched Sur
+
+// APPBUILD is the app's version build number, like "96".
+"PO-ATP-AUTHOR-BUILD" = "Por: Ben Sova • Build APPBUILD";
+"PO-ATP-DESCRIPTION" = "Um patcher simples, com um grande coração, para facilitar a execução do Big Sur em Macs sem suporte, projectado para ser utilizado por qualquer pessoa.";
+"PO-ATP-WHATS-NEW-QUESTION" = "Novidades da v0.3.0?";
+"PO-ATP-WHATS-NEW-ANSWER" = "É rápido, poderoso, simples para todos, mesmo que a gráfica seja non-Metal ou mesmo que não fale Inglês.";
+
+// MARK: Central View
+
+"PO-UP-TITLE" = "Correr Atualizações";
+"PO-UP-DESCRIPTION" = "Atualiza o macOS ou o patcher para uma versão mais recente para te manteres atualizado.";
+"PO-PK-TITLE" = "Patch Kexts";
+"PO-PK-DESCRIPTION" = "Os Kexts fornecem ao macOS todas as funcionalidades para que tudo funcione correctamente.";
+"PO-ST-TITLE" = "Preferências";
+"PO-ST-DESCRIPTION" = "Desativar animações, ativar troca automática entre placas gráficas, mostrar logs e talvez até mais.";
+"PO-CI-TITLE" = "Criar Instalador";
+"PO-CI-DESCRIPTION" = "Crie uma unidade USB do instalador do macOS Big Sur com o patch para que possa (re) instalar o macOS e muito mais.";
+"PO-IR-TITLE" = "Instalar o Modo de Recuperação";
+"PO-IR-DESCRIPTION" = "Faz o patch do volume de recuperação atual (usado com CMD-R durante o arranque). Nem sempre é útil.";
+"PO-AMM-DESCRIPTION" = "Mostra informações sobre o teu mac sem o número de série. Bom para te gabares do teu sucesso.";
+
+"PO-PK-NO-NEED-TITLE" = "O Patch dos Kexts Não é necessário";
+"PO-PK-NO-NEED-DESCRIPTION" = "Não precisas de fazer o patch dos kexts nos iMacs de final de 2013. O Big Sur já está a correr com todas as funcionalidades.";
+
+// MARK: Settings View
+
+"PO-ST-TITLE-ALT" = "Preferências Extra";
+"PO-ST-SUBTITLE" = "Algumas Ferramentas/Patches úteis";
+"PO-ST-SECTION-1" = "Patches Extra";
+"PO-ST-SECTION-2" = "Ferramentas Extra";
+"PO-ST-RESTART-APPLY" = "Assim que o Mac reiniciar, as mudanças serão aplicadas";
+
+"PO-ST-DA-DISABLE" = "Desactivar Animações";
+"ENABLE" = "Activar";
+"PO-ST-DA-DISABLE-DONE" = "Desactivar Animações!";
+"PO-ST-DA-DISABLE-DONE-2" = "Assim que o Mac reiniciar, as mudanças serão aplicadas, e o Big Sur deverá ter um desempenho ligeiramente melhor.";
+"PO-ST-DA-ENABLE-DONE" = "Activar Animações!";
+"PO-ST-DA-DESCRIPTION" = "Desativar animações pode ajudar os Macs non-Metal. Como não têm aceleração gráfica, o Big Sur corre extremamente lento, então desactivar as animações vai ajudar.";
+
+"PO-ST-GXS-ENABLE" = "Activar Troca de Gráficas";
+"DISABLE" = "Desactivar";
+"PO-ST-GXS-DESCRIPTION" = "Se tens um Mac com várias GPUs, provavelmente desejass activar a troca automática de gráficas. Obrigado a @15wat por encontrar esta solução.";
+"PO-ST-GXS-ENABLE-DONE" = "Troca de Gráficas Activa";
+"PO-ST-GXS-ENABLE-DONE-2" = "Agora a troca de gráficas será automática! Pode ser necessário reiniciar para que as alterações tenham efeito.";
+"PO-ST-GXS-ENABLE-FAILED" = "Falha ao Activar Troca de Gráficas";
+"PO-ST-GXS-DISABLE-DONE" = "Troca de Gráficas Inactiva";
+"PO-ST-GXS-DISABLE-DONE-2" = "Agora a troca de gráficas não será automática! Pode ser necessário reiniciar para que as alterações tenham efeito.";
+"PO-ST-GXS-ENABLE-FAILED" = "Falha ao Desactivar Troca de Gráficas";
+
+"PO-ST-PKL-BUTTON" = "Mostrar Logs do Patch dos Kexts";
+"PO-ST-PKL-DESCRIPTION" = "Se você está a ter problemas com o patch dos Kexts não funcionar, pode valer a pena ver os logs e procurar erros. Isso pode ajudar alguém que está a tentar ajudar a descobrir o problema; portanto, se puder, forneça isso a qualquer pessoa que esteja a tentar ajudá-lo.";
+"PO-ST-PKL-TITLE" = "Logs do Patch dos Kexts";
+"PO-ST-PKL-NO-LOGS" = "Não foram gravados Logs";
+"PO-ST-PKL-COPIED" = "Copiado!";
+"PO-ST-PKL-COPIED-2" = "Os últimos logs do Patch dos Kexts foram copiados para a sua área de transferência. Isso pode ajudar na depuração, certifique-se de partilhar isto com qualquer pessoa que tente ajudá-lo com seu problema.";
+
+"PO-ST-CL-TITLE" = "Limpar as sobras de instalação do Patched Sur";
+"PO-ST-CL-DESCRIPTION" = "Às vezes, o Patched Sur, acidentalmente deixa pequenas sobras de quando algo foi executado. Isso às vezes pode economizar 12 GB de espaço de armazenamento, sugiro ser feito principalmente depois de executar a atualização.";
+"PO-ST-CL-DONE" = "Limpar Sobras";
+"PO-ST-CL-DONE-2" = "Os ficheiros foram apagados, agora deve ter um pouco mais de espaço livre (assumindo que realmente havia arquivos grandes a serem apagados).";
+
+"PO-ST-CYE-TITLE" = "Contribuir com a Tua Experiência";
+// Add a translation for 'Please Note: These reports are only accepted in English.' to this next value
+"PO-ST-CYE-DESCRIPTION" = "A aplicação pré-instalação no Patched Sur tem um recurso que permite aos novos utilizadores saber como seu Mac funcionará com o Big Sur. No entanto, algo assim precisa de informações e é nisso que podes ajudar! Basta clicar no link acima e seguir as instruções para ajudar. Nota: todas a submissões apenas são aceites em Inglês";
+
+"PO-ST-RL-TITLE" = "Re-Abrir o Patcher";
+"PO-ST-RL-DESCRIPTION" = "Não sei porque quererás isto, mas acho que se quiseres, podes reiniciar a aplicação do patcher. Isso irá atualizar muitas das variáveis ​​que são obtidas quando o patcher é iniciado pela primeira vez. Curiosidade: este é o mesmo código executado quando a atualização for concluída.";
+"PO-ST-RL-FAILED" = "Falha da Re-Abertura!";
+"PO-ST-RL-FAILED-2" = "Falha ao abrir o Patched Sur, mas podes fazer isso sozinho.";
+
+// MARK: Patch Kexts Page
+
+"PO-PK-TITLE-ALT" = "Unpatch Kexts";
+"PO-PK-SUBTITLE" = "Basicamente fazer os Drivers Funcionarem";
+"PO-PK-DESCRIPTION-2" = "Fazer o Patch dos kexts faz com que o Wifi, USB e várias outras coisas funcionem na instalação do Big Sur. Sem estes kexts o Big Sur não vai estar no seu pleno potencial e varias coisas não vão funcionar. Se for necessário podes fazer Un-Patch dos kexts e, depois, voltar a fazer o Patch, o que pode resolver algum problema. Às vezes, pode ser uma boa ideia esperar um pouco antes de executar o patch dos kexts, já que algumas coisas podem estar a interferir no volume do sistema.";
+"PO-PK-START" = "Iniciar o Patch dos Kexts";
+"PO-PK-UN-START" = "Iniciar Un-patch dos Kexts";
+"PO-PK-INSTEAD" = "Un-patch dos Kexts";
+"PO-PK-INSTEAD-REVERSE" = "Patch dos Kexts";
+"PO-PK-DETECT" = "Detecting Patches";
+"PO-PK-NONE-DETECTED" = "Não foram detectados os recursos do Patch";
+"PO-PK-NONE-HELP" = "Tenta inserir o USB do Patched Installer";
+"PO-PK-RUNNING" = "Patching Kexts";
+"PO-PK-UN-RUNNING" = "Un-patching Kexts";
+"PO-PK-LEGACY-ALERT" = "Os únicos  Patches Detectados Requerem o Modo Legacy";
+
+// MARK: Create Installer Others
+
+"PO-CI-START-TITLE" = "Criar o  Instalador macOS";
+"PO-CI-START-DESCRIPTION" = "Esta ferramenta permite que seja criado um instalador USB do macOS Big Sur com o patch do Patched Sur, semelhante à forma como a aplicação de pré-instalação faz, exceto com algumas alterações. Isso definitivamente pode ser usado no caso de ter um problema mais tarde com o patcher. Repara que podes instalar uma partição de recuperação bastante semelhante a esta; no entanto, atualmente não é possível reinstalar o macOS, pois não há WiFi na recuperação, mas com isto podes. Repara também que, se estiveres a usar isto para atualizar, existe uma maneira mais fácil, que é a aplicação pós-instalação.";
+"PO-CI-FINISHED-TITLE" = "Criação do Instalados do macOS foi Finalizada";
+"PO-CI-FINSIHED-DESCRIPTION" = "Este instalador agora pode ser usado para qualquer finalidade que você queira. É totalmente patched como seria se o fizesses com a aplicação de pré-instalação. Ele contém o instalador do macOS (provavelmente sabes disso), um ambiente completo de modo de recuperação e, claro, o Patched Sur para fazer o patch dos kexts.";
+
+// MARK: About This Mac
+
+"PO-AMM-MODEL" = "Modelo";
+"PO-AMM-PROCESSOR" = "Processador";
+"PO-AMM-GRAPHICS" = "Placa Gráfica";
+"PO-AMM-MEMORY" = "Memória";
+"PO-AMM-BACK" = "Voltar ao Início";
+"PO-AMM-UPDATE" = "Atualização de Software";
+"PO-AMM-VERSION" = "Versão";
+
+// MARK: Update Status
+
+"PO-UP-CHECKING" = "Procurar Atualizações";
+"PO-UP-CHECK-FAILED" = "Falha ao Procurar Atualizações";
+"PO-UP-CHECK-FAILED-1" = "Isto provavelmente significa que a conexão WiFi está inativa ou os servidores de hospedagem na web do GitHub estão inativos. Isto não deve ser um problema, assumindo que possas atualizar o macOS manualmente com a aplicação de pré-instalação ou atualizar a própria aplicação do patcher descarregada da página Patched Sur do GitHub.";
+"PO-UP-TITLE-PATCHER" = "Atualizar o Patcher";
+"PO-UP-TITLE-MACOS" = "Atualizar o macOS";
+
+"PO-UP-USING-TRACK" = "Está a utilizar";
+// Imagine that this is like a sentence. First you see the above phrase, then Release or Beta, then the next text.
+// So this would read, "You are using the Release update track"
+"PO-UP-USING-TRACK-2" = ".";
+"PO-UP-BETA-DESCRIPTION" = "Essas atualizações podem ser instáveis ​​e nem sempre são o melhor para o uso diário.";
+"PO-UP-RELEASE-DESCRIPTION" = "Estas atualizações são normalmente mais estáveis ​​e é atualização padrão por predefinição.";
+"PO-UP-IS-AVALIBLE" = "Atualização Disponível!";
+"RELEASED" = "Lançada";
+"BUILD" = "Build";
+"PO-UP-VIEW-OTHER" = "Ver Outras Versões";
+"PO-UP-START-TITLE" = "Iniciar a Atualização do macOS";
+"PO-UP-START-DESCRIPTION" = "Para atualizar, o patcher primeiro vai descarregar os patches mais recentes e, de seguida, a nova versão do macOS diretamente da Apple e, depois disso, o atualizador da Apple será iniciado sem a verificação de compatibilidade.";
+"PO-UP-NOTES-TITLE" = "Ver as Ultimas Notas de Lançamento";
+"PO-UP-NOTES-DESCRIPTION" = "Veja o que há de novo no macOS antes de atualizar. Obrigado ao Mr. Macintosh (ou às vezes Apple / 9to5Mac) por fornecer isto.";
+"PO-UP-NO-UPDATES" = "Não existem novas atualizações disponíveis.";
+"PO-UP-YOU-ON" = "Estás a usar XX.YY.ZZ.";
+"PO-UP-NOTIF-TITLE" = "Configurar Notificações de Atualizações";
+"PO-UP-NOTIF-DESCRIPTION" = "Receber notificações de atualizações para macOS e patcher.";
+
+"PO-UP-NOTIF-TITLE-2" = "Atualizar Notificações";
+// In case you don't know, /n means line down. So if I wrote Hello\nWorld, it would show up as:
+// Hello
+// World
+"PO-UP-NOTIF-DESCRIPTION-2" = "Como o seu Mac não é compatível, a Atualização de software nunca o informará sobre as atualizações do macOS, porque não há nada novo que ofereça suporte ao seu Mac. No entanto, o Patched Sur pode fornecer essa funcionalidade, fornecendo também notificações de atualizações para o patcher, se desejar. \ n \ nReceber notificações para:";
+"NO" = "Não";
+"YES" = "Sim";
+"CONFIRM" = "Confirmar";
+"PO-NOTIF-SETUP-DONE" = "Configurar Notificações!";
+"PO-NOTIF-SETUP-DONE-2" = "Patched Sur irá notificá-lo corretamente sobre as atualizações com base em suas novas preferências";
+"PO-NOTIF-SETUP-PERMS" = "O Patched Sur necessita de permissões para enviar notificações.";
+"PO-NOTIF-SETUP-PERMS-2" = "Antes que o patcher possa enviar notificações de atualizações disponíveis, ele precisa de permissão para enviar as notificações.";
+"PO-NOTIF-SETUP-ALMOST" = "Quase pronto!";
+"PO-NOTIF-SETUP-ALMOST-2" = "Para terminar de configurar as notificações, o Patched Sur requer a criação de um daemon de utilizador que irá verificar de vez em quando. Para configurar isto, o patcher precisa ter acesso root, então, será solicitado que insira a palavra-pass, depois disso está pronto!";
+"PO-NOTIF-SETUP-DENY" = "O Patched Sur não consegue enviar Notificações";
+"PO-NOTIF-SETUP-DENY-2" = "YVocê deve ter negado ao Patched Sur o envio de notificações. Se quiseres que o Patched Sur envie notificações, abre Preferências do Sistema> Notificações> Patched Sur e permite as notificações.";
+"PO-NOTIF-SETUP-FAILED" = "Falha ao configurar o Daemon";
+
+"PO-UP-COMPAT-FAIL-SIP" = "Falha ao verificar o Estado do SIP";
+"PO-UP-COMPAT-FAIL-SIP-2" = "O Patched Sur não conseguiu verificar o estado do SIP, o que deveria ser impossível";
+"PO-UP-COMPAT-SIP-ON" = "O SIP Parece estar Ligado";
+"PO-UP-COMPAT-SIP-ON-2" = "Como o instalador verifica se a atualização é compatível com o seu Mac, o Patched Sur precisa injetar uma dylib para que o instalador não se preocupe com a incompatibilidade. No entanto, isso só pode ser feito com o SIP desativado, então o Patched Sur precisa que desatives o SIP antes de continuar. Para desativa-lo:
+
+1. Arranca em modo de recuperação (⌘R no arranque)
+2. Abre o Terminal em Utilitários.
+3. Digita: csrutil disable e pressione enter.
+4. Pressione Enter e reinicia o computador, depois tenta executar o Patched Sur novamente.";
+"PO-UP-COMPAT-LV-ON" = "A Validação de Biblioteca está Activa";
+"PO-UP-COMPAT-LV-ON-2" = "A Validação de Biblioteca impede que o Patched Sur injecte código no instalador do macOS e ignore a verificação de compatibilidade. Se quiser atualizar o macOS, primeiro desative a Validação de Biblioteca.";
+
+"SKIP" = "Skip";
+"PO-UP-APP-FAILED" = "A Descarga Falhou";
+"PO-UP-APP-START" = "Atualizar a Descarga";
+"DOWNLOADING" = "A Descarregar";
+
+// MARK: Update Chooser
+
+"PO-UP-CHOOSE-TITLE" = "Escolher Atualização";
+"PO-UP-CHOOSE-FAILED" = "Ocorreu um erro ao procurar as atualizações disponíveis.";
+"PO-UP-CHOOSE-PRE" = "Esta versão do macOS já foi descarregada:";
+"PO-UP-CHOOSE-CAN" = "Podes descarregar as seguintes versões do macOS:";
+"PO-UP-CHOOSE-DELETE" = "Tem certeza de que deseja apagar o instalador pré-descarregado?";
+"PO-UP-CHOOSE-DELETE-2" = "Embora isto vá economizar 12,2 GBs de armazenamento, também é útil para reinstalar rapidamente o macOS ou para qualquer outro motivo pelo qual possas precisar de um instalador do macOS de 12 GB.";
+"DELETE" = "Apagar";
+"UPDATE" = "Atualizar";
+"REINSTALL" = "Reinstalar";
+"UNEXPECTED-ERROR" = "Ocorreu Um Erro Inesperado";
+"PO-UP-CHOOSE-EXACT-PATH" = "Este ficheiro parece estar em falta e o patch completo não pode ser determinado. Não podes usar o instalador pré-descarregado por enquanto.";
+"PO-UP-CHOOSE-DOWNLOAD" = "Descarregar o Instalador do macOS";
+"PO-UP-CHOOSE-DOWNLOAD-1" = "Podes atualizar para esta versão do macOS, mas também pode descarrega-la e esse foi o botão em que clicaste. Este pop-up existe apenas para garantir que sabias isso. (Isso apenas abrirá o teu navegador da web e fará a descarga do instalador, nada de especial.)";
+"PO-UP-CHOOSE-DOWNLOAD-2" = "Não podes \ "atualizar \" para uma versão mais antiga do macOS, no entanto, podes descarregar o instalador se quiseres fazer algo com ele. (Isso apenas abrirá o teu navegador da web e fará a descarga do instalador, nada de especial.)";
+"PO-UP-CHOOSE-DOWNLOAD-TIP" = "Se quiseres também podes descarregar o InstallAssistant.pkg.";
+"PO-UP-CHOOSE-DOWNLOAD-TIP-2" = "Não podes atualizar para uma versão mais antiga do macOS, no entanto, podes descarregar o instalador se quiseres";
+"DOWNLOAD" = "Descarga";
+
+// MARK: Download Patches/macOS
+
+"DOWNLOAD-PATCH-MACOS" = "Downloading Patches and macOS";
+"DOWNLOADED-PATCHES" = "Downloaded Patches";
+"PO-UP-DPM-DESCRIPTION" = "The patches allow you to use hardware like WiFi and allows the patcher to override installer code, so that your Mac stays at its full functionality. macOS is being downloaded straight from Apple, in the form of an InstallAssistant.pkg file. With this, we can extract out the Installer app then start a macOS install. (Sometimes the progress bar breaks, but no matter what it's downloading.)";
+"DOWNLOADING-MACOS" = "Downloading macOS";
+
+// MARK: Starting OS Installer
+
+"PO-UP-SOI-TITLE" = "Pronto para Atualizar!";
+"PO-UP-SOI-DESCRIPTION" = "Agora, o Patched Sur vai terminar de se preparar para a atualização e reiniciar no macOS Updater. Depois de um tempo, a instalação do macOS terminará e poderes fazer o patch dos kexts e aproveitar o macOS. Isso vai demorar um bocado! Assim como na preparação para a atualização nas preferências do sistema, isso não é a coisa mais rápida do mundo.";
+"PO-UP-SOI-PREPARING" = "A Preparar para Atualizar";
+
+// MARK: Recovery Patch
+
+"PO-IR-SUBTITLE" = "Meio Util";
+"DISCLAMIER" = "AVISO LEGAL";
+"PO-IR-DISCLAIM" = "Isto NÃO É algo em que se deva confiar a 100%. Isso é principalmente apenas um \ “pega, é o melhor vais ter por agora. \" Eu tentei fazer um modo de recuperação de sonho, mas não funcionou, principalmente porque o firmware no teu Mac ignora ficheiros sem razão alguma. Se esses ficheiros não fossem ignorados, eu não teria que escrever esta mensagem. No entanto, podes fazer o seguinte com a recuperação: Gerir valores de NVRAM (como o estado do SIP e os argumentos de arranque), usar o Utilitário de disco, navegar na web (eu acho?) E fazer o unpatch/patch dos kexts (e provavelmente mais algumas coisas).
+Minha sugestão é fazer um instalador usb e guarda-lo.
+Você não pode reinstalar o macOS com ele.";
+"PO-IR-SIP-ON" = "O SIP está Ligado";
+"PO-IR-SIP-ON-DESCRIPTION" = "O patch de recuperação não pode ser instalado com o SIP ativado por causa das proteções do sistema de ficheiros. Pode parecer que a única maneira de desligar o SIP é com o modo de recuperação, mas existem outras formas. \ n \ nSe ainda tiveres o USB do instalador, poderás conseguir arrancar no EFI de arranque. Se isso não funcionar ou não conseguires fazer isso, arranca em  modo de recuperação de internet (CMD-OPTION-R no arranque) e partir daí já consegues.";
+"PO-IR-PATCHING" = "A fazer o Patch da Recuperação";
+"PO-IR-PATCHING-DESCRIPTION" = "O modo de recuperação do macOS está agora a ser corrigido no teu Mac. Este processo tem duas etapas: a primeira é fazer a descarga dos ficheiros necessários e a segunda é instalá-los. É super simples e não demora muito. Feito isso, a recuperação do macOS será desbloqueada. Nota que se tiveres várias partições, a recuperação do disco de arranque será (provavelmente) preferida e será feito por aí o arranque em vez de uma das outras recuperações instaladas.";
+"PO-IR-DOWNLOAD-RECOVERY" = "A Descarregar a Recuperação";
+"PO-IR-DONE" = "Patch da Recuperação Terminado!";
+"GO-HOME" = "Voltar ao Inicio";
