@@ -39,10 +39,11 @@ struct RecoveryPatchView: View {
                     Text(.init("DISCLAMIER"))
                         .font(Font.system(size: 15).bold())
                         .transition(.moveAway2)
-                    Text(.init("PO-IR-DISCLAIM"))
-                        .padding(.vertical, 10)
-                        .multilineTextAlignment(.center)
-                        .transition(.moveAway)
+                    ScrollView {
+                        Text(.init("PO-IR-DISCLAIM"))
+                            .multilineTextAlignment(.center)
+                    }.padding(.vertical, 5)
+                    .transition(.moveAway)
                     VIButton(id: "CONTINUE", h: $hovered) {
                         Text(.init("CONTINUE"))
                         Image("ForwardArrowCircle")
