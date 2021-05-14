@@ -434,3 +434,11 @@ You cannot reinstall macOS with this.";
 "GO-HOME" = "Go Home";
 
 // MARK: Three v0.3.0 (102)
+
+// Friends in Settings
+"PO-ST-FRIENDS" = "Friends of Patched Sur";
+"PO-ST-FRIENDS-WIDGY" = "Widgy is an amazing app for making 100% custom widgets for both iOS and macOS! With it you can cover your iDevice with your all the data your want, arranged how you want it, while matching beautifully with the rest of your Home Screen / Desktop. Pretty cool, right?";
+
+// MARK: Patch Kexts Configuration
+
+"PO-PK-CONFIGURE" = "Advanced Configuration";

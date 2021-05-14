@@ -401,7 +401,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "PO-UP-CHOOSE-EXACT-PATH" = "Este ficheiro parece estar em falta e o patch completo não pode ser determinado. Não podes usar o instalador pré-descarregado por enquanto.";
 "PO-UP-CHOOSE-DOWNLOAD" = "Descarregar o Instalador do macOS";
 "PO-UP-CHOOSE-DOWNLOAD-1" = "Podes atualizar para esta versão do macOS, mas também pode descarrega-la e esse foi o botão em que clicaste. Este pop-up existe apenas para garantir que sabias isso. (Isso apenas abrirá o teu navegador da web e fará a descarga do instalador, nada de especial.)";
-"PO-UP-CHOOSE-DOWNLOAD-2" = "Não podes \ "atualizar \" para uma versão mais antiga do macOS, no entanto, podes descarregar o instalador se quiseres fazer algo com ele. (Isso apenas abrirá o teu navegador da web e fará a descarga do instalador, nada de especial.)";
+"PO-UP-CHOOSE-DOWNLOAD-2" = "Não podes \"atualizar\" para uma versão mais antiga do macOS, no entanto, podes descarregar o instalador se quiseres fazer algo com ele. (Isso apenas abrirá o teu navegador da web e fará a descarga do instalador, nada de especial.)";
 "PO-UP-CHOOSE-DOWNLOAD-TIP" = "Se quiseres também podes descarregar o InstallAssistant.pkg.";
 "PO-UP-CHOOSE-DOWNLOAD-TIP-2" = "Não podes atualizar para uma versão mais antiga do macOS, no entanto, podes descarregar o instalador se quiseres";
 "DOWNLOAD" = "Descarga";

@@ -169,11 +169,29 @@ struct PSSettings: View {
                         }
                         
                         Group {
+                            // MARK: Thanks!
+                            
                             Text(.init("THANKS-TITLE"))
                                 .font(Font.title3.bold())
                                 .padding(.bottom, -2)
                             
                             Text(.init("THANKS-CONTENT"))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.bottom, 15)
+                            
+                            // MARK: Friends :D
+                            
+                            Text(.init("PO-ST-FRIENDS"))
+                                .font(Font.title3.bold())
+                            
+                            VIButton(id: "FRIENDS-WIDGY", h: $hovered) {
+                                Image("WidgyMark")
+                                    .font(.body)
+                                Text("Widgy")
+                            } onClick: {
+                                NSWorkspace.shared.open("https://apps.apple.com/us/app/widgy/id1524540481")
+                            }.inPad()
+                            Text(.init("PO-ST-FRIENDS-WIDGY"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
                         }

@@ -230,15 +230,15 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 // MARK: Central View
 
 "PO-UP-TITLE" = "Updates durchführen";
-"PO-UP-DESCRIPTION" = "Aktualisiere macOS oder den Patcher auf eine neue Version um auf dem neusten Stand zu bleiben.";
+"PO-UP-DESCRIPTION" = "Aktualisiere macOS oder den Patcher auf eine neue Version.";
 "PO-PK-TITLE" = "Kexts patchen";
 "PO-PK-DESCRIPTION" = "Kexts versichern, dass macOS mit vollem Funktionsumfang läuft, so wie es soll.";
 "PO-ST-TITLE" = "Einstellungen";
-"PO-ST-DESCRIPTION" = "Animationen deaktivieren, Grafikkarten Umschaltung aktivieren, Protokolle ansehen und mehr.";
+"PO-ST-DESCRIPTION" = "Animationen und Grafikkarten Umschaltung deaktivieren, Protokolle und mehr.";
 "PO-CI-TITLE" = "Installer erstellen";
-"PO-CI-DESCRIPTION" = "Erstelle ein gepatchtes macOS Big Sur Installer USB-Laufwerk, mit welchem du macOS (neu)installieren kannst und mehr.";
-"PO-IR-TITLE" = "Wiederherstellungsmodus installieren";
-"PO-IR-DESCRIPTION" = "Patche das Wiederherstellungslaufwerk (mit CMD-R beim Start aktivieren). Ist nicht immer nützlich.";
+"PO-CI-DESCRIPTION" = "Erstelle einen gepatchten macOS Big Sur Installer USB-Stick, um macOS etc. (neu)installieren zu können.";
+"PO-IR-TITLE" = "Wiederherstellung installieren";
+"PO-IR-DESCRIPTION" = "Patche die Wiederherstellung (mit CMD-R beim Start starten). Ist nicht immer nützlich.";
 "PO-AMM-DESCRIPTION" = "Zeige Infos über deinen Mac ohne die Seriennummer. Nützlich um mit deinem Erfolg zu posen.";
 
 "PO-PK-NO-NEED-TITLE" = "Kexts müssen nicht gepatcht werden.";
@@ -422,7 +422,9 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 
 "PO-IR-SUBTITLE" = "Irgendwie hilfreich";
 "DISCLAMIER" = "HAFTUNGAUSSCHLUSS";
-"PO-IR-DISCLAIM" = "Es sollte sich nicht 100% darauf verlassen werden. Dies ist mehr gedacht als \"hier, das ist das Beste was du momentan kriegen kannst.\" Ich habe versucht einen Zauber-Wiederherstellungsmodus zu machen, aber das hat nicht funktioniert. Der Grund dafür ist einfach dass die Firmware auf deinem Mac Dateien ignoriert, welche aus irgend einem Grund zu existieren scheinen. Wenn diese Dateien nicht ignoriert werden würdet, müsste ich diese Nachricht nicht schreiben. Du kannst jedoch das Folgende mit der Wiederherstellung machen: NVRAM Werte bearbeiten (Wie SIP Status und boot-args), das Festplattendienstprogramm verwenden, das Internet durchsuchen (Denke ich zumindest?) und Kexts patchen/entpatchen (Und wahrscheinlich auch einige andere Dinge). Mein Vorschlag ist, einen Installer USB zu erstellen und ihn zu behalten. Du kannst ¨hiermit macOS nicht neu installieren.";
+"PO-IR-DISCLAIM" = "Es sollte sich nicht 100% darauf verlassen werden. Dies ist mehr gedacht als \"hier, das ist das Beste was du momentan kriegen kannst.\" Ich habe versucht einen Zauber-Wiederherstellungsmodus zu machen, aber das hat nicht funktioniert. Der Grund dafür ist einfach dass die Firmware auf deinem Mac Dateien ignoriert, welche aus irgend einem Grund zu existieren scheinen. Wenn diese Dateien nicht ignoriert werden würdet, müsste ich diese Nachricht nicht schreiben. Du kannst jedoch das Folgende mit der Wiederherstellung machen: NVRAM Werte bearbeiten (Wie SIP Status und boot-args), das Festplattendienstprogramm verwenden, das Internet durchsuchen (Denke ich zumindest?) und Kexts patchen/entpatchen (Und wahrscheinlich auch einige andere Dinge).
+Mein Vorschlag ist, einen Installer USB zu erstellen und ihn zu behalten.
+Du kannst ¨hiermit macOS nicht neu installieren.";
 "PO-IR-SIP-ON" = "SIP ist aktiviert";
 "PO-IR-SIP-ON-DESCRIPTION" = "Der Wiederherstellungs Patch kann nicht mit aktivierter SIP installiert werden, aufgrund von Dateisystem Sicherungen. Es sieht vielleicht so aus, als ob der einzige Weg SIP zu deaktivieren im Wiederherstellungs Modus ist, es gibt jedoch andere Wege.\n\nWenn du den Installer USB noch hast, kannst du vielleicht in die EFI Boot Partition starten. Wenn das nicht funktioniert, oder du es nicht machen kannst, starte die Internet Wiederherstellung (CMD-OPTION-R beim Start) und du kannst es von dort aus machen.";
 "PO-IR-PATCHING" = "Wiederherstellung patchen";
