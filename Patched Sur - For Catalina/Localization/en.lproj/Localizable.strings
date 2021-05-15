@@ -442,3 +442,10 @@ You cannot reinstall macOS with this.";
 // MARK: Patch Kexts Configuration
 
 "PO-PK-CONFIGURE" = "Advanced Configuration";
+
+// MARK: Acceleration Settings
+
+// Yes, this next one will fit into a button. It's the best I can think of. Try to keep this somewhat the same length / slightly longer.
+"PO-ST-ACCEL" = "Allow Graphics Acceleration Patching";
+"PO-ST-ACCEL-DESCRIPTION" = "Even though this is still buggy, you can increase performance on your Mac with the tradeoff being some graphics glitches. This button will not install the patches, it will just unhide the second inside the advanced patch configuration to allow it. Disabling this will not uninstall the patches.";
+"PO-ST-ACCEL-DISALLOW" = "Disallow Graphics Acceleration Patching";

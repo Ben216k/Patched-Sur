@@ -39,6 +39,13 @@ if UserDefaults.standard.string(forKey: "UpdateTrack") == "Public Beta" {
     UserDefaults.standard.setValue("Developer", forKey: "UpdateTrack")
 }
 
+print("Checking for Metal")
+if let metalStatus = try? call("system_profiler SPDisplaysDataType | grep Metal"), !metalStatus.contains(": Supported") {
+    AppInfo.openGL = true
+}
+
+//print(UserDefaults.standard.)
+
 CommandLine.arguments.forEach { arg in
     switch arg {
     case "--help", "-h":

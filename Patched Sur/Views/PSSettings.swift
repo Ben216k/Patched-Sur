@@ -14,6 +14,8 @@ struct PSSettings: View {
     @State var passAction: () -> () = {}
     @Binding var password: String
     @State var showKextLogs = false
+    @State var allowsGraphicsAcceleration = false
+    @State var showOpenGLAnyway = false
     
     var body: some View {
         ZStack {
@@ -88,6 +90,28 @@ struct PSSettings: View {
                             Text(.init("PO-ST-GXS-DESCRIPTION"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
+                                .onAppear {
+                                    showOpenGLAnyway = UserDefaults.standard.bool(forKey: "OverrideMetalChecks")
+                                }
+                            
+                            // MARK: Allow Graphics Acceleration Patching
+                            
+                            if AppInfo.openGL || showOpenGLAnyway {
+                                VIButton(id: "GA-ENABLE", h: $hovered) {
+                                    Image(systemName: "bolt.car")
+                                    Text(.init(allowsGraphicsAcceleration ? "PO-ST-ACCEL-DISALLOW" : "PO-ST-ACCEL"))
+                                } onClick: {
+                                    print("Toggling allowing graphics acceleration patching...")
+                                    UserDefaults.standard.setValue(!allowsGraphicsAcceleration, forKey: "AllowsAcceleration")
+                                    allowsGraphicsAcceleration = !allowsGraphicsAcceleration
+                                }.inPad()
+                                Text(.init("PO-ST-ACCEL-DESCRIPTION"))
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.bottom, 15)
+                                    .onAppear {
+                                        allowsGraphicsAcceleration = UserDefaults.standard.bool(forKey: "AllowsAcceleration")
+                                    }
+                            }
                         }
                         
                         Group {
@@ -169,6 +193,7 @@ struct PSSettings: View {
                         }
                         
                         Group {
+                            
                             // MARK: Thanks!
                             
                             Text(.init("THANKS-TITLE"))

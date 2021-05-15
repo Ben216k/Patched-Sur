@@ -194,6 +194,7 @@ final class AppInfo {
     static var startingInstall = false
     static var canReleaseAttention = true
     static var nothing = false
+    static var openGL = false
 }
 
 struct PatchedSurLogger: TextOutputStream {
