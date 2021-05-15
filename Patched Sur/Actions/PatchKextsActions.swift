@@ -29,7 +29,6 @@ func detectPatches(installerName: (String?) -> (), legacy: (Bool) -> ()) {
         if (try? call("[[ -d /usr/local/lib/Patched-Sur-Patches/KextPatches ]]")) != nil {
             print("Found pre-downloaded kexts!")
             installerName("/usr/local/lib/Patched-Sur-Patches/Scripts")
-    //        installerName(nil)
             return
         }
         
@@ -91,4 +90,53 @@ func patchKexts(password: String, legacy: Bool, unpatch: Bool, location: String,
         sleep(5)
         errorX(nil)
     }
+}
+
+func patchSystem(password: String, arguments: String, location: String, errorX: (String?) -> ()) {
+    if !AppInfo.nothing {
+        print("Starting Patch System")
+        do {
+            let output = try call("\(location)/PatchSystem.sh\(arguments)", p: password)
+            UserDefaults.standard.setValue(output, forKey: "PatchKextsLastRun")
+            errorX(nil)
+        } catch {
+            errorX(error.localizedDescription)
+        }
+    } else {
+        print("YOU WANT ME TO PATCH THE SYSTEM?! I'm sleeping for 5 seconds instead.")
+        sleep(5)
+        errorX(nil)
+    }
+}
+
+func argumentsFromValues(
+    wifi: PSWiFiKext, bootPlist: Bool, legacyUSB: Bool, hd3000: Bool,
+    hda: Bool, bcm5701: Bool, gfTesla: Bool, nvNet: Bool, mccs: Bool,
+    agc: Bool, vit9696: Bool, backlight: Bool, fixup: Bool,
+    telemetry: Bool, snb: PSSNBKext, acceleration: Bool
+) -> String {
+    print("Generating PatchSystem.sh arguments...")
+    var arguments = ""
+    if wifi != .none {
+        arguments.append(wifi == .mojaveHybrid ? " --wifi=mojaveHybrid" : (wifi == .hv12vOld ? " --wifi=hv12vOld" : " --wifi=hv12vNew"))
+    }
+    if bootPlist { arguments.append(" --bootPlist") }
+    if legacyUSB { arguments.append(" --legacyUSB") }
+    if hd3000 { arguments.append(" --hd3000") }
+    if hda { arguments.append(" --hda") }
+    if bcm5701 { arguments.append(" --bcm5701") }
+    if gfTesla { arguments.append(" --gfTesla") }
+    if nvNet { arguments.append(" --nvNet") }
+    if mccs { arguments.append(" --mccs") }
+    if agc { arguments.append(" --agc") }
+    if vit9696 { arguments.append(" --vit9696") }
+    if backlight { arguments.append(" --backlight") }
+    if fixup { arguments.append(" --backlightFixup") }
+    if telemetry { arguments.append(" --telemetry") }
+    if snb != .none {
+        arguments.append(snb == .kext ? " --smb=kext" : " --smb=bundle")
+    }
+    if acceleration { arguments.append(" --openGL") }
+    print("Will use:\(arguments)")
+    return arguments
 }

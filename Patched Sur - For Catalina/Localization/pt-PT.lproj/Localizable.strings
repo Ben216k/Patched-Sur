@@ -238,7 +238,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "PO-ST-DESCRIPTION" = "Desativar animações, ativar troca automática entre placas gráficas, mostrar logs e talvez até mais.";
 "PO-CI-TITLE" = "Criar Instalador";
 "PO-CI-DESCRIPTION" = "Crie uma unidade USB do instalador do macOS Big Sur com o patch para que possa (re) instalar o macOS e muito mais.";
-"PO-IR-TITLE" = "Instalar o Modo de Recuperação";
+"PO-IR-TITLE" = "Instalar Modo de Recuperação";
 "PO-IR-DESCRIPTION" = "Faz o patch do volume de recuperação atual (usado com CMD-R durante o arranque). Nem sempre é útil.";
 "PO-AMM-DESCRIPTION" = "Mostra informações sobre o teu mac sem o número de série. Bom para te gabares do teu sucesso.";
 
@@ -262,7 +262,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 
 "PO-ST-GXS-ENABLE" = "Activar Troca de Gráficas";
 "DISABLE" = "Desactivar";
-"PO-ST-GXS-DESCRIPTION" = "Se tens um Mac com várias GPUs, provavelmente desejass activar a troca automática de gráficas. Obrigado a @15wat por encontrar esta solução.";
+"PO-ST-GXS-DESCRIPTION" = "Se tens um Mac com várias GPUs, provavelmente desejas activar a troca automática de gráficas. Obrigado a @15wat por encontrar esta solução.";
 "PO-ST-GXS-ENABLE-DONE" = "Troca de Gráficas Activa";
 "PO-ST-GXS-ENABLE-DONE-2" = "Agora a troca de gráficas será automática! Pode ser necessário reiniciar para que as alterações tenham efeito.";
 "PO-ST-GXS-ENABLE-FAILED" = "Falha ao Activar Troca de Gráficas";
@@ -271,7 +271,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "PO-ST-GXS-ENABLE-FAILED" = "Falha ao Desactivar Troca de Gráficas";
 
 "PO-ST-PKL-BUTTON" = "Mostrar Logs do Patch dos Kexts";
-"PO-ST-PKL-DESCRIPTION" = "Se você está a ter problemas com o patch dos Kexts não funcionar, pode valer a pena ver os logs e procurar erros. Isso pode ajudar alguém que está a tentar ajudar a descobrir o problema; portanto, se puder, forneça isso a qualquer pessoa que esteja a tentar ajudá-lo.";
+"PO-ST-PKL-DESCRIPTION" = "Se está a ter problemas com o patch dos Kexts não funcionar, pode valer a pena ver os logs e procurar erros. Isso pode ajudar alguém que está a tentar ajudar a descobrir o problema; portanto, se puder, forneça isso a qualquer pessoa que esteja a tentar ajudá-lo.";
 "PO-ST-PKL-TITLE" = "Logs do Patch dos Kexts";
 "PO-ST-PKL-NO-LOGS" = "Não foram gravados Logs";
 "PO-ST-PKL-COPIED" = "Copiado!";
@@ -284,7 +284,8 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 
 "PO-ST-CYE-TITLE" = "Contribuir com a Tua Experiência";
 // Add a translation for 'Please Note: These reports are only accepted in English.' to this next value
-"PO-ST-CYE-DESCRIPTION" = "A aplicação pré-instalação no Patched Sur tem um recurso que permite aos novos utilizadores saber como seu Mac funcionará com o Big Sur. No entanto, algo assim precisa de informações e é nisso que podes ajudar! Basta clicar no link acima e seguir as instruções para ajudar. Nota: todas a submissões apenas são aceites em Inglês";
+"PO-ST-CYE-DESCRIPTION" = "A aplicação pré-instalação no Patched Sur tem um recurso que permite aos novos utilizadores saber como seu Mac funcionará com o Big Sur. No entanto, algo assim precisa de informações e é nisso que podes ajudar! Basta clicar no link acima e seguir as instruções para ajudar.
+Nota: apenas são aceites submissões em Inglês";
 
 "PO-ST-RL-TITLE" = "Re-Abrir o Patcher";
 "PO-ST-RL-DESCRIPTION" = "Não sei porque quererás isto, mas acho que se quiseres, podes reiniciar a aplicação do patcher. Isso irá atualizar muitas das variáveis ​​que são obtidas quando o patcher é iniciado pela primeira vez. Curiosidade: este é o mesmo código executado quando a atualização for concluída.";
@@ -310,9 +311,9 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 // MARK: Create Installer Others
 
 "PO-CI-START-TITLE" = "Criar o  Instalador macOS";
-"PO-CI-START-DESCRIPTION" = "Esta ferramenta permite que seja criado um instalador USB do macOS Big Sur com o patch do Patched Sur, semelhante à forma como a aplicação de pré-instalação faz, exceto com algumas alterações. Isso definitivamente pode ser usado no caso de ter um problema mais tarde com o patcher. Repara que podes instalar uma partição de recuperação bastante semelhante a esta; no entanto, atualmente não é possível reinstalar o macOS, pois não há WiFi na recuperação, mas com isto podes. Repara também que, se estiveres a usar isto para atualizar, existe uma maneira mais fácil, que é a aplicação pós-instalação.";
-"PO-CI-FINISHED-TITLE" = "Criação do Instalados do macOS foi Finalizada";
-"PO-CI-FINSIHED-DESCRIPTION" = "Este instalador agora pode ser usado para qualquer finalidade que você queira. É totalmente patched como seria se o fizesses com a aplicação de pré-instalação. Ele contém o instalador do macOS (provavelmente sabes disso), um ambiente completo de modo de recuperação e, claro, o Patched Sur para fazer o patch dos kexts.";
+"PO-CI-START-DESCRIPTION" = "Esta ferramenta permite que seja criado um instalador USB do macOS Big Sur com o patch do Patched Sur, semelhante à forma como a aplicação de pré-instalação faz, exceto com algumas alterações. Isto pode definitivamente ser usado no caso de ter um problema mais tarde com o patcher. Nota,  podes instalar uma partição de recuperação bastante semelhante a esta; no entanto, atualmente não é possível reinstalar o macOS, pois não há WiFi na recuperação, mas com este instalador podes. Nota também que, se estiveres a usar isto para atualizar, existe uma maneira mais fácil, que é a aplicação pós-instalação.";
+"PO-CI-FINISHED-TITLE" = "A Criação do Instalador do macOS foi Finalizada";
+"PO-CI-FINSIHED-DESCRIPTION" = "Este instalador agora pode ser usado para qualquer finalidade que queiras. É totalmente patched como seria se o fizesses com a aplicação de pré-instalação. Ele contém o instalador do macOS (provavelmente sabes disso), um ambiente completo de modo de recuperação e, claro, o Patched Sur para fazer o patch dos kexts.";
 
 // MARK: About This Mac
 
@@ -366,7 +367,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "PO-NOTIF-SETUP-ALMOST" = "Quase pronto!";
 "PO-NOTIF-SETUP-ALMOST-2" = "Para terminar de configurar as notificações, o Patched Sur requer a criação de um daemon de utilizador que irá verificar de vez em quando. Para configurar isto, o patcher precisa ter acesso root, então, será solicitado que insira a palavra-pass, depois disso está pronto!";
 "PO-NOTIF-SETUP-DENY" = "O Patched Sur não consegue enviar Notificações";
-"PO-NOTIF-SETUP-DENY-2" = "YVocê deve ter negado ao Patched Sur o envio de notificações. Se quiseres que o Patched Sur envie notificações, abre Preferências do Sistema> Notificações> Patched Sur e permite as notificações.";
+"PO-NOTIF-SETUP-DENY-2" = "Deve ter negado ao Patched Sur o envio de notificações. Se quiseres que o Patched Sur envie notificações, abre Preferências do Sistema> Notificações> Patched Sur e permite as notificações.";
 "PO-NOTIF-SETUP-FAILED" = "Falha ao configurar o Daemon";
 
 "PO-UP-COMPAT-FAIL-SIP" = "Falha ao verificar o Estado do SIP";
@@ -381,7 +382,7 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 "PO-UP-COMPAT-LV-ON" = "A Validação de Biblioteca está Activa";
 "PO-UP-COMPAT-LV-ON-2" = "A Validação de Biblioteca impede que o Patched Sur injecte código no instalador do macOS e ignore a verificação de compatibilidade. Se quiser atualizar o macOS, primeiro desative a Validação de Biblioteca.";
 
-"SKIP" = "Skip";
+"SKIP" = "Saltar";
 "PO-UP-APP-FAILED" = "A Descarga Falhou";
 "PO-UP-APP-START" = "Atualizar a Descarga";
 "DOWNLOADING" = "A Descarregar";
@@ -410,8 +411,8 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 
 "DOWNLOAD-PATCH-MACOS" = "Downloading Patches and macOS";
 "DOWNLOADED-PATCHES" = "Downloaded Patches";
-"PO-UP-DPM-DESCRIPTION" = "The patches allow you to use hardware like WiFi and allows the patcher to override installer code, so that your Mac stays at its full functionality. macOS is being downloaded straight from Apple, in the form of an InstallAssistant.pkg file. With this, we can extract out the Installer app then start a macOS install. (Sometimes the progress bar breaks, but no matter what it's downloading.)";
-"DOWNLOADING-MACOS" = "Downloading macOS";
+"PO-UP-DPM-DESCRIPTION" = "Os patches permitem que uses hardware como WiFi e permite que o patcher substitua o código do instalador, para que o teu Mac permaneça  com sua total funcionalidade. O macOS está a ser descarregado diretamente da Apple, na forma de um ficheiro InstallAssistant.pkg . Com isto, podemos extrair a aplicação do instalador e iniciar a instalação do macOS. (Às vezes, a barra de progresso quebra, mas não tem problema, o ficheiro está a ser descarregado.)";
+"DOWNLOADING-MACOS" = "A Descarregar o macOS";
 
 // MARK: Starting OS Installer
 
@@ -421,11 +422,11 @@ Patched Sur também usa dois frameworks de código aberto (Open Source), Files e
 
 // MARK: Recovery Patch
 
-"PO-IR-SUBTITLE" = "Meio Util";
+"PO-IR-SUBTITLE" = "Algo Meio Util";
 "DISCLAMIER" = "AVISO LEGAL";
-"PO-IR-DISCLAIM" = "Isto NÃO É algo em que se deva confiar a 100%. Isso é principalmente apenas um \ “pega, é o melhor vais ter por agora. \" Eu tentei fazer um modo de recuperação de sonho, mas não funcionou, principalmente porque o firmware no teu Mac ignora ficheiros sem razão alguma. Se esses ficheiros não fossem ignorados, eu não teria que escrever esta mensagem. No entanto, podes fazer o seguinte com a recuperação: Gerir valores de NVRAM (como o estado do SIP e os argumentos de arranque), usar o Utilitário de disco, navegar na web (eu acho?) E fazer o unpatch/patch dos kexts (e provavelmente mais algumas coisas).
-Minha sugestão é fazer um instalador usb e guarda-lo.
-Você não pode reinstalar o macOS com ele.";
+"PO-IR-DISCLAIM" = "Isto NÃO É algo em que se deva confiar a 100%. Isto é maioritariamente apenas um \ “pega, é o melhor vais ter por agora. \" Eu tentei fazer um modo de recuperação de sonho, mas não funcionou, principalmente porque o firmware no teu Mac ignora ficheiros sem razão alguma. Se esses ficheiros não fossem ignorados, eu não teria que escrever esta mensagem. No entanto, podes fazer o seguinte com a recuperação: Gerir valores de NVRAM (como o estado do SIP e os argumentos de arranque), usar o Utilitário de disco, navegar na web (acho eu?) E fazer o un-patch/patch dos kexts (e provavelmente mais algumas coisas).
+A minha sugestão é criar um instalador usb e guarda-lo.
+Não podes reinstalar o macOS com ele.";
 "PO-IR-SIP-ON" = "O SIP está Ligado";
 "PO-IR-SIP-ON-DESCRIPTION" = "O patch de recuperação não pode ser instalado com o SIP ativado por causa das proteções do sistema de ficheiros. Pode parecer que a única maneira de desligar o SIP é com o modo de recuperação, mas existem outras formas. \ n \ nSe ainda tiveres o USB do instalador, poderás conseguir arrancar no EFI de arranque. Se isso não funcionar ou não conseguires fazer isso, arranca em  modo de recuperação de internet (CMD-OPTION-R no arranque) e partir daí já consegues.";
 "PO-IR-PATCHING" = "A fazer o Patch da Recuperação";

@@ -25,3 +25,19 @@ enum PSWiFiKext: String {
         }
     }
 }
+
+enum PSSNBKext: String {
+    case none = "Disabled"
+    case bundle = "Bundle"
+    case kext = "Kext"
+    
+    mutating func toggle() {
+        if self == .none {
+            self = .bundle
+        } else if self == .bundle {
+            self = .kext
+        } else if self == .kext {
+            self = .none
+        }
+    }
+}

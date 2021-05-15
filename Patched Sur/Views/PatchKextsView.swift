@@ -19,6 +19,7 @@ struct PatchKextsView: View {
     @State var unpatch = false
     @State var errorX = ""
     @State var showAdvanced = false
+    @State var patchSystemArguments: String?
     
     var body: some View {
         ZStack {
@@ -49,6 +50,8 @@ struct PatchKextsView: View {
                             .padding(.vertical, 9)
                             .padding(.top, progress == -2 ? -4 : 0)
                         switch progress {
+                        
+                        // MARK: Start Patch Kext Button
                         case 0:
                             VIButton(id: "STARTKP", h: $hovered) {
                                 Text(.init(unpatch ? "PO-PK-UN-START" : "PO-PK-START"))
@@ -72,6 +75,8 @@ struct PatchKextsView: View {
                             }.inPad()
                             .btColor(.gray)
                             .transition(.moveAway2)
+                            
+                        // MARK: Detecting Patches
                         case 1:
                             VIButton(id: "NEVER", h: .constant("NO")) {
                                 Image("ToolsCircle")
@@ -91,6 +96,8 @@ struct PatchKextsView: View {
                                     }
                                 }, legacy: { legacy = $0 })
                             }
+                            
+                        // MARK: No Patches Detected
                         case -1:
                             HStack {
                                 VIButton(id: "NOPATCHER", h: .constant("")) {
@@ -112,6 +119,8 @@ struct PatchKextsView: View {
                             Text(.init("PO-PK-NONE-HELP"))
                                 .font(.caption)
                                 .transition(.moveAway2)
+                        
+                        // MARK: Request Root
                         case 2:
                             VIButton(id: "REQUESTROOT", h: $hovered) {
                                 Text(.init("REQUEST-ROOT"))
@@ -126,6 +135,8 @@ struct PatchKextsView: View {
                                     showPassPrompt = true
                                 }
                             }
+                            
+                        // MARK: Patching Kexts
                         case 3:
                             VIButton(id: "No", h: .constant("")) {
                                 Image("FileCircle")
@@ -134,16 +145,29 @@ struct PatchKextsView: View {
                             .btColor(.gray)
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
-                                    patchKexts(password: password, legacy: legacy, unpatch: unpatch, location: installerName) { errorY in
-                                        if let errorY = errorY {
-                                            errorX = errorY
-                                            progress = -2
-                                        } else {
-                                            progress = 4
+                                    if let patchSystemArguments = patchSystemArguments {
+                                        patchSystem(password: password, arguments: patchSystemArguments, location: installerName) { errorY in
+                                            if let errorY = errorY {
+                                                errorX = errorY
+                                                progress = -2
+                                            } else {
+                                                progress = 4
+                                            }
+                                        }
+                                    } else {
+                                        patchKexts(password: password, legacy: legacy, unpatch: unpatch, location: installerName) { errorY in
+                                            if let errorY = errorY {
+                                                errorX = errorY
+                                                progress = -2
+                                            } else {
+                                                progress = 4
+                                            }
                                         }
                                     }
                                 }
                             }
+                            
+                        // MARK: Restart to Finish
                         case 4:
                             VIButton(id: "Restart", h: $hovered) {
                                 Image(systemName: "restart.circle")
@@ -162,7 +186,15 @@ struct PatchKextsView: View {
                         }
                     }.transition(.moveAway)
                 } else {
-                    ConfigurePatchKexts(showAdvanced: $showAdvanced)
+                    // MARK: Configure Patch Kexts Link
+                    ConfigurePatchKexts(showAdvanced: $showAdvanced, startPatch: {
+                        patchSystemArguments = $0
+                        installerName = $1
+                        withAnimation {
+                            showAdvanced = false
+                            progress = 2
+                        }
+                    })
                         .transition(.moveAway)
                 }
                 Spacer()
@@ -196,166 +228,334 @@ struct PatchKextsView: View {
     }
 }
 
+// MARK: Configure Patch Kexts
+
 struct ConfigurePatchKexts: View {
     @State var hovered: String?
     @State var isPatching = true
-    @State var wifi = PSWiFiKext.mojaveHybrid
+    @State var wifi = PSWiFiKext.none
+    @State var bootPlist = false
     @State var legacyUSB = false
     @State var hd3000 = false
     @State var hda = false
     @State var bcm5701 = false
     @State var gfTesla = false
     @State var nvNet = false
+    @State var mccs = false
+    @State var agc = false
+    @State var agcold = false
+    @State var vit9696 = false
+    @State var backlight = false
+    @State var fixup = false
     @State var telemetry = false
+    @State var snb = PSSNBKext.none
     @State var acceleration = false
+    @State var detectedPatches = false
     @Binding var showAdvanced: Bool
+    let startPatch: (String, String) -> ()
     
     var body: some View {
         VStack {
-            Text("WARNING: Advanced configurations should only be used if you know what you are doing!\nMake sure not to enable patches you don't need.")
+            Text(.init("PO-PK-CONFIG-WARN"))
                 .font(.caption)
                 .multilineTextAlignment(.center)
-            HStack {
-                Text("Mode:")
-                VIButton(id: "PATCH-UNPATCH", h: $hovered) {
-                    Text(.init(isPatching ? "PO-PK-TITLE" : "PO-PK-TITLE-ALT"))
-                } onClick: {
-                    withAnimation {
-                        isPatching.toggle()
-                    }
-                }.btColor(isPatching ? .accentColor : .red)
-                .inPad()
-            }
-            if isPatching {
-                ScrollView(showsIndicators: false) {
-                    HStack(spacing: 15) {
-                        VStack {
-                            HStack {
-                                Text("WiFi:")
-                                VIButton(id: "WiFi", h: $hovered) {
-                                    Text(wifi.rawValue)
-                                } onClick: {
-                                    withAnimation {
-                                        wifi.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(wifi == .none ? .gray : (wifi == .mojaveHybrid ? Color("Accent") : .red))
-                            }
-                            HStack {
-                                Text("Legacy USB:")
-                                VIButton(id: "USB", h: $hovered) {
-                                    Text(legacyUSB ? "Enabled" : "Disabled")
-                                } onClick: {
-                                    withAnimation {
-                                        legacyUSB.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(!legacyUSB ? .gray : .red)
-                            }
-                            HStack {
-                                Text("BCM5701:")
-                                VIButton(id: "BCM5701", h: $hovered) {
-                                    Text(bcm5701 ? "Enabled" : "Disabled")
-                                } onClick: {
-                                    withAnimation {
-                                        bcm5701.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(!bcm5701 ? .gray : .red)
-                            }
-                            HStack {
-                                Text("NVENET:")
-                                VIButton(id: "NVENET", h: $hovered) {
-                                    Text(nvNet ? "Enabled" : "Disabled")
-                                } onClick: {
-                                    withAnimation {
-                                        nvNet.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(!nvNet ? .gray : .red)
-                            }
+            if detectedPatches {
+                HStack {
+                    Text(.init("PO-PK-CONFIG-MODE"))
+                    VIButton(id: "PATCH-UNPATCH", h: $hovered) {
+                        Text(.init(isPatching ? "PO-PK-TITLE" : "PO-PK-TITLE-ALT"))
+                    } onClick: {
+                        withAnimation {
+                            isPatching.toggle()
                         }
-                        VStack {
-                            HStack {
-                                Text("HD3000:")
-                                VIButton(id: "HD3000", h: $hovered) {
-                                    Text(hd3000 ? "Enabled" : "Disabled")
-                                } onClick: {
-                                    withAnimation {
-                                        hd3000.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(!hd3000 ? .gray : .red)
-                            }
-                            HStack {
-                                Text("HDA:")
-                                VIButton(id: "HDA", h: $hovered) {
-                                    Text(hda ? "Enabled" : "Disabled")
-                                } onClick: {
-                                    withAnimation {
-                                        hda.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(!hda ? .gray : .red)
-                            }
-                            HStack {
-                                Text("GFTESLA:")
-                                VIButton(id: "GFTESLA", h: $hovered) {
-                                    Text(gfTesla ? "Enabled" : "Disabled")
-                                } onClick: {
-                                    withAnimation {
-                                        gfTesla.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(!gfTesla ? .gray : .red)
-                            }
-                            HStack {
-                                Text("TELEMETRY:")
-                                VIButton(id: "TELEMETRY", h: $hovered) {
-                                    Text(telemetry ? "Deactivated" : "Leave Alone")
-                                } onClick: {
-                                    withAnimation {
-                                        telemetry.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(!telemetry ? .gray : .red)
-                            }
-                        }
-                    }
-                    if UserDefaults.standard.bool(forKey: "AllowsAcceleration") {
-                        HStack {
-                            Text("OpenGL Acceleration:")
-                            VIButton(id: "ACCELERATION", h: $hovered) {
-                                Text(acceleration ? "Enabled" : "Disabled")
-                            } onClick: {
-                                withAnimation {
-                                    acceleration.toggle()
+                    }.btColor(isPatching ? .accentColor : .red)
+                    .inPad()
+                }
+                if isPatching {
+                    ScrollView(showsIndicators: false) {
+                        HStack(spacing: 15) {
+                            VStack {
+                                // MARK: Column One
+                                HStack {
+                                    Text("WiFi:")
+                                    VIButton(id: "WiFi", h: $hovered) {
+                                        Text(wifi.rawValue)
+                                    } onClick: {
+                                        withAnimation {
+                                            wifi.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(wifi == .none ? .gray : (wifi == .mojaveHybrid ? Color("Accent") : .accentColor))
                                 }
-                            }.inPad()
-                            .btColor(!acceleration ? .gray : .red)
+                                HStack {
+                                    Text("Legacy USB:")
+                                    VIButton(id: "USB", h: $hovered) {
+                                        Text(legacyUSB ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            legacyUSB.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!legacyUSB ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("BCM5701:")
+                                    VIButton(id: "BCM5701", h: $hovered) {
+                                        Text(bcm5701 ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            bcm5701.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!bcm5701 ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("NVENET:")
+                                    VIButton(id: "NVENET", h: $hovered) {
+                                        Text(nvNet ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            nvNet.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!nvNet ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("AGC:")
+                                    VIButton(id: "AGC", h: $hovered) {
+                                        Text(agc ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            agc.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!agc ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("AGC Old:")
+                                    VIButton(id: "AGC-OLD", h: $hovered) {
+                                        Text(agcold ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            agcold.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!agcold ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("SNB:")
+                                    VIButton(id: "SNB", h: $hovered) {
+                                        Text(snb.rawValue)
+                                    } onClick: {
+                                        withAnimation {
+                                            snb.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(snb == .none ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("Backlight:")
+                                    VIButton(id: "BACKLIGHT", h: $hovered) {
+                                        Text(backlight ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            backlight.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!backlight ? .gray : .accentColor)
+                                }
+                            }
+                            VStack {
+                                // MARK: Column Two
+                                HStack {
+                                    Text("Boot Plist:")
+                                    VIButton(id: "BOOT-PLIST", h: $hovered) {
+                                        Text(bootPlist ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            bootPlist.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!bootPlist ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("HD3000:")
+                                    VIButton(id: "HD3000", h: $hovered) {
+                                        Text(hd3000 ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            hd3000.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!hd3000 ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("HDA:")
+                                    VIButton(id: "HDA", h: $hovered) {
+                                        Text(hda ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            hda.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!hda ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("GFTESLA:")
+                                    VIButton(id: "GFTESLA", h: $hovered) {
+                                        Text(gfTesla ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            gfTesla.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!gfTesla ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("TELEMETRY:")
+                                    VIButton(id: "TELEMETRY", h: $hovered) {
+                                        Text(telemetry ? "Deactivated" : "Leave Alone")
+                                    } onClick: {
+                                        withAnimation {
+                                            telemetry.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!telemetry ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("MCCS:")
+                                    VIButton(id: "MCCS", h: $hovered) {
+                                        Text(mccs ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            mccs.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!mccs ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("VIT9696:")
+                                    VIButton(id: "vit9696", h: $hovered) {
+                                        Text(vit9696 ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            vit9696.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!vit9696 ? .gray : .accentColor)
+                                }
+                                HStack {
+                                    Text("Fix Up:")
+                                    VIButton(id: "FIXUP", h: $hovered) {
+                                        Text(fixup ? "Enabled" : "Disabled")
+                                    } onClick: {
+                                        withAnimation {
+                                            fixup.toggle()
+                                        }
+                                    }.inPad()
+                                    .btColor(!fixup ? .gray : .accentColor)
+                                }
+                            }
+                        }
+                        if UserDefaults.standard.bool(forKey: "AllowsAcceleration") {
+                            // MARK: OpenGL Acceleration
+                            HStack {
+                                Text("OpenGL Acceleration:")
+                                VIButton(id: "ACCELERATION", h: $hovered) {
+                                    Text(acceleration ? "Enabled" : "Disabled")
+                                } onClick: {
+                                    withAnimation {
+                                        acceleration.toggle()
+                                    }
+                                }.inPad()
+                                .btColor(!acceleration ? .gray : .accentColor)
+                            }
                         }
                     }
+                } else {
+                    Text(.init("PO-PK-CONFIG-UNPATCH"))
+                        .multilineTextAlignment(.center)
+                }
+                HStack {
+                    VIButton(id: "BACK", h: $hovered) {
+                        Image("BackArrowCircle")
+                        Text(.init("BACK"))
+                    } onClick: {
+                        withAnimation {
+                            showAdvanced = false
+                        }
+                    }.inPad()
+                    .btColor(.gray)
+                    
+                    // MARK: Start Patch Systewm
+                    VIButton(id: "STARTKP", h: $hovered) {
+                        Text(.init(isPatching ? "PO-PK-START" : "PO-PK-UN-START"))
+                        Image(systemName: "chevron.forward.circle")
+                            .font(Font.system(size: 15).weight(.medium))
+                    } onClick: {
+                        _ = argumentsFromValues(wifi: wifi, bootPlist: bootPlist, legacyUSB: legacyUSB, hd3000: hd3000, hda: hda, bcm5701: bcm5701, gfTesla: gfTesla, nvNet: nvNet, mccs: mccs, agc: agc, vit9696: vit9696, backlight: backlight, fixup: fixup, telemetry: telemetry, snb: snb, acceleration: acceleration)
+                    }.inPad()
+                    .btColor(isPatching ? .accentColor : .red)
                 }
             } else {
-                Text("All kext patches will be uninstalled and the system will be restored to it's old unpatched state. WiFi won't work and possibly other things, this cannot be configured. This could break the system kernel collection resulting in either a kernel panicking Mac or the inability to repatch the kexts, so it's generally safer to just reinstall macOS instead of unpatching.")
-                    .multilineTextAlignment(.center)
-            }
-            HStack {
-                VIButton(id: "BACK", h: $hovered) {
-                    Image("BackArrowCircle")
-                    Text(.init("BACK"))
-                } onClick: {
-                    withAnimation {
-                        showAdvanced = false
-                    }
+                Spacer()
+                VIButton(id: "NOU", h: .constant("NO")) {
+                    Image("RefreshCircle")
+                    Text(.init("PO-PK-DETECT"))
                 }.inPad()
                 .btColor(.gray)
-                VIButton(id: "STARTKP", h: $hovered) {
-                    Text(.init(isPatching ? "PO-PK-START" : "PO-PK-UN-START"))
-                    Image(systemName: "chevron.forward.circle")
-                        .font(Font.system(size: 15).weight(.medium))
-                }.inPad()
-                .btColor(isPatching ? .accentColor : .red)
+                .onAppear {
+                    var lookVolume = ""
+                    detectPatches { volume in
+                        if let volume = volume {
+                            lookVolume = volume
+                        } else {
+                            fatalError("Can't open advanced patches without any patches available.")
+                        }
+                    } legacy: { isLegacy in
+                        if isLegacy {
+                            fatalError("Can't open advanced patches without a new version of the patcher.")
+                        }
+                    }
+                    do {
+                        let needed = try call("\(lookVolume)/NeededPatches.sh")
+                        if needed.contains("WIFI") {
+                            wifi = .mojaveHybrid
+                        }; if needed.contains("HD3000") {
+                            hd3000 = true
+                        }; if needed.contains("HDA") {
+                            hda = true
+                        }; if needed.contains("BCM5701") {
+                            bcm5701 = true
+                        }; if needed.contains("GFTESLA") {
+                            gfTesla = true
+                        }; if needed.contains("NVNET") {
+                            nvNet = true
+                        }; if needed.contains("MCCS") {
+                            mccs = true
+                        }; if needed.contains("AGC") {
+                            agc = true
+                        }; if needed.contains("AGCOLD") {
+                            agcold = true
+                        }; if needed.contains("VIT9696") {
+                            vit9696 = true
+                        }; if needed.contains("BACKLIGHT") {
+                            backlight = true
+                        }; if needed.contains("FIXUP") {
+                            fixup = true
+                        }; if needed.contains("TELEMETRY") {
+                            telemetry = true
+                        }; if needed.contains("SMBBUNDLE") {
+                            snb = .bundle
+                        }; if needed.contains("SMBKEXT") {
+                            snb = .kext
+                        }
+                        detectedPatches = true
+                    } catch {
+                        fatalError(error.localizedDescription)
+                    }
+                }
+                Spacer()
             }
         }.font(.system(size: 12))
     }
