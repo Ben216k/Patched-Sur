@@ -81,6 +81,11 @@ CommandLine.arguments.forEach { arg in
     case "--force-skip-download", "-pre", "-p":
         print("Detected --force-skip-download, skipping the download files step in the updater.")
         AppInfo.usePredownloaded = true
+    case "--nothing", "-n":
+        print("Detected --nothing, we're not actually going to do anything today.")
+        AppInfo.nothing = true
+    case "-AppleLanguages":
+        print("Running with a custom language.")
     default:
         print("Unknown option (\(arg)) detected. Ignoring option. (Use --help to see available options)")
     }

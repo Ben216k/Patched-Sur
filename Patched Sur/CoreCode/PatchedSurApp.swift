@@ -193,6 +193,7 @@ final class AppInfo {
     static var preventUpdate = false
     static var startingInstall = false
     static var canReleaseAttention = true
+    static var nothing = false
 }
 
 struct PatchedSurLogger: TextOutputStream {

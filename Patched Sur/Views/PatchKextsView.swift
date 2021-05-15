@@ -150,7 +150,9 @@ struct PatchKextsView: View {
                                     .font(Font.system(size: 15).weight(.medium))
                                 Text(.init("RESTART-TO-FINISH"))
                             } onClick: {
-                                _ = try? call("reboot", p: password)
+                                if !AppInfo.nothing {
+                                    _ = try? call("reboot", p: password)
+                                }
                             }.inPad()
                         case -2:
                             VIError(errorX)

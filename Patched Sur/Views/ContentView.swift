@@ -98,7 +98,7 @@ struct MainView: View {
     var body: some View {
         VStack {
             HStack(spacing: 15) {
-                VIHeader(p: "Patched Sur", s: "v\(AppInfo.version) (\(AppInfo.build))")
+                VIHeader(p: "Patched Sur", s: "v\(AppInfo.version) (\(AppInfo.build)) \(AppInfo.nothing ? "I'm Lazy" : "")")
                     .alignment(.leading)
                     .padding(.leading, 30)
                 Spacer()

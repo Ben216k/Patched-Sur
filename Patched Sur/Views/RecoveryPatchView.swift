@@ -42,7 +42,7 @@ struct RecoveryPatchView: View {
                     ScrollView {
                         Text(.init("PO-IR-DISCLAIM"))
                             .multilineTextAlignment(.center)
-                    }.padding(.vertical, 5)
+                    }.fixedSize(horizontal: false, vertical: true).padding(.vertical, 5)
                     .transition(.moveAway)
                     VIButton(id: "CONTINUE", h: $hovered) {
                         Text(.init("CONTINUE"))

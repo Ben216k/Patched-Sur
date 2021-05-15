@@ -90,7 +90,7 @@ struct DownloadView: View {
                                                 } errorX: {
                                                     downloadStatus = $0
                                                 } done: {
-                                                    if installInfo!.buildNumber != "CustomAPP" && installInfo!.buildNumber != "CustomPKG" {
+                                                    if installInfo!.buildNumber != "CustomAPP" && installInfo!.buildNumber != "CustomPKG" && !AppInfo.nothing {
                                                         print("Verifying download...")
                                                         var alert: Alert?
                                                         guard let installerFile = try? File(path: "~/.patched-sur/InstallAssistant.pkg") else {
