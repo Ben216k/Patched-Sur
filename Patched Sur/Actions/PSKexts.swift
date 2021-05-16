@@ -10,8 +10,8 @@ import Foundation
 enum PSWiFiKext: String {
     case none = "Disabled"
     case mojaveHybrid = "Mojave-Hybrid"
-    case hv12vOld = "highvoltage12v (Old)"
-    case hv12vNew = "highvoltage12v (New)"
+    case hv12vOld = "hv12v-old"
+    case hv12vNew = "hv12v-new"
     
     mutating func toggle() {
         if self == .mojaveHybrid {

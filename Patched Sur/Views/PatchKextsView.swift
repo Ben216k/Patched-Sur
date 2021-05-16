@@ -69,8 +69,7 @@ struct PatchKextsView: View {
                                     .font(.caption)
                             } onClick: {
                                 withAnimation {
-                                    showAdvanced.toggle()
-                                    topCompress = true
+                                    progress = 10
                                 }
                             }.inPad()
                             .btColor(.gray)
@@ -121,7 +120,7 @@ struct PatchKextsView: View {
                                 .transition(.moveAway2)
                         
                         // MARK: Request Root
-                        case 2:
+                        case 2, 10:
                             VIButton(id: "REQUESTROOT", h: $hovered) {
                                 Text(.init("REQUEST-ROOT"))
                             } onClick: {
@@ -192,9 +191,9 @@ struct PatchKextsView: View {
                         installerName = $1
                         withAnimation {
                             showAdvanced = false
-                            progress = 2
+                            progress = 3
                         }
-                    })
+                    }, password: password)
                         .transition(.moveAway)
                 }
                 Spacer()
@@ -221,7 +220,13 @@ struct PatchKextsView: View {
             }
             EnterPasswordPrompt(password: $password, show: $showPassPrompt) {
                 withAnimation {
-                    progress = 3
+                    if progress == 2 {
+                        progress = 3
+                    } else {
+                        progress = 0
+                        showAdvanced.toggle()
+                        topCompress = true
+                    }
                 }
             }
         }
@@ -251,8 +256,10 @@ struct ConfigurePatchKexts: View {
     @State var snb = PSSNBKext.none
     @State var acceleration = false
     @State var detectedPatches = false
+    @State var lookVolume = ""
     @Binding var showAdvanced: Bool
     let startPatch: (String, String) -> ()
+    let password: String
     
     var body: some View {
         VStack {
@@ -493,7 +500,8 @@ struct ConfigurePatchKexts: View {
                         Image(systemName: "chevron.forward.circle")
                             .font(Font.system(size: 15).weight(.medium))
                     } onClick: {
-                        _ = argumentsFromValues(wifi: wifi, bootPlist: bootPlist, legacyUSB: legacyUSB, hd3000: hd3000, hda: hda, bcm5701: bcm5701, gfTesla: gfTesla, nvNet: nvNet, mccs: mccs, agc: agc, vit9696: vit9696, backlight: backlight, fixup: fixup, telemetry: telemetry, snb: snb, acceleration: acceleration)
+                        let args = argumentsFromValues(wifi: wifi, bootPlist: bootPlist, legacyUSB: legacyUSB, hd3000: hd3000, hda: hda, bcm5701: bcm5701, gfTesla: gfTesla, nvNet: nvNet, mccs: mccs, agc: agc, vit9696: vit9696, backlight: backlight, fixup: fixup, telemetry: telemetry, snb: snb, acceleration: acceleration)
+                        startPatch(args, lookVolume)
                     }.inPad()
                     .btColor(isPatching ? .accentColor : .red)
                 }
@@ -505,7 +513,6 @@ struct ConfigurePatchKexts: View {
                 }.inPad()
                 .btColor(.gray)
                 .onAppear {
-                    var lookVolume = ""
                     detectPatches { volume in
                         if let volume = volume {
                             lookVolume = volume
@@ -518,7 +525,7 @@ struct ConfigurePatchKexts: View {
                         }
                     }
                     do {
-                        let needed = try call("\(lookVolume)/NeededPatches.sh")
+                        let needed = try call("\(lookVolume)/NeededPatches.sh", p: password)
                         if needed.contains("WIFI") {
                             wifi = .mojaveHybrid
                         }; if needed.contains("HD3000") {
