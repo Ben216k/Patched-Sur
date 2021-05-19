@@ -224,7 +224,7 @@ Des Weiteren nutzt Patched Sur zwei Open Source Frameworks, Files and ShellOut v
 // APPBUILD is the app's version build number, like "96".
 "PO-ATP-AUTHOR-BUILD" = "Von: Ben Sova • Build APPBUILD";
 "PO-ATP-DESCRIPTION" = "Ein simpler Patcher mit einem grossen Kern, um Big Sur auf einem nicht unterstützten Mac einfach zum Laufen zu kriegen, entwickelt für Jedermann.";
-"PO-ATP-WHATS-NEW-QUESTION" = "Was ist neu in v0.3.0?";
+"PO-ATP-WHATS-NEW-QUESTION" = "Was ist neu in v1.0.0?";
 "PO-ATP-WHATS-NEW-ANSWER" = "Es ist schnell, mächtig, klar für Jedermann, auch wenn du Metal nicht unterstützt oder Englisch beherrschst.";
 
 // MARK: Central View

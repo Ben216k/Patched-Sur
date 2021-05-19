@@ -132,6 +132,7 @@ struct UpdateOSView: View {
                                 .padding(.bottom, -7.5)
                                 Text(.init("PO-UP-NOTES-DESCRIPTION"))
                                     .font(.caption)
+                                    .fixedSize(horizontal: false, vertical: true)
                             } else {
                                 VStack(alignment: .leading, spacing: 0) {
             //                        Text("An update is available!")
@@ -141,6 +142,8 @@ struct UpdateOSView: View {
                                         .font(.title)
                                         .bold()
                                         .padding(.top, 5)
+                                        .lineLimit(2)
+                                        .frame(width: 400, alignment: .leading)
                                     Text(NSLocalizedString("PO-UP-YOU-ON", comment: "PO-UP-YOU-ON").replacingOccurrences(of: "XX.YY.ZZ", with: "\(osVersion) (\(buildNumber))"))
                                         .font(.caption)
                                     Button {

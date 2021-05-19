@@ -32,6 +32,7 @@
     psDetails = [psDetails stringByAppendingString:[PSApp version]];
     psDetails = [psDetails stringByAppendingString:@" ("];
     psDetails = [psDetails stringByAppendingString:[PSApp build]];
+    psDetails = [psDetails stringByAppendingString:@")"];
     
     // MARK: Title and Subtitle
     

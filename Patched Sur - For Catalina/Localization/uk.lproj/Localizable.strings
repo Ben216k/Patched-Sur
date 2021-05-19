@@ -224,7 +224,7 @@ Patched Sur використовує два фреймворка з відкри
 // APPBUILD is the app's version build number, like "96".
 "PO-ATP-AUTHOR-BUILD" = "Автор: Ben Sova • Збірка APPBUILD";
 "PO-ATP-DESCRIPTION" = "Простий патчер з великим ядром, що спрощує запуск Big Sur на непідтримуваному Mac, розроблений для всіх.";
-"PO-ATP-WHATS-NEW-QUESTION" = "Що нового в 0.3.0?";
+"PO-ATP-WHATS-NEW-QUESTION" = "Що нового в 1.0.0?";
 "PO-ATP-WHATS-NEW-ANSWER" = "Він буде швидше, потужніше, і більш зрозумілим для всіх, навіть якщо ви без Metal або без знань англійської.";
 
 // MARK: Central View

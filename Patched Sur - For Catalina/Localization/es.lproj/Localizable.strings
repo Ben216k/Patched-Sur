@@ -222,7 +222,7 @@ Patched Sur también utiliza dos codigos libres de usos, archivos y ShellOut por
 // APPBUILD is the app's version build number, like "96".
 "PO-ATP-AUTHOR-BUILD" = "Por: Ben Sova • VER APPBUILD";
 "PO-ATP-DESCRIPTION" = "Un simple parche, con un big core, para hacer Big Sur correr en una mac no compatible fácil diseñado para todos.";
-"PO-ATP-WHATS-NEW-QUESTION" = "Que hay nuevo en v0.3.0?";
+"PO-ATP-WHATS-NEW-QUESTION" = "Que hay nuevo en v1.0.0?";
 "PO-ATP-WHATS-NEW-ANSWER" = "Sera rapido, potente y claro para todos, aunque no tengas gráficas metal o si no sabes ingles.";
  
 // Central View
