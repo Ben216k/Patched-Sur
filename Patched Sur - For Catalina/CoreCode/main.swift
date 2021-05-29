@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import Security
 
 print("Hello! If you're seeing this, you are seeing the logs of (pre-install) Patched Sur!")
 print("Or maybe running this from the command line...")

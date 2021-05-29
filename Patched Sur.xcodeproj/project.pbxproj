@@ -45,6 +45,7 @@
 		764B82BC263F3F6900A5BCF0 /* Unsupported.plist in Resources */ = {isa = PBXBuildFile; fileRef = 764B82BB263F3F6900A5BCF0 /* Unsupported.plist */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
 		76553B92262156AF00336C5B /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76553B91262156AE00336C5B /* HaxDownloadView.swift */; };
+		765BC61B265DAB2F0000280F /* AuthorizeExecute.m in Sources */ = {isa = PBXBuildFile; fileRef = 765BC61A265DAB2F0000280F /* AuthorizeExecute.m */; };
 		765DA44A264E26F3003A97B5 /* PSKexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765DA449264E26F3003A97B5 /* PSKexts.swift */; };
 		76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76688D7A2619521C00A1450A /* PatchKextsActions.swift */; };
 		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
@@ -256,6 +257,9 @@
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
 		76553B91262156AE00336C5B /* HaxDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaxDownloadView.swift; sourceTree = "<group>"; };
+		765BC619265DAB2F0000280F /* Patched Sur - For Catalina-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Patched Sur - For Catalina-Bridging-Header.h"; sourceTree = "<group>"; };
+		765BC61A265DAB2F0000280F /* AuthorizeExecute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthorizeExecute.m; sourceTree = "<group>"; };
+		765BC61C265DAB3F0000280F /* AuthorizeExecute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthorizeExecute.h; sourceTree = "<group>"; };
 		765DA449264E26F3003A97B5 /* PSKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSKexts.swift; sourceTree = "<group>"; };
 		76633BEE263E1550000A949E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF1263E257F000A949E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 		76A30CBE262B336300B92DD2 /* DiskUtility.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DiskUtility.icns; sourceTree = "<group>"; };
 		76A30CC2262B336A00B92DD2 /* PatchedSurIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PatchedSurIcon.icns; sourceTree = "<group>"; };
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
+		76AA16672655D4D300FC56FC /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		76AA16682655D6DF00FC56FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchView.swift; sourceTree = "<group>"; };
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
 		76CF37BC25E8C73500403208 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
@@ -596,11 +602,14 @@
 			isa = PBXGroup;
 			children = (
 				76D639DC2576302500B38FBE /* main.swift */,
+				765BC61A265DAB2F0000280F /* AuthorizeExecute.m */,
+				765BC61C265DAB3F0000280F /* AuthorizeExecute.h */,
 				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
 				7692E067251BFF9300C5FB9A /* CentralView.swift */,
 				767167502550AE42000FAE80 /* ShellOut.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				764B82BB263F3F6900A5BCF0 /* Unsupported.plist */,
+				765BC619265DAB2F0000280F /* Patched Sur - For Catalina-Bridging-Header.h */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -738,6 +747,7 @@
 					};
 					7692E061251BFF9300C5FB9A = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1250;
 					};
 					7692E07C251BFFB200C5FB9A = {
 						CreatedOnToolsVersion = 12.2;
@@ -875,6 +885,7 @@
 				7674026B2606EEBD00E39469 /* CreateInstallerView.swift in Sources */,
 				764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */,
 				76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */,
+				765BC61B265DAB2F0000280F /* AuthorizeExecute.m in Sources */,
 				763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */,
 				7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */,
 				7692E090251C077400C5FB9A /* MainView.swift in Sources */,
@@ -981,6 +992,8 @@
 				769932E2263F2DE8006088E9 /* el */,
 				764D732D2640F81000719132 /* pt-BR */,
 				76EBA22726449AA200F50A8C /* es */,
+				76AA16672655D4D300FC56FC /* hr */,
+				76AA16682655D6DF00FC56FC /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1255,6 +1268,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur - For Catalina/Patched_Sur___For_Catalina.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1278,6 +1292,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Patched Sur - For Catalina/CoreCode/Patched Sur - For Catalina-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1287,6 +1303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur - For Catalina/Patched_Sur___For_Catalina.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1310,6 +1327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Patched Sur - For Catalina/CoreCode/Patched Sur - For Catalina-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

@@ -1,0 +1,197 @@
+/*
+  Localizable.strings
+  Patched Sur
+
+  English (en)
+  Created by Ben Sova on 4/25/21.
+*/
+
+// MARK: Pre-Install App (96)
+// Generic
+
+"GET-STARTED" = "开始";
+"CONTINUE" = "继续";
+"GO-BACK" = "返回";
+"Cancel" = "取消";
+"BROWSE" = "浏览";
+"REFRESH" = "刷新";
+"CONTINUE-ERASE" = "继续格式化";
+"REQUEST-ROOT" = "请求管理员权限";
+"EXTRACT-PACKAGE" = "正在解压安装包";
+"FINISHED" = "已完成";
+
+// Enter Password Prompt
+"B-ENTER-PASS-CHANGES" = "Patched Sur 需要管理员权限";
+"B-ENTER-PASS-ALLOW" = "请输入您的系统密码";
+// The main difference here is
+"B-EP-USERNAME" = "用户名:";
+// The only difference here is the colon, which sounds dumb, but it's needed.
+"B-EP-PASSWORD" = "密码:";
+"B-EP-PASSWORD-PH" = "密码";
+
+// Welcome Page
+
+// Reminder! "Patched Sur" is a formal name, so don't localize that. (Patches/Patcher can be localized, just not Patched Sur)
+"PRE-WELCOME-TITLE" = "欢迎使用 Patched Sur!";
+"PRE-WELCOME-DESCRIPTION" = "这个补丁是在苹果不再支持的电脑上安装 Big Sur 最容易的方法。所有的安装过程都是自动的，安装完成后，您的老Mac将会支持所有Big Sur的功能";
+
+// Thanks To Page
+
+"THANKS-TITLE" = "Thanks To";
+"THANKS-CONTENT" = "Patched Sur 不仅仅是我一个人做出来的(Bem)，这个项目受到了很多人的帮忙，没有他们就没有今天的Patched Sur
+
+- barrykn: 是他的补丁恢复了我对我的老Mac的信心，我十分感激Barrykn。
+- ASentientBot: ASentientBot制作了非Metal加速驱动，这样英伟达特斯拉核心的显卡(Geforce 9400M/320M)的显存可以得到完整利用。
+- jackluke: 制作了USB绕过兼容性检查的补丁
+- highvoltage12v: 制作了第一个WiFi驱动
+- ParrotGeek: 开发了LegacyUSBInjector驱动来让一些老Mac兼容新的USB，并且制造了安装包解压自动化程序
+- testheit: 帮忙开发了kmutil控制台来用在Patched Sur里
+- Ausdauersportler: 整合了iMac Metal显卡驱动
+- StarPlayrX: 发现了 starttoinstall 控制台来允许非USB系统升级
+- ASentientHedgehog: 是一只拥有人类智能的刺猬,帮了不少忙
+- OCLP Team: 帮忙制作了底层非Metal显卡加速驱动
+- dosdude1: OpenGL显卡驱动支持和他的补丁里面的很多东西
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, and riiveraluis 的语言翻译
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen 的内部测试和Bug报告
+- 还有很多没有提名的朋友们帮忙制作了这个补丁
+
+Patched Sur 也用到了两个JohnSundell制作的开源架构，文档和Shell(MIT 麻省理工开源）来执行一些任务";
+
+// Please Remember Page
+
+"PLEASE-REMEMBER" = "敬请了解";
+"PRE-PR-1" = "Patched Sur 仍然在Beta阶段所以一些功能并不完美。这个软件永远不会伤害您的电脑，但是一定要备份好数据因为它可能会造成数据丢失";
+"PRE-PR-2" = " 一定要记住在升级之前用Time Machine做一个备份 ";
+"PRE-PR-3" = "我和我的团队不会承担数据丢失的责任。如果升级出现了问题我会尽我可能帮助您，但是很多情况下我可能帮不上忙因为很多时候问题不是因为Patched Sur而造成的";
+
+// Mac Compatibility Page
+
+"PRE-VERIFY-MAC" = "正在验证Mac型号";
+"PRE-VERIFY-QUICK" = "这一步对于PatchedSur的稳定运行很重要。这一步会尽量发现所有可能存在的问题并且尝试打好补丁。这些问题可能包括FileVault文件加密，图形加速和一些其他的小问题。不要担心，这一步很快就会节所";
+"PRE-VERIFY-FETCH" = "正在下载信息";
+"PRE-VERIFY-2" = "正在验证Mac型号";
+
+"PRE-REPORT-BY" = "上传由: ";
+"PERSON" = "人";
+"OTHERS" = "其他";
+"APPROVES" = "同意";
+"APPROVE" = "同意";
+
+"WiFi, Ethernet and Bluetooth" = "WiFi, 本地网络和蓝牙";
+"I/O Ports" = "输入/输出端口";
+"Graphics Acceleration" = "显卡加速";
+"Sleep and Brightness" = "电脑睡眠和屏幕亮度调节";
+"FileVault" = "FileValut文件加密";
+"Personal Hotspots" = "个人热点";
+"Personal Hotspot" = "个人热点";
+"WPA2 Enterprise" = "WPA2 企业WiFi加密机制";
+
+"PROB-FATAL" = "发现不可恢复的问题";
+"PROB-WARN" = "发现可能的问题";
+"PROB-NO-UPGRADE" = "因为这些原因您无法升级到Big Sur";
+"PROB-CONTINUE-ANYWAY" = "知道了，仍然继续";
+"PROB-OTHERS" = "其他问题";
+
+"PROB-FILE-TITLE" = "FileVault文件加密开着";
+"PROB-FILE-DESCRIPTION" = "您的Mac启用了文件加密，这个机制会阻止BigSur启动。在启动补丁安装之前我们强烈建议您关闭文件加密，您可以进入系统设置-安全和隐私-FileVault文件加密来关闭它";
+
+// Reminder! "BigMac" and "StarPlayrX" are a formal names, so don't localize that.
+"PROB-PRO-TITLE" = "Mac Pro有单独的补丁";
+"PROB-PRO-DESCRIPTION" = "Patched Sur支持很多老Mac，但是Mac Pro应该用它自己的补丁。有另外一个补丁，StarPlayrX的巨无霸补丁（Big Mac Patcher)是给Mac Pro量身定制的。";
+
+"PROB-GX-TITLE" = "没有显卡加速";
+"PROB-GX-DESCRIPTION" = "您的Mac不支持Metal显卡加速，所以BigSur会跑得非常非常慢。目前我们正在开发一个显卡驱动，但是它很不稳定而且还没有发布。您可以继续安装但是一定要记住您的Mac将会变得很慢";
+
+"PROB-SURE" = "您确定要继续吗？";
+"PROB-SURE-SURE" = "Patched Sur检测到了一个或多个严重的兼容性问题，您的Mac将不会达到BigSur的完整性能。留在Catalina可能是一个更好的选择";
+
+"REPORT-UNKNOWN" = "未知兼容性";
+"REPORT-UNKNOWN-2" = "取决于您的Mac,Patched Sur可能会也可能不会完美运行。Patched Sur没有找到您的Mac型号的任何兼容性报告。但是别担心，很多用户都报告了Patched Sur在未知兼容性的Mac上完美运行，所以您的Mac可能也会完美运行。一旦升级完毕后，您可以上传您的兼容性报告(在安装后App里的设置里）来让其他用户知道您的体验！";
+
+// Update Track Page
+
+"PRE-TRACK-TITLE" = "设置升级频道";
+"PRE-TRACK-DESCRIPTION" = "升级频道决定您得到的MacOS升级型号。稳定版频道会推送稳定发布的版本，内测频道会推送MacOS Beta版本。但是可能会造成稳定性问题";
+
+"TRACK-RELEASE" = "稳定版频道";
+"TRACK-BETA" = "内测版频道";
+
+// macOS Select Page
+
+"PRE-VERS-TITLE" = "macOS Big Sur 版本";
+"PRE-VERS-DESCRIPTION" = "您可以在这里选择安装特定的MacOS版本，如果您想安装老板的Big Sur,您可以在这里选择。如果您想用事先下载好的MacOS安装包，您可以点击浏览来选择它。如果您想下载最新的安装包，您可以单击下载。";
+"PRE-VERS-NOFI" = "无法连接到苹果服务器，这可能是由于网络没有连接。您可以用一个预先下载的安装包来安装";
+// NOTE: In these two, XX.YY.ZZ is the macOS version. So in English, the first would show Download macOS 11.3. \(installers[0].version)
+"PRE-VERS-DOWNLOAD" = "下载 macOS XX.YY.ZZ";
+"PRE-VERS-USE" = "使用 macOS XX.YY.ZZ";
+"PRE-VERS-PRE" = "使用 以下载的 macOS";
+"PRE-VERS-REDOWNLOAD" = "重新下载";
+"PRE-VERS-FETCH" = "获取安装包";
+
+// Downloading Kexts Page
+
+"DOWNLOAD-PATCHES" = "正在下载补丁";
+"DOWNLOAD-FILES" = "正在下载";
+"PRE-DP-1" = "这个补丁可以使NVRAM和SIP正常工作。来让BigSur启动";
+"PRE-DP-2" = "这是您开始安装之前的最后一个工具.";
+"PRE-DP-3" = "如果您之前没有运行过这个工具，或者您最近重置了PRAM，您才需要运行它";
+"PRE-DP-4" = "这个补丁允许您的电脑使用Wi-Fi和USB";
+"PRE-DP-CANCEL-1" = "正在下载必须的补丁，您确定要退出吗？";
+"PRE-DP-CANCEL-2" = "正在下载补丁";
+"CANCEL-DOWNLOAD" = "取消下载";
+"RESTART-DOWNLOAD" = "重新开始下载";
+"CONTINUE-DOWNLOAD" = "继续下载";
+"PRE-DP-CANCEL-3" = "补丁下载失败，但是重试下载可能可以解决这个问题。您想重试下载还是返回上一步?";
+"PRE-DP-CANCEL-4" = "是否重启下载?";
+
+// Downloading macOS Page
+
+"PRE-DM-TITLE" = "正在下载 macOS";
+"PRE-DM-DESCRIPTION" = "正在从苹果官方服务器下载MacOS安装包。这是一个完整的安装包，一共12GB";
+"PRE-DM-BAR" = "正在下载 macOS XX.YY.ZZ";
+"PRE-DM-CANCEL-1" = "正在下载MacOS BigSur，这是一个很大的文件，您确定要返回吗？";
+"PRE-DM-CANCEL-2" = "macOS 正在下载";
+"PRE-DM-CANCEL-3" = "macOS下载失败，但是重试下载可能可以解决这个问题。您想重试下载还是返回上一步?";
+
+// Select Volume Page
+
+"PRE-VOL-TITLE" = "选择一个USB盘";
+"PRE-VOL-1" = "我们需要用USB启动来进行初始BigSur安装，这样我们能确定补丁可以被安装";
+"PRE-VOL-2" = "您需要一个USB存储设备来制造启动盘";
+"PRE-VOL-3" = "这个USB设备需要16GB或者更大，电脑内置的分区不可使用，但是外置存储设备（GUID分区表）可以用来启动。如果您的U盘没有被检测，尝试用MacOS扩展格式来格式化";
+"PRE-VOL-NO" = "未检测到兼容的存储设备";
+// Note: VOLUME is the volume name, do not localize it, just pretend it's a volume name and just place it into your sentence
+// Ex. If the volume was "SuperDrive", then "VOLUME will be erased." would show up as "SuperDrive will be erased."
+"PRE-VOL-ERASED" = "VOLUME 的内容将会被抹去";
+"PRE-VOL-ERASED-2" = "这个分区的所有内容都会被完全抹去，您确定要继续吗";
+"PRE-VOL-DETECTING" = "正在检测分区";
+"PRE-VOL-CHECKING" = "正在检测 VOLUME";
+
+// Create Installer Page
+
+"PRE-CTI-TITLE" = "正在创建USB启动盘";
+"PRE-CTI-DESCRIPTION" = "正在使用您选择的USB设备来创建启动盘。拷贝到这个盘上的文件将会创建一个类似于MacOS BigSur系统恢复分区的启动环境。一旦所有文件都被拷贝到了USB上，Patched Sur将会启动并且打好补丁并且提供一些有用的工具";
+"PRE-CTI-CANCEL-1" = "您确定您要取消制造USB安装盘吗？您需要这个启动盘来安装MacOS BigSur， 这个制造过程通常需要一段时间";
+"PRE-CTI-CANCEL-2" = "正在制作MacOS 安装盘";
+"CANCEL-PROCESS" = "取消制作";
+"RESTART-PROCESS" = "重启制作";
+"CONTINUE-PROCESS" = "继续制作";
+"PRE-CTI-CANCEL-3" = "制作安装盘的时候发生了一个问题，但是您可以尝试重新开始";
+"PRE-CTI-CANCEL-4" = "您想重试吗？";
+"PRE-CTI-CREATING" = "正在创建安装盘";
+
+// Done Page
+"PRE-DONE-INFO" = "升级到Big Sur的过程就要结束了，安装盘USB已经制作成功。如果您没有在根据教程来安装，请牢记下面这些步骤:
+
+1. 重启您的Mac，并且在启动的过程中按住“option”键知道您看到一些硬盘图标显示在屏幕上
+2. 选择黄色或者紫色的EFI启动，这会立即关闭您的Mac
+3. 启动您的Mac，并且按住“option”
+4. 选择 \"Install macOS Big Sur\"
+5. 当您的电脑进入系统之后，选择重新安装macOS Big Sur （这一步不会删除您的任何数据，只会升级您的系统）
+6. 当安装app启动后，选择您的系统分区来安装（Macintosh HD，不是 Install macOS Big Sur 因为它是安装盘）
+7. 当安装完毕后，请登录您的电脑并前往应用程序文件夹，并打开Patched Sur
+8. 点击安装补丁，点击继续并输入您的密码
+9. 做完这些后，重启您的电脑并享受Big Sur吧";
+// I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
+"PRE-DONE-LINK" = "您也可以在GitHub上找到这些步骤，但是它们只有英文版本";
+"PRE-DONE-STEPS" = "(步骤 10-14)";
