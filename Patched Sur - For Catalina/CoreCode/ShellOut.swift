@@ -21,17 +21,20 @@ import Dispatch
         print(string.replacingOccurrences(of: "Password:", with: ""))
         handle(string.replacingOccurrences(of: "Password:", with: ""))
     })
-    return try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
+//    return try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
+    let process = Process()
+    let command = "cd \(at.escapingSpaces) && sudo -S \(cmd)"
+    return try process.launchBash(with: command, outputHandle: psHandle, errorHandle: psHandle, stdin: p)
 }
 
 
-@discardableResult func exec(_ cmd: String, p: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
-    let psHandle = StringHandle(handlingClosure: { (string) in
-        print(string)
-        handle(string)
-    })
-    return try shellOut(to: "exec echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
-}
+//@discardableResult func exec(_ cmd: String, p: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
+//    let psHandle = StringHandle(handlingClosure: { (string) in
+//        print(string)
+//        handle(string)
+//    })
+//    return try shellOut(to: "exec echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
+//}
 
 // MARK: - API
 
@@ -195,7 +198,7 @@ public struct StringHandle: Handle {
 // MARK: - Private
 
 private extension Process {
-    @discardableResult func launchBash(with command: String, outputHandle: Handle? = nil, errorHandle: Handle? = nil) throws -> String {
+    @discardableResult func launchBash(with command: String, outputHandle: Handle? = nil, errorHandle: Handle? = nil, stdin: String? = nil) throws -> String {
         launchPath = "/bin/bash"
         arguments = ["-c", command]
 
@@ -207,6 +210,13 @@ private extension Process {
 
         var outputData = Data()
         var errorData = Data()
+        
+        if let stdin = stdin {
+            let standardIn = Pipe()
+            standardInput = standardIn
+            standardIn.fileHandleForWriting.write(stdin.data(using: .utf8)!)
+            standardIn.fileHandleForWriting.closeFile()
+        }
 
         let outputPipe = Pipe()
         standardOutput = outputPipe
