@@ -146,7 +146,7 @@ struct PatchKextsView: View {
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
                                     if patchSystemArguments != nil || !oldKext {
-                                        patchSystem(password: password, arguments: patchSystemArguments ?? "--detect", location: installerName) { errorY in
+                                        patchSystem(password: password, arguments: patchSystemArguments ?? "--detect", location: installerName, unpatch: unpatch) { errorY in
                                             if let errorY = errorY {
                                                 errorX = errorY
                                                 progress = -2
@@ -187,7 +187,7 @@ struct PatchKextsView: View {
                     }.transition(.moveAway)
                 } else {
                     // MARK: Configure Patch Kexts Link
-                    ConfigurePatchKexts(showAdvanced: $showAdvanced, startPatch: {
+                    ConfigurePatchKexts(unpatch: $unpatch, showAdvanced: $showAdvanced, startPatch: {
                         patchSystemArguments = $0
                         installerName = $1
                         withAnimation {
@@ -238,7 +238,7 @@ struct PatchKextsView: View {
 
 struct ConfigurePatchKexts: View {
     @State var hovered: String?
-    @State var isPatching = true
+    @Binding var unpatch: Bool
     @State var wifi = PSWiFiKext.none
     @State var bootPlist = false
     @State var legacyUSB = false
@@ -271,15 +271,15 @@ struct ConfigurePatchKexts: View {
                 HStack {
                     Text(.init("PO-PK-CONFIG-MODE"))
                     VIButton(id: "PATCH-UNPATCH", h: $hovered) {
-                        Text(.init(isPatching ? "PO-PK-TITLE" : "PO-PK-TITLE-ALT"))
+                        Text(.init(!unpatch ? "PO-PK-TITLE" : "PO-PK-TITLE-ALT"))
                     } onClick: {
                         withAnimation {
-                            isPatching.toggle()
+                            unpatch.toggle()
                         }
-                    }.btColor(isPatching ? .accentColor : .red)
+                    }.btColor(!unpatch ? .accentColor : .red)
                     .inPad()
                 }
-                if isPatching {
+                if !unpatch {
                     ScrollView(showsIndicators: false) {
                         HStack(spacing: 15) {
                             VStack {
@@ -298,7 +298,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("Legacy USB:")
                                     VIButton(id: "USB", h: $hovered) {
-                                        Text(legacyUSB ? "Enabled" : "Disabled")
+                                        Text(legacyUSB ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             legacyUSB.toggle()
@@ -309,7 +309,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("BCM5701:")
                                     VIButton(id: "BCM5701", h: $hovered) {
-                                        Text(bcm5701 ? "Enabled" : "Disabled")
+                                        Text(bcm5701 ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             bcm5701.toggle()
@@ -320,7 +320,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("NVENET:")
                                     VIButton(id: "NVENET", h: $hovered) {
-                                        Text(nvNet ? "Enabled" : "Disabled")
+                                        Text(nvNet ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             nvNet.toggle()
@@ -331,7 +331,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("AGC:")
                                     VIButton(id: "AGC", h: $hovered) {
-                                        Text(agc ? "Enabled" : "Disabled")
+                                        Text(agc ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             agc.toggle()
@@ -342,7 +342,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("AGC Old:")
                                     VIButton(id: "AGC-OLD", h: $hovered) {
-                                        Text(agcold ? "Enabled" : "Disabled")
+                                        Text(agcold ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             agcold.toggle()
@@ -364,7 +364,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("Backlight:")
                                     VIButton(id: "BACKLIGHT", h: $hovered) {
-                                        Text(backlight ? "Enabled" : "Disabled")
+                                        Text(backlight ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             backlight.toggle()
@@ -378,7 +378,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("Boot Plist:")
                                     VIButton(id: "BOOT-PLIST", h: $hovered) {
-                                        Text(bootPlist ? "Enabled" : "Disabled")
+                                        Text(bootPlist ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             bootPlist.toggle()
@@ -389,7 +389,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("HD3000:")
                                     VIButton(id: "HD3000", h: $hovered) {
-                                        Text(hd3000 ? "Enabled" : "Disabled")
+                                        Text(hd3000 ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             hd3000.toggle()
@@ -400,7 +400,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("HDA:")
                                     VIButton(id: "HDA", h: $hovered) {
-                                        Text(hda ? "Enabled" : "Disabled")
+                                        Text(hda ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             hda.toggle()
@@ -411,7 +411,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("GFTESLA:")
                                     VIButton(id: "GFTESLA", h: $hovered) {
-                                        Text(gfTesla ? "Enabled" : "Disabled")
+                                        Text(gfTesla ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             gfTesla.toggle()
@@ -433,7 +433,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("MCCS:")
                                     VIButton(id: "MCCS", h: $hovered) {
-                                        Text(mccs ? "Enabled" : "Disabled")
+                                        Text(mccs ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             mccs.toggle()
@@ -444,7 +444,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("VIT9696:")
                                     VIButton(id: "vit9696", h: $hovered) {
-                                        Text(vit9696 ? "Enabled" : "Disabled")
+                                        Text(vit9696 ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             vit9696.toggle()
@@ -455,7 +455,7 @@ struct ConfigurePatchKexts: View {
                                 HStack {
                                     Text("Fix Up:")
                                     VIButton(id: "FIXUP", h: $hovered) {
-                                        Text(fixup ? "Enabled" : "Disabled")
+                                        Text(fixup ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
                                         withAnimation {
                                             fixup.toggle()
@@ -470,7 +470,7 @@ struct ConfigurePatchKexts: View {
                             HStack {
                                 Text("OpenGL Acceleration:")
                                 VIButton(id: "ACCELERATION", h: $hovered) {
-                                    Text(acceleration ? "Enabled" : "Disabled")
+                                    Text(acceleration ? .init("ENABLED") : .init("DISABLED"))
                                 } onClick: {
                                     withAnimation {
                                         acceleration.toggle()
@@ -497,14 +497,14 @@ struct ConfigurePatchKexts: View {
                     
                     // MARK: Start Patch Systewm
                     VIButton(id: "STARTKP", h: $hovered) {
-                        Text(.init(isPatching ? "PO-PK-START" : "PO-PK-UN-START"))
+                        Text(.init(!unpatch ? "PO-PK-START" : "PO-PK-UN-START"))
                         Image(systemName: "chevron.forward.circle")
                             .font(Font.system(size: 15).weight(.medium))
                     } onClick: {
                         let args = argumentsFromValues(wifi: wifi, bootPlist: bootPlist, legacyUSB: legacyUSB, hd3000: hd3000, hda: hda, bcm5701: bcm5701, gfTesla: gfTesla, nvNet: nvNet, mccs: mccs, agc: agc, vit9696: vit9696, backlight: backlight, fixup: fixup, telemetry: telemetry, snb: snb, acceleration: acceleration)
                         startPatch(args, lookVolume)
                     }.inPad()
-                    .btColor(isPatching ? .accentColor : .red)
+                    .btColor(!unpatch ? .accentColor : .red)
                 }
             } else {
                 Spacer()
@@ -557,6 +557,8 @@ struct ConfigurePatchKexts: View {
                             snb = .bundle
                         }; if needed.contains("SMBKEXT") {
                             snb = .kext
+                        }; if needed.contains("BOOTPLIST") {
+                            bootPlist = true
                         }
                         detectedPatches = true
                     } catch {

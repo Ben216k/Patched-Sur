@@ -447,6 +447,8 @@ Make sure not to enable patches you don't need.";
 // This will come right before a button that toggles between "Patch Kexts" and "Unpatch Kexts"
 "PO-PK-CONFIG-MODE" = "Mode:";
 "PO-PK-CONFIG-UNPATCH" = "All kext patches will be uninstalled and the system will be restored to it's old unpatched state. WiFi won't work and possibly other things, this cannot be configured. This could break the system kernel collection resulting in either a kernel panicking Mac or the inability to repatch the kexts, so it's generally safer to just reinstall macOS instead of unpatching.";
+"ENABLED" = "Enabled";
+"DISABLED" = "Disabled";
 
 // MARK: Acceleration & Boot.plist Settings
 

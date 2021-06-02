@@ -93,11 +93,11 @@ func patchKexts(password: String, legacy: Bool, unpatch: Bool, location: String,
     }
 }
 
-func patchSystem(password: String, arguments: String, location: String, errorX: (String?) -> ()) {
+func patchSystem(password: String, arguments: String, location: String, unpatch: Bool, errorX: (String?) -> ()) {
     if !AppInfo.nothing {
         print("Starting Patch System")
         do {
-            let output = try call("\(location)/PatchSystem.sh\(arguments)", p: password)
+            let output = try call("\(location)/PatchSystem.sh\(arguments)\(unpatch ? " -u" : "")", p: password)
             UserDefaults.standard.setValue(output, forKey: "PatchKextsLastRun")
             errorX(nil)
         } catch {
