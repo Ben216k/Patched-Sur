@@ -9,23 +9,26 @@ import Foundation
 
 // MARK: Detect Patches
 
-func detectPatches(installerName: (String?) -> (), legacy: (Bool) -> ()) {
+func detectPatches(installerName: (String?) -> (), legacy: (Bool) -> (), oldKext: (Bool) -> ()) {
     // Detect Patched-Sur-Patches
     print("Checking for USB at \"/Volumes/Install macOS Big Sur Beta/KextPatches\"...")
     if (try? call("[[ -d '/Volumes/Install macOS Big Sur Beta/KextPatches' ]]")) != nil {
         print("Found PSPatches at Beta path")
+        oldKext((try? call("[[ -e '/Volumes/Install macOS Big Sur Beta/PatchSystem.sh' ]]")) == nil)
         installerName("'/Volumes/Install macOS Big Sur Beta'")
         return
     }
     print("Checking for USB at \"/Volumes/Install macOS Big Sur/KextPatches\"")
     if (try? call("[[ -d '/Volumes/Install macOS Big Sur/KextPatches' ]]")) != nil {
         print("Found PSPatches at Regular path")
+        oldKext((try? call("[[ -e '/Volumes/Install macOS Big Sur/PatchSystem.sh' ]]")) == nil)
         installerName("'/Volumes/Install macOS Big Sur'")
         return
     }
     print("Checking for kexts at \"/usr/local/lib/Patched-Sur-Patches/KextPatches")
     if (try? call("[[ -d /usr/local/lib/Patched-Sur-Patches/KextPatches ]]")) != nil {
         print("Found pre-downloaded kexts!")
+        oldKext((try? call("[[ -e '/usr/local/lib/Patched-Sur-Patches/Scripts/PatchSystem.sh' ]]")) == nil)
         installerName("/usr/local/lib/Patched-Sur-Patches/Scripts")
         return
     }
@@ -36,6 +39,7 @@ func detectPatches(installerName: (String?) -> (), legacy: (Bool) -> ()) {
         print("Found micropatcher at legacy Beta path")
         print("It is! This will be used even though it is the last resort.")
         installerName("'/Volumes/Install macOS Big Sur Beta'")
+        oldKext(true)
         legacy(true)
         return
     }
@@ -44,6 +48,7 @@ func detectPatches(installerName: (String?) -> (), legacy: (Bool) -> ()) {
         print("Found micropatcher at legacy regular path")
         print("It is! This will be used even though it is the last resort.")
         installerName("'/Volumes/Install macOS Big Sur'")
+        oldKext(true)
         legacy(true)
         return
     }
@@ -54,6 +59,7 @@ func detectPatches(installerName: (String?) -> (), legacy: (Bool) -> ()) {
         if (try? call("cat ~/.patched-sur/big-sur-micropatcher/payloads/patch-kexts.sh | grep \".patched-sur/big-sur-micropatcher/payloads\"")) != nil {
             print("It is! This will be used even though it is the last resort.")
             installerName("~/.patched-sur/big-sur-micropatcher/payloads")
+            oldKext(true)
             legacy(true)
             return
         }

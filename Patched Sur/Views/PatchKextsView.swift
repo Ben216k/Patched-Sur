@@ -19,6 +19,7 @@ struct PatchKextsView: View {
     @State var unpatch = false
     @State var errorX = ""
     @State var showAdvanced = false
+    @State var oldKext = false
     @State var patchSystemArguments: String?
     
     var body: some View {
@@ -93,7 +94,7 @@ struct PatchKextsView: View {
                                             progress = -1
                                         }
                                     }
-                                }, legacy: { legacy = $0 })
+                                }, legacy: { legacy = $0 }, oldKext: { oldKext = $0; legacy = $0 })
                             }
                             
                         // MARK: No Patches Detected
@@ -144,8 +145,8 @@ struct PatchKextsView: View {
                             .btColor(.gray)
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
-                                    if let patchSystemArguments = patchSystemArguments {
-                                        patchSystem(password: password, arguments: patchSystemArguments, location: installerName) { errorY in
+                                    if patchSystemArguments != nil || !oldKext {
+                                        patchSystem(password: password, arguments: patchSystemArguments ?? "--detect", location: installerName) { errorY in
                                             if let errorY = errorY {
                                                 errorX = errorY
                                                 progress = -2
@@ -523,7 +524,7 @@ struct ConfigurePatchKexts: View {
                         if isLegacy {
                             fatalError("Can't open advanced patches without a new version of the patcher.")
                         }
-                    }
+                    } oldKext: { if $0 { fatalError("Can't open advanced patches without a new version of the patcher.") } }
                     do {
                         let needed = try call("\(lookVolume)/NeededPatches.sh", p: password)
                         if needed.contains("WIFI") {

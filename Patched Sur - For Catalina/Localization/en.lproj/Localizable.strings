@@ -433,7 +433,7 @@ You cannot reinstall macOS with this.";
 "PO-IR-DONE" = "Done Patching Recovery!";
 "GO-HOME" = "Go Home";
 
-// MARK: Three v0.3.0 (102)
+// MARK: Three v1.0.0 (102)
 
 // Friends in Settings
 "PO-ST-FRIENDS" = "Friends of Patched Sur";

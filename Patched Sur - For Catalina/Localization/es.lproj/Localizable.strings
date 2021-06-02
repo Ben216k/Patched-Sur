@@ -400,7 +400,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 "PO-UP-CHOOSE-EXACT-PATH" = "Este archivo parece no estar completo y el parche completo no pudo ser determinado. Por el momento no puedes usar el instalador pre descargado.";
 "PO-UP-CHOOSE-DOWNLOAD" = "Descargar el Instalador de macOS";
 "PO-UP-CHOOSE-DOWNLOAD-1" = "Puedes actualizar esta versión de macOS, sin embargo, también puedes descargarlo, ese es el botón que presionaste. Esta ventana solo existe para asegurarte que lo sepas Esto solo abrirá el navegador y descarga el instalador, nada especial.)";
-"PO-UP-CHOOSE-DOWNLOAD-2" = "No puedes"actualizar\" a una versión mas antigua de macOS, sin embargo, puedes bajar el instalador si quieres hacer algo con él. (Esto solo abrirá el navegador y descarga el instalador, nada especial.)";
+"PO-UP-CHOOSE-DOWNLOAD-2" = "No puedes \"actualizar\" a una versión mas antigua de macOS, sin embargo, puedes bajar el instalador si quieres hacer algo con él. (Esto solo abrirá el navegador y descarga el instalador, nada especial.)";
 "PO-UP-CHOOSE-DOWNLOAD-TIP" = "También puedes descargar el InstallAssistant.pkg si deseas.";
 "PO-UP-CHOOSE-DOWNLOAD-TIP-2" = "Tu no puedes actualizar a una versión de macOs más antigua, pero puedes descargar el instalador si deseas.";
 "DOWNLOAD" = "Download";
