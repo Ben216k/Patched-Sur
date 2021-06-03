@@ -97,7 +97,7 @@ func patchSystem(password: String, arguments: String, location: String, unpatch:
     if !AppInfo.nothing {
         print("Starting Patch System")
         do {
-            let output = try call("\(location)/PatchSystem.sh\(arguments)\(unpatch ? " -u" : "")", p: password)
+            let output = try call("\(location)/PatchSystem.sh\(unpatch ? " -u" : "")\(arguments)", p: password)
             UserDefaults.standard.setValue(output, forKey: "PatchKextsLastRun")
             errorX(nil)
         } catch {

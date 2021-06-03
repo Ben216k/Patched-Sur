@@ -143,3 +143,7 @@ func relaunchPatcher() {
     sleep(1)
     exit(0)
 }
+
+// MARK: Patch Boot.plist
+
+

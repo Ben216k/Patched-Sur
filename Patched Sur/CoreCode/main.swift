@@ -49,6 +49,9 @@ if (try? call("nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:PSVersion")) != nil {
     AppInfo.lol = true
 }
 
+UserDefaults.standard.setValue(true, forKey: "OverrideLateiMacChecks")
+print(UserDefaults.standard.bool(forKey: "OverrideLateiMacChecks"))
+
 //print(UserDefaults.standard.)
 
 CommandLine.arguments.forEach { arg in
