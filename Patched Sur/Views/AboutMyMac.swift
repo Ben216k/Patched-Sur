@@ -25,7 +25,11 @@ struct AboutMyMac: View {
             HStack {
                 SideImageView(releaseTrack: releaseTrack)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
+                    if AppInfo.lol {
+                        Text("macOS ").font(.largeTitle).bold() + Text("Monterey").font(.largeTitle)
+                    } else {
+                        Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
+                    }
                     Text("\(NSLocalizedString("PO-AMM-VERSION", comment: "PO-AMM-VERSION")) \(systemVersion)\(buildNumber.count < 8 ? "" : " Beta") (\(buildNumber))").font(.subheadline)
                         .redacted(reason: systemVersion.contains("%") ? .placeholder : .init())
                     Rectangle().frame(height: 15).opacity(0).fixedSize()
@@ -126,7 +130,14 @@ struct SideImageView: View {
     let releaseTrack: String
     let scale: CGFloat
     var body: some View {
-        if releaseTrack == "Beta" || releaseTrack == "Developer" {
+        if AppInfo.lol {
+            Image("PMBasic")
+                .interpolation(.high)
+                .resizable()
+                .scaledToFit()
+                .frame(width: scale, height: scale)
+                .padding()
+        } else if releaseTrack == "Beta" || releaseTrack == "Developer" {
             Image("BigSurLake")
                 .interpolation(.high)
                 .resizable()
