@@ -145,36 +145,52 @@ struct PSSettings: View {
                                     .fixedSize(horizontal: false, vertical: true)
                                     .padding(.bottom, 15)
                                     .sheet(isPresented: $patchingPlist, content: {
-                                        VStack {
-                                            Text(.init("PO-ST-BOOT-ONGOING"))
-                                                .font(Font.system(size: 15).bold())
-                                            Text(.init("PO-ST-BOOT-DESCRIPTION"))
-                                                .multilineTextAlignment(.center)
-                                                .padding()
-                                            if let errorX = errorX {
-                                                VIError(errorX)
-                                            } else {
-                                                VIButton(id: "NO", h: .constant("U")) {
-                                                    HStack {
-                                                        Image("ToolsCircle")
-                                                        Text(.init("PO-ST-BOOT-ONGOING"))
-                                                    }.onAppear {
-                                                        if !isGoing {
-                                                            isGoing = true
-                                                            DispatchQueue.global(qos: .background).async {
-                                                                var patchLocation = nil as String?
-                                                                var cantBeUsed = false
-                                                                detectPatches(installerName: { patchLocation = $0 }, legacy: { cantBeUsed = $0 }, oldKext: { cantBeUsed = $0 })
-                                                                guard let patchLocation = patchLocation, !cantBeUsed else { errorX = "No compatible patches detected."; return }
-                                                                patchSystem(password: password, arguments: "--bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: { errorX = $0 })
-                                                                isGoing = false
+                                        ZStack {
+                                            HStack {
+                                                Spacer()
+                                                VStack {
+                                                    if !isGoing || errorX != nil {
+                                                        VIButton(id: "LCLOSE", h: $hovered) {
+                                                            Image(systemName: "xmark.circle")
+                                                        } onClick: { patchingPlist = false; errorX = nil }
+                                                        .padding()
+                                                    }
+                                                    Spacer()
+                                                }
+                                            }
+                                            VStack {
+                                                Text(.init("PO-ST-BOOT-ONGOING"))
+                                                    .font(Font.system(size: 15).bold())
+                                                Text(.init("PO-ST-BOOT-DESCRIPTION"))
+                                                    .multilineTextAlignment(.center)
+                                                    .padding()
+                                                if let errorX = errorX {
+                                                    VIError(errorX)
+                                                } else {
+                                                    VIButton(id: "NO", h: .constant("U")) {
+                                                        HStack {
+                                                            Image("ToolsCircle")
+                                                            Text(.init("PO-ST-BOOT-ONGOING"))
+                                                        }.onAppear {
+                                                            if !isGoing {
+                                                                isGoing = true
+                                                                DispatchQueue.global(qos: .background).async {
+                                                                    var patchLocation = nil as String?
+                                                                    var cantBeUsed = false
+                                                                    detectPatches(installerName: { patchLocation = $0 }, legacy: { cantBeUsed = $0 }, oldKext: { cantBeUsed = $0 })
+                                                                    guard let patchLocation = patchLocation, !cantBeUsed else { errorX = "No compatible patches detected."; return }
+                                                                    patchSystem(password: password, arguments: "--bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: { errorX = $0 })
+                                                                    isGoing = false
+                                                                    hasPatchedPlist = true
+                                                                    patchingPlist = false
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                                }.inPad()
-                                                .btColor(.gray)
-                                            }
-                                        }.font(.body).frame(width: 580, height: 325)
+                                                    }.inPad()
+                                                    .btColor(.gray)
+                                                }
+                                            }.font(.body).frame(width: 580, height: 325)
+                                        }
                                     })
                             }
                         }
