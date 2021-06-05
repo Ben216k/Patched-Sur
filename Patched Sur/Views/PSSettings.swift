@@ -183,7 +183,7 @@ struct PSSettings: View {
                                                                         return
                                                                     }
                                                                     print("Using \(patchLocation) as the location, starting Patch System with --bootPlist and --noRebuild.")
-                                                                    patchSystem(password: password, arguments: "--bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: {
+                                                                    patchSystem(password: password, arguments: " --bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: {
                                                                         if $0 == nil {
                                                                             isGoing = false
                                                                             hasPatchedPlist = true
