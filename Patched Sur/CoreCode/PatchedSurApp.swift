@@ -76,8 +76,26 @@ struct PatchedSurApp: App {
                     }
                 })
                 .onOpenURL(perform: { url in
-                    if url == "patched-sur://patch-kexts" {
-                        atLocation = 2
+                    if AppInfo.canReleaseAttention {
+                        switch url {
+                        case "patched-sur://patch-kexts", "patched-sur://patch-system":
+                            atLocation = 2
+                        case "patched-sur://settings", "patched-sur://preferences":
+                            atLocation = 4
+                        case "patched-sur://install-recovery", "patched-sur://patch-recovery":
+                            atLocation = 6
+                        case "patched-sur://create-installer":
+                            atLocation = 5
+                        case "patched-sur://run-updates", "patched-sur://update-macos", "patched-sur://update-patcher":
+                            atLocation = 1
+                        case "patched-sur://about-my-mac", "patched-sur://about-this-mac":
+                            atLocation = 1
+                        default:
+                            break
+                        }
+                    }
+                    if NSApplication.shared.windows.count > 1 {
+                        NSApplication.shared.keyWindow?.close()
                     }
                 })
         }.windowStyle(HiddenTitleBarWindowStyle())

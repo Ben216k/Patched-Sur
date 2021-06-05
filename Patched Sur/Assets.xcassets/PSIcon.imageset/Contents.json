@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icon_64x64.png",
+      "filename" : "icon_32x32@2x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

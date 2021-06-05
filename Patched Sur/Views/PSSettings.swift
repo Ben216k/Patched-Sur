@@ -101,7 +101,7 @@ struct PSSettings: View {
                                             showOpenGLAnyway = UserDefaults.standard.bool(forKey: "OverrideMetalChecks")
                                             showBootPlistAnyway = UserDefaults.standard.bool(forKey: "OverrideLateiMacChecks")
                                             showBootPlistAnyway = showBootPlistAnyway ? showBootPlistAnyway : (try? call("sysctl -n hw.model | grep iMac14")) != nil
-//                                            hasPatchedPlist = showBootPlistAnyway ? (try? call("cat /Library/Preferences/SystemConfiguration/com.apple.Boot.plist | grep no_compat_check")) != nil : false
+                                            hasPatchedPlist = showBootPlistAnyway ? (try? call("cat /Library/Preferences/SystemConfiguration/com.apple.Boot.plist | grep no_compat_check")) != nil : false
                                         }
                                     }
                                 }
@@ -179,10 +179,15 @@ struct PSSettings: View {
                                                                     var cantBeUsed = false
                                                                     detectPatches(installerName: { patchLocation = $0 }, legacy: { cantBeUsed = $0 }, oldKext: { cantBeUsed = $0 })
                                                                     guard let patchLocation = patchLocation, !cantBeUsed else { errorX = "No compatible patches detected."; return }
-                                                                    patchSystem(password: password, arguments: "--bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: { errorX = $0 })
-                                                                    isGoing = false
-                                                                    hasPatchedPlist = true
-                                                                    patchingPlist = false
+                                                                    patchSystem(password: password, arguments: "--bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: {
+                                                                        if $0 == nil {
+                                                                            isGoing = false
+                                                                            hasPatchedPlist = true
+                                                                            patchingPlist = false
+                                                                        } else {
+                                                                            errorX = $0; return
+                                                                        }
+                                                                    })
                                                                 }
                                                             }
                                                         }
