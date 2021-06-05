@@ -178,14 +178,19 @@ struct PSSettings: View {
                                                                     var patchLocation = nil as String?
                                                                     var cantBeUsed = false
                                                                     detectPatches(installerName: { patchLocation = $0 }, legacy: { cantBeUsed = $0 }, oldKext: { cantBeUsed = $0 })
-                                                                    guard let patchLocation = patchLocation, !cantBeUsed else { errorX = "No compatible patches detected."; return }
+                                                                    guard let patchLocation = patchLocation, !cantBeUsed else {
+                                                                        errorX = NSLocalizedString("PO-ST-BOOT-NONE", comment: "PO-ST-BOOT-NONE")
+                                                                        return
+                                                                    }
+                                                                    print("Using \(patchLocation) as the location, starting Patch System with --bootPlist and --noRebuild.")
                                                                     patchSystem(password: password, arguments: "--bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: {
                                                                         if $0 == nil {
                                                                             isGoing = false
                                                                             hasPatchedPlist = true
                                                                             patchingPlist = false
                                                                         } else {
-                                                                            errorX = $0; return
+                                                                            errorX = $0
+                                                                            isGoing = false
                                                                         }
                                                                     })
                                                                 }

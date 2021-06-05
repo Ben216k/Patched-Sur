@@ -461,3 +461,4 @@ Make sure not to enable patches you don't need.";
 "PO-ST-BOOT-DONE" = "Already Patched Boot.plist";
 "PO-ST-BOOT-DESCRIPTION" = "Patching the com.apple.Boot.plist allows you to do NVRAM resets on your Mac without needing the USB installer and EFI Boot. Afterwards, you'll have to restore the NVRAM (Patched Sur will help) since it's better for you to have that value then to not have it. You will have to repatch this plist every time you update macOS.";
 "PO-ST-BOOT-ONGOING" = "Patching Boot.plist";
+"PO-ST-BOOT-NONE" = "No compatible patches detected.\nYou may not have the latest version of the patches downloaded, which are required to patch the boot.plist.\nUse 'Update Backup Patches' to update the patches, then try this again.";

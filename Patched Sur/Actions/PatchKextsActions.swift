@@ -83,7 +83,8 @@ func patchKexts(password: String, legacy: Bool, unpatch: Bool, location: String,
             }
             errorX(nil)
         } catch {
-            let log = (legacy ? "Warning: Legacy Patch Kexts Mode was used.\n" : "") + error.localizedDescription
+            let log = (legacy ? "Warning: Legacy Patch-Kexts.sh Mode was used.\n" : "Warning: Legacy Patch Kexts Mode was used.") + error.localizedDescription
+            UserDefaults.standard.setValue(log, forKey: "PatchKextsLastRun")
             errorX(log)
         }
     } else {
@@ -98,9 +99,12 @@ func patchSystem(password: String, arguments: String, location: String, unpatch:
         print("Starting Patch System")
         do {
             let output = try call("\(location)/PatchSystem.sh\(unpatch ? " -u" : "")\(arguments)", p: password)
+            print("Finished Patch System, saving output")
             UserDefaults.standard.setValue(output, forKey: "PatchKextsLastRun")
             errorX(nil)
         } catch {
+            print("Finished Patch System, but it failed, saving output.")
+            UserDefaults.standard.setValue(error.localizedDescription, forKey: "PatchKextsLastRun")
             errorX(error.localizedDescription)
         }
     } else {
