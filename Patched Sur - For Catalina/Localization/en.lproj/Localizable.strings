@@ -464,3 +464,7 @@ Make sure not to enable patches you don't need.";
 "PO-ST-BOOT-NONE" = "No compatible patches detected.
 You may not have the latest version of the patches downloaded, which are required to patch the boot.plist.
 Use 'Update Backup Patches' to update the patches, then try this again.";
+
+// MARK: Volume Selection
+
+"PRE-VOL-INCOMPAT" = "See Incompatible Drives";

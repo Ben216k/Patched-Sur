@@ -18,7 +18,7 @@ struct ContentView: View {
 }
 
 struct AllViews : View {
-    @State var progress = PSPage.main
+    @State var progress = PSPage.volume
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false

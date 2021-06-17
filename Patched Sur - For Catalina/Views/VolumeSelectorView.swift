@@ -12,10 +12,12 @@ struct VolumeSelector: View {
     @Binding var volume: String
     @State var hovered: String?
     @State var volumeList: [String]?
+    @State var incompatibleList: [(title: String, reason: String)]
     @State var onVol = ""
     @State var alert: Alert?
     @Binding var onExit: () -> (BackMode)
     let isPost: Bool
+    @State var showIncompat = false
     
     var body: some View {
         VStack {
@@ -24,19 +26,51 @@ struct VolumeSelector: View {
             Text("\(isPost ? NSLocalizedString("PRE-VOL-1", comment: "PRE-VOL-1") : NSLocalizedString("PRE-VOL-2", comment: "PRE-VOL-2")) \(NSLocalizedString("PRE-VOL-3", comment: "PRE-VOL-3"))")
                 .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
-            if volumeList == [] {
-                VIButton(id: "NODRIVES", h: $hovered) {
-                    Image("ExclaimCircle")
-                    Text(.init("PRE-VOL-NO"))
-                }.btColor(.red)
-                .inPad()
-                VIButton(id: "REFRESH", h: $hovered) {
-                    Image("RefreshCircle")
-                    Text(.init("REFRESH"))
-                } onClick: {
-                    volumeList = nil
-                }.btColor(.gray)
-                .inPad()
+            if showIncompat {
+                ScrollView(showsIndicators: false) {
+                    ForEach(incompatibleList, id: \.title) { item in
+                        HStack {
+                            ZStack {
+                                Color.red
+                                    .frame(width: 20, height: 20)
+                                    .cornerRadius(10)
+                                Image("DriveCircle")
+                            }
+                            VStack(alignment: .leading) {
+                                Text(item.title)
+                                    .bold()
+                                Text(item.reason)
+                                    .foregroundColor(.red)
+                            }
+                            Spacer()
+//                            VIButton(id: "\(item.title)-Incompat", h: $hovered) {
+//                                
+//                            }
+                        }
+                    }
+                }.fixedSize()
+            } else if volumeList == [] {
+                VStack {
+                    HStack {
+                        VIButton(id: "NODRIVES", h: $hovered) {
+                            Image("ExclaimCircle")
+                            Text(.init("PRE-VOL-NO"))
+                        }.btColor(.red)
+                        .inPad()
+                        VIButton(id: "REFRESH", h: $hovered) {
+                            Image("RefreshCircle")
+                            Text(.init("REFRESH"))
+                        } onClick: {
+                            volumeList = nil
+                        }.btColor(.gray)
+                        .inPad()
+                    }
+                    VIButton(id: "SEEINCOMPAT", h: $hovered) {
+                        Text(.init("PRE-VOL-INCOMPAT"))
+                    } onClick: {
+                        showIncompat.toggle()
+                    }
+                }
             } else if let volumes = volumeList {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
@@ -79,7 +113,9 @@ struct VolumeSelector: View {
                     .btColor(.gray)
                     .onAppear {
                         DispatchQueue(label: "DetectVolumes", qos: .userInteractive).async {
-                            volumeList = detectVolumes(onVol: { onVol = $0 })
+                            let output = detectVolumes(onVol: { onVol = $0 })
+                            volumeList = output.compat
+                            incompatibleList = output.incompat
                             onExit = { .confirm }
                             if !(volumeList?.contains(volume) ?? true) {
                                 if (volumeList?.filter { $0.hasPrefix("Install macOS") }.count ?? 0) > 0 {
