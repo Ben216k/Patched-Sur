@@ -65,6 +65,7 @@ struct AboutMyMac: View {
                             }
                         }.inPad()
                         .btColor(releaseTrack == "Developer" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
+                        .frame(maxWidth: 150)
                         VIButton(id: "SOFTWARE", h: $hovered) {
                             Text(.init("PO-AMM-UPDATE"))
                                 .foregroundColor(.white)
@@ -74,6 +75,7 @@ struct AboutMyMac: View {
                             }
                         }.inPad()
                         .btColor(releaseTrack == "Developer" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
+                        .frame(maxWidth: 150)
                     }.padding(.top, 10)
                 }.font(.subheadline)
                 .foregroundColor(.white)

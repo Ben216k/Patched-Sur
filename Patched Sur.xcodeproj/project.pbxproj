@@ -194,6 +194,10 @@
 
 /* Begin PBXFileReference section */
 		3F42EB03255176F700365279 /* PSSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSSettings.swift; sourceTree = "<group>"; };
+		52B32BBF267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Main.strings; sourceTree = "<group>"; };
+		52B32BC0267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Main.strings; sourceTree = "<group>"; };
+		52B32BC1267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		52B32BC2267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76020744263DA74A00A8D18A /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Main.strings; sourceTree = "<group>"; };
 		76020745263DA74A00A8D18A /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76020748263DBB3600A8D18A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -763,6 +767,7 @@
 				de,
 				el,
 				fr,
+				bs,
 			);
 			mainGroup = 7692E059251BFF9300C5FB9A;
 			packageReferences = (
@@ -982,6 +987,7 @@
 				76EBA22726449AA200F50A8C /* es */,
 				76AA16672655D4D300FC56FC /* hr */,
 				76AA16682655D6DF00FC56FC /* zh-Hans */,
+				52B32BC1267BB8DC00C78CAE /* bs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1003,6 +1009,7 @@
 				76020748263DBB3600A8D18A /* de */,
 				7602074C263DCDDF00A8D18A /* el */,
 				76633BF5263E3755000A949E /* fr */,
+				52B32BC0267BB8DC00C78CAE /* bs */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1011,6 +1018,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7692E06F251BFF9400C5FB9A /* Base */,
+				52B32BBF267BB8DC00C78CAE /* bs */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1031,6 +1039,7 @@
 				76020749263DBB3600A8D18A /* de */,
 				7602074D263DCDE000A8D18A /* el */,
 				76633BF6263E3755000A949E /* fr */,
+				52B32BC2267BB8DC00C78CAE /* bs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1093,8 +1102,8 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 107;
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				CURRENT_PROJECT_VERSION = 108;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1118,8 +1127,8 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 107;
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				CURRENT_PROJECT_VERSION = 108;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1261,9 +1270,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 108;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -1296,9 +1305,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 108;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -1330,9 +1339,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 108;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1364,9 +1373,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 107;
+				CURRENT_PROJECT_VERSION = 108;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

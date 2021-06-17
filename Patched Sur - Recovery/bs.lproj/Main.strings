@@ -1,0 +1,47 @@
+
+/* Class = "NSMenuItem"; title = "Patched Sur - Recovery"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Patched Sur - Oporavak";
+
+/* Class = "NSTextFieldCell"; title = "Patched Sur"; ObjectID = "31m-ys-XXY"; */
+"31m-ys-XXY.title" = "Patched Sur";
+
+/* Class = "NSTextFieldCell"; title = "Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. "; ObjectID = "4dt-Ym-N0I"; */
+"4dt-Ym-N0I.title" = "Krpljenje Vaših kext fajlova će Vam omogućiti korištenje Wifi-a, USB-a i drugih stvari na Vašoj instalaciji Big Sur-a. Bez ovih kext fajlova, Vaš Mac ne bi koristio puni potencijal na Big Sur-u, i nekoliko stvari ne bi radilo. Ako imate problem, možete otkrpiti pa opet zakrpiti kext fajlove, što bi ga moglo riješiti";
+
+/* Class = "NSMenuItem"; title = "Quit Patched Sur - Recovery"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Napustite Patched Sur - Oporavak";
+
+/* Class = "NSMenuItem"; title = "About Patched Sur - Recovery"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "O Patched Sur - Oporavak";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Glavni meni";
+
+/* Class = "NSTextFieldCell"; title = "Patch Kexts"; ObjectID = "BaO-Di-Twc"; */
+"BaO-Di-Twc.title" = "Zakrpite kext-ove";
+
+/* Class = "NSWindow"; title = "Patched Sur"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Patched Sur";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "Oqn-jo-ekB"; */
+"Oqn-jo-ekB.title" = "Objekat 1";
+
+/* Class = "NSTextFieldCell"; title = "RECOVERY PATCH KEXTS"; ObjectID = "Qq5-g0-oQ0"; */
+"Qq5-g0-oQ0.title" = "OPORAVAK ZAKRPE KEXT-OVA";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "Z28-kx-H6s"; */
+"Z28-kx-H6s.title" = "Objekat 3";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "dDt-pR-0Tf"; */
+"dDt-pR-0Tf.title" = "Objekat 2";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Servisi";
+
+/* Class = "NSButtonCell"; title = "Start Patch Kexts"; ObjectID = "ial-ib-X6F"; */
+"ial-ib-X6F.title" = "Započni krpljenje kext-ova";
+
+/* Class = "NSMenu"; title = "Patched Sur - Recovery"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Patched Sur - Oporavak";
+
+"RESTART-TO-FINISH" = "Restartujte za završetak.";
