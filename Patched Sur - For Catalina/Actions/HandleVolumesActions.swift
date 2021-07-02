@@ -34,7 +34,7 @@ func detectVolumes(onVol: (String) -> ()) -> (compat: [String], incompat: [(Stri
         print("Checking if the volume is synthesized")
         guard (try? call("echo '\(diskInfoLines[0])' | grep 'synthesized'")) == nil else {
             print("Volume is synthesized, this is incompatible")
-            volumeList.incompat.append((String(volume), NSLocalizedString("PRE-VOL-INCCOMPAT-SYNTH", comment: "PRE-VOL-INCOMPAT-SYNTH")))
+            volumeList.incompat.append((String(volume), NSLocalizedString("PRE-VOL-INCOMPAT-SYNTH", comment: "PRE-VOL-INCOMPAT-SYNTH")))
             return
         }
         
