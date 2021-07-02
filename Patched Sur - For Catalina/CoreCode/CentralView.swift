@@ -18,7 +18,7 @@ struct ContentView: View {
 }
 
 struct AllViews : View {
-    @State var progress = PSPage.volume
+    @State var progress = PSPage.main
     @State var password = ""
     @State var volume = ""
     @State var overrideinstaller = false
@@ -27,7 +27,7 @@ struct AllViews : View {
     @State var useCurrent = false
     @State var packageLocation = "~/.patched-sur/InstallAssistant.pkg"
     @State var appLocation = nil as String?
-    @State var compressed = true
+    @State var compressed = false
     @State var hovered: String?
     @State var hasKexts = false
     @State var showPass = false
