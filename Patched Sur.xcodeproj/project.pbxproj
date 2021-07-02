@@ -23,7 +23,6 @@
 		762DA8FE2606BA6300A9235A /* RememberPleaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */; };
 		762DA9002606C0B400A9235A /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FF2606C0B400A9235A /* CreditsView.swift */; };
 		762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */; };
-		76315570254C984900646CE9 /* ExtraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631556F254C984900646CE9 /* ExtraViews.swift */; };
 		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
 		7633BC732617744900A550A6 /* Patched Sur - Recovery.app in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */; };
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
@@ -32,7 +31,6 @@
 		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
-		76553B92262156AF00336C5B /* HaxDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76553B91262156AE00336C5B /* HaxDownloadView.swift */; };
 		765DA44A264E26F3003A97B5 /* PSKexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765DA449264E26F3003A97B5 /* PSKexts.swift */; };
 		76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76688D7A2619521C00A1450A /* PatchKextsActions.swift */; };
 		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
@@ -205,7 +203,6 @@
 		762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberPleaseView.swift; sourceTree = "<group>"; };
 		762DA8FF2606C0B400A9235A /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPatchedSur.swift; sourceTree = "<group>"; };
-		7631556F254C984900646CE9 /* ExtraViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViews.swift; sourceTree = "<group>"; };
 		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
 		7633BC7E2617D24800A550A6 /* PSPatchV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPatchV.swift; sourceTree = "<group>"; };
 		763B28C125FF0D2300389448 /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
@@ -220,7 +217,6 @@
 		764D732D2640F81000719132 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
-		76553B91262156AE00336C5B /* HaxDownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaxDownloadView.swift; sourceTree = "<group>"; };
 		765DA449264E26F3003A97B5 /* PSKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSKexts.swift; sourceTree = "<group>"; };
 		76633BEE263E1550000A949E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF1263E257F000A949E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -369,7 +365,6 @@
 				767EF2AC261E975A00769793 /* UpdateChooser.swift */,
 				7609BD17257FF8DB0054B76F /* DownloadKexts.swift */,
 				7609BD1D258008B70054B76F /* StartInstallView.swift */,
-				76553B91262156AE00336C5B /* HaxDownloadView.swift */,
 				76CF37BC25E8C73500403208 /* NotificationsView.swift */,
 				76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */,
 				76F11510256EED85001AB749 /* UpdateAppView.swift */,
@@ -402,6 +397,7 @@
 				7680783B26211AC5000ABD89 /* UpdateChooserActions.swift */,
 				76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */,
 				765DA449264E26F3003A97B5 /* PSKexts.swift */,
+				76F11508256EE9FB001AB749 /* PatchedVersion.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -458,11 +454,9 @@
 				762F8C1D25F87ED20021E4AF /* CoreCode */,
 				762F8C1E25F87EE00021E4AF /* Views */,
 				7691808625F9DB5C003FB34C /* Actions */,
-				7631556F254C984900646CE9 /* ExtraViews.swift */,
 				7692E083251BFFB400C5FB9A /* Assets.xcassets */,
 				7692E088251BFFB400C5FB9A /* Info.plist */,
 				7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */,
-				76F11508256EE9FB001AB749 /* PatchedVersion.swift */,
 				7692E085251BFFB400C5FB9A /* Preview Content */,
 			);
 			path = "Patched Sur";
@@ -750,13 +744,11 @@
 				76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */,
 				76B59820262CEE0E004E52BC /* RecoveryPatchView.swift in Sources */,
 				762A1DB4260C19B80009620B /* PatchKextsView.swift in Sources */,
-				76553B92262156AF00336C5B /* HaxDownloadView.swift in Sources */,
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
 				76A070E0261BBAEC0002A304 /* HandleVolumesActions.swift in Sources */,
 				7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */,
 				7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */,
 				76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */,
-				76315570254C984900646CE9 /* ExtraViews.swift in Sources */,
 				762A066825BF93A80037655D /* Keychain.swift in Sources */,
 				765DA44A264E26F3003A97B5 /* PSKexts.swift in Sources */,
 				7680783926211A5D000ABD89 /* UpdaterActions.swift in Sources */,
@@ -884,7 +876,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 109;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
@@ -909,7 +901,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 109;
+				CURRENT_PROJECT_VERSION = 110;
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";

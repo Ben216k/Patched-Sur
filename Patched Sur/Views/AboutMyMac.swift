@@ -21,11 +21,11 @@ struct AboutMyMac: View {
     
     var body: some View {
         ZStack {
-            BackGradientView(releaseTrack: releaseTrack)
+            BackGradientView(version: systemVersion, releaseTrack: releaseTrack)
             HStack {
-                SideImageView(releaseTrack: releaseTrack)
+                SideImageView(releaseTrack: releaseTrack, version: systemVersion)
                 VStack(alignment: .leading, spacing: 2) {
-                    if AppInfo.lol {
+                    if systemVersion.hasPrefix("12") {
                         Text("macOS ").font(.largeTitle).bold() + Text("Monterey").font(.largeTitle)
                     } else {
                         Text("macOS ").font(.largeTitle).bold() + Text("Big Sur").font(.largeTitle)
@@ -65,7 +65,6 @@ struct AboutMyMac: View {
                             }
                         }.inPad()
                         .btColor(releaseTrack == "Developer" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
-                        .frame(maxWidth: 150)
                         VIButton(id: "SOFTWARE", h: $hovered) {
                             Text(.init("PO-AMM-UPDATE"))
                                 .foregroundColor(.white)
@@ -75,15 +74,16 @@ struct AboutMyMac: View {
                             }
                         }.inPad()
                         .btColor(releaseTrack == "Developer" ? .init(r: 196, g: 0, b: 255) : .init(r: 0, g: 220, b: 239))
-                        .frame(maxWidth: 150)
                     }.padding(.top, 10)
                 }.font(.subheadline)
                 .foregroundColor(.white)
                 .onAppear {
                     DispatchQueue.global(qos: .background).async {
-                        withAnimation {
+                        withAnimation(.linear(duration: 2).delay(1)) {
                             systemVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
                             print("Detected System Version: \(systemVersion)")
+                        }
+                        withAnimation {
                             self.model = (try? call("sysctl -n hw.model")) ?? "UnknownX,Y"
                             cpu = (try? call("sysctl -n machdep.cpu.brand_string")) ?? "INTEL!"
                             cpu = String(cpu.split(separator: "@")[0])
@@ -129,11 +129,12 @@ extension Color {
 }
 
 struct SideImageView: View {
+    let version: String
     let releaseTrack: String
     let scale: CGFloat
     var body: some View {
-        if AppInfo.lol {
-            Image("PMBasic")
+        if version.hasPrefix("12")  {
+            Image("PMStock")
                 .interpolation(.high)
                 .resizable()
                 .scaledToFit()
@@ -156,35 +157,28 @@ struct SideImageView: View {
         }
     }
     
-    init(releaseTrack: String, scale: CGFloat = 140) {
+    init(releaseTrack: String, scale: CGFloat = 140, version: String = "") {
         self.releaseTrack = releaseTrack
         self.scale = scale
+        self.version = version
     }
 }
 
 struct BackGradientView: View {
     @Environment(\.colorScheme) var colorScheme
+    let version: String
     let releaseTrack: String
     @State var startPoint = UnitPoint(x: 0, y: 0)
     @State var endPoint = UnitPoint(x: 0, y: 2)
     var body: some View {
         Group {
-            if AppInfo.lol {
-                LinearGradient(gradient: .init(colors: [.init(r: 16, g: 228, b: 171), .init(r: 41, g: 130, b: 202)]), startPoint: startPoint, endPoint: endPoint)
+            if releaseTrack == "Developer" || version.hasPrefix("12") {
+                LinearGradient(gradient: .init(colors: [.init(r: 196, g: 0, b: 255), .init(r: 117, g: 0, b: 255)]), startPoint: startPoint, endPoint: endPoint)
                     .opacity(colorScheme == .dark ? 0.7 : 0.96)
                     .onAppear {
                         withAnimation (.easeInOut(duration: 6).repeatForever()) {
                             self.startPoint = UnitPoint(x: 1, y: -1)
                             self.endPoint = UnitPoint(x: 0, y: 1)
-                        }
-                    }
-            } else if releaseTrack == "Developer" {
-                LinearGradient(gradient: .init(colors: [.init(r: 196, g: 0, b: 255), .init(r: 117, g: 0, b: 255)]), startPoint: startPoint, endPoint: endPoint)
-                    .opacity(colorScheme == .dark ? 0.7 : 0.96)
-                    .onAppear {
-                        withAnimation (.easeInOut(duration: 6).repeatForever()) {
-                            self.startPoint = UnitPoint(x: -1, y: 1)
-                            self.endPoint = UnitPoint(x: 0, y: -1)
                         }
                     }
             } else {
@@ -198,8 +192,6 @@ struct BackGradientView: View {
                         }
                     }
             }
-        }.onAppear {
-            if releaseTrack == "Developer" { endPoint = UnitPoint(x: 0, y: 2) }
         }
     }
 }
