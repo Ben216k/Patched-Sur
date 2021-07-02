@@ -24,7 +24,7 @@ func detectVolumes(onVol: (String) -> ()) -> (compat: [String], incompat: [(Stri
         print("Fetching diskutil information")
         guard let diskInfo = try? call("diskutil list /Volumes/'\(volume)'") else {
             print("Unable to fetch disk information.")
-            volumeList.incompat.append((String(volume), "Cannot find disk info, this might be a patcher bug."))
+            volumeList.incompat.append((String(volume), NSLocalizedString("PRE-VOL-INCOMPAT-NODATA", comment: "PRE-VOL-INCOMPAT-NODATA")))
             return
         }
         
@@ -34,7 +34,7 @@ func detectVolumes(onVol: (String) -> ()) -> (compat: [String], incompat: [(Stri
         print("Checking if the volume is synthesized")
         guard (try? call("echo '\(diskInfoLines[0])' | grep 'synthesized'")) == nil else {
             print("Volume is synthesized, this is incompatible")
-            volumeList.incompat.append((String(volume), "Synthesized (APFS) volume, use MacOS Extended (Journaled)"))
+            volumeList.incompat.append((String(volume), NSLocalizedString("PRE-VOL-INCCOMPAT-SYNTH", comment: "PRE-VOL-INCOMPAT-SYNTH")))
             return
         }
         
@@ -42,7 +42,7 @@ func detectVolumes(onVol: (String) -> ()) -> (compat: [String], incompat: [(Stri
         print("Checking if the drive is internal")
         guard (try? call("echo '\(diskInfoLines[0])' | grep 'internal, physical'")) == nil else {
             print("Volume is an internal drive, this is incompatible")
-            volumeList.incompat.append((String(volume), "Internal drive, use an external USB instead."))
+            volumeList.incompat.append((String(volume), NSLocalizedString("PRE-VOL-INCOMPAT-INTERNAL", comment: "PRE-VOL-INCOMPAT-INTERNAL")))
             return
         }
         
@@ -50,7 +50,7 @@ func detectVolumes(onVol: (String) -> ()) -> (compat: [String], incompat: [(Stri
         print("Checking if the drive is a disk image")
         guard (try? call("echo '\(diskInfoLines[0])' | grep 'disk image'")) == nil else {
             print("Volume is a disk image, this is incompatible")
-            volumeList.incompat.append((String(volume), "Disk Images can't be booted, use an external USB."))
+            volumeList.incompat.append((String(volume), NSLocalizedString("PRE-VOL-INCOMPAT-IMAGE", comment: "PRE-VOL-INCOMPAT-IMAGE")))
             return
         }
         
@@ -63,7 +63,7 @@ func detectVolumes(onVol: (String) -> ()) -> (compat: [String], incompat: [(Stri
         print([efiCheckStuff])
         guard efiCheckStuff == "GUID_partition_scheme" else {
             print("Volume does not have an EFI partition, this is incompatible")
-            volumeList.incompat.append((String(volume), "Not formatted with a GUID Partition Map"))
+            volumeList.incompat.append((String(volume), NSLocalizedString("PRE-VOL-INCOMPAT-GUID", comment: "PRE-VOL-INCOMPAT-GUID")))
             return
         }
         

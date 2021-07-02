@@ -453,9 +453,9 @@ Make sure not to enable patches you don't need.";
 // MARK: Acceleration & Boot.plist Settings
 
 // Yes, this next one will fit into a button. It's the best I can think of. Try to keep this somewhat the same length / slightly longer.
-"PO-ST-ACCEL" = "Allow Graphics Acceleration Patching";
-"PO-ST-ACCEL-DESCRIPTION" = "Even though this is still buggy, you can increase performance on your Mac with the tradeoff being some graphics glitches. This button will not install the patches, it will just unhide the second inside the advanced patch configuration to allow it. Disabling this will not uninstall the patches.";
-"PO-ST-ACCEL-DISALLOW" = "Disallow Graphics Acceleration Patching";
+//"PO-ST-ACCEL" = "Allow Graphics Acceleration Patching";
+//"PO-ST-ACCEL-DESCRIPTION" = "Even though this is still buggy, you can increase performance on your Mac with the tradeoff being some graphics glitches. This button will not install the patches, it will just unhide the second inside the advanced patch configuration to allow it. Disabling this will not uninstall the patches.";
+//"PO-ST-ACCEL-DISALLOW" = "Disallow Graphics Acceleration Patching";
 
 "PO-ST-BOOT" = "Patch Boot.plist";
 "PO-ST-BOOT-DONE" = "Already Patched Boot.plist";
@@ -468,3 +468,10 @@ Use 'Update Backup Patches' to update the patches, then try this again.";
 // MARK: Volume Selection
 
 "PRE-VOL-INCOMPAT" = "See Incompatible Drives";
+"PRE-VOL-INCOMPAT-TITLE" = "Incompatible Drives";
+"PRE-VOL-INCOMPAT-NODATA" = "Cannot find disk info, this might be a patcher bug.";
+"PRE-VOL-INCOMPAT-INTERNAL" = "Internal drive, use an external USB instead.";
+"PRE-VOL-INCOMPAT-IMAGE" = "Disk Images can't be booted, use an external USB.";
+// For these next two, I suggest checking Disk Utility for the proper terms for GUID Partition Map and MacOS Extended (Journaled).
+"PRE-VOL-INCOMPAT-GUID" = "Not formatted with a GUID Partition Map";
+"PRE-VOL-INCOMPAT-SYNTH" = "Synthesized (APFS) volume, use MacOS Extended (Journaled)";

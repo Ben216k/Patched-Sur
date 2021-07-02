@@ -12,7 +12,7 @@ struct VolumeSelector: View {
     @Binding var volume: String
     @State var hovered: String?
     @State var volumeList: [String]?
-    @State var incompatibleList: [(title: String, reason: String)]
+    @State var incompatibleList = [] as [(title: String, reason: String)]
     @State var onVol = ""
     @State var alert: Alert?
     @Binding var onExit: () -> (BackMode)
@@ -21,34 +21,54 @@ struct VolumeSelector: View {
     
     var body: some View {
         VStack {
-            Text(.init("PRE-VOL-TITLE"))
-                .font(.system(size: 15)).bold()
-            Text("\(isPost ? NSLocalizedString("PRE-VOL-1", comment: "PRE-VOL-1") : NSLocalizedString("PRE-VOL-2", comment: "PRE-VOL-2")) \(NSLocalizedString("PRE-VOL-3", comment: "PRE-VOL-3"))")
-                .padding(.vertical, 10)
-                .multilineTextAlignment(.center)
+            if !showIncompat {
+                Text(.init("PRE-VOL-TITLE"))
+                    .font(.system(size: 15)).bold()
+                Text("\(isPost ? NSLocalizedString("PRE-VOL-1", comment: "PRE-VOL-1") : NSLocalizedString("PRE-VOL-2", comment: "PRE-VOL-2")) \(NSLocalizedString("PRE-VOL-3", comment: "PRE-VOL-3"))")
+                    .padding(.vertical, 10)
+                    .multilineTextAlignment(.center)
+            }
             if showIncompat {
+                Text(.init("PRE-VOL-INCOMPAT-TITLE"))
+                    .font(.system(size: 15)).bold()
                 ScrollView(showsIndicators: false) {
                     ForEach(incompatibleList, id: \.title) { item in
                         HStack {
                             ZStack {
                                 Color.red
-                                    .frame(width: 20, height: 20)
-                                    .cornerRadius(10)
-                                Image("DriveCircle")
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15)
+                                Image("VolumeIcon")
+                                    .foregroundColor(.white)
+                                    .offset(x: -0.001, y: -0.1)
                             }
                             VStack(alignment: .leading) {
                                 Text(item.title)
                                     .bold()
                                 Text(item.reason)
-                                    .foregroundColor(.red)
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 10))
                             }
                             Spacer()
-//                            VIButton(id: "\(item.title)-Incompat", h: $hovered) {
-//                                
-//                            }
                         }
                     }
-                }.fixedSize()
+                }
+                HStack {
+                    VIButton(id: "BACKINCOMPAT", h: $hovered) {
+                        Image("BackArrowCircle")
+                        Text(.init("BACK"))
+                    } onClick: {
+                        showIncompat.toggle()
+                    }.btColor(.gray).inPad().useHoverAccent()
+                    VIButton(id: "REFRESH", h: $hovered) {
+                        Image("RefreshCircle")
+                        Text(.init("REFRESH"))
+                    } onClick: {
+                        volumeList = nil
+                        showIncompat.toggle()
+                    }
+                    .inPad()
+                }
             } else if volumeList == [] {
                 VStack {
                     HStack {
@@ -64,12 +84,13 @@ struct VolumeSelector: View {
                             volumeList = nil
                         }.btColor(.gray)
                         .inPad()
+                        .useHoverAccent()
                     }
                     VIButton(id: "SEEINCOMPAT", h: $hovered) {
                         Text(.init("PRE-VOL-INCOMPAT"))
                     } onClick: {
                         showIncompat.toggle()
-                    }
+                    }.btColor(.gray).inPad().useHoverAccent()
                 }
             } else if let volumes = volumeList {
                 ScrollView(.horizontal, showsIndicators: false) {
