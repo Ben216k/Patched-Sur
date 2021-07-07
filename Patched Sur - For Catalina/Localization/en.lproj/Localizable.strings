@@ -475,3 +475,25 @@ Use 'Update Backup Patches' to update the patches, then try this again.";
 // For these next two, I suggest checking Disk Utility for the proper terms for GUID Partition Map and MacOS Extended (Journaled).
 "PRE-VOL-INCOMPAT-GUID" = "Not formatted with a GUID Partition Map";
 "PRE-VOL-INCOMPAT-SYNTH" = "Synthesized (APFS) volume, use MacOS Extended (Journaled)";
+
+// MARK: NVRAM Reset Wanring
+
+"PO-NV-POPUP-TITLE" = "Required NVRAM Value Missing";
+"PO-NV-POPUP-DESCRIPTION" = "The -no_compat_check boot-arg value is missing. While Patched Sur has already protected you from the biggest problem caused by this, there are still other problems that can result from this.";
+"PO-NV-POPUP-START" = "See Instructions";
+"PO-NV-POPUP-DESCRIPTION-TWO" = "Launch Patched Sur (the post-install app, not the one on the dmg) to learn more and solutions to restore the value.";
+"PO-NV-POPUP-DESCRTIPION-THREE" = "Press the See Instructions below to learn how to restore it.";
+
+"PO-NV-CHECK-TITLE" = "Do You Have Your Patched Installer USB?";
+"PO-NV-CHECK-DESCRIPTION" = "If you still have your Patched Installer USB, then we can skip a lot of complexity and make this super easy. It is highly recommended to always hold on to an installer USB of the latest version of macOS, so if you'd like to make one now, click the back button in the top right corner of the screen, then click Create Installer and follow the instructions to create one and come back here.";
+"PO-NV-CHECK-ONE" = "I have a Patched Installer USB.";
+"PO-NV-CHECK-TWO" = "I do not have one.";
+
+"PO-NV-ONE-TITLE" = "Restore Value (with installer)";
+"PO-NV-ONE-CONTENT" = "Since you have an installer USB, this will be super simple and painless!\n1. Turn off your Mac, then turn it back on holding option.\n2. Make sure the installer USB is plugged in, the select the purple EFI Boot drive.\n3. Your Mac will immediately shut off, so just turn it back on and you're done!";
+
+"PO-NV-TWO-TITLE" = "Restore Value (without installer)";
+"PO-NV-TWO-CONTENT" = "Since you don't have an installer USB, this'll be a little bit harder, but don't worry it, it'll be easy. If you want, you can write this down since Patched Sur won't be able to help you along the way.\n\n1. Turn off your Mac, then turn it back on holding CMD-OPTION-R (even if you installed recovery, you still need internet recovery for this).\n2. Connect to your WiFi then let it boot.\n3. Click Utilities in the Menu Bar then click Terminal.\n4. Type in 'nvram boot-args=-no_compat_check' and then press enter.\n5. Reboot your Mac and then you'll be done. ";
+
+"PO-NV-BAR-TITLE" = "NVRAM Problem";
+"PO-NV-BAR-SUBTITLE" = "Let's get this fixed.";

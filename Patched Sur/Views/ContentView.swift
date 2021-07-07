@@ -42,6 +42,9 @@ struct ContentView: View {
             case 6:
                 Color.white.opacity(0.001)
                 RecoveryPatchView(at: $atLocation).transition(.moveAway)
+            case 7:
+                Color.white.opacity(0.001)
+                NVRAMResetHelp(at: $atLocation).transition(.moveAway)
             default:
                 Color.white.opacity(0.001)
                 VStack {
@@ -94,6 +97,7 @@ struct ContentView: View {
 struct MainView: View {
     @State var hovered: String?
     @Binding var at: Int
+    @State var hasNVRAMProblem = false
     var model: String
     var body: some View {
         VStack {
@@ -110,55 +114,81 @@ struct MainView: View {
                 .padding(.trailing, 30)
             }.padding(.top, 40).frame(width: 600, alignment: .center)
             Spacer()
-            HStack {
-                VStack {
-                    VStack(alignment: .leading, spacing: 7) {
-                        VISimpleCell(t: NSLocalizedString("PO-UP-TITLE", comment: "PO-UP-TITLE"), d: NSLocalizedString("PO-UP-DESCRIPTION", comment: "PO-UP-DESCRIPTION"), s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
-                            withAnimation {
-                                at = 1
-                            }
-                        }
-                        VISimpleCell(t: NSLocalizedString("PO-PK-TITLE", comment: "PO-PK-TITLE"), d: NSLocalizedString("PO-PK-DESCRIPTION", comment: "PO-PK-DESCRIPTION"), s: "doc.circle", id: "KEXTS", h: $hovered) {
-                            if !model.hasPrefix("iMac14,") {
+            VStack {
+                HStack {
+                    VStack {
+                        VStack(alignment: .leading, spacing: 7) {
+                            VISimpleCell(t: NSLocalizedString("PO-UP-TITLE", comment: "PO-UP-TITLE"), d: NSLocalizedString("PO-UP-DESCRIPTION", comment: "PO-UP-DESCRIPTION"), s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
                                 withAnimation {
-                                    at = 2
+                                    at = 1
                                 }
-                            } else {
-                                let errorAlert = NSAlert()
-                                errorAlert.alertStyle = .informational
-                                errorAlert.informativeText = NSLocalizedString("PO-PK-NO-NEED-DESCRIPTION", comment: "PO-PK-NO-NEED-DESCRIPTION")
-                                errorAlert.messageText = NSLocalizedString("PO-PK-NO-NEED-TITLE", comment: "PO-PK-NO-NEED-TITLE")
-                                errorAlert.runModal()
+                            }
+                            VISimpleCell(t: NSLocalizedString("PO-PK-TITLE", comment: "PO-PK-TITLE"), d: NSLocalizedString("PO-PK-DESCRIPTION", comment: "PO-PK-DESCRIPTION"), s: "doc.circle", id: "KEXTS", h: $hovered) {
+                                if !model.hasPrefix("iMac14,") {
+                                    withAnimation {
+                                        at = 2
+                                    }
+                                } else {
+                                    let errorAlert = NSAlert()
+                                    errorAlert.alertStyle = .informational
+                                    errorAlert.informativeText = NSLocalizedString("PO-PK-NO-NEED-DESCRIPTION", comment: "PO-PK-NO-NEED-DESCRIPTION")
+                                    errorAlert.messageText = NSLocalizedString("PO-PK-NO-NEED-TITLE", comment: "PO-PK-NO-NEED-TITLE")
+                                    errorAlert.runModal()
+                                }
+                            }
+                            VISimpleCell(t: NSLocalizedString("PO-ST-TITLE", comment: "PO-ST-TITLE"), d: NSLocalizedString("PO-ST-DESCRIPTION", comment: "PO-ST-DESCRIPTION"), s: "gearshape", id: "SETINGS", h: $hovered) {
+                                withAnimation {
+                                    at = 4
+                                }
                             }
                         }
-                        VISimpleCell(t: NSLocalizedString("PO-ST-TITLE", comment: "PO-ST-TITLE"), d: NSLocalizedString("PO-ST-DESCRIPTION", comment: "PO-ST-DESCRIPTION"), s: "gearshape", id: "SETINGS", h: $hovered) {
-                            withAnimation {
-                                at = 4
+                    }
+                    VStack {
+                        VStack(alignment: .leading, spacing: 7) {
+                            VISimpleCell(t: NSLocalizedString("PO-CI-TITLE", comment: "PO-CI-TITLE"), d: NSLocalizedString("PO-CI-DESCRIPTION", comment: "PO-CI-DESCRIPTION"), s: "externaldrive", id: "CREATEINSTALLER", h: $hovered) {
+                                withAnimation {
+                                    at = 5
+                                }
+                            }
+                            VISimpleCell(t: NSLocalizedString("PO-IR-TITLE", comment: "PO-IR-TITLE"), d: NSLocalizedString("PO-IR-DESCRIPTION", comment: "PO-IR-DESCRIPTION"), s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
+                                withAnimation {
+                                    at = 6
+                                }
+                            }
+                            VISimpleCell(t: NSLocalizedString("PO-AMM-TITLE", comment: "PO-AMM-TITLE"), d:NSLocalizedString("PO-AMM-DESCRIPTION", comment: "PO-AMM-DESCRIPTION"), s: "info.circle", id: "ABOUT", h: $hovered) {
+                                withAnimation {
+                                    at = 3
+                                }
+                            }
+                        }
+                    }
+                }.padding(.horizontal, 40)
+                if hasNVRAMProblem {
+                    VIButton(id: "NVRAMPROBLEM", h: $hovered) {
+                        Text("Patched Sur detected a problem! Click here to resolve it.")
+                            .font(.caption)
+                    } onClick: {
+                        withAnimation {
+                            at = 7
+                        }
+                    }.btColor(.red)
+                        .inPad()
+                }
+            }.padding(.bottom)
+                .onAppear {
+                    DispatchQueue.global(qos: .background).async {
+                        withAnimation {
+                            guard let bootArgs = try? call("nvram boot-args") else {
+                                hasNVRAMProblem = true
+                                return
+                            }
+                            if !bootArgs.contains("-no_compat_check") {
+                                hasNVRAMProblem = true
+                                return
                             }
                         }
                     }
                 }
-                VStack {
-                    VStack(alignment: .leading, spacing: 7) {
-                        VISimpleCell(t: NSLocalizedString("PO-CI-TITLE", comment: "PO-CI-TITLE"), d: NSLocalizedString("PO-CI-DESCRIPTION", comment: "PO-CI-DESCRIPTION"), s: "externaldrive", id: "CREATEINSTALLER", h: $hovered) {
-                            withAnimation {
-                                at = 5
-                            }
-                        }
-                        VISimpleCell(t: NSLocalizedString("PO-IR-TITLE", comment: "PO-IR-TITLE"), d: NSLocalizedString("PO-IR-DESCRIPTION", comment: "PO-IR-DESCRIPTION"), s: "asterisk.circle", id: "RECOVERY", h: $hovered) {
-                            withAnimation {
-                                at = 6
-                            }
-                        }
-                        VISimpleCell(t: NSLocalizedString("PO-AMM-TITLE", comment: "PO-AMM-TITLE"), d:NSLocalizedString("PO-AMM-DESCRIPTION", comment: "PO-AMM-DESCRIPTION"), s: "info.circle", id: "ABOUT", h: $hovered) {
-                            withAnimation {
-                                at = 3
-                            }
-                        }
-                    }
-                }
-            }.padding(.horizontal, 40)
-            .padding(.bottom)
             Spacer()
         }
         .edgesIgnoringSafeArea(.all)

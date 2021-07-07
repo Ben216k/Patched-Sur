@@ -32,6 +32,7 @@
 		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
 		765DA44A264E26F3003A97B5 /* PSKexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765DA449264E26F3003A97B5 /* PSKexts.swift */; };
+		7660A2F0269516E100653771 /* NVRAMResetHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660A2EF269516E100653771 /* NVRAMResetHelp.swift */; };
 		76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76688D7A2619521C00A1450A /* PatchKextsActions.swift */; };
 		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
@@ -218,6 +219,7 @@
 		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
 		765DA449264E26F3003A97B5 /* PSKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSKexts.swift; sourceTree = "<group>"; };
+		7660A2EF269516E100653771 /* NVRAMResetHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVRAMResetHelp.swift; sourceTree = "<group>"; };
 		76633BEE263E1550000A949E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF1263E257F000A949E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF2263E25A4000A949E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				76CF37BC25E8C73500403208 /* NotificationsView.swift */,
 				76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */,
 				76F11510256EED85001AB749 /* UpdateAppView.swift */,
+				7660A2EF269516E100653771 /* NVRAMResetHelp.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				76A070DA261BBAD90002A304 /* CreateInstallerView.swift in Sources */,
 				762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */,
 				76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */,
+				7660A2F0269516E100653771 /* NVRAMResetHelp.swift in Sources */,
 				76B59820262CEE0E004E52BC /* RecoveryPatchView.swift in Sources */,
 				762A1DB4260C19B80009620B /* PatchKextsView.swift in Sources */,
 				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,

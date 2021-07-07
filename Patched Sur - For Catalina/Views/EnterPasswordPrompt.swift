@@ -6,6 +6,7 @@
 //
 
 import VeliaUI
+import Darwin
 
 struct EnterPasswordPrompt: View {
     @Binding var password: String
@@ -57,6 +58,23 @@ struct EnterPasswordPrompt: View {
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
                                     SecureField(NSLocalizedString("B-EP-PASSWORD-PH", comment: "B-EP-PASSWORD-PH"), text: $password)
                                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .onAppear {
+                                            if getuid().description == "0" {
+                                                onSuccess()
+                                                withAnimation {
+                                                    show = false
+                                                }
+                                                return
+                                            }
+                                            if (try? call("echo Correct Password", p: password)) != nil {
+                                                onSuccess()
+                                                withAnimation {
+                                                    show = false
+                                                }
+                                            } else {
+                                                password = ""
+                                            }
+                                        }
     //                                HStack {
     //                                    ZStack(alignment: .trailing) {
     //                                        Rectangle()
