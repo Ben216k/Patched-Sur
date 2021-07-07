@@ -119,8 +119,12 @@ struct MainView: View {
                     VStack {
                         VStack(alignment: .leading, spacing: 7) {
                             VISimpleCell(t: NSLocalizedString("PO-UP-TITLE", comment: "PO-UP-TITLE"), d: NSLocalizedString("PO-UP-DESCRIPTION", comment: "PO-UP-DESCRIPTION"), s: "arrow.clockwise.circle", id: "UPDATE", h: $hovered) {
-                                withAnimation {
-                                    at = 1
+                                if !hasNVRAMProblem {
+                                    withAnimation {
+                                        at = 1
+                                    }
+                                } else {
+                                    presentAlert(m: NSLocalizedString("PO-NV-NOUP-TITLE", comment: "PO-NV-NOUP-TITLE"), i: NSLocalizedString("PO-NV-NOUP-CONTENT", comment: "PO-NV-NOUP-CONTENT"))
                                 }
                             }
                             VISimpleCell(t: NSLocalizedString("PO-PK-TITLE", comment: "PO-PK-TITLE"), d: NSLocalizedString("PO-PK-DESCRIPTION", comment: "PO-PK-DESCRIPTION"), s: "doc.circle", id: "KEXTS", h: $hovered) {

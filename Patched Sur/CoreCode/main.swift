@@ -73,6 +73,9 @@ CommandLine.arguments.forEach { arg in
         print("--update (-u):")
         print("  Runs the app updater. This assumes that a copy of")
         print("  Patched Sur is inside the ~/.patched-sur directory.")
+        print("--nothing (-n):")
+        print("  Make the app do almost nothing. Certain things will")
+        print("  still be done. This is useful for typechecking.")
         exit(0)
     case "--update", "-u":
         print("Detected --update option, starting Patched Sur update.")

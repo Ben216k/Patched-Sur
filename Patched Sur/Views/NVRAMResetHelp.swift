@@ -37,7 +37,7 @@ struct NVRAMResetHelp: View {
                 VStack {
                     Text(.init("PO-NV-POPUP-TITLE"))
                         .font(Font.system(size: 15).bold())
-                    (Text(.init("PO-NV-POPUP-DESCRIPTION")) + Text(.init("PO-NV-POPUP-DESCRTIPION-THREE")))
+                    (Text(.init("PO-NV-POPUP-DESCRIPTION")) + Text(.init("PO-NV-POPUP-DESCRIPTION-THREE")))
                         .padding()
                         .multilineTextAlignment(.center)
                     VIButton(id: "GOAHEAD", h: $hovered) {

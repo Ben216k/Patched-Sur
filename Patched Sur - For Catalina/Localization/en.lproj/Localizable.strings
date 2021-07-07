@@ -482,7 +482,7 @@ Use 'Update Backup Patches' to update the patches, then try this again.";
 "PO-NV-POPUP-DESCRIPTION" = "The -no_compat_check boot-arg value is missing. While Patched Sur has already protected you from the biggest problem caused by this, there are still other problems that can result from this.";
 "PO-NV-POPUP-START" = "See Instructions";
 "PO-NV-POPUP-DESCRIPTION-TWO" = "Launch Patched Sur (the post-install app, not the one on the dmg) to learn more and solutions to restore the value.";
-"PO-NV-POPUP-DESCRTIPION-THREE" = "Press the See Instructions below to learn how to restore it.";
+"PO-NV-POPUP-DESCRIPTION-THREE" = "Press the See Instructions below to learn how to restore it.";
 
 "PO-NV-CHECK-TITLE" = "Do You Have Your Patched Installer USB?";
 "PO-NV-CHECK-DESCRIPTION" = "If you still have your Patched Installer USB, then we can skip a lot of complexity and make this super easy. It is highly recommended to always hold on to an installer USB of the latest version of macOS, so if you'd like to make one now, click the back button in the top right corner of the screen, then click Create Installer and follow the instructions to create one and come back here.";
@@ -497,3 +497,6 @@ Use 'Update Backup Patches' to update the patches, then try this again.";
 
 "PO-NV-BAR-TITLE" = "NVRAM Problem";
 "PO-NV-BAR-SUBTITLE" = "Let's get this fixed.";
+
+"PO-NV-NOUP-TITLE" = "Unable to Update Without Required NVRAM Value";
+"PO-NV-NOUP-CONTENT" = "Updating macOS removes the boot.plist patch which is what Patched Sur using to allow you to boot your Mac without the -no_compat_check. Right now that value is missing, so updating would cause your Mac to no longer boot. Once you restore that value, you can update. To do that, click on the red button on the bottom of the window.";
