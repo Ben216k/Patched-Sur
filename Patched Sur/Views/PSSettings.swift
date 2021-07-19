@@ -306,6 +306,17 @@ struct PSSettings: View {
                             Text(.init("PO-ST-FRIENDS-WIDGY"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
+                            
+                            VIButton(id: "FRIENDS-ICONS", h: $hovered) {
+                                Image(systemName: "app")
+                                    .font(.system(size: 15).weight(.medium))
+                                Text("macOSicons.com")
+                            } onClick: {
+                                NSWorkspace.shared.open("https://macosicons.com")
+                            }.inPad()
+                            Text(.init("PO-ST-FRIENDS-WIDGY"))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.bottom, 15)
                         }
                         
                         Rectangle()

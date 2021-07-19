@@ -436,8 +436,10 @@ You cannot reinstall macOS with this.";
 // MARK: Three v1.0.0 (102)
 
 // Friends in Settings
+// Yes I'm adding this lol - duke4e advertised Patched Sur so I have to get him back and then I decided to add macOSicons.com because I like them. Maybe I'll have more friends later.
 "PO-ST-FRIENDS" = "Friends of Patched Sur";
 "PO-ST-FRIENDS-WIDGY" = "Widgy is an amazing app for making 100% custom widgets for both iOS and macOS! With it you can cover your iDevice with your all the data your want, arranged how you want it, while matching beautifully with the rest of your Home Screen / Desktop. Pretty cool, right?";
+"PO-ST-FRIENDS-ICONS" = "macOSicons.com is a website filled with over 5,000 alternative icons for macOS Big Sur. You can get icons from here to replace non-Big Sur styled icons or just because you like the designs from there more than the developer of the app's design.";
 
 // MARK: Patch Kexts Configuration
 
@@ -450,12 +452,7 @@ Make sure not to enable patches you don't need.";
 "ENABLED" = "Enabled";
 "DISABLED" = "Disabled";
 
-// MARK: Acceleration & Boot.plist Settings
-
-// Yes, this next one will fit into a button. It's the best I can think of. Try to keep this somewhat the same length / slightly longer.
-//"PO-ST-ACCEL" = "Allow Graphics Acceleration Patching";
-//"PO-ST-ACCEL-DESCRIPTION" = "Even though this is still buggy, you can increase performance on your Mac with the tradeoff being some graphics glitches. This button will not install the patches, it will just unhide the second inside the advanced patch configuration to allow it. Disabling this will not uninstall the patches.";
-//"PO-ST-ACCEL-DISALLOW" = "Disallow Graphics Acceleration Patching";
+// MARK: Boot.plist Settings
 
 "PO-ST-BOOT" = "Patch Boot.plist";
 "PO-ST-BOOT-DONE" = "Already Patched Boot.plist";
