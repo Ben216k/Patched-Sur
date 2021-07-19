@@ -10,11 +10,13 @@ struct PSPatchV: Codable {
     let version: String
     let compatible: Int
     let url: String
+    let updateLog: String
 
     enum CodingKeys: String, CodingKey {
         case version = "Version"
         case compatible = "Compatible"
         case url = "URL"
+        case updateLog = "UpdateLog"
     }
 }
 

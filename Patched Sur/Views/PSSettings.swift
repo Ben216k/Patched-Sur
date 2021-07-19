@@ -99,9 +99,7 @@ struct PSSettings: View {
                                     DispatchQueue.global(qos: .background).async {
                                         withAnimation {
                                             showOpenGLAnyway = UserDefaults.standard.bool(forKey: "OverrideMetalChecks")
-                                            showBootPlistAnyway = UserDefaults.standard.bool(forKey: "OverrideLateiMacChecks")
-                                            showBootPlistAnyway = showBootPlistAnyway ? showBootPlistAnyway : (try? call("sysctl -n hw.model | grep iMac14")) != nil
-                                            hasPatchedPlist = showBootPlistAnyway ? (try? call("cat /Library/Preferences/SystemConfiguration/com.apple.Boot.plist | grep no_compat_check")) != nil : false
+                                            hasPatchedPlist = (try? call("cat /Library/Preferences/SystemConfiguration/com.apple.Boot.plist | grep no_compat_check")) != nil
                                         }
                                     }
                                 }
@@ -125,84 +123,82 @@ struct PSSettings: View {
                                     }
                             }
                             
-                            if showBootPlistAnyway {
-                                VIButton(id: "PATCHPLIST", h: hasPatchedPlist ? .constant("NO") : $hovered) {
-                                    Image(systemName: "rectangle.dashed.and.paperclip")
-                                    Text(.init(!hasPatchedPlist ? "PO-ST-BOOT" : "PO-ST-BOOT-DONE"))
-                                } onClick: {
-                                    if !hasPatchedPlist {
-                                        print("Starting install of patched boot plist...")
-                                        withAnimation {
-                                            showPassPrompt = true
-                                        }
-                                        passAction = {
-                                            patchingPlist = true
-                                        }
+                            VIButton(id: "PATCHPLIST", h: hasPatchedPlist ? .constant("NO") : $hovered) {
+                                Image(systemName: "rectangle.dashed.and.paperclip")
+                                Text(.init(!hasPatchedPlist ? "PO-ST-BOOT" : "PO-ST-BOOT-DONE"))
+                            } onClick: {
+                                if !hasPatchedPlist {
+                                    print("Starting install of patched boot plist...")
+                                    withAnimation {
+                                        showPassPrompt = true
                                     }
-                                }.inPad()
-                                .btColor(hasPatchedPlist ? .gray : .init("Accent"))
-                                Text(.init("PO-ST-BOOT-DESCRIPTION"))
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .padding(.bottom, 15)
-                                    .sheet(isPresented: $patchingPlist, content: {
-                                        ZStack {
-                                            HStack {
-                                                Spacer()
-                                                VStack {
-                                                    if !isGoing || errorX != nil {
-                                                        VIButton(id: "LCLOSE", h: $hovered) {
-                                                            Image(systemName: "xmark.circle")
-                                                        } onClick: { patchingPlist = false; errorX = nil }
-                                                        .padding()
-                                                    }
-                                                    Spacer()
-                                                }
-                                            }
+                                    passAction = {
+                                        patchingPlist = true
+                                    }
+                                }
+                            }.inPad()
+                            .btColor(hasPatchedPlist ? .gray : .init("Accent"))
+                            Text(.init("PO-ST-BOOT-DESCRIPTION"))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.bottom, 15)
+                                .sheet(isPresented: $patchingPlist, content: {
+                                    ZStack {
+                                        HStack {
+                                            Spacer()
                                             VStack {
-                                                Text(.init("PO-ST-BOOT-ONGOING"))
-                                                    .font(Font.system(size: 15).bold())
-                                                Text(.init("PO-ST-BOOT-DESCRIPTION"))
-                                                    .multilineTextAlignment(.center)
+                                                if !isGoing || errorX != nil {
+                                                    VIButton(id: "LCLOSE", h: $hovered) {
+                                                        Image(systemName: "xmark.circle")
+                                                    } onClick: { patchingPlist = false; errorX = nil }
                                                     .padding()
-                                                if let errorX = errorX {
-                                                    VIError(errorX)
-                                                } else {
-                                                    VIButton(id: "NO", h: .constant("U")) {
-                                                        HStack {
-                                                            Image("ToolsCircle")
-                                                            Text(.init("PO-ST-BOOT-ONGOING"))
-                                                        }.onAppear {
-                                                            if !isGoing {
-                                                                isGoing = true
-                                                                DispatchQueue.global(qos: .background).async {
-                                                                    var patchLocation = nil as String?
-                                                                    var cantBeUsed = false
-                                                                    detectPatches(installerName: { patchLocation = $0 }, legacy: { cantBeUsed = $0 }, oldKext: { cantBeUsed = $0 })
-                                                                    guard let patchLocation = patchLocation, !cantBeUsed else {
-                                                                        errorX = NSLocalizedString("PO-ST-BOOT-NONE", comment: "PO-ST-BOOT-NONE")
-                                                                        return
-                                                                    }
-                                                                    print("Using \(patchLocation) as the location, starting Patch System with --bootPlist and --noRebuild.")
-                                                                    patchSystem(password: password, arguments: " --bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: {
-                                                                        if $0 == nil {
-                                                                            isGoing = false
-                                                                            hasPatchedPlist = true
-                                                                            patchingPlist = false
-                                                                        } else {
-                                                                            errorX = $0
-                                                                            isGoing = false
-                                                                        }
-                                                                    })
+                                                }
+                                                Spacer()
+                                            }
+                                        }
+                                        VStack {
+                                            Text(.init("PO-ST-BOOT-ONGOING"))
+                                                .font(Font.system(size: 15).bold())
+                                            Text(.init("PO-ST-BOOT-DESCRIPTION"))
+                                                .multilineTextAlignment(.center)
+                                                .padding()
+                                            if let errorX = errorX {
+                                                VIError(errorX)
+                                            } else {
+                                                VIButton(id: "NO", h: .constant("U")) {
+                                                    HStack {
+                                                        Image("ToolsCircle")
+                                                        Text(.init("PO-ST-BOOT-ONGOING"))
+                                                    }.onAppear {
+                                                        if !isGoing {
+                                                            isGoing = true
+                                                            DispatchQueue.global(qos: .background).async {
+                                                                var patchLocation = nil as String?
+                                                                var cantBeUsed = false
+                                                                detectPatches(installerName: { patchLocation = $0 }, legacy: { cantBeUsed = $0 }, oldKext: { cantBeUsed = $0 })
+                                                                guard let patchLocation = patchLocation, !cantBeUsed else {
+                                                                    errorX = NSLocalizedString("PO-ST-BOOT-NONE", comment: "PO-ST-BOOT-NONE")
+                                                                    return
                                                                 }
+                                                                print("Using \(patchLocation) as the location, starting Patch System with --bootPlist and --noRebuild.")
+                                                                patchSystem(password: password, arguments: " --bootPlist --noRebuild", location: patchLocation, unpatch: false, errorX: {
+                                                                    if $0 == nil {
+                                                                        isGoing = false
+                                                                        hasPatchedPlist = true
+                                                                        patchingPlist = false
+                                                                    } else {
+                                                                        errorX = $0
+                                                                        isGoing = false
+                                                                    }
+                                                                })
                                                             }
                                                         }
-                                                    }.inPad()
-                                                    .btColor(.gray)
-                                                }
-                                            }.font(.body).frame(width: 580, height: 325)
-                                        }
-                                    })
-                            }
+                                                    }
+                                                }.inPad()
+                                                .btColor(.gray)
+                                            }
+                                        }.font(.body).frame(width: 580, height: 325)
+                                    }
+                                })
                         }
                         
                         Group {

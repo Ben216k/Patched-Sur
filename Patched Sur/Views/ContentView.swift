@@ -98,6 +98,7 @@ struct MainView: View {
     @State var hovered: String?
     @Binding var at: Int
     @State var hasNVRAMProblem = false
+    @State var wantsKextUpdate = false
     var model: String
     var body: some View {
         VStack {
