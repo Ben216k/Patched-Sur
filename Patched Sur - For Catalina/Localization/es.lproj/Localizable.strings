@@ -432,3 +432,68 @@ No puedes e instalar macOS con esto.";
 "PO-IR-DOWNLOAD-RECOVERY" = "Descargando Modo Recuperación";
 "PO-IR-DONE" = "Parcheo de Modo Recuperación Completado!";
 "GO-HOME" = "Ir a Inicio";
+
+// MARK: Three v1.0.0 (102)
+
+// Friends in Settings
+// Yes I'm adding this lol - duke4e advertised Patched Sur so I have to get him back and then I decided to add macOSicons.com because I like them. Maybe I'll have more friends later.
+"PO-ST-FRIENDS" = "Friends of Patched Sur";
+"PO-ST-FRIENDS-WIDGY" = "Widgy is an amazing app for making 100% custom widgets for both iOS and macOS! With it you can cover your iDevice with your all the data your want, arranged how you want it, while matching beautifully with the rest of your Home Screen / Desktop. Pretty cool, right?";
+"PO-ST-FRIENDS-ICONS" = "macOSicons.com is a website filled with over 5,000 alternative icons for macOS Big Sur. You can get icons from here to replace non-Big Sur styled icons or just because you like the designs from there more than the developer of the app's design.";
+
+// MARK: Patch Kexts Configuration
+
+"PO-PK-CONFIGURE" = "Advanced Configuration";
+"PO-PK-CONFIG-WARN" = "WARNING: Advanced configurations should only be used if you know what you are doing!
+Make sure not to enable patches you don't need.";
+// This will come right before a button that toggles between "Patch Kexts" and "Unpatch Kexts"
+"PO-PK-CONFIG-MODE" = "Mode:";
+"PO-PK-CONFIG-UNPATCH" = "All kext patches will be uninstalled and the system will be restored to it's old unpatched state. WiFi won't work and possibly other things, this cannot be configured. This could break the system kernel collection resulting in either a kernel panicking Mac or the inability to repatch the kexts, so it's generally safer to just reinstall macOS instead of unpatching.";
+"ENABLED" = "Enabled";
+"DISABLED" = "Disabled";
+
+// MARK: Boot.plist Settings
+
+"PO-ST-BOOT" = "Patch Boot.plist";
+"PO-ST-BOOT-DONE" = "Already Patched Boot.plist";
+"PO-ST-BOOT-DESCRIPTION" = "Patching the com.apple.Boot.plist allows you to do NVRAM resets on your Mac without needing the USB installer and EFI Boot. Afterwards, you'll have to restore the NVRAM (Patched Sur will help) since it's better for you to have that value then to not have it. You will have to repatch this plist every time you update macOS.";
+"PO-ST-BOOT-ONGOING" = "Patching Boot.plist";
+"PO-ST-BOOT-NONE" = "No compatible patches detected.
+You may not have the latest version of the patches downloaded, which are required to patch the boot.plist.
+Use 'Update Backup Patches' to update the patches, then try this again.";
+
+// MARK: Volume Selection
+
+"PRE-VOL-INCOMPAT" = "See Incompatible Drives";
+"PRE-VOL-INCOMPAT-TITLE" = "Incompatible Drives";
+"PRE-VOL-INCOMPAT-NODATA" = "Cannot find disk info, this might be a patcher bug.";
+"PRE-VOL-INCOMPAT-INTERNAL" = "Internal drive, use an external USB instead.";
+"PRE-VOL-INCOMPAT-IMAGE" = "Disk Images can't be booted, use an external USB.";
+// For these next two, I suggest checking Disk Utility for the proper terms for GUID Partition Map and MacOS Extended (Journaled).
+"PRE-VOL-INCOMPAT-GUID" = "Not formatted with a GUID Partition Map";
+"PRE-VOL-INCOMPAT-SYNTH" = "Synthesized (APFS) volume, use MacOS Extended (Journaled)";
+
+// MARK: NVRAM Reset Wanring
+
+"PO-NV-POPUP-TITLE" = "Required NVRAM Value Missing";
+"PO-NV-POPUP-DESCRIPTION" = "The -no_compat_check boot-arg value is missing. While Patched Sur has already protected you from the biggest problem caused by this, there are still other problems that can result from this.";
+"PO-NV-POPUP-START" = "See Instructions";
+"PO-NV-POPUP-DESCRIPTION-TWO" = "Launch Patched Sur (the post-install app, not the one on the dmg) to learn more and solutions to restore the value.";
+"PO-NV-POPUP-DESCRIPTION-THREE" = "Press the See Instructions below to learn how to restore it.";
+
+"PO-NV-CHECK-TITLE" = "Do You Have Your Patched Installer USB?";
+"PO-NV-CHECK-DESCRIPTION" = "If you still have your Patched Installer USB, then we can skip a lot of complexity and make this super easy. It is highly recommended to always hold on to an installer USB of the latest version of macOS, so if you'd like to make one now, click the back button in the top right corner of the screen, then click Create Installer and follow the instructions to create one and come back here.";
+"PO-NV-CHECK-ONE" = "I have a Patched Installer USB.";
+"PO-NV-CHECK-TWO" = "I do not have one.";
+
+"PO-NV-ONE-TITLE" = "Restore Value (with installer)";
+"PO-NV-ONE-CONTENT" = "Since you have an installer USB, this will be super simple and painless!\n1. Turn off your Mac, then turn it back on holding option.\n2. Make sure the installer USB is plugged in, the select the purple EFI Boot drive.\n3. Your Mac will immediately shut off, so just turn it back on and you're done!";
+
+"PO-NV-TWO-TITLE" = "Restore Value (without installer)";
+"PO-NV-TWO-CONTENT" = "Since you don't have an installer USB, this'll be a little bit harder, but don't worry it, it'll be easy. If you want, you can write this down since Patched Sur won't be able to help you along the way.\n\n1. Turn off your Mac, then turn it back on holding CMD-OPTION-R (even if you installed recovery, you still need internet recovery for this).\n2. Connect to your WiFi then let it boot.\n3. Click Utilities in the Menu Bar then click Terminal.\n4. Type in 'nvram boot-args=-no_compat_check' and then press enter.\n5. Reboot your Mac and then you'll be done. ";
+
+"PO-NV-BAR-TITLE" = "NVRAM Problem";
+"PO-NV-BAR-SUBTITLE" = "Let's get this fixed.";
+
+"PO-NV-NOUP-TITLE" = "Unable to Update Without Required NVRAM Value";
+"PO-NV-NOUP-CONTENT" = "Updating macOS removes the boot.plist patch which is what Patched Sur using to allow you to boot your Mac without the -no_compat_check. Right now that value is missing, so updating would cause your Mac to no longer boot. Once you restore that value, you can update. To do that, click on the red button on the bottom of the window.";
