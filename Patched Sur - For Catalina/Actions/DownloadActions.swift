@@ -20,6 +20,7 @@ func kextDownload(size: (Int) -> (), next: () -> (), errorX: (String) -> ()) {
         _ = try? call("rm -rf ~/.patched-sur/Patched-Sur-Patches*")
         _ = try? File(path: "~/.patched-sur/Patched-Sur-Patches.zip").delete()
         print("Getting projected size")
+        print(AppInfo.patchesV.url)
         if let sizeString = try? call("curl -sI \(AppInfo.patchesV.url) | grep -i Content-Length | awk '{print $2}'") {
             let sizeStrings = sizeString.split(separator: "\r\n")
             print(sizeStrings)

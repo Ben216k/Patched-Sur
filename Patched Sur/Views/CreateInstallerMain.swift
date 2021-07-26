@@ -167,7 +167,8 @@ struct DoneView: View {
     @Binding var at: Int
     var body: some View {
         VStack {
-            Text(.init("PO-CI-FINSIHED-TITLE"))
+            Text(.init("PO-CI-FINISHED-TITLE"))
+                .font(.system(size: 15)).bold()
             Text(.init("PO-CI-FINSIHED-DESCRIPTION"))
                 .multilineTextAlignment(.center)
                 .padding(.vertical)

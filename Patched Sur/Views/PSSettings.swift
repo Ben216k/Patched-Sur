@@ -314,7 +314,7 @@ struct PSSettings: View {
                             } onClick: {
                                 NSWorkspace.shared.open("https://macosicons.com")
                             }.inPad()
-                            Text(.init("PO-ST-FRIENDS-WIDGY"))
+                            Text(.init("PO-ST-FRIENDS-ICONS"))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(.bottom, 15)
                         }
