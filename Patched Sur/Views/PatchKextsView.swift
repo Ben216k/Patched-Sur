@@ -146,7 +146,7 @@ struct PatchKextsView: View {
                             .onAppear {
                                 DispatchQueue.global(qos: .background).async {
                                     if patchSystemArguments != nil || !oldKext {
-                                        patchSystem(password: password, arguments: patchSystemArguments ?? "--detect", location: installerName, unpatch: unpatch) { errorY in
+                                        patchSystem(password: password, arguments: patchSystemArguments ?? " --detect", location: installerName, unpatch: unpatch) { errorY in
                                             if let errorY = errorY {
                                                 errorX = errorY
                                                 progress = -2
