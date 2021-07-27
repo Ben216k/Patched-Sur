@@ -12,8 +12,14 @@ func patchDaemon() {
     print("Patched Sur Update Daemon Started.")
     sleep(10)
     print("Checking the NVRAM...")
-    let bootArgs = (try? call("nvram boot-args")) ?? ""
-    if !bootArgs.contains("-no_compat_check") {
+    var showPopup = false
+    do {
+        let bootArgs = try call("nvram boot-args")
+        showPopup = !bootArgs.contains("-no_compat_check")
+    } catch {
+        showPopup = error.localizedDescription.contains("data was not found")
+    }
+    if showPopup {
         print("-no_compat_check is missing!")
         presentAlert(m: NSLocalizedString("PO-NV-POPUP-TITLE", comment: "PO-NV-POPUP-TITLE"), i: NSLocalizedString("PO-NV-POPUP-DESCRIPTION", comment: "PO-NV-POPUP-DESCRIPTION"))
     }
