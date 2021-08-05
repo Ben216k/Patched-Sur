@@ -434,3 +434,63 @@ Não podes reinstalar o macOS com ele.";
 "PO-IR-DOWNLOAD-RECOVERY" = "A Descarregar a Recuperação";
 "PO-IR-DONE" = "Patch da Recuperação Terminado!";
 "GO-HOME" = "Voltar ao Inicio";
+
+// MARK: Three v1.0.0 (102)
+
+// Friends in SettingsYes I'm adding this lol - duke4e advertised Patched Sur so I have to get him back and then I decided to add macOSicons.com because I like them. Maybe I'll have more friends later.
+"PO-ST-FRIENDS" = "Amigos do Patched Sur";
+"PO-ST-FRIENDS-WIDGY" = "Widgy é uma app incrível para fazer widgets 100% personalizados para iOS e macOS! Com ela, podes cobrir o teu iDevice com todos os dados que desejares, organizados como desejares, e ao mesmo tempo combinar perfeitamente com o resto da tua Página Inicial / Ambiente de Trabalho. Muito bom, certo?";
+"PO-ST-FRIENDS-ICONS" = "macOSicons.com é um site com mais de 5.000 ícones alternativos para o macOS Big Sur. Aqui podes obter ícones para substituir ícones que não sejam do estilo Big Sur ou apenas porque gostas mais dos designs de lá do que do desenvolvedor do design da app.";
+
+// MARK: Patch Kexts Configuration
+
+"PO-PK-CONFIGURE" = "Configuração Avançada";
+"PO-PK-CONFIG-WARN" = "AVISO: As configurações avançadas só devem ser utilizadas se realmente souberes o que estás a fazer!
+Certifica-te que não activas patches desnecessários.";
+// This will come right before a button that toggles between "Patch Kexts" and "Unpatch Kexts"
+"PO-PK-CONFIG-MODE" = "Modo:";
+"PO-PK-CONFIG-UNPATCH" = "Todos os patches dos Kexts serão desinstalados e o sistema será restaurado para o seu antigo estado sem patch. O WiFi não vai funcionar e possivelmente outras coisas, isto não pode ser configurado. Isto pode destruir as coleções de kernel do sistema, resultando num pânico de kernel do Mac ou na incapacidade de refazer o patch dos kexts, geralmente é mais seguro apenas reinstalar o macOS em vez de fazer o unpatch.";
+"ENABLED" = "Activado";
+"DISABLED" = "Desactivado";
+
+// MARK: Boot.plist Settings
+
+"PO-ST-BOOT" = "Patch Boot.plist";
+"PO-ST-BOOT-DONE" = "A Boot.plist já tem Patch";
+"PO-ST-BOOT-DESCRIPTION" = "Fazer o patch da com.apple.Boot.plist permite repor a  NVRAM no teu Mac sem precisar do instalador USB nem de iniciar na EFI. Depois disso, terás de restaurar a NVRAM (O Patched Sur vai ajudar), pois é melhor ter esse valor do que não o ter. Terás de repetir o patch da plist sempre que atualizares o macOS.";
+"PO-ST-BOOT-ONGOING" = "A fazer o patch da Boot.plist";
+"PO-ST-BOOT-NONE" = "Não foram detectados patches compatíveis.
+Podes não ter descarregado a versão mais recente dos patches, necessários para corrigir o boot.plist.
+Usa 'Atualizar backup de patches ' para atualizar os patches e tenta novamente.";
+
+// MARK: Volume Selection
+
+"PRE-VOL-INCOMPAT" = "Ver Drives Incompativéis";
+"PRE-VOL-INCOMPAT-TITLE" = "Drives Incompativéis";
+"PRE-VOL-INCOMPAT-NODATA" = "Informação do disco não encontrada, isto pode ser um bug do patcher";
+"PRE-VOL-INCOMPAT-INTERNAL" = "Disco interno, escolhe um disco USB externo.";
+"PRE-VOL-INCOMPAT-IMAGE" = "As imagens de disco não foram carregadas, escolhe um disco USB externo.";
+// For these next two, I suggest checking Disk Utility for the proper terms for GUID Partition Map and MacOS Extended (Journaled).
+"PRE-VOL-INCOMPAT-GUID" = "Não está formatado com Mapa de Partição GUID";
+"PRE-VOL-INCOMPAT-SYNTH" = "Volume em Sistema de ficheiros da Apple (APFS), usa MacOS Expandido (com journaling)";
+
+// MARK: NVRAM Reset Wanring
+
+"PO-NV-POPUP-TITLE" = "Valor de NVRAM requerido em falta";
+"PO-NV-POPUP-DESCRIPTION" = "O valor de -no_compat_check boot-arg está em falta
+Embora o Patched Sur já te tenha protegido do maior problema causado por isto, ainda existem outros problemas que podem resultar do valor em falta.";
+"PO-NV-POPUP-START" = "Ver Instruções";
+"PO-NV-POPUP-DESCRIPTION-TWO" = "Iniciar o Patched Sur (a aplicação de pós-instalação, não a do dmg) para saber mais e soluções para restaurar o valor.";
+"PO-NV-POPUP-DESCRIPTION-THREE" = "Pressiona Ver Instruções  para saber como restaurár.";
+"PO-NV-CHECK-TITLE" = "Tens o Teu Patched Installer USB?";
+"PO-NV-CHECK-DESCRIPTION" = "Se ainda tens o USB do instalador com patch, podemos saltar várias complexidades e tornar isso muito fácil. É altamente recomendável guardar sempre um instalador USB da versão mais recente do macOS, então, se quiseres fazer um agora, clica no botão Voltar no canto superior direito, clica em Criar instalador e segue as instruções para criar um e voltar aqui.";
+"PO-NV-CHECK-ONE" = "Eu tenho o USB Patched Installer.";
+"PO-NV-CHECK-TWO" = "Não tenho.";
+"PO-NV-ONE-TITLE" = "Restaurar Valores (com instalador)";
+"PO-NV-ONE-CONTENT" = "Uma vez que tens o instalador USB, isto será super simples e indolor!\n1. Desliga o teu Mac, volta a ligá-lo e segura a tecla option.\n2. Certifica-te de que o instalador USB está inserido, selecciona a unidade de arranque EFI púrpura.\n3. O Mac irá desligar-se imediatamente como esperado, agora basta ligá-lo novamente e está pronto!";
+"PO-NV-TWO-TITLE" = "Restaurar Valores (sem o instalador)";
+"PO-NV-TWO-CONTENT" = "Uma vez que não tens o instalador USB, isto será um pouco mais difícil, mas não te preocupes, ainda assim será fácil. Se quiseres, podes escrever isto uma vez que o Patched Sur não te poderá ajudar durante o caminho.\n1. Desliga o teu Mac, volta a ligá-lo mantendo o CMD-OPTION-R (mesmo que tenha instalado a recuperação, ainda precisa de recuperação na Internet para isto).\n2. Ligua-te ao WiFi, depois deixa-o arrancar.\n3. Clique Utilitários na barra de menu e depois em Terminal.\n4. Digita 'nvram boot-args=no_compat_check' e depois prime enter.\n5. Reinicia o Mac e está pronto. ";
+"PO-NV-BAR-TITLE" = "Problema com a NVRAM";
+"PO-NV-BAR-SUBTITLE" = "Vamos resolver isto.";
+"PO-NV-NOUP-TITLE" = "Não é Possível Atualizar sem o Valor de NVRAM Requerido";
+"PO-NV-NOUP-CONTENT" = "A actualização do macOS remove o Patch do boot.plist, que é o que o Patched Sur utiliza para te permitir arrancar o Mac sem o -no_compat_check. Neste momento esse valor está em falta, pelo que a actualização faria com que o teu Mac já não arrancasse. Uma vez restabelecido esse valor, pode actualizar. Para o fazer, clica no botão vermelho na parte inferior da janela.";
