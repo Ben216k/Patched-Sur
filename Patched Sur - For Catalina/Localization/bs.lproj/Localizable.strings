@@ -429,3 +429,64 @@ Patched sur također koristi dva Open Source frameworka, fajlove i ShellOut od J
 "PO-IR-DOWNLOAD-RECOVERY" = "Skidanje Moda za Oporavak";
 "PO-IR-DONE" = "Završeno Patchovanje Oporavka!";
 "GO-HOME" = "Vrati se na početnu stranicu";
+
+// MARK: Three v1.0.0 (102)
+
+// Friends in Settings
+// Yes I'm adding this lol - duke4e advertised Patched Sur so I have to get him back and then I decided to add macOSicons.com because I like them. Maybe I'll have more friends later.
+"PO-ST-FRIENDS" = "Prijatelji Patched Sur-a";
+"PO-ST-FRIENDS-WIDGY" = "Widgy je odlična aplikacija za pravljenje 100% prilagođenih vidžeta za iOS i macOS! Sa njom možete prekriti vaš iUređaj sa svim podacima koje želite, poredanih kako želite, dok se prelijepo slažu sa ostatkom vašeg ekrana. Prilično cool, zar ne?";
+"PO-ST-FRIENDS-ICONS" = "macOSicons.com je web sajt pun sa preko 5,000 alternativnih ikonica za macOS Big Sur. Odavde možete uzeti ikonice da bi zamijenili ne-BigSur stilizovane ikonice ili samo zato što volite njihove dizajne više od dizajna developera aplikacije.";
+
+// MARK: Patch Kexts Configuration
+
+"PO-PK-CONFIGURE" = "Napredna Konfiguracija";
+"PO-PK-CONFIG-WARN" = "UPOZORENJE: Napredna konfiguracija bi trebala biti korištena samo ako znate šta radite!
+Pobrinite se da ne dozvolite patcheve koje ne trebate.";
+// This will come right before a button that toggles between "Patch Kexts" and "Unpatch Kexts"
+"PO-PK-CONFIG-MODE" = "Mod:";
+"PO-PK-CONFIG-UNPATCH" = "Sve kext izmjene će biti izbrisane i sistem će se vratiti na staro neizmijenjeno stanje. WiFi i još par stvari vjerovatno neće raditi. Ovo bi moglo pokvariti sistemsku kernel kolekciju što bi dovelo ili do "Kernel Panicking" stanja Mac uređaja ili do nemogućnosti ponovne izmjene kext fajlova, tako da je generalno sigurnije reinstalirati macOS umjesto brisanja izmjena.";
+"ENABLED" = "Uključeno";
+"DISABLED" = "Isključeno";
+
+// MARK: Boot.plist Settings
+
+"PO-ST-BOOT" = "Izmjena Boot.plist";
+"PO-ST-BOOT-DONE" = "Već izmijenjen Boot.plist";
+"PO-ST-BOOT-DESCRIPTION" = "Izmjenjivanje com.apple.Boot.plist vam daje mogućnost da radite NVRAM resete bez potrebe USB instalera i EFI Boot-a. Kasnije, morati ćete vratiti NVRAM (Patched Sur će pomoći) jer je bolje za vas da imate tu vrijednost nego da je nemate. Morat ćete ponovo izmijeniti ovaj plist svaki put kada nadograđujete macOS";
+"PO-ST-BOOT-ONGOING" = "Izmjenjivanje Boot.plist";
+"PO-ST-BOOT-NONE" = "Nema detektovanih podržanih izmjena.
+Možda nemate najnoviju verziju izmjena skinutu, koja je obavezna da se izmjeni boot.plist. Koristite 'Nadogradi backup izmjena' da nadogradite izmjene, onda pokušajte ponovo.";
+
+// MARK: Volume Selection
+
+"PRE-VOL-INCOMPAT" = "Pogledaj ne podržane uređaje";
+"PRE-VOL-INCOMPAT-TITLE" = "Ne podržani uređaji";
+"PRE-VOL-INCOMPAT-NODATA" = "Ne možemo pronaći informacije o disku, ovo bi mogla biti grešta Patchera.";
+"PRE-VOL-INCOMPAT-INTERNAL" = "Interni disk, koristite eksterni USB umjesto ovoga.";
+"PRE-VOL-INCOMPAT-IMAGE" = "Disk Slike ne mogu biti učitane, koristite eksterni USB.";
+// For these next two, I suggest checking Disk Utility for the proper terms for GUID Partition Map and MacOS Extended (Journaled).
+"PRE-VOL-INCOMPAT-GUID" = "Nije formatiran sa GUID Partition Mapom";
+"PRE-VOL-INCOMPAT-SYNTH" = "Sintetiziran (APFS) uređaj, koristite MacOS Extended (Journaled)";
+
+// MARK: NVRAM Reset Wanring
+
+"PO-NV-POPUP-TITLE" = "Obavezna NVRAM Vrijednost nedostaje";
+"PO-NV-POPUP-DESCRIPTION" = "Fali -no_compat_check boot-arg vrijednost.
+Dok vas je Patched Sur već zaštitio od najvećeg problema koji proizilazi iz ovoga, još uvijek ima drugih problema koji mogu nastati.";
+"PO-NV-POPUP-START" = "Pogledajte uputstva";
+"PO-NV-POPUP-DESCRIPTION-TWO" = "Pokreni Patched Sur (post-instalacijsku aplikaciju, ne onu u .dmg fajlu) da otkrijete više i rješenja da vratite vrijednost.";
+"PO-NV-POPUP-DESCRIPTION-THREE" = "Pritisnite 'Pogledajte uputstva' ispod da otkrijete kako da je vratite.";
+"PO-NV-CHECK-TITLE" = "Imate li vaš Patched Instalacijski USB?";
+"PO-NV-CHECK-DESCRIPTION" = "Ako još uvijek imate Patched InstalacijskiUSB, onda možemo preskočiti puno kompleksnosti i učiniti ovo vrlo lakim. Vrlo je preporučeno držati instalacijski USB na najnovijoj verziji macOS sistema, tako da ako želite da napravite jedan sada, kliknite dugme za nazad u gornjem desnom ćošku ekrana, onda kliknite 'Kreiraj instaler' i pratite uputstva za kreiranje pa se onda vratite ovdje.";
+"PO-NV-CHECK-ONE" = "Imam Patched Instalacijski USB.";
+"PO-NV-CHECK-TWO" = "Nemam ga.";
+"PO-NV-ONE-TITLE" = "Restore Value (with installer)
+Vratite vrijednost (sa instalacijom)";
+"PO-NV-ONE-CONTENT" = "Budući da imate instalacijski USB ovo će biti super jednostavno i bezbolno!\n. Ugasite vaš Mac, onda ga upalite držeći 'option'.\n2. Budite sigurni da je instalacijski USB uključen, onda kliknite na ljubičasti EFI Boot disk.\n3. Vaš Mac će se onda ugasiti, tako da ga samo opet upalite i gotovi ste!";
+"PO-NV-TWO-TITLE" = "Vratite vrijednost (bez instalacije)";
+"PO-NV-TWO-CONTENT" = "Budući da nemate instalacijski USB, ovo će biti malo teže, ali ne brinite, bit će lako. Ako želite, možete ovo zapisati budući da Patched Sur neće biti u mogućnosti da vam pomogne tijekom rada.\n\n1. Ugasite vaš Mac, onda ga upalite držeći CMD-OPTION-R (čak iako ste instalirali oporavak, ipak vam za ovo treba internet oporavak).\n2. Konektujte se na vaš WiFi i pustite ga da se učita.\n3. Kliknite 'Utilities' na meniju i kliknite 'Terminal'.\n4. Upišite 'nvram boot-args=-no_compat_check' i kliknite enter.\n5. Ponovo upalite Mac i bit ćete gotovi.";
+"PO-NV-BAR-TITLE" = "NVRAM Problem";
+"PO-NV-BAR-SUBTITLE" = "Hajde da ovo popravimo.";
+"PO-NV-NOUP-TITLE" = "Nije moguća nadogradnja bez obavezne NVRAM vrijednosti";
+"PO-NV-NOUP-CONTENT" = "Nadogradnja macOS sistema briše boot.plist izmjenu koju Patched Sur koristi da vam dozvoli da pokrenete vaš Mac bez  -no_compat_check. Sada, ta vrijednost vam fali tako da bi nadogradnja dovela do toga da vam se mac više ne pokreće. Kada vratite tu vrijednost, možete nadograditi. Da to uradite, kliknite crveno dugme na dnu prozora.";
