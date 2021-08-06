@@ -1,63 +1,10 @@
-
-/* Class = "NSMenuItem"; title = "Patched Sur - Recovery"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "Patched Sur - Recovery";
-
-/* Class = "NSTextFieldCell"; title = "Patched Sur"; ObjectID = "31m-ys-XXY"; */
-"31m-ys-XXY.title" = "Patched Sur";
-
-/* Class = "NSTextFieldCell"; title = "Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. "; ObjectID = "4dt-Ym-N0I"; */
-"4dt-Ym-N0I.title" = "Patching your kexts gets you Wifi, USB, and many other things working on your Big Sur installation. Without these kexts, your Mac would not be at its full potential on Big Sur, and several things would not work. If you need to, you can unpatch the kexts then repatch them which might solve a problem. ";
-
-/* Class = "NSMenuItem"; title = "Quit Patched Sur - Recovery"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit Patched Sur - Recovery";
-
-/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
-"5QF-Oa-p0T.title" = "Edit";
-
-/* Class = "NSMenuItem"; title = "About Patched Sur - Recovery"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About Patched Sur - Recovery";
-
-/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Main Menu";
-
-/* Class = "NSTextFieldCell"; title = "Patch Kexts"; ObjectID = "BaO-Di-Twc"; */
+"1Xt-HY-uBw.title" = "Patched Sur - Récupération";
+"4dt-Ym-N0I.title" = "Le patch de vos kexts vous permet de faire fonctionner le Wifi, l'USB, et beaucoup d'autres choses sur votre installation Big Sur. Sans ces kexts, votre Mac ne serait pas à son plein potentiel sur Big Sur, et plusieurs choses ne fonctionneraient pas. Si vous en avez besoin, vous pouvez dépatcher les kexts puis les repatcher ce qui pourrait résoudre un problème.";
+"AYu-sK-qS6.title" = "Menu principal";
 "BaO-Di-Twc.title" = "Patch Kexts";
+"Qq5-g0-oQ0.title" = "PATCH KEXTS DE RÉCUPÉRATION";
+"ial-ib-X6F.title" = "Début du Patch Kexts";
+"uQy-DD-JDr.title" = "Patched Sur - Récupération";
 
-/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
-"H8h-7b-M4v.title" = "View";
-
-/* Class = "NSWindow"; title = "Patched Sur"; ObjectID = "IQv-IB-iLA"; */
+"31m-ys-XXY.title" = "Patched Sur";
 "IQv-IB-iLA.title" = "Patched Sur";
-
-/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
-"NMo-om-nkz.title" = "Services";
-
-/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "Oqn-jo-ekB"; */
-"Oqn-jo-ekB.title" = "Item 1";
-
-/* Class = "NSTextFieldCell"; title = "RECOVERY PATCH KEXTS"; ObjectID = "Qq5-g0-oQ0"; */
-"Qq5-g0-oQ0.title" = "RECOVERY PATCH KEXTS";
-
-/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "Z28-kx-H6s"; */
-"Z28-kx-H6s.title" = "Item 3";
-
-/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
-"aUF-d1-5bR.title" = "Window";
-
-/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "dDt-pR-0Tf"; */
-"dDt-pR-0Tf.title" = "Item 2";
-
-/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
-"dMs-cI-mzQ.title" = "File";
-
-/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
-"hz9-B4-Xy5.title" = "Services";
-
-/* Class = "NSButtonCell"; title = "Start Patch Kexts"; ObjectID = "ial-ib-X6F"; */
-"ial-ib-X6F.title" = "Start Patch Kexts";
-
-/* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
-"jxT-CU-nIS.title" = "Format";
-
-/* Class = "NSMenu"; title = "Patched Sur - Recovery"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "Patched Sur - Recovery";
