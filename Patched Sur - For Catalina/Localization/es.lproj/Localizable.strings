@@ -93,11 +93,11 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 "PROB-OTHERS" = "Otros Problemas";
  
 "PROB-FILE-TITLE" = "FileVault Está Activado.";
-"PROB-FILE-DESCRIPTION" = "Tu Mac tiene FileVault activado. Mientras que es una buena herramienta de cifrado, no funciona en Big Sur en Macs no compatibles. Mientras está activado no sería posible entrar a modo recuperación y en ocasiones no podrías desbloquear el disco. Debes desactivar esto antes de correr el parche. Puedes hacerlo yendo a preferencias del sistema, selecciona Seguridad y Privacidad, Pestaña a FileVault, y presionando el candado y desactivándolo.";
+"PROB-FILE-DESCRIPTION" = "Tu Mac tiene FileVault activado. Mientras que es una buena herramienta de cifrado, no funciona en Big Sur en Macs no compatibles. Mientras está activado no sería posible entrar a modo recuperación y en ocasiones no podrías desbloquear el disco. Debes desactivar esto antes de correr el parche. Puedes hacerlo yendo a preferencias del sistema, selecciona Seguridad y Privacidad, Pestaña a FileVault, y presionando el candado y desactivandolo.";
  
 // Reminder! "BigMac" and "StarPlayrX" are a formal names, so don't localize that.
 "PROB-PRO-TITLE" = "Hay un mejor parche para Mac Pros";
-"PROB-PRO-DESCRIPTION" = "Mientras que Patched Sur es bueno para muchas Macs, Mac Pros no deberían usarse con este parche. Estas no tienen los parches adecuados, hay otra manera fácil de usar específicamente para la Mac Pro. Es el BigMac Patcher de StarPlayrX, y te brindara una experiencia increíble para tu Mac.";
+"PROB-PRO-DESCRIPTION" = "Mientras que Patched Sur es bueno para muchas Macs, Mac Pros no debería usarse con este parche. Estas no tienen los parches adecuados, hay otra manera fácil de usar específicamente para la Mac Pro. Es el BigMac Patcher de StarPlayrX, y te brindara una experiencia increíble para tu Mac.";
  
 "PROB-GX-TITLE" = "No Aceleración Gráfica";
 "PROB-GX-DESCRIPTION" = "Tu Mac no contiene aceleración tipo Metal, así que Big Sur correrá EXTREMADAMENTE LENTO. No esperes que sea rápido o que funcione bien. No puedes arreglarlo y este parche está en progreso para resolverlo, pero en su estado actual es extremadamente inestable. Si deseas continuar, podrías, pero no esperes una experiencia mágica en Big Sur.";
@@ -156,7 +156,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 // Select Volume Page
  
 "PRE-VOL-TITLE" = "Selecciona un USB";
-"PRE-VOL-1" = "Para instalar Big Sur parcheado inicialmente necesitaras un USB que asistirá con la instalación. Este proveerá un ambiente donde el parche se puede asegurar que todo va adecuadamente bien.";
+"PRE-VOL-1" = "Para instalar Big Sur parcheado inicialmente necesitarás un USB que asistirá con la instalación. Este proveerá un ambiente donde el parche se puede asegurar que todo va adecuadamente bien.";
 "PRE-VOL-2" = "Para crear un instalador USB necesitará un volumen donde poner el instalador.";
 "PRE-VOL-3" = "Este USB necesita tener al menos 16 GB de espacio o más. Particiones internas no funcionaran, pero particiones externas dependiendo del mapa de partición que tenga (El cual es probable que sea correcto el mapa GUID). Si tu volumen no se muestra verifica de que este formateado como macOS Extended (Journaled).";
 "PRE-VOL-NO" = "No Volúmenes compatibles fueron detectados.";
@@ -171,7 +171,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
  
 "PRE-CTI-TITLE" = "Creando Instalador USB";
 "PRE-CTI-DESCRIPTION" = "Ahora el USB seleccionado está siendo utilizado para crear un instalador de macOS portátil. Los archivos copiados al disco serán similares al modo recuperación de macOS Big Sur. Luego que esos archivos son copiados al USB, Patched Sur comienza a realizar los parches que permiten a tu Mac encender y le otorga parches e herramientas útiles.";
-"PRE-CTI-CANCEL-1" = "¿Estas seguro de que quieres cancelar el proceso de parche en el instalador de macOS? Necesitas esto para actualizar a macOS Big Sur y usualmente tarda en realizarse.";
+"PRE-CTI-CANCEL-1" = "¿Estás seguro de que quieres cancelar el proceso de parche en el instalador de macOS? Necesitas esto para actualizar a macOS Big Sur y usualmente tarda en realizarse.";
 "PRE-CTI-CANCEL-2" = "Un instalador de macOS se está realizando.";
 "CANCEL-PROCESS" = "Cancelar Proceso";
 "RESTART-PROCESS" = "Reiniciar Proceso";
@@ -228,13 +228,13 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 // Central View
  
 "PO-UP-TITLE" = "Correr Actualizaciones";
-"PO-UP-DESCRIPTION" = "Actualizar macOS o el parche a una versión mas nueva para mantenerte al día.";
+"PO-UP-DESCRIPTION" = "Actualizar macOS o el parche a una versión más nueva para mantenerte al día.";
 "PO-PK-TITLE" = "Parchar Kexts";
 "PO-PK-DESCRIPTION" = "Kexts proveen a macOS con toda la funcionalidad esencial, para que todo trabaje como debería.";
 "PO-ST-TITLE" = "Ajustes";
-"PO-ST-DESCRIPTION" = "Desactivar animaciones, habilitar cambio de gráficas, mostrar registros y quizás mas.";
+"PO-ST-DESCRIPTION" = "Desactivar animaciones, habilitar cambio de gráficas, mostrar registros y quizás más.";
 "PO-CI-TITLE" = "Crear Instalador";
-"PO-CI-DESCRIPTION" = "Hacer un instalador parchado de macOS Big Sur para (re)instalar macOS y mas.";
+"PO-CI-DESCRIPTION" = "Hacer un instalador parchado de macOS Big Sur para (re)instalar macOS y más.";
 "PO-IR-TITLE" = "Instalar Modo Recuperación";
 "PO-IR-DESCRIPTION" = "Parchar volumen de recuperación actual (usado con CMD-R). No siempre es útil.";
 "PO-AMM-DESCRIPTION" = "Mostrar info sobre tu Mac sin el numero serial. Bueno para mostrar tu éxito luego de la instalación.";
@@ -259,7 +259,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
  
 "PO-ST-GXS-ENABLE" = "Habilitar Cambio de Gráficos";
 "DISABLE" = "Deshabilitar";
-"PO-ST-GXS-DESCRIPTION" = "Si estás en una Mac con múltiples GPU, probablemente quiere tener cambio de gráficos activado. Gracias a @15wat por encontrar esta solución.";
+"PO-ST-GXS-DESCRIPTION" = "Si estás en una Mac con múltiples GPU, probablemente quieras tener cambio de gráficos activado. Gracias a @15wat por encontrar esta solución.";
 "PO-ST-GXS-ENABLE-DONE" = "Cambio de Gráficas Habilitado";
 "PO-ST-GXS-ENABLE-DONE-2" = "Ahora las gráficas se cambiarán automáticamente! Un reinicio podría ser necesario para que los cambios tomen efecto.";
 "PO-ST-GXS-ENABLE-FAILED" = "Ocurrió un fallo activando el cambio de gráficos";
@@ -272,10 +272,10 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 "PO-ST-PKL-TITLE" = "Registro de Parche Kext";
 "PO-ST-PKL-NO-LOGS" = "No Registros Capturados";
 "PO-ST-PKL-COPIED" = "Copiado!";
-"PO-ST-PKL-COPIED-2" = "El último registro de parches Kexts ha sido copiado a tu clipboard. Esto podría con el proceso de resolución de errores. Asegúrate de compartir esto con cualquiera que te esté ayudando.";
+"PO-ST-PKL-COPIED-2" = "El último registro de parches Kexts ha sido copiado a tu clipboard. Esto podría ayudar con el proceso de resolución de errores. Asegúrate de compartir esto con cualquiera que te esté ayudando.";
  
 "PO-ST-CL-TITLE" = "Limpiar restos de Patched Sur";
-"PO-ST-CL-DESCRIPTION" = "A veces, Patched Sur accidentalmente deja algunos restos de algo que corrió. Esto en ocasiones puede recuperarte hasta 12 GB de espacio. Esto debería correrse luego de realizar una actualización.";
+"PO-ST-CL-DESCRIPTION" = "A veces, Patched Sur accidentalmente deja algunos restos de algo que corrió. Esto en ocasiones puede recuperarse hasta 12 GB de espacio. Esto debería correrse luego de realizar una actualización.";
 "PO-ST-CL-DONE" = "Restos Limpiados";
 "PO-ST-CL-DONE-2" = "Los archivos se han borrado, debes ver mas espacio libre ahora (asumiendo que había archivos grandes para limpiar).";
  
@@ -284,7 +284,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 "PO-ST-CYE-DESCRIPTION" = "La aplicación de antes de instalación en Patched Sur tiene una función que les deja saber a los nuevos usuarios que tan bien sus Macs correrán con Big Sur. ¡Sin embargo, algo como esto necesita información y en esto es donde puedes ayudar! Solo presiona en el enlace arriba y sigue las instrucciones para ayudar.";
  
 "PO-ST-RL-TITLE" = "Re-lanzar el Parche";
-"PO-ST-RL-DESCRIPTION" = "No lo sé porque razón desearías hacer esto, pero si quieres puedes reiniciar la aplicación del parche. Esto refrescará a muchas de las variables que son obtenidas cuando el parche corre por primera vez. Dato Curioso: Este es el mismo código que se utiliza cuando la instalación se completa.";
+"PO-ST-RL-DESCRIPTION" = "No lo sé porque desearías hacer esto, pero si quieres puedes reiniciar la aplicación del parche. Esto refrescará muchas de las variables que son obtenidas cuando el parche corre por primera vez. Dato Curioso: Este es el mismo código que se utiliza cuando la instalación se completa.";
 "PO-ST-RL-FAILED" = "Reinicio Fallado!";
 "PO-ST-RL-FAILED-2" = "Fallo en abrir Patched Sur, intenta abrirlo manualmente.";
  
@@ -292,7 +292,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
  
 "PO-PK-TITLE-ALT" = "Quitar parches (Kexts)";
 "PO-PK-SUBTITLE" = "Hace que los controladores funcionan básicamente";
-"PO-PK-DESCRIPTION-2" = "Parchar tus kexts te brinda WiFi, puertos USB y otras cosas funcionando en tu instalación de Big Sur. Sin estos parches, tu Mac no funcionaría en su completo potencial en Big Sur y otras cosas no funcionarán. Si es necesario podrías remover los parches y colocarlos nuevamente lo cual podría solucionar problemas. En ocasiones es bueno esperar un poco luego de que el sistema se inicia por primera vez antes de intentar aplicar estos parches para evitar que interfiera con ajustes del sistema.";
+"PO-PK-DESCRIPTION-2" = "Parchar tus kexts te brinda WiFi, puertos USB y otras cosas funcionando en tu instalación de Big Sur. Sin estos parches, tu Mac no funciona en su completo potencial en Big Sur y otras cosas no funcionarán. Si es necesario podrías remover los parches y colocarlos nuevamente lo cual podría solucionar problemas. En ocasiones es bueno esperar un poco luego de que el sistema se inicia por primera vez antes de intentar aplicar estos parches para evitar que interfiera con ajustes del sistema.";
 "PO-PK-START" = "Comenzar Parches Kexts";
 "PO-PK-UN-START" = "Comenzar remoción de Kexts";
 // Have doubts on the meaning of this action in the actual program @riiveraLuis
@@ -311,7 +311,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 "PO-CI-START-TITLE" = "Crear Instalador macOS";
 "PO-CI-START-DESCRIPTION" = "Esta herramienta te permite parchar un USB con Big Sur mediante Patched Sur. Es similar a lo que la aplicación pre instalación hace, pero con algunos cambios. Esto podría usarse en caso de que tengas problemas futuros con el parche. Note que puedes instalar una partición de modo recuperación que es similar a esto, sin embargo, actualmente no es posible instalar de nuevo macOS debido a que no funciona el WiFi en el modo recuperación, pero esto sí tiene. También note que si utilizas esto para actualizar hay una manera más sencilla que es la aplicación post instalación.";
 "PO-CI-FINISHED-TITLE" = "Creación del Instalador macOS Finalizada";
-"PO-CI-FINSIHED-DESCRIPTION" = "Este instalador puede ya utilizarse como desees. Está completamente parcheado igual comó se hizo en la aplicación de pre instalación. Contiene el instalador macOS (Espero que lo sepas), un ambiente de recuperación y por supuesto Patched Sur para aplicar los parches kext.";
+"PO-CI-FINSIHED-DESCRIPTION" = "Este instalador puede ya utilizarse como desees. Está completamente parcheado igual como se hizo en la aplicación de pre instalación. Contiene el instalador macOS (Espero que lo sepas), un ambiente de recuperación y por supuesto Patched Sur para aplicar los parches kext.";
  
 // MARK: About This Mac
  
@@ -344,7 +344,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 "PO-UP-START-TITLE" = "Comenzar la Actualización de macOS";
 "PO-UP-START-DESCRIPTION" = "Para actualizar, el parche primero descarga los parches más recientes y luego la nueva versión de macOS directamente de Apple luego se iniciará sin verificación de compatibilidad.";
 "PO-UP-NOTES-TITLE" = "Ver las Notas de Novedades";
-"PO-UP-NOTES-DESCRIPTION" = "Ver que hay nuevo en macOS antes de actualizar. Gracias a Mr. Macintosh (o Apple/(9to5Mac a veces) por proveer.";
+"PO-UP-NOTES-DESCRIPTION" = "Ver que hay nuevo en macOS antes de actualizarlo. Gracias a Mr. Macintosh (o Apple/(9to5Mac a veces) por proveer.";
 "PO-UP-NO-UPDATES" = "No Hay Actualizaciones Nuevas Disponibles.";
 "PO-UP-YOU-ON" = "Estás actualmente en XX.YY.ZZ.";
 "PO-UP-NOTIF-TITLE" = "Configura las Notificaciones de Actualizaciones";
@@ -392,7 +392,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 "PO-UP-CHOOSE-PRE" = "Esta versión de macOS ya ha sido descargada:";
 "PO-UP-CHOOSE-CAN" = "Puedes descargar estas versiones de macOS:";
 "PO-UP-CHOOSE-DELETE" = "¿Estás seguro de que quieres borrar el instalador precargado?";
-"PO-UP-CHOOSE-DELETE-2" = "Mientras que esto te ahorrara 12.2 GBs de espacio, es útil también para reinstalar macOS o alguna otra razón por la que necesites el instalador de macOS.";
+"PO-UP-CHOOSE-DELETE-2" = "Mientras que esto te ahorrará 12.2 GBs de espacio, es útil también para reinstalar macOS o alguna otra razón por la que necesites el instalador de macOS.";
 "DELETE" = "Borrar";
 "UPDATE" = "Actualizar";
 "REINSTALL" = "Reinstalar";
@@ -400,7 +400,7 @@ Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut po
 "PO-UP-CHOOSE-EXACT-PATH" = "Este archivo parece no estar completo y el parche completo no pudo ser determinado. Por el momento no puedes usar el instalador pre descargado.";
 "PO-UP-CHOOSE-DOWNLOAD" = "Descargar el Instalador de macOS";
 "PO-UP-CHOOSE-DOWNLOAD-1" = "Puedes actualizar esta versión de macOS, sin embargo, también puedes descargarlo, ese es el botón que presionaste. Esta ventana solo existe para asegurarte que lo sepas Esto solo abrirá el navegador y descarga el instalador, nada especial.)";
-"PO-UP-CHOOSE-DOWNLOAD-2" = "No puedes \"actualizar\" a una versión mas antigua de macOS, sin embargo, puedes bajar el instalador si quieres hacer algo con él. (Esto solo abrirá el navegador y descarga el instalador, nada especial.)";
+"PO-UP-CHOOSE-DOWNLOAD-2" = "No puedes \"actualizar\" a una versión más antigua de macOS, sin embargo, puedes bajar el instalador si quieres hacer algo con él. (Esto solo abrirá el navegador y descarga el instalador, nada especial.)";
 "PO-UP-CHOOSE-DOWNLOAD-TIP" = "También puedes descargar el InstallAssistant.pkg si deseas.";
 "PO-UP-CHOOSE-DOWNLOAD-TIP-2" = "Tu no puedes actualizar a una versión de macOs más antigua, pero puedes descargar el instalador si deseas.";
 "DOWNLOAD" = "Download";
@@ -432,68 +432,68 @@ No puedes e instalar macOS con esto.";
 "PO-IR-DOWNLOAD-RECOVERY" = "Descargando Modo Recuperación";
 "PO-IR-DONE" = "Parcheo de Modo Recuperación Completado!";
 "GO-HOME" = "Ir a Inicio";
-
+ 
 // MARK: Three v1.0.0 (102)
-
+ 
 // Friends in Settings
 // Yes I'm adding this lol - duke4e advertised Patched Sur so I have to get him back and then I decided to add macOSicons.com because I like them. Maybe I'll have more friends later.
-"PO-ST-FRIENDS" = "Friends of Patched Sur";
-"PO-ST-FRIENDS-WIDGY" = "Widgy is an amazing app for making 100% custom widgets for both iOS and macOS! With it you can cover your iDevice with your all the data your want, arranged how you want it, while matching beautifully with the rest of your Home Screen / Desktop. Pretty cool, right?";
-"PO-ST-FRIENDS-ICONS" = "macOSicons.com is a website filled with over 5,000 alternative icons for macOS Big Sur. You can get icons from here to replace non-Big Sur styled icons or just because you like the designs from there more than the developer of the app's design.";
-
+"PO-ST-FRIENDS" = "Amigos de Patched Sur";
+"PO-ST-FRIENDS-WIDGY" = "Widgey es una aplicacion increible para hacer widgets 100% custumizables para iOS y macOS. Con el puedes cubrir tu dispositivos con toda la data  que quieras, ordenada a tu modo. Esto combinado con el resto de tu pantalla de inicio y escritorio. Suena bien ¿verdad?";
+"PO-ST-FRIENDS-ICONS" = "macOSicons.com es una página web llena de sobre 5,000 iconos alternativos para macOS Big Sur. Puedes obtener iconos para reemplazar iconos que no sean diseñado para Big Sur o solo porque te gusten los diseños alternos de los iconos del desarrollador original.";
+ 
 // MARK: Patch Kexts Configuration
-
-"PO-PK-CONFIGURE" = "Advanced Configuration";
-"PO-PK-CONFIG-WARN" = "WARNING: Advanced configurations should only be used if you know what you are doing!
-Make sure not to enable patches you don't need.";
+ 
+"PO-PK-CONFIGURE" = "Configuración Avanzada";
+"PO-PK-CONFIG-WARN" = "Advertencia: Configuración avanzada ¡sólo debe usarse  solo si sabes lo que estás haciendo!
+Asegurate de no habilitar parches que no necesites.";
 // This will come right before a button that toggles between "Patch Kexts" and "Unpatch Kexts"
-"PO-PK-CONFIG-MODE" = "Mode:";
-"PO-PK-CONFIG-UNPATCH" = "All kext patches will be uninstalled and the system will be restored to it's old unpatched state. WiFi won't work and possibly other things, this cannot be configured. This could break the system kernel collection resulting in either a kernel panicking Mac or the inability to repatch the kexts, so it's generally safer to just reinstall macOS instead of unpatching.";
-"ENABLED" = "Enabled";
-"DISABLED" = "Disabled";
-
+"PO-PK-CONFIG-MODE" = "Modo:";
+"PO-PK-CONFIG-UNPATCH" = "Todos los parches kext serán desinstalados y el sistema será restaurado a sus estado original sin parches. El WiFi no trabajara y posiblemente otras cosas, esto no se puede configurar. Esto podría afectar la colección a nivel núcleo resultando en pánicos en la mac o en la inhabilidad de poder parchar nuevamente los kexts. Generalmente se recomienda re instalar macOS completamente en vez de remover parches.";
+"ENABLED" = "Habilitado";
+"DISABLED" = "Deshabilitado";
+ 
 // MARK: Boot.plist Settings
-
-"PO-ST-BOOT" = "Patch Boot.plist";
-"PO-ST-BOOT-DONE" = "Already Patched Boot.plist";
-"PO-ST-BOOT-DESCRIPTION" = "Patching the com.apple.Boot.plist allows you to do NVRAM resets on your Mac without needing the USB installer and EFI Boot. Afterwards, you'll have to restore the NVRAM (Patched Sur will help) since it's better for you to have that value then to not have it. You will have to repatch this plist every time you update macOS.";
-"PO-ST-BOOT-ONGOING" = "Patching Boot.plist";
-"PO-ST-BOOT-NONE" = "No compatible patches detected.
-You may not have the latest version of the patches downloaded, which are required to patch the boot.plist.
-Use 'Update Backup Patches' to update the patches, then try this again.";
-
+ 
+"PO-ST-BOOT" = "Parchar Boot.plist";
+"PO-ST-BOOT-DONE" = "Ya se ha parchado Boot.plist";
+"PO-ST-BOOT-DESCRIPTION" = "Parchar com.apple.Boot.plist te permite restablecer los valores del NVRAM en tu Mac sin necesitar el instalador USB y la partición EFI. Después, tendrás que restablecer la NVRAM (Patched Sur ayudara) debido a que es mejor tener un valor que no tenerlo. Tendras que parchar nuevamente este plist cada vez que actualices macOS.";
+"PO-ST-BOOT-ONGOING" = "Parchando Boot.plist";
+"PO-ST-BOOT-NONE" = "No parches compatibles detectados.
+Podrías no tener la versión más reciente de los parches descargada, los cuales se requieren para parchar el boot.plist.
+Usa 'Actualizar Parches de Respaldo' para actualizar los parches e intenta de nuevo.";
+ 
 // MARK: Volume Selection
-
-"PRE-VOL-INCOMPAT" = "See Incompatible Drives";
-"PRE-VOL-INCOMPAT-TITLE" = "Incompatible Drives";
-"PRE-VOL-INCOMPAT-NODATA" = "Cannot find disk info, this might be a patcher bug.";
-"PRE-VOL-INCOMPAT-INTERNAL" = "Internal drive, use an external USB instead.";
-"PRE-VOL-INCOMPAT-IMAGE" = "Disk Images can't be booted, use an external USB.";
+ 
+"PRE-VOL-INCOMPAT" = "Ver Discos Incompatibles";
+"PRE-VOL-INCOMPAT-TITLE" = "Discos Incompatibles";
+"PRE-VOL-INCOMPAT-NODATA" = "No se encuentra la información del disco, puede ser un error del parche.";
+"PRE-VOL-INCOMPAT-INTERNAL" = "Disco Interno, usa un USB externo en lugar de interno.";
+"PRE-VOL-INCOMPAT-IMAGE" = "No se puede arrancar de imágenes de disco, usa un USB externo.";
 // For these next two, I suggest checking Disk Utility for the proper terms for GUID Partition Map and MacOS Extended (Journaled).
-"PRE-VOL-INCOMPAT-GUID" = "Not formatted with a GUID Partition Map";
-"PRE-VOL-INCOMPAT-SYNTH" = "Synthesized (APFS) volume, use MacOS Extended (Journaled)";
-
-// MARK: NVRAM Reset Wanring
-
-"PO-NV-POPUP-TITLE" = "Required NVRAM Value Missing";
-"PO-NV-POPUP-DESCRIPTION" = "The -no_compat_check boot-arg value is missing. While Patched Sur has already protected you from the biggest problem caused by this, there are still other problems that can result from this.";
-"PO-NV-POPUP-START" = "See Instructions";
-"PO-NV-POPUP-DESCRIPTION-TWO" = "Launch Patched Sur (the post-install app, not the one on the dmg) to learn more and solutions to restore the value.";
-"PO-NV-POPUP-DESCRIPTION-THREE" = "Press the See Instructions below to learn how to restore it.";
-
-"PO-NV-CHECK-TITLE" = "Do You Have Your Patched Installer USB?";
-"PO-NV-CHECK-DESCRIPTION" = "If you still have your Patched Installer USB, then we can skip a lot of complexity and make this super easy. It is highly recommended to always hold on to an installer USB of the latest version of macOS, so if you'd like to make one now, click the back button in the top right corner of the screen, then click Create Installer and follow the instructions to create one and come back here.";
-"PO-NV-CHECK-ONE" = "I have a Patched Installer USB.";
-"PO-NV-CHECK-TWO" = "I do not have one.";
-
-"PO-NV-ONE-TITLE" = "Restore Value (with installer)";
-"PO-NV-ONE-CONTENT" = "Since you have an installer USB, this will be super simple and painless!\n1. Turn off your Mac, then turn it back on holding option.\n2. Make sure the installer USB is plugged in, the select the purple EFI Boot drive.\n3. Your Mac will immediately shut off, so just turn it back on and you're done!";
-
-"PO-NV-TWO-TITLE" = "Restore Value (without installer)";
-"PO-NV-TWO-CONTENT" = "Since you don't have an installer USB, this'll be a little bit harder, but don't worry it, it'll be easy. If you want, you can write this down since Patched Sur won't be able to help you along the way.\n\n1. Turn off your Mac, then turn it back on holding CMD-OPTION-R (even if you installed recovery, you still need internet recovery for this).\n2. Connect to your WiFi then let it boot.\n3. Click Utilities in the Menu Bar then click Terminal.\n4. Type in 'nvram boot-args=-no_compat_check' and then press enter.\n5. Reboot your Mac and then you'll be done. ";
-
-"PO-NV-BAR-TITLE" = "NVRAM Problem";
-"PO-NV-BAR-SUBTITLE" = "Let's get this fixed.";
-
-"PO-NV-NOUP-TITLE" = "Unable to Update Without Required NVRAM Value";
-"PO-NV-NOUP-CONTENT" = "Updating macOS removes the boot.plist patch which is what Patched Sur using to allow you to boot your Mac without the -no_compat_check. Right now that value is missing, so updating would cause your Mac to no longer boot. Once you restore that value, you can update. To do that, click on the red button on the bottom of the window.";
+"PRE-VOL-INCOMPAT-GUID" = "No está formateado con un mapa de partición GUID";
+"PRE-VOL-INCOMPAT-SYNTH" = "Volumen Sintetizado (APFS), usa MacOS Extended (Journaled)";
+ 
+// MARK: NVRAM Reset Warning
+ 
+"PO-NV-POPUP-TITLE" = "Valores requeridos de NVRAM ausentes";
+"PO-NV-POPUP-DESCRIPTION" = "El valor -no_compat_check boot-arg falta. Mientras que Patched Sur ya te ha protejido del problema más grande causado por esto, hay otros problemas que pueden resultar por esto.";
+"PO-NV-POPUP-START" = "Ver Instrucciones";
+"PO-NV-POPUP-DESCRIPTION-TWO" = "Abre Patched Sur (la applicacion post-install app, no la que está en el dmg) para conocer más y soluciones para restaurar el valor.";
+"PO-NV-POPUP-DESCRIPTION-THREE" = "Presiona ver las instrucciones a continuación para saber como restaurarlo.";
+ 
+"PO-NV-CHECK-TITLE" = "¿Tienes tu instalador USB parcheado?";
+"PO-NV-CHECK-DESCRIPTION" = "Si aun tienes tu instalador parcheado USB, podemos entonces saltar mucha de las complejidades y hacerlo fácilmente. Es altamente recomendado siempre tener un USB con la versión más reciente de macOS, si te gustaria hacer uno ahora mismo, presiona el botón de retroceder en la parte superior dercha de la pantalla, luego presiona Crear Instalador y sigue las instrucciones para crear uno y regresa aquí.";
+"PO-NV-CHECK-ONE" = "Tengo un Instalador USB parcheado.";
+"PO-NV-CHECK-TWO" = "No tengo uno.";
+ 
+"PO-NV-ONE-TITLE" = "Restaurar Valores (con instalador)";
+"PO-NV-ONE-CONTENT" = "Debido a que tienes un instalador USB, esto será super simple e indoloro.\n1. Apaga tu Mac, luego enciéndela mientras presionas la tecla option.\n2. Asegúrate que el instalador USB está conectado, luego selecciona el disco violeta EFI Boot.\n3. Tu Mac se apagará inmediatamente, así que enciéndela de nuevo y listo!";
+ 
+"PO-NV-TWO-TITLE" = "Restaurar Valores (sin instalador)";
+"PO-NV-TWO-CONTENT" = "Debido a que no tienes un Instalador USB, esto será un poco complicado, pero no te preocupes, será fácil. Si quieres, anota los pasos ya que Patched Sur no podrá ayudarte paso a paso.\n\n1. Apaga tu Mac, luego enciendela presionado CMD-OPTION-R  (aunque tengas instalado el modo recuperación, necesitas tener modo recuperación vía internet para esto).\n2. Conectate a tu WiFi y deja que encienda.\n3. Presiona en Utilidades en la barra de menú y presiona terminal.\n4. Escribe 'nvram boot-args=-no_compat_check' y luego presiona enter.\n5. Reinicia tu Mac y estarás listo. ";
+ 
+"PO-NV-BAR-TITLE" = "Problema de NVRAM";
+"PO-NV-BAR-SUBTITLE" = "Vamos a arreglar esto.";
+ 
+"PO-NV-NOUP-TITLE" = "Incapaz de actualizar sin los valores requeridos de NVRAM";
+"PO-NV-NOUP-CONTENT" = "Actualizar macOS remueve los parches del boot.plist lo que utiliza Patched Sur para permitir arrancar tu Mac sin el -no_compat_check. Ahora mismo el valor está faltante, así que actualizar causará que tu Mac no pueda arrancar nuevamente. Luego que restaures ese valor, puedes actualizarlo. Para hacerlo, presiona en el botón rojo en la parte inferior de la ventana.";
