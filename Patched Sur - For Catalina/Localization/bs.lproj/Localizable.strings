@@ -445,7 +445,7 @@ Patched sur također koristi dva Open Source frameworka, fajlove i ShellOut od J
 Pobrinite se da ne dozvolite patcheve koje ne trebate.";
 // This will come right before a button that toggles between "Patch Kexts" and "Unpatch Kexts"
 "PO-PK-CONFIG-MODE" = "Mod:";
-"PO-PK-CONFIG-UNPATCH" = "Sve kext izmjene će biti izbrisane i sistem će se vratiti na staro neizmijenjeno stanje. WiFi i još par stvari vjerovatno neće raditi. Ovo bi moglo pokvariti sistemsku kernel kolekciju što bi dovelo ili do "Kernel Panicking" stanja Mac uređaja ili do nemogućnosti ponovne izmjene kext fajlova, tako da je generalno sigurnije reinstalirati macOS umjesto brisanja izmjena.";
+"PO-PK-CONFIG-UNPATCH" = "Sve kext izmjene će biti izbrisane i sistem će se vratiti na staro neizmijenjeno stanje. WiFi i još par stvari vjerovatno neće raditi. Ovo bi moglo pokvariti sistemsku kernel kolekciju što bi dovelo ili do \"Kernel Panicking\" stanja Mac uređaja ili do nemogućnosti ponovne izmjene kext fajlova, tako da je generalno sigurnije reinstalirati macOS umjesto brisanja izmjena.";
 "ENABLED" = "Uključeno";
 "DISABLED" = "Isključeno";
 
