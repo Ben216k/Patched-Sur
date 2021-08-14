@@ -1,0 +1,39 @@
+
+/* Class = "NSMenuItem"; title = "Patched Sur"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Patched Sur";
+
+/* Class = "NSMenuItem"; title = "Quit Patched Sur"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit Patched Sur";
+
+/* Class = "NSMenuItem"; title = "About Patched Sur"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About Patched Sur";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
+"NMo-om-nkz.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimize";
+
+/* Class = "NSMenuItem"; title = "Hide Patched Sur"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide Patched Sur";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Hide Others";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Services";
+
+/* Class = "NSMenu"; title = "Patched Sur"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Patched Sur";

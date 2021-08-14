@@ -1,0 +1,46 @@
+/* Class = "NSMenuItem"; title = "Patched Sur - Herstel"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Patched Sur - Herstel";
+
+/* Class = "NSTextFieldCell"; titel = "Patched Sur"; ObjectID = "31m-ys-XXY"; */
+"31m-ys-XXY.title" = "Patched Sur";
+
+/* Class = "NSTextFieldCell"; title = "Door je kexts bestanden te patchen, zorg je er voor dat je wifi, USB en vele andere dingen met je Big Sur-installatie gaan werken. Zonder deze kexts zou je Mac niet volledig kunnen werken met Big Sur en zouden verschillende dingen onderdelen niet goed functioneren. Als het nodig is, kunt u de kexts ont-patchen en vervolgens opnieuw patchen, wat een probleem kan oplossen. "; ObjectID = "4dt-Ym-N0I"; */
+"4dt-Ym-N0I.title" = " Door je kexts bestanden te patchen, zorg je er voor dat je wifi, USB en vele andere dingen met je Big Sur-installatie gaan werken. Zonder deze kexts zou je Mac niet volledig kunnen werken met Big Sur en zouden verschillende dingen onderdelen niet goed functioneren. Als het nodig is, kunt u de kexts ont-patchen en vervolgens opnieuw patchen, wat een probleem kan oplossen.";
+
+/* Class = "NSMenuItem"; title = "Quit Patched Sur - Herstel"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Sluit Patched Sur - Herstel";
+
+/* Class = "NSMenuItem"; title = "Over Patched Sur - Recovery"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "Over Patched Sur - Herstel";
+
+/* Class = "NSMenu"; titel = "Hoofdmenu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Hoofdmenu";
+
+/* Class = "NSTextFieldCell"; titel = "Patch Kexts"; ObjectID = "Bao-di-Twc"; */
+"BaO-Di-Twc.title" = "Patch Kexts";
+
+/* Class = "NSWindow"; titel = "Patched Sur"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Patched Sur";
+
+/* Class = "NSMenuItem"; titel = "Punt 1"; ObjectID = "Oqn-jo-ekB"; */
+"Oqn-jo-ekB.title" = "Punt 1";
+
+/* Class = "NSTextFieldCell"; title = "RECOVERY PATCH KEXTS"; ObjectID = "Qq5-g0-oQ0"; */
+"Qq5-g0-oQ0.title" = "HERSTELPATCH KEXTS";
+
+/* Class = "NSMenuItem"; titel = "Item 3"; ObjectID = "Z28-kx-H6s"; */
+"Z28-kx-H6s.title" = "Punt 3";
+
+/* Class = "NSMenuItem"; titel = "Item 2"; ObjectID = "dDt-pR-0Tf"; */
+"dDt-pR-0Tf.title" = "Punt 2";
+
+/* Class = "NSMenu"; titel = "Diensten"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Diensten";
+
+/* Class = "NSButtonCell"; title = "Start Patch Kexts"; ObjectID = "ial-ib-X6F"; */
+"ial-ib-X6F.title" = "Start het Kext Patch proces";
+
+/* Class = "NSMenu"; title = "Patched Sur - Herstel"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Patched Sur - Herstel";
+
+"RESTART-TO-FINISH" = "Herstart om te voltooien!";
