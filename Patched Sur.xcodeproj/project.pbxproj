@@ -259,6 +259,7 @@
 		7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Patched_Sur.entitlements; sourceTree = "<group>"; };
 		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		769532432605A144007A1BB4 /* VolumeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelectorView.swift; sourceTree = "<group>"; };
+		769D03BD26D16C6C008ADB2C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		769F37F22601A4DC007A1246 /* DownloadActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActions.swift; sourceTree = "<group>"; };
 		769F37F42601AF06007A1246 /* macOSDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSDownloadView.swift; sourceTree = "<group>"; };
 		76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerMain.swift; sourceTree = "<group>"; };
@@ -266,7 +267,6 @@
 		76A1D33A259933880032F7D9 /* CompatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatInfo.swift; sourceTree = "<group>"; };
 		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
 		76AA16672655D4D300FC56FC /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76AA16682655D6DF00FC56FC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		76B463C826BC8EB800F129D8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchView.swift; sourceTree = "<group>"; };
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
@@ -811,10 +811,10 @@
 				764D732D2640F81000719132 /* pt-BR */,
 				76EBA22726449AA200F50A8C /* es */,
 				76AA16672655D4D300FC56FC /* hr */,
-				76AA16682655D6DF00FC56FC /* zh-Hans */,
 				52B32BC1267BB8DC00C78CAE /* bs */,
 				76B463C826BC8EB800F129D8 /* fr */,
 				760B207626C48438000D773C /* nl */,
+				769D03BD26D16C6C008ADB2C /* el */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
