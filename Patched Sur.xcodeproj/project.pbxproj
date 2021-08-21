@@ -259,6 +259,7 @@
 		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		769532432605A144007A1BB4 /* VolumeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelectorView.swift; sourceTree = "<group>"; };
 		769D03BD26D16C6C008ADB2C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		769D03BE26D19643008ADB2C /* banner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner2.png; sourceTree = "<group>"; };
 		769F37F22601A4DC007A1246 /* DownloadActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActions.swift; sourceTree = "<group>"; };
 		769F37F42601AF06007A1246 /* macOSDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSDownloadView.swift; sourceTree = "<group>"; };
 		76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerMain.swift; sourceTree = "<group>"; };
@@ -519,6 +520,7 @@
 			children = (
 				762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */,
 				764EB40B25C61D190033184B /* banner.png */,
+				769D03BE26D19643008ADB2C /* banner2.png */,
 				7643F616256F2A4700A9D61E /* NameComponent.plist */,
 			);
 			path = "Extra Files";
