@@ -217,7 +217,6 @@
 		7646DF97263CF0EB0097B136 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
 		7646DF99263CF0EB0097B136 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		764D732D2640F81000719132 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		764EB40B25C61D190033184B /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = banner.png; path = ../../../Downloads/banner.png; sourceTree = "<group>"; };
 		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
 		765DA449264E26F3003A97B5 /* PSKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSKexts.swift; sourceTree = "<group>"; };
 		7660A2EF269516E100653771 /* NVRAMResetHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVRAMResetHelp.swift; sourceTree = "<group>"; };
@@ -259,7 +258,6 @@
 		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		769532432605A144007A1BB4 /* VolumeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelectorView.swift; sourceTree = "<group>"; };
 		769D03BD26D16C6C008ADB2C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
-		769D03BE26D19643008ADB2C /* banner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner2.png; sourceTree = "<group>"; };
 		769F37F22601A4DC007A1246 /* DownloadActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActions.swift; sourceTree = "<group>"; };
 		769F37F42601AF06007A1246 /* macOSDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSDownloadView.swift; sourceTree = "<group>"; };
 		76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerMain.swift; sourceTree = "<group>"; };
@@ -519,8 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */,
-				764EB40B25C61D190033184B /* banner.png */,
-				769D03BE26D19643008ADB2C /* banner2.png */,
 				7643F616256F2A4700A9D61E /* NameComponent.plist */,
 			);
 			path = "Extra Files";
