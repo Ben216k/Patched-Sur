@@ -23,7 +23,7 @@ Patched Sur isn't just by me (Ben), **I mostly put it all together and made it e
 - [StarPlayrX](https://github.com/starplayrx/): Pointed out startosinstall which was later used in the patcher to allow macOS updating support without a USB.
 - [ASentientHedgehog](https://github.com/moosethegoose2213/): Helped randomly along the way
 - [dosdude1](http://dosdude1.com/): OpenGL/GPUSupport swap and of course his patchers which have helped with unsupported Macs patching even in Big Sur.
-- [John_val](https://www.reddit.com/user/John_val), [fromeister2009](https://www.reddit.com/user/fromeister2009), [Mr. Macintosh](https://mrmacintosh.com/), [Emperor Epitaph](https://www.youtube.com/channel/UCxGV-Up88t5D4CpcvLS43lw), [Finder352](https://www.youtube.com/channel/UC1ANuAzvOToCVizzck3JjPg), [Monkiey](https://twitter.com/Monkiey2) and [AvaQueen](https://github.com/AvaQueen-Official/) for testing some of the new features before release, and pointing out the bugs with them.
+- [John_val](https://www.reddit.com/user/John_val), [fromeister2009](https://www.reddit.com/user/fromeister2009), [Mr. Macintosh](https://mrmacintosh.com/), [Emperor Epitaph](https://www.youtube.com/channel/UCxGV-Up88t5D4CpcvLS43lw), [Finder352](https://www.youtube.com/channel/UC1ANuAzvOToCVizzck3JjPg), [Monkiey](https://twitter.com/Monkiey2) and [8itCat](https://github.com/8itCat/) for testing some of the new features before release, and pointing out the bugs with them.
 - and several others who helped with making Big Sur run as great as it does on unsupported Macs.
 
 Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSundell (MIT License), to help handle certain tasks.
