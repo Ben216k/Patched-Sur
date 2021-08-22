@@ -52,8 +52,8 @@ tentará fazer com que o seu Mac funcione como se se fosse compatível.";
 - ASentientHedgehog: Ajudou várias vezes durante o processo.
 - OCLP Team: Ajudou com assuntos ao nível de kernel para placas não-Tesla e para aceleração de gráficos de placas não-metálicas.
 - dosdude1: Troca OpenGL / GPUSupport e, claro, muitas das coisas usadas no seu patcher.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, riiveraluis pela tradução desta aplicação.
-- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen por testarem algumas das novas funções antes do lançamento, e por apontarem os erros nas mesmas.
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, 8itCat, Finder352, DJT_233, Noah Fetz, duke4e, riiveraluis pela tradução desta aplicação.
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and 8itCat por testarem algumas das novas funções antes do lançamento, e por apontarem os erros nas mesmas.
 - e vários outros que ajudaram a fazer o Big Sur funcionar tão bem em Macs sem compatibilidade.
 
 Patched Sur também usa dois frameworks de código aberto (Open Source), Files e ShellOut de JohnSundell (Licença do MIT), para ajudar a lidar com certas tarefas.";

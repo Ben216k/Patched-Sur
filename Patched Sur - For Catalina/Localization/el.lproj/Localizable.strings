@@ -51,8 +51,8 @@
 - ASentientHedgehog: Βοήθησε σε διάφορα κατα την δημιουργία του patcher.
 - OCLP Team: Βοήθησε με πράγματα σε επίπεδο kernel για μη Tesla κάρτες έτσι ώστε να έχουν επιτάχυνση γραφικών χωρίς Metal.
 - dosdude1: Εναλλαγή OpenGL/GPUSupport και βεβαίως αρκετά πράγματα σχετικά με patching που χρησημοποιήθηκαν στο patcher.
-- Οι Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, riiveraluis, και manthos03 βοήθησαν για την μετάφραση της εφαρμογής.
-- Οι John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey και AvaQueen βοήθησαν στον έλεγχο διαφόρων χαρακτηριστικών πριν την κυκλοφορία, και βρήκαν τα bug τους.
+- Οι Bweesh, Bruno Rocha, DutchDK, NickP0is0n, 8itCat, Finder352, DJT_233, Noah Fetz, duke4e, riiveraluis, και manthos03 βοήθησαν για την μετάφραση της εφαρμογής.
+- Οι John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey και 8itCat βοήθησαν στον έλεγχο διαφόρων χαρακτηριστικών πριν την κυκλοφορία, και βρήκαν τα bug τους.
 - Και άλλοι που βοήθησαν στο να λειτουργεί τόσο καλα το Big Sur σε μη υποστηριζόμενους Mac.
 
 Το Patched Sur επίσης χρησημοποιεί Open Source πλαίσια, με τα Files και ShellOut από τον JohnSundell (Άδεια ΜΙΤ), που βοήθησαν στην διαχείρηση συγκεκριμένων έργων.";
@@ -230,17 +230,16 @@
 // MARK: Central View
 
 "PO-UP-TITLE" = "Αρχή Ενημερώσεων";
-"PO-UP-DESCRIPTION" = "Ενημέρωση του macOS ή του patcher σε μια νεότερη έκδοση για να μείνεται ενημερωμένοι.";
+"PO-UP-DESCRIPTION" = "Ενημέρωση του macOS ή του patcher στην νεότερη έκδοση.";
 "PO-PK-TITLE" = "Patch των Kext";
 "PO-PK-DESCRIPTION" = "Τα Kexts δίνουν στο macOS την πλήρη λειτουργικότητα του, ώστε να λειτουργούν όλα όπως πρέπει.";
 "PO-ST-TITLE" = "Ρυθμίσεις";
 "PO-ST-DESCRIPTION" = "Απενεργοποίηση των animations, ενεργοποίηση εναλλαγής γραφικών, εμφάνιση των logs και πολλά άλλα.";
-"PO-CI-TITLE" = "Δημιουργία Εργαλείου Εγκατάστασης";
-"PO-CI-DESCRIPTION" = "Δημιουργία ενός patched εργαλείου εγκατάστασης macOS Big Sur σε δίσκο USB που μπορεί να (επαν)εγκαταστείσει το macOS και πολλά άλλα.";
-"PO-IR-TITLE" = "Εγκατάσταση Λειτουργίας Επαναφοράς";
-"PO-IR-DESCRIPTION" = "Να γίνει Patch του τρέχοντος τόμου (μέσω της χρήσης των πλήκτρων CMD-R κατά την διαδικασία εκκίνησης). Δεν είναι πάντοτε χρήσιμο.";
+"PO-CI-TITLE" = "Δημιουργία Εγκαταστάτη";
+"PO-CI-DESCRIPTION" = "Δημιουργία ενός εγκαταστάτη macOS Big Sur σε USB που μπορεί να εγκαταστείσει το macOS.";
+"PO-IR-TITLE" = "Εγκατάσταση Τόμου Επαναφοράς";
+"PO-IR-DESCRIPTION" = "Να γίνει Patch του τρέχοντος τόμου (με το CMD-R κατά την εκκίνηση). Δεν είναι πάντοτε χρήσιμο.";
 "PO-AMM-DESCRIPTION" = "Εμφάνιση πληροφοριών για τον Mac σας χωρίς τον σειριακό αριθμό. Χρήσιμο για να επιδείξετε την επιτυχία σας.";
-
 "PO-PK-NO-NEED-TITLE" = "Το Patch των Kexts δεν είναι αναγκαίο";
 "PO-PK-NO-NEED-DESCRIPTION" = "Δεν είναι αναγκαίο το patch των kexts σε μοντέλα iMac που φτιάχτηκαν στο τέλος του 2013. Το Big Sur ήδη λειτουργεί στην πληρώτητα των δυνατοτήτων του.";
 

@@ -51,8 +51,8 @@
 - ASentientHedgehog: Ayudó de manera aleatoria.
 - OCLP Team: Ayudo a nivel de kernel a las tarjetas que no son Tesla y sin aceleración Metal.
 - dosdude1: Soporte de OpenGL/GPUSupport de intercambio y muchas adicciones al parche principal.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, y riiveraluis por traducir la aplicación.
-- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey y AvaQueen por probar algunas nuevas funciones antes de lanzamiento y mostrar fallos.
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, 8itCat, Finder352, DJT_233, Noah Fetz, duke4e, y riiveraluis por traducir la aplicación.
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey y 8itCat por probar algunas nuevas funciones antes de lanzamiento y mostrar fallos.
 - y muchos otros por ayudar a correr Big Sur bien en Macs que no lo soportan nativamente.
  
 Patched Sur también utiliza dos códigos libres de usos, archivos y ShellOut por JohnSundell (Licencia MIT), para ayudar con algunas tareas.";

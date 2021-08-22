@@ -51,8 +51,8 @@
 - ASentientHedgehog: Ajudado de forma aleatória ao longo do caminho.
 - Equipe OCLP: Ajudado com material a nível de kernel para placas não-Tesla para aceleração de gráficos não-metálicos.
 - dosdude1: OpenGL/GPUSupport swap e, claro, um monte de coisas de patching usadas em seu patcher.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, e riiveraluis pela tradução da app.
-- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey e AvaQueen para testar algumas das novas características antes do lançamento, e apontar os bugs com eles.
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, 8itCat, Finder352, DJT_233, Noah Fetz, duke4e, e riiveraluis pela tradução da app.
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey e 8itCat para testar algumas das novas características antes do lançamento, e apontar os bugs com eles.
 - e vários outros que ajudaram a fazer o Big Sur funcionar tão bem quanto em Macs não suportados.
 
 Patched Sur também usa duas estruturas Open Source, Files e ShellOut por JohnSundell (Licença MIT), para ajudar a lidar com certas tarefas";

@@ -51,8 +51,8 @@
 - ASentientHedgehog: A aidé au hasard le long du chemin.
 - OCLP Team: A aidé à faire des trucs au niveau du kernel pour les cartes non-Tesla pour l'accélération graphique non-métallique.
 - dosdude1: OpenGL/GPUSupport swap et bien sûr tout un tas de trucs utilisés dans son patcheur.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, et riiveraluis pour la traduction de l'application.
-- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey et AvaQueen pour avoir testé certaines des nouvelles fonctionnalités avant leur sortie, et avoir signalé les bogues qu'elles comportaient.
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, 8itCat, Finder352, DJT_233, Noah Fetz, duke4e, et riiveraluis pour la traduction de l'application.
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey et 8itCat pour avoir testé certaines des nouvelles fonctionnalités avant leur sortie, et avoir signalé les bogues qu'elles comportaient.
 - et plusieurs autres qui ont aidé à faire fonctionner Big Sur aussi bien qu'il le fait sur des Macs non supportés.
 
 Patched Sur utilise également deux frameworks Open Source, Files et ShellOut de JohnSundell (Licence MIT), pour aider à gérer certaines tâches.";

@@ -51,8 +51,8 @@
 - ASentientHedgehog: Nasumično je pomagao tijekom rada.
 - OCLP Team: Pomogao sa stvarima na kernel razini za ne-Tesla kartice i ne-metal grafičku akceleraciju.
 - dosdude1: OpenGL/GPUSupport swap i naravno još puno toga korištenog u njegovom patcher-u.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, riiveraluis i Dead_K1ller za prevođenje aplikacije.
-- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey i AvaQueen za testiranje novih mogućnosti prije puštanja aplikacije u rad, i otkrivanje bugova.
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, 8itCat, Finder352, DJT_233, Noah Fetz, duke4e, riiveraluis i Dead_K1ller za prevođenje aplikacije.
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey i 8itCat za testiranje novih mogućnosti prije puštanja aplikacije u rad, i otkrivanje bugova.
 - i još nekoliko ljudi koji su pomogli u tome da Big Sur radi na Vašem računaru kao što bi radio na podržanom uređaju.
 
 Patched sur također koristi dva Open Source frameworka, fajlove i ShellOut od JohnSundell-a (MIT Licenca), da bi mogao izvršavati određene zadatke.";

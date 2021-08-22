@@ -51,8 +51,8 @@
 - ASentientHedgehog: Помогал рандомным образом в течении всего пути.
 - OCLP Team: Помог с вещами на уровне ядра для не-Tesla видеокарт без поддержки Metal для достижения графического ускорения.
 - dosdude1: Замена OpenGL/GPUSupport и огромное количество вещей, используемых для модификации системы.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, AvaQueen, Finder352, DJT_233, Noah Fetz, duke4e, и riiveraluis за перевод приложения.
-- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and AvaQueen за тестирование новых функций до релиза и нахождение багов.
+- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, 8itCat, Finder352, DJT_233, Noah Fetz, duke4e, и riiveraluis за перевод приложения.
+- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and 8itCat за тестирование новых функций до релиза и нахождение багов.
 - и всем остальным, кто помог заставить Big Sur работать настолько хорошо, как это сейчас, на неподдерживаемых Mac.
 
 Patched Sur использует два фреймворка с открытым исходным кодом, Files и ShellOut за авторством JohnSundell (лицензия MIT), для решения некоторых проблем.";
