@@ -175,7 +175,6 @@
 
 /* Begin PBXFileReference section */
 		3F42EB03255176F700365279 /* PSSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSSettings.swift; sourceTree = "<group>"; };
-		52B32BBF267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Main.strings; sourceTree = "<group>"; };
 		52B32BC0267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Main.strings; sourceTree = "<group>"; };
 		52B32BC1267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		52B32BC2267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -189,7 +188,6 @@
 		7609BD17257FF8DB0054B76F /* DownloadKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadKexts.swift; sourceTree = "<group>"; };
 		7609BD1D258008B70054B76F /* StartInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInstallView.swift; sourceTree = "<group>"; };
 		760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOSView.swift; sourceTree = "<group>"; };
-		760B207426C48437000D773C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		760B207526C48438000D773C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		760B207726C48438000D773C /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		760C7D1A25719C27004817F1 /* UpdateAppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppAction.swift; sourceTree = "<group>"; };
@@ -197,6 +195,12 @@
 		7624934C2635EA6900805E4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		762A1DB3260C19B80009620B /* PatchKextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchKextsView.swift; sourceTree = "<group>"; };
+		762BBF9E26D583360022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		762BBF9F26D583360022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		762BBFA026D584980022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ar; path = ar.lproj/Main.storyboard; sourceTree = "<group>"; };
+		762BBFA126D5861B0022A8BE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
+		762BBFA226D5861B0022A8BE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		762BBFA326D5861B0022A8BE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - Recovery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		762CBCA4260C20E5008F0A86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		762CBCA6260C20E5008F0A86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -633,6 +637,8 @@
 				fr,
 				bs,
 				nl,
+				ar,
+				id,
 			);
 			mainGroup = 7692E059251BFF9300C5FB9A;
 			packageReferences = (
@@ -811,6 +817,8 @@
 				52B32BC1267BB8DC00C78CAE /* bs */,
 				76B463C826BC8EB800F129D8 /* fr */,
 				769D03BD26D16C6C008ADB2C /* el */,
+				762BBF9E26D583360022A8BE /* ar */,
+				762BBFA226D5861B0022A8BE /* id */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -833,6 +841,8 @@
 				76633BF5263E3755000A949E /* fr */,
 				52B32BC0267BB8DC00C78CAE /* bs */,
 				760B207526C48438000D773C /* nl */,
+				762BBFA026D584980022A8BE /* ar */,
+				762BBFA126D5861B0022A8BE /* id */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -841,8 +851,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				7692E06F251BFF9400C5FB9A /* Base */,
-				52B32BBF267BB8DC00C78CAE /* bs */,
-				760B207426C48437000D773C /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -864,6 +872,8 @@
 				76633BF6263E3755000A949E /* fr */,
 				52B32BC2267BB8DC00C78CAE /* bs */,
 				760B207726C48438000D773C /* nl */,
+				762BBF9F26D583360022A8BE /* ar */,
+				762BBFA326D5861B0022A8BE /* id */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

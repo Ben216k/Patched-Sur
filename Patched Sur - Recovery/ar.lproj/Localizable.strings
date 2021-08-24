@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Patched Sur
+
+  Created by Ben Sova on 4/30/21.
+  
+*/
+
+"RESTART-TO-FINISH" = "أعد التشغيل للإنتهاء";
+"SELECT-A-VOLUME" = "Select a Volume";
+"PATCHING-KEXTS" = "Patching Kexts";
