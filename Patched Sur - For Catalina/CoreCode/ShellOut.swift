@@ -23,7 +23,7 @@ import Dispatch
     })
 //    return try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)
     let process = Process()
-    let command = "cd \(at.escapingSpaces) && sudo -S \(cmd)"
+    let command = "sudo -S cd \(at.escapingSpaces) && sudo -S \(cmd)"
     return try process.launchBash(with: command, outputHandle: psHandle, errorHandle: psHandle, stdin: p)
 }
 
