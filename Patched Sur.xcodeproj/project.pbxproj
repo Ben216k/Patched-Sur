@@ -272,6 +272,7 @@
 		76B463C826BC8EB800F129D8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchView.swift; sourceTree = "<group>"; };
 		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
+		76BF78EE26E3E56E0089F290 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76CF37BC25E8C73500403208 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		76D639DC2576302500B38FBE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
@@ -819,6 +820,7 @@
 				769D03BD26D16C6C008ADB2C /* el */,
 				762BBF9E26D583360022A8BE /* ar */,
 				762BBFA226D5861B0022A8BE /* id */,
+				76BF78EE26E3E56E0089F290 /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
