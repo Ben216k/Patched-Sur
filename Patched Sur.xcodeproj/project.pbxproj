@@ -83,9 +83,9 @@
 		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
 		76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF37BC25E8C73500403208 /* NotificationsView.swift */; };
 		76D639DD2576302500B38FBE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D639DC2576302500B38FBE /* main.swift */; };
-		76D8437B25F861DE006C6565 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76D8437A25F861DE006C6565 /* VeliaUI */; };
-		76D8437D25F861E6006C6565 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76D8437C25F861E6006C6565 /* VeliaUI */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
+		76E63FFB26ED97840003ECA0 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76E63FFA26ED97840003ECA0 /* VeliaUI */; };
+		76E63FFD26ED978B0003ECA0 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76E63FFC26ED978B0003ECA0 /* VeliaUI */; };
 		76E6C72A263B8DF10063C08E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7624934D2635EA6900805E4A /* Localizable.strings */; };
 		76E6C747263CB0BF0063C08E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76E6C749263CB0BF0063C08E /* Localizable.strings */; };
 		76E73A68262CF77C0009D9CC /* RecoveryPatchActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */; };
@@ -231,6 +231,7 @@
 		76633BF6263E3755000A949E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF9263EF96C000A949E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76688D7A2619521C00A1450A /* PatchKextsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchKextsActions.swift; sourceTree = "<group>"; };
+		76712B3C26ED972F003436A2 /* VeliaUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = VeliaUI; path = "../../../../../../Users/bensova/Library/Developer/Xcode/DerivedData/Patched_Sur-gwbrhoocibdjbecwgwvucoxptzjy/SourcePackages/checkouts/VeliaUI"; sourceTree = "<group>"; };
 		76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
 		7674026A2606EEBD00E39469 /* CreateInstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerView.swift; sourceTree = "<group>"; };
@@ -308,7 +309,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76D8437B25F861DE006C6565 /* VeliaUI in Frameworks */,
+				76E63FFB26ED97840003ECA0 /* VeliaUI in Frameworks */,
 				7625796725423FD600508A71 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +318,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76D8437D25F861E6006C6565 /* VeliaUI in Frameworks */,
+				76E63FFD26ED978B0003ECA0 /* VeliaUI in Frameworks */,
 				768D516525CA4FD90091D1F0 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +482,7 @@
 		7692E09A251C09AB00C5FB9A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76712B3C26ED972F003436A2 /* VeliaUI */,
 				767D6F9B25AA294C00A773AE /* SwiftUI.framework */,
 				7605944B26325D420005C38C /* WidgetKit.framework */,
 			);
@@ -566,7 +568,7 @@
 			name = "Patched Sur - For Catalina";
 			packageProductDependencies = (
 				7625796625423FD600508A71 /* Files */,
-				76D8437A25F861DE006C6565 /* VeliaUI */,
+				76E63FFA26ED97840003ECA0 /* VeliaUI */,
 			);
 			productName = "Patched Sur - For Catalina";
 			productReference = 7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */;
@@ -591,7 +593,7 @@
 			name = "Patched Sur";
 			packageProductDependencies = (
 				768D516425CA4FD90091D1F0 /* Files */,
-				76D8437C25F861E6006C6565 /* VeliaUI */,
+				76E63FFC26ED978B0003ECA0 /* VeliaUI */,
 			);
 			productName = "Patched Sur";
 			productReference = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */;
@@ -644,7 +646,7 @@
 			mainGroup = 7692E059251BFF9300C5FB9A;
 			packageReferences = (
 				7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */,
-				76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */,
+				76E63FF926ED97840003ECA0 /* XCRemoteSwiftPackageReference "VeliaUI" */,
 			);
 			productRefGroup = 7692E063251BFF9300C5FB9A /* Products */;
 			projectDirPath = "";
@@ -889,7 +891,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur - Recovery/Patched_Sur___Recovery.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 115;
@@ -914,7 +916,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Patched Sur - Recovery/Patched_Sur___Recovery.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 115;
@@ -1129,7 +1131,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 115;
+				CURRENT_PROJECT_VERSION = 116;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -1145,7 +1147,7 @@
 					"$(PROJECT_DIR)/Extra\\ Files",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1163,7 +1165,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 115;
+				CURRENT_PROJECT_VERSION = 116;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
 				DEVELOPMENT_TEAM = 52RY4VB4F6;
 				DSTROOT = "/tmp/Post-Install.dst";
@@ -1179,7 +1181,7 @@
 					"$(PROJECT_DIR)/Extra\\ Files",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1237,7 +1239,7 @@
 				minimumVersion = 4.1.1;
 			};
 		};
-		76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */ = {
+		76E63FF926ED97840003ECA0 /* XCRemoteSwiftPackageReference "VeliaUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BenSova/VeliaUI";
 			requirement = {
@@ -1258,14 +1260,14 @@
 			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
 		};
-		76D8437A25F861DE006C6565 /* VeliaUI */ = {
+		76E63FFA26ED97840003ECA0 /* VeliaUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */;
+			package = 76E63FF926ED97840003ECA0 /* XCRemoteSwiftPackageReference "VeliaUI" */;
 			productName = VeliaUI;
 		};
-		76D8437C25F861E6006C6565 /* VeliaUI */ = {
+		76E63FFC26ED978B0003ECA0 /* VeliaUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 76D8437925F861DE006C6565 /* XCRemoteSwiftPackageReference "VeliaUI" */;
+			package = 76E63FF926ED97840003ECA0 /* XCRemoteSwiftPackageReference "VeliaUI" */;
 			productName = VeliaUI;
 		};
 /* End XCSwiftPackageProductDependency section */

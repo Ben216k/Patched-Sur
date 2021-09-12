@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 // MARK: Extract/Move Installer
 
@@ -93,6 +94,7 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
 // MARK: Patch Installer
 
 func patchInstaller(password: String, progressText: @escaping (String) -> (), errorX: (String) -> ()) {
+    
     do {
         progressText("Copying Patches to Backup Directory")
         _ = try? call("mkdir /usr/local/lib", p: password)
