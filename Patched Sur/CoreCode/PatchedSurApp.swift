@@ -89,7 +89,7 @@ struct PatchedSurApp: App {
                         case "patched-sur://run-updates", "patched-sur://update-macos", "patched-sur://update-patcher":
                             atLocation = 1
                         case "patched-sur://about-my-mac", "patched-sur://about-this-mac":
-                            atLocation = 1
+                            atLocation = 3
                         default:
                             break
                         }
