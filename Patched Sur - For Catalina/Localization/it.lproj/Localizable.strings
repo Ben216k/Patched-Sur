@@ -33,7 +33,7 @@
 
 // Reminder! "Patched Sur" is a formal name, so don't localize that. (Patches/Patcher can be localized, just not Patched Sur)
 "PRE-WELCOME-TITLE" = "Welcome to Patched Sur!";
-"PRE-WELCOME-DESCRIPTION" = "This patcher is made to provide you with the simplest upgrade to macOS Big Sur on your unsupported Mac. It prepares everything to be perfect by the end of the installation, and makes sure that nothing will go wrong with your installation. By the end, Patched Sur will try to make your Mac run just like a supported one. (Indonesian Translations Coming Soon)";
+"PRE-WELCOME-DESCRIPTION" = "This patcher is made to provide you with the simplest upgrade to macOS Big Sur on your unsupported Mac. It prepares everything to be perfect by the end of the installation, and makes sure that nothing will go wrong with your installation. By the end, Patched Sur will try to make your Mac run just like a supported one. (Italian Translations Coming Soon)";
 
 // MARK: Thanks To Page
 

@@ -114,7 +114,7 @@ func newJSONEncoder() -> JSONEncoder {
 
 extension URL: ExpressibleByStringInterpolation {
     public init(stringLiteral: String) {
-        self.init(string: stringLiteral)!
+        self = (URL.init(string: stringLiteral) ?? URL.init(fileURLWithPath: stringLiteral))!
     }
 }
 

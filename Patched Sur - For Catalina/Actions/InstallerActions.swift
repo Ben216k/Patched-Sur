@@ -122,7 +122,7 @@ func patchInstaller(password: String, progressText: @escaping (String) -> (), er
         #endif
         progressText("Copying Post-Install App")
         print("Copying Post-Install App")
-        if let bundlePath = Bundle.main.path(forResource: "Patched Sur.app", ofType: nil) {
+        if let bundlePath = Bundle.main.path(forResource: "Patched Sur.app", ofType: nil), (try? call("[[ -d \"\(bundlePath)\" ]]")) != nil {
             _ = try? call("rm -rf '/Applications/Patched Sur.app'")
             try call("cp -rf \"\(bundlePath)\" '/Applications/Patched Sur.app'")
         }
