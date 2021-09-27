@@ -65,8 +65,9 @@ func patchDaemon() {
                     if var buildNumber = (try? call("sw_vers | grep BuildVersion:", at: ".")) {
                         print("Checking if we have a different build number...")
                         buildNumber.removeFirst("BuildVersion: ".count)
+                        let osVersion = (try? call("sw_vers -productVersion")) ?? "11.xx.yy"
                         print([macOSversions[0].buildNumber].description + " C: " + [buildNumber].description)
-                        if buildNumber != macOSversions[0].buildNumber {
+                        if buildNumber != macOSversions[0].buildNumber && convertVersionBinary(osVersion) <= convertVersionBinary(macOSversions[0].version) {
                             print("Sending update notification!")
                             scheduleNotification(title: "Software Update", body: NSLocalizedString("PO-NOFI-OS-DESCRIPTION", comment: "PO-NOFI-OS-DESCRIPTION").replacingOccurrences(of: "VERSIONTAG", with: "\(macOSversions[0].version) (\(macOSversions[0].buildNumber))"))
                             print("Now making sure we don't sent this again...")
