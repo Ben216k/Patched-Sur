@@ -14,6 +14,7 @@ struct EnterPasswordPrompt: View {
     let onSuccess: () -> ()
     var onCancel: (() -> ())?
     @State var xOffset = 0 as CGFloat
+    @State var badPass = false
     
     var body: some View {
         if show {
@@ -51,6 +52,7 @@ struct EnterPasswordPrompt: View {
                                             .frame(width: 1)
                                             .opacity(0)
                                         Text(.init("B-EP-PASSWORD"))
+                                            .foregroundColor(!badPass ? .primary : .red)
                                     }
                                 }
                                 VStack(alignment: .trailing, spacing: 8) {
@@ -127,6 +129,7 @@ struct EnterPasswordPrompt: View {
                                         }
                                     } else {
                                         password = ""
+                                        badPass = true
                                     }
                                 }
                             }

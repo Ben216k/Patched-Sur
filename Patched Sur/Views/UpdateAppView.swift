@@ -24,7 +24,7 @@ struct UpdateAppView: View {
         VStack {
             HStack {
                 Spacer()
-                Text("Patched Sur \(latest.name)")
+                Text("\(latest.name)")
 //                Text("Patched Sur v0.1.0 Beta")
                     .font(.title2)
                     .bold()

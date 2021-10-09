@@ -133,7 +133,7 @@ struct UpdateCheckerView: View {
                         DispatchQueue.global(qos: .background).async {
                             do {
                                 print("Checking for updates to Patched Sur...")
-                                if !skipAppCheck, let patchedVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
+                                if !skipAppCheck, let patchedVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/Ben216k/Patched-Sur/releases").filter({ !$0.prerelease }) {
                                     if patchedVersions[0].tagName != "v\(AppInfo.version)" {
                                         latestPatch = patchedVersions[0]
                                         withAnimation {
@@ -150,7 +150,7 @@ struct UpdateCheckerView: View {
                                 track = ReleaseTrack(rawValue: UserDefaults.standard.string(forKey: "UpdateTrack") ?? "Release") ?? .release
                                 print("Using update track \(track).")
                                 print("Pinging installer list to find the latest updates...")
-                                installers = try InstallAssistants(fromURL: "\(Bundle.main.path(forResource: "Release", ofType: "json")!)")
+                                installers = try InstallAssistants(fromURL: "https://ben216k.github.io/patched-sur/\(track == .developer ? "Developer" : "Release").json")
                                 print("Filtering incompatible installers...")
                                 installers = installers!.filter { $0.minVersion <= AppInfo.build }
                                 print("Finding latest build...")
