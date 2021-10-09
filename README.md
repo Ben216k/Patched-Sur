@@ -89,10 +89,6 @@ To update macOS, follow the steps below.
 
 Note: Apple does not always release InstallAssistant.pkgs for the beta tracks and some minor updates, this means you might be unable to get certain upates.
 
-### When will v1.0.0 Release?
-
-I'm glad you asked. This Saturday! If you want to get it early, you can join the [Ursinia Projects Discord Server](https://discord.gg/2DxVn4HDX6) and check `#announcements` where there will be a download link. If you find any bugs, report them there, not anywhere else.
-
 ## Support
 
 I am a living, breathing human, so don't expect me to respond right away to everything. However, if you need support with the patcher, feel free to open an issue or discussion here (please search the issue list before making a new one) or use one of the links below!
