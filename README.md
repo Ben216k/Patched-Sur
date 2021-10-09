@@ -1,4 +1,4 @@
-![Patched Sur](https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/banner400.png)
+![Patched Sur](https://raw.githubusercontent.com/Ben216k/Patched-Sur/main/Extra%20Files/banner400.png)
 
 ## What is Patched Sur?
 
@@ -99,6 +99,6 @@ I am a living, breathing human, so don't expect me to respond right away to ever
 
 [r/BigSurPatcher Subreddit](https://www.reddit.com/r/BigSurPatcher/)
 
-[Ursinia Projects Discord](https://discord.gg/2DxVn4HDX6) (Originally Patched Sur, but also includes other BenSova projects)
+[Ursinia Projects Discord](https://discord.gg/2DxVn4HDX6) (Originally Patched Sur, but also includes other Ben216k projects)
 
 [Unsupported Macs Discord](https://discord.com/invite/XbbWAsE) (#bensova-patcher)
