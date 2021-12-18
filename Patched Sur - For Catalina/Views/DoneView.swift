@@ -17,7 +17,7 @@ struct DoneView: View {
             }
             VStack(spacing: 0) {
                 Button {
-                    NSWorkspace.shared.open(URL(string: "https://github.com/BenSova/Patched-Sur#how-do-i-use-patched-sur")!)
+                    NSWorkspace.shared.open(URL(string: "https://github.com/Ben216k/Patched-Sur#how-do-i-use-patched-sur")!)
                 } label: {
                     Text(.init("PRE-DONE-LINK"))
                         .multilineTextAlignment(.center)
