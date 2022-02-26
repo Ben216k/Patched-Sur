@@ -75,7 +75,7 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> (), p
     print("Checking for Metal...")
     
     if let metalStatus = try? call("system_profiler SPDisplaysDataType | grep Metal"), !metalStatus.contains(": Supported") {
-        problems(ProblemInfo(title: .init(localKey: "PROB-GX-TITLE"), description: .init(localKey: "PROB-GX-DESCRIPTION"), severity: .severe))
+        problems(ProblemInfo(title: .init(localKey: "PROB-GX-TITLE"), description: .init(localKey: "PROB-GX-DESCRIPTION"), severity: .fatal))
         hasProblem = true
     }
     
