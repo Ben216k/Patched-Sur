@@ -9,484 +9,449 @@
 // MARK: Pre-Install App (96)
 // Generic
 
-"GET-STARTED" = "Начать";
-"CONTINUE" = "Продолжить";
-"GO-BACK" = "Назад";
-"CANCEL" = "Отмена";
-"BROWSE" = "Обзор";
-"REFRESH" = "Обновить";
-"CONTINUE-ERASE" = "Продолжить и стереть";
-"REQUEST-ROOT" = "Запрос прав администратора";
-"EXTRACT-PACKAGE" = "Распаковка пакета";
-"FINISHED" = "Завершено";
+"GET-STARTED" = "NO SUPPORT";
+"CONTINUE" = "NO SUPPORT";
+"GO-BACK" = "NO SUPPORT";
+"CANCEL" = "NO SUPPORT";
+"BROWSE" = "NO SUPPORT";
+"REFRESH" = "NO SUPPORT";
+"CONTINUE-ERASE" = "NO SUPPORT";
+"REQUEST-ROOT" = "NO SUPPORT";
+"EXTRACT-PACKAGE" = "NO SUPPORT";
+"FINISHED" = "NO SUPPORT";
 
 // Enter Password Prompt
-"B-ENTER-PASS-CHANGES" = "Patched Sur хочет внести изменения.";
-"B-ENTER-PASS-ALLOW" = "Введите свой пароль чтобы разрешить.";
+"B-ENTER-PASS-CHANGES" = "NO SUPPORT";
+"B-ENTER-PASS-ALLOW" = "NO SUPPORT";
 // The main difference here is
-"B-EP-USERNAME" = "Пользователь:";
+"B-EP-USERNAME" = "NO SUPPORT";
 // The only difference here is the colon, which sounds dumb, but it's needed.
-"B-EP-PASSWORD" = "Пароль:";
-"B-EP-PASSWORD-PH" = "Пароль";
+"B-EP-PASSWORD" = "NO SUPPORT";
+"B-EP-PASSWORD-PH" = "NO SUPPORT";
 
 // Welcome Page
 
 // Reminder! "Patched Sur" is a formal name, so don't localize that. (Patches/Patcher can be localized, just not Patched Sur)
-"PRE-WELCOME-TITLE" = "Добро пожаловать в Patched Sur!";
-"PRE-WELCOME-DESCRIPTION" = "Этот патчер был создан, чтобы дать вам возможность проще всего обновиться до macOS Big Sur на вашем неподдерживаемом Mac. Он подготавливает все вещи, необходимые для лучшей работы системы, и следит за тем, чтобы с вашей установкой ничего не случилось. В итоге Patched Sur даст возможность вашему Mac работать в том же виде, как и поддерживаемый.";
+"PRE-WELCOME-TITLE" = "NO SUPPORT";
+"PRE-WELCOME-DESCRIPTION" = "NO SUPPORT";
 
 // Thanks To Page
 
-"THANKS-TITLE" = "Благодарности";
-"THANKS-CONTENT" = "Patched Sur был разработан не только мной (Ben), другие также участвовали в разработке патчера и патчей, создавая его в том виде, в котором он сегодня!
-
-- barrykn: Создал микропатчер, который познакомил меня с процессом модификации системы и вернул мне веру в мой старый компьютер. Снимаю шляпу перед barrykn, советую вам сделать тоже самое.
-- ASentientBot: Создал хэш-патчи для установщика и добавил поддержку фреймбуфера GeForce Tesla (9400M/320M) в Big Sur вместе с патчами для работы графического ускорения видеокарт без поддержки Metal.
-- jackluke: Выяснил, как обойти проверку совместимости в USB установщике.
-- highvoltage12v: Разработал первые Wi-Fi кексты для Big Sur
-- ParrotGeek: Разработал кекст LegacyUSBInjector для работы USB портов на некоторых старых Mac и нашел способ пропуска ввода комманд в Терминале при загрузке установщика.
-- testheit: Помог с утилитой kmutil в микропатчере (используется и в Patched Sur)
-- Ausdauersportler: Интегрировал патчи для поддержки Metal видеокарт в iMac.
-- StarPlayrX: Указал на утилиту startosinstall, которая в дальнейшем использовалась в патчере для обновлений системы без использования USB.
-- ASentientHedgehog: Помогал рандомным образом в течении всего пути.
-- OCLP Team: Помог с вещами на уровне ядра для не-Tesla видеокарт без поддержки Metal для достижения графического ускорения.
-- dosdude1: Замена OpenGL/GPUSupport и огромное количество вещей, используемых для модификации системы.
-- Bweesh, Bruno Rocha, DutchDK, NickP0is0n, 8itCat, Finder352, DJT_233, Noah Fetz, duke4e, и riiveraluis за перевод приложения.
-- John_val, fromeister2009, Mr. Macintosh, Emperor Epitaph, Finder352, Monkiey and 8itCat за тестирование новых функций до релиза и нахождение багов.
-- и всем остальным, кто помог заставить Big Sur работать настолько хорошо, как это сейчас, на неподдерживаемых Mac.
-
-Patched Sur использует два фреймворка с открытым исходным кодом, Files и ShellOut за авторством JohnSundell (лицензия MIT), для решения некоторых проблем.";
+"THANKS-TITLE" = "NO SUPPORT";
+"THANKS-CONTENT" = "NO SUPPORT";
 
 // Please Remember Page
 
-"PLEASE-REMEMBER" = "Обратите внимание";
-"PRE-PR-1" = "Patched Sur находится на этапе бета-тестирования и никогда не будет идеальным. В то время, как он не приведет к поломке вашего Mac, вы можете потерять данные в процессе, если у вас нет резервной копии.";
-"PRE-PR-2" = " Обязательно сделайте копию данных при помощи Time Machine! ";
-"PRE-PR-3" = "Я и команда проекта не несем ответственности за потери из-за программы. Я приму все усилия, чтобы помочь разрешить проблему, но я не знаю абсолютно всего и в некоторых случаях не смогу помочь. В большинстве случаев, проблема кроется не в Patched Sur, так что я тут ничего не смогу сделать.";
+"PLEASE-REMEMBER" = "NO SUPPORT";
+"PRE-PR-1" = "NO SUPPORT";
+"PRE-PR-2" = "NO SUPPORT";
+"PRE-PR-3" = "NO SUPPORT";
 
 // Mac Compatibility Page
 
-"PRE-VERIFY-MAC" = "Проверка Mac";
-"PRE-VERIFY-QUICK" = "Этот первый шаг важен, чтобы понять, насколько Patched Sur может быть использован. Он поможет определить потенциальные проблемы, с которыми вы можете столкнуться, включая неработающий FileVault, отсутствие аппаратного ускорения графики и другие. Это не займет много времени.";
-"PRE-VERIFY-FETCH" = "Получение информации";
-"PRE-VERIFY-2" = "Проверяем Mac";
+"PRE-VERIFY-MAC" = "NO SUPPORT";
+"PRE-VERIFY-QUICK" = "NO SUPPORT";
+"PRE-VERIFY-FETCH" = "NO SUPPORT";
+"PRE-VERIFY-2" = "NO SUPPORT";
 
-"PRE-REPORT-BY" = "Сообщил: ";
-"PERSON" = "пользователь";
-"OTHERS" = "другие";
-"APPROVES" = "одобряет";
-"APPROVE" = "одобряют";
+"PRE-REPORT-BY" = "NO SUPPORT";
+"PERSON" = "NO SUPPORT";
+"OTHERS" = "NO SUPPORT";
+"APPROVES" = "NO SUPPORT";
+"APPROVE" = "NO SUPPORT";
 
-"WiFi, Ethernet and Bluetooth" = "WiFi, Ethernet и Bluetooth";
-"I/O Ports" = "Порты ввода-вывода";
-"Graphics Acceleration" = "Аппаратное ускорение графики";
-"Sleep and Brightness" = "Режим сна и регулировка яркости";
-"FileVault" = "FileVault";
-"Personal Hotspots" = "Точки доступа";
-"Personal Hotspot" = "Точка доступа";
-"WPA2 Enterprise" = "WPA2 Enterprise";
+"WiFi, Ethernet and Bluetooth" = "NO SUPPORT";
+"I/O Ports" = "NO SUPPORT";
+"Graphics Acceleration" = "NO SUPPORT";
+"Sleep and Brightness" = "NO SUPPORT";
+"FileVault" = "NO SUPPORT";
+"Personal Hotspots" = "NO SUPPORT";
+"Personal Hotspot" = "NO SUPPORT";
+"WPA2 Enterprise" = "NO SUPPORT";
 
-"PROB-FATAL" = "Обнаружена критическая проблема";
-"PROB-WARN" = "Обнаружена возможная проблема";
-"PROB-NO-UPGRADE" = "Из-за этой или другой проблемы вы не можете обновиться до Big Sur.";
-"PROB-CONTINUE-ANYWAY" = "Всё равно продолжить";
-"PROB-OTHERS" = "Другие проблемы";
+"PROB-FATAL" = "NO SUPPORT";
+"PROB-WARN" = "NO SUPPORT";
+"PROB-NO-UPGRADE" = "NO SUPPORT";
+"PROB-CONTINUE-ANYWAY" = "NO SUPPORT";
+"PROB-OTHERS" = "NO SUPPORT";
 
-"PROB-FILE-TITLE" = "FileVault активирован.";
-"PROB-FILE-DESCRIPTION" = "У вас активирован FileVault. Этот инструмент, несмотря на свои достоинства, приводит к отказу Big Sur на неподдерживаемых Mac. Вы не сможете загрузиться в режим восстановления, и время от времени не сможете разблокировать диск. Вы должны деактивировать FileVault перед использованием патчера. Вы можете это сделать, зайдя в Системные настройки. Перейдите в раздел Защита и конфиденциальность, выберите вкладку FileVault, нажмите на иконку замка и отключите эту функцию.";
+"PROB-FILE-TITLE" = "NO SUPPORT";
+"PROB-FILE-DESCRIPTION" = "NO SUPPORT";
 
 // Reminder! "BigMac" and "StarPlayrX" are a formal names, so don't localize that.
-"PROB-PRO-TITLE" = "Существует более подходящий патчер для Mac Pro";
-"PROB-PRO-DESCRIPTION" = "В то время, как Patched Sur подходит для большинства Mac, вы не должны его использовать с Mac Pro. Он не содержит необходимых патчей, и для него существует отдельный патчер. Это BigMac Patcher от StarPlayrX, и он предоставит наилучший опыт использования вашего Mac.";
+"PROB-PRO-TITLE" = "NO SUPPORT";
+"PROB-PRO-DESCRIPTION" = "NO SUPPORT";
 
-"PROB-GX-TITLE" = "Отсутствует поддержка аппаратного ускорения графики";
-"PROB-GX-DESCRIPTION" = "Ваш Mac не поддерживает технологию Metal, так что Big Sur будет работать НЕВЕРОЯТНО МЕДЛЕННО. Не ожидайте от системы скорости работы, подходящей для какого-либо реального использования. Патч для решения этой проблемы все еще в разработке, но в данный момент он крайне нестабилен. Если вы хотите продолжить, ваше право, но не ожидайте, что вы магически получите полностью рабочий Big Sur.";
+"PROB-GX-TITLE" = "NO SUPPORT";
+"PROB-GX-DESCRIPTION" = "NO SUPPORT";
 
-"PROB-SURE" = "Вы действительно хотите продолжить?";
-"PROB-SURE-SURE" = "Patched Sur обнаружил проблемы, которые могут (и приведут) к ошибкам в работе Big Sur. Ваш Mac может работать не в полную силу, и в некоторых случаях имеет смысл остаться на Catalina.";
+"PROB-SURE" = "NO SUPPORT";
+"PROB-SURE-SURE" = "NO SUPPORT";
 
-"REPORT-UNKNOWN" = "Совместимость не определена";
-"REPORT-UNKNOWN-2" = "В зависимости от вашего Mac, Patched Sur может работать или нет, и Patched Sur не обнаружил отчеты о совместимости с вашей моделью Mac, так что в данный момент работоспособность неизвестна. Не волнуйтесь, еще не очень много людей поделилсь, как Patched Sur работает на самых разных Mac, так что скорее всего, ваш Mac будет работать хорошо. Как только вы обновитесь, вы можете поделиться своим опытом (в меню Настроек после-установочного приложения), и помочь будущим пользователям вашей модели Mac!";
+"REPORT-UNKNOWN" = "NO SUPPORT";
+"REPORT-UNKNOWN-2" = "NO SUPPORT";
 
 // Update Track Page
 
-"PRE-TRACK-TITLE" = "Установить ветку обновлений";
-"PRE-TRACK-DESCRIPTION" = "Ваша ветка обновлений определяет, какие версии macOS вы получите. Релизная ветка самая стабильная, и скорее всего, вы её уже используете. Ветка Бета дает вам ранний доступ к новым функциям macOS, но она время от времени нестабильна.";
+"PRE-TRACK-TITLE" = "NO SUPPORT";
+"PRE-TRACK-DESCRIPTION" = "NO SUPPORT";
 
-"TRACK-RELEASE" = "Релизная ветка";
-"TRACK-BETA" = "Ветка Бета";
+"TRACK-RELEASE" = "NO SUPPORT";
+"TRACK-BETA" = "NO SUPPORT";
 
 // macOS Select Page
 
-"PRE-VERS-TITLE" = "Версия macOS Big Sur";
-"PRE-VERS-DESCRIPTION" = "Хотя в большинстве случаев стоит использовать последнюю версию macOS Big Sur, если по какой-либо причине вам требуется более старая версия, вы можете настроить ее здесь. Если вы хотите использовать заранее скачанный InstallAssistant.pkg или полный установщик, вы можете нажать кнопку Обзор. Если вы просто хотите загрузить и использовать последнюю версию macOS, просто нажмите на кнопку Загрузить.";
-"PRE-VERS-NOFI" = "Список установщиков macOS недоступен. Скорее всего, у вас отсутствует подключение к сети. Вы должны использовать заранее загруженный установщик.";
+"PRE-VERS-TITLE" = "NO SUPPORT";
+"PRE-VERS-DESCRIPTION" = "NO SUPPORT";
+"PRE-VERS-NOFI" = "NO SUPPORT";
 // NOTE: In these two, XX.YY.ZZ is the macOS version. So in English, the first would show Download macOS 11.3. \(installers[0].version)
-"PRE-VERS-DOWNLOAD" = "Загрузить macOS XX.YY.ZZ";
-"PRE-VERS-USE" = "Использовать macOS XX.YY.ZZ";
-"PRE-VERS-PRE" = "Использовать существующую копию macOS";
-"PRE-VERS-REDOWNLOAD" = "Скачать заново";
-"PRE-VERS-FETCH" = "Получение списка установщиков";
+"PRE-VERS-DOWNLOAD" = "NO SUPPORT";
+"PRE-VERS-USE" = "NO SUPPORT";
+"PRE-VERS-PRE" = "NO SUPPORT";
+"PRE-VERS-REDOWNLOAD" = "NO SUPPORT";
+"PRE-VERS-FETCH" = "NO SUPPORT";
 
 // Downloading Kexts Page
 
-"DOWNLOAD-PATCHES" = "Загрузка патчей";
-"DOWNLOAD-FILES" = "Загрузка файлов";
-"PRE-DP-1" = "Утилита для установки переменных позволяет вам правильно настроить NVRAM и статус SIP, чтобы Big Sur нормально загружался.";
-"PRE-DP-2" = "Это последний инструмент, который вы будете использовать перед установкой Big Sur.";
-"PRE-DP-3" = "Вам это будет необходимо, если вы ранее не использовали её на этом Mac или сбросили PRAM.";
-"PRE-DP-4" = "Патчи кекстов позволяют добавить поддержку встроенного оборудования, например Wi-Fi модуля и USB портов, чтобы ваш Mac оставался полностью функциональным.";
-"PRE-DP-CANCEL-1" = "Патчи в данный момент скачиваются. Вы действительно хотите вернуться?";
-"PRE-DP-CANCEL-2" = "Патчи скачиваются";
-"CANCEL-DOWNLOAD" = "Отменить загрузку";
-"RESTART-DOWNLOAD" = "Начать загрузку заново";
-"CONTINUE-DOWNLOAD" = "Продолжить загрузку";
-"PRE-DP-CANCEL-3" = "Произошла ошибка при загрузке патчей, вы можете попробовать решить проблему, начав закачку заново. Вы хотите попробовать загрузить патчи еще раз или перейти к предыдущему шагу?";
-"PRE-DP-CANCEL-4" = "Вы действительно хотите начать загрузку заново?";
+"DOWNLOAD-PATCHES" = "NO SUPPORT";
+"DOWNLOAD-FILES" = "NO SUPPORT";
+"PRE-DP-1" = "NO SUPPORT";
+"PRE-DP-2" = "NO SUPPORT";
+"PRE-DP-3" = "NO SUPPORT";
+"PRE-DP-4" = "NO SUPPORT";
+"PRE-DP-CANCEL-1" = "NO SUPPORT";
+"PRE-DP-CANCEL-2" = "NO SUPPORT";
+"CANCEL-DOWNLOAD" = "NO SUPPORT";
+"RESTART-DOWNLOAD" = "NO SUPPORT";
+"CONTINUE-DOWNLOAD" = "NO SUPPORT";
+"PRE-DP-CANCEL-3" = "NO SUPPORT";
+"PRE-DP-CANCEL-4" = "NO SUPPORT";
 
 // Downloading macOS Page
 
-"PRE-DM-TITLE" = "Загрузка macOS";
-"PRE-DM-DESCRIPTION" = "В данный момент macOS скачивается напрямую с серверов Apple, в дальнейшем установщик будет распакован на USB носитель. Это полный установщик, так что он весит 12 ГБ. Это займет некоторое время, поэтому дождитесь окончания процесса и убедитесь, что у вас хорошее интернет-соединение. После этого, вам необходимо выбрать USB носитель чтобы использовать установщик, Patched Sur использует этот файл, чтобы создать установочную флешку.";
-"PRE-DM-BAR" = "Загрузка macOS XX.YY.ZZ";
-"PRE-DM-CANCEL-1" = "В данный момент macOS скачивается напрямую с серверов Apple чтобы его можно было в дальнейшем использовать. Это большой файл. Вы действительно хотите вернуться?";
-"PRE-DM-CANCEL-2" = "macOS скачивается";
-"PRE-DM-CANCEL-3" = "Произошла ошибка при загрузке macOS, вы можете попробовать решить проблему, начав закачку заново. Вы хотите попробовать загрузить macOS еще раз или перейти к предыдущему шагу?";
+"PRE-DM-TITLE" = "NO SUPPORT";
+"PRE-DM-DESCRIPTION" = "NO SUPPORT";
+"PRE-DM-BAR" = "NO SUPPORT";
+"PRE-DM-CANCEL-1" = "NO SUPPORT";
+"PRE-DM-CANCEL-2" = "NO SUPPORT";
+"PRE-DM-CANCEL-3" = "NO SUPPORT";
 
 // Select Volume Page
 
-"PRE-VOL-TITLE" = "Выберите USB накопитель";
-"PRE-VOL-1" = "Чтобы установить пропатченный Big Sur, вам необходим USB установщик, который проведет вас через процесс обновления. Он обеспечит среду, в которой патчер может быть уверен, что все установится правильно.";
-"PRE-VOL-2" = "Чтобы создать установщик, вам необходим флеш-накопитель.";
-"PRE-VOL-3" = "Этот USB должен быть объемом не менее 16 ГБ. Внутренние разделы не будут работать, однако внешние, в зависимости от схемы разметки (которая скорее всего будет правильной, если это GUID). Если ваша флешка не показывается, убедитесь, что она отформатирована в файловой системе MacOS Extended (Журналируемая).";
-"PRE-VOL-NO" = "Совместимые устройства не обнаружены.";
+"PRE-VOL-TITLE" = "NO SUPPORT";
+"PRE-VOL-1" = "NO SUPPORT";
+"PRE-VOL-2" = "NO SUPPORT";
+"PRE-VOL-3" = "NO SUPPORT";
+"PRE-VOL-NO" = "NO SUPPORT";
 // Note: VOLUME is the volume name, do not localize it, just pretend it's a volume name and just place it into your sentence
 // Ex. If the volume was "SuperDrive", then "VOLUME will be erased." would show up as "SuperDrive will be erased."
-"PRE-VOL-ERASED" = "VOLUME будет очищен.";
-"PRE-VOL-ERASED-2" = "Все файлы на этом разделе будут полностью стерты. Это действие необратимо. Вы действительно хотите продолжить?";
-"PRE-VOL-DETECTING" = "Поиск устройств";
-"PRE-VOL-CHECKING" = "Проверка тома VOLUME";
+"PRE-VOL-ERASED" = "NO SUPPORT";
+"PRE-VOL-ERASED-2" = "NO SUPPORT";
+"PRE-VOL-DETECTING" = "NO SUPPORT";
+"PRE-VOL-CHECKING" = "NO SUPPORT";
 
 // Create Installer Page
 
-"PRE-CTI-TITLE" = "Создание USB установщика";
-"PRE-CTI-DESCRIPTION" = "Теперь носитель, который вы выбрали, будет использован, как установочная флешка macOS. Файлы, скопированные на диск, создадут среду, аналогичную режиму восстановления macOS Big Sur. Как только файлы будут перенесены на USB, Patched Sur пропатчит их, чтобы позволить вашему Mac загрузиться с флешки и добавит туда полезные утилиты для неподдерживаемых Mac.";
-"PRE-CTI-CANCEL-1" = "Вы действительно хотите отменить создание пропатченного установщика macOS? Он вам понадобится, чтобы обновиться до macOS Big Sur, и чаще всего процесс создания занимает много времени.";
-"PRE-CTI-CANCEL-2" = "Установщик macOS в процессе создания";
-"CANCEL-PROCESS" = "Отменить процесс";
-"RESTART-PROCESS" = "Перезапустить процесс";
-"CONTINUE-PROCESS" = "Продолжить процесс";
-"PRE-CTI-CANCEL-3" = "Произошла ошибка при создании установочного носителя macOS, вы можете попробовать решить проблему, начав заново.";
-"PRE-CTI-CANCEL-4" = "Вы хотите попробовать снова?";
-"PRE-CTI-CREATING" = "Создание установщика";
+"PRE-CTI-TITLE" = "NO SUPPORT";
+"PRE-CTI-DESCRIPTION" = "NO SUPPORT";
+"PRE-CTI-CANCEL-1" = "NO SUPPORT";
+"PRE-CTI-CANCEL-2" = "NO SUPPORT";
+"CANCEL-PROCESS" = "NO SUPPORT";
+"RESTART-PROCESS" = "NO SUPPORT";
+"CONTINUE-PROCESS" = "NO SUPPORT";
+"PRE-CTI-CANCEL-3" = "NO SUPPORT";
+"PRE-CTI-CANCEL-4" = "NO SUPPORT";
+"PRE-CTI-CREATING" = "NO SUPPORT";
 
 // Done Page
-"PRE-DONE-INFO" = "Вы почти готовы начать обновление до Big Sur. Установочный USB успешно создан и пришло время небольшой ручной работы. Если у вас нет возможности напрямую смотреть на пункты, запишите данные шаги (они действительно простые, хоть и кажется, что их много):
-
-1. Перезагрузите ваш Mac, зажав кнопку option (Alt), пока вы не увидите иконки дисков.
-2. Выберите желтый или фиолетовый пункт EFI Boot. Это сразу перезагрузит ваш компьютер.
-3. Включите снова ваш Mac, зажав кнопку option (Alt).
-4. Выберите Install macOS Big Sur.
-5. Как только ваш Mac загрузиться, выберите (Пере)установить macOS Big Sur. (Это может так звучать, но это не сотрет ваши данные, установщик просто обновит ваши системные файлы).
-6. Как только приложение откроется, выберите в нем ваш раздел (скорее всего Macintosh HD, но НЕ Install macOS Big Sur)
-7. После того, как обновление закончится и вы войдете в систему, откройте папку Приложения и запустите Patched Sur.
-8. Нажмите на Пропатчить кексты, затем нажмите Продолжить и введите свой пароль.
-9. После этого перезагрузите ваш Mac и наслаждайтесь полностью рабочей системой Big Sur!";
+"PRE-DONE-INFO" = "NO SUPPORT";
 // I suggest adding "However, these are only in English." to the end of this, since the linked page is only in English.
-"PRE-DONE-LINK" = "Вы можете также найти эти шаги на GitHub (только на английском языке).";
-"PRE-DONE-STEPS" = "(Шаги 10-14)";
+"PRE-DONE-LINK" = "NO SUPPORT";
+"PRE-DONE-STEPS" = "NO SUPPORT";
 
 // MARK: Post-Install App (96)
 
 // General
 
-"BACK" = "Назад";
-"RESTART-TO-FINISH" = "Перезагрузите для окончания";
+"BACK" = "NO SUPPORT";
+"RESTART-TO-FINISH" = "NO SUPPORT";
 
 // MARK: Menu Bar
 
-"PO-MN-ABOUT-PATCHER" = "О Patched Sur";
-"PREFERENCES" = "Настройки";
-"PO-AMM-TITLE" = "Об этом Mac";
-"PO-MN-HELP" = "Справка Patched Sur";
-"PO-MN-HELP-OS" = "Обновление macOS";
-"PO-MN-HELP-PATCHER" = "Обновление патчера";
+"PO-MN-ABOUT-PATCHER" = "NO SUPPORT";
+"PREFERENCES" = "NO SUPPORT";
+"PO-AMM-TITLE" = "NO SUPPORT";
+"PO-MN-HELP" = "NO SUPPORT";
+"PO-MN-HELP-OS" = "NO SUPPORT";
+"PO-MN-HELP-PATCHER" = "NO SUPPORT";
 
 // MARK: Update Notifications
 
 // VERSIONTAG is the version number of the new patcher/macOS version (like 0.3.1 or 11.3.1).
-"PO-NOFI-SELF" = "Доступно обновление Patched Sur до версии VERSIONTAG. Откройте Patched Sur и нажмите Обновиться чтобы узнать больше.";
-"PO-NOFI-OS-TITLE" = "Обновление ПО";
-"PO-NOFI-OS-DESCRIPTION" = "macOS Big Sur версии VERSIONTAG может быть установлен. Откройте Patched Sur и нажмите Обновить macOS чтобы узнать больше.";
+"PO-NOFI-SELF" = "NO SUPPORT";
+"PO-NOFI-OS-TITLE" = "NO SUPPORT";
+"PO-NOFI-OS-DESCRIPTION" = "NO SUPPORT";
 
 // MARK: About Patched Sur
 
 // APPBUILD is the app's version build number, like "96".
-"PO-ATP-AUTHOR-BUILD" = "Создатель: Ben Sova • Сборка APPBUILD";
-"PO-ATP-DESCRIPTION" = "Простой патчер с большим ядром, упрощающий запуск Big Sur на неподдерживаемом Mac, разработанный для всех.";
-"PO-ATP-WHATS-NEW-QUESTION" = "Что нового в 1.0.0?";
-"PO-ATP-WHATS-NEW-ANSWER" = "Он будет быстрее, мощнее, и понятнее для всех, даже если вы без Metal или без знаний английского.";
+"PO-ATP-AUTHOR-BUILD" = "NO SUPPORT";
+"PO-ATP-DESCRIPTION" = "NO SUPPORT";
+"PO-ATP-WHATS-NEW-QUESTION" = "NO SUPPORT";
+"PO-ATP-WHATS-NEW-ANSWER" = "NO SUPPORT";
 
 // MARK: Central View
 
-"PO-UP-TITLE" = "Обновиться";
-"PO-UP-DESCRIPTION" = "Обновить macOS либо патчер до новой версии.";
-"PO-PK-TITLE" = "Пропатчить кексты";
-"PO-PK-DESCRIPTION" = "Пропатченные кексты позволяют macOS полностью функционировать на неродном Mac.";
-"PO-ST-TITLE" = "Настройки";
-"PO-ST-DESCRIPTION" = "Отключение анимации, активация переключения графики, логи и другое.";
-"PO-CI-TITLE" = "Создать установщик";
-"PO-CI-DESCRIPTION" = "Создание пропатченной установочной флешки macOS Big Sur.";
-"PO-IR-TITLE" = "Режим востановления";
-"PO-IR-DESCRIPTION" = "Установка патчей раздела восстановления (доступен через CMD-R при загрузке).";
-"PO-AMM-DESCRIPTION" = "Показать краткую информацию о вашем Mac без серийного номера.";
+"PO-UP-TITLE" = "NO SUPPORT";
+"PO-UP-DESCRIPTION" = "NO SUPPORT";
+"PO-PK-TITLE" = "NO SUPPORT";
+"PO-PK-DESCRIPTION" = "NO SUPPORT";
+"PO-ST-TITLE" = "NO SUPPORT";
+"PO-ST-DESCRIPTION" = "NO SUPPORT";
+"PO-CI-TITLE" = "NO SUPPORT";
+"PO-CI-DESCRIPTION" = "NO SUPPORT";
+"PO-IR-TITLE" = "NO SUPPORT";
+"PO-IR-DESCRIPTION" = "NO SUPPORT";
+"PO-AMM-DESCRIPTION" = "NO SUPPORT";
 
-"PO-PK-NO-NEED-TITLE" = "Патчинг кекстов не требуется";
-"PO-PK-NO-NEED-DESCRIPTION" = "Вам не нужно патчить кексты на iMac конца 2013 года. Big Sur без них будет работать полноценно.";
+"PO-PK-NO-NEED-TITLE" = "NO SUPPORT";
+"PO-PK-NO-NEED-DESCRIPTION" = "NO SUPPORT";
 
 // MARK: Settings View
 
-"PO-ST-TITLE-ALT" = "Дополнительные настройки";
-"PO-ST-SUBTITLE" = "Разные полезные инструменты/патчи";
-"PO-ST-SECTION-1" = "Дополнительные патчи";
-"PO-ST-SECTION-2" = "Дополнительные инструменты";
-"PO-ST-RESTART-APPLY" = "После перезагрузки Mac изменения будут применены.";
+"PO-ST-TITLE-ALT" = "NO SUPPORT";
+"PO-ST-SUBTITLE" = "NO SUPPORT";
+"PO-ST-SECTION-1" = "NO SUPPORT";
+"PO-ST-SECTION-2" = "NO SUPPORT";
+"PO-ST-RESTART-APPLY" = "NO SUPPORT";
 
-"PO-ST-DA-DISABLE" = "Отключить анимации";
-"ENABLE" = "Включить";
-"PO-ST-DA-DISABLE-DONE" = "Анимации отключены!";
-"PO-ST-DA-DISABLE-DONE-2" = "После перезагрузки Mac изменения будут применены и Big Sur будет работать быстрее.";
-"PO-ST-DA-ENABLE-DONE" = "Анимации включены!";
-"PO-ST-DA-DESCRIPTION" = "Выключение анимации полезно для Mac без поддержки Metal. Поскольку у них отсутствует аппаратное ускорение графики, Big Sur будет работать очень медленно, так что отключение анимаций позволит немного ускорить работу системы.";
+"PO-ST-DA-DISABLE" = "NO SUPPORT";
+"ENABLE" = "NO SUPPORT";
+"PO-ST-DA-DISABLE-DONE" = "NO SUPPORT";
+"PO-ST-DA-DISABLE-DONE-2" = "NO SUPPORT";
+"PO-ST-DA-ENABLE-DONE" = "NO SUPPORT";
+"PO-ST-DA-DESCRIPTION" = "NO SUPPORT";
 
-"PO-ST-GXS-ENABLE" = "Включить переключение графики";
-"DISABLE" = "Выключить";
-"PO-ST-GXS-DESCRIPTION" = "Если у вас Mac с несколькими видеокартами, тогда вы, вероятно, захотите включить автоматическое переключение графики. Спасибо @15wat за данное решение.";
-"PO-ST-GXS-ENABLE-DONE" = "Переключение графики включено!";
-"PO-ST-GXS-ENABLE-DONE-2" = "Теперь графика будет переключаться автоматически! Возможно потребуется перезагрузка, чтобы изменения вступили в силу.";
-"PO-ST-GXS-ENABLE-FAILED" = "Ошибка при активации переключения графики";
-"PO-ST-GXS-DISABLE-DONE" = "Переключение графики включено!";
-"PO-ST-GXS-DISABLE-DONE-2" = "Теперь графика не будет переключаться автоматически! Возможно потребуется перезагрузка, чтобы изменения вступили в силу.";
-"PO-ST-GXS-ENABLE-FAILED" = "Ошибка при деактивации переключения графики";
+"PO-ST-GXS-ENABLE" = "NO SUPPORT";
+"DISABLE" = "NO SUPPORT";
+"PO-ST-GXS-DESCRIPTION" = "NO SUPPORT";
+"PO-ST-GXS-ENABLE-DONE" = "NO SUPPORT";
+"PO-ST-GXS-ENABLE-DONE-2" = "NO SUPPORT";
+"PO-ST-GXS-ENABLE-FAILED" = "NO SUPPORT";
+"PO-ST-GXS-DISABLE-DONE" = "NO SUPPORT";
+"PO-ST-GXS-DISABLE-DONE-2" = "NO SUPPORT";
+"PO-ST-GXS-ENABLE-FAILED" = "NO SUPPORT";
 
-"PO-ST-PKL-BUTTON" = "Показать логи патчинга кекстов";
-"PO-ST-PKL-DESCRIPTION" = "Если у вас проблемы с патчингом кекстов, возможно стоит поискать ошибки в логах. Это может помочь кому-то, кто пытается помочь вам разобраться в проблеме, поэтому, если вы можете, предоставьте это всем, кто пытается вам помочь.";
-"PO-ST-PKL-TITLE" = "Логи патчинга кекстов";
-"PO-ST-PKL-NO-LOGS" = "Логи отсутствуют";
-"PO-ST-PKL-COPIED" = "Скопировано!";
-"PO-ST-PKL-COPIED-2" = "Последние логи были скопированы в буфере обмена. Это может помочь с отладкой, и не забудьте прредоставить это всем, кто пытается вам помочь.";
+"PO-ST-PKL-BUTTON" = "NO SUPPORT";
+"PO-ST-PKL-DESCRIPTION" = "NO SUPPORT";
+"PO-ST-PKL-TITLE" = "NO SUPPORT";
+"PO-ST-PKL-NO-LOGS" = "NO SUPPORT";
+"PO-ST-PKL-COPIED" = "NO SUPPORT";
+"PO-ST-PKL-COPIED-2" = "NO SUPPORT";
 
-"PO-ST-CL-TITLE" = "Очистить мусор Patched Sur";
-"PO-ST-CL-DESCRIPTION" = "Иногда, Patched Sur может оставлять некоторый мусор во время работы. Это может освободить до 12 ГБ, рекомендуется использовать после обновлений через патчер.";
-"PO-ST-CL-DONE" = "Мусор очищен";
-"PO-ST-CL-DONE-2" = "Файлы были удалены, у вас должно появиться немного свободного места (при условии, что действительно были большие файлы, которые нужно было очистить).";
+"PO-ST-CL-TITLE" = "NO SUPPORT";
+"PO-ST-CL-DESCRIPTION" = "NO SUPPORT";
+"PO-ST-CL-DONE" = "NO SUPPORT";
+"PO-ST-CL-DONE-2" = "NO SUPPORT";
 
-"PO-ST-CYE-TITLE" = "Поделиться своим опытом";
+"PO-ST-CYE-TITLE" = "NO SUPPORT";
 // Add a translation for 'Please Note: These reports are only accepted in English.' to this next value
-"PO-ST-CYE-DESCRIPTION" = "В Patched Sur есть функция, позволяющая новым пользователям узнать, насколько хорошо их Mac будет работать с Big Sur. Однако для чего-то подобного нужна информация, и в этом вы можете помочь! Просто нажмите на ссылку выше и следуйте инструкциям, чтобы помочь. Обратите внимание: отчеты принимаются только на английском языке!";
+"PO-ST-CYE-DESCRIPTION" = "NO SUPPORT";
 
-"PO-ST-RL-TITLE" = "Перезапустить патчер";
-"PO-ST-RL-DESCRIPTION" = "Я не знаю, зачем вам это нужно, но если вы захотите, вы можете перезапустить патчер. Это сбросит множество переменных, устанавливаемых при запуске патчера, и еще много чего. Интересный факт: это тот же код, который запускается после завершения обновления.";
-"PO-ST-RL-FAILED" = "Ошибка при перезапуске!";
-"PO-ST-RL-FAILED-2" = "Не удалось открыть Patched Sur, но вы можете это сделать вручную.";
+"PO-ST-RL-TITLE" = "NO SUPPORT";
+"PO-ST-RL-DESCRIPTION" = "NO SUPPORT";
+"PO-ST-RL-FAILED" = "NO SUPPORT";
+"PO-ST-RL-FAILED-2" = "NO SUPPORT";
 
 // MARK: Patch Kexts Page
 
-"PO-PK-TITLE-ALT" = "Восстановить кексты";
-"PO-PK-SUBTITLE" = "Восстановление оригинальных драйверов";
-"PO-PK-DESCRIPTION-2" = "Пропатчив ваши кексты, вы получите рабочий Wi-Fi модуль, USB и многие другие вещи на вашем Big Sur. Без этих кекстов, ваш Mac не будет работать в полной мере на Big Sur. Если вам необходимо, вы можете откатить патчи кекстов, а затем заново их применить, это может помочь решить проблему.";
-"PO-PK-START" = "Начать патчинг кекстов";
-"PO-PK-UN-START" = "Начать восстановление кекстов";
-"PO-PK-INSTEAD" = "Вместо этого восстановить кексты";
-"PO-PK-INSTEAD-REVERSE" = "Вместо этого пропатчить кексты";
-"PO-PK-DETECT" = "Поиск патчей";
-"PO-PK-NONE-DETECTED" = "Патчи не обнаружены";
-"PO-PK-NONE-HELP" = "Попробуйте воткнуть пропатченную установочную флешку";
-"PO-PK-RUNNING" = "Патчинг кекстов";
-"PO-PK-UN-RUNNING" = "Восстановление кекстова";
-"PO-PK-LEGACY-ALERT" = "Патчи требуют включенный режим Legacy";
+"PO-PK-TITLE-ALT" = "NO SUPPORT";
+"PO-PK-SUBTITLE" = "NO SUPPORT";
+"PO-PK-DESCRIPTION-2" = "NO SUPPORT";
+"PO-PK-START" = "NO SUPPORT";
+"PO-PK-UN-START" = "NO SUPPORT";
+"PO-PK-INSTEAD" = "NO SUPPORT";
+"PO-PK-INSTEAD-REVERSE" = "NO SUPPORT";
+"PO-PK-DETECT" = "NO SUPPORT";
+"PO-PK-NONE-DETECTED" = "NO SUPPORT";
+"PO-PK-NONE-HELP" = "NO SUPPORT";
+"PO-PK-RUNNING" = "NO SUPPORT";
+"PO-PK-UN-RUNNING" = "NO SUPPORT";
+"PO-PK-LEGACY-ALERT" = "NO SUPPORT";
 
 // MARK: Create Installer Others
 
-"PO-CI-START-TITLE" = "Создать установщик macOS";
-"PO-CI-START-DESCRIPTION" = "Этот инструмент позволяет вам создать пропатченный установщик macOS Big Sur на USB-накопителе, аналогично тому, как это делает приложение предварительной установки, за исключением нескольких изменений. Это можно использовать, если вы столкнетесь с проблемой с патчером. Обратите внимание, что вы можете установить раздел восстановления, который очень похож на этот, однако в настоящее время с помощью него невозможно переустановить macOS, так как при восстановлении нет Wi-Fi. Также обратите внимание, что если вы используете это для обновления, есть более простой способ - послеустановочное приложение.";
-"PO-CI-FINISHED-TITLE" = "Установщик macOS создан";
-"PO-CI-FINSIHED-DESCRIPTION" = "Теперь этот установщик можно использовать для любых целей. Он полностью пропатчен и содержит установщик macOS (надеюсь, вы это знаете), среду режима восстановления и, конечно же, Patched Sur для патчинга кекстов.";
+"PO-CI-START-TITLE" = "NO SUPPORT";
+"PO-CI-START-DESCRIPTION" = "NO SUPPORT";
+"PO-CI-FINISHED-TITLE" = "NO SUPPORT";
+"PO-CI-FINSIHED-DESCRIPTION" = "NO SUPPORT";
 
 // MARK: About This Mac
 
-"PO-AMM-MODEL" = "Модель";
-"PO-AMM-PROCESSOR" = "Процессор";
-"PO-AMM-GRAPHICS" = "Графика";
-"PO-AMM-MEMORY" = "Память";
-"PO-AMM-BACK" = "Вернуться в главное меню";
-"PO-AMM-UPDATE" = "Обновление ПО...";
-"PO-AMM-VERSION" = "Версия";
+"PO-AMM-MODEL" = "NO SUPPORT";
+"PO-AMM-PROCESSOR" = "NO SUPPORT";
+"PO-AMM-GRAPHICS" = "NO SUPPORT";
+"PO-AMM-MEMORY" = "NO SUPPORT";
+"PO-AMM-BACK" = "NO SUPPORT";
+"PO-AMM-UPDATE" = "NO SUPPORT";
+"PO-AMM-VERSION" = "NO SUPPORT";
 
 // MARK: Update Status
 
-"PO-UP-CHECKING" = "Проверка обновлений";
-"PO-UP-CHECK-FAILED" = "Ошибка при проверке обновлений";
-"PO-UP-CHECK-FAILED-1" = "Это, вероятно, означает, что либо ваше интернет-соединение не работает, либо сервера веб-хостинга GitHub не работают. Это не должно быть проблемой, вы можете обновить macOS вручную с помощью Patched Sur или обновить сам патчер, загрузив его со страницы Patched Sur на GitHub.";
-"PO-UP-TITLE-PATCHER" = "Обновление патчера";
-"PO-UP-TITLE-MACOS" = "Обновление macOS";
+"PO-UP-CHECKING" = "NO SUPPORT";
+"PO-UP-CHECK-FAILED" = "NO SUPPORT";
+"PO-UP-CHECK-FAILED-1" = "NO SUPPORT";
+"PO-UP-TITLE-PATCHER" = "NO SUPPORT";
+"PO-UP-TITLE-MACOS" = "NO SUPPORT";
 
-"PO-UP-USING-TRACK" = "Вы используете";
+"PO-UP-USING-TRACK" = "NO SUPPORT";
 // Imagine that this is like a sentence. First you see the above phrase, then Release or Beta, then the next text.
 // So this would read, "You are using the Release update track"
-"PO-UP-USING-TRACK-2" = "ветку обновлений.";
-"PO-UP-BETA-DESCRIPTION" = "Эти обновления могут быть нестабильными и не всегда рекомендуются для повседневного использования.";
-"PO-UP-RELEASE-DESCRIPTION" = "Эти обновления обычно более стабильны, данная ветка используется по умолчанию.";
-"PO-UP-IS-AVALIBLE" = "Доступно обновление!";
-"RELEASED" = "Выпущено";
-"BUILD" = "Сборка";
-"PO-UP-VIEW-OTHER" = "Посмотреть другие версии";
-"PO-UP-START-TITLE" = "Начать обновление macOS";
-"PO-UP-START-DESCRIPTION" = "Для обновления патчер сначала загрузит последние патчи, а затем новую версию macOS непосредственно с серверов Apple, после чего программа обновления Apple будет запущена без проверки совместимости.";
-"PO-UP-NOTES-TITLE" = "Последние изменения";
-"PO-UP-NOTES-DESCRIPTION" = "Посмотрите, что нового в macOS перед обновлением. Спасибо Mr. Macintosh (или Apple/9to5Mac) за предоставление этой информации.";
-"PO-UP-NO-UPDATES" = "Обновления не найдены.";
-"PO-UP-YOU-ON" = "Вы находитесь на версии XX.YY.ZZ.";
-"PO-UP-NOTIF-TITLE" = "Настроить уведомления об обновлениях";
-"PO-UP-NOTIF-DESCRIPTION" = "Получайте уведомления об обновлениях macOS и патчера.";
+"PO-UP-USING-TRACK-2" = "NO SUPPORT";
+"PO-UP-BETA-DESCRIPTION" = "NO SUPPORT";
+"PO-UP-RELEASE-DESCRIPTION" = "NO SUPPORT";
+"PO-UP-IS-AVALIBLE" = "NO SUPPORT";
+"RELEASED" = "NO SUPPORT";
+"BUILD" = "NO SUPPORT";
+"PO-UP-VIEW-OTHER" = "NO SUPPORT";
+"PO-UP-START-TITLE" = "NO SUPPORT";
+"PO-UP-START-DESCRIPTION" = "NO SUPPORT";
+"PO-UP-NOTES-TITLE" = "NO SUPPORT";
+"PO-UP-NOTES-DESCRIPTION" = "NO SUPPORT";
+"PO-UP-NO-UPDATES" = "NO SUPPORT";
+"PO-UP-YOU-ON" = "NO SUPPORT";
+"PO-UP-NOTIF-TITLE" = "NO SUPPORT";
+"PO-UP-NOTIF-DESCRIPTION" = "NO SUPPORT";
 
-"PO-UP-NOTIF-TITLE-2" = "Уведомления об обновлениях";
+"PO-UP-NOTIF-TITLE-2" = "NO SUPPORT";
 // In case you don't know, /n means line down. So if I wrote Hello\nWorld, it would show up as:
 // Hello
 // World
-"PO-UP-NOTIF-DESCRIPTION-2" = "Поскольку ваш Mac не поддерживается, встроенное ПО никогда не будет информировать вас об обновлениях macOS, поскольку в нем нет ничего нового, что поддерживало бы ваш Mac. Тем не менее, Patched Sur может сам предоставлять уведомления об обновлениях, если хотите.\n\nПолучать уведомления об:";
-"NO" = "Нет";
-"YES" = "Да";
-"CONFIRM" = "Подтвердить";
-"PO-NOTIF-SETUP-DONE" = "Настройка уведомлений окончена!";
-"PO-NOTIF-SETUP-DONE-2" = "Patched Sur будет уведомлять вас об обновлениях на основе ваших новых настроек.";
-"PO-NOTIF-SETUP-PERMS" = "Patched Sur нужно разрешение на отправку уведомлений.";
-"PO-NOTIF-SETUP-PERMS-2" = "Прежде чем патчер сможет отправлять уведомления о доступных обновлениях, ему нужно разрешение на отправку уведомлений.";
-"PO-NOTIF-SETUP-ALMOST" = "Почти сделано!";
-"PO-NOTIF-SETUP-ALMOST-2" = "Чтобы завершить настройку уведомлений, Patched Sur создаст пользовательский демон, который будет проверять их время от времени. Чтобы создать его, патчер должен иметь root-доступ, поэтому вам будет предложено ввести пароль, после чего все будет готово!";
-"PO-NOTIF-SETUP-DENY" = "Patched Sur не может отправлять уведомления";
-"PO-NOTIF-SETUP-DENY-2" = "Вы запретили Patched Sur отправлять уведомления. Если вы хотите разрешить Patched Sur отправлять уведомления, откройте Системные Настройки > Уведомления > Patched Sur, затем разрешите уведомления.";
-"PO-NOTIF-SETUP-FAILED" = "Ошибка при настройке демона";
+"PO-UP-NOTIF-DESCRIPTION-2" = "NO SUPPORT";
+"NO" = "NO SUPPORT";
+"YES" = "NO SUPPORT";
+"CONFIRM" = "NO SUPPORT";
+"PO-NOTIF-SETUP-DONE" = "NO SUPPORT";
+"PO-NOTIF-SETUP-DONE-2" = "NO SUPPORT";
+"PO-NOTIF-SETUP-PERMS" = "NO SUPPORT";
+"PO-NOTIF-SETUP-PERMS-2" = "NO SUPPORT";
+"PO-NOTIF-SETUP-ALMOST" = "NO SUPPORT";
+"PO-NOTIF-SETUP-ALMOST-2" = "NO SUPPORT";
+"PO-NOTIF-SETUP-DENY" = "NO SUPPORT";
+"PO-NOTIF-SETUP-DENY-2" = "NO SUPPORT";
+"PO-NOTIF-SETUP-FAILED" = "NO SUPPORT";
 
-"PO-UP-COMPAT-FAIL-SIP" = "Ошибка при проверке статуса SIP";
-"PO-UP-COMPAT-FAIL-SIP-2" = "Patched Sur не смог проверить ваш статус SIP status.";
-"PO-UP-COMPAT-SIP-ON" = "SIP включен";
-"PO-UP-COMPAT-SIP-ON-2" = "Поскольку установщик проверяет, поддерживает ли обновление ваш Mac, Patched Sur необходимо в него внедрить dylib, чтобы установщик не проверял совместимость. Однако это можно сделать только с выключенным SIP, поэтому Patched Sur необходимо, чтобы вы отключили SIP, прежде чем продолжить. Чтобы отключить его:
+"PO-UP-COMPAT-FAIL-SIP" = "NO SUPPORT";
+"PO-UP-COMPAT-FAIL-SIP-2" = "NO SUPPORT";
+"PO-UP-COMPAT-SIP-ON" = "NO SUPPORT";
+"PO-UP-COMPAT-SIP-ON-2" = "NO SUPPORT";
+"PO-UP-COMPAT-LV-ON" = "NO SUPPORT";
+"PO-UP-COMPAT-LV-ON-2" = "NO SUPPORT";
 
-1. Загрузитесь в режим восстановление (⌘R при запуске)
-2. Откройте Терминал в меню Утилиты.
-3. Пропишите: csrutil disable и нажмите Enter.
-4. Нажмите Enter и перезагрузите ваш компьютер, затем запустите снова Patched Sur.";
-"PO-UP-COMPAT-LV-ON" = "Валидация библиотек включена";
-"PO-UP-COMPAT-LV-ON-2" = "Валидация библиотек не позволяет Patched Sur внедрить код в установщик macOS и пропустить проверку совместимости. Если вы хотите обновить macOS, вам необходимо сначала отключить валидацию библиотек.";
-
-"SKIP" = "Пропустить";
-"PO-UP-APP-FAILED" = "Загрузка не удалась";
-"PO-UP-APP-START" = "Загрузка обновления";
-"DOWNLOADING" = "Загружается";
+"SKIP" = "NO SUPPORT";
+"PO-UP-APP-FAILED" = "NO SUPPORT";
+"PO-UP-APP-START" = "NO SUPPORT";
+"DOWNLOADING" = "NO SUPPORT";
 
 // MARK: Update Chooser
 
-"PO-UP-CHOOSE-TITLE" = "Выбор обновлений";
-"PO-UP-CHOOSE-FAILED" = "Произошла ошибка при получении доступных обновлений.";
-"PO-UP-CHOOSE-PRE" = "Эта версия macOS уже загружена:";
-"PO-UP-CHOOSE-CAN" = "Вы можете загрузить эти версии macOS:";
-"PO-UP-CHOOSE-DELETE" = "Вы действительно хотите удалить загруженный установщик?";
-"PO-UP-CHOOSE-DELETE-2" = "При том, что это освободит 12.2 ГБ места, он может быть полезен для быстрой переустановки macOS или по любой другой причине, по которой вам может понадобиться установщик macOS на 12 ГБ.";
-"DELETE" = "Удалить";
-"UPDATE" = "Обновить";
-"REINSTALL" = "Переустановить";
-"UNEXPECTED-ERROR" = "Произошла ошибка";
-"PO-UP-CHOOSE-EXACT-PATH" = "Этот файл отсутствует, невозможно определить полный путь. Вы не можете использовать предварительно загруженный установщик.";
-"PO-UP-CHOOSE-DOWNLOAD" = "Загрузка установщика macOS";
-"PO-UP-CHOOSE-DOWNLOAD-1" = "Вы можете выполнить обновление до этой версии macOS, но вы также можете загрузить ее, и это кнопка, которую вы нажали. Это всплывающее окно существует только для того, чтобы вы это знали. (Это просто откроет ваш веб-браузер и загрузит установщик, ничего особенного.)";
-"PO-UP-CHOOSE-DOWNLOAD-2" = "Вы не можете \"обновиться\" до более старой версии macOS, но вы можете скачать установщик, если он вам нужен. (Это просто откроет ваш веб-браузер и загрузит установщик, ничего особенного.)";
-"PO-UP-CHOOSE-DOWNLOAD-TIP" = "Вы также можете скачать InstallAssistant.pkg, если хотите.";
-"PO-UP-CHOOSE-DOWNLOAD-TIP-2" = "Вы не можете обновиться до более старой версии macOS, но вы можете скачать установщик, если хотите.";
-"DOWNLOAD" = "Загрузить";
+"PO-UP-CHOOSE-TITLE" = "NO SUPPORT";
+"PO-UP-CHOOSE-FAILED" = "NO SUPPORT";
+"PO-UP-CHOOSE-PRE" = "NO SUPPORT";
+"PO-UP-CHOOSE-CAN" = "NO SUPPORT";
+"PO-UP-CHOOSE-DELETE" = "NO SUPPORT";
+"PO-UP-CHOOSE-DELETE-2" = "NO SUPPORT";
+"DELETE" = "NO SUPPORT";
+"UPDATE" = "NO SUPPORT";
+"REINSTALL" = "NO SUPPORT";
+"UNEXPECTED-ERROR" = "NO SUPPORT";
+"PO-UP-CHOOSE-EXACT-PATH" = "NO SUPPORT";
+"PO-UP-CHOOSE-DOWNLOAD" = "NO SUPPORT";
+"PO-UP-CHOOSE-DOWNLOAD-1" = "NO SUPPORT";
+"PO-UP-CHOOSE-DOWNLOAD-2" = "NO SUPPORT";
+"PO-UP-CHOOSE-DOWNLOAD-TIP" = "NO SUPPORT";
+"PO-UP-CHOOSE-DOWNLOAD-TIP-2" = "NO SUPPORT";
+"DOWNLOAD" = "NO SUPPORT";
 
 // MARK: Download Patches/macOS
 
-"DOWNLOAD-PATCH-MACOS" = "Загрузка патчей и macOS";
-"DOWNLOADED-PATCHES" = "Загрузка патчей";
-"PO-UP-DPM-DESCRIPTION" = "Патчи позволяют использовать оборудование, такое как Wi-Fi модуль, и перезаписывают код установщика, чтобы ваш Mac оставался полностью функциональным. macOS загружается прямо с серверов Apple в виде файла InstallAssistant.pkg. Оттуда мы можем извлечь приложение установщика, а затем начать установку macOS. (Иногда индикатор выполнения ломается, но загрузка при этом идёт.)";
-"DOWNLOADING-MACOS" = "Загрузка macOS";
+"DOWNLOAD-PATCH-MACOS" = "NO SUPPORT";
+"DOWNLOADED-PATCHES" = "NO SUPPORT";
+"PO-UP-DPM-DESCRIPTION" = "NO SUPPORT";
+"DOWNLOADING-MACOS" = "NO SUPPORT";
 
 // MARK: Starting OS Installer
 
-"PO-UP-SOI-TITLE" = "Готов к обновлению!";
-"PO-UP-SOI-DESCRIPTION" = "Теперь, Patched Sur завершит подготовку к обновлению и перезапустится в установщик обновлений macOS. Через некоторое время установка macOS будет завершена, и вы сможете пропатчить кексты, а затем наслаждаться macOS. Это займет некоторое время! Так же, как и подготовка к обновлению в системных настройках, это не самая быстрая вещь в мире.";
-"PO-UP-SOI-PREPARING" = "Подготовка к обновлению";
+"PO-UP-SOI-TITLE" = "NO SUPPORT";
+"PO-UP-SOI-DESCRIPTION" = "NO SUPPORT";
+"PO-UP-SOI-PREPARING" = "NO SUPPORT";
 
 // MARK: Recovery Patch
 
-"PO-IR-SUBTITLE" = "Полезное";
-"DISCLAMIER" = "ДИСКЛЕЙМЕР";
-"PO-IR-DISCLAIM" = "Это НЕ ТА ВЕЩЬ, на которую можно полагаться на 100%. В основном это просто \"держите, это лучшее, что можно тут сделать\". Я пытался создать режим восстановления мечты, но это не сработало, в основном потому, что прошивка на вашем Mac игнорирует файлы, которые по её мнению существуют без всякой причины. Если бы эти файлы не игнорировались, мне бы не пришлось делать это сообщение. Однако вы можете делать такие вещи в режиме восстановления: управлять значениями NVRAM (например, статусом SIP и аргументами загрузки), использовать Дисковую утилиту, просматривать веб-страницы (наверное?) и патчить/восстанавливать кексты (и, возможно, некоторые другие вещи).
-Я советую создать установочный USB и пользоваться им.
-Вы не можете переустановить macOS через режим восстановления.";
-"PO-IR-SIP-ON" = "SIP активирован";
-"PO-IR-SIP-ON-DESCRIPTION" = "Патч режима восстановления не может быть установлен при включенном SIP из-за защиты файловой системы. Может показаться, что единственный способ отключить SIP - это режим восстановления, но есть и другие способы.\n\nЕсли у вас все еще есть установочный USB-накопитель, возможно, вы сможете загрузиться в EFI Boot на нем. Если это не сработает или вы не можете этого сделать, загрузитесь в режиме восстановления через Интернет (CMD-OPTION-R при загрузке), и вы сможете сделать это оттуда.";
-"PO-IR-PATCHING" = "Патчинг режима восстановления";
-"PO-IR-PATCHING-DESCRIPTION" = "Режим восстановления macOS на вашем Mac будет пропатчен. Этот процесс состоит из двух шагов: первый - это загрузка двух необходимых файлов, а второй - их установка. Это очень просто и не занимает много времени. Как только это будет сделано, восстановление macOS будет разблокировано. Обратите внимание, что если у вас несколько разделов, восстановление с загрузочного диска будет (скорее всего) предпочтительным и будет загружаться вместо других установленных средств восстановления.";
-"PO-IR-DOWNLOAD-RECOVERY" = "Загрузка файлов режима восстановления";
-"PO-IR-DONE" = "Режим восстановления пропатчен!";
-"GO-HOME" = "В главное меню";
+"PO-IR-SUBTITLE" = "NO SUPPORT";
+"DISCLAMIER" = "NO SUPPORT";
+"PO-IR-DISCLAIM" = "NO SUPPORT";
+"PO-IR-SIP-ON" = "NO SUPPORT";
+"PO-IR-SIP-ON-DESCRIPTION" = "NO SUPPORT";
+"PO-IR-PATCHING" = "NO SUPPORT";
+"PO-IR-PATCHING-DESCRIPTION" = "NO SUPPORT";
+"PO-IR-DOWNLOAD-RECOVERY" = "NO SUPPORT";
+"PO-IR-DONE" = "NO SUPPORT";
+"GO-HOME" = "NO SUPPORT";
 
 // MARK: Three v1.0.0 (102)
 
 // Friends in Settings
 // Yes I'm adding this lol - duke4e advertised Patched Sur so I have to get him back and then I decided to add macOSicons.com because I like them. Maybe I'll have more friends later.
-"PO-ST-FRIENDS" = "Друзья Patched Sur";
-"PO-ST-FRIENDS-WIDGY" = "Widgy - отличное приложение для создания полностью кастомных виджетов для iOS и macOS! С его помощью вы можете заполнить своё устройство всеми данными, которые вам нужны, расположить их так, как вы хотите, и при этом они будут красиво сочетаться с остальной частью вашего домашнего экрана/рабочего стола. Довольно круто, правда?";
-"PO-ST-FRIENDS-ICONS" = "macOSicons.com - это веб-сайт, содержащий более 5000 альтернативных иконок для macOS Big Sur. Вы можете скачать иконки оттуда, чтобы заменить значки, которые не вписываются в стиль Big Sur, или просто потому, что их дизайн вам нравится больше, чем оригинальный дизайн приложения.";
+"PO-ST-FRIENDS" = "NO SUPPORT";
+"PO-ST-FRIENDS-WIDGY" = "NO SUPPORT";
+"PO-ST-FRIENDS-ICONS" = "NO SUPPORT";
 
 // MARK: Patch Kexts Configuration
 
-"PO-PK-CONFIGURE" = "Расширенные настройки";
-"PO-PK-CONFIG-WARN" = "ВНИМАНИЕ: Расширенные настройки следует использовать только в том случае, если вы знаете, что делаете!
-Не включайте ненужные патчи.";
+"PO-PK-CONFIGURE" = "NO SUPPORT";
+"PO-PK-CONFIG-WARN" = "NO SUPPORT";
 // This will come right before a button that toggles between "Patch Kexts" and "Unpatch Kexts"
-"PO-PK-CONFIG-MODE" = "Режим:";
-"PO-PK-CONFIG-UNPATCH" = "Все патчи будут удалены, и система будет восстановлена до исходного состояния без них. WiFi и часть других компонентов перестанет работать. Это может испортить ядро системы, что приведет либо к kernel panic, либо к невозможности патчинга кекстов, поэтому, как правило, безопаснее просто переустановить macOS, а не удалять патчи.";
-"ENABLED" = "Включено";
-"DISABLED" = "Выключено";
+"PO-PK-CONFIG-MODE" = "NO SUPPORT";
+"PO-PK-CONFIG-UNPATCH" = "NO SUPPORT";
+"ENABLED" = "NO SUPPORT";
+"DISABLED" = "NO SUPPORT";
 
 // MARK: Boot.plist Settings
 
-"PO-ST-BOOT" = "Патч Boot.plist";
-"PO-ST-BOOT-DONE" = "Boot.plist уже пропатчен";
-"PO-ST-BOOT-DESCRIPTION" = "Патч com.apple.Boot.plist позволит сбрасывать NVRAM на вашем Mac без необходимости USB установщика и EFI Boot. После этого вам придется восстановить NVRAM (Patched Sur поможет), так как вам лучше иметь значение, чем не иметь его. Вам придется патчить этот plist каждый раз при обновлении macOS.";
-"PO-ST-BOOT-ONGOING" = "Идет патчинг Boot.plist";
+"PO-ST-BOOT" = "NO SUPPORT";
+"PO-ST-BOOT-DONE" = "NO SUPPORT";
+"PO-ST-BOOT-DESCRIPTION" = "NO SUPPORT";
+"PO-ST-BOOT-ONGOING" = "NO SUPPORT";
 "PO-ST-BOOT-NONE" = "Совместимых патчей не обнаружено.
 Возможно, у вас не загружена последняя версия патчей, которые необходимы для файла boot.plist.
 Используйте «Обновить резервные патчи», чтобы обновить их, затем повторите попытку.";
 
 // MARK: Volume Selection
 
-"PRE-VOL-INCOMPAT" = "Показать несовместимые диски";
-"PRE-VOL-INCOMPAT-TITLE" = "Несовместимые диски";
-"PRE-VOL-INCOMPAT-NODATA" = "Не удается найти информацию о диске, это может быть ошибка патчера.";
-"PRE-VOL-INCOMPAT-INTERNAL" = "Внутренний носитель, используйте вместо него внешний USB.";
-"PRE-VOL-INCOMPAT-IMAGE" = "Образы дисков не могут быть загрузочными, используйте внешний USB.";
+"PRE-VOL-INCOMPAT" = "NO SUPPORT";
+"PRE-VOL-INCOMPAT-TITLE" = "NO SUPPORT";
+"PRE-VOL-INCOMPAT-NODATA" = "NO SUPPORT";
+"PRE-VOL-INCOMPAT-INTERNAL" = "NO SUPPORT";
+"PRE-VOL-INCOMPAT-IMAGE" = "NO SUPPORT";
 // For these next two, I suggest checking Disk Utility for the proper terms for GUID Partition Map and MacOS Extended (Journaled).
-"PRE-VOL-INCOMPAT-GUID" = "Не отформатировано с таблицей разделов GUID";
-"PRE-VOL-INCOMPAT-SYNTH" = "Этот диск отформатирован как APFS, используйте Mac OS Extended (журналируемый)";
+"PRE-VOL-INCOMPAT-GUID" = "NO SUPPORT";
+"PRE-VOL-INCOMPAT-SYNTH" = "NO SUPPORT";
 
 // MARK: NVRAM Reset Wanring
 
-"PO-NV-POPUP-TITLE" = "Необходимое значение NVRAM отсутствует";
-"PO-NV-POPUP-DESCRIPTION" = "Отсутствует аргумент запуска -no_compat_check. Хотя Patched Sur уже защитил вас от самой большой проблемы, вызванной этим, есть и другие проблемы, которые могут возникнуть в результате этого.";
-"PO-NV-POPUP-START" = "Посмотреть инструкции";
-"PO-NV-POPUP-DESCRIPTION-TWO" = "Запустите Patched Sur (послеустановочное приложение, не то, что в dmg) чтобы узнать больше и увидеть, как восстановить это значение.";
-"PO-NV-POPUP-DESCRIPTION-THREE" = "Нажмите Посмотреть инструкции ниже, чтобы узнать, как восстановить значение.";
-"PO-NV-CHECK-TITLE" = "У вас есть пропатченный установочный USB?";
-"PO-NV-CHECK-DESCRIPTION" = "Если у вас все еще есть пропатченный установочный USB, мы можем пропустить множество сложностей. Настоятельно рекомендуется всегда иметь при себе установочный USB-накопитель последней версии macOS, поэтому, если вы хотите сделать его сейчас, нажмите кнопку «Назад» в правом верхнем углу экрана, затем нажмите «Создать установщик» и следуйте инструкциям, затем вернитесь сюда.";
-"PO-NV-CHECK-ONE" = "У меня есть пропатченный установочный USB.";
-"PO-NV-CHECK-TWO" = "У меня его нет.";
-"PO-NV-ONE-TITLE" = "Восстановить значение (с установщиком)";
-"PO-NV-ONE-CONTENT" = "Поскольку у вас есть установочный USB, это будет очень просто и безболезненно!\n1. Выключите Mac и снова включите его, зажав кнопку Option.\n2. Убедитесь, что установочный USB подключен, выберите фиолетовый загрузочный диск EFI.\n3. Ваш Mac немедленно выключится, так что просто включите его снова, и все готово!";
-"PO-NV-TWO-TITLE" = "Восстановить значение (без установщика)";
-"PO-NV-TWO-CONTENT" = "Поскольку у вас нет установочного USB, это будет немного сложнее, но не волнуйтесь, это будет легко. Если хотите, можете записать это, так как Patched Sur не сможет вам помочь во время процесса.\n\n1. Выключите Mac, затем снова включите его, удерживая CMD-OPTION-R (даже если вы пропатчили режим восстановления, для этого вам все равно потребуется восстановление через Интернет).\n2. Подключитесь к Wi-Fi и дайте ему загрузиться.\n3. Щелкните «Утилиты» в строке меню, затем щелкните «Терминал».\n4. Введите nvram boot-args = -no_compat_check и нажмите клавишу ENTER.\n5. Перезагрузите Mac, и все будет готово.";
-"PO-NV-BAR-TITLE" = "Проблема NVRAM";
-"PO-NV-BAR-SUBTITLE" = "Давайте это исправим.";
+"PO-NV-POPUP-TITLE" = "NO SUPPORT";
+"PO-NV-POPUP-DESCRIPTION" = "NO SUPPORT";
+"PO-NV-POPUP-START" = "NO SUPPORT";
+"PO-NV-POPUP-DESCRIPTION-TWO" = "NO SUPPORT";
+"PO-NV-POPUP-DESCRIPTION-THREE" = "NO SUPPORT";
+"PO-NV-CHECK-TITLE" = "NO SUPPORT";
+"PO-NV-CHECK-DESCRIPTION" = "NO SUPPORT";
+"PO-NV-CHECK-ONE" = "NO SUPPORT";
+"PO-NV-CHECK-TWO" = "NO SUPPORT";
+"PO-NV-ONE-TITLE" = "NO SUPPORT";
+"PO-NV-ONE-CONTENT" = "NO SUPPORT";
+"PO-NV-TWO-TITLE" = "NO SUPPORT";
+"PO-NV-TWO-CONTENT" = "NO SUPPORT";
+"PO-NV-BAR-TITLE" = "NO SUPPORT";
+"PO-NV-BAR-SUBTITLE" = "NO SUPPORT";
