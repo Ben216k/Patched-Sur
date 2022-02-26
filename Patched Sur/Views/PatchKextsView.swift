@@ -285,7 +285,9 @@ struct ConfigurePatchKexts: View {
                             VStack {
                                 // MARK: Column One
                                 HStack {
-                                    Text("WiFi:")
+                                    Text("WiFi")
+                                        .fixedSize()
+                                        .lineLimit(1)
                                     VIButton(id: "WiFi", h: $hovered) {
                                         Text(wifi.rawValue)
                                     } onClick: {
@@ -295,88 +297,11 @@ struct ConfigurePatchKexts: View {
                                     }.inPad()
                                     .btColor(wifi == .none ? .gray : (wifi == .mojaveHybrid ? Color("Accent") : .accentColor))
                                 }
-                                HStack {
-                                    Text("Legacy USB:")
-                                    VIButton(id: "USB", h: $hovered) {
-                                        Text(legacyUSB ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            legacyUSB.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!legacyUSB ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("BCM5701:")
-                                    VIButton(id: "BCM5701", h: $hovered) {
-                                        Text(bcm5701 ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            bcm5701.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!bcm5701 ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("NVENET:")
-                                    VIButton(id: "NVENET", h: $hovered) {
-                                        Text(nvNet ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            nvNet.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!nvNet ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("AGC:")
-                                    VIButton(id: "AGC", h: $hovered) {
-                                        Text(agc ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            agc.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!agc ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("AGC Old:")
-                                    VIButton(id: "AGC-OLD", h: $hovered) {
-                                        Text(agcold ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            agcold.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!agcold ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("SNB:")
-                                    VIButton(id: "SNB", h: $hovered) {
-                                        Text(snb.rawValue)
-                                    } onClick: {
-                                        withAnimation {
-                                            snb.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(snb == .none ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("Backlight:")
-                                    VIButton(id: "BACKLIGHT", h: $hovered) {
-                                        Text(backlight ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            backlight.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!backlight ? .gray : .accentColor)
-                                }
                             }
                             VStack {
                                 // MARK: Column Two
                                 HStack {
-                                    Text("Boot Plist:")
+                                    Text("Boot Plist")
                                     VIButton(id: "BOOT-PLIST", h: $hovered) {
                                         Text(bootPlist ? .init("ENABLED") : .init("DISABLED"))
                                     } onClick: {
@@ -386,97 +311,6 @@ struct ConfigurePatchKexts: View {
                                     }.inPad()
                                     .btColor(!bootPlist ? .gray : .accentColor)
                                 }
-                                HStack {
-                                    Text("HD3000:")
-                                    VIButton(id: "HD3000", h: $hovered) {
-                                        Text(hd3000 ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            hd3000.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!hd3000 ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("HDA:")
-                                    VIButton(id: "HDA", h: $hovered) {
-                                        Text(hda ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            hda.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!hda ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("GFTESLA:")
-                                    VIButton(id: "GFTESLA", h: $hovered) {
-                                        Text(gfTesla ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            gfTesla.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!gfTesla ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("TELEMETRY:")
-                                    VIButton(id: "TELEMETRY", h: $hovered) {
-                                        Text(telemetry ? "Deactivated" : "Leave Alone")
-                                    } onClick: {
-                                        withAnimation {
-                                            telemetry.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!telemetry ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("MCCS:")
-                                    VIButton(id: "MCCS", h: $hovered) {
-                                        Text(mccs ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            mccs.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!mccs ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("VIT9696:")
-                                    VIButton(id: "vit9696", h: $hovered) {
-                                        Text(vit9696 ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            vit9696.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!vit9696 ? .gray : .accentColor)
-                                }
-                                HStack {
-                                    Text("Fix Up:")
-                                    VIButton(id: "FIXUP", h: $hovered) {
-                                        Text(fixup ? .init("ENABLED") : .init("DISABLED"))
-                                    } onClick: {
-                                        withAnimation {
-                                            fixup.toggle()
-                                        }
-                                    }.inPad()
-                                    .btColor(!fixup ? .gray : .accentColor)
-                                }
-                            }
-                        }
-                        if UserDefaults.standard.bool(forKey: "AllowsAcceleration") {
-                            // MARK: OpenGL Acceleration
-                            HStack {
-                                Text("OpenGL Acceleration:")
-                                VIButton(id: "ACCELERATION", h: $hovered) {
-                                    Text(acceleration ? .init("ENABLED") : .init("DISABLED"))
-                                } onClick: {
-                                    withAnimation {
-                                        acceleration.toggle()
-                                    }
-                                }.inPad()
-                                .btColor(!acceleration ? .gray : .accentColor)
                             }
                         }
                     }
