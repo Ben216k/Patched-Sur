@@ -36,7 +36,13 @@ if (try? call("[[ -e ~/.patched-sur/track.txt ]]", at: ".")) != nil {
 print("Checking if we want to fix v0.2.0 deprecated values...")
 if UserDefaults.standard.string(forKey: "UpdateTrack") == "Public Beta" {
     print("We're switching to the new stuff!")
-    UserDefaults.standard.setValue("Developer", forKey: "UpdateTrack")
+    UserDefaults.standard.setValue("Release", forKey: "UpdateTrack")
+}
+
+print("Checking if we want to fix v1.0.2 deprecated values...")
+if UserDefaults.standard.string(forKey: "UpdateTrack") == "Developer" {
+    print("We're switching to the new stuff!")
+    UserDefaults.standard.setValue("Release", forKey: "UpdateTrack")
 }
 
 print("Checking for Metal")

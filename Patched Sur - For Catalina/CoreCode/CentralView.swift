@@ -97,8 +97,6 @@ struct AllViews : View {
                         RememberPleaseView(p: $progress).transition(.moveAway)
                     case .verify:
                         MacCompatibility(p: $progress).transition(.moveAway)
-                    case .track:
-                        ReleaseTrackView(track: $releaseTrack, p: $progress, isPost: false).transition(.moveAway)
                     case .macOS:
                         macOSConfirmView(p: $progress, installInfo: $installInfo, track: $releaseTrack)
 ////                    case 10:
@@ -147,13 +145,12 @@ enum PSPage: Int {
     case credits = 1
     case remember = 2
     case verify = 3
-    case track = 4
-    case macOS = 5
-    case kexts = 6
-    case package = 7
-    case volume = 8
-    case create = 9
-    case done = 10
+    case macOS = 4
+    case kexts = 5
+    case package = 6
+    case volume = 7
+    case create = 8
+    case done = 9
     case random = 100000
 }
 

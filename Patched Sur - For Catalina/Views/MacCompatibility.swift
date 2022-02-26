@@ -159,7 +159,7 @@ struct CompatibilityReport: View {
                 Image("ForwardArrowCircle")
             } onClick: {
                 withAnimation {
-                    p = .track
+                    p = .macOS
                 }
             }.inPad()
             .padding(.top, 10)
@@ -243,7 +243,7 @@ struct NoCompatibilityView: View {
             Image("ForwardArrowCircle")
         } onClick: {
             withAnimation {
-                p = .track
+                p = .macOS
             }
         }.inPad()
     }

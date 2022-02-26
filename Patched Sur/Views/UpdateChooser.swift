@@ -95,7 +95,7 @@ struct UpdateChooser: View {
             .onAppear {
                 DispatchQueue(label: "FetchInstallers").async {
                     selfV = (try? call("sw_vers -productVersion")) ?? "11.3.1"
-                    fetchInstallerList(track: track) {
+                    fetchInstallerList(track: .release) {
                         fetchedInstallers = $0
                     } current: {
                         current = $0

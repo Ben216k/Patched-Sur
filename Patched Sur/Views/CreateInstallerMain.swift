@@ -43,7 +43,7 @@ struct CreateInstallerOverView: View {
                             switch backConfirm() {
                             case .confirm:
                                 backConfirm = { .confirm }
-                                if progress == .track {
+                                if progress == .macOS {
                                     withAnimation {
                                         progress = .main
                                         compressed = false
@@ -92,8 +92,6 @@ struct CreateInstallerOverView: View {
 //                        RememberPleaseView(p: $progress).transition(.moveAway)
 //                    case .verify:
 //                        MacCompatibility(p: $progress).transition(.moveAway)
-                    case .track:
-                        ReleaseTrackView(track: $releaseTrack, p: $progress, isPost: true).transition(.moveAway)
                     case .macOS:
                         macOSConfirmView(p: $progress, installInfo: $installInfo, track: $releaseTrack)
 //////                    case 10:
@@ -154,7 +152,7 @@ struct CreateInstallerMain: View {
                 Image("ForwardArrowCircle")
             } onClick: {
                 withAnimation {
-                    p = .track
+                    p = .macOS
                     c = true
                 }
             }.inPad()
@@ -187,13 +185,12 @@ struct DoneView: View {
 
 enum PSPage: Int {
     case main = 0
-    case track = 1
-    case macOS = 2
-    case kexts = 3
-    case package = 4
-    case volume = 5
-    case create = 6
-    case done = 7
+    case macOS = 1
+    case kexts = 2
+    case package = 3
+    case volume = 4
+    case create = 5
+    case done = 6
     case random = 100000
 }
 

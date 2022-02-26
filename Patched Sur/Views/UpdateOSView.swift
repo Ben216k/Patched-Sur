@@ -29,20 +29,22 @@ struct UpdateOSView: View {
                 SideImageView(releaseTrack: releaseTrack.rawValue, scale: 90)
                     .padding(.vertical, -5)
                     .padding(.top, -20)
-                Text(.init("PO-UP-USING-TRACK"))
-                VIButton(id: "RELEASETRACK", h: $hovered) {
-                    Text(releaseTrack == .developer ? .init("TRACK-BETA") : .init("TRACK-RELEASE"))
-                } onClick: {
-                    UserDefaults.standard.setValue(releaseTrack == .developer ? "Release" : "Developer", forKey: "UpdateTrack")
-                    releaseTrack = releaseTrack == .developer ? .release : .developer
-                    withAnimation {
-                        p = 0
-                    }
-                }.inPad()
-                .padding(.vertical, -5)
-                Text(.init(.init("PO-UP-USING-TRACK-2")))
-                    .padding(.bottom, -2.5)
-                Text(releaseTrack.rawValue == "Developer" ? .init("PO-UP-BETA-DESCRIPTION") : .init("PO-UP-RELEASE-DESCRIPTION"))
+                (Text(.init("PO-UP-USING-TRACK")) + Text(" ") + Text(.init("TRACK-RELEASE")).bold() + Text(" ") + Text(.init("PO-UP-USING-TRACK-2")))
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical, 5)
+//                VIButton(id: "RELEASETRACK", h: $hovered) {
+//                    Text(releaseTrack == .developer ? .init("TRACK-BETA") : .init("TRACK-RELEASE"))
+//                } onClick: {
+//                    UserDefaults.standard.setValue(releaseTrack == .developer ? "Release" : "Developer", forKey: "UpdateTrack")
+//                    releaseTrack = releaseTrack == .developer ? .release : .developer
+//                    withAnimation {
+//                        p = 0
+//                    }
+//                }.inPad()
+//                .padding(.vertical, -5)
+//                Text(.init(.init("PO-UP-USING-TRACK-2")))
+//                    .padding(.bottom, -2.5)
+                Text(.init("PO-UP-RELEASE-DESCRIPTION"))
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
             }.frame(width: 130)
