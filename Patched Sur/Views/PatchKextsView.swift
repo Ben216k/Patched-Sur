@@ -363,6 +363,8 @@ struct ConfigurePatchKexts: View {
                         let needed = try call("\(lookVolume)/NeededPatches.sh", p: password)
                         if needed.contains("WIFI") {
                             wifi = .mojaveHybrid
+                        }; if needed.contains("WIFI-NEW") {
+                            wifi = .nativePlus
                         }; if needed.contains("HD3000") {
                             hd3000 = true
                         }; if needed.contains("HDA") {

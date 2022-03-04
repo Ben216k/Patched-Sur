@@ -123,7 +123,13 @@ func argumentsFromValues(
     print("Generating PatchSystem.sh arguments...")
     var arguments = ""
     if wifi != .none {
-        arguments.append(wifi == .mojaveHybrid ? " --wifi=mojaveHybrid" : (wifi == .hv12vOld ? " --wifi=hv12vOld" : " --wifi=hv12vNew"))
+        switch wifi {
+        case .mojaveHybrid: arguments.append(" --wifi=mojaveHybrid")
+        case .hv12vOld: arguments.append(" --wifi=hv12vOld")
+        case .hv12vNew: arguments.append(" --wifi=hv12vNew")
+        case .nativePlus: arguments.append(" --wifi=nativePlus")
+        case .none: break
+        }
     }
     if bootPlist { arguments.append(" --bootPlist") }
     if legacyUSB { arguments.append(" --legacyUSB") }

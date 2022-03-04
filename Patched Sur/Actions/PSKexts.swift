@@ -12,16 +12,19 @@ enum PSWiFiKext: String {
     case mojaveHybrid = "Mojave-Hybrid"
     case hv12vOld = "hv12v-old"
     case hv12vNew = "hv12v-new"
+    case nativePlus = "Native-Plus"
     
     mutating func toggle() {
-        if self == .mojaveHybrid {
+        if self == .nativePlus {
+            self = .mojaveHybrid
+        } else if self == .mojaveHybrid {
             self = .hv12vNew
         } else if self == .hv12vNew {
             self = .hv12vOld
         } else if self == .hv12vOld {
             self = .none
         } else if self == .none {
-            self = .mojaveHybrid
+            self = .nativePlus
         }
     }
 }

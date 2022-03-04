@@ -199,7 +199,7 @@ final class AppInfo {
     static let build = Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)!
     static let patchesV = { () -> PSPatchV in
         guard let patches = try? PSPatchVs(fromURL: "https://ben216k.github.io/patched-sur/patches.json") else {
-            return .init(version: "v1.0.0", compatible: 121, url: "https://codeload.github.com/Ben216k/Patched-Sur-Patches/zip/66d7116", updateLog: "")
+            return .init(version: "v1.1.0", compatible: 123, url: "https://codeload.github.com/Ben216k/Patched-Sur-Patches/zip/9ee2b51", updateLog: "")
         }
         let patche = patches.filter { $0.compatible <= Int(Bundle.main.infoDictionary!["CFBundleVersion"] as! String)! }.last!
         return patche
