@@ -110,7 +110,7 @@ struct MainView: View {
                 VIButton(id: "GITHUB", h: $hovered) {
                     Image("GitHubMark")
                 } onClick: {
-                    NSWorkspace.shared.open("https://github.com/BenSova/Patched-Sur")
+                    NSWorkspace.shared.open("https://github.com/Ben216k/Patched-Sur")
                 }
                 .padding(.trailing, 30)
             }.padding(.top, 40).frame(width: 600, alignment: .center)

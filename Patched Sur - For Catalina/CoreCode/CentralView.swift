@@ -82,7 +82,7 @@ struct AllViews : View {
                             .frame(width: compressed ? 10 : 15, height: compressed ? 10 : 15)
                             .scaleEffect(compressed ? 1.2 : 1)
                     } onClick: {
-                        NSWorkspace.shared.open(URL(string: "https://github.com/BenSova/Patched-Sur")!)
+                        NSWorkspace.shared.open(URL(string: "https://github.com/Ben216k/Patched-Sur")!)
                     }
                 }
                 .padding(.top, compressed ? 35 : 40)

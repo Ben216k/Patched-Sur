@@ -139,7 +139,7 @@ struct PatchedSurApp: App {
             }
             CommandGroup(replacing: CommandGroupPlacement.help) {
                 Button {
-                    NSWorkspace.shared.open(URL(string: "https://github.com/BenSova/Patched-Sur/#support")!)
+                    NSWorkspace.shared.open(URL(string: "https://github.com/Ben216k/Patched-Sur/#support")!)
                 } label: {
                     Text(.init("PO-MN-HELP"))
                 }

@@ -21,18 +21,18 @@ func downloadCompat(info: inout CompatInfo?, known: inout [Substring], barProgre
     }
     barProgress(0.1)
     print("Detected model:" + macModel)
-    print("Downloading model details from: https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/Compatibility/\(macModel.replacingOccurrences(of: ",", with: "%2C")).json")
+    print("Downloading model details from: https://raw.githubusercontent.com/Ben216k/Patched-Sur-Compatibility/main/Compatibility/\(macModel.replacingOccurrences(of: ",", with: "%2C")).json")
     do {
-        info = try CompatInfo(fromURL: URL(string: "https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/Compatibility/\(macModel.replacingOccurrences(of: ",", with: "%2C")).json")!)
+        info = try CompatInfo(fromURL: URL(string: "https://raw.githubusercontent.com/Ben216k/Patched-Sur-Compatibility/main/Compatibility/\(macModel.replacingOccurrences(of: ",", with: "%2C")).json")!)
     } catch {
         print("Failed to fetch Mac Model compatibility report... Assuming it doesn't exist!")
     }
     barProgress(0.45)
     if info != nil {
         do {
-            known = try String(contentsOf: "https://raw.githubusercontent.com/BenSova/Patched-Sur-Compatibility/main/KnownContributors").split(separator: "\n")
+            known = try String(contentsOf: "https://raw.githubusercontent.com/Ben216k/Patched-Sur-Compatibility/main/KnownContributors").split(separator: "\n")
         } catch {
-            known = ["BenSova"]
+            known = ["Ben216k"]
             print("Failed to find known contributors, skipping this step.")
         }
     }

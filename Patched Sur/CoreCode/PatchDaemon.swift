@@ -29,7 +29,7 @@ func patchDaemon() {
     while true {
         if UserDefaults.standard.string(forKey: "Notifications") == "BOTH" || UserDefaults.standard.string(forKey: "Notifications") == "PATCHER" {
             print("Checking for Patched Sur updates first...")
-            if let patcherVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/BenSova/Patched-Sur/releases").filter({ !$0.prerelease }) {
+            if let patcherVersions = try? PatchedVersions(fromURL: "https://api.github.com/repos/Ben216k/Patched-Sur/releases").filter({ !$0.prerelease }) {
                 print("Checking if we already checked for this...")
                 if UserDefaults.standard.string(forKey: "LastCheckedPSVersion") != patcherVersions[0].tagName {
                     print("Checking if we have a different version...")
@@ -55,7 +55,7 @@ func patchDaemon() {
             let track = ReleaseTrack(rawValue: UserDefaults.standard.string(forKey: "UpdateTrack") ?? "Release") ?? .release
             print("Using update track \(track).")
             print("Checking for macOS updates...")
-            if var macOSversions = try? InstallAssistants(fromURL: URL(string: "https://bensova.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json")!) {
+            if var macOSversions = try? InstallAssistants(fromURL: URL(string: "https://ben216k.github.io/patched-sur/installers/\(track == .developer ? "Developer" : "Release").json")!) {
                 print("Sorting the macOS versions...")
                 macOSversions = macOSversions.sorted { (first, second) -> Bool in
                     first.orderNumber > second.orderNumber

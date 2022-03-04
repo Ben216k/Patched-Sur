@@ -167,7 +167,7 @@ struct NotificationsView: View {
                                             print("Setting up Launchctl...")
                                             _ = try? call("launchctl unload /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist", p: password)
                                             _ = try? call("rm -rf /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist", p: password)
-                                            try call("curl -Lo /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist https://raw.githubusercontent.com/BenSova/Patched-Sur/main/Extra%20Files/PatchedSurDaemon.plist", p: password)
+                                            try call("curl -Lo /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist https://raw.githubusercontent.com/Ben216k/Patched-Sur/main/Extra%20Files/PatchedSurDaemon.plist", p: password)
                                             try call("launchctl load -w /Library/LaunchAgents/u-bensova.Patched-Sur.Daemon.plist", p: password)
                                             _ = try? call("launchctl enable system/u-bensova.Patched-Sur.Daemon", p: password)
                                             print("Saving configuration...")

@@ -262,7 +262,7 @@ struct PSSettings: View {
                                 Image(systemName: "desktopcomputer")
                                 Text(.init("PO-ST-CYE-TITLE"))
                             } onClick: {
-                                NSWorkspace.shared.open("https://github.com/BenSova/Patched-Sur-Compatibility")
+                                NSWorkspace.shared.open("https://github.com/Ben216k/Patched-Sur-Compatibility")
                             }.inPad()
                             Text(.init("PO-ST-CYE-DESCRIPTION"))
                                 .fixedSize(horizontal: false, vertical: true)
