@@ -35,8 +35,8 @@ struct macOSDownloadView: View {
                             ProgressBar(value: $downloadProgress, length: 350)
                                 .onReceive(timer, perform: { _ in
                                     if let sizeCode = try? call("stat -f %z ~/.patched-sur/InstallAssistant.pkg") {
-                                        currentSize = Int(Float(sizeCode) ?? 10000)
-                                        downloadProgress = CGFloat(Float(sizeCode) ?? 10000) / CGFloat(downloadSize)
+                                        currentSize = Int(Double(sizeCode) ?? 12439328867)
+                                        downloadProgress = CGFloat(Double(sizeCode) ?? 12439328867) / CGFloat(downloadSize)
                                         progressHuman = downloadProgress * 12.2
                                     }
                                 })
