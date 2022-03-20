@@ -14,6 +14,7 @@ To see if your Mac is supported [click here](https://bensova.gitbook.io/big-sur/
 Patched Sur isn't just by me (Ben), **I mostly put it all together and made it easier for people to use it**, several other people have contributed to the patcher and the patches making this what it is today!
 
 - [barrykn](https://github.com/barrykn/): Made the micropatcher that introduced me to the patching process and restored my faith in my really old computer. He also helped pull together a lot of the patches used in this patcher.
+- [ASentientBot](https://asentientbot.github.io/) and [MykolaG](https://github.com/khronokernel) for pre-802.11ac WiFi patches (and EduCovas for alerting me of them).
 - [ASentientBot](https://asentientbot.github.io/): Made the Hax patches for the installer and brought GeForce Tesla (9400M/320M) framebuffer to Big Sur.
 - [jackluke](https://forums.macrumors.com/members/jackluke.1133911/): Figured out how to bypass compatibility checks on the installer USB.
 - [highvoltage12v](https://forums.macrumors.com/members/highvoltage12v.883629/): Made the first WiFi kexts used with Big Sur
@@ -51,7 +52,7 @@ Also, know that turning it on after the upgrade isn't a smart idea. By doing tha
 
 **5.** Then, you can select whether you want to update macOS from Catalina to Big Sur (or Big Sur to Big Sur if you are switching from a different patcher) or do a clean install of Big Sur (currently unavailable).
 
-**6.** After that, your Mac will start downloading **@barrykn**'s micropatcher for kexts and a couple other resources.
+**6.** After that, your Mac will start downloading the patches for kexts and a couple other resources.
 
 **7.** Now, you will be able to choose what version of macOS to download. By default it will show the latest version based on your selected release track, but if you click `View Other Versions`, you can choose a different one or your own.
 
