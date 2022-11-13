@@ -1,3 +1,8 @@
+
+### THIS PROJECT HAS REACHED END OF LIFE
+### NO FURTHER SUPPORT WILL BE PROVIDED
+
+
 ![Patched Sur](https://raw.githubusercontent.com/Ben216k/Patched-Sur/main/Extra%20Files/banner400.png)
 
 ## What is Patched Sur?
