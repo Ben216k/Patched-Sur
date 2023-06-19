@@ -1,25 +1,23 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Files",
-        "repositoryURL": "https://github.com/JohnSundell/Files.git",
-        "state": {
-          "branch": null,
-          "revision": "d273b5b7025d386feef79ef6bad7de762e106eaf",
-          "version": "4.2.0"
-        }
-      },
-      {
-        "package": "VeliaUI",
-        "repositoryURL": "https://github.com/BenSova/VeliaUI",
-        "state": {
-          "branch": "main",
-          "revision": "3bc9d1c11e5d456a086cc16be66c915d33a5a948",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "files",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/Files.git",
+      "state" : {
+        "revision" : "d273b5b7025d386feef79ef6bad7de762e106eaf",
+        "version" : "4.2.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "veliaui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Ben216k/VeliaUI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "73e3d93b832f19b9e2fbfda40176443083500d00"
+      }
+    }
+  ],
+  "version" : 2
 }

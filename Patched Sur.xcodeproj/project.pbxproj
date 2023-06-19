@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F42EB04255176F700365279 /* PSSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42EB03255176F700365279 /* PSSettings.swift */; };
+		7606D60829F22B79005FB3F9 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7606D60729F22B79005FB3F9 /* VeliaUI */; };
+		7606D60A29F22B96005FB3F9 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7606D60929F22B96005FB3F9 /* VeliaUI */; };
 		7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD17257FF8DB0054B76F /* DownloadKexts.swift */; };
 		7609BD1E258008B70054B76F /* StartInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD1D258008B70054B76F /* StartInstallView.swift */; };
 		760AA9CF261E72A200ADABE0 /* UpdateOSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */; };
@@ -84,8 +86,6 @@
 		76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF37BC25E8C73500403208 /* NotificationsView.swift */; };
 		76D639DD2576302500B38FBE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D639DC2576302500B38FBE /* main.swift */; };
 		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
-		76E63FFB26ED97840003ECA0 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76E63FFA26ED97840003ECA0 /* VeliaUI */; };
-		76E63FFD26ED978B0003ECA0 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 76E63FFC26ED978B0003ECA0 /* VeliaUI */; };
 		76E6C72A263B8DF10063C08E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7624934D2635EA6900805E4A /* Localizable.strings */; };
 		76E6C747263CB0BF0063C08E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76E6C749263CB0BF0063C08E /* Localizable.strings */; };
 		76E73A68262CF77C0009D9CC /* RecoveryPatchActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */; };
@@ -309,7 +309,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76E63FFB26ED97840003ECA0 /* VeliaUI in Frameworks */,
+				7606D60829F22B79005FB3F9 /* VeliaUI in Frameworks */,
 				7625796725423FD600508A71 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,7 +318,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76E63FFD26ED978B0003ECA0 /* VeliaUI in Frameworks */,
+				7606D60A29F22B96005FB3F9 /* VeliaUI in Frameworks */,
 				768D516525CA4FD90091D1F0 /* Files in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,7 +568,7 @@
 			name = "Patched Sur - For Catalina";
 			packageProductDependencies = (
 				7625796625423FD600508A71 /* Files */,
-				76E63FFA26ED97840003ECA0 /* VeliaUI */,
+				7606D60729F22B79005FB3F9 /* VeliaUI */,
 			);
 			productName = "Patched Sur - For Catalina";
 			productReference = 7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */;
@@ -593,7 +593,7 @@
 			name = "Patched Sur";
 			packageProductDependencies = (
 				768D516425CA4FD90091D1F0 /* Files */,
-				76E63FFC26ED978B0003ECA0 /* VeliaUI */,
+				7606D60929F22B96005FB3F9 /* VeliaUI */,
 			);
 			productName = "Patched Sur";
 			productReference = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */;
@@ -646,7 +646,7 @@
 			mainGroup = 7692E059251BFF9300C5FB9A;
 			packageReferences = (
 				7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */,
-				76E63FF926ED97840003ECA0 /* XCRemoteSwiftPackageReference "VeliaUI" */,
+				7606D60629F22B79005FB3F9 /* XCRemoteSwiftPackageReference "VeliaUI" */,
 			);
 			productRefGroup = 7692E063251BFF9300C5FB9A /* Products */;
 			projectDirPath = "";
@@ -895,7 +895,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 124;
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -920,7 +920,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 124;
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1064,7 +1064,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 124;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -1099,7 +1099,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 124;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Patched Sur - For Catalina/Info.plist";
@@ -1133,7 +1133,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 124;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1167,7 +1167,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 124;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur/Preview Content\"";
-				DEVELOPMENT_TEAM = 52RY4VB4F6;
+				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				DSTROOT = "/tmp/Post-Install.dst";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1231,6 +1231,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7606D60629F22B79005FB3F9 /* XCRemoteSwiftPackageReference "VeliaUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ben216k/VeliaUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Files.git";
@@ -1239,17 +1247,19 @@
 				minimumVersion = 4.1.1;
 			};
 		};
-		76E63FF926ED97840003ECA0 /* XCRemoteSwiftPackageReference "VeliaUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/BenSova/VeliaUI";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7606D60729F22B79005FB3F9 /* VeliaUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7606D60629F22B79005FB3F9 /* XCRemoteSwiftPackageReference "VeliaUI" */;
+			productName = VeliaUI;
+		};
+		7606D60929F22B96005FB3F9 /* VeliaUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7606D60629F22B79005FB3F9 /* XCRemoteSwiftPackageReference "VeliaUI" */;
+			productName = VeliaUI;
+		};
 		7625796625423FD600508A71 /* Files */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
@@ -1259,16 +1269,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7625796525423FD600508A71 /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
-		};
-		76E63FFA26ED97840003ECA0 /* VeliaUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 76E63FF926ED97840003ECA0 /* XCRemoteSwiftPackageReference "VeliaUI" */;
-			productName = VeliaUI;
-		};
-		76E63FFC26ED978B0003ECA0 /* VeliaUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 76E63FF926ED97840003ECA0 /* XCRemoteSwiftPackageReference "VeliaUI" */;
-			productName = VeliaUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
