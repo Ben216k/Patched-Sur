@@ -14,6 +14,9 @@
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
 		7653D6D72A4122E300D3D5AF /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6D62A4122E300D3D5AF /* Transitions.swift */; };
 		7653D6D92A41246200D3D5AF /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6D82A41246200D3D5AF /* OSLog.swift */; };
+		7653D6DB2A4125BB00D3D5AF /* OSLogUniversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */; };
+		7653D6DC2A4125BF00D3D5AF /* OSLogUniversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */; };
+		7653D6DE2A4125EF00D3D5AF /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DD2A4125EF00D3D5AF /* OSLog.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
@@ -108,6 +111,8 @@
 		764D732D2640F81000719132 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7653D6D62A4122E300D3D5AF /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		7653D6D82A41246200D3D5AF /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogUniversal.swift; sourceTree = "<group>"; };
+		7653D6DD2A4125EF00D3D5AF /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		76633BEE263E1550000A949E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF1263E257F000A949E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF2263E25A4000A949E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -175,6 +180,7 @@
 			children = (
 				76A0B78C25749FC100E392D1 /* main.swift */,
 				7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */,
+				7653D6DD2A4125EF00D3D5AF /* OSLog.swift */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 				767167502550AE42000FAE80 /* ShellOut.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7653D6D82A41246200D3D5AF /* OSLog.swift */,
+				7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -448,6 +455,7 @@
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
 				7653D6D92A41246200D3D5AF /* OSLog.swift in Sources */,
 				7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */,
+				7653D6DB2A4125BB00D3D5AF /* OSLogUniversal.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +468,8 @@
 				7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */,
 				7653D6D72A4122E300D3D5AF /* Transitions.swift in Sources */,
 				76A0B78D25749FC100E392D1 /* main.swift in Sources */,
+				7653D6DE2A4125EF00D3D5AF /* OSLog.swift in Sources */,
+				7653D6DC2A4125BF00D3D5AF /* OSLogUniversal.swift in Sources */,
 				7692E080251BFFB300C5FB9A /* PatchedSurApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

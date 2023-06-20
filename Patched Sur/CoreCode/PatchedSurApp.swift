@@ -11,6 +11,8 @@ struct PatchedSurApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(width: 600, height: 325)
         }
+            .windowStyle(.hiddenTitleBar)
     }
 }
