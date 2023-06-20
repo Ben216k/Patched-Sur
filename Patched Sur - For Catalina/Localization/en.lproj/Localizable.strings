@@ -497,3 +497,8 @@ Use 'Update Backup Patches' to update the patches, then try this again.";
 
 "PO-NV-NOUP-TITLE" = "Unable to Update Without Required NVRAM Value";
 "PO-NV-NOUP-CONTENT" = "Updating macOS removes the boot.plist patch which is what Patched Sur using to allow you to boot your Mac without the -no_compat_check. Right now that value is missing, so updating would cause your Mac to no longer boot. Once you restore that value, you can update. To do that, click on the red button on the bottom of the window.";
+
+
+// MARK: - v2.0.0 Additions -
+
+"NEO-PRE-WELCOME-DESCRIPTION" = "Patched Sur is a tool designed to upgrade you to the real macOS Big Sur on an unsupported metal device. This process was designed to require as little from you as possible while still creating a near identical experience to that of a supported Mac. Press Get Started to begin.\n\nNote: Patched Sur is not perfect and there is a slim chance that things may go wrong. Ensure you have a Time Machine backup before proceeding.";

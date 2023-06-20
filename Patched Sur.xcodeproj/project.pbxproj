@@ -17,11 +17,12 @@
 		7653D6DB2A4125BB00D3D5AF /* OSLogUniversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */; };
 		7653D6DC2A4125BF00D3D5AF /* OSLogUniversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */; };
 		7653D6DE2A4125EF00D3D5AF /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DD2A4125EF00D3D5AF /* OSLog.swift */; };
+		7653D6E02A41DAEF00D3D5AF /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DF2A41DAEF00D3D5AF /* WelcomeView.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
 		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
-		7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* CentralView.swift */; };
+		7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* ContentView.swift */; };
 		7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E069251BFF9400C5FB9A /* Assets.xcassets */; };
 		7692E06D251BFF9400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E06C251BFF9400C5FB9A /* Preview Assets.xcassets */; };
 		7692E070251BFF9400C5FB9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7692E06E251BFF9400C5FB9A /* Main.storyboard */; };
@@ -29,6 +30,8 @@
 		7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E081251BFFB300C5FB9A /* ContentView.swift */; };
 		7692E084251BFFB400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E083251BFFB400C5FB9A /* Assets.xcassets */; };
 		7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */; };
+		7693B8AB2A4211F800FEBCAA /* ExpressSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */; };
+		7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */; };
 		76A070CF261BAE510002A304 /* PatchedSurDaemon.plist in Add SharedSupport */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		76A070E7261BD41B0002A304 /* PatchedSurDaemon.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
@@ -113,6 +116,7 @@
 		7653D6D82A41246200D3D5AF /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogUniversal.swift; sourceTree = "<group>"; };
 		7653D6DD2A4125EF00D3D5AF /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		7653D6DF2A41DAEF00D3D5AF /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		76633BEE263E1550000A949E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF1263E257F000A949E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF2263E25A4000A949E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -122,7 +126,7 @@
 		767D6F9B25AA294C00A773AE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - For Catalina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7692E065251BFF9300C5FB9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7692E067251BFF9300C5FB9A /* CentralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralView.swift; sourceTree = "<group>"; };
+		7692E067251BFF9300C5FB9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7692E069251BFF9400C5FB9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7692E06C251BFF9400C5FB9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7692E06F251BFF9400C5FB9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 		7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7692E088251BFFB400C5FB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Patched_Sur.entitlements; sourceTree = "<group>"; };
+		7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressSetupView.swift; sourceTree = "<group>"; };
+		7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressDetection.swift; sourceTree = "<group>"; };
 		769D03BD26D16C6C008ADB2C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76AA16672655D4D300FC56FC /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -197,6 +203,7 @@
 		764F516425FC95C7004F49C6 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -289,7 +296,7 @@
 			children = (
 				76D639DC2576302500B38FBE /* main.swift */,
 				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
-				7692E067251BFF9300C5FB9A /* CentralView.swift */,
+				7692E067251BFF9300C5FB9A /* ContentView.swift */,
 				767167502550AE42000FAE80 /* ShellOut.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7653D6D82A41246200D3D5AF /* OSLog.swift */,
@@ -301,6 +308,8 @@
 		76D8437F25F86486006C6565 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7653D6DF2A41DAEF00D3D5AF /* WelcomeView.swift */,
+				7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -454,9 +463,12 @@
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
 				7653D6D92A41246200D3D5AF /* OSLog.swift in Sources */,
-				7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */,
+				7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */,
 				7653D6DB2A4125BB00D3D5AF /* OSLogUniversal.swift in Sources */,
+				7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
+				7653D6E02A41DAEF00D3D5AF /* WelcomeView.swift in Sources */,
+				7693B8AB2A4211F800FEBCAA /* ExpressSetupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +656,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 124;
+				CURRENT_PROJECT_VERSION = 125;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -679,7 +691,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 124;
+				CURRENT_PROJECT_VERSION = 125;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;

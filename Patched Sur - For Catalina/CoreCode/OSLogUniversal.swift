@@ -11,5 +11,6 @@ import OSLog
 extension OSLog {
     /// Logs in the bootup of the app when preparing for everything.
     static let bootup = OSLog(subsystem: subsystem, category: "bootup")
+    static let ui = OSLog(subsystem: subsystem, category: "ui")
     
 }
