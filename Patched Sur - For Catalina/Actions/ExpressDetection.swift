@@ -24,7 +24,7 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> ()) {
     
     if let macModel = try? call("sysctl -n hw.model"), macModel.contains("MacPro") {
         problems(ProblemInfo(title: .init("PROB-PRO-TITLE"), description: .init("PROB-PRO-DESCRIPTION")))
-        OSLog.verification.log("This appeares to be a Mac Pro which is not supported.", type: .error)
+        OSLog.verification.log("This appeares to be a Mac Pro which is not supported.", type: .fault)
         hasProblem = true
     }
     
@@ -40,7 +40,7 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> ()) {
             OSLog.verification.log("FireVault appears to be on which is not supported.", type: .error)
             hasProblem = true
         } else {
-            OSLog.verification.log("FireVault seems to be enabled, but this is macOS Big Sur so ignoring.", type: .error)
+            OSLog.verification.log("FireVault seems to be enabled, but this is macOS Big Sur so ignoring.", type: .fault)
         }
     }
     
@@ -52,7 +52,7 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> ()) {
     
     if let metalStatus = try? call("system_profiler SPDisplaysDataType | grep Metal"), !metalStatus.contains(": Supported") { //, !metalStatus.contains(": Metal 3")  {
 //        problems(ProblemInfo(title: .init("PROB-GX-TITLE"), description: .init("PROB-GX-DESCRIPTION")))
-        OSLog.verification.log("This Mac does not support metal, and Patched Sur has no patch for that.", type: .error)
+        OSLog.verification.log("This Mac does not support metal, and Patched Sur has no patch for that.", type: .fault)
         hasProblem = true
     }
     

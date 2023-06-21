@@ -12,6 +12,6 @@ extension OSLog {
     static var subsystem = "me.ben216k.Patched-Sur.catalina"
     
     func log(_ string: StaticString, type: OSLogType = .info) {
-        os_log(string, log: self, type: .info)
+        os_log(string, log: self, type: type)
     }
 }

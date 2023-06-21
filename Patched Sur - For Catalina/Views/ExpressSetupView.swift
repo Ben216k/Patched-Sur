@@ -17,10 +17,10 @@ struct ExpressSetupView: View {
     var body: some View {
         Group {
             if hasDetectedProperties {
-                ExpressContinueView()
+                ExpressContinueView(installInfo: $installInfo)
             } else {
                 if problemInfo == nil {
-                    ExpressLoadingView(isShowingButtons: $isShowingButtons, problemInfo: $problemInfo, installAssistants: $installAssistants, installInfo: $installInfo)
+                    ExpressLoadingView(isShowingButtons: $isShowingButtons, hasDetectedProperties: $hasDetectedProperties, problemInfo: $problemInfo, installAssistants: $installAssistants, installInfo: $installInfo)
                 } else {
                     ExpressCompatErrorView(problemInfo: $problemInfo)
                 }
@@ -30,13 +30,15 @@ struct ExpressSetupView: View {
 }
 
 struct ExpressContinueView: View {
+    @Binding var installInfo: InstallAssistant?
+    
     var body: some View {
         VStack {
             Spacer()
             Text("Express Setup")
                 .font(.system(size: 17, weight: .bold))
                 .padding(.bottom, 10)
-            Text("Upgrading ") + Text("This Mac").bold() + Text(" to ") + Text("macOS Big Sur 11.7.7").bold() + Text(" using files ") + Text("sourced from Apple.").bold()
+            Text("Upgrading ") + Text("This Mac").bold() + Text(" to ") + Text("macOS Big Sur \(installInfo!.version)").bold() + Text(" using files ") + Text("sourced from Apple.").bold()
             Text("If you'd like to change any of the above information (i.e. selecting a different Mac, macOS version, or using a local copy of the installer) click Advanced. The majority of users will not need this option.")
                 .multilineTextAlignment(.center)
                 .padding(.top, 10)
@@ -48,6 +50,7 @@ struct ExpressContinueView: View {
 
 struct ExpressLoadingView: View {
     @Binding var isShowingButtons: Bool
+    @Binding var hasDetectedProperties: Bool
     @State var progress: CGFloat = 0.5
     @Binding var problemInfo: ProblemInfo?
     @Binding var installAssistants: [InstallAssistant]
@@ -103,6 +106,10 @@ struct ExpressLoadingView: View {
                         installAssistants = installers
                         installInfo = installers.first
                         withAnimation { progress = 1 }
+                        withAnimation {
+                            hasDetectedProperties = true
+                            isShowingButtons = true
+                        }
                     }
                 }
         }.padding(.bottom, 5)

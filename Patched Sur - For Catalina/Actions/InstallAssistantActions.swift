@@ -23,12 +23,12 @@ func fetchInstallers(errorX: (String) -> ()) -> [InstallAssistant] {
             OSLog.downloads.log("Passing back installers")
             return installers
         } else {
-            OSLog.downloads.log("Installer list has no values, this patcher version must have been discontinued.")
+            OSLog.downloads.log("Installer list has no values, this patcher version must have been discontinued.", type: .fault)
             errorX("This version of Patched Sur has been discontinued.\nPlease use the latest version of the patcher.")
             return []
         }
     } catch {
-        OSLog.downloads.log("InstallAssistant fetch failed.")
+        OSLog.downloads.log("InstallAssistant fetch failed.", type: .fault)
         errorX(error.localizedDescription)
         return []
     }
