@@ -32,6 +32,7 @@
 		7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */; };
 		7693B8AB2A4211F800FEBCAA /* ExpressSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */; };
 		7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */; };
+		7693B8AF2A425A2D00FEBCAA /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */; };
 		76A070CF261BAE510002A304 /* PatchedSurDaemon.plist in Add SharedSupport */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		76A070E7261BD41B0002A304 /* PatchedSurDaemon.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
@@ -141,6 +142,7 @@
 		7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Patched_Sur.entitlements; sourceTree = "<group>"; };
 		7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressSetupView.swift; sourceTree = "<group>"; };
 		7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressDetection.swift; sourceTree = "<group>"; };
+		7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		769D03BD26D16C6C008ADB2C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76AA16672655D4D300FC56FC /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			children = (
 				7653D6DF2A41DAEF00D3D5AF /* WelcomeView.swift */,
 				7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */,
+				7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
 				7653D6E02A41DAEF00D3D5AF /* WelcomeView.swift in Sources */,
+				7693B8AF2A425A2D00FEBCAA /* ProgressBar.swift in Sources */,
 				7693B8AB2A4211F800FEBCAA /* ExpressSetupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

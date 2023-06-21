@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var page: PIPages = .welcome
     @State var hovered: String?
+    @State var isShowingButtons = true
     
     enum PIPages {
         case welcome
@@ -31,9 +32,9 @@ struct ContentView: View {
             Spacer()
             switch page {
             case .welcome:
-                WelcomeView()
+                WelcomeView().transition(.moveAway)
             case .express:
-                ExpressSetupView()
+                ExpressSetupView(isShowingButtons: $isShowingButtons).transition(.moveAway)
             }
             Spacer()
             Divider()
@@ -55,42 +56,53 @@ struct ContentView: View {
                         .font(.caption)
                 }
                 Spacer()
-                if page != .welcome {
-                    VIButton(id: "back", h: $hovered) {
-                        Image("BackArrowCircle")
-                        Text(.init("BACK"))
-                    } onClick: {
-                        switch page {
-                        case .welcome:
-                            os_log("Unable to go back in first screen.", log: OSLog.ui, type: .info)
-                        case .express:
-                            page = .welcome
+                
+                // MARK: - Navigation Buttons
+                
+                if isShowingButtons {
+                    if page != .welcome {
+                        VIButton(id: "back", h: $hovered) {
+                            Image("BackArrowCircle")
+                            Text(.init("BACK"))
+                        } onClick: {
+                            withAnimation {
+                                switch page {
+                                case .welcome:
+                                    os_log("Unable to go back in first screen.", log: OSLog.ui, type: .info)
+                                case .express:
+                                    page = .welcome
+                                }
+                            }
+                        }.btColor(.secondary).inPad()
+                    }
+                    if page == .express {
+                        VIButton(id: "advanced", h: $hovered) {
+                            Image("ToolsCircle")
+                            Text(.init("Advanced"))
+                        } onClick: {
+                            os_log("Not supported")
+                        }.btColor(.secondary).inPad()
+                    }
+                    VIButton(id: "continue", h: $hovered) {
+                        if page == .welcome {
+                            Text(.init("GET-STARTED"))
+                        } else {
+                            Text(.init("CONTINUE"))
                         }
-                    }.btColor(.secondary).inPad()
-                }
-                if page == .express {
-                    VIButton(id: "advanced", h: $hovered) {
-                        Image("ToolsCircle")
-                        Text(.init("Advanced"))
+                        Image("ForwardArrowCircle")
                     } onClick: {
-                        os_log("Not supported")
-                    }.btColor(.secondary).inPad()
+                        withAnimation {
+                            switch page {
+                            case .welcome:
+                                page = .express
+                            case .express:
+                                page = .welcome
+                            }
+                        }
+                    }.inPad()
                 }
-                VIButton(id: "continue", h: $hovered) {
-                    if page == .welcome {
-                        Text(.init("GET-STARTED"))
-                    } else {
-                        Text(.init("CONTINUE"))
-                    }
-                    Image("ForwardArrowCircle")
-                } onClick: {
-                    switch page {
-                    case .welcome:
-                        page = .express
-                    case .express:
-                        page = .welcome
-                    }
-                }.inPad()
+                
+                // MARK: -
             }.padding(.top, 2)
 
         }.padding().frame(width: 600, height: 325)

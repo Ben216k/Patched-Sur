@@ -46,3 +46,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 }
+
+extension AnyTransition {
+    static var moveAway: AnyTransition {
+        return .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
+
+    }
+}

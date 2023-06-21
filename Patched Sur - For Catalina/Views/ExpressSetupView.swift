@@ -9,13 +9,19 @@ import SwiftUI
 
 struct ExpressSetupView: View {
     @State var hasDetectedProperties = false
+    @Binding var isShowingButtons: Bool
+    @State var problemInfo: ProblemInfo?
     
     var body: some View {
         Group {
             if hasDetectedProperties {
                 ExpressContinueView()
             } else {
-                
+                if problemInfo == nil {
+                    ExpressLoadingView(isShowingButtons: $isShowingButtons, problemInfo: $problemInfo)
+                } else {
+                    ExpressCompatErrorView(problemInfo: $problemInfo)
+                }
             }
         }
     }
@@ -39,14 +45,61 @@ struct ExpressContinueView: View {
 }
 
 struct ExpressLoadingView: View {
+    @Binding var isShowingButtons: Bool
+    @State var progress: CGFloat = 0.5
+    @Binding var problemInfo: ProblemInfo?
+    
     var body: some View {
         VStack {
             Spacer()
             Text("Loading Configuration")
                 .font(.system(size: 17, weight: .bold))
                 .padding(.bottom, 10)
-            Text("Patched Sur is quickly analyzing this Mac and obtaining external information to check compatability and verify status ")
+            Text("Patched Sur is quickly analyzing this Mac to check compatability and obtaining information about the latest macOS and patch version. This should be quick.")
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+                .padding(.bottom, 10)
+            ZStack {
+                ProgressBar(value: $progress, length: 200)
+                HStack {
+                    Image("CheckCircle")
+                    Text("Checking Compatability")
+                }.foregroundColor(.white)
+                    .padding(7)
+            }.fixedSize()
             Spacer()
-        }.padding(.bottom)
+                .onAppear {
+                    withAnimation {
+                        isShowingButtons = false
+                    }
+                    DispatchQueue.global(qos: .background).async {
+                        verifyCompat(barProgress: { pro in
+                            withAnimation { progress = pro }
+                        }, problems: { problemInfo = $0 })
+                    }
+                }
+        }.padding(.bottom, 5)
+    }
+}
+
+struct ExpressCompatErrorView: View {
+    @Binding var problemInfo: ProblemInfo?
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            if let problemInfo {
+                (Text("Compatability Error: ") + Text(.init(problemInfo.title)))
+                    .font(.system(size: 17, weight: .bold))
+                    .padding(.bottom, 10)
+                Text(.init(problemInfo.description))
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.center)
+            }
+            Text(.init("PROB-NO-UPGRADE"))
+                .bold()
+                .padding(.top, 10)
+            Spacer()
+        }.padding(.bottom, 5)
     }
 }
