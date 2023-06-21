@@ -11,6 +11,7 @@ struct ExpressSetupView: View {
     @State var hasDetectedProperties = false
     @Binding var isShowingButtons: Bool
     @State var problemInfo: ProblemInfo?
+    @Binding var installInfo: InstallAssistant?
     
     var body: some View {
         Group {

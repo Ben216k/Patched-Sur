@@ -33,6 +33,9 @@
 		7693B8AB2A4211F800FEBCAA /* ExpressSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */; };
 		7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */; };
 		7693B8AF2A425A2D00FEBCAA /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */; };
+		7693B8B12A42950000FEBCAA /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8B02A42950000FEBCAA /* InstallAssistants.swift */; };
+		7693B8B32A42955D00FEBCAA /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8B22A42955D00FEBCAA /* InstallAssistantActions.swift */; };
+		7693B8B52A42962F00FEBCAA /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8B42A42962F00FEBCAA /* AppInfo.swift */; };
 		76A070CF261BAE510002A304 /* PatchedSurDaemon.plist in Add SharedSupport */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		76A070E7261BD41B0002A304 /* PatchedSurDaemon.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
@@ -143,6 +146,9 @@
 		7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressSetupView.swift; sourceTree = "<group>"; };
 		7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressDetection.swift; sourceTree = "<group>"; };
 		7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		7693B8B02A42950000FEBCAA /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
+		7693B8B22A42955D00FEBCAA /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
+		7693B8B42A42962F00FEBCAA /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		769D03BD26D16C6C008ADB2C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		76AA16672655D4D300FC56FC /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -206,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */,
+				7693B8B02A42950000FEBCAA /* InstallAssistants.swift */,
+				7693B8B22A42955D00FEBCAA /* InstallAssistantActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -303,6 +311,7 @@
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
 				7653D6D82A41246200D3D5AF /* OSLog.swift */,
 				7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */,
+				7693B8B42A42962F00FEBCAA /* AppInfo.swift */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -469,9 +478,12 @@
 				7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */,
 				7653D6DB2A4125BB00D3D5AF /* OSLogUniversal.swift in Sources */,
 				7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */,
+				7693B8B32A42955D00FEBCAA /* InstallAssistantActions.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
 				7653D6E02A41DAEF00D3D5AF /* WelcomeView.swift in Sources */,
 				7693B8AF2A425A2D00FEBCAA /* ProgressBar.swift in Sources */,
+				7693B8B12A42950000FEBCAA /* InstallAssistants.swift in Sources */,
+				7693B8B52A42962F00FEBCAA /* AppInfo.swift in Sources */,
 				7693B8AB2A4211F800FEBCAA /* ExpressSetupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
