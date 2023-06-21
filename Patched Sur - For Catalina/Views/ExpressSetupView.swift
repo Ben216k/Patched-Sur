@@ -12,6 +12,7 @@ struct ExpressSetupView: View {
     @Binding var isShowingButtons: Bool
     @State var problemInfo: ProblemInfo?
     @Binding var installInfo: InstallAssistant?
+    @Binding var installAssistants: [InstallAssistant]
     
     var body: some View {
         Group {
@@ -19,7 +20,7 @@ struct ExpressSetupView: View {
                 ExpressContinueView()
             } else {
                 if problemInfo == nil {
-                    ExpressLoadingView(isShowingButtons: $isShowingButtons, problemInfo: $problemInfo)
+                    ExpressLoadingView(isShowingButtons: $isShowingButtons, problemInfo: $problemInfo, installAssistants: $installAssistants, installInfo: $installInfo)
                 } else {
                     ExpressCompatErrorView(problemInfo: $problemInfo)
                 }
@@ -49,6 +50,10 @@ struct ExpressLoadingView: View {
     @Binding var isShowingButtons: Bool
     @State var progress: CGFloat = 0.5
     @Binding var problemInfo: ProblemInfo?
+    @Binding var installAssistants: [InstallAssistant]
+    @Binding var installInfo: InstallAssistant?
+    @State var errorX: String?
+    @State var isOnStepTwo = false
     
     var body: some View {
         VStack {
@@ -56,18 +61,30 @@ struct ExpressLoadingView: View {
             Text("Loading Configuration")
                 .font(.system(size: 17, weight: .bold))
                 .padding(.bottom, 10)
-            Text("Patched Sur is quickly analyzing this Mac to check compatability and obtaining information about the latest macOS and patch version. This should be quick.")
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-                .padding(.bottom, 10)
-            ZStack {
-                ProgressBar(value: $progress, length: 200)
-                HStack {
-                    Image("CheckCircle")
-                    Text("Checking Compatability")
-                }.foregroundColor(.white)
-                    .padding(7)
-            }.fixedSize()
+            if let errorX {
+                ErrorHandlingView(bubble: "An error occured fetching the list of installers for macOS Big Sur or the link to the patches to be used by this patcher. Please check your network connection and try again.", fullError: errorX)
+            } else {
+                Text("Patched Sur is quickly analyzing this Mac to check compatability and obtaining information about the latest macOS and patch version. This should be quick.")
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .padding(.bottom, 10)
+                ZStack {
+                    ProgressBar(value: $progress, length: 200)
+                    if isOnStepTwo {
+                        HStack {
+                            Image("RefreshCircle")
+                            Text("Fetching Installers")
+                        }.foregroundColor(.white)
+                            .padding(7)
+                    } else {
+                        HStack {
+                            Image("CheckCircle")
+                            Text("Checking Compatability")
+                        }.foregroundColor(.white)
+                            .padding(7)
+                    }
+                }.fixedSize()
+            }
             Spacer()
                 .onAppear {
                     withAnimation {
@@ -77,6 +94,15 @@ struct ExpressLoadingView: View {
                         verifyCompat(barProgress: { pro in
                             withAnimation { progress = pro }
                         }, problems: { problemInfo = $0 })
+                        isOnStepTwo = true
+                        let installers = fetchInstallers { errorx in
+                            print(errorx)
+                            errorX = errorx
+                        }
+                        withAnimation { progress = 0.9 }
+                        installAssistants = installers
+                        installInfo = installers.first
+                        withAnimation { progress = 1 }
                     }
                 }
         }.padding(.bottom, 5)

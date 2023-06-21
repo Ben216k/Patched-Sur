@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var hovered: String?
     @State var isShowingButtons = true
     @State var installInfo: InstallAssistant?
+    @State var allInstallers: [InstallAssistant] = []
     
     enum PIPages {
         case welcome
@@ -35,7 +36,7 @@ struct ContentView: View {
             case .welcome:
                 WelcomeView().transition(.moveAway)
             case .express:
-                ExpressSetupView(isShowingButtons: $isShowingButtons, installInfo: $installInfo).transition(.moveAway)
+                ExpressSetupView(isShowingButtons: $isShowingButtons, installInfo: $installInfo, installAssistants: $allInstallers).transition(.moveAway)
             }
             Spacer()
             Divider()

@@ -13,5 +13,6 @@ extension OSLog {
     static let bootup = OSLog(subsystem: subsystem, category: "bootup")
     static let ui = OSLog(subsystem: subsystem, category: "ui")
     static let verification = OSLog(subsystem: subsystem, category: "verification")
+    static let downloads = OSLog(subsystem: subsystem, category: "downloads")
     
 }
