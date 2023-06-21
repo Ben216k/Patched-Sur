@@ -17,12 +17,15 @@ struct ContentView: View {
     @State var allInstallers: [InstallAssistant] = []
     @State var problemInfo: ProblemInfo?
     @State var selectedMac: String?
+    @State var showMoreInformation = false
+    @State var downloadProgress: CGFloat = 0.5
     
     enum PIPages {
         case welcome
         case express
         case advancedSelect
         case selectMacVersion
+        case download
     }
     
     var body: some View {
@@ -45,9 +48,18 @@ struct ContentView: View {
                 SelectMacView(problemInfo: $problemInfo, selectedMac: $selectedMac).transition(.moveAway)
             case .selectMacVersion:
                 SelectMacOSVersionView(installInfo: $installInfo, installAssistants: $allInstallers).transition(.moveAway)
+            case .download:
+                DownloadingView(isShowingButtons: $isShowingButtons, installInfo: $installInfo, showMoreInformation: $showMoreInformation, progress: $downloadProgress)
             }
             Spacer()
-            Divider()
+            ZStack(alignment: .leading) {
+                Divider()
+                if page == .download && showMoreInformation {
+                    Color.accentColor
+                        .frame(width: 568 * downloadProgress, height: 1)
+                        
+                }
+            }
             HStack(alignment: .bottom) {
                 VStack(alignment: .leading) {
                     HStack {
@@ -78,13 +90,15 @@ struct ContentView: View {
                             withAnimation {
                                 switch page {
                                 case .welcome:
-                                    os_log("Unable to go back in first screen.", log: OSLog.ui, type: .info)
+                                    os_log("Unable to go back in first screen.", log: OSLog.ui, type: .error)
                                 case .express:
                                     page = .welcome
                                 case .advancedSelect:
                                     page = .express
                                 case .selectMacVersion:
                                     page = .advancedSelect
+                                case .download:
+                                    OSLog.ui.log("Unable to navigate back while in download view", type: .error)
                                 }
                             }
                         }.btColor(.secondary).inPad()
@@ -120,15 +134,29 @@ struct ContentView: View {
                                 case .welcome:
                                     page = .express
                                 case .express:
-                                    page = .welcome
+                                    page = .download
                                 case .advancedSelect:
                                     page = .selectMacVersion
                                 case .selectMacVersion:
-                                    page = .welcome
+                                    page = .download
+                                case .download:
+                                    OSLog.ui.log("Unable to navigate forward while in download view", type: .error)
                                 }
                             }
                         }.inPad()
                     }
+                } else if page == .download {
+                    VIButton(id: "see-more", h: $hovered) {
+                        if showMoreInformation {
+                            Image("BackArrowCircle")
+                        }
+                        Text(showMoreInformation ? "Back To Downlaod" : "Learn About Patched Sur")
+                        if !showMoreInformation {
+                            Image("ForwardArrowCircle")
+                        }
+                    } onClick: {
+                        withAnimation { showMoreInformation.toggle() }
+                    }.inPad().btColor(.secondary)
                 }
                 
                 // MARK: -

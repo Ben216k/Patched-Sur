@@ -51,7 +51,7 @@ func verifyCompat(barProgress: (CGFloat) -> (), problems: (ProblemInfo) -> ()) {
     OSLog.verification.log("Checking for Metal...")
     
     if let metalStatus = try? call("system_profiler SPDisplaysDataType | grep Metal"), !metalStatus.contains(": Supported") { //, !metalStatus.contains(": Metal 3")  {
-        problems(ProblemInfo(title: .init("PROB-GX-TITLE"), description: .init("PROB-GX-DESCRIPTION")))
+//        problems(ProblemInfo(title: .init("PROB-GX-TITLE"), description: .init("PROB-GX-DESCRIPTION")))
         OSLog.verification.log("This Mac does not support metal, and Patched Sur has no patch for that.", type: .fault)
         hasProblem = true
     }
