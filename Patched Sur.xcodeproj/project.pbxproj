@@ -14,6 +14,8 @@
 		76219C9C2A43853900EC87EF /* SelectMacOSVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */; };
 		76219C9E2A4395F400EC87EF /* DownloadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C9D2A4395F400EC87EF /* DownloadingView.swift */; };
 		76219CA02A43AD4A00EC87EF /* DownloadmacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C9F2A43AD4A00EC87EF /* DownloadmacOS.swift */; };
+		76219CA22A43AE6000EC87EF /* SelectVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219CA12A43AE6000EC87EF /* SelectVolumeView.swift */; };
+		76219CA42A43B04800EC87EF /* DetectVolumes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219CA32A43B04800EC87EF /* DetectVolumes.swift */; };
 		7624934B2635EA6900805E4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7624934D2635EA6900805E4A /* Localizable.strings */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
@@ -121,6 +123,8 @@
 		76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMacOSVersionView.swift; sourceTree = "<group>"; };
 		76219C9D2A4395F400EC87EF /* DownloadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingView.swift; sourceTree = "<group>"; };
 		76219C9F2A43AD4A00EC87EF /* DownloadmacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadmacOS.swift; sourceTree = "<group>"; };
+		76219CA12A43AE6000EC87EF /* SelectVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVolumeView.swift; sourceTree = "<group>"; };
+		76219CA32A43B04800EC87EF /* DetectVolumes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectVolumes.swift; sourceTree = "<group>"; };
 		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		7624934C2635EA6900805E4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		762BBF9E26D583360022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 				7693B8B22A42955D00FEBCAA /* InstallAssistantActions.swift */,
 				76219C972A43731400EC87EF /* SupportedMacs.swift */,
 				76219C9F2A43AD4A00EC87EF /* DownloadmacOS.swift */,
+				76219CA32A43B04800EC87EF /* DetectVolumes.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				7693B8B62A43649100FEBCAA /* ErrorHandlingView.swift */,
 				76219C992A43765800EC87EF /* SelectMacToUse.swift */,
 				76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */,
+				76219CA12A43AE6000EC87EF /* SelectVolumeView.swift */,
 				76219C9D2A4395F400EC87EF /* DownloadingView.swift */,
 			);
 			path = Views;
@@ -490,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76219CA22A43AE6000EC87EF /* SelectVolumeView.swift in Sources */,
 				76219C9A2A43765800EC87EF /* SelectMacToUse.swift in Sources */,
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
@@ -500,6 +507,7 @@
 				76219C9E2A4395F400EC87EF /* DownloadingView.swift in Sources */,
 				76219C982A43731500EC87EF /* SupportedMacs.swift in Sources */,
 				76219C9C2A43853900EC87EF /* SelectMacOSVersionView.swift in Sources */,
+				76219CA42A43B04800EC87EF /* DetectVolumes.swift in Sources */,
 				7693B8B32A42955D00FEBCAA /* InstallAssistantActions.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
 				7693B8B72A43649100FEBCAA /* ErrorHandlingView.swift in Sources */,

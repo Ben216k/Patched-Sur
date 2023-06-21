@@ -19,6 +19,8 @@ struct ContentView: View {
     @State var selectedMac: String?
     @State var showMoreInformation = false
     @State var downloadProgress: CGFloat = 0.5
+    @State var volume: String = ""
+    @State var alert: Alert?
     
     enum PIPages {
         case welcome
@@ -26,6 +28,7 @@ struct ContentView: View {
         case advancedSelect
         case selectMacVersion
         case download
+        case volume
     }
     
     var body: some View {
@@ -37,6 +40,11 @@ struct ContentView: View {
                 VIHeader(p: "Patched Sur", s: "By Ben216k", c: .init(get: { page != .welcome }, set: {_ in}))
                     .alignment(.leading)
                 Spacer()
+                Text("The Hidden Jam")
+                    .opacity(0.000001)
+                    .alert(isPresented: .init(get: { alert != nil }, set: { _ in alert = nil })) {
+                        alert ?? Alert(title: Text("An Unknown Error Occurred"), message: Text("How did we get here?"))
+                    }
             }.padding(.leading, 15)
             Spacer()
             switch page {
@@ -48,6 +56,8 @@ struct ContentView: View {
                 SelectMacView(problemInfo: $problemInfo, selectedMac: $selectedMac).transition(.moveAway)
             case .selectMacVersion:
                 SelectMacOSVersionView(installInfo: $installInfo, installAssistants: $allInstallers).transition(.moveAway)
+            case .volume:
+                SelectVolumeView(volume: $volume)
             case .download:
                 DownloadingView(isShowingButtons: $isShowingButtons, installInfo: $installInfo, showMoreInformation: $showMoreInformation, progress: $downloadProgress)
             }
@@ -97,6 +107,8 @@ struct ContentView: View {
                                     page = .express
                                 case .selectMacVersion:
                                     page = .advancedSelect
+                                case .volume:
+                                    page = .selectMacVersion
                                 case .download:
                                     OSLog.ui.log("Unable to navigate back while in download view", type: .error)
                                 }
@@ -134,11 +146,13 @@ struct ContentView: View {
                                 case .welcome:
                                     page = .express
                                 case .express:
-                                    page = .download
+                                    page = .volume
                                 case .advancedSelect:
                                     page = .selectMacVersion
                                 case .selectMacVersion:
-                                    page = .download
+                                    page = .volume
+                                case .volume:
+                                    alert = .init(title: Text(NSLocalizedString("PRE-VOL-ERASED", comment: "PRE-VOL-ERASED").description.replacingOccurrences(of: "VOLUME", with: volume)), message: Text(.init("PRE-VOL-ERASED-2")), primaryButton: .default(Text(.init("CONTINUE"))) { withAnimation { page = .download } }, secondaryButton: .cancel())
                                 case .download:
                                     OSLog.ui.log("Unable to navigate forward while in download view", type: .error)
                                 }
