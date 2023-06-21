@@ -15,10 +15,14 @@ struct ContentView: View {
     @State var isShowingButtons = true
     @State var installInfo: InstallAssistant?
     @State var allInstallers: [InstallAssistant] = []
+    @State var problemInfo: ProblemInfo?
+    @State var selectedMac: String?
     
     enum PIPages {
         case welcome
         case express
+        case advancedSelect
+        case selectMacVersion
     }
     
     var body: some View {
@@ -36,7 +40,11 @@ struct ContentView: View {
             case .welcome:
                 WelcomeView().transition(.moveAway)
             case .express:
-                ExpressSetupView(isShowingButtons: $isShowingButtons, installInfo: $installInfo, installAssistants: $allInstallers).transition(.moveAway)
+                ExpressSetupView(isShowingButtons: $isShowingButtons, problemInfo: $problemInfo, installInfo: $installInfo, installAssistants: $allInstallers).transition(.moveAway)
+            case .advancedSelect:
+                SelectMacView(problemInfo: $problemInfo, selectedMac: $selectedMac).transition(.moveAway)
+            case
+                SelectMacOSVersionView(installInfo: $installInfo, installAssistants: $allInstallers).transition(.moveAway)
             }
             Spacer()
             Divider()
@@ -62,7 +70,7 @@ struct ContentView: View {
                 // MARK: - Navigation Buttons
                 
                 if isShowingButtons {
-                    if page != .welcome {
+                    if page != .welcome && !(problemInfo != nil && page == .express) {
                         VIButton(id: "back", h: $hovered) {
                             Image("BackArrowCircle")
                             Text(.init("BACK"))
@@ -73,35 +81,54 @@ struct ContentView: View {
                                     os_log("Unable to go back in first screen.", log: OSLog.ui, type: .info)
                                 case .express:
                                     page = .welcome
+                                case .advancedSelect:
+                                    page = .express
+                                case .selectMacVersion:
+                                    page = .advancedSelect
                                 }
                             }
                         }.btColor(.secondary).inPad()
                     }
                     if page == .express {
-                        VIButton(id: "advanced", h: $hovered) {
-                            Image("ToolsCircle")
-                            Text(.init("Advanced"))
-                        } onClick: {
-                            os_log("Not supported")
-                        }.btColor(.secondary).inPad()
-                    }
-                    VIButton(id: "continue", h: $hovered) {
-                        if page == .welcome {
-                            Text(.init("GET-STARTED"))
+                        if problemInfo == nil {
+                            VIButton(id: "advanced", h: $hovered) {
+                                Image("ToolsCircle")
+                                Text(.init("Advanced"))
+                            } onClick: {
+                                withAnimation { page = .advancedSelect }
+                            }.btColor(.secondary).inPad()
                         } else {
-                            Text(.init("CONTINUE"))
+                            VIButton(id: "useForDifferentMac", h: $hovered) {
+                                Text("Use for Different Mac")
+                                Image("ForwardArrowCircle")
+                            } onClick: {
+                                withAnimation { page = .advancedSelect }
+                            }.btColor(.secondary).inPad()
                         }
-                        Image("ForwardArrowCircle")
-                    } onClick: {
-                        withAnimation {
-                            switch page {
-                            case .welcome:
-                                page = .express
-                            case .express:
-                                page = .welcome
+                    }
+                    if !(problemInfo != nil && page == .express) && !(page == .advancedSelect && selectedMac == nil) {
+                        VIButton(id: "continue", h: $hovered) {
+                            if page == .welcome {
+                                Text(.init("GET-STARTED"))
+                            } else {
+                                Text(.init("CONTINUE"))
                             }
-                        }
-                    }.inPad()
+                            Image("ForwardArrowCircle")
+                        } onClick: {
+                            withAnimation {
+                                switch page {
+                                case .welcome:
+                                    page = .express
+                                case .express:
+                                    page = .welcome
+                                case .advancedSelect:
+                                    page = .selectMacVersion
+                                case .selectMacVersion:
+                                    page = .welcome
+                                }
+                            }
+                        }.inPad()
+                    }
                 }
                 
                 // MARK: -

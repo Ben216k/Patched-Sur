@@ -10,7 +10,7 @@ import SwiftUI
 struct ExpressSetupView: View {
     @State var hasDetectedProperties = false
     @Binding var isShowingButtons: Bool
-    @State var problemInfo: ProblemInfo?
+    @Binding var problemInfo: ProblemInfo?
     @Binding var installInfo: InstallAssistant?
     @Binding var installAssistants: [InstallAssistant]
     
@@ -96,7 +96,8 @@ struct ExpressLoadingView: View {
                     DispatchQueue.global(qos: .background).async {
                         verifyCompat(barProgress: { pro in
                             withAnimation { progress = pro }
-                        }, problems: { problemInfo = $0 })
+                        }, problems: { heart in withAnimation { problemInfo = heart; isShowingButtons = true } })
+                        guard problemInfo == nil else { return }
                         isOnStepTwo = true
                         let installers = fetchInstallers { errorx in
                             print(errorx)

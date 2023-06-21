@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7606D60829F22B79005FB3F9 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7606D60729F22B79005FB3F9 /* VeliaUI */; };
 		7606D60A29F22B96005FB3F9 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7606D60929F22B96005FB3F9 /* VeliaUI */; };
+		76219C982A43731500EC87EF /* SupportedMacs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C972A43731400EC87EF /* SupportedMacs.swift */; };
+		76219C9A2A43765800EC87EF /* SelectMacToUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C992A43765800EC87EF /* SelectMacToUse.swift */; };
+		76219C9C2A43853900EC87EF /* SelectMacOSVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */; };
 		7624934B2635EA6900805E4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7624934D2635EA6900805E4A /* Localizable.strings */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
@@ -111,6 +114,9 @@
 /* Begin PBXFileReference section */
 		52B32BC1267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7605944B26325D420005C38C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		76219C972A43731400EC87EF /* SupportedMacs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedMacs.swift; sourceTree = "<group>"; };
+		76219C992A43765800EC87EF /* SelectMacToUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMacToUse.swift; sourceTree = "<group>"; };
+		76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMacOSVersionView.swift; sourceTree = "<group>"; };
 		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		7624934C2635EA6900805E4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		762BBF9E26D583360022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 				7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */,
 				7693B8B02A42950000FEBCAA /* InstallAssistants.swift */,
 				7693B8B22A42955D00FEBCAA /* InstallAssistantActions.swift */,
+				76219C972A43731400EC87EF /* SupportedMacs.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -325,6 +332,8 @@
 				7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */,
 				7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */,
 				7693B8B62A43649100FEBCAA /* ErrorHandlingView.swift */,
+				76219C992A43765800EC87EF /* SelectMacToUse.swift */,
+				76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -475,12 +484,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76219C9A2A43765800EC87EF /* SelectMacToUse.swift in Sources */,
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
 				7653D6D92A41246200D3D5AF /* OSLog.swift in Sources */,
 				7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */,
 				7653D6DB2A4125BB00D3D5AF /* OSLogUniversal.swift in Sources */,
 				7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */,
+				76219C982A43731500EC87EF /* SupportedMacs.swift in Sources */,
+				76219C9C2A43853900EC87EF /* SelectMacOSVersionView.swift in Sources */,
 				7693B8B32A42955D00FEBCAA /* InstallAssistantActions.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
 				7693B8B72A43649100FEBCAA /* ErrorHandlingView.swift in Sources */,
