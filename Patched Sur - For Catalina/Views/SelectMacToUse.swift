@@ -14,7 +14,7 @@ struct SelectMacView: View {
     
     var body: some View {
         VStack {
-            Text("Advanced: Select a Mac")
+            Text("Advanced: Select Mac")
                 .font(.system(size: 17, weight: .bold))
                 .padding(.vertical, 10)
             ScrollView {
@@ -29,7 +29,6 @@ struct SelectMacView: View {
                     } onClick: {
                         if problemInfo == nil { withAnimation { selectedMac = "this" } }
                     }.inPad().btColor(problemInfo == nil ? .accentColor : .secondary)
-                        .disabled(true)
                 }.padding(.horizontal)
                 Divider().padding(.horizontal)
                 ForEach(supportedMacs, id: \.short) { mac in

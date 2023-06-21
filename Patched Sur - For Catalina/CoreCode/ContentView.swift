@@ -43,7 +43,7 @@ struct ContentView: View {
                 ExpressSetupView(isShowingButtons: $isShowingButtons, problemInfo: $problemInfo, installInfo: $installInfo, installAssistants: $allInstallers).transition(.moveAway)
             case .advancedSelect:
                 SelectMacView(problemInfo: $problemInfo, selectedMac: $selectedMac).transition(.moveAway)
-            case
+            case .selectMacVersion:
                 SelectMacOSVersionView(installInfo: $installInfo, installAssistants: $allInstallers).transition(.moveAway)
             }
             Spacer()

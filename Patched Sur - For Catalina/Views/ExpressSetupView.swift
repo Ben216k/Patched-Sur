@@ -51,7 +51,7 @@ struct ExpressContinueView: View {
 struct ExpressLoadingView: View {
     @Binding var isShowingButtons: Bool
     @Binding var hasDetectedProperties: Bool
-    @State var progress: CGFloat = 0.5
+    @State var progress: CGFloat = 0
     @Binding var problemInfo: ProblemInfo?
     @Binding var installAssistants: [InstallAssistant]
     @Binding var installInfo: InstallAssistant?
@@ -97,7 +97,14 @@ struct ExpressLoadingView: View {
                         verifyCompat(barProgress: { pro in
                             withAnimation { progress = pro }
                         }, problems: { heart in withAnimation { problemInfo = heart; isShowingButtons = true } })
-                        guard problemInfo == nil else { return }
+                        guard problemInfo == nil else {
+                            let installers = fetchInstallers { errorx in
+                                print(errorx)
+                            }
+                            installAssistants = installers
+                            installInfo = installers.first
+                            return
+                        }
                         isOnStepTwo = true
                         let installers = fetchInstallers { errorx in
                             print(errorx)
