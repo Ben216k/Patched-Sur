@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import Files
+import OSLog
 
 struct DownloadingView: View {
     @Binding var isShowingButtons: Bool
     @Binding var installInfo: InstallAssistant?
     @Binding var showMoreInformation: Bool
+    @Binding var page: ContentView.PIPages
     @State var errorX: String?
     @State var progressHuman = 0 as CGFloat
     @State var currentSize = 10
-    @State var downloadSize = 55357820
+    @State var downloadSize = 5535782000
+    @State var previousThreeProgresses: [CGFloat] = []
+    @State var estimatedTime = "Est. Calculating"
     let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
     @Binding var progress: CGFloat
     
@@ -22,17 +27,52 @@ struct DownloadingView: View {
         ZStack {
             Rectangle().opacity(0.00001)
                 .onAppear {
-                    print("Has loaded")
                     withAnimation { isShowingButtons = false }
+                    DispatchQueue.global(qos: .background).async {
+                        macOSDownload(installInfo: installInfo) { int in
+                            downloadSize = int
+                        } next: {
+                            OSLog.downloads.log("Verifying installer location")
+                            guard let path = (try? File(path: "~/.patched-sur/InstallAssistant.pkg"))?.path else {
+                                OSLog.downloads.log("Failed to resolve installer path.", type: .error)
+                                errorX = "Failed to resolve installer path.\nThis means an unknown error occurred while downloading the macOS InstallAssistant.\nPlease go back and try again.\nThis is not a patcher bug."
+                                return
+                            }
+                            OSLog.downloads.log("Verifying installer download finished")
+                            var alert: Alert?
+                            guard verifyInstaller(alert: &alert, path: path) else {
+                                errorX = "The macOS download failed.\nThe reason for this is unknown since the download should not have cut out, unless something outside of the patcher was messing with it.\nPlease go back and try again.\nThis is not a patcher bug."
+                                return
+                            }
+                            installInfo = .init(url: path, date: "", buildNumber: "CustomPKG", version: installInfo!.version, minVersion: 0, orderNumber: 0, notes: nil)
+//                            withAnimation {}
+                            OSLog.downloads.log("DONE")
+                        } errorX: { errorX in
+                            self.errorX = errorX
+                        }
+
+                    }
                 }
                 .onReceive(timer, perform: { _ in
                     if let sizeCode = try? call("stat -f %z ~/.patched-sur/InstallAssistant.pkg") {
                         currentSize = Int(Double(sizeCode) ?? 12439328867)
-                        progress = CGFloat(Double(sizeCode) ?? 12439328867) / CGFloat(downloadSize)
+                        previousThreeProgresses.append(CGFloat(Double(sizeCode) ?? 12439328867) / CGFloat(12452033864) - progress)
+                        progress = CGFloat(Double(sizeCode) ?? 12439328867) / CGFloat(12452033864)
+                        
+                        if previousThreeProgresses.count > 10 {
+                            previousThreeProgresses.removeFirst()
+                        }
                         progressHuman = progress * 12.4
+                        
+                        // Calculate esimated time assuming every progress is taken every second
+                        let averageProgress = previousThreeProgresses.reduce(0, +) + 0.00001 / CGFloat(previousThreeProgresses.count)
+                        let remainingProgress = 1 - progress
+                        let remainingHours = remainingProgress / averageProgress / 60 / 60
+                        let remainingMinutes = remainingProgress / averageProgress / 60 - remainingHours * 60
+                        let remainingSeconds = remainingProgress / averageProgress - remainingHours * 60 * 60 - remainingMinutes * 60
                     }
                 })
-            if !showMoreInformation {
+            if !showMoreInformation || errorX != nil {
                 VStack {
                     Spacer()
                     Text("Downaloding macOS")
@@ -46,13 +86,17 @@ struct DownloadingView: View {
                             .padding(.horizontal)
                             .padding(.bottom, 10)
                         ZStack {
-                            ProgressBar(value: $progress, length: 200)
+                            ProgressBar(value: $progress, length: 250)
                             HStack {
                                 Image("DownloadArrow")
                                 Text("Downloading macOS")
                             }.foregroundColor(.white)
                                 .padding(7)
                         }.fixedSize()
+//                        Text("\(progressHuman) / 12.2 GB")
+                        // Above but round to three decimal places
+                        Text("\(String(format: "%.3f", progressHuman)) / 12.2 GB")
+                            .font(.caption)
                     }
                     Spacer()
                 }.transition(.moveAway)

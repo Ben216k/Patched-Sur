@@ -52,9 +52,9 @@ struct SelectMacOSVersionView: View {
                         
                         OSLog.verification.log("Saving installInfo")
                         if path.hasSuffix("pkg") {
-                            installInfo = .init(url: path, date: "", buildNumber: "local", version: "CustomPKG", minVersion: 0, orderNumber: 0, notes: nil)
+                            installInfo = .init(url: path, date: "", buildNumber: "CustomPKG", version: "", minVersion: 0, orderNumber: 0, notes: nil)
                         } else if path.hasSuffix("app") {
-                            installInfo = .init(url: path, date: "", buildNumber: "local", version: "CustomAPP", minVersion: 0, orderNumber: 0, notes: nil)
+                            installInfo = .init(url: path, date: "", buildNumber: "CustomAPP", version: "", minVersion: 0, orderNumber: 0, notes: nil)
                         }
                     }.inPad()
                 }.padding(.horizontal).alert(isPresented: .init(get: { alert != nil }, set: { _ in alert = nil })) {

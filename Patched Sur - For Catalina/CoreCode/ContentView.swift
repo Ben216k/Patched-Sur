@@ -18,7 +18,7 @@ struct ContentView: View {
     @State var problemInfo: ProblemInfo?
     @State var selectedMac: String?
     @State var showMoreInformation = false
-    @State var downloadProgress: CGFloat = 0.5
+    @State var downloadProgress: CGFloat = 0
     @State var volume: String = ""
     @State var alert: Alert?
     
@@ -59,7 +59,7 @@ struct ContentView: View {
             case .volume:
                 SelectVolumeView(volume: $volume)
             case .download:
-                DownloadingView(isShowingButtons: $isShowingButtons, installInfo: $installInfo, showMoreInformation: $showMoreInformation, progress: $downloadProgress)
+                DownloadingView(isShowingButtons: $isShowingButtons, installInfo: $installInfo, showMoreInformation: $showMoreInformation, page: $page, progress: $downloadProgress)
             }
             Spacer()
             ZStack(alignment: .leading) {

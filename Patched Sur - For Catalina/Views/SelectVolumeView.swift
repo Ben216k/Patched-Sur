@@ -19,6 +19,7 @@ struct SelectVolumeView: View {
         GeometryReader { geo in
             ScrollView {
                 ZStack(alignment: .bottom) {
+                    Rectangle().opacity(0.0000001)
                     VStack {
                         Spacer()
                         Text(.init("PRE-VOL-TITLE"))
