@@ -29,6 +29,7 @@ struct ContentView: View {
         case selectMacVersion
         case download
         case volume
+        case patching
     }
     
     var body: some View {
@@ -60,6 +61,8 @@ struct ContentView: View {
                 SelectVolumeView(volume: $volume)
             case .download:
                 DownloadingView(isShowingButtons: $isShowingButtons, installInfo: $installInfo, showMoreInformation: $showMoreInformation, page: $page, progress: $downloadProgress)
+            case .patching:
+                BuildPatchInstallerView(installInfo: $installInfo, volume: $volume)
             }
             Spacer()
             ZStack(alignment: .leading) {
@@ -111,6 +114,8 @@ struct ContentView: View {
                                     page = .selectMacVersion
                                 case .download:
                                     OSLog.ui.log("Unable to navigate back while in download view", type: .error)
+                                case .patching:
+                                    OSLog.ui.log("Unable to navigate back while in patching view", type: .error)
                                 }
                             }
                         }.btColor(.secondary).inPad()
@@ -152,9 +157,19 @@ struct ContentView: View {
                                 case .selectMacVersion:
                                     page = .volume
                                 case .volume:
-                                    alert = .init(title: Text(NSLocalizedString("PRE-VOL-ERASED", comment: "PRE-VOL-ERASED").description.replacingOccurrences(of: "VOLUME", with: volume)), message: Text(.init("PRE-VOL-ERASED-2")), primaryButton: .default(Text(.init("CONTINUE"))) { withAnimation { page = .download } }, secondaryButton: .cancel())
+                                    alert = .init(title: Text(NSLocalizedString("PRE-VOL-ERASED", comment: "PRE-VOL-ERASED").description.replacingOccurrences(of: "VOLUME", with: volume)), message: Text(.init("PRE-VOL-ERASED-2")), primaryButton: .default(Text(.init("CONTINUE"))) {
+                                        withAnimation {
+                                            if installInfo?.buildNumber.starts(with: "Custom") {
+                                                page = .patching
+                                            } else {
+                                                page = .download
+                                            }
+                                        }
+                                    }, secondaryButton: .cancel())
                                 case .download:
                                     OSLog.ui.log("Unable to navigate forward while in download view", type: .error)
+                                case .patching:
+                                    OSLog.ui.log("Unable to navigate forward while in patching view", type: .error)
                                 }
                             }
                         }.inPad()

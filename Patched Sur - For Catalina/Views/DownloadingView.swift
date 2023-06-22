@@ -18,9 +18,7 @@ struct DownloadingView: View {
     @State var progressHuman = 0 as CGFloat
     @State var currentSize = 10
     @State var downloadSize = 5535782000
-    @State var previousThreeProgresses: [CGFloat] = []
-    @State var estimatedTime = "Est. Calculating"
-    let timer = Timer.publish(every: 0.50, on: .current, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .current, in: .common).autoconnect()
     @Binding var progress: CGFloat
     
     var body: some View {
@@ -56,20 +54,8 @@ struct DownloadingView: View {
                 .onReceive(timer, perform: { _ in
                     if let sizeCode = try? call("stat -f %z ~/.patched-sur/InstallAssistant.pkg") {
                         currentSize = Int(Double(sizeCode) ?? 12439328867)
-                        previousThreeProgresses.append(CGFloat(Double(sizeCode) ?? 12439328867) / CGFloat(12452033864) - progress)
                         progress = CGFloat(Double(sizeCode) ?? 12439328867) / CGFloat(12452033864)
-                        
-                        if previousThreeProgresses.count > 10 {
-                            previousThreeProgresses.removeFirst()
-                        }
                         progressHuman = progress * 12.4
-                        
-                        // Calculate esimated time assuming every progress is taken every second
-                        let averageProgress = previousThreeProgresses.reduce(0, +) + 0.00001 / CGFloat(previousThreeProgresses.count)
-                        let remainingProgress = 1 - progress
-                        let remainingHours = remainingProgress / averageProgress / 60 / 60
-                        let remainingMinutes = remainingProgress / averageProgress / 60 - remainingHours * 60
-                        let remainingSeconds = remainingProgress / averageProgress - remainingHours * 60 * 60 - remainingMinutes * 60
                     }
                 })
             if !showMoreInformation || errorX != nil {
@@ -81,7 +67,7 @@ struct DownloadingView: View {
                     if let errorX {
                         ErrorHandlingView(bubble: "An error occured attempting to download macOS Big Sur.", fullError: errorX)
                     } else {
-                        Text("Patched Sur is downloading the macOS Big Sur installer directly from Apple's own servers so that an installer USB can be created. This may take a while, since it is the entired of macOS Big Sur. In the meantime, click below if you'd like to learn more about how Patched Sur works")
+                        Text("Patched Sur is downloading the macOS Big Sur installer directly from Apple's own servers so that an installer USB can be created. This may take a while, since it is the entirety of macOS Big Sur. In the meantime, click below if you'd like to learn more about how Patched Sur works.")
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
                             .padding(.bottom, 10)
