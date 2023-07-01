@@ -38,7 +38,7 @@ struct ExpressContinueView: View {
             Text("Express Setup")
                 .font(.system(size: 17, weight: .bold))
                 .padding(.bottom, 10)
-            Text("Upgrading ") + Text("This Mac").bold() + Text(" to ") + Text("macOS Big Sur \(installInfo!.version)").bold() + Text(" using files ") + Text("sourced from Apple.").bold()
+            Text("Upgrading ") + Text("This Mac").bold() + Text(" to ") + Text("macOS Big Sur \(installInfo?.version ?? "???")").bold() + Text(" using files ") + Text("sourced from Apple.").bold()
             Text("If you'd like to change any of the above information (i.e. selecting a different Mac, macOS version, or using a local copy of the installer) click Advanced. The majority of users will not need this option.")
                 .multilineTextAlignment(.center)
                 .padding(.top, 10)
@@ -100,6 +100,7 @@ struct ExpressLoadingView: View {
                         guard problemInfo == nil else {
                             let installers = fetchInstallers { errorx in
                                 print(errorx)
+                                errorX = errorx
                             }
                             installAssistants = installers
                             installInfo = installers.first
@@ -114,9 +115,11 @@ struct ExpressLoadingView: View {
                         installAssistants = installers
                         installInfo = installers.first
                         withAnimation { progress = 1 }
-                        withAnimation {
-                            hasDetectedProperties = true
-                            isShowingButtons = true
+                        if errorX == nil {
+                            withAnimation {
+                                hasDetectedProperties = true
+                                isShowingButtons = true
+                            }
                         }
                     }
                 }

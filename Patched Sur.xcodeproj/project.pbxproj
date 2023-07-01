@@ -17,6 +17,7 @@
 		76219CA22A43AE6000EC87EF /* SelectVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219CA12A43AE6000EC87EF /* SelectVolumeView.swift */; };
 		76219CA42A43B04800EC87EF /* DetectVolumes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219CA32A43B04800EC87EF /* DetectVolumes.swift */; };
 		76219CA62A43E3ED00EC87EF /* BuildPatchInstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219CA52A43E3ED00EC87EF /* BuildPatchInstallerView.swift */; };
+		76219CAD2A43FB6700EC87EF /* patches.zip in Resources */ = {isa = PBXBuildFile; fileRef = 76219CAA2A43FAC700EC87EF /* patches.zip */; };
 		7624934B2635EA6900805E4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7624934D2635EA6900805E4A /* Localizable.strings */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
@@ -127,6 +128,8 @@
 		76219CA12A43AE6000EC87EF /* SelectVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVolumeView.swift; sourceTree = "<group>"; };
 		76219CA32A43B04800EC87EF /* DetectVolumes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectVolumes.swift; sourceTree = "<group>"; };
 		76219CA52A43E3ED00EC87EF /* BuildPatchInstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildPatchInstallerView.swift; sourceTree = "<group>"; };
+		76219CA72A43FA4400EC87EF /* patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = patches; sourceTree = "<group>"; };
+		76219CAA2A43FAC700EC87EF /* patches.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = patches.zip; sourceTree = "<group>"; };
 		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		7624934C2635EA6900805E4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		762BBF9E26D583360022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 		7692E059251BFF9300C5FB9A = {
 			isa = PBXGroup;
 			children = (
+				76219CAA2A43FAC700EC87EF /* patches.zip */,
+				76219CA72A43FA4400EC87EF /* patches */,
 				76F6EED72552684A001508E8 /* README.md */,
 				76FEEFAC254F4DA80079CEFC /* Extra Files */,
 				7692E064251BFF9300C5FB9A /* Patched Sur - For Catalina */,
@@ -486,6 +491,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76219CAD2A43FB6700EC87EF /* patches.zip in Resources */,
 				76E6C72A263B8DF10063C08E /* Localizable.strings in Resources */,
 				7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */,
 				7692E084251BFFB400C5FB9A /* Assets.xcassets in Resources */,

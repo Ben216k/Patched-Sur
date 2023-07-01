@@ -45,7 +45,8 @@ struct ErrorHandlingView: View {
                     .inPad()
                     .padding(.vertical, -20)
 
-            }.frame(width: 425, height: 90)
+            }.frame(width: 425)
+//                .padding(.bottom, 30)
                 
                 
         }.padding(.horizontal)

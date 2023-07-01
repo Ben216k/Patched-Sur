@@ -159,7 +159,7 @@ struct ContentView: View {
                                 case .volume:
                                     alert = .init(title: Text(NSLocalizedString("PRE-VOL-ERASED", comment: "PRE-VOL-ERASED").description.replacingOccurrences(of: "VOLUME", with: volume)), message: Text(.init("PRE-VOL-ERASED-2")), primaryButton: .default(Text(.init("CONTINUE"))) {
                                         withAnimation {
-                                            if installInfo?.buildNumber.starts(with: "Custom") {
+                                            if installInfo?.buildNumber.starts(with: "Custom") ?? false {
                                                 page = .patching
                                             } else {
                                                 page = .download

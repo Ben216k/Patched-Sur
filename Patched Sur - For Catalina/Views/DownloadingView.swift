@@ -45,6 +45,7 @@ struct DownloadingView: View {
                             installInfo = .init(url: path, date: "", buildNumber: "CustomPKG", version: installInfo!.version, minVersion: 0, orderNumber: 0, notes: nil)
 //                            withAnimation {}
                             OSLog.downloads.log("DONE")
+                            page = .patching
                         } errorX: { errorX in
                             self.errorX = errorX
                         }
@@ -65,7 +66,7 @@ struct DownloadingView: View {
                         .font(.system(size: 17, weight: .bold))
                         .padding(.bottom, 10)
                     if let errorX {
-                        ErrorHandlingView(bubble: "An error occured attempting to download macOS Big Sur.", fullError: errorX)
+                        ErrorHandlingView(bubble: "An error occured attempting to download macOS Big Sur. This is most likely a network issue. The following error most likely has better information near the bottom.", fullError: errorX)
                     } else {
                         Text("Patched Sur is downloading the macOS Big Sur installer directly from Apple's own servers so that an installer USB can be created. This may take a while, since it is the entirety of macOS Big Sur. In the meantime, click below if you'd like to learn more about how Patched Sur works.")
                             .multilineTextAlignment(.center)
@@ -81,7 +82,7 @@ struct DownloadingView: View {
                         }.fixedSize()
 //                        Text("\(progressHuman) / 12.2 GB")
                         // Above but round to three decimal places
-                        Text("\(String(format: "%.3f", progressHuman)) / 12.2 GB")
+                        Text("\(String(format: "%.3f", progressHuman)) / 12.4 GB")
                             .font(.caption)
                     }
                     Spacer()
