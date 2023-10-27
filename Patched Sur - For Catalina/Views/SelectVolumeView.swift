@@ -42,6 +42,7 @@ struct SelectVolumeView: View {
                                         Text(.init("REFRESH"))
                                     } onClick: {
                                         volumeList = nil
+                                        volume = ""
                                     }.btColor(.gray)
                                     .inPad()
                                     .useHoverAccent()
