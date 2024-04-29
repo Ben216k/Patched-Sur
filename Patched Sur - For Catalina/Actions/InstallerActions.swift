@@ -2,17 +2,12 @@
 //  InstallerActions.swift
 //  Patched Sur - For Catalina
 //
-//  Created by Ben Sova on 3/20/21.
+//  Created by Ben Sova on 10/26/23.
 //
 
 import Foundation
-import AppKit
 
-// MARK: Extract/Move Installer
-
-var useBeta = false
-
-func extractPackage(installInfo: InstallAssistant, password: String, errorX: (String) -> (), beta: (String) -> ()) {
+func extractPackage(installInfo: InstallAssistant, password: String, errorX: (String) -> ()) {
     do {
         if installInfo.buildNumber == "CustomPKG" {
             print("Cleaning up before extraction")
@@ -26,22 +21,24 @@ func extractPackage(installInfo: InstallAssistant, password: String, errorX: (St
             print("Checking back at SHA Sums")
             let betaSHANew = try? call("shasum -a 1 /Applications/Install\\ macOS\\ Big\\ Sur\\ Beta.app/Contents/MacOS/InstallAssistant | cut -d \" \" -f 1")
             if betaSHA != betaSHANew {
-                useBeta = true
+                errorX("Patched Sur v2.0.0 does not support beta versions of macOS Big Sur.")
             }
         } else {
             if installInfo.url != "/Applications/Install macOS Big Sur.app" && installInfo.url != "/Applications/Install macOS Big Sur Beta.app" {
                 print("Checking installer type")
-                useBeta = (try? call("cat '\(installInfo.url)/Contents/Info.plist' | grep 'Install macOS Big Sur Beta'")) != nil
+                let useBeta = (try? call("cat '\(installInfo.url)/Contents/Info.plist' | grep 'Install macOS Big Sur Beta'")) != nil
+                if useBeta {
+                    errorX("Patched Sur v2.0.0 does not support beta versions of macOS Big Sur.")
+                }
                 print("Cleaning up before move.")
-                _ = try? call("rm -rf '/Applications/Install macOS Big Sur\(useBeta ? " Beta" : "").app'", p: password)
+                _ = try? call("rm -rf '/Applications/Install macOS Big Sur.app'", p: password)
                 print("Moving installer app")
-                try call("cp -a '\(installInfo.url)' '/Applications/Install macOS Big Sur\(useBeta ? " Beta" : "").app'", p: password)
+                try call("cp -a '\(installInfo.url)' '/Applications/Install macOS Big Sur.app'", p: password)
                 print("Done moving this app for this dumb workaround that I have to use for dumb reasons.")
             } else if installInfo.url == "/Applications/Install macOS Big Sur Beta.app" {
-                useBeta = true
+                errorX("Patched Sur v2.0.0 does not support beta versions of macOS Big Sur.")
             }
         }
-        print("Note: Using \(useBeta ? "Beta" : "Release") scheme.")
         errorX("CREATE")
     } catch {
         print("Failed to extract package.")
@@ -80,7 +77,7 @@ func createInstallMedia(volume: String, installInfo: InstallAssistant, password:
         _ = try? call("sleep 2")
         print("Starting createinstallmedia")
         progressText("Starting createinstallmedia")
-        try call("/Applications/Install\\ macOS\\ Big\\ Sur\(useBeta ? "\\ Beta" : "").app/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
+        try call("/Applications/Install\\ macOS\\ Big\\ Sur.app/Contents/Resources/createinstallmedia --volume '/Volumes/\(volume)' --nointeraction", p: password, h: progressText)
         print("Finished createinstallmedia!")
         errorX("PATCH")
     } catch {
@@ -101,15 +98,14 @@ func patchInstaller(password: String, progressText: @escaping (String) -> (), er
         _ = try? call("rm -rf ~/.patched-sur/__MACOSX", p: password)
         _ = try? call("rm -rf /usr/local/lib/__MACOSX", p: password)
         _ = try? call("rm -rf Patched-Sur-Patches*", p: password, at: "/usr/local/lib")
-        if let sharedSupport = Bundle.main.sharedSupportPath, (try? call("[[ -e \(sharedSupport)/Patched-Sur-Patches.zip ]]")) != nil {
-            try call("unzip \(sharedSupport)/Patched-Sur-Patches.zip -d /usr/local/lib", p: password, at: "/usr/local/lib")
+        if let sharedSupport = Bundle.main.sharedSupportPath, (try? call("[[ -e \(sharedSupport)/patches.zip ]]")) != nil {
+            try call("unzip \(sharedSupport)/patches.zip -d /usr/local/lib", p: password, at: "/usr/local/lib")
         } else {
             try call("unzip ~/.patched-sur/Patched-Sur-Patches.zip -d /usr/local/lib", p: password, at: "/usr/local/lib")
         }
         try call("mv Patched-Sur-Patches-* Patched-Sur-Patches", p: password, at: "/usr/local/lib")
         _ = try? call("rm -rf ~/.patched-sur/__MACOSX", p: password)
         _ = try? call("rm -rf /usr/local/lib/__MACOSX", p: password)
-        _ = try? call("echo '\(AppInfo.patchesV.version)' > /usr/local/lib/Patched-Sur-Patches/pspVersion", p: password)
         progressText("Starting USB Patch")
         print("Killing MDS again...")
         _ = try? call("killall mds", p: password)

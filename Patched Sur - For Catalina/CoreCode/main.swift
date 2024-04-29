@@ -6,28 +6,17 @@
 //
 
 import Foundation
-import AppKit
-import Security
+import OSLog
 
-print("Hello! If you're seeing this, you are seeing the logs of (pre-install) Patched Sur!")
-print("Or maybe running this from the command line...")
-print("")
-print("Patched Sur v\((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "x.y.z") Build \(Int(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "-100") ?? -100)")
+// OSLog to Hello World
+os_log("Starting Patched Sur (preinstall) v2.0.0...", log: OSLog.bootup, type: .info)
+
 #if DEBUG
-print("Running From Xcode in DEBUG configuration.")
-#else
-print("Running Either Normally or From Terminal in RELEASE configuration.")
-print("Making sure that 100% we have what we want...")
-_ = try? call("mkdir ~/.patched-sur", at: ".")
+os_log("Running with DEBUG modifications", log: OSLog.bootup, type: .info)
 #endif
-print("")
-print("App Path: \(Bundle.main.bundlePath)")
-print("Resource Path: \(Bundle.main.resourcePath!)")
-if let sharedPath = Bundle.main.sharedSupportPath {
-    print("SharedSupport Path: \(sharedPath)")
-} else {
-    print("SharedSupport unavailable, patches will be downloaded later.")
-}
-print("")
-print("Starting App Delegate.")
+
+os_log("Ensuring ~/.patched-sur exists.", log: OSLog.bootup, type: .info)
+_ = try? call("mkdir ~/.patched-sur", at: ".")
+
+os_log("Startup configuration not currently avaiable, all command line agruments ignored.", log: OSLog.bootup, type: .info)
 AppDelegate.main()

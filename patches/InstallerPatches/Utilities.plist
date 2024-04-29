@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Buttons</key>
+	<array>
+		<dict>
+			<key>BundlePath</key>
+			<string>/System/Installation/CDIS/Time Machine System Restore.app</string>
+			<key>DescriptionKey</key>
+			<string>If you have backup of your system that you want to restore.</string>
+			<key>Path</key>
+			<string>/System/Installation/CDIS/Time Machine System Restore.app/Contents/MacOS/Time Machine System Restore</string>
+			<key>TitleKey</key>
+			<string>Restore from Time Machine</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<array>
+				<string>-RunInOSIEnv</string>
+			</array>
+			<key>BundlePath</key>
+			<string>/Install macOS Big Sur.app</string>
+			<key>IsInstallAssistant</key>
+			<true/>
+			<key>Path</key>
+			<string>/Install macOS Big Sur.app/Contents/MacOS/InstallAssistant</string>
+		</dict>
+		<dict>
+			<key>BundlePath</key>
+			<string>/Applications/Safari.app</string>
+			<key>DescriptionKey</key>
+			<string>Browse Apple Support to get help with your Mac.</string>
+			<key>Path</key>
+			<string>/Applications/Safari.app/Contents/MacOS/Safari</string>
+			<key>TitleKey</key>
+			<string>Safari</string>
+		</dict>
+		<dict>
+			<key>BundlePath</key>
+			<string>/System/Applications/Utilities/Disk Utility.app</string>
+			<key>DescriptionKey</key>
+			<string>Repair or erase a disk using Disk Utility.</string>
+			<key>Path</key>
+			<string>/System/Applications/Utilities/Disk Utility.app/Contents/MacOS/Disk Utility</string>
+			<key>TitleKey</key>
+			<string>Disk Utility</string>
+		</dict>
+		<dict>
+			<key>BundlePath</key>
+			<string>/Applications/Patched Sur - Recovery.app</string>
+			<key>DescriptionKey</key>
+			<string>Patch the macOS Kexts to fix things like WiFi.</string>
+			<key>Path</key>
+			<string>/Applications/Patched Sur - Recovery.app/Contents/MacOS/Patched Sur - Recovery</string>
+			<key>TitleKey</key>
+			<string>Patched Sur</string>
+		</dict>
+	</array>
+	<key>Menu</key>
+	<array>
+		<dict>
+			<key>ARM-Only</key>
+			<true/>
+			<key>Arguments</key>
+			<array>
+				<string>-ssu</string>
+			</array>
+			<key>BundlePath</key>
+			<string>/System/Applications/Utilities/Startup Disk.app</string>
+			<key>Path</key>
+			<string>/System/Applications/Utilities/Startup Disk.app/Contents/MacOS/Startup Disk</string>
+			<key>TitleKey</key>
+			<string>Startup Security Utility</string>
+		</dict>
+		<dict>
+			<key>ARM-Only</key>
+			<false/>
+			<key>BundlePath</key>
+			<string>/System/Applications/Utilities/Startup Security Utility.app</string>
+			<key>Path</key>
+			<string>/System/Applications/Utilities/Startup Security Utility.app/Contents/MacOS/Startup Security Utility</string>
+			<key>TitleKey</key>
+			<string>Startup Security Utility</string>
+		</dict>
+		<dict>
+			<key>BundlePath</key>
+			<string>/System/Applications/Utilities/Terminal.app</string>
+			<key>Path</key>
+			<string>/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal</string>
+			<key>TitleKey</key>
+			<string>Terminal</string>
+		</dict>
+		<dict>
+			<key>ARM-Only</key>
+			<true/>
+			<key>BundlePath</key>
+			<string>/System/Installation/CDIS/Share Disk.app</string>
+			<key>Path</key>
+			<string>/System/Installation/CDIS/Share Disk.app/Contents/MacOS/Share Disk</string>
+			<key>TitleKey</key>
+			<string>Share Disk…</string>
+		</dict>
+	</array>
+</dict>
+</plist>
