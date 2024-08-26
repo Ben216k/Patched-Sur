@@ -156,9 +156,9 @@ Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSund
 // MARK: Select Volume Page
 
 "PRE-VOL-TITLE" = "Select A USB Volume";
-"PRE-VOL-1" = "To install patched Big Sur initially, you need a USB install that will assist with the upgrade. This provides an environment where the patcher can be sure that everything will go properly.";
+"PRE-VOL-1" = "To install patched Big Sur initially, you need a USB install that will assist with the upgrade.";
 "PRE-VOL-2" = "To create an installer, you need a volume to put the installer on.";
-"PRE-VOL-3" = "This USB needs to be 16GB or bigger. Internal partitions won't work, but external partitions do depending on the partition map (which will probably be correct with the GUID Partition Map). If your drive doesn't show up, make sure it is formatted as MacOS Extended (Journaled).";
+"PRE-VOL-3" = "This USB needs to be 16GB or bigger. Internal partitions won't work, but external partitions do depending on the partition map. If your drive doesn't show up, make sure it is formatted as MacOS Extended (Journaled).";
 "PRE-VOL-NO" = "No compatible drives were detected.";
 // Note: VOLUME is the volume name, do not localize it, just pretend it's a volume name and just place it into your sentence
 // Ex. If the volume was "SuperDrive", then "VOLUME will be erased." would show up as "SuperDrive will be erased."
@@ -497,3 +497,8 @@ Use 'Update Backup Patches' to update the patches, then try this again.";
 
 "PO-NV-NOUP-TITLE" = "Unable to Update Without Required NVRAM Value";
 "PO-NV-NOUP-CONTENT" = "Updating macOS removes the boot.plist patch which is what Patched Sur using to allow you to boot your Mac without the -no_compat_check. Right now that value is missing, so updating would cause your Mac to no longer boot. Once you restore that value, you can update. To do that, click on the red button on the bottom of the window.";
+
+
+// MARK: - v2.0.0 Additions -
+
+"NEO-PRE-WELCOME-DESCRIPTION" = "Patched Sur is a tool designed to upgrade you to the real macOS Big Sur on an unsupported metal device. This process was designed to require as little from you as possible while still creating a near identical experience to that of a supported Mac. Press Get Started to begin.\n\nNote: Patched Sur is not perfect and there is a slim chance that things may go wrong. Ensure you have a Time Machine backup before proceeding.";
