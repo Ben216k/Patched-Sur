@@ -10,9 +10,9 @@
 Patched Sur is a UI patcher for macOS Big Sur, designed to make it easy to run macOS 11 on unsupported Macs. This patcher hopes to allow any user of any knowledge to patch their Mac, while still giving you freedom on how you want to use your Mac.
 
 ## Compatibility
-To see if your Mac is supported [click here](https://bensova.gitbook.io/big-sur/supported-macs).
-
-(Basically it says if you have anything older than a 2012/2013 Mac it'll be terrible).
+Anything 2012 or 2013 that's not a Mac Pro. 
+- Older -> Use a different patcher.
+- Newer -> You support Big Sur.
 
 ## Credits
 
@@ -53,27 +53,25 @@ Also, know that turning it on after the upgrade isn't a smart idea. By doing tha
    - How much functionality you will get out of macOS once the patching process is complete
    - How the patcher works, and what it does to your Mac
 
-**4.** Next, you can choose what update track you would like to update with. `Release` is the default, but you can also choose `Beta` if you want one of the beta tracks. (Note: Apple does not always release InstallAssistant.pkgs for the beta tracks, this means you might be unable to get certain betas.)
+**4.** After that, your Mac will start downloading the patches for kexts and a couple other resources.
 
-**5.** Then, you can select whether you want to update macOS from Catalina to Big Sur (or Big Sur to Big Sur if you are switching from a different patcher) or do a clean install of Big Sur (currently unavailable).
+**5.** Now, you will be able to choose what version of macOS to download. By default it will show the latest version available, but if you click `Browse` you can use your own downloaded InstallAssistant.pkg or Install macOS Big Sur.app.
 
-**6.** After that, your Mac will start downloading the patches for kexts and a couple other resources.
+**6.** Once the download is finished, you need to enter your password, so Patched Sur can install the package. Then, after you select the USB drive you want to use to install macOS, the patcher will copy the installer onto the USB.
 
-**7.** Now, you will be able to choose what version of macOS to download. By default it will show the latest version based on your selected release track, but if you click `View Other Versions`, you can choose a different one or your own.
+**7.** Finally, the USB gets patched and you are ready to start installation!
 
-**8.** Once the download is finished, you need to enter your password, so Patched Sur can install the package. Then, after you select the USB drive you want to use to install macOS, the patcher can copy the installer onto the USB.
+**8.** Reboot your computer, but immediately start holding down the `Option/Alt` key as soon as your Mac turns on.
 
-**9.** Finally, the USB gets patched and you are ready to start installation!
+**9.** Select the __purple__ EFI Boot drive, (if there are multiple unplug and replug in your drive and select the EFI Boot that disappeared and reappeared).  Then, your Mac will quickly turn off, so turn it back on while, again, holding down `Option/Alt`. Then, select Install macOS Big Sur.
 
-**10.** Reboot your computer, but immediately start holding down the `Option/Alt` key as soon as your Mac turns on.
+**10.** Once the installer boots, select reinstall macOS and agree to the Terms and Conditions. Then, select the drive you want to install Big Sur onto (usually Macintosh HD).
 
-**11.** Select the __purple__ EFI Boot drive, (if there are multiple unplug and replug in your drive and select the EFI Boot that disappeared and reappeared).  Then, your Mac will quickly turn off, so turn it back on while, again, holding down `Option/Alt`. Then, select Install macOS Big Sur.
+**NOTE:** If you're choosing to do a clean install, restart back into the installer after the Setup Assistant pops up. Then select Patched Sur, select your boot drive, and patch the kexts. Restart into Big Sur, setup your Mac, and ignore the rest of these instructions.
 
-**12.** Once the installer boots, select reinstall macOS and agree to the Terms and Conditions. Then, select the drive you want to install Big Sur onto, (it should be the same drive you ran the patcher on).
+**11.** After the installer is done, (it will take a while and probably appear to get stuck, that's just macOS), log in to your Mac and open Patched Sur from your Applications folder or LaunchPad.
 
-**13.** After the installer is done, (it will take a while and appear to get stuck), log in to your Mac and open Patched Sur from your Applications folder or LaunchPad.
-
-**14.** Open the Patch Kexts section and enter your password. Then, you should be able to reboot and enjoy Big Sur!
+**12.** Open the Patch Kexts section and enter your password. Then, you should be able to reboot and enjoy Big Sur!
 
 #### How do I choose a my own installer?
 
