@@ -1,0 +1,38 @@
+#!/bin/sh
+# no basename/dirname in recovery
+me="$(echo "$0" | sed 's@.*/@@')"
+dn="$(echo "$0" | sed 's@Contents/MacOS/InstallAssistant.*$@Contents/MacOS@')"
+
+# run installer normally if not root
+if [ $UID = 0 ]
+then
+    # Don't forget to change power management settings, since we're
+    # on an unsupported Mac and there's a good chance that the installer
+    # USB is missing the framebuffer driver we need for power management
+    # to work properly.
+    pmset -a displaysleep 0 sleep 0
+
+    # Choose a Hax variant. Basically, seal if SIP & ARV are enabled,
+    # don't seal otherwise. To override this, run insert-hax.sh before
+    # opening the Installer.
+    if ! nvram -p | fgrep -q csr-active-config
+    then
+        # csr-active-config not set, so macOS defaults to SIP/ARV enabled
+        HAX=YesSeal.dylib
+    elif nvram csr-active-config | fgrep -q '%10%00%00%00'
+    then
+        # csr-active-config configured to enable SIP/ARV
+        HAX=YesSeal.dylib
+    else
+        HAX=NoSeal.dylib
+    fi
+
+    # Make sure there isn't already a dylib being inserted. That way
+    # insert-hax.sh will still work (for manually specifying whether
+    # volume sealing happens).
+
+    [ -z `launchctl getenv DYLD_INSERT_LIBRARIES` ] && launchctl setenv DYLD_INSERT_LIBRARIES "/Volumes/Image Volume/InstallerHax/$HAX"
+
+fi
+
+exec "$dn/InstallAssistant.app/Contents/MacOS/$me" "$@"

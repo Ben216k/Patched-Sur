@@ -7,11 +7,14 @@
 
 import Foundation
 import Dispatch
+import OSLog
 
 @discardableResult func call(_ cmd: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
     let psHandle = StringHandle(handlingClosure: { (string) in
-        print(string.replacingOccurrences(of: "Password:", with: ""))
-        handle(string.replacingOccurrences(of: "Password:", with: ""))
+        let toLog = string.replacingOccurrences(of: "Password:", with: "")
+        print(toLog)
+//        os_log("%@", type: .debug, OSLog(subsystem: "me.ben216k.Patched-Sur.catalina.bash", category: "\(cmd.split(separator: " ").first ?? "bash")"), toLog)
+        handle(toLog)
     })
     return try shellOut(to: cmd, at: at, outputHandle: psHandle, errorHandle: psHandle)
 }
@@ -19,6 +22,7 @@ import Dispatch
 @discardableResult func call(_ cmd: String, p: String, at: String = "~/.patched-sur", h handle: @escaping (String) -> () = {_ in}) throws -> String {
     let psHandle = StringHandle(handlingClosure: { (string) in
         print(string.replacingOccurrences(of: "Password:", with: ""))
+//        os_log("BASH: %@", type: .debug, OSLog(subsystem: "me.ben216k.Patched-Sur.catalina.bash", category: "\(cmd.split(separator: " ").first ?? "bash")"), string.replacingOccurrences(of: "Password:", with: ""))
         handle(string.replacingOccurrences(of: "Password:", with: ""))
     })
 //    return try shellOut(to: "echo \(p.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"").replacingOccurrences(of: "'", with: "\\'")) | sudo -S \(cmd)", at: at, outputHandle: psHandle, errorHandle: psHandle)

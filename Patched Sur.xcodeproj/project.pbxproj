@@ -3,55 +3,39 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F42EB04255176F700365279 /* PSSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42EB03255176F700365279 /* PSSettings.swift */; };
 		7606D60829F22B79005FB3F9 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7606D60729F22B79005FB3F9 /* VeliaUI */; };
 		7606D60A29F22B96005FB3F9 /* VeliaUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7606D60929F22B96005FB3F9 /* VeliaUI */; };
-		7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD17257FF8DB0054B76F /* DownloadKexts.swift */; };
-		7609BD1E258008B70054B76F /* StartInstallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609BD1D258008B70054B76F /* StartInstallView.swift */; };
-		760AA9CF261E72A200ADABE0 /* UpdateOSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */; };
-		760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760C7D1A25719C27004817F1 /* UpdateAppAction.swift */; };
+		76219C982A43731500EC87EF /* SupportedMacs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C972A43731400EC87EF /* SupportedMacs.swift */; };
+		76219C9A2A43765800EC87EF /* SelectMacToUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C992A43765800EC87EF /* SelectMacToUse.swift */; };
+		76219C9C2A43853900EC87EF /* SelectMacOSVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */; };
+		76219C9E2A4395F400EC87EF /* DownloadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C9D2A4395F400EC87EF /* DownloadingView.swift */; };
+		76219CA02A43AD4A00EC87EF /* DownloadmacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219C9F2A43AD4A00EC87EF /* DownloadmacOS.swift */; };
+		76219CA22A43AE6000EC87EF /* SelectVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219CA12A43AE6000EC87EF /* SelectVolumeView.swift */; };
+		76219CA42A43B04800EC87EF /* DetectVolumes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219CA32A43B04800EC87EF /* DetectVolumes.swift */; };
+		76219CA62A43E3ED00EC87EF /* BuildPatchInstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76219CA52A43E3ED00EC87EF /* BuildPatchInstallerView.swift */; };
+		76219CAD2A43FB6700EC87EF /* patches.zip in Resources */ = {isa = PBXBuildFile; fileRef = 76219CAA2A43FAC700EC87EF /* patches.zip */; };
 		7624934B2635EA6900805E4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7624934D2635EA6900805E4A /* Localizable.strings */; };
 		7625796725423FD600508A71 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 7625796625423FD600508A71 /* Files */; };
-		762A066825BF93A80037655D /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A066725BF93A80037655D /* Keychain.swift */; };
-		762A1DB4260C19B80009620B /* PatchKextsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762A1DB3260C19B80009620B /* PatchKextsView.swift */; };
-		762CBCA5260C20E5008F0A86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CBCA4260C20E5008F0A86 /* AppDelegate.swift */; };
-		762CBCA7260C20E5008F0A86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762CBCA6260C20E5008F0A86 /* ViewController.swift */; };
-		762CBCA9260C20E8008F0A86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCA8260C20E8008F0A86 /* Assets.xcassets */; };
-		762CBCAC260C20E8008F0A86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCAA260C20E8008F0A86 /* Main.storyboard */; };
-		762DA8FE2606BA6300A9235A /* RememberPleaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */; };
-		762DA9002606C0B400A9235A /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762DA8FF2606C0B400A9235A /* CreditsView.swift */; };
-		762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */; };
-		7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631558E254DDB6C00646CE9 /* AboutMyMac.swift */; };
-		7633BC732617744900A550A6 /* Patched Sur - Recovery.app in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */; };
 		7633BC792617807100A550A6 /* Patched Sur.app in Resources */ = {isa = PBXBuildFile; fileRef = 7692E07D251BFFB200C5FB9A /* Patched Sur.app */; };
-		7633BC7F2617D24800A550A6 /* PSPatchV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7633BC7E2617D24800A550A6 /* PSPatchV.swift */; };
-		763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B28C125FF0D2300389448 /* InstallAssistantActions.swift */; };
-		763B28C7260052D200389448 /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
-		763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
-		764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F516725FC960D004F49C6 /* VerifyActions.swift */; };
-		765DA44A264E26F3003A97B5 /* PSKexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765DA449264E26F3003A97B5 /* PSKexts.swift */; };
-		7660A2F0269516E100653771 /* NVRAMResetHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660A2EF269516E100653771 /* NVRAMResetHelp.swift */; };
-		76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76688D7A2619521C00A1450A /* PatchKextsActions.swift */; };
-		76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
+		7653D6D72A4122E300D3D5AF /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6D62A4122E300D3D5AF /* Transitions.swift */; };
+		7653D6D92A41246200D3D5AF /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6D82A41246200D3D5AF /* OSLog.swift */; };
+		7653D6DB2A4125BB00D3D5AF /* OSLogUniversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */; };
+		7653D6DC2A4125BF00D3D5AF /* OSLogUniversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */; };
+		7653D6DE2A4125EF00D3D5AF /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DD2A4125EF00D3D5AF /* OSLog.swift */; };
+		7653D6E02A41DAEF00D3D5AF /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653D6DF2A41DAEF00D3D5AF /* WelcomeView.swift */; };
+		7664B4652AEB464D00D22033 /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7664B4642AEB464D00D22033 /* EnterPasswordPrompt.swift */; };
+		7664B4672AEB4CAD00D22033 /* InstallerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7664B4662AEB4CAD00D22033 /* InstallerActions.swift */; };
+		7664B4682AEB4F7100D22033 /* patches.zip in Add SharedSupport */ = {isa = PBXBuildFile; fileRef = 76219CAA2A43FAC700EC87EF /* patches.zip */; };
+		7664B46A2AEB52E400D22033 /* DoneCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7664B4692AEB52E400D22033 /* DoneCreateView.swift */; };
 		767167512550AE42000FAE80 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
-		7674026B2606EEBD00E39469 /* CreateInstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026A2606EEBD00E39469 /* CreateInstallerView.swift */; };
-		7674026D2606F99100E39469 /* InstallerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026C2606F99100E39469 /* InstallerActions.swift */; };
 		7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767167502550AE42000FAE80 /* ShellOut.swift */; };
-		767402702607DF8300E39469 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026F2607DF8300E39469 /* DoneView.swift */; };
-		76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76747BD82523A66F004596CC /* InstallAssistants.swift */; };
-		767EF2AD261E975A00769793 /* UpdateChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767EF2AC261E975A00769793 /* UpdateChooser.swift */; };
-		7680783926211A5D000ABD89 /* UpdaterActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7680783826211A5D000ABD89 /* UpdaterActions.swift */; };
-		7680783C26211AC5000ABD89 /* UpdateChooserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7680783B26211AC5000ABD89 /* UpdateChooserActions.swift */; };
 		768D516525CA4FD90091D1F0 /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = 768D516425CA4FD90091D1F0 /* Files */; };
-		768F51F6256E05190069096E /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F51F5256E05190069096E /* UpdateView.swift */; };
-		7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691808725F9DB80003FB34C /* SettingsActions.swift */; };
-		769289D925FEEF64002F9CAC /* macOSConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769289D825FEEF64002F9CAC /* macOSConfirmView.swift */; };
 		7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E065251BFF9300C5FB9A /* AppDelegate.swift */; };
-		7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* CentralView.swift */; };
+		7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E067251BFF9300C5FB9A /* ContentView.swift */; };
 		7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E069251BFF9400C5FB9A /* Assets.xcassets */; };
 		7692E06D251BFF9400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E06C251BFF9400C5FB9A /* Preview Assets.xcassets */; };
 		7692E070251BFF9400C5FB9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7692E06E251BFF9400C5FB9A /* Main.storyboard */; };
@@ -59,40 +43,18 @@
 		7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E081251BFFB300C5FB9A /* ContentView.swift */; };
 		7692E084251BFFB400C5FB9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E083251BFFB400C5FB9A /* Assets.xcassets */; };
 		7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */; };
-		7692E090251C077400C5FB9A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7692E08F251C077400C5FB9A /* MainView.swift */; };
-		769532442605A144007A1BB4 /* VolumeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769532432605A144007A1BB4 /* VolumeSelectorView.swift */; };
-		769F37F32601A4DC007A1246 /* DownloadActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F22601A4DC007A1246 /* DownloadActions.swift */; };
-		769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F42601AF06007A1246 /* macOSDownloadView.swift */; };
-		76A070B7261AD06E0002A304 /* CreateInstallerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */; };
-		76A070B9261B5AB10002A304 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
-		76A070BB261B5F590002A304 /* macOSConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769289D825FEEF64002F9CAC /* macOSConfirmView.swift */; };
-		76A070BD261B5F780002A304 /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B28C125FF0D2300389448 /* InstallAssistantActions.swift */; };
-		76A070C3261BAAF00002A304 /* Patched Sur - Recovery.app in Resources */ = {isa = PBXBuildFile; fileRef = 762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */; };
+		7693B8AB2A4211F800FEBCAA /* ExpressSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */; };
+		7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */; };
+		7693B8AF2A425A2D00FEBCAA /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */; };
+		7693B8B12A42950000FEBCAA /* InstallAssistants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8B02A42950000FEBCAA /* InstallAssistants.swift */; };
+		7693B8B32A42955D00FEBCAA /* InstallAssistantActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8B22A42955D00FEBCAA /* InstallAssistantActions.swift */; };
+		7693B8B52A42962F00FEBCAA /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8B42A42962F00FEBCAA /* AppInfo.swift */; };
+		7693B8B72A43649100FEBCAA /* ErrorHandlingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7693B8B62A43649100FEBCAA /* ErrorHandlingView.swift */; };
 		76A070CF261BAE510002A304 /* PatchedSurDaemon.plist in Add SharedSupport */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		76A070D2261BB7620002A304 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
-		76A070D4261BB76B0002A304 /* DownloadActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F22601A4DC007A1246 /* DownloadActions.swift */; };
-		76A070D6261BB7760002A304 /* macOSDownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769F37F42601AF06007A1246 /* macOSDownloadView.swift */; };
-		76A070D8261BB7F80002A304 /* PSPatchV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7633BC7E2617D24800A550A6 /* PSPatchV.swift */; };
-		76A070DA261BBAD90002A304 /* CreateInstallerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026A2606EEBD00E39469 /* CreateInstallerView.swift */; };
-		76A070DC261BBAE60002A304 /* VolumeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769532432605A144007A1BB4 /* VolumeSelectorView.swift */; };
-		76A070DE261BBAE90002A304 /* InstallerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7674026C2606F99100E39469 /* InstallerActions.swift */; };
-		76A070E0261BBAEC0002A304 /* HandleVolumesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */; };
 		76A070E7261BD41B0002A304 /* PatchedSurDaemon.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */; };
 		76A0B78D25749FC100E392D1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0B78C25749FC100E392D1 /* main.swift */; };
-		76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1D33A259933880032F7D9 /* CompatInfo.swift */; };
-		76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A626D32524ED78002C57EA /* MacCompatibility.swift */; };
-		76B59820262CEE0E004E52BC /* RecoveryPatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */; };
-		76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */; };
-		76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF37BC25E8C73500403208 /* NotificationsView.swift */; };
 		76D639DD2576302500B38FBE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D639DC2576302500B38FBE /* main.swift */; };
-		76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB62FE251C637000AB8865 /* DownloadView.swift */; };
 		76E6C72A263B8DF10063C08E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7624934D2635EA6900805E4A /* Localizable.strings */; };
-		76E6C747263CB0BF0063C08E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76E6C749263CB0BF0063C08E /* Localizable.strings */; };
-		76E73A68262CF77C0009D9CC /* RecoveryPatchActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */; };
-		76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */; };
-		76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */; };
-		76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11508256EE9FB001AB749 /* PatchedVersion.swift */; };
-		76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F11510256EED85001AB749 /* UpdateAppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,20 +64,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7692E07C251BFFB200C5FB9A;
 			remoteInfo = "Patched Sur";
-		};
-		7633BC772617806A00A550A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7692E05A251BFF9300C5FB9A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 762CBCA1260C20E5008F0A86;
-			remoteInfo = "Patched Sur - Recovery";
-		};
-		76A070C1261BAAE40002A304 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7692E05A251BFF9300C5FB9A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 762CBCA1260C20E5008F0A86;
-			remoteInfo = "Patched Sur - Recovery";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -146,6 +94,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 12;
 			files = (
+				7664B4682AEB4F7100D22033 /* patches.zip in Add SharedSupport */,
 				76A070CF261BAE510002A304 /* PatchedSurDaemon.plist in Add SharedSupport */,
 			);
 			name = "Add SharedSupport";
@@ -174,78 +123,42 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3F42EB03255176F700365279 /* PSSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSSettings.swift; sourceTree = "<group>"; };
-		52B32BC0267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Main.strings; sourceTree = "<group>"; };
 		52B32BC1267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		52B32BC2267BB8DC00C78CAE /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76020744263DA74A00A8D18A /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Main.strings; sourceTree = "<group>"; };
-		76020745263DA74A00A8D18A /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76020748263DBB3600A8D18A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		76020749263DBB3600A8D18A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7602074C263DCDDF00A8D18A /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
-		7602074D263DCDE000A8D18A /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7605944B26325D420005C38C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		7609BD17257FF8DB0054B76F /* DownloadKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadKexts.swift; sourceTree = "<group>"; };
-		7609BD1D258008B70054B76F /* StartInstallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInstallView.swift; sourceTree = "<group>"; };
-		760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOSView.swift; sourceTree = "<group>"; };
-		760C7D1A25719C27004817F1 /* UpdateAppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppAction.swift; sourceTree = "<group>"; };
+		76219C972A43731400EC87EF /* SupportedMacs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedMacs.swift; sourceTree = "<group>"; };
+		76219C992A43765800EC87EF /* SelectMacToUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMacToUse.swift; sourceTree = "<group>"; };
+		76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMacOSVersionView.swift; sourceTree = "<group>"; };
+		76219C9D2A4395F400EC87EF /* DownloadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingView.swift; sourceTree = "<group>"; };
+		76219C9F2A43AD4A00EC87EF /* DownloadmacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadmacOS.swift; sourceTree = "<group>"; };
+		76219CA12A43AE6000EC87EF /* SelectVolumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVolumeView.swift; sourceTree = "<group>"; };
+		76219CA32A43B04800EC87EF /* DetectVolumes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectVolumes.swift; sourceTree = "<group>"; };
+		76219CA52A43E3ED00EC87EF /* BuildPatchInstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildPatchInstallerView.swift; sourceTree = "<group>"; };
+		76219CA72A43FA4400EC87EF /* patches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = patches; sourceTree = "<group>"; };
+		76219CAA2A43FAC700EC87EF /* patches.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = patches.zip; sourceTree = "<group>"; };
 		762385E625E9DEE70088A8D9 /* PatchedSurDaemon.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PatchedSurDaemon.plist; sourceTree = "<group>"; };
 		7624934C2635EA6900805E4A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		762A066725BF93A80037655D /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		762A1DB3260C19B80009620B /* PatchKextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchKextsView.swift; sourceTree = "<group>"; };
 		762BBF9E26D583360022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		762BBF9F26D583360022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		762BBFA026D584980022A8BE /* ar */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ar; path = ar.lproj/Main.storyboard; sourceTree = "<group>"; };
-		762BBFA126D5861B0022A8BE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
 		762BBFA226D5861B0022A8BE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
-		762BBFA326D5861B0022A8BE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
-		762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - Recovery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		762CBCA4260C20E5008F0A86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		762CBCA6260C20E5008F0A86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		762CBCA8260C20E8008F0A86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		762CBCAB260C20E8008F0A86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		762CBCAD260C20E8008F0A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		762CBCAE260C20E8008F0A86 /* Patched_Sur___Recovery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Patched_Sur___Recovery.entitlements"; sourceTree = "<group>"; };
-		762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberPleaseView.swift; sourceTree = "<group>"; };
-		762DA8FF2606C0B400A9235A /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
-		762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPatchedSur.swift; sourceTree = "<group>"; };
-		7631558E254DDB6C00646CE9 /* AboutMyMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMyMac.swift; sourceTree = "<group>"; };
-		7633BC7E2617D24800A550A6 /* PSPatchV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSPatchV.swift; sourceTree = "<group>"; };
-		763B28C125FF0D2300389448 /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
-		763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleVolumesActions.swift; sourceTree = "<group>"; };
 		7643F616256F2A4700A9D61E /* NameComponent.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NameComponent.plist; sourceTree = "<group>"; };
-		7646DF8E263CE4740097B136 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		7646DF8F263CE4740097B136 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		7646DF97263CF0EB0097B136 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
-		7646DF99263CF0EB0097B136 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		764D732D2640F81000719132 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		764F516725FC960D004F49C6 /* VerifyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyActions.swift; sourceTree = "<group>"; };
-		765DA449264E26F3003A97B5 /* PSKexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSKexts.swift; sourceTree = "<group>"; };
-		7660A2EF269516E100653771 /* NVRAMResetHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVRAMResetHelp.swift; sourceTree = "<group>"; };
+		7653D6D62A4122E300D3D5AF /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
+		7653D6D82A41246200D3D5AF /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogUniversal.swift; sourceTree = "<group>"; };
+		7653D6DD2A4125EF00D3D5AF /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		7653D6DF2A41DAEF00D3D5AF /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		76633BEE263E1550000A949E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF1263E257F000A949E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF2263E25A4000A949E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		76633BF5263E3755000A949E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
-		76633BF6263E3755000A949E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76633BF9263EF96C000A949E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76688D7A2619521C00A1450A /* PatchKextsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchKextsActions.swift; sourceTree = "<group>"; };
+		7664B4642AEB464D00D22033 /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
+		7664B4662AEB4CAD00D22033 /* InstallerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerActions.swift; sourceTree = "<group>"; };
+		7664B4692AEB52E400D22033 /* DoneCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneCreateView.swift; sourceTree = "<group>"; };
 		76712B3C26ED972F003436A2 /* VeliaUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = VeliaUI; path = "../../../../../../Users/bensova/Library/Developer/Xcode/DerivedData/Patched_Sur-gwbrhoocibdjbecwgwvucoxptzjy/SourcePackages/checkouts/VeliaUI"; sourceTree = "<group>"; };
-		76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordPrompt.swift; sourceTree = "<group>"; };
 		767167502550AE42000FAE80 /* ShellOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellOut.swift; sourceTree = "<group>"; };
-		7674026A2606EEBD00E39469 /* CreateInstallerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerView.swift; sourceTree = "<group>"; };
-		7674026C2606F99100E39469 /* InstallerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallerActions.swift; sourceTree = "<group>"; };
-		7674026F2607DF8300E39469 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
-		76747BD82523A66F004596CC /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
 		767D6F9B25AA294C00A773AE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		767EF2AC261E975A00769793 /* UpdateChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChooser.swift; sourceTree = "<group>"; };
-		7680783826211A5D000ABD89 /* UpdaterActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterActions.swift; sourceTree = "<group>"; };
-		7680783B26211AC5000ABD89 /* UpdateChooserActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChooserActions.swift; sourceTree = "<group>"; };
-		768F51F5256E05190069096E /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
-		7691808725F9DB80003FB34C /* SettingsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsActions.swift; sourceTree = "<group>"; };
-		769289D825FEEF64002F9CAC /* macOSConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSConfirmView.swift; sourceTree = "<group>"; };
 		7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Patched Sur - For Catalina.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7692E065251BFF9300C5FB9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7692E067251BFF9300C5FB9A /* CentralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralView.swift; sourceTree = "<group>"; };
+		7692E067251BFF9300C5FB9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7692E069251BFF9400C5FB9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7692E06C251BFF9400C5FB9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7692E06F251BFF9400C5FB9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -258,53 +171,24 @@
 		7692E086251BFFB400C5FB9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7692E088251BFFB400C5FB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7692E089251BFFB400C5FB9A /* Patched_Sur.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Patched_Sur.entitlements; sourceTree = "<group>"; };
-		7692E08F251C077400C5FB9A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		769532432605A144007A1BB4 /* VolumeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSelectorView.swift; sourceTree = "<group>"; };
+		7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressSetupView.swift; sourceTree = "<group>"; };
+		7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressDetection.swift; sourceTree = "<group>"; };
+		7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		7693B8B02A42950000FEBCAA /* InstallAssistants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistants.swift; sourceTree = "<group>"; };
+		7693B8B22A42955D00FEBCAA /* InstallAssistantActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallAssistantActions.swift; sourceTree = "<group>"; };
+		7693B8B42A42962F00FEBCAA /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		7693B8B62A43649100FEBCAA /* ErrorHandlingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingView.swift; sourceTree = "<group>"; };
 		769D03BD26D16C6C008ADB2C /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
-		769F37F22601A4DC007A1246 /* DownloadActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActions.swift; sourceTree = "<group>"; };
-		769F37F42601AF06007A1246 /* macOSDownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = macOSDownloadView.swift; sourceTree = "<group>"; };
-		76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInstallerMain.swift; sourceTree = "<group>"; };
 		76A0B78C25749FC100E392D1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		76A1D33A259933880032F7D9 /* CompatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatInfo.swift; sourceTree = "<group>"; };
-		76A626D32524ED78002C57EA /* MacCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCompatibility.swift; sourceTree = "<group>"; };
 		76AA16672655D4D300FC56FC /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		76B463C826BC8EB800F129D8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchView.swift; sourceTree = "<group>"; };
-		76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTrackView.swift; sourceTree = "<group>"; };
-		76CF37BC25E8C73500403208 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		76D639DC2576302500B38FBE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		76DB62FE251C637000AB8865 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
-		76E6C72D263B8ED50063C08E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		76E6C72F263B8EEF0063C08E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
-		76E6C731263B90720063C08E /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
-		76E6C735263B93510063C08E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
-		76E6C737263B93630063C08E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
-		76E6C740263B99B10063C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		76E6C748263CB0BF0063C08E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76E6C74A263CB0C30063C08E /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		76E6C74B263CB0C60063C08E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		76E6C74C263CB0C70063C08E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76E6C74D263CB0C90063C08E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76E6C74E263CB0C90063C08E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPatchActions.swift; sourceTree = "<group>"; };
-		76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchDaemon.swift; sourceTree = "<group>"; };
 		76EBA22726449AA200F50A8C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76F11508256EE9FB001AB749 /* PatchedVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchedVersion.swift; sourceTree = "<group>"; };
-		76F11510256EED85001AB749 /* UpdateAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppView.swift; sourceTree = "<group>"; };
 		76F6EED72552684A001508E8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		76FCD7772701572700646EBE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		76FCD7782701572700646EBE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		76FCD7792701572700646EBE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		762CBC9F260C20E5008F0A86 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7692E05F251BFF9300C5FB9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,27 +218,12 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
-		762CBCA3260C20E5008F0A86 /* Patched Sur - Recovery */ = {
-			isa = PBXGroup;
-			children = (
-				762CBCA4260C20E5008F0A86 /* AppDelegate.swift */,
-				76E6C749263CB0BF0063C08E /* Localizable.strings */,
-				762CBCA6260C20E5008F0A86 /* ViewController.swift */,
-				762CBCA8260C20E8008F0A86 /* Assets.xcassets */,
-				762CBCAA260C20E8008F0A86 /* Main.storyboard */,
-				762CBCAD260C20E8008F0A86 /* Info.plist */,
-				762CBCAE260C20E8008F0A86 /* Patched_Sur___Recovery.entitlements */,
-			);
-			path = "Patched Sur - Recovery";
-			sourceTree = "<group>";
-		};
 		762F8C1D25F87ED20021E4AF /* CoreCode */ = {
 			isa = PBXGroup;
 			children = (
 				76A0B78C25749FC100E392D1 /* main.swift */,
 				7692E07F251BFFB300C5FB9A /* PatchedSurApp.swift */,
-				76E9A6E825E1A96A0061B35D /* PatchDaemon.swift */,
-				762A066725BF93A80037655D /* Keychain.swift */,
+				7653D6DD2A4125EF00D3D5AF /* OSLog.swift */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -362,21 +231,8 @@
 		762F8C1E25F87EE00021E4AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				762F8C1F25F87EF80021E4AF /* AboutPatchedSur.swift */,
 				7692E081251BFFB300C5FB9A /* ContentView.swift */,
-				3F42EB03255176F700365279 /* PSSettings.swift */,
-				762A1DB3260C19B80009620B /* PatchKextsView.swift */,
-				76A070B6261AD06E0002A304 /* CreateInstallerMain.swift */,
-				7631558E254DDB6C00646CE9 /* AboutMyMac.swift */,
-				768F51F5256E05190069096E /* UpdateView.swift */,
-				760AA9CE261E72A200ADABE0 /* UpdateOSView.swift */,
-				767EF2AC261E975A00769793 /* UpdateChooser.swift */,
-				7609BD17257FF8DB0054B76F /* DownloadKexts.swift */,
-				7609BD1D258008B70054B76F /* StartInstallView.swift */,
-				76CF37BC25E8C73500403208 /* NotificationsView.swift */,
-				76B5981F262CEE0E004E52BC /* RecoveryPatchView.swift */,
-				76F11510256EED85001AB749 /* UpdateAppView.swift */,
-				7660A2EF269516E100653771 /* NVRAMResetHelp.swift */,
+				7653D6D62A4122E300D3D5AF /* Transitions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,14 +240,13 @@
 		764F516425FC95C7004F49C6 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				764F516725FC960D004F49C6 /* VerifyActions.swift */,
-				76A1D33A259933880032F7D9 /* CompatInfo.swift */,
-				76747BD82523A66F004596CC /* InstallAssistants.swift */,
-				763B28C125FF0D2300389448 /* InstallAssistantActions.swift */,
-				769F37F22601A4DC007A1246 /* DownloadActions.swift */,
-				7633BC7E2617D24800A550A6 /* PSPatchV.swift */,
-				763C8D3D2606681F00CA917D /* HandleVolumesActions.swift */,
-				7674026C2606F99100E39469 /* InstallerActions.swift */,
+				7693B8AC2A42553700FEBCAA /* ExpressDetection.swift */,
+				7693B8B02A42950000FEBCAA /* InstallAssistants.swift */,
+				7693B8B22A42955D00FEBCAA /* InstallAssistantActions.swift */,
+				76219C972A43731400EC87EF /* SupportedMacs.swift */,
+				76219C9F2A43AD4A00EC87EF /* DownloadmacOS.swift */,
+				76219CA32A43B04800EC87EF /* DetectVolumes.swift */,
+				7664B4662AEB4CAD00D22033 /* InstallerActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -399,14 +254,6 @@
 		7691808625F9DB5C003FB34C /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				7691808725F9DB80003FB34C /* SettingsActions.swift */,
-				76688D7A2619521C00A1450A /* PatchKextsActions.swift */,
-				760C7D1A25719C27004817F1 /* UpdateAppAction.swift */,
-				7680783826211A5D000ABD89 /* UpdaterActions.swift */,
-				7680783B26211AC5000ABD89 /* UpdateChooserActions.swift */,
-				76E73A67262CF77C0009D9CC /* RecoveryPatchActions.swift */,
-				765DA449264E26F3003A97B5 /* PSKexts.swift */,
-				76F11508256EE9FB001AB749 /* PatchedVersion.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -414,11 +261,12 @@
 		7692E059251BFF9300C5FB9A = {
 			isa = PBXGroup;
 			children = (
+				76219CAA2A43FAC700EC87EF /* patches.zip */,
+				76219CA72A43FA4400EC87EF /* patches */,
 				76F6EED72552684A001508E8 /* README.md */,
 				76FEEFAC254F4DA80079CEFC /* Extra Files */,
 				7692E064251BFF9300C5FB9A /* Patched Sur - For Catalina */,
 				7692E07E251BFFB300C5FB9A /* Patched Sur */,
-				762CBCA3260C20E5008F0A86 /* Patched Sur - Recovery */,
 				7692E063251BFF9300C5FB9A /* Products */,
 				7692E09A251C09AB00C5FB9A /* Frameworks */,
 			);
@@ -429,7 +277,6 @@
 			children = (
 				7692E062251BFF9300C5FB9A /* Patched Sur - For Catalina.app */,
 				7692E07D251BFFB200C5FB9A /* Patched Sur.app */,
-				762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -494,9 +341,12 @@
 			children = (
 				76D639DC2576302500B38FBE /* main.swift */,
 				7692E065251BFF9300C5FB9A /* AppDelegate.swift */,
-				7692E067251BFF9300C5FB9A /* CentralView.swift */,
+				7692E067251BFF9300C5FB9A /* ContentView.swift */,
 				767167502550AE42000FAE80 /* ShellOut.swift */,
 				7692E06E251BFF9400C5FB9A /* Main.storyboard */,
+				7653D6D82A41246200D3D5AF /* OSLog.swift */,
+				7653D6DA2A4125BB00D3D5AF /* OSLogUniversal.swift */,
+				7693B8B42A42962F00FEBCAA /* AppInfo.swift */,
 			);
 			path = CoreCode;
 			sourceTree = "<group>";
@@ -504,18 +354,17 @@
 		76D8437F25F86486006C6565 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				76714F4225B6B350001AF55A /* EnterPasswordPrompt.swift */,
-				7692E08F251C077400C5FB9A /* MainView.swift */,
-				762DA8FF2606C0B400A9235A /* CreditsView.swift */,
-				762DA8FD2606BA6300A9235A /* RememberPleaseView.swift */,
-				76A626D32524ED78002C57EA /* MacCompatibility.swift */,
-				76B7C334253A8EDA001C7991 /* ReleaseTrackView.swift */,
-				769289D825FEEF64002F9CAC /* macOSConfirmView.swift */,
-				76DB62FE251C637000AB8865 /* DownloadView.swift */,
-				769F37F42601AF06007A1246 /* macOSDownloadView.swift */,
-				769532432605A144007A1BB4 /* VolumeSelectorView.swift */,
-				7674026A2606EEBD00E39469 /* CreateInstallerView.swift */,
-				7674026F2607DF8300E39469 /* DoneView.swift */,
+				7664B4642AEB464D00D22033 /* EnterPasswordPrompt.swift */,
+				7653D6DF2A41DAEF00D3D5AF /* WelcomeView.swift */,
+				7693B8AA2A4211F800FEBCAA /* ExpressSetupView.swift */,
+				7693B8AE2A425A2D00FEBCAA /* ProgressBar.swift */,
+				7693B8B62A43649100FEBCAA /* ErrorHandlingView.swift */,
+				76219C992A43765800EC87EF /* SelectMacToUse.swift */,
+				76219C9B2A43853900EC87EF /* SelectMacOSVersionView.swift */,
+				76219CA12A43AE6000EC87EF /* SelectVolumeView.swift */,
+				76219C9D2A4395F400EC87EF /* DownloadingView.swift */,
+				76219CA52A43E3ED00EC87EF /* BuildPatchInstallerView.swift */,
+				7664B4692AEB52E400D22033 /* DoneCreateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -532,23 +381,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		762CBCA1260C20E5008F0A86 /* Patched Sur - Recovery */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 762CBCAF260C20E8008F0A86 /* Build configuration list for PBXNativeTarget "Patched Sur - Recovery" */;
-			buildPhases = (
-				762CBC9E260C20E5008F0A86 /* Sources */,
-				762CBC9F260C20E5008F0A86 /* Frameworks */,
-				762CBCA0260C20E5008F0A86 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Patched Sur - Recovery";
-			productName = "Patched Sur - Recovery";
-			productReference = 762CBCA2260C20E5008F0A86 /* Patched Sur - Recovery.app */;
-			productType = "com.apple.product-type.application";
-		};
 		7692E061251BFF9300C5FB9A /* Patched Sur - For Catalina */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7692E075251BFF9400C5FB9A /* Build configuration list for PBXNativeTarget "Patched Sur - For Catalina" */;
@@ -562,7 +394,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7633BC782617806A00A550A6 /* PBXTargetDependency */,
 				7633BC762617805200A550A6 /* PBXTargetDependency */,
 			);
 			name = "Patched Sur - For Catalina";
@@ -588,7 +419,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				76A070C2261BAAE40002A304 /* PBXTargetDependency */,
 			);
 			name = "Patched Sur";
 			packageProductDependencies = (
@@ -608,9 +438,6 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					762CBCA1260C20E5008F0A86 = {
-						CreatedOnToolsVersion = 12.4;
-					};
 					7692E061251BFF9300C5FB9A = {
 						CreatedOnToolsVersion = 12.2;
 						LastSwiftMigration = 1250;
@@ -654,29 +481,17 @@
 			targets = (
 				7692E061251BFF9300C5FB9A /* Patched Sur - For Catalina */,
 				7692E07C251BFFB200C5FB9A /* Patched Sur */,
-				762CBCA1260C20E5008F0A86 /* Patched Sur - Recovery */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		762CBCA0260C20E5008F0A86 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				762CBCA9260C20E8008F0A86 /* Assets.xcassets in Resources */,
-				76E6C747263CB0BF0063C08E /* Localizable.strings in Resources */,
-				762CBCAC260C20E8008F0A86 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7692E060251BFF9300C5FB9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7633BC792617807100A550A6 /* Patched Sur.app in Resources */,
 				7624934B2635EA6900805E4A /* Localizable.strings in Resources */,
-				7633BC732617744900A550A6 /* Patched Sur - Recovery.app in Resources */,
 				7692E070251BFF9400C5FB9A /* Main.storyboard in Resources */,
 				7692E06D251BFF9400C5FB9A /* Preview Assets.xcassets in Resources */,
 				7692E06A251BFF9400C5FB9A /* Assets.xcassets in Resources */,
@@ -687,7 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76A070C3261BAAF00002A304 /* Patched Sur - Recovery.app in Resources */,
+				76219CAD2A43FB6700EC87EF /* patches.zip in Resources */,
 				76E6C72A263B8DF10063C08E /* Localizable.strings in Resources */,
 				7692E087251BFFB400C5FB9A /* Preview Assets.xcassets in Resources */,
 				7692E084251BFFB400C5FB9A /* Assets.xcassets in Resources */,
@@ -697,43 +512,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		762CBC9E260C20E5008F0A86 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				762CBCA7260C20E5008F0A86 /* ViewController.swift in Sources */,
-				762CBCA5260C20E5008F0A86 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7692E05E251BFF9300C5FB9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				769F37F52601AF06007A1246 /* macOSDownloadView.swift in Sources */,
-				769289D925FEEF64002F9CAC /* macOSConfirmView.swift in Sources */,
-				7633BC7F2617D24800A550A6 /* PSPatchV.swift in Sources */,
-				767402702607DF8300E39469 /* DoneView.swift in Sources */,
+				76219CA22A43AE6000EC87EF /* SelectVolumeView.swift in Sources */,
+				76219C9A2A43765800EC87EF /* SelectMacToUse.swift in Sources */,
 				767167512550AE42000FAE80 /* ShellOut.swift in Sources */,
 				76D639DD2576302500B38FBE /* main.swift in Sources */,
-				76DB62FF251C637000AB8865 /* DownloadView.swift in Sources */,
-				7674026B2606EEBD00E39469 /* CreateInstallerView.swift in Sources */,
-				764F516825FC960D004F49C6 /* VerifyActions.swift in Sources */,
-				76B7C335253A8EDA001C7991 /* ReleaseTrackView.swift in Sources */,
-				763B28C225FF0D2300389448 /* InstallAssistantActions.swift in Sources */,
-				7692E068251BFF9300C5FB9A /* CentralView.swift in Sources */,
-				7692E090251C077400C5FB9A /* MainView.swift in Sources */,
-				76A626D42524ED78002C57EA /* MacCompatibility.swift in Sources */,
-				7674026D2606F99100E39469 /* InstallerActions.swift in Sources */,
-				769532442605A144007A1BB4 /* VolumeSelectorView.swift in Sources */,
-				76A1D33B259933880032F7D9 /* CompatInfo.swift in Sources */,
-				763C8D3E2606681F00CA917D /* HandleVolumesActions.swift in Sources */,
-				76747BD92523A66F004596CC /* InstallAssistants.swift in Sources */,
+				7653D6D92A41246200D3D5AF /* OSLog.swift in Sources */,
+				7692E068251BFF9300C5FB9A /* ContentView.swift in Sources */,
+				7653D6DB2A4125BB00D3D5AF /* OSLogUniversal.swift in Sources */,
+				76219CA62A43E3ED00EC87EF /* BuildPatchInstallerView.swift in Sources */,
+				7664B4672AEB4CAD00D22033 /* InstallerActions.swift in Sources */,
+				7693B8AD2A42553700FEBCAA /* ExpressDetection.swift in Sources */,
+				76219C9E2A4395F400EC87EF /* DownloadingView.swift in Sources */,
+				76219C982A43731500EC87EF /* SupportedMacs.swift in Sources */,
+				76219C9C2A43853900EC87EF /* SelectMacOSVersionView.swift in Sources */,
+				76219CA42A43B04800EC87EF /* DetectVolumes.swift in Sources */,
+				7693B8B32A42955D00FEBCAA /* InstallAssistantActions.swift in Sources */,
+				7664B46A2AEB52E400D22033 /* DoneCreateView.swift in Sources */,
 				7692E066251BFF9300C5FB9A /* AppDelegate.swift in Sources */,
-				762DA8FE2606BA6300A9235A /* RememberPleaseView.swift in Sources */,
-				76714F4325B6B350001AF55A /* EnterPasswordPrompt.swift in Sources */,
-				762DA9002606C0B400A9235A /* CreditsView.swift in Sources */,
-				769F37F32601A4DC007A1246 /* DownloadActions.swift in Sources */,
+				7693B8B72A43649100FEBCAA /* ErrorHandlingView.swift in Sources */,
+				76219CA02A43AD4A00EC87EF /* DownloadmacOS.swift in Sources */,
+				7653D6E02A41DAEF00D3D5AF /* WelcomeView.swift in Sources */,
+				7693B8AF2A425A2D00FEBCAA /* ProgressBar.swift in Sources */,
+				7664B4652AEB464D00D22033 /* EnterPasswordPrompt.swift in Sources */,
+				7693B8B12A42950000FEBCAA /* InstallAssistants.swift in Sources */,
+				7693B8B52A42962F00FEBCAA /* AppInfo.swift in Sources */,
+				7693B8AB2A4211F800FEBCAA /* ExpressSetupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,47 +548,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7680783C26211AC5000ABD89 /* UpdateChooserActions.swift in Sources */,
-				76A070D6261BB7760002A304 /* macOSDownloadView.swift in Sources */,
-				76A070D2261BB7620002A304 /* DownloadView.swift in Sources */,
 				7692E082251BFFB300C5FB9A /* ContentView.swift in Sources */,
-				7609BD1E258008B70054B76F /* StartInstallView.swift in Sources */,
-				768F51F6256E05190069096E /* UpdateView.swift in Sources */,
-				76CF37BD25E8C73500403208 /* NotificationsView.swift in Sources */,
-				76688D7B2619521C00A1450A /* PatchKextsActions.swift in Sources */,
-				760C7D1B25719C27004817F1 /* UpdateAppAction.swift in Sources */,
-				76A070DA261BBAD90002A304 /* CreateInstallerView.swift in Sources */,
-				762F8C2025F87EF80021E4AF /* AboutPatchedSur.swift in Sources */,
-				76F0674325FB2F490050A322 /* EnterPasswordPrompt.swift in Sources */,
-				7660A2F0269516E100653771 /* NVRAMResetHelp.swift in Sources */,
-				76B59820262CEE0E004E52BC /* RecoveryPatchView.swift in Sources */,
-				762A1DB4260C19B80009620B /* PatchKextsView.swift in Sources */,
-				76F11511256EED85001AB749 /* UpdateAppView.swift in Sources */,
-				76A070E0261BBAEC0002A304 /* HandleVolumesActions.swift in Sources */,
 				7674026E2607C5BD00E39469 /* ShellOut.swift in Sources */,
-				7609BD18257FF8DB0054B76F /* DownloadKexts.swift in Sources */,
-				76E9A6E925E1A96A0061B35D /* PatchDaemon.swift in Sources */,
-				762A066825BF93A80037655D /* Keychain.swift in Sources */,
-				765DA44A264E26F3003A97B5 /* PSKexts.swift in Sources */,
-				7680783926211A5D000ABD89 /* UpdaterActions.swift in Sources */,
-				76A070B7261AD06E0002A304 /* CreateInstallerMain.swift in Sources */,
-				76A070D8261BB7F80002A304 /* PSPatchV.swift in Sources */,
-				3F42EB04255176F700365279 /* PSSettings.swift in Sources */,
-				763B28C7260052D200389448 /* InstallAssistants.swift in Sources */,
+				7653D6D72A4122E300D3D5AF /* Transitions.swift in Sources */,
 				76A0B78D25749FC100E392D1 /* main.swift in Sources */,
-				7691808825F9DB80003FB34C /* SettingsActions.swift in Sources */,
-				767EF2AD261E975A00769793 /* UpdateChooser.swift in Sources */,
-				76E73A68262CF77C0009D9CC /* RecoveryPatchActions.swift in Sources */,
-				760AA9CF261E72A200ADABE0 /* UpdateOSView.swift in Sources */,
-				76F11509256EE9FB001AB749 /* PatchedVersion.swift in Sources */,
-				76A070B9261B5AB10002A304 /* ReleaseTrackView.swift in Sources */,
-				76A070BD261B5F780002A304 /* InstallAssistantActions.swift in Sources */,
-				76A070BB261B5F590002A304 /* macOSConfirmView.swift in Sources */,
+				7653D6DE2A4125EF00D3D5AF /* OSLog.swift in Sources */,
+				7653D6DC2A4125BF00D3D5AF /* OSLogUniversal.swift in Sources */,
 				7692E080251BFFB300C5FB9A /* PatchedSurApp.swift in Sources */,
-				76A070DE261BBAE90002A304 /* InstallerActions.swift in Sources */,
-				76A070DC261BBAE60002A304 /* VolumeSelectorView.swift in Sources */,
-				7631558F254DDB6C00646CE9 /* AboutMyMac.swift in Sources */,
-				76A070D4261BB76B0002A304 /* DownloadActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,16 +565,6 @@
 			isa = PBXTargetDependency;
 			target = 7692E07C251BFFB200C5FB9A /* Patched Sur */;
 			targetProxy = 7633BC752617805200A550A6 /* PBXContainerItemProxy */;
-		};
-		7633BC782617806A00A550A6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 762CBCA1260C20E5008F0A86 /* Patched Sur - Recovery */;
-			targetProxy = 7633BC772617806A00A550A6 /* PBXContainerItemProxy */;
-		};
-		76A070C2261BAAE40002A304 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 762CBCA1260C20E5008F0A86 /* Patched Sur - Recovery */;
-			targetProxy = 76A070C1261BAAE40002A304 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -827,30 +590,6 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		762CBCAA260C20E8008F0A86 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				762CBCAB260C20E8008F0A86 /* Base */,
-				76E6C72D263B8ED50063C08E /* ru */,
-				76E6C72F263B8EEF0063C08E /* uk */,
-				76E6C731263B90720063C08E /* pt-BR */,
-				76E6C735263B93510063C08E /* pt-PT */,
-				76E6C737263B93630063C08E /* es */,
-				76E6C740263B99B10063C08E /* en */,
-				7646DF8E263CE4740097B136 /* zh-Hans */,
-				7646DF97263CF0EB0097B136 /* da */,
-				76020744263DA74A00A8D18A /* hr */,
-				76020748263DBB3600A8D18A /* de */,
-				7602074C263DCDDF00A8D18A /* el */,
-				76633BF5263E3755000A949E /* fr */,
-				52B32BC0267BB8DC00C78CAE /* bs */,
-				762BBFA026D584980022A8BE /* ar */,
-				762BBFA126D5861B0022A8BE /* id */,
-				76FCD7772701572700646EBE /* it */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7692E06E251BFF9400C5FB9A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -859,82 +598,9 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		76E6C749263CB0BF0063C08E /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				76E6C748263CB0BF0063C08E /* en */,
-				76E6C74A263CB0C30063C08E /* pt-BR */,
-				76E6C74B263CB0C60063C08E /* pt-PT */,
-				76E6C74C263CB0C70063C08E /* ru */,
-				76E6C74D263CB0C90063C08E /* es */,
-				76E6C74E263CB0C90063C08E /* uk */,
-				7646DF8F263CE4740097B136 /* zh-Hans */,
-				7646DF99263CF0EB0097B136 /* da */,
-				76020745263DA74A00A8D18A /* hr */,
-				76020749263DBB3600A8D18A /* de */,
-				7602074D263DCDE000A8D18A /* el */,
-				76633BF6263E3755000A949E /* fr */,
-				52B32BC2267BB8DC00C78CAE /* bs */,
-				762BBF9F26D583360022A8BE /* ar */,
-				762BBFA326D5861B0022A8BE /* id */,
-				76FCD7792701572700646EBE /* it */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		762CBCB0260C20E8008F0A86 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Patched Sur - Recovery/Patched_Sur___Recovery.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 124;
-				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "bensova.Patched-Sur-Recovery";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		762CBCB1260C20E8008F0A86 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Patched Sur - Recovery/Patched_Sur___Recovery.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 124;
-				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "Patched Sur - Recovery/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "bensova.Patched-Sur-Recovery";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		7692E073251BFF9400C5FB9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1062,7 +728,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 124;
+				CURRENT_PROJECT_VERSION = 125;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1078,7 +744,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ben216k.Patched-Sur.catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Patched Sur - For Catalina/CoreCode/Patched Sur - For Catalina-Bridging-Header.h";
@@ -1097,7 +763,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 124;
+				CURRENT_PROJECT_VERSION = 125;
 				DEVELOPMENT_ASSET_PATHS = "\"Patched Sur - For Catalina/Preview Content\"";
 				DEVELOPMENT_TEAM = ZAB2ZHZQFK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1113,7 +779,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15.2;
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur-Catalina";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ben216k.Patched-Sur.catalina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Patched Sur - For Catalina/CoreCode/Patched Sur - For Catalina-Bridging-Header.h";
@@ -1148,7 +814,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ben216k.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1182,7 +848,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "u-bensova.Patched-Sur";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ben216k.Patched-Sur";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1192,15 +858,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		762CBCAF260C20E8008F0A86 /* Build configuration list for PBXNativeTarget "Patched Sur - Recovery" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				762CBCB0260C20E8008F0A86 /* Debug */,
-				762CBCB1260C20E8008F0A86 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7692E05D251BFF9300C5FB9A /* Build configuration list for PBXProject "Patched Sur" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
