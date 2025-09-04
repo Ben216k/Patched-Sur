@@ -30,7 +30,7 @@ Patched Sur isn't just by me (Ben), **I mostly put it all together and made it e
 - [ASentientHedgehog](https://github.com/moosethegoose2213/): Helped randomly along the way
 - [dosdude1](http://dosdude1.com/): OpenGL/GPUSupport swap and of course his patchers which have helped with unsupported Macs patching even in Big Sur.
 - Bweesh, Bruno Rocha, NickP0is0n, Noah Fetz, duke4e, riiveraluis, Dead_K1ller, and manthos03 for translating the app.
-- [John_val](https://www.reddit.com/user/John_val), [fromeister2009](https://www.reddit.com/user/fromeister2009), [Mr. Macintosh](https://mrmacintosh.com/), [Emperor Epitaph](https://www.youtube.com/channel/UCxGV-Up88t5D4CpcvLS43lw), [primrose](https://snowbellium.net/), [Monkiey](https://twitter.com/Monkiey2) and [8itCat](https://github.com/8itCat/) for testing some of the new features before release, and pointing out the bugs with them.
+- [John_val](https://www.reddit.com/user/John_val), [fromeister2009](https://www.reddit.com/user/fromeister2009), [Mr. Macintosh](https://mrmacintosh.com/), [Emperor Epitaph](https://www.youtube.com/channel/UCxGV-Up88t5D4CpcvLS43lw), [primrose](https://snowbellium.net/), [Monkiey](https://twitter.com/Monkiey2) and [0xCUB3](https://github.com/0xCUB3/) for testing some of the new features before release, and pointing out the bugs with them.
 - and several others who helped with making Big Sur run as great as it does on unsupported Macs.
 
 Patched Sur also uses two Open Source frameworks, Files and ShellOut by JohnSundell (MIT License), to help handle certain tasks.
